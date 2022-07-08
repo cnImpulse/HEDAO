@@ -7,29 +7,30 @@ namespace HEDAO
 {
     public class BattleUnitData : GridUnitData
     {
-        private RoleData m_RoleData = null;
+        public CampType CampType { get; private set; }
+        public RoleData RoleData { get; private set; }
 
-        private CampType m_CampType = CampType.None;
+        public int MaxHP => RoleData.Attribute.HP;
+        public int MaxQI => RoleData.Attribute.QI;
 
-        private int m_Hp = 0;
-
-        public RoleData RoleData => m_RoleData;
-
-        public int Hp
+        private int m_HP = 0;
+        public int HP
         {
-            get => m_Hp;
-            set => Mathf.Clamp(m_Hp, 0, MaxHp);
+            get => m_HP;
+            set => Mathf.Clamp(m_HP, 0, MaxHP);
         }
 
-        public int MaxHp => m_RoleData.Attribute.HP;
-        public int MOV => m_RoleData.Attribute.MOV;
-        public int ATK => m_RoleData.Attribute.STR;
-        public CampType CampType => m_CampType;
+        private int m_QI = 0;
+        public int QI
+        {
+            get => m_HP;
+            set => Mathf.Clamp(m_QI, 0, MaxQI);
+        }
 
         public BattleUnitData(RoleData roleData, Vector2Int gridPos, CampType campType) : base(gridPos)
         {
-            m_RoleData = roleData;
-            m_CampType = campType;
+            RoleData = roleData;
+            CampType = campType;
         }
     }
 }

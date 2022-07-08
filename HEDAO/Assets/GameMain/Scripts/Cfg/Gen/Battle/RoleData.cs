@@ -20,8 +20,8 @@ public sealed partial class RoleData :  Bright.Config.BeanBase
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
         Desc = _buf.ReadString();
-        BaseAttribute = Battle.Attribute.DeserializeAttribute(_buf);
         Image = _buf.ReadString();
+        BaseAttribute = Battle.Attribute.DeserializeAttribute(_buf);
         PostInit();
     }
 
@@ -43,13 +43,10 @@ public sealed partial class RoleData :  Bright.Config.BeanBase
     /// </summary>
     public string Desc { get; private set; }
     /// <summary>
-    /// HP
-    /// </summary>
-    public Battle.Attribute BaseAttribute { get; private set; }
-    /// <summary>
     /// 图片
     /// </summary>
     public string Image { get; private set; }
+    public Battle.Attribute BaseAttribute { get; private set; }
 
     public const int __ID__ = 422102454;
     public override int GetTypeId() => __ID__;
@@ -71,8 +68,8 @@ public sealed partial class RoleData :  Bright.Config.BeanBase
         + "Id:" + Id + ","
         + "Name:" + Name + ","
         + "Desc:" + Desc + ","
-        + "BaseAttribute:" + BaseAttribute + ","
         + "Image:" + Image + ","
+        + "BaseAttribute:" + BaseAttribute + ","
         + "}";
     }
     

@@ -18,8 +18,7 @@ public sealed partial class Attribute :  Bright.Config.BeanBase
     public Attribute(ByteBuf _buf) 
     {
         HP = _buf.ReadInt();
-        MOV = _buf.ReadInt();
-        STR = _buf.ReadInt();
+        QI = _buf.ReadInt();
         PostInit();
     }
 
@@ -29,8 +28,7 @@ public sealed partial class Attribute :  Bright.Config.BeanBase
     }
 
     public int HP { get; private set; }
-    public int MOV { get; private set; }
-    public int STR { get; private set; }
+    public int QI { get; private set; }
 
     public const int __ID__ = -97178394;
     public override int GetTypeId() => __ID__;
@@ -48,8 +46,7 @@ public sealed partial class Attribute :  Bright.Config.BeanBase
     {
         return "{ "
         + "HP:" + HP + ","
-        + "MOV:" + MOV + ","
-        + "STR:" + STR + ","
+        + "QI:" + QI + ","
         + "}";
     }
     
