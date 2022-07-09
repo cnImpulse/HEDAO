@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: GridMap
+    uniqueID: 3723920725
+    locked: 0
+  - name: BattleUnit
+    uniqueID: 2477858411
+    locked: 0
+  - name: Effect
+    uniqueID: 4206342951
+    locked: 0

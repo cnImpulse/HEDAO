@@ -8,16 +8,11 @@ namespace HEDAO
 {
     public class BattleDataEditor : MonoBehaviour
     {
-        [InspectorName("网格地图")]
         public GameObject GridMap = null;
-
-        [InspectorName("战斗数据")]
         public GameObject BattleUnit = null;
-
-        [InspectorName("关卡数据")]
         public LevelData LevelData = new LevelData();
 
-        [ContextMenu("生成基础网格地图")]
+        [ContextMenu("GenerateGridMap")]
         private void GenerateGridMap()
         {
             if (GridMap == null)
@@ -47,7 +42,7 @@ namespace HEDAO
             gridMap.name = string.Format("GridMap_{0}", LevelData.MapId);
         }
 
-        [ContextMenu("保存战斗数据")]
+        [ContextMenu("SaveBattleData")]
         private void SaveBattleData()
         {
             SaveGridMap();
@@ -59,13 +54,10 @@ namespace HEDAO
 
         private void SaveGridMap()
         {
-            Debug.Log("保存地图数据开始。");
-
             var girdMap = GridMap?.transform.Find(string.Format("GridMap_{0}", LevelData.MapId));
             var tilemapList = girdMap?.GetComponentsInChildren<Tilemap>();
             if (tilemapList == null || tilemapList.Length <= 0)
             {
-                Debug.LogError("保存地图数据失败!");
                 return;
             }
 
