@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="400,120">
+  <displayList>
+    <component id="n0_ja3t" name="btn_load" src="aobob" fileName="Components/Button/Button.xml" xy="0,0" size="400,120">
+      <Button title="empty" icon="ui://rt51n0kjntsy4"/>
+    </component>
+    <component id="n2_oyly" name="btn_clear" src="ja3th" fileName="Components/Button/CloseButton.xml" xy="315,35" pivot="0.5,0.5" size="50,50"/>
+  </displayList>
+</component>

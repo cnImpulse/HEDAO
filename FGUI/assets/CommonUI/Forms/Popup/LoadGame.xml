@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="700,650">
+  <displayList>
+    <image id="n2_ja3t" name="n2" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" pivot="0.5,0.5" size="700,650">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <component id="n6_ja3t" name="closeButton" src="ja3th" fileName="Components/Button/CloseButton.xml" xy="617,33" pivot="0.5,0.5">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <list id="n7_oyly" name="list_load" xy="160,150" pivot="0.5,0" size="400,500" lineGap="20" defaultItem="ui://rt51n0kjja3td" align="center" autoClearItems="true">
+      <relation target="" sidePair="height-height,center-center,topext-top"/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+  <relation target="n7_oyly" sidePair="bottomext-bottom"/>
+</component>

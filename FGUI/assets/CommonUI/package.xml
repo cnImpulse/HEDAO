@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="rt51n0kj">
+  <resources>
+    <component id="dsjm0" name="Menu.xml" path="/Forms/FullScreen/" exported="true"/>
+    <image id="ntsy1" name="BaGua.png" path="/Resources/Images/" scale9grid="15,15,2,2" gridTile="16" smoothing="false"/>
+    <image id="ntsy3" name="SiGua.png" path="/Resources/Images/" scale="9grid" scale9grid="15,14,2,1" smoothing="false"/>
+    <image id="ntsy4" name="SiGuax4.png" path="/Resources/Images/" scale="9grid" scale9grid="32,32,64,64" smoothing="false"/>
+    <font id="ekn09" name="mplus_hzk_12.ttf" path="/Resources/Fonts/" renderMode="sdfaa" samplePointSize="12" boldWeight="0.03" atlasPadding="60"/>
+    <image id="aoboa" name="TianDix4.png" path="/Resources/Images/" scale="9grid" scale9grid="32,32,64,64" smoothing="false"/>
+    <component id="aobob" name="Button.xml" path="/Components/Button/"/>
+    <component id="ja3tc" name="LoadGame.xml" path="/Forms/Popup/" exported="true"/>
+    <component id="ja3td" name="LoadGameItem.xml" path="/Components/ListItem/"/>
+    <image id="ja3tf" name="Close.png" path="/Resources/Images/" smoothing="false"/>
+    <component id="ja3th" name="CloseButton.xml" path="/Components/Button/"/>
+  </resources>
+  <publish name=""/>
+</packageDescription>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" bgColor="#d4d4d4">
+  <displayList>
+    <graph id="n20_qecl" name="n20" xy="0,0" pivot="0.5,0.5" size="1920,1080" type="rect" fillColor="#ffd4d4d4"/>
+    <component id="n15_aobo" name="btn_new" src="aobob" fileName="Components/Button/Button.xml" xy="170,550" size="240,120" group="n18_aobo">
+      <Button title="新游戏" icon="ui://rt51n0kjntsy4"/>
+    </component>
+    <component id="n16_aobo" name="btn_lod" src="aobob" fileName="Components/Button/Button.xml" xy="170,700" size="240,120" group="n18_aobo">
+      <Button title="加载存档" icon="ui://rt51n0kjntsy4"/>
+    </component>
+    <component id="n17_aobo" name="btn_exit" src="aobob" fileName="Components/Button/Button.xml" xy="170,850" size="240,120" group="n18_aobo">
+      <Button title="退出游戏" icon="ui://rt51n0kjntsy4"/>
+    </component>
+    <group id="n18_aobo" name="n18" xy="170,550" size="240,420" advanced="true" layout="vt" lineGap="30" excludeInvisibles="true"/>
+    <text id="n21_qecl" name="n21" xy="1115,243" pivot="0.5,0.5" size="288,154" fontSize="120" align="center" vAlign="middle" autoSize="none" bold="true" text="合道"/>
+    <component id="n27_s6et" name="n27" src="ja3tc" fileName="Forms/Popup/LoadGame.xml" xy="144,167" pivot="0.5,0.5" size="700,650"/>
+  </displayList>
+</component>
