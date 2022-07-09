@@ -13,6 +13,5 @@
     </component>
     <group id="n18_aobo" name="n18" xy="170,550" size="240,420" advanced="true" layout="vt" lineGap="30" excludeInvisibles="true"/>
     <text id="n21_qecl" name="n21" xy="1115,243" pivot="0.5,0.5" size="288,154" fontSize="120" align="center" vAlign="middle" autoSize="none" bold="true" text="合道"/>
-    <component id="n27_s6et" name="n27" src="ja3tc" fileName="Forms/Popup/LoadGame.xml" xy="144,167" pivot="0.5,0.5" size="700,650"/>
   </displayList>
 </component>

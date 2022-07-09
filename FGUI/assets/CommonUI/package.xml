@@ -13,5 +13,5 @@
     <image id="ja3tf" name="Close.png" path="/Resources/Images/" smoothing="false"/>
     <component id="ja3th" name="CloseButton.xml" path="/Components/Button/"/>
   </resources>
-  <publish name=""/>
+  <publish name="" genCode="true"/>
 </packageDescription>
