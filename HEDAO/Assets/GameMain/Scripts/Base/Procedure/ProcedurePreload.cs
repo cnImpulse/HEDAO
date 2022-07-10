@@ -1,4 +1,5 @@
-﻿using GameFramework.Procedure;
+﻿using FairyGUI;
+using GameFramework.Procedure;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
@@ -33,6 +34,10 @@ namespace HEDAO
         private void Preload()
         {
             GameEntry.Cfg.InitTables();
+
+            UIConfig.defaultFont = "mplus_hzk_12";
+            UIPackage.AddPackage("Assets/GameMain/Res/Fgui/CommonUI");
+            FGUI.CommonUI.CommonUIBinder.BindAll();
 
             m_PreloadEnd = true;
             Log.Info("预加载结束。");

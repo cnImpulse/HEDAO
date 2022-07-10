@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FairyGUI;
+using UnityEngine;
 using GameFramework;
 using GameFramework.Fsm;
 using GameFramework.Event;
@@ -20,6 +21,9 @@ namespace HEDAO
             base.OnEnter(procedureOwner);
 
             InitBattle(1);
+
+            GRoot.inst.AddChild(FGUI.CommonUI.FGUIMenu.CreateInstance());
+
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
