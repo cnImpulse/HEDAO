@@ -24,7 +24,7 @@ namespace HEDAO
 
         private static ByteBuf LoadByteBuf(string file)
         {
-            return new ByteBuf(File.ReadAllBytes($"{Application.dataPath}/GameMain/Cfg/Bytes/{file}.bytes"));
+            return new ByteBuf(File.ReadAllBytes($"{Application.dataPath}/GameMain/Res/Cfg/Bytes/{file}.bytes"));
         }
     }
 }

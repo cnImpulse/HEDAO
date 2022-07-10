@@ -6,21 +6,23 @@ namespace HEDAO
 {
     public static class AssetUtl
     {
-        public static string EntityPath = "Assets/GameMain/Entities";
+        public static string EntityPath = "Assets/GameMain/Res/Entities/";
+        public static string CfgPath = "Assets/GameMain/Res/Cfg/";
+        public static string JsonCfgPath = CfgPath + "Json/";
 
         public static string GetLevelDataPath(int levelId)
         {
-            return Utility.Text.Format("Assets/GameMain/GameData/LevelData/LevelData_{0}.json", levelId);
+            return Utility.Text.Format(JsonCfgPath + "LevelData_{0}.json", levelId);
         }
 
         public static string GetGridMapPath(int mapId)
         {
-            return Utility.Text.Format(EntityPath + "/GridMap/GridMap_{0}.prefab", mapId);
+            return Utility.Text.Format(EntityPath + "GridMap/GridMap_{0}.prefab", mapId);
         }
 
         public static string GetGridMapDataPath(int mapId)
         {
-            return Utility.Text.Format("Assets/GameMain/GameData/GridMapData/GridMapData_{0}.json", mapId);
+            return Utility.Text.Format(JsonCfgPath + "GridMapData_{0}.json", mapId);
         }
 
         public static string GetTilePath(string type, string image)
@@ -30,12 +32,12 @@ namespace HEDAO
 
         public static string GetBattleUnitPath()
         {
-            return Utility.Text.Format(EntityPath + "/BattleUnit/BattleUnit.prefab");
+            return Utility.Text.Format(EntityPath + "BattleUnit/BattleUnit.prefab");
         }
 
         public static string GetEffectPath(string name)
         {
-            return Utility.Text.Format(EntityPath + "/Effect/{0}.prefab", name);
+            return Utility.Text.Format(EntityPath + "Effect/{0}.prefab", name);
         }
 
         public static void SaveData<T>(string path, T data)

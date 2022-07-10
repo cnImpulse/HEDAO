@@ -23,7 +23,6 @@ namespace HEDAO
             InitBattle(1);
 
             GRoot.inst.AddChild(FGUI.CommonUI.FGUIMenu.CreateInstance());
-
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
