@@ -6,9 +6,11 @@ namespace HEDAO
 {
     public static class AssetUtl
     {
-        public static string EntityPath = "Assets/GameMain/Res/Entities/";
-        public static string CfgPath = "Assets/GameMain/Res/Cfg/";
+        public static string ResPath = "Assets/GameMain/Res/";
+        public static string EntityPath = ResPath + "Entities/";
+        public static string CfgPath = ResPath + "Cfg/";
         public static string JsonCfgPath = CfgPath + "Json/";
+        public static string UIPath = ResPath + "UI/";
 
         public static string GetLevelDataPath(int levelId)
         {
@@ -38,6 +40,11 @@ namespace HEDAO
         public static string GetEffectPath(string name)
         {
             return Utility.Text.Format(EntityPath + "Effect/{0}.prefab", name);
+        }
+
+        public static string GetUIPath(string name)
+        {
+            return Utility.Text.Format(UIPath + "{0}.prefab", name);
         }
 
         public static void SaveData<T>(string path, T data)
