@@ -34,5 +34,10 @@ namespace HEDAO
         {
             base.OnRecycle();
         }
+
+        public void Close()
+        {
+            GameEntry.UI.CloseUIForm(UIForm);
+        }
     }
 }

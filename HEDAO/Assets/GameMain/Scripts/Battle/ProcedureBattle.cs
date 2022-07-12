@@ -21,8 +21,6 @@ namespace HEDAO
             base.OnEnter(procedureOwner);
 
             InitBattle(1);
-
-            GameEntry.UI.OpenUIForm("Menu");
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
