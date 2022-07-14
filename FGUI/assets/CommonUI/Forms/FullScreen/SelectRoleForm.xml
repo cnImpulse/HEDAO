@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <graph id="n0_zjye" name="n0" xy="-1,1" pivot="0.5,0.5" size="1920,1080" type="rect" fillColor="#ffd4d4d4"/>
+    <component id="n1_zjye" name="btn_sure" src="aobob" fileName="Components/Button/Button.xml" xy="1820,1000" pivot="1,1" anchor="true" size="240,120">
+      <Button title="确定"/>
+    </component>
+    <list id="n2_zjye" name="list" xy="960,450" pivot="0.5,0.5" anchor="true" size="1500,600" layout="row" scroll="horizontal" colGap="100" defaultItem="ui://rt51n0kjga5tm" align="center" vAlign="middle" autoClearItems="true">
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+</component>

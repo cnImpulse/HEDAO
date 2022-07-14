@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="300,600" extention="Button">
+  <controller name="button" pages="2,up,3,down,4,over,5,selectedOver" selected="2"/>
+  <displayList>
+    <component id="n13_ga5t" name="panel_role" src="zjyek" fileName="Components/ListItem/IdentityPanel.xml" xy="0,0">
+      <gearSize controller="button" pages="3,4,5" values="300,600,1.2,1.2|300,600,1,1|300,600,1.2,1.2" default="300,600,1,1" tween="true"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+  </displayList>
+  <Button mode="Check"/>
+</component>

@@ -8,9 +8,12 @@ namespace FGUI.CommonUI
     {
         public static void BindAll()
         {
-            UIObjectFactory.SetPackageItemExtension(FGUIMenu.URL, typeof(FGUIMenu));
+            UIObjectFactory.SetPackageItemExtension(FGUIMenuForm.URL, typeof(FGUIMenuForm));
+            UIObjectFactory.SetPackageItemExtension(FGUIRoleItem.URL, typeof(FGUIRoleItem));
             UIObjectFactory.SetPackageItemExtension(FGUILoadGame.URL, typeof(FGUILoadGame));
             UIObjectFactory.SetPackageItemExtension(FGUILoadGameItem.URL, typeof(FGUILoadGameItem));
+            UIObjectFactory.SetPackageItemExtension(FGUISelectRoleForm.URL, typeof(FGUISelectRoleForm));
+            UIObjectFactory.SetPackageItemExtension(FGUIRolePanel.URL, typeof(FGUIRolePanel));
         }
     }
 }

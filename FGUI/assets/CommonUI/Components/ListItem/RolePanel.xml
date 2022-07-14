@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="300,600" pivot="0.5,0.5">
+  <displayList>
+    <loader id="n16_zjye" name="img_bg" xy="0,0" pivot="0.5,0.5" size="300,600" url="ui://rt51n0kjaoboa" align="center" vAlign="middle" fill="scaleFree">
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <loader id="n9_zjye" name="img_role" xy="60,80" pivot="0.5,0.5" size="180,280" touchable="false" url="ui://rt51n0kjntsy4" align="center" vAlign="middle" fill="scaleFree">
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <text id="n3_zjye" name="txt_name" xy="5,394" pivot="0.5,0.5" size="295,64" group="n12_zjye" fontSize="24" align="center" vAlign="middle" autoSize="none" bold="true" text="阿巴阿巴">
+      <relation target="" sidePair=""/>
+    </text>
+    <text id="n10_zjye" name="txt_hp" xy="0,463" pivot="0.5,0.5" size="300,40" group="n12_zjye" fontSize="24" align="center" autoSize="none" text="HP : 10">
+      <relation target="" sidePair=""/>
+    </text>
+    <text id="n11_zjye" name="txt_qi" xy="0,508" pivot="0.5,0.5" size="300,40" group="n12_zjye" fontSize="24" align="center" autoSize="none" text="QI : 10">
+      <relation target="" sidePair=""/>
+    </text>
+    <group id="n12_zjye" name="n12" xy="0,394" size="300,154" advanced="true" layout="vt" lineGap="5" excludeInvisibles="true">
+      <relation target="" sidePair="width-width,height-height"/>
+    </group>
+  </displayList>
+</component>

@@ -5,6 +5,7 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/StreamingAssets/
+[Uu]serSettings/
 
 # Visual Studio cache directory
 .vs/
