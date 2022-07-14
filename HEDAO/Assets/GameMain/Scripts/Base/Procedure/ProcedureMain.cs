@@ -19,7 +19,7 @@ namespace HEDAO
 
             GameEntry.Event.Subscribe(EventName.StartGame, OnStartGame);
 
-            GameEntry.UI.OpenUIForm("Menu");
+            GameEntry.UI.OpenUIForm("MenuForm");
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)

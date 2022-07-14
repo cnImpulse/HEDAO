@@ -12,10 +12,11 @@
     <component id="ja3td" name="LoadGameItem.xml" path="/Components/ListItem/"/>
     <image id="ja3tf" name="Close.png" path="/Resources/Images/" smoothing="false"/>
     <component id="ja3th" name="CloseButton.xml" path="/Components/Button/"/>
-    <component id="zjyej" name="SelectRoleForm.xml" path="/Forms/FullScreen/" exported="true"/>
+    <component id="zjyej" name="SelectForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="zjyek" name="RolePanel.xml" path="/Components/ListItem/" exported="true"/>
     <component id="zjyel" name="CommonButton.xml" path="/Components/Button/"/>
     <component id="ga5tm" name="RoleItem.xml" path="/Components/ListItem/" exported="true"/>
+    <component id="105c4o" name="Check.xml" path="/Components/Button/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

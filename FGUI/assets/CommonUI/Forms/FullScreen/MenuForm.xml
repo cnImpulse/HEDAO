@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1920,1080" bgColor="#d4d4d4">
+<component size="1920,1080" bgColorEnabled="true" bgColor="#666666">
   <displayList>
-    <graph id="n20_qecl" name="n20" xy="0,0" pivot="0.5,0.5" size="1920,1080" type="rect" fillColor="#ffd4d4d4"/>
     <component id="n15_aobo" name="btn_new" src="aobob" fileName="Components/Button/Button.xml" xy="170,550" size="240,120" group="n18_aobo">
       <Button title="新游戏" icon="ui://rt51n0kjntsy4"/>
     </component>

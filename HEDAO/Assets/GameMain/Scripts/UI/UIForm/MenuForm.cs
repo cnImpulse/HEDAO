@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using FGUI.CommonUI;
 using UnityGameFramework.Runtime;
+using FairyGUI;
 
 namespace HEDAO
 {
-    public class MenuForm : FGUIForm<FGUIMenu>
+    public class MenuForm : FGUIForm<FGUIMenuForm>
     {
         protected override void OnInit(object userData)
         {
@@ -24,8 +25,8 @@ namespace HEDAO
 
         private void OnClickStart()
         {
-            GameEntry.Event.Fire(this, EventName.StartGame);
             Close();
+            GameEntry.UI.OpenUIForm("SelectForm");
         }
     }
 }
