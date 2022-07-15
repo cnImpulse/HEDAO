@@ -27,6 +27,7 @@ namespace HEDAO
             View.m_list.itemRenderer = RenderListItem;
             View.m_list.numItems = m_CanSelectRoleList.Count;
             View.m_list.ResizeToFit();
+            View.m_list.opaque = false;
         }
 
         protected override void OnClose(bool isShutdown, object userData)
