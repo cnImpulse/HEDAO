@@ -34,7 +34,7 @@ namespace HEDAO
 
         public static string GetBattleUnitPath()
         {
-            return Utility.Text.Format(EntityPath + "BattleUnit/BattleUnit.prefab");
+            return EntityPath + "BattleUnit/BattleUnit.prefab";
         }
 
         public static string GetEffectPath(string name)
