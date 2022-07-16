@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" opaque="false">
+  <displayList>
+    <component id="n1_ut3j" name="btn_start" src="aobob" fileName="Components/Button/Button.xml" xy="1820,1000" pivot="1,1" anchor="true" size="240,120">
+      <Button title="开始战斗"/>
+    </component>
+  </displayList>
+</component>

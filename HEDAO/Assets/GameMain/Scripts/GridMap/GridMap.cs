@@ -5,13 +5,14 @@ using UnityEngine.EventSystems;
 using GameFramework.Event;
 using UnityGameFramework.Runtime;
 using GameFramework.Resource;
+using FairyGUI;
 
 namespace HEDAO
 {
     /// <summary>
     /// 网格地图。
     /// </summary>
-    public class GridMap : Entity
+    public class GridMap : Entity, IPointerDownHandler
     {
         private Tilemap[] m_TilemapList = null;
 
@@ -101,6 +102,22 @@ namespace HEDAO
             }
 
             GameEntry.Entity.AttachEntity(battleUnit.Id, Id);
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (Stage.isTouchOnUI)
+            {
+                return;
+            }
+
+            var gridPos = WorldPosToGridPos(eventData.pointerCurrentRaycast.worldPosition);
+            var gridData = m_Data.GetGridData(gridPos);
+            if (gridData != null)
+            {
+                Log.Info("PointerDownGridMap {0}", gridPos);
+                GameEntry.Event.Fire(this, EventName.PointerDownGridMap, gridData);
+            }
         }
     }
 }

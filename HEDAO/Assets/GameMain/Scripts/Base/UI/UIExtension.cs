@@ -11,6 +11,7 @@ namespace HEDAO
         public const string MenuForm = "MenuForm";
         public const string SelectForm = "SelectForm";
         public const string LoadGameForm = "LoadGameForm";
+        public const string BattleForm = "BattleForm";
     }
 
     public static class UIExtension

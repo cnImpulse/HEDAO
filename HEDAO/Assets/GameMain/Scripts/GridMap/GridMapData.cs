@@ -70,5 +70,16 @@ namespace HEDAO
 
             return null;
         }
+
+        public GridData GetGridData(Vector2Int gridPos)
+        {
+            var gridIndex = GridPosToIndex(gridPos);
+            if (m_GridDataDic.TryGetValue(gridIndex, out var gridData))
+            {
+                return gridData;
+            }
+
+            return null;
+        }
     }
 }

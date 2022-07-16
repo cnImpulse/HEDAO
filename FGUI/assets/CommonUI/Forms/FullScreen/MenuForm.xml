@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1920,1080" bgColorEnabled="true" bgColor="#666666">
+<component size="1920,1080" bgColor="#666666">
   <displayList>
     <component id="n16_aobo" name="btn_start" src="aobob" fileName="Components/Button/Button.xml" xy="170,550" size="240,120" group="n18_aobo">
       <Button title="开始游戏" icon="ui://rt51n0kjntsy4"/>

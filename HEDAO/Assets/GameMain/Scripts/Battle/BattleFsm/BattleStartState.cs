@@ -9,14 +9,17 @@ namespace HEDAO
 {
     public class BattleStartState : BattleStateBase
     {
+        private bool m_StartBattle = false;
+
         protected override void OnEnter(IFsm<ProcedureBattle> fsm)
         {
             base.OnEnter(fsm);
 
+            GameEntry.Event.Subscribe(EventName.PointerDownGridMap, OnPointGridMap);
             GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowGirdMapSuccess);
 
             InitGridMap();
-
+            GameEntry.UI.OpenUIForm(UIFromName.BattleForm, this);
             //var battleUnitList = m_GridMap.GetGridUnitList<BattleUnit>();
             //foreach (var battleUnit in battleUnitList)
             //{
@@ -28,7 +31,7 @@ namespace HEDAO
         {
             base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
 
-            if (BattleData.GridMap)
+            if (m_StartBattle)
             {
                 ChangeState<RoundStartState>(fsm);
             }
@@ -36,9 +39,17 @@ namespace HEDAO
 
         protected override void OnLeave(IFsm<ProcedureBattle> fsm, bool isShutdown)
         {
+            m_StartBattle = false;
+
             GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowGirdMapSuccess);
+            GameEntry.Event.Unsubscribe(EventName.PointerDownGridMap, OnPointGridMap);
 
             base.OnLeave(fsm, isShutdown);
+        }
+
+        public void StartBattle()
+        {
+            m_StartBattle = true;
         }
 
         private void InitGridMap()
@@ -55,6 +66,8 @@ namespace HEDAO
         private void InitBattleUnit()
         {
             var gridMap = BattleData.GridMap;
+
+            // 初始化敌方单位
             foreach (var pair in BattleData.LevelData.EnemyDic)
             {
                 var gridData = gridMap.Data.GetGridData(pair.Key);
@@ -64,6 +77,24 @@ namespace HEDAO
                 }
                 
                 gridMap.RegisterBattleUnit(new RoleData(pair.Value), gridData.GridPos, CampType.Enemy);
+            }
+
+            // 初始化己方单位
+            Queue<int> roleQueue = new(GameEntry.Save.SaveData.RoleList);
+            foreach (var gridIndex in BattleData.LevelData.PlayerBrithList)
+            {
+                if (roleQueue.Count == 0)
+                {
+                    break;
+                }
+
+                var gridData = gridMap.Data.GetGridData(gridIndex);
+                if (gridData == null)
+                {
+                    continue;
+                }
+
+                gridMap.RegisterBattleUnit(new RoleData(roleQueue.Dequeue()), gridData.GridPos, CampType.Player);
             }
         }
 
@@ -76,6 +107,11 @@ namespace HEDAO
                 ShowPlayerBrith();
                 InitBattleUnit();
             }
+        }
+
+        private void OnPointGridMap(object sender, GameEventArgs e)
+        {
+            
         }
     }
 }
