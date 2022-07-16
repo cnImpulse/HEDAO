@@ -13,20 +13,13 @@ namespace HEDAO
         {
             base.OnInit(userData);
 
-            View.m_btn_new.onClick.Add(OnClickStart);
-            View.m_btn_lod.onClick.Add(() => { Log.Info("读取存档。"); });
+            View.m_btn_start.onClick.Add(() => { GameEntry.UI.OpenUIForm("LoadGameForm"); });
             View.m_btn_exit.onClick.Add(() => { Log.Info("退出游戏。"); });
         }
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
-        }
-
-        private void OnClickStart()
-        {
-            Close();
-            GameEntry.UI.OpenUIForm("SelectForm");
         }
     }
 }

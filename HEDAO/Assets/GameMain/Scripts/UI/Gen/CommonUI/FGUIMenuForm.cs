@@ -7,8 +7,7 @@ namespace FGUI.CommonUI
 {
     public partial class FGUIMenuForm : GComponent
     {
-        public GButton m_btn_new;
-        public GButton m_btn_lod;
+        public GButton m_btn_start;
         public GButton m_btn_exit;
         public const string URL = "ui://rt51n0kjdsjm0";
 
@@ -21,8 +20,7 @@ namespace FGUI.CommonUI
         {
             base.ConstructFromXML(xml);
 
-            m_btn_new = (GButton)GetChild("btn_new");
-            m_btn_lod = (GButton)GetChild("btn_lod");
+            m_btn_start = (GButton)GetChild("btn_start");
             m_btn_exit = (GButton)GetChild("btn_exit");
         }
     }

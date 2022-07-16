@@ -24,6 +24,7 @@ namespace HEDAO
             View.m_btn_return.onClick.Add(OnClickReturn);
             View.m_btn_sure.onClick.Add(OnClickSure);
 
+            View.m_list.RemoveChildren();
             View.m_list.itemRenderer = RenderListItem;
             View.m_list.numItems = m_CanSelectRoleList.Count;
             View.m_list.ResizeToFit();
@@ -50,7 +51,7 @@ namespace HEDAO
 
         private void OnClickReturn()
         {
-            GameEntry.UI.OpenUIForm("MenuForm");
+            GameEntry.UI.OpenUIForm(UIFromName.MenuForm);
             Close();
         }
 
@@ -63,6 +64,7 @@ namespace HEDAO
                 return;
             }
 
+            GameEntry.Save.SaveData.RoleList.Add(m_CanSelectRoleList[index]);
             GameEntry.Event.Fire(this, EventName.StartGame);
             Close();
         }

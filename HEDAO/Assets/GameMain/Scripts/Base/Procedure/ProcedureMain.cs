@@ -19,7 +19,7 @@ namespace HEDAO
 
             GameEntry.Event.Subscribe(EventName.StartGame, OnStartGame);
 
-            GameEntry.UI.OpenUIForm("MenuForm");
+            GameEntry.UI.OpenUIForm(UIFromName.MenuForm);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -28,6 +28,7 @@ namespace HEDAO
 
             if (m_StartGame)
             {
+                GameEntry.Save.SaveGame();
                 ChangeState<ProcedureBattle>(procedureOwner);
             }
         }

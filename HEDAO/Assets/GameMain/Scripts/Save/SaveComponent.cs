@@ -7,66 +7,46 @@ namespace HEDAO
 {
     public class SaveComponent : GameFrameworkComponent
     {
-        private int m_SaveIndex = -1;
-        private SaveData m_SaveData = null;
+        public int SaveIndex { get; private set; } = -1;
+        public SaveData SaveData { get; private set; }
 
-        public SaveData SaveData => m_SaveData;
-
-        public bool Inited
+        public void NewData(int index)
         {
-            get
-            {
-                return m_SaveData != null;
-            }
+            SaveIndex = index;
+            SaveData = new SaveData();
         }
 
-        public string CurrentSaveName
+        public SaveData LoadGame(int index)
         {
-            get
+            if (HasData(index))
             {
-                return GetSaveName(m_SaveIndex);
-            }
-        }
-
-        public bool HasSave(int saveIndex)
-        {
-            return GameEntry.Setting.HasSetting(GetSaveName(saveIndex));
-        }
-
-        public void InitSaveData()
-        {
-            m_SaveIndex = GameEntry.DataNode.GetData<VarInt32>("SaveIndex");
-            if (HasSave(m_SaveIndex))
-            {
-                m_SaveData = GetSaveData(m_SaveIndex);
+                SaveData = GameEntry.Setting.GetObject<SaveData>(GetSaveName(index));
             }
             else
             {
-                m_SaveData = new SaveData();
+                SaveData = new SaveData();
             }
+            SaveIndex = index;
+
+            return SaveData;
         }
 
-        public SaveData GetSaveData(int index)
+        public void SaveGame()
         {
-            return GameEntry.Setting.GetObject<SaveData>(GetSaveName(index));
+            GameEntry.Setting.SetObject(GetSaveName(SaveIndex), SaveData);
         }
 
-        public void Save()
+        public void DeleteData(int index)
         {
-            if (!Inited)
-            {
-                Log.Warning("没有存档数据!");
-            }
-
-            GameEntry.Setting.SetObject(CurrentSaveName, m_SaveData);
+            GameEntry.Setting.RemoveSetting(GetSaveName(index));
         }
 
-        public void Delete(int savaIndex)
+        public bool HasData(int index)
         {
-            GameEntry.Setting.RemoveSetting(GetSaveName(savaIndex));
+            return GameEntry.Setting.HasSetting(GetSaveName(index));
         }
 
-        private string GetSaveName(int index)
+        public string GetSaveName(int index)
         {
             return string.Format("SaveData_{0}", index);
         }

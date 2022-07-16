@@ -7,8 +7,8 @@ namespace FGUI.CommonUI
 {
     public partial class FGUILoadGame : GComponent
     {
-        public GButton m_closeButton;
         public GList m_list;
+        public GButton m_btn_close;
         public const string URL = "ui://rt51n0kjja3tc";
 
         public static FGUILoadGame CreateInstance()
@@ -20,8 +20,8 @@ namespace FGUI.CommonUI
         {
             base.ConstructFromXML(xml);
 
-            m_closeButton = (GButton)GetChild("closeButton");
             m_list = (GList)GetChild("list");
+            m_btn_close = (GButton)GetChild("btn_close");
         }
     }
 }

@@ -9,7 +9,7 @@
     <image id="aoboa" name="TianDix4.png" path="/Resources/Images/" scale="9grid" scale9grid="32,32,64,64" smoothing="false"/>
     <component id="aobob" name="Button.xml" path="/Components/Button/"/>
     <component id="ja3tc" name="LoadGame.xml" path="/Forms/Popup/" exported="true"/>
-    <component id="ja3td" name="SaveItem.xml" path="/Components/ListItem/"/>
+    <component id="ja3td" name="SaveItem.xml" path="/Components/ListItem/" exported="true"/>
     <image id="ja3tf" name="Close.png" path="/Resources/Images/" smoothing="false"/>
     <component id="ja3th" name="CloseButton.xml" path="/Components/Button/"/>
     <component id="zjyej" name="SelectForm.xml" path="/Forms/FullScreen/" exported="true"/>
