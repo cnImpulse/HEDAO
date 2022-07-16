@@ -34,7 +34,7 @@ namespace HEDAO
 
         private void OnClickStart()
         {
-            //View.m_btn_start.visible = false;
+            View.m_btn_start.visible = false;
             m_Owner.StartBattle();
         }
     }

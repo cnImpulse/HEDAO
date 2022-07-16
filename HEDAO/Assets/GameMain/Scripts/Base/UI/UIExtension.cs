@@ -25,7 +25,7 @@ namespace HEDAO
         public static void CloseUIForm(this UIComponent uiComponent, string name)
         {
             string path = AssetUtl.GetUIPath(name);
-            var uiForms = uiComponent.GetAllLoadedUIForms();
+            var uiForms = uiComponent.GetUIForms(path);
             foreach(var form in uiForms)
             {
                 if (form.UIFormAssetName == path)

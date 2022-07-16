@@ -10,6 +10,7 @@ namespace HEDAO
     public class BattleStartState : BattleStateBase
     {
         private bool m_StartBattle = false;
+        private BattleUnit m_CurSelectedUnit = null;
 
         protected override void OnEnter(IFsm<ProcedureBattle> fsm)
         {
@@ -60,7 +61,7 @@ namespace HEDAO
         private void ShowPlayerBrith()
         {
             List<Vector2Int> playerBrith = BattleData.LevelData.PlayerBrithList.ConvertAll((input) => BattleData.GridMap.Data.GetGridData(input).GridPos);
-            GameEntry.Effect.ShowGridEffect(GameEntry.Cfg.Tables.TblGridEffect.Brith, playerBrith);
+            GameEntry.Effect.ShowGridEffect(GameEntry.Cfg.GridEffect.Brith, playerBrith);
         }
 
         private void InitBattleUnit()
@@ -111,7 +112,32 @@ namespace HEDAO
 
         private void OnPointGridMap(object sender, GameEventArgs e)
         {
-            
+            var ne = e as GameEventBase;
+            var gridData = ne.EventData as GridData;
+
+            GameEntry.Effect.HideEffect(GameEntry.Cfg.Effect.Select);
+            if (!BattleData.LevelData.PlayerBrithList.Contains(gridData.GridIndex))
+            {
+                m_CurSelectedUnit = null;
+                return;
+            }
+
+            var gridMap = BattleData.GridMap;
+            if (m_CurSelectedUnit == null)
+            {
+                var battleUnit = gridMap.GetBattleUnit(gridData.GridPos);
+                if (battleUnit == null || battleUnit.Data.CampType != CampType.Player)
+                {
+                    return;
+                }
+                m_CurSelectedUnit = battleUnit;
+                GameEntry.Effect.ShowEffect(GameEntry.Cfg.Effect.Select, gridMap.GridPosToWorldPos(gridData.GridPos), true);
+            }
+            else
+            {
+                gridMap.SetGridUnitPos(m_CurSelectedUnit, gridData.GridPos);
+                m_CurSelectedUnit = null;
+            }
         }
     }
 }

@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Tilemaps;
-using UnityEngine.EventSystems;
-using GameFramework.Event;
-using UnityGameFramework.Runtime;
-using GameFramework.Resource;
 using FairyGUI;
+using GameFramework.Event;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Tilemaps;
+using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
@@ -20,10 +19,13 @@ namespace HEDAO
 
         public GridMapData Data => m_Data;
 
+        private Dictionary<Vector2Int, GridUnit> m_BattleUnitDic = default;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
 
+            m_BattleUnitDic = new Dictionary<Vector2Int, GridUnit>();
             m_TilemapList = GetComponentsInChildren<Tilemap>();
             m_TilemapList[0].gameObject.GetOrAddComponent<BoxCollider2D>();
         }
@@ -87,8 +89,39 @@ namespace HEDAO
                 return false;
             }
 
+            m_BattleUnitDic.Remove(gridUnit.Data.GridPos);
             GameEntry.Entity.HideEntity(gridUnit);
             return true;
+        }
+
+        public BattleUnit GetBattleUnit(Vector2Int gridPos)
+        {
+            if (m_BattleUnitDic.TryGetValue(gridPos, out var gridUnit))
+            {
+                return gridUnit as BattleUnit;
+            }
+
+            return null;
+        }
+
+        public void SetGridUnitPos(GridUnit gridUnit, Vector2Int gridPos)
+        {
+            if (m_BattleUnitDic.ContainsKey(gridPos))
+            {
+                Log.Error("单元格{0}被占据。", gridPos);
+                return;
+            }
+
+            var gridData = m_Data.GetGridData(gridPos);
+            if (gridData == null)
+            {
+                Log.Error("单元格{0}不存在。", gridPos);
+            }
+
+            m_BattleUnitDic.Remove(gridUnit.Data.GridPos);
+            m_BattleUnitDic.Add(gridPos, gridUnit);
+            gridUnit.Data.GridPos = gridPos;
+            gridUnit.transform.position = GridPosToWorldPos(gridPos);
         }
 
         public void OnShowBattleUnitScuess(object sender, GameEventArgs e)
@@ -101,11 +134,13 @@ namespace HEDAO
                 return;
             }
 
+            m_BattleUnitDic.Add(battleUnit.Data.GridPos, battleUnit);
             GameEntry.Entity.AttachEntity(battleUnit.Id, Id);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            // UI阻塞射线
             if (Stage.isTouchOnUI)
             {
                 return;

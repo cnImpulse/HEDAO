@@ -6,6 +6,7 @@ using UnityGameFramework.Runtime;
 using Cfg;
 using Bright.Serialization;
 using System.IO;
+using Cfg.Effect;
 
 namespace HEDAO
 {
@@ -16,6 +17,9 @@ namespace HEDAO
             get;
             private set;
         }
+
+        public TblEffect Effect => Tables.TblEffect;
+        public TblGridEffect GridEffect => Tables.TblGridEffect;
 
         public void InitTables()
         {

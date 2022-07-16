@@ -23,9 +23,14 @@ namespace HEDAO
             GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEffect);
         }
 
-        public int ShowEffect(string name, Vector3 position = default, float lifetime = -1)
+        public int ShowEffect(string name, Vector3 position = default, bool isSingleton = false, float lifetime = -1)
         {
             EffectData effectData = new EffectData(name, position, lifetime);
+            if (isSingleton)
+            {
+                HideEffect(name);
+            }
+            
             GameEntry.Entity.ShowEffect(effectData);
             return effectData.Id;
         }
@@ -35,6 +40,16 @@ namespace HEDAO
             GridEffectData effectData = new GridEffectData(gridPosList, name, position, lifetime);
             GameEntry.Entity.ShowEffect<GridEffect>(effectData);
             return effectData.Id;
+        }
+
+        public void HideEffect(string name)
+        {
+            var path = AssetUtl.GetEffectPath(name);
+            var effects = GameEntry.Entity.GetEntities(path);
+            foreach (var effect in effects)
+            {
+                GameEntry.Entity.HideEntity(effect);
+            }
         }
 
         private void OnShowEffect(object sender, GameFrameworkEventArgs e)

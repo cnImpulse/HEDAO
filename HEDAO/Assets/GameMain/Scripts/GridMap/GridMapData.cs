@@ -23,6 +23,7 @@ namespace HEDAO
 
         public Vector2Int GridPos => new Vector2Int(m_GridX, m_GridY);
         public GridType GridType => m_GridType;
+        public int GridIndex => GridMapData.GridPosToIndex(GridPos);
 
         [JsonConstructor]
         public GridData(Vector2Int gridPos, GridType gridType)
