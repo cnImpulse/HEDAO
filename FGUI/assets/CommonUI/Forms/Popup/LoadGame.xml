@@ -7,7 +7,7 @@
     <component id="n6_ja3t" name="closeButton" src="ja3th" fileName="Components/Button/CloseButton.xml" xy="617,33" pivot="0.5,0.5">
       <relation target="" sidePair="right-right,top-top"/>
     </component>
-    <list id="n7_oyly" name="list" xy="160,150" pivot="0.5,0" size="400,500" lineGap="20" defaultItem="ui://rt51n0kjja3td" align="center" autoClearItems="true">
+    <list id="n7_oyly" name="list" xy="110,150" pivot="0.5,0" size="500,500" lineGap="20" defaultItem="ui://rt51n0kjja3td" align="center" autoClearItems="true">
       <relation target="" sidePair="height-height,center-center,topext-top"/>
       <item/>
       <item/>

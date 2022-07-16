@@ -11,7 +11,7 @@ namespace FGUI.CommonUI
             UIObjectFactory.SetPackageItemExtension(FGUIMenuForm.URL, typeof(FGUIMenuForm));
             UIObjectFactory.SetPackageItemExtension(FGUIRoleItem.URL, typeof(FGUIRoleItem));
             UIObjectFactory.SetPackageItemExtension(FGUILoadGame.URL, typeof(FGUILoadGame));
-            UIObjectFactory.SetPackageItemExtension(FGUILoadGameItem.URL, typeof(FGUILoadGameItem));
+            UIObjectFactory.SetPackageItemExtension(FGUISaveItem.URL, typeof(FGUISaveItem));
             UIObjectFactory.SetPackageItemExtension(FGUISelectForm.URL, typeof(FGUISelectForm));
             UIObjectFactory.SetPackageItemExtension(FGUIRolePanel.URL, typeof(FGUIRolePanel));
         }

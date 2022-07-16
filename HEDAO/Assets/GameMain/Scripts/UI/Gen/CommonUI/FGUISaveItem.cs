@@ -5,23 +5,25 @@ using FairyGUI.Utils;
 
 namespace FGUI.CommonUI
 {
-    public partial class FGUILoadGameItem : GComponent
+    public partial class FGUISaveItem : GComponent
     {
-        public GButton m_btn_load;
+        public Controller m_anim;
         public GButton m_btn_clear;
+        public GButton m_btn_load;
         public const string URL = "ui://rt51n0kjja3td";
 
-        public static FGUILoadGameItem CreateInstance()
+        public static FGUISaveItem CreateInstance()
         {
-            return (FGUILoadGameItem)UIPackage.CreateObject("CommonUI", "LoadGameItem");
+            return (FGUISaveItem)UIPackage.CreateObject("CommonUI", "SaveItem");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            m_btn_load = (GButton)GetChild("btn_load");
+            m_anim = GetController("anim");
             m_btn_clear = (GButton)GetChild("btn_clear");
+            m_btn_load = (GButton)GetChild("btn_load");
         }
     }
 }

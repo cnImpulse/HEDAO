@@ -2,7 +2,7 @@
 <component size="128,128" pivot="0.5,0.5" extention="Button" initName="btn_">
   <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
   <displayList>
-    <loader id="n2_aobo" name="icon" xy="0,0" pivot="0.5,0.5" size="128,128" url="ui://rt51n0kjaoboa" align="center" vAlign="middle" fill="scaleFree">
+    <loader id="n2_aobo" name="icon" xy="0,0" pivot="0.5,0.5" size="128,128" url="ui://rt51n0kjntsy4" align="center" vAlign="middle" fill="scaleFree">
       <relation target="" sidePair="width-width,height-height"/>
     </loader>
   </displayList>
