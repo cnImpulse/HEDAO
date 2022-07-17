@@ -10,7 +10,7 @@ namespace HEDAO
     /// <summary>
     /// 战斗单位。
     /// </summary>
-    public class BattleUnit : GridUnit
+    public partial class BattleUnit : GridUnit
     {
         private SpriteRenderer m_SpriteRenderer = null;
 
@@ -57,28 +57,6 @@ namespace HEDAO
             m_Data = null;
 
             base.OnHide(isShutdown, userData);
-        }
-
-        public bool CanAction { get; private set; }
-
-        public virtual void OnBattleStart()
-        {
-
-        }
-
-        public virtual void OnRoundStart()
-        {
-            CanAction = true;
-        }
-
-        public virtual void OnRoundEnd()
-        {
-            CanAction = false;
-        }
-
-        public virtual void OnBattleEnd()
-        {
-
         }
     }
 }

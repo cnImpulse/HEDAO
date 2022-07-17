@@ -9,9 +9,12 @@ namespace HEDAO
     {
         public RoleData RoleData { get; private set; }
 
-        public int MaxHP => RoleData.Attribute.HP;
-        public int MaxQI => RoleData.Attribute.QI;
-        public int MOV => 3;
+        public Attribute Attribute => BaseAttribute + ModifyAttribute;
+        public Attribute BaseAttribute => RoleData.Attribute;
+        public Attribute ModifyAttribute { get; set; }
+
+        public int MaxHP => Attribute.HP;
+        public int MaxQI => Attribute.QI;
 
         private int m_HP = 0;
         public int HP
@@ -30,6 +33,7 @@ namespace HEDAO
         public BattleUnitData(RoleData roleData, Vector2Int gridPos, CampType campType) : base(gridPos, campType)
         {
             RoleData = roleData;
+            ModifyAttribute = default;
         }
     }
 }

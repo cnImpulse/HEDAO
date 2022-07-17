@@ -9,6 +9,12 @@ namespace HEDAO
         public int HP  { get; private set; }  // 生命值
         public int QI  { get; private set; }  // 灵气值
 
+        public Attribute(int hp, int qi)
+        {
+            HP = hp;
+            QI = qi;
+        }
+
         public Attribute(Cfg.Battle.Attribute attribute)
         {
             HP = attribute.HP;
@@ -21,6 +27,15 @@ namespace HEDAO
             {
                 HP = a.HP + b.HP,
                 QI = a.QI + b.QI,
+            };
+        }
+
+        public static Attribute operator -(Attribute a, Attribute b)
+        {
+            return new Attribute
+            {
+                HP = a.HP - b.HP,
+                QI = a.QI - b.QI,
             };
         }
     }
