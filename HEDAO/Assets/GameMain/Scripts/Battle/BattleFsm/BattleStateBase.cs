@@ -11,8 +11,15 @@ namespace HEDAO
     public abstract class BattleStateBase : FsmState<ProcedureBattle>
     {
         public IFsm<ProcedureBattle> Fsm { get; private set; }
-        public ProcedureBattle Owner => Fsm == null ? null : Fsm.Owner;
+        public ProcedureBattle Owner => Fsm?.Owner;
         public BattleRunTimeData BattleData => Owner.BattleData;
+
+        public bool IsAutoBattle => BattleData.ActiveCamp != CampType.Player;
+        public GridMap GridMap => BattleData.GridMap;
+        public CampType ActiveCamp => BattleData.ActiveCamp;
+        public IFsm<BattleUnit> BattleUnitFsm => BattleData.BattleUnitFsm;
+
+        private Type m_NextState = null;
 
         protected override void OnInit(IFsm<ProcedureBattle> fsm)
         {
@@ -30,6 +37,11 @@ namespace HEDAO
         protected override void OnUpdate(IFsm<ProcedureBattle> fsm, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
+
+            if (m_NextState != null)
+            {
+                ChangeState(fsm, m_NextState);
+            }
         }
 
         protected override void OnLeave(IFsm<ProcedureBattle> fsm, bool isShutdown)
@@ -41,6 +53,15 @@ namespace HEDAO
         {
             Fsm = null;
             base.OnDestroy(fsm);
+        }
+
+        /// <summary>
+        /// 会在下一帧切换状态
+        /// </summary>
+        public void ChangeState<T>()
+            where T : BattleStateBase
+        {
+            m_NextState = typeof(T);
         }
     }
 }

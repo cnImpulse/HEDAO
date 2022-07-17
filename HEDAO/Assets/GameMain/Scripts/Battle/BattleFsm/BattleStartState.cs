@@ -21,11 +21,6 @@ namespace HEDAO
 
             InitGridMap();
             GameEntry.UI.OpenUIForm(UIFromName.BattleForm, this);
-            //var battleUnitList = m_GridMap.GetGridUnitList<BattleUnit>();
-            //foreach (var battleUnit in battleUnitList)
-            //{
-            //    battleUnit.OnBattleStart();
-            //}
         }
 
         protected override void OnUpdate(IFsm<ProcedureBattle> fsm, float elapseSeconds, float realElapseSeconds)
@@ -34,6 +29,11 @@ namespace HEDAO
 
             if (m_StartBattle)
             {
+                var battleUnitList = BattleData.GridMap.GetBattleUnitList();
+                foreach (var battleUnit in battleUnitList)
+                {
+                    battleUnit.OnBattleStart();
+                }
                 ChangeState<RoundStartState>(fsm);
             }
         }
@@ -41,6 +41,8 @@ namespace HEDAO
         protected override void OnLeave(IFsm<ProcedureBattle> fsm, bool isShutdown)
         {
             m_StartBattle = false;
+            GameEntry.Effect.HideGridEffect();
+            GameEntry.Effect.HideEffect(GameEntry.Cfg.Effect.Select);
 
             GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowGirdMapSuccess);
             GameEntry.Event.Unsubscribe(EventName.PointerDownGridMap, OnPointGridMap);

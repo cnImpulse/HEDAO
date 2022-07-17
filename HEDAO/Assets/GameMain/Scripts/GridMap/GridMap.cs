@@ -19,13 +19,13 @@ namespace HEDAO
 
         public GridMapData Data => m_Data;
 
-        private Dictionary<Vector2Int, GridUnit> m_BattleUnitDic = default;
+        private Dictionary<Vector2Int, GridUnit> m_GridUnitDic = default;
 
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
 
-            m_BattleUnitDic = new Dictionary<Vector2Int, GridUnit>();
+            m_GridUnitDic = new Dictionary<Vector2Int, GridUnit>();
             m_TilemapList = GetComponentsInChildren<Tilemap>();
             m_TilemapList[0].gameObject.GetOrAddComponent<BoxCollider2D>();
         }
@@ -89,14 +89,14 @@ namespace HEDAO
                 return false;
             }
 
-            m_BattleUnitDic.Remove(gridUnit.Data.GridPos);
+            m_GridUnitDic.Remove(gridUnit.Data.GridPos);
             GameEntry.Entity.HideEntity(gridUnit);
             return true;
         }
 
         public BattleUnit GetBattleUnit(Vector2Int gridPos)
         {
-            if (m_BattleUnitDic.TryGetValue(gridPos, out var gridUnit))
+            if (m_GridUnitDic.TryGetValue(gridPos, out var gridUnit))
             {
                 return gridUnit as BattleUnit;
             }
@@ -104,9 +104,24 @@ namespace HEDAO
             return null;
         }
 
+        public List<BattleUnit> GetBattleUnitList(CampType campType = CampType.None)
+        {
+            List<BattleUnit> battleUnitList = new List<BattleUnit>();
+            foreach (var gridUnit in m_GridUnitDic.Values)
+            {
+                var battleUnit = gridUnit as BattleUnit;
+                if (campType == CampType.None || battleUnit.Data.CampType == campType)
+                {
+                    battleUnitList.Add(battleUnit);
+                }
+            }
+
+            return battleUnitList;
+        }
+
         public void SetGridUnitPos(GridUnit gridUnit, Vector2Int gridPos)
         {
-            if (m_BattleUnitDic.ContainsKey(gridPos))
+            if (m_GridUnitDic.ContainsKey(gridPos))
             {
                 Log.Error("单元格{0}被占据。", gridPos);
                 return;
@@ -118,8 +133,8 @@ namespace HEDAO
                 Log.Error("单元格{0}不存在。", gridPos);
             }
 
-            m_BattleUnitDic.Remove(gridUnit.Data.GridPos);
-            m_BattleUnitDic.Add(gridPos, gridUnit);
+            m_GridUnitDic.Remove(gridUnit.Data.GridPos);
+            m_GridUnitDic.Add(gridPos, gridUnit);
             gridUnit.Data.GridPos = gridPos;
             gridUnit.transform.position = GridPosToWorldPos(gridPos);
         }
@@ -134,7 +149,7 @@ namespace HEDAO
                 return;
             }
 
-            m_BattleUnitDic.Add(battleUnit.Data.GridPos, battleUnit);
+            m_GridUnitDic.Add(battleUnit.Data.GridPos, battleUnit);
             GameEntry.Entity.AttachEntity(battleUnit.Id, Id);
         }
 

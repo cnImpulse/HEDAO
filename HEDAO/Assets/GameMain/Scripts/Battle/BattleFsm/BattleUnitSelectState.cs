@@ -9,8 +9,6 @@ namespace HEDAO
 {
     public class BattleUnitSelectState : BattleStateBase
     {
-        private IFsm<BattleUnit> m_BattleUnitFsm = null;
-
         protected override void OnEnter(IFsm<ProcedureBattle> fsm)
         {
             base.OnEnter(fsm);
@@ -22,21 +20,19 @@ namespace HEDAO
         {
             base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
 
-            //if (IsAutoBattle)
-            //{
-            //    var battleUnitList = m_GridMap.GetGridUnitList<BattleUnit>(Owner.BattleInfo.ActiveCamp);
-            //    foreach (var battleUnit in battleUnitList)
-            //    {
-            //        if (m_BattleUnitFsm != null)
-            //        {
-            //            break;
-            //        }
+            if (IsAutoBattle)
+            {
+                var battleUnitList = GridMap.GetBattleUnitList(ActiveCamp);
+                foreach (var battleUnit in battleUnitList)
+                {
+                    if (CreatBattleUnitFsm(battleUnit))
+                    {
+                        break;
+                    }
+                }
+            }
 
-            //        CreatBattleUnitFsm(battleUnit);
-            //    }
-            //}
-
-            if (m_BattleUnitFsm != null)
+            if (BattleUnitFsm != null)
             {
                 ChangeState<BattleState>(fsm);
             }
@@ -44,29 +40,29 @@ namespace HEDAO
 
         protected override void OnLeave(IFsm<ProcedureBattle> fsm, bool isShutdown)
         {
-            m_BattleUnitFsm = null;
             GameEntry.Event.Unsubscribe(EventName.PointerDownGridMap, OnPointGridMap);
 
             base.OnLeave(fsm, isShutdown);
         }
 
-        private void CreatBattleUnitFsm(BattleUnit battleUnit)
+        private bool CreatBattleUnitFsm(BattleUnit battleUnit)
         {
-            //if (!battleUnit.CanAction)
-            //{
-            //    return;
-            //}
+            if (!battleUnit.CanAction)
+            {
+                return false;
+            }
 
-            //if (IsAutoBattle)
-            //{
-            //    m_BattleUnitFsm = GameEntry.Fsm.CreateFsm(battleUnit, new AutoActionState(), new EndActionState());
-            //}
-            //else
-            //{
-            //    m_BattleUnitFsm = GameEntry.Fsm.CreateFsm(battleUnit, new MoveState(),
-            //        new ActionState(), new SkillState(), new EndActionState());
-            //}
-            //Fsm.SetData("BattleUnitFsm", new VarObject { Value = m_BattleUnitFsm });
+            if (IsAutoBattle)
+            {
+                BattleData.BattleUnitFsm = GameEntry.Fsm.CreateFsm(battleUnit, new AutoActionState(), new EndActionState());
+            }
+            else
+            {
+                //m_BattleUnitFsm = GameEntry.Fsm.CreateFsm(battleUnit, new MoveState(),
+                //    new ActionState(), new SkillState(), new EndActionState());
+            }
+            
+            return true;
         }
 
         private void OnPointGridMap(object sender, GameEventArgs e)
@@ -74,13 +70,13 @@ namespace HEDAO
             var ne = e as GameEventBase;
             var gridData = ne.EventData as GridData;
 
-            //var gridUnit = gridData.GridUnit;
-            //if (gridUnit == null)
-            //{
-            //    return;
-            //}
+            var battleUnit = GridMap.GetBattleUnit(gridData.GridPos);
+            if (battleUnit == null)
+            {
+                return;
+            }
 
-            //CreatBattleUnitFsm(gridUnit as BattleUnit);
+            CreatBattleUnitFsm(battleUnit);
         }
     }
 }

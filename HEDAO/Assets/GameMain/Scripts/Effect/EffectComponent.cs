@@ -52,6 +52,11 @@ namespace HEDAO
             }
         }
 
+        public void HideGridEffect()
+        {
+            HideEffect("GridEffect");
+        }
+
         private void OnShowEffect(object sender, GameFrameworkEventArgs e)
         {
             var ne = (ShowEntitySuccessEventArgs)e;

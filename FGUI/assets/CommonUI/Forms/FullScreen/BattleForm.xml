@@ -4,5 +4,8 @@
     <component id="n1_ut3j" name="btn_start" src="aobob" fileName="Components/Button/Button.xml" xy="1820,1000" pivot="1,1" anchor="true" size="240,120">
       <Button title="开始战斗"/>
     </component>
+    <component id="n2_t810" name="label_camp" src="t8104q" fileName="Components/Temp/CommonLabel.xml" xy="810,0" pivot="0.5,0.5" touchable="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
   </displayList>
 </component>

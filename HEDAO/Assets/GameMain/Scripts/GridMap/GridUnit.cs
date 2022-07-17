@@ -17,7 +17,7 @@ namespace HEDAO
 
         public GridMap GridMap { get; private set; }
         public GridData GridData => GridMap.Data.GetGridData(Data.GridPos);
-        public int GridIndex => GridMapData.GridPosToIndex(Data.GridPos);
+        public int GridIndex => GridMapUtl.GridPosToIndex(Data.GridPos);
 
         protected override void OnInit(object userData)
         {

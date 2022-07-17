@@ -99,11 +99,11 @@ namespace HEDAO
                 var tile = pair.Value;
                 if (pair.Value is BattleUnitTile)
                 {
-                    LevelData.EnemyDic.Add(GridMapData.GridPosToIndex(pair.Key), (tile as BattleUnitTile).Id);
+                    LevelData.EnemyDic.Add(GridMapUtl.GridPosToIndex(pair.Key), (tile as BattleUnitTile).Id);
                 }
                 else if (tile.name == "brith")
                 {
-                    LevelData.PlayerBrithList.Add(GridMapData.GridPosToIndex(pair.Key));
+                    LevelData.PlayerBrithList.Add(GridMapUtl.GridPosToIndex(pair.Key));
                 }
             }
         }

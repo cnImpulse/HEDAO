@@ -7,11 +7,11 @@ namespace HEDAO
 {
     public class BattleUnitData : GridUnitData
     {
-        public CampType CampType { get; private set; }
         public RoleData RoleData { get; private set; }
 
         public int MaxHP => RoleData.Attribute.HP;
         public int MaxQI => RoleData.Attribute.QI;
+        public int MOV => 3;
 
         private int m_HP = 0;
         public int HP
@@ -27,10 +27,9 @@ namespace HEDAO
             set => Mathf.Clamp(m_QI, 0, MaxQI);
         }
 
-        public BattleUnitData(RoleData roleData, Vector2Int gridPos, CampType campType) : base(gridPos)
+        public BattleUnitData(RoleData roleData, Vector2Int gridPos, CampType campType) : base(gridPos, campType)
         {
             RoleData = roleData;
-            CampType = campType;
         }
     }
 }

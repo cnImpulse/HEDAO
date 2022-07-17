@@ -58,5 +58,27 @@ namespace HEDAO
 
             base.OnHide(isShutdown, userData);
         }
+
+        public bool CanAction { get; private set; }
+
+        public virtual void OnBattleStart()
+        {
+
+        }
+
+        public virtual void OnRoundStart()
+        {
+            CanAction = true;
+        }
+
+        public virtual void OnRoundEnd()
+        {
+            CanAction = false;
+        }
+
+        public virtual void OnBattleEnd()
+        {
+
+        }
     }
 }

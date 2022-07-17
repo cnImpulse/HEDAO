@@ -8,6 +8,7 @@ namespace FGUI.CommonUI
     public partial class FGUIBattleForm : GComponent
     {
         public GButton m_btn_start;
+        public GLabel m_label_camp;
         public const string URL = "ui://rt51n0kjut3j4p";
 
         public static FGUIBattleForm CreateInstance()
@@ -20,6 +21,7 @@ namespace FGUI.CommonUI
             base.ConstructFromXML(xml);
 
             m_btn_start = (GButton)GetChild("btn_start");
+            m_label_camp = (GLabel)GetChild("label_camp");
         }
     }
 }

@@ -18,6 +18,7 @@
     <component id="ga5tm" name="RoleItem.xml" path="/Components/ListItem/" exported="true"/>
     <component id="105c4o" name="Check.xml" path="/Components/Button/"/>
     <component id="ut3j4p" name="BattleForm.xml" path="/Forms/FullScreen/" exported="true"/>
+    <component id="t8104q" name="CommonLabel.xml" path="/Components/Temp/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>
