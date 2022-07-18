@@ -17,13 +17,15 @@ namespace HEDAO.Skill
         {
             base.OnAdd(owner);
 
-            m_Life = 3;
+            Life = 3;
             m_Owner.Data.ModifyAttribute += m_ModifyAttribute;
         }
 
         public override void OnUpdate()
         {
             base.OnUpdate();
+
+
         }
 
         public override void OnRemove()

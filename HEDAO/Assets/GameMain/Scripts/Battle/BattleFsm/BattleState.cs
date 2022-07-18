@@ -9,7 +9,6 @@ namespace HEDAO
 {
     public class BattleState : BattleStateBase
     {
-        private IFsm<BattleUnit> m_BattleUnitFsm = null;
         private int m_GridUnitInfoFormId = 0;
 
         protected override void OnInit(IFsm<ProcedureBattle> fsm)
@@ -26,17 +25,16 @@ namespace HEDAO
             //GameEntry.Event.Subscribe(EventName.BattleUnitActionCancel, OnBattleUnitActionCancel);
             //GameEntry.Event.Subscribe(EventName.BattleUnitActionEnd, OnBattleUnitActionEnd);
 
-            //m_BattleUnitFsm = Fsm.GetData<VarObject>("BattleUnitFsm").Value as IFsm<BattleUnit>;
             //GameEntry.UI.CloseUIForm(false, m_GridUnitInfoFormId);
             //m_GridUnitInfoFormId = GameEntry.UI.OpenUIForm(Cfg.UI.FormType.GridUnitInfoForm, m_BattleUnitFsm.Owner);
-            //if (IsAutoBattle)
-            //{
-            //    m_BattleUnitFsm.Start<AutoActionState>();
-            //}
-            //else
-            //{
-            //    m_BattleUnitFsm.Start<MoveState>();
-            //}
+            if (IsAutoBattle)
+            {
+                BattleUnitFsm.Start<AutoActionState>();
+            }
+            else
+            {
+                BattleUnitFsm.Start<MoveState>();
+            }
         }
 
         protected override void OnUpdate(IFsm<ProcedureBattle> fsm, float elapseSeconds, float realElapseSeconds)
@@ -56,14 +54,14 @@ namespace HEDAO
 
         private void DestoryBattleUnitFsm()
         {
-            if (m_BattleUnitFsm == null)
-            {
-                return;
-            }
+            //if (m_BattleUnitFsm == null)
+            //{
+            //    return;
+            //}
 
-            GameEntry.Fsm.DestroyFsm(m_BattleUnitFsm);
-            Fsm.RemoveData("BattleUnitFsm");
-            m_BattleUnitFsm = null;
+            //GameEntry.Fsm.DestroyFsm(m_BattleUnitFsm);
+            //Fsm.RemoveData("BattleUnitFsm");
+            //m_BattleUnitFsm = null;
         }
 
         private void OnBattleUnitActionEnd(object sender, GameEventArgs e)

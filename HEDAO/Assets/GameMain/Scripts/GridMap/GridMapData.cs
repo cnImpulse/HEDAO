@@ -156,33 +156,6 @@ namespace HEDAO
             return null;
         }
 
-        public List<GridData> GetCanAttackGrids(BattleUnit battleUnit, int atkRange, int mov, bool beforeMove = false)
-        {
-            if (beforeMove == false)
-            {
-                return GetRangeGridList(battleUnit.Data.GridPos, atkRange);
-            }
-
-            List<GridData> canMoveList = GetCanMoveGrids(battleUnit, mov);
-            List<GridData> canAttackList = new List<GridData>();
-
-            foreach (var gridData in canMoveList)
-            {
-                var gridList = GetRangeGridList(gridData.GridPos, atkRange);
-                foreach (var grid in gridList)
-                {
-                    if (canMoveList.Contains(grid) || canAttackList.Contains(grid))
-                    {
-                        continue;
-                    }
-
-                    canAttackList.Add(grid);
-                }
-            }
-
-            return canAttackList;
-        }
-
         // 菱形遍历
         public List<GridData> GetRangeGridList(Vector2Int centerPos, int range)
         {

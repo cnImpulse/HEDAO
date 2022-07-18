@@ -42,6 +42,11 @@ namespace HEDAO
             return effectData.Id;
         }
 
+        public void HideEffect(int effectId)
+        {
+            GameEntry.Entity.HideEntity(effectId);
+        }
+
         public void HideEffect(string name)
         {
             var path = AssetUtl.GetEffectPath(name);

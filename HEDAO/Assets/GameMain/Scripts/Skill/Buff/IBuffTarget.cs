@@ -6,8 +6,6 @@ namespace HEDAO.Skill
 {
     public interface IBuffTarget
     {
-        Dictionary<int, IBuff> BuffDic { get; }
-
         bool HasBuff(int buffId);
 
         void AddBuff(IBuff buff);

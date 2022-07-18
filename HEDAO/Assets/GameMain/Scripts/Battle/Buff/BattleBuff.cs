@@ -9,11 +9,11 @@ namespace HEDAO.Skill
     {
         protected BattleUnit m_Owner;
 
-        protected int m_Life = -1; // 持续回合，默认持续到战斗结束
+        public int Life { get; protected set; } // 持续回合，默认持续到战斗结束
 
         public BattleBuff(int id) : base(id)
         {
-
+            Life = -1;
         }
 
         public override void OnAdd(IBuffTarget owner)
@@ -29,12 +29,7 @@ namespace HEDAO.Skill
 
         public override void OnUpdate()
         {
-            if (m_Life > 0) --m_Life;
-
-            if (m_Life == 0)
-            {
-                m_Owner.RemoveBuff(Id);
-            }
+            if (Life > 0) --Life;
         }
 
         public override void OnRemove()

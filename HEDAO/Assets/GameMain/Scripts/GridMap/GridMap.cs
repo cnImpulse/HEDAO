@@ -90,6 +90,7 @@ namespace HEDAO
             }
 
             m_GridUnitDic.Remove(gridUnit.Data.GridPos);
+            gridUnit.GridData.OnGridUnitLeave();
             GameEntry.Entity.HideEntity(gridUnit);
             return true;
         }
@@ -151,6 +152,7 @@ namespace HEDAO
 
             m_GridUnitDic.Add(battleUnit.Data.GridPos, battleUnit);
             GameEntry.Entity.AttachEntity(battleUnit.Id, Id);
+            battleUnit.GridData.OnGridUnitEnter(battleUnit);
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -166,6 +168,11 @@ namespace HEDAO
             if (gridData != null)
             {
                 Log.Info("PointerDownGridMap {0}", gridPos);
+                var battleUnit = gridData.GridUnit as BattleUnit;
+                if (battleUnit != null)
+                {
+                    Log.Info("HP: {0}, QI: {1}", battleUnit.Data.HP, battleUnit.Data.QI);
+                }
                 GameEntry.Event.Fire(this, EventName.PointerDownGridMap, gridData);
             }
         }
