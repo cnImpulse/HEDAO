@@ -18,8 +18,8 @@ namespace HEDAO
             private set;
         }
 
-        public TblEffect Effect => Tables.TblEffect;
-        public TblGridEffect GridEffect => Tables.TblGridEffect;
+        public TbEffect Effect => Tables.TbEffect;
+        public TbGridEffect GridEffect => Tables.TbGridEffect;
 
         public void InitTables()
         {

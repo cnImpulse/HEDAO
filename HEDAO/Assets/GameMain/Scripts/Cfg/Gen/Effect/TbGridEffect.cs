@@ -11,28 +11,24 @@ using System.Collections.Generic;
 namespace Cfg.Effect
 {
    
-public partial class TblEffect
+public partial class TbGridEffect
 {
 
-     private readonly Effect.EffectRes _data;
+     private readonly Effect.GridEffectRes _data;
 
-    public TblEffect(ByteBuf _buf)
+    public TbGridEffect(ByteBuf _buf)
     {
         int n = _buf.ReadSize();
         if (n != 1) throw new SerializationException("table mode=one, but size != 1");
-        _data = Effect.EffectRes.DeserializeEffectRes(_buf);
+        _data = Effect.GridEffectRes.DeserializeGridEffectRes(_buf);
         PostInit();
     }
 
 
     /// <summary>
-    /// 选择特效
+    /// 出生点瓦片
     /// </summary>
-     public string Select => _data.Select;
-    /// <summary>
-    /// 攻击特效
-    /// </summary>
-     public string Attack => _data.Attack;
+     public string Brith => _data.Brith;
 
     public void Resolve(Dictionary<string, object> _tables)
     {

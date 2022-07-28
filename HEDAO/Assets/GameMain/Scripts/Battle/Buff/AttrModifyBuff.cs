@@ -10,7 +10,7 @@ namespace HEDAO.Skill
 
         public AttrModifyBuff(int id) : base(id)
         {
-            m_ModifyAttribute = new Attribute(10, 0);
+            //m_ModifyAttribute = new Attribute(10, 0);
         }
 
         public override void OnAdd(IBuffTarget owner)

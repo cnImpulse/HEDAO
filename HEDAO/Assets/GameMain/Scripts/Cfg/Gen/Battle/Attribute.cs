@@ -17,8 +17,11 @@ public sealed partial class Attribute :  Bright.Config.BeanBase
 {
     public Attribute(ByteBuf _buf) 
     {
-        HP = _buf.ReadInt();
-        QI = _buf.ReadInt();
+        MaxHP = _buf.ReadInt();
+        MaxQI = _buf.ReadInt();
+        STR = _buf.ReadInt();
+        TPO = _buf.ReadInt();
+        SSI = _buf.ReadInt();
         PostInit();
     }
 
@@ -27,8 +30,11 @@ public sealed partial class Attribute :  Bright.Config.BeanBase
         return new Battle.Attribute(_buf);
     }
 
-    public int HP { get; private set; }
-    public int QI { get; private set; }
+    public int MaxHP { get; private set; }
+    public int MaxQI { get; private set; }
+    public int STR { get; private set; }
+    public int TPO { get; private set; }
+    public int SSI { get; private set; }
 
     public const int __ID__ = -97178394;
     public override int GetTypeId() => __ID__;
@@ -45,8 +51,11 @@ public sealed partial class Attribute :  Bright.Config.BeanBase
     public override string ToString()
     {
         return "{ "
-        + "HP:" + HP + ","
-        + "QI:" + QI + ","
+        + "MaxHP:" + MaxHP + ","
+        + "MaxQI:" + MaxQI + ","
+        + "STR:" + STR + ","
+        + "TPO:" + TPO + ","
+        + "SSI:" + SSI + ","
         + "}";
     }
     

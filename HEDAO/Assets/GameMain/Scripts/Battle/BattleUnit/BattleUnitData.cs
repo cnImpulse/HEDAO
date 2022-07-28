@@ -14,8 +14,8 @@ namespace HEDAO
         public Attribute ModifyAttribute { get; set; }
 
         public int MOV => 10;
-        public int MaxHP => Attribute.HP;
-        public int MaxQI => Attribute.QI;
+        public int MaxHP => Attribute.MaxHP;
+        public int MaxQI => Attribute.MaxQI;
 
         private int m_HP = 0;
         public int HP

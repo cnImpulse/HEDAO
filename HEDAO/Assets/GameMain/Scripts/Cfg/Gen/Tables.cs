@@ -13,32 +13,42 @@ namespace Cfg
    
 public partial class Tables
 {
-    public Battle.TblRoleData TblRoleData {get; }
-    public Effect.TblEffect TblEffect {get; }
-    public Effect.TblGridEffect TblGridEffect {get; }
+    public Battle.TbRoleCfg TbRoleCfg {get; }
+    public Effect.TbEffect TbEffect {get; }
+    public Effect.TbGridEffect TbGridEffect {get; }
+    public Battle.TbBattleSkillCfg TbBattleSkillCfg {get; }
+    public Battle.TbMoveSkillCfg TbMoveSkillCfg {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
     {
         var tables = new System.Collections.Generic.Dictionary<string, object>();
-        TblRoleData = new Battle.TblRoleData(loader("battle_tblroledata")); 
-        tables.Add("Battle.TblRoleData", TblRoleData);
-        TblEffect = new Effect.TblEffect(loader("effect_tbleffect")); 
-        tables.Add("Effect.TblEffect", TblEffect);
-        TblGridEffect = new Effect.TblGridEffect(loader("effect_tblgrideffect")); 
-        tables.Add("Effect.TblGridEffect", TblGridEffect);
+        TbRoleCfg = new Battle.TbRoleCfg(loader("battle_tbrolecfg")); 
+        tables.Add("Battle.TbRoleCfg", TbRoleCfg);
+        TbEffect = new Effect.TbEffect(loader("effect_tbeffect")); 
+        tables.Add("Effect.TbEffect", TbEffect);
+        TbGridEffect = new Effect.TbGridEffect(loader("effect_tbgrideffect")); 
+        tables.Add("Effect.TbGridEffect", TbGridEffect);
+        TbBattleSkillCfg = new Battle.TbBattleSkillCfg(loader("battle_tbbattleskillcfg")); 
+        tables.Add("Battle.TbBattleSkillCfg", TbBattleSkillCfg);
+        TbMoveSkillCfg = new Battle.TbMoveSkillCfg(loader("battle_tbmoveskillcfg")); 
+        tables.Add("Battle.TbMoveSkillCfg", TbMoveSkillCfg);
 
         PostInit();
-        TblRoleData.Resolve(tables); 
-        TblEffect.Resolve(tables); 
-        TblGridEffect.Resolve(tables); 
+        TbRoleCfg.Resolve(tables); 
+        TbEffect.Resolve(tables); 
+        TbGridEffect.Resolve(tables); 
+        TbBattleSkillCfg.Resolve(tables); 
+        TbMoveSkillCfg.Resolve(tables); 
         PostResolve();
     }
 
     public void TranslateText(System.Func<string, string, string> translator)
     {
-        TblRoleData.TranslateText(translator); 
-        TblEffect.TranslateText(translator); 
-        TblGridEffect.TranslateText(translator); 
+        TbRoleCfg.TranslateText(translator); 
+        TbEffect.TranslateText(translator); 
+        TbGridEffect.TranslateText(translator); 
+        TbBattleSkillCfg.TranslateText(translator); 
+        TbMoveSkillCfg.TranslateText(translator); 
     }
     
     partial void PostInit();

@@ -13,21 +13,22 @@ using System.Collections.Generic;
 namespace Cfg.Battle
 {
 
-public sealed partial class RoleData :  Bright.Config.BeanBase 
+public sealed partial class BattleSkillCfg :  Bright.Config.BeanBase 
 {
-    public RoleData(ByteBuf _buf) 
+    public BattleSkillCfg(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
         Desc = _buf.ReadString();
-        Image = _buf.ReadString();
-        BaseAttribute = Battle.Attribute.DeserializeAttribute(_buf);
+        Icon = _buf.ReadString();
+        Cost = _buf.ReadInt();
+        Power = _buf.ReadInt();
         PostInit();
     }
 
-    public static RoleData DeserializeRoleData(ByteBuf _buf)
+    public static BattleSkillCfg DeserializeBattleSkillCfg(ByteBuf _buf)
     {
-        return new Battle.RoleData(_buf);
+        return new Battle.BattleSkillCfg(_buf);
     }
 
     /// <summary>
@@ -43,23 +44,28 @@ public sealed partial class RoleData :  Bright.Config.BeanBase
     /// </summary>
     public string Desc { get; private set; }
     /// <summary>
-    /// 图片
+    /// 图标
     /// </summary>
-    public string Image { get; private set; }
-    public Battle.Attribute BaseAttribute { get; private set; }
+    public string Icon { get; private set; }
+    /// <summary>
+    /// 释放消耗灵气
+    /// </summary>
+    public int Cost { get; private set; }
+    /// <summary>
+    /// 威力
+    /// </summary>
+    public int Power { get; private set; }
 
-    public const int __ID__ = 422102454;
+    public const int __ID__ = 321890593;
     public override int GetTypeId() => __ID__;
 
     public  void Resolve(Dictionary<string, object> _tables)
     {
-        BaseAttribute?.Resolve(_tables);
         PostResolve();
     }
 
     public  void TranslateText(System.Func<string, string, string> translator)
     {
-        BaseAttribute?.TranslateText(translator);
     }
 
     public override string ToString()
@@ -68,8 +74,9 @@ public sealed partial class RoleData :  Bright.Config.BeanBase
         + "Id:" + Id + ","
         + "Name:" + Name + ","
         + "Desc:" + Desc + ","
-        + "Image:" + Image + ","
-        + "BaseAttribute:" + BaseAttribute + ","
+        + "Icon:" + Icon + ","
+        + "Cost:" + Cost + ","
+        + "Power:" + Power + ","
         + "}";
     }
     
