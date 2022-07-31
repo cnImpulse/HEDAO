@@ -160,8 +160,7 @@ namespace HEDAO
         public List<GridData> GetRangeGridList(Vector2Int centerPos, int range)
         {
             GridData center = GetGridData(centerPos);
-            List<GridData> gridList = new List<GridData>();
-
+            List<GridData> gridList = new List<GridData>() { center };
             for (int i = 1; i <= range; ++i)
             {
                 Vector2Int position = new Vector2Int(-i, 0);
@@ -173,7 +172,7 @@ namespace HEDAO
                         position += s_Dir2Array4[k];
                         if (gridData != null)
                         {
-                            gridList.Add(gridData); ;
+                            gridList.Add(gridData);
                         }
                     }
                 }
@@ -218,7 +217,7 @@ namespace HEDAO
             List<GridData> canMoveList = new List<GridData>();
             foreach (var grid in close)
             {
-                if (grid.CanArrive())
+                if (grid == start || grid.CanArrive())
                 {
                     canMoveList.Add(grid);
                 }

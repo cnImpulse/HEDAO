@@ -35,9 +35,9 @@ namespace HEDAO
             return effectData.Id;
         }
 
-        public int ShowGridEffect(string name, List<Vector2Int> gridPosList, Vector3 position = default, float lifetime = -1)
+        public int ShowGridEffect(string name, List<Vector2Int> gridPosList, float lifetime = -1, Color color = default, Vector3 position = default)
         {
-            GridEffectData effectData = new GridEffectData(gridPosList, name, position, lifetime);
+            GridEffectData effectData = new GridEffectData(gridPosList, name, color, position, lifetime);
             GameEntry.Entity.ShowEffect<GridEffect>(effectData);
             return effectData.Id;
         }

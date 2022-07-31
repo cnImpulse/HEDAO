@@ -41,7 +41,7 @@ namespace HEDAO
                 return;
             }
 
-            battleUnit.Data.HP -= 10;
+            //battleUnit.Data.HP -= 10;
         }
 
         public virtual BattleUnit SelectAttackTarget()
@@ -72,7 +72,7 @@ namespace HEDAO
         {
             if (target == null)
             {
-                return default;
+                return null;
             }
 
             GridData end = null;
@@ -109,7 +109,7 @@ namespace HEDAO
                 var gridList = m_GridMap.Data.GetRangeGridList(gridData.GridPos, atkRange);
                 foreach (var grid in gridList)
                 {
-                    if (canMoveList.Contains(grid) || canAttackList.Contains(grid))
+                    if (canAttackList.Contains(grid))
                     {
                         continue;
                     }

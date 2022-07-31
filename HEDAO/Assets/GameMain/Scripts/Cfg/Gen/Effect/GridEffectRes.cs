@@ -18,6 +18,7 @@ public sealed partial class GridEffectRes :  Bright.Config.BeanBase
     public GridEffectRes(ByteBuf _buf) 
     {
         Brith = _buf.ReadString();
+        Streak = _buf.ReadString();
         PostInit();
     }
 
@@ -30,6 +31,10 @@ public sealed partial class GridEffectRes :  Bright.Config.BeanBase
     /// 出生点瓦片
     /// </summary>
     public string Brith { get; private set; }
+    /// <summary>
+    /// 条纹特效
+    /// </summary>
+    public string Streak { get; private set; }
 
     public const int __ID__ = 1076722444;
     public override int GetTypeId() => __ID__;
@@ -47,6 +52,7 @@ public sealed partial class GridEffectRes :  Bright.Config.BeanBase
     {
         return "{ "
         + "Brith:" + Brith + ","
+        + "Streak:" + Streak + ","
         + "}";
     }
     

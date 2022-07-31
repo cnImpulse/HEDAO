@@ -38,15 +38,15 @@ namespace HEDAO
                 return false;
             }
 
+            if (battleUnit.GridData == end)
+            {
+                return true;
+            }
+
             if (!end.CanArrive())
             {
                 Log.Warning("终点不可到达！");
                 return false;
-            }
-
-            if (battleUnit.Data.GridPos == end.GridPos)
-            {
-                return true;
             }
 
             Queue<Node> open = new Queue<Node>();

@@ -30,7 +30,7 @@ namespace HEDAO
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
-            m_Fsm = null;
+            GameEntry.Fsm.DestroyFsm(m_Fsm);
             m_BattleInfo = null;
 
             base.OnLeave(procedureOwner, isShutdown);

@@ -23,7 +23,7 @@ namespace HEDAO
             base.OnEnter(fsm);
 
             //GameEntry.Event.Subscribe(EventName.BattleUnitActionCancel, OnBattleUnitActionCancel);
-            //GameEntry.Event.Subscribe(EventName.BattleUnitActionEnd, OnBattleUnitActionEnd);
+            GameEntry.Event.Subscribe(EventName.BattleUnitActionEnd, OnBattleUnitActionEnd);
 
             //GameEntry.UI.CloseUIForm(false, m_GridUnitInfoFormId);
             //m_GridUnitInfoFormId = GameEntry.UI.OpenUIForm(Cfg.UI.FormType.GridUnitInfoForm, m_BattleUnitFsm.Owner);
@@ -44,40 +44,39 @@ namespace HEDAO
 
         protected override void OnLeave(IFsm<ProcedureBattle> fsm, bool isShutdown)
         {
-            DestoryBattleUnitFsm();
+            //DestoryBattleUnitFsm();
             //GameEntry.UI.CloseUIForm(false, m_GridUnitInfoFormId);
             //GameEntry.Event.Unsubscribe(EventName.BattleUnitActionCancel, OnBattleUnitActionCancel);
-            //GameEntry.Event.Unsubscribe(EventName.BattleUnitActionEnd, OnBattleUnitActionEnd);
+            GameEntry.Event.Unsubscribe(EventName.BattleUnitActionEnd, OnBattleUnitActionEnd);
 
             base.OnLeave(fsm, isShutdown);
         }
 
         private void DestoryBattleUnitFsm()
         {
-            //if (m_BattleUnitFsm == null)
-            //{
-            //    return;
-            //}
+            if (BattleUnitFsm == null)
+            {
+                return;
+            }
 
-            //GameEntry.Fsm.DestroyFsm(m_BattleUnitFsm);
-            //Fsm.RemoveData("BattleUnitFsm");
-            //m_BattleUnitFsm = null;
+            GameEntry.Fsm.DestroyFsm(BattleUnitFsm);
+            BattleUnitFsm = null;
         }
 
         private void OnBattleUnitActionEnd(object sender, GameEventArgs e)
         {
-            //DestoryBattleUnitFsm();
-            //var battleUnitList = m_GridMap.GetGridUnitList<BattleUnit>(m_ActiveCamp);
-            //foreach (var battleUnit in battleUnitList)
-            //{
-            //    if (battleUnit.CanAction)
-            //    {
-            //        ChangeState<BattleUnitSelectState>();
-            //        return;
-            //    }
-            //}
-            
-            ChangeState<RoundEndState>(Fsm);
+            DestoryBattleUnitFsm();
+            var battleUnitList = GridMap.GetBattleUnitList(ActiveCamp);
+            foreach (var battleUnit in battleUnitList)
+            {
+                if (battleUnit.CanAction)
+                {
+                    ChangeState<BattleUnitSelectState>();
+                    return;
+                }
+            }
+
+            ChangeState<RoundEndState>();
         }
 
         private void OnBattleUnitActionCancel(object sender, GameEventArgs e)

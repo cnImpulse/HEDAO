@@ -17,7 +17,7 @@ namespace HEDAO
         public int TPO => Attribute.TPO;
         public int SSI => Attribute.SSI;
         public int Level { get; private set; }
-        public int MovSkillId { get; private set; }
+        public int MoveSkillId { get; private set; }
         public string Name { get; private set; }
         public string Image { get; private set; }
         public Attribute BaseAttribute { get; private set; }
@@ -27,12 +27,10 @@ namespace HEDAO
         public RoleData(int roleId)
         {
             var cfg = GameEntry.Cfg.Tables.TbRoleCfg.Get(roleId);
-
-            Level = 0;
             Name = cfg.Name;
             Image = cfg.Image;
             BaseAttribute = new Attribute(cfg.BaseAttribute);
-            MovSkillId = cfg.MoveSkillId;
+            MoveSkillId = cfg.MoveSkillId;
             BattleSkillSet = cfg.SkillSet;
 
             Init();
@@ -40,6 +38,7 @@ namespace HEDAO
 
         private void Init()
         {
+            Level = 0;
             HP = MaxHP;
             QI = MaxQI;
         }

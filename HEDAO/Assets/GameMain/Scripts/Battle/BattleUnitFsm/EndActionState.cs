@@ -13,7 +13,7 @@ namespace HEDAO
         {
             base.OnEnter(fsm);
 
-            //GameEntry.Event.Fire(this, EventName.BattleUnitActionEnd);
+            Owner.OnEndAction();
         }
 
         protected override void OnUpdate(IFsm<BattleUnit> fsm, float elapseSeconds, float realElapseSeconds)

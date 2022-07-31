@@ -24,6 +24,7 @@ namespace HEDAO
 
             m_Data = userData as GridEffectData;
 
+            m_Tilemap.color = m_Data.Color;
             m_Tilemap.ClearAllTiles();
             string tilePath = AssetUtl.GetTilePath("Effect", m_Data.GridEffectName);
             GameEntry.Resource.LoadAsset(tilePath,

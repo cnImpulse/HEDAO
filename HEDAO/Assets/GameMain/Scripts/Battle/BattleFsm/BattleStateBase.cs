@@ -14,10 +14,10 @@ namespace HEDAO
         public ProcedureBattle Owner => Fsm?.Owner;
         public BattleRunTimeData BattleData => Owner.BattleData;
 
-        public bool IsAutoBattle => BattleData.ActiveCamp != CampType.Player;
+        public bool IsAutoBattle => true;//BattleData.ActiveCamp != CampType.Player;
         public GridMap GridMap => BattleData.GridMap;
         public CampType ActiveCamp => BattleData.ActiveCamp;
-        public IFsm<BattleUnit> BattleUnitFsm => BattleData.BattleUnitFsm;
+        public IFsm<BattleUnit> BattleUnitFsm { get => BattleData.BattleUnitFsm; set => BattleData.BattleUnitFsm = value; }
 
         private Type m_NextState = null;
 
@@ -46,6 +46,9 @@ namespace HEDAO
 
         protected override void OnLeave(IFsm<ProcedureBattle> fsm, bool isShutdown)
         {
+            Log.Info("Leave {0}", GetType());
+            m_NextState = null;
+
             base.OnLeave(fsm, isShutdown);
         }
 

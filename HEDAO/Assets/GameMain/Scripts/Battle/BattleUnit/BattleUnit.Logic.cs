@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using HEDAO.Skill;
 using UnityGameFramework.Runtime;
 using UnityEngine;
+using System.Collections;
 
 namespace HEDAO
 {
@@ -29,6 +30,12 @@ namespace HEDAO
         public virtual void OnRoundEnd()
         {
             CanAction = false;
+        }
+
+        public virtual void OnEndAction()
+        {
+            CanAction = false;
+            GameEntry.Event.Fire(this, EventName.BattleUnitActionEnd);
         }
 
         public virtual void OnBattleEnd()
@@ -103,7 +110,17 @@ namespace HEDAO
             }
         }
 
-        public void Move(GridData end)
+        public IEnumerator Move(List<GridData> path, GridData end)
+        {
+            Move(end);
+            foreach (var gridData in path)
+            {
+                transform.position = GridMap.GridPosToWorldPos(gridData.GridPos);
+                yield return new WaitForSeconds(0.3f);
+            }
+        }
+
+        private void Move(GridData end)
         {
             var start = GridData;
             if (end == null || end == start)
@@ -120,11 +137,9 @@ namespace HEDAO
 
             start.OnGridUnitLeave();
             end.OnGridUnitEnter(this);
-
             Data.GridPos = end.GridPos;
 
             GameEntry.Event.Fire(this, EventName.BattleUnitMove);
-            transform.position = GridMap.GridPosToWorldPos(Data.GridPos);
         }
     }
 }

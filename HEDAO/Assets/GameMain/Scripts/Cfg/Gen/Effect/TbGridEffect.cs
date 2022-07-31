@@ -29,6 +29,10 @@ public partial class TbGridEffect
     /// 出生点瓦片
     /// </summary>
      public string Brith => _data.Brith;
+    /// <summary>
+    /// 条纹特效
+    /// </summary>
+     public string Streak => _data.Streak;
 
     public void Resolve(Dictionary<string, object> _tables)
     {

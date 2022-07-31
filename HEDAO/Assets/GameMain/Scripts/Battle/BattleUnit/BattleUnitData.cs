@@ -9,35 +9,32 @@ namespace HEDAO
     {
         public RoleData RoleData { get; private set; }
 
-        public Attribute Attribute => BaseAttribute + ModifyAttribute;
-        public Attribute BaseAttribute => RoleData.Attribute;
+        public Attribute Attribute => RoleAttribute + ModifyAttribute;
+        public Attribute RoleAttribute => RoleData.Attribute;
         public Attribute ModifyAttribute { get; set; }
 
-        public int MOV => 10;
+        public int HP => RoleData.HP;
+        public int QI => RoleData.QI;
         public int MaxHP => Attribute.MaxHP;
         public int MaxQI => Attribute.MaxQI;
+        public int STR => Attribute.STR;
+        public int TPO => Attribute.TPO;
+        public int SSI => Attribute.SSI;
 
-        private int m_HP = 0;
-        public int HP
+        public int MoveSkillId => RoleData.MoveSkillId;
+        public int MOV
         {
-            get => m_HP;
-            set => m_HP = Mathf.Clamp(value, 0, MaxQI);
-        }
-
-        private int m_QI = 0;
-        public int QI
-        {
-            get => m_QI;
-            set => m_QI = Mathf.Clamp(value, 0, MaxQI);
+            get
+            {
+                var cfg = GameEntry.Cfg.Tables.TbMoveSkillCfg.Get(MoveSkillId);
+                return cfg.MOV;
+            }
         }
 
         public BattleUnitData(RoleData roleData, Vector2Int gridPos, CampType campType) : base(gridPos, campType)
         {
             RoleData = roleData;
             ModifyAttribute = default;
-
-            HP = MaxHP;
-            QI = MaxQI;
         }
     }
 }

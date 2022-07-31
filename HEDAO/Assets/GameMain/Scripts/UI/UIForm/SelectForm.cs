@@ -44,8 +44,8 @@ namespace HEDAO
             {
                 var item = obj as FGUIRoleItem;
                 item.m_panel_role.m_txt_name.text = roleData.Name;
-                //item.m_panel_role.m_txt_hp.text = roleData.BaseAttribute.HP.ToString();
-                //item.m_panel_role.m_txt_qi.text = roleData.BaseAttribute.QI.ToString();
+                item.m_panel_role.m_txt_hp.text = roleData.BaseAttribute.MaxHP.ToString();
+                item.m_panel_role.m_txt_qi.text = roleData.BaseAttribute.MaxQI.ToString();
             }
         }
 
