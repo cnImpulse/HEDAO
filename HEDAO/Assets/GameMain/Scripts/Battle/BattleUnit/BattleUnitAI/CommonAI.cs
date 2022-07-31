@@ -24,11 +24,6 @@ namespace HEDAO
             m_Owner = battleUnit;
         }
 
-        protected virtual int GetMOV()
-        {
-            return m_Owner.Data.MOV;
-        }
-
         protected virtual int GetATKRange()
         {
             return 1;
@@ -46,10 +41,9 @@ namespace HEDAO
 
         public virtual BattleUnit SelectAttackTarget()
         {
-            var mov = GetMOV();
             var atkRange = GetATKRange();
 
-            var canAttackList = GetCanAttackGrids(atkRange, mov);
+            var canAttackList = GetCanAttackGrids(atkRange, m_Owner.Data.MOV);
             var targetCamp = BattleUtl.GetHostileCamp(m_Owner.Data.CampType);
             BattleUnit target = null;
             foreach (var gridData in canAttackList)
@@ -76,7 +70,7 @@ namespace HEDAO
             }
 
             GridData end = null;
-            var canMoveList = m_GridMap.Data.GetCanMoveGrids(m_Owner, GetMOV());
+            var canMoveList = m_GridMap.Data.GetCanMoveGrids(m_Owner);
             foreach (var gridData in canMoveList)
             {
                 int distance = GridMapUtl.GetDistance(target.GridData, gridData);
@@ -102,7 +96,7 @@ namespace HEDAO
                 return m_GridMap.Data.GetRangeGridList(m_Owner.Data.GridPos, atkRange);
             }
 
-            List<GridData> canMoveList = m_GridMap.Data.GetCanMoveGrids(m_Owner, mov);
+            List<GridData> canMoveList = m_GridMap.Data.GetCanMoveGrids(m_Owner);
             List<GridData> canAttackList = new List<GridData>();
             foreach (var gridData in canMoveList)
             {

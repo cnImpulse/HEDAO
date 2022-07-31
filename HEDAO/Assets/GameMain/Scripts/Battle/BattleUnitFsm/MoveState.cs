@@ -17,16 +17,8 @@ namespace HEDAO
 
             GameEntry.Event.Subscribe(EventName.PointerDownGridMap, OnPointGridMap);
 
-            //if (Owner.CanMove)
-            //{
-            //    m_CanMoveList = m_GridMap.Data.GetCanMoveGrids(Owner);
-            //    m_GridMap.ShowMoveArea(m_CanMoveList);
-            //    GameEntry.Battle.SetAreaSelectEffect(m_CanMoveList.ConvertAll((input) => input.GridPos), m_GridMap);
-            //}
-            //else
-            //{
-            //    ChangeState<ActionState>(fsm);
-            //}
+            m_CanMoveList = GridMap.Data.GetCanMoveGrids(Owner);
+            GameEntry.Effect.ShowMoveAreaEffect(m_CanMoveList);
         }
 
         protected override void OnUpdate(IFsm<BattleUnit> fsm, float elapseSeconds, float realElapseSeconds)
@@ -37,8 +29,7 @@ namespace HEDAO
         protected override void OnLeave(IFsm<BattleUnit> fsm, bool isShutdown)
         {
             m_CanMoveList = null;
-            //GameEntry.Battle.HideAreaSelectEffect();
-            //GameEntry.Effect.HideGridMapEffect();
+            GameEntry.Effect.HideGridEffect();
             GameEntry.Event.Unsubscribe(EventName.PointerDownGridMap, OnPointGridMap);
 
             base.OnLeave(fsm, isShutdown);
@@ -46,22 +37,22 @@ namespace HEDAO
 
         private void OnPointGridMap(object sender, GameEventArgs e)
         {
-            //var ne = e as GameEventBase;
-            //var gridData = ne.UserData as GridData;
-            //var gridUnit = gridData.GridUnit;
-            //if (m_CanMoveList.Contains(gridData))
-            //{
-            //    Owner.Move(gridData.GridPos);
-            //    ChangeState<ActionState>();
-            //}
-            //else if (gridUnit == Owner)
-            //{
-            //    ChangeState<ActionState>();
-            //}
-            //else
-            //{
-            //    GameEntry.Event.Fire(this, EventName.BattleUnitActionCancel);
-            //}
+            var ne = e as GameEventBase;
+            var gridData = ne.EventData as GridData;
+            var gridUnit = gridData.GridUnit;
+            if (gridUnit == Owner)
+            {
+                ChangeState<ActionState>();
+            }
+            else if (m_CanMoveList.Contains(gridData))
+            {
+                Owner.Move(gridData);
+                ChangeState<ActionState>();
+            }
+            else
+            {
+                //GameEntry.Event.Fire(this, EventName.BattleUnitActionCancel);
+            }
         }
     }
 }

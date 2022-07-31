@@ -54,12 +54,12 @@ namespace HEDAO
 
             if (IsAutoBattle)
             {
-                BattleData.BattleUnitFsm = GameEntry.Fsm.CreateFsm(battleUnit, new AutoActionState(), new EndActionState());
+                BattleUnitFsm = GameEntry.Fsm.CreateFsm(battleUnit, new AutoActionState(), new EndActionState());
             }
             else
             {
-                //m_BattleUnitFsm = GameEntry.Fsm.CreateFsm(battleUnit, new MoveState(),
-                //    new ActionState(), new SkillState(), new EndActionState());
+                BattleUnitFsm = GameEntry.Fsm.CreateFsm(battleUnit, new MoveState(),
+                    new ActionState(), new SkillState(), new EndActionState());
             }
             
             return true;

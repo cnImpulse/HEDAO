@@ -70,5 +70,15 @@ namespace HEDAO
                 ne.Entity.transform.SetParent(m_EffectInstanceRoot);
             }
         }
+
+        public int ShowMoveAreaEffect(List<GridData> area, float life = -1)
+        {
+            return ShowGridEffect(GameEntry.Cfg.GridEffect.Streak, area.ConvertAll((input) => input.GridPos), life, Color.yellow);
+        }
+
+        public int ShowAttackAreaEffect(List<GridData> area, float life = -1)
+        {
+            return ShowGridEffect(GameEntry.Cfg.GridEffect.Streak, area.ConvertAll((input) => input.GridPos), life, Color.red);
+        }
     }
 }

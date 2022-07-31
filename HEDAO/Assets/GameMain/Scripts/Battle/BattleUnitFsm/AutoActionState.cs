@@ -44,11 +44,9 @@ namespace HEDAO
                 yield return battleUnit.Move(path, end);
 
                 var canReleaseList = GridMap.Data.GetRangeGridList(Owner.Data.GridPos, 1);
-                GameEntry.Effect.ShowGridEffect(GameEntry.Cfg.GridEffect.Streak, canReleaseList.ConvertAll((input) => input.GridPos), 0.5f, Color.red);
-                yield return new WaitForSeconds(0.5f);
-                GameEntry.Effect.HideGridEffect();
+                GameEntry.Effect.ShowAttackAreaEffect(canReleaseList, 0.5f);
+                yield return new WaitForSeconds(0.7f);
 
-                yield return new WaitForSeconds(0.2f);
                 AI.Attack(attackTarget);
                 //GameEntry.Skill.RequestReleaseSkill(skillId, battleUnit.Id, attackTarget.Id);
             }
@@ -58,11 +56,11 @@ namespace HEDAO
 
         public IEnumerator ShowMoveArea(BattleUnit battleUnit)
         {
-            int effectId = GameEntry.Effect.ShowEffect(GameEntry.Cfg.Effect.Select, battleUnit.transform.position, true, 1.5f);
+            GameEntry.Effect.ShowEffect(GameEntry.Cfg.Effect.Select, battleUnit.transform.position, true, 1.5f);
             yield return new WaitForSeconds(1.5f);
 
-            var canMoveList = GridMap.Data.GetCanMoveGrids(battleUnit, battleUnit.Data.MOV);
-            GameEntry.Effect.ShowGridEffect(GameEntry.Cfg.GridEffect.Streak, canMoveList.ConvertAll((input) => input.GridPos), 0.8f, Color.yellow);
+            var canMoveList = GridMap.Data.GetCanMoveGrids(battleUnit);
+            GameEntry.Effect.ShowMoveAreaEffect(canMoveList, 0.8f);
             yield return new WaitForSeconds(0.8f);
         }
     }

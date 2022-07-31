@@ -9,12 +9,9 @@ namespace HEDAO
 {
     public class ActionState : BattleUnitBaseState
     {
-        private int m_SerilId = 0;
-
         protected override void OnEnter(IFsm<BattleUnit> fsm)
         {
             base.OnEnter(fsm);
-
         }
 
         protected override void OnUpdate(IFsm<BattleUnit> fsm, float elapseSeconds, float realElapseSeconds)
@@ -24,7 +21,6 @@ namespace HEDAO
 
         protected override void OnLeave(IFsm<BattleUnit> fsm, bool isShutdown)
         {
-
             base.OnLeave(fsm, isShutdown);
         }
 

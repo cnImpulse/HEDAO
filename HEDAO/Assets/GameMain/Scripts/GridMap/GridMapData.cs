@@ -182,7 +182,7 @@ namespace HEDAO
         }
 
         // 广度优先搜索
-        public List<GridData> GetCanMoveGrids(BattleUnit battleUnit, int mov)
+        public List<GridData> GetCanMoveGrids(BattleUnit battleUnit)
         {
             GridData start = GetGridData(battleUnit.Data.GridPos);
 
@@ -190,7 +190,7 @@ namespace HEDAO
             List<GridData> close = new List<GridData>();
 
             open.Enqueue(start);
-            for (int i = 0; i <= mov; ++i)
+            for (int i = 0; i <= battleUnit.Data.MOV; ++i)
             {
                 int length = open.Count;
                 if (length == 0)

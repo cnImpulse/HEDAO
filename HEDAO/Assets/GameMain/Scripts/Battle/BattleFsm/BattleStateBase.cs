@@ -14,7 +14,7 @@ namespace HEDAO
         public ProcedureBattle Owner => Fsm?.Owner;
         public BattleRunTimeData BattleData => Owner.BattleData;
 
-        public bool IsAutoBattle => true;//BattleData.ActiveCamp != CampType.Player;
+        public bool IsAutoBattle => BattleData.ActiveCamp != CampType.Player;
         public GridMap GridMap => BattleData.GridMap;
         public CampType ActiveCamp => BattleData.ActiveCamp;
         public IFsm<BattleUnit> BattleUnitFsm { get => BattleData.BattleUnitFsm; set => BattleData.BattleUnitFsm = value; }

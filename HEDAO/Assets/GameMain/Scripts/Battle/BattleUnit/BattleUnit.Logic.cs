@@ -112,15 +112,15 @@ namespace HEDAO
 
         public IEnumerator Move(List<GridData> path, GridData end)
         {
-            Move(end);
             foreach (var gridData in path)
             {
                 transform.position = GridMap.GridPosToWorldPos(gridData.GridPos);
                 yield return new WaitForSeconds(0.3f);
             }
+            Move(end);
         }
 
-        private void Move(GridData end)
+        public void Move(GridData end)
         {
             var start = GridData;
             if (end == null || end == start)
@@ -138,6 +138,7 @@ namespace HEDAO
             start.OnGridUnitLeave();
             end.OnGridUnitEnter(this);
             Data.GridPos = end.GridPos;
+            transform.position = GridMap.GridPosToWorldPos(end.GridPos);
 
             GameEntry.Event.Fire(this, EventName.BattleUnitMove);
         }
