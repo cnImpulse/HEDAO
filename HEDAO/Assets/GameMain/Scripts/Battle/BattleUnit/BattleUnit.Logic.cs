@@ -137,8 +137,7 @@ namespace HEDAO
 
             start.OnGridUnitLeave();
             end.OnGridUnitEnter(this);
-            Data.GridPos = end.GridPos;
-            transform.position = GridMap.GridPosToWorldPos(end.GridPos);
+            GridMap.SetGridUnitPos(this, end.GridPos);
 
             GameEntry.Event.Fire(this, EventName.BattleUnitMove);
         }

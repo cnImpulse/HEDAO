@@ -14,6 +14,9 @@ namespace HEDAO
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
+
+            View.m_list.itemRenderer = RenderListItem;
+            View.m_list.opaque = false;
         }
 
         protected override void OnOpen(object userData)
@@ -24,11 +27,8 @@ namespace HEDAO
             View.m_btn_return.onClick.Add(OnClickReturn);
             View.m_btn_sure.onClick.Add(OnClickSure);
 
-            View.m_list.RemoveChildren();
-            View.m_list.itemRenderer = RenderListItem;
             View.m_list.numItems = m_CanSelectRoleList.Count;
             View.m_list.ResizeToFit();
-            View.m_list.opaque = false;
         }
 
         protected override void OnClose(bool isShutdown, object userData)

@@ -23,6 +23,8 @@ public sealed partial class BattleSkillCfg :  Bright.Config.BeanBase
         Icon = _buf.ReadString();
         Cost = _buf.ReadInt();
         Power = _buf.ReadInt();
+        CastDistance = _buf.ReadInt();
+        EffectDistance = _buf.ReadInt();
         PostInit();
     }
 
@@ -55,6 +57,14 @@ public sealed partial class BattleSkillCfg :  Bright.Config.BeanBase
     /// 威力
     /// </summary>
     public int Power { get; private set; }
+    /// <summary>
+    /// 释放距离
+    /// </summary>
+    public int CastDistance { get; private set; }
+    /// <summary>
+    /// 作用距离
+    /// </summary>
+    public int EffectDistance { get; private set; }
 
     public const int __ID__ = 321890593;
     public override int GetTypeId() => __ID__;
@@ -77,6 +87,8 @@ public sealed partial class BattleSkillCfg :  Bright.Config.BeanBase
         + "Icon:" + Icon + ","
         + "Cost:" + Cost + ","
         + "Power:" + Power + ","
+        + "CastDistance:" + CastDistance + ","
+        + "EffectDistance:" + EffectDistance + ","
         + "}";
     }
     
