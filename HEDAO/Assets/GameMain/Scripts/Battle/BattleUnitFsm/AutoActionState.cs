@@ -5,7 +5,7 @@ using GameFramework.Fsm;
 
 namespace HEDAO
 {
-    public class AutoActionState : BattleUnitBaseState
+    public class AutoActionState : BattleUnitStateBase
     {
         private CommonAI AI => Owner.AI;
 

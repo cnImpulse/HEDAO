@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="400,100" pivot="0.5,0.5" extention="Button" initName="btn_">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <loader id="n2_aobo" name="icon" xy="0,0" pivot="0.5,0.5" size="400,100" url="ui://rt51n0kjntsy4" align="center" vAlign="middle" fill="scaleFree">
+      <gearColor controller="button" pages="1,2" values="#cccccc|#ececec" default="#ffffff" tween="true" duration=".2"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <text id="n1_aobo" name="text_name" xy="40,0" pivot="0.5,0.5" size="360,100" font="ui://rt51n0kjekn09" fontSize="24" vAlign="middle" autoSize="none" bold="true" text="眨眼剑法">
+      <relation target="" sidePair="width-width,height-height,leftext-left"/>
+    </text>
+    <text id="n3_l0qc" name="text_cost" xy="0,0" pivot="0.5,0.5" size="360,100" font="ui://rt51n0kjekn09" fontSize="24" align="right" vAlign="middle" autoSize="none" text="cost: 666">
+      <relation target="" sidePair="width-width,height-height,leftext-left"/>
+    </text>
+  </displayList>
+  <Button/>
+</component>

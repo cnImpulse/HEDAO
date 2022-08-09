@@ -4,7 +4,7 @@ using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
-    public abstract class BattleUnitBaseState : FsmState<BattleUnit>
+    public abstract class BattleUnitStateBase : FsmState<BattleUnit>
     {
         public IFsm<BattleUnit> Fsm { get; private set; }
         public BattleUnit Owner => Fsm?.Owner;
@@ -55,7 +55,7 @@ namespace HEDAO
         /// 会在下一帧切换状态
         /// </summary>
         public void ChangeState<T>()
-            where T : BattleUnitBaseState
+            where T : BattleUnitStateBase
         {
             m_NextState = typeof(T);
         }

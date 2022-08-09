@@ -22,6 +22,7 @@
     <component id="uyzr4r" name="ActionForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="uyzr4t" name="ActionPanel.xml" path="/Components/Temp/" exported="true"/>
     <component id="uyzr4v" name="ActionItem.xml" path="/Components/ListItem/" exported="true"/>
+    <component id="l0qc4w" name="SkillItem.xml" path="/Components/ListItem/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

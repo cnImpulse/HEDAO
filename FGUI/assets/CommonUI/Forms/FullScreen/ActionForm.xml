@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" bgColorEnabled="true" bgColor="#cccccc">
   <displayList>
-    <component id="n7_uyzr" name="panel_action" src="uyzr4t" fileName="Components/Temp/ActionPanel.xml" xy="1307,111" pivot="0.5,0.5" size="500,430"/>
+    <component id="n8_l0qc" name="btn_cancel" src="105c4o" fileName="Components/Button/Check.xml" xy="0,0" pivot="0.5,0.5" size="1920,1080"/>
+    <component id="n7_uyzr" name="panel_action" src="uyzr4t" fileName="Components/Temp/ActionPanel.xml" xy="1307,111" size="500,430"/>
   </displayList>
 </component>

@@ -7,13 +7,20 @@ using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
-    public class EndActionState : BattleUnitStateBase
+    public class ActionStateBase : BattleUnitStateBase
     {
+        protected string m_ActionFormName = "";
+
+        protected override void OnInit(IFsm<BattleUnit> fsm)
+        {
+            base.OnInit(fsm);
+        }
+
         protected override void OnEnter(IFsm<BattleUnit> fsm)
         {
             base.OnEnter(fsm);
 
-            Owner.OnEndAction();
+            GameEntry.UI.OpenUIForm(m_ActionFormName, this);
         }
 
         protected override void OnUpdate(IFsm<BattleUnit> fsm, float elapseSeconds, float realElapseSeconds)
@@ -23,7 +30,14 @@ namespace HEDAO
 
         protected override void OnLeave(IFsm<BattleUnit> fsm, bool isShutdown)
         {
+            GameEntry.UI.CloseUIForm(m_ActionFormName);
+
             base.OnLeave(fsm, isShutdown);
+        }
+
+        public void CancelAction()
+        {
+            ChangeState<SelectActionState>();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace HEDAO
 {
     public class ActionForm : FGUIForm<FGUIActionForm>
     {
-        private ActionState m_Owner = null;
+        private SelectActionState m_Owner = null;
 
         protected override void OnInit(object userData)
         {
@@ -22,7 +22,7 @@ namespace HEDAO
         {
             base.OnOpen(userData);
 
-            m_Owner = userData as ActionState;
+            m_Owner = userData as SelectActionState;
             View.m_panel_action.m_list_action.numItems = 2;
         }
 

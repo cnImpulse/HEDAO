@@ -7,6 +7,7 @@ namespace FGUI.CommonUI
 {
     public partial class FGUIActionForm : GComponent
     {
+        public GButton m_btn_cancel;
         public FGUIActionPanel m_panel_action;
         public const string URL = "ui://rt51n0kjuyzr4r";
 
@@ -19,6 +20,7 @@ namespace FGUI.CommonUI
         {
             base.ConstructFromXML(xml);
 
+            m_btn_cancel = (GButton)GetChild("btn_cancel");
             m_panel_action = (FGUIActionPanel)GetChild("panel_action");
         }
     }

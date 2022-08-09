@@ -17,6 +17,7 @@ namespace HEDAO
             if (m_View == null)
             {
                 Log.Error("FGUI View is null!");
+                return;
             }
         }
 

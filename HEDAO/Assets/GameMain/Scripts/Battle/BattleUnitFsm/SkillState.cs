@@ -7,46 +7,40 @@ using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
-    public class SkillState : BattleUnitBaseState
+    public class SkillState : ActionStateBase
     {
-        //private int m_SerilId = 0;
-        //private int m_SkillId = 0;
-        //private List<GridData> m_CanReleaseList = null;
+        protected override void OnInit(IFsm<BattleUnit> fsm)
+        {
+            base.OnInit(fsm);
 
-        //protected override void OnEnter(IFsm<BattleUnit> fsm)
-        //{
-        //    base.OnEnter(fsm);
+            m_ActionFormName = UIFromName.ReleaseSkillForm;
+        }
 
-        //    GameEntry.Event.Subscribe(EventName.PointerDownGridMap, OnPointGridMap);
+        protected override void OnEnter(IFsm<BattleUnit> fsm)
+        {
+            base.OnEnter(fsm);
 
-        //    m_SerilId = GameEntry.UI.OpenUIForm(Cfg.UI.FormType.SkillActionForm, this);
-        //}
+            
+        }
 
-        //protected override void OnUpdate(IFsm<BattleUnit> fsm, float elapseSeconds, float realElapseSeconds)
-        //{
-        //    base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
-        //}
+        protected override void OnUpdate(IFsm<BattleUnit> fsm, float elapseSeconds, float realElapseSeconds)
+        {
+            base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
+        }
 
-        //protected override void OnLeave(IFsm<BattleUnit> fsm, bool isShutdown)
-        //{
-        //    GameEntry.UI.CloseUIForm(isShutdown, m_SerilId);
-        //    m_SerilId = 0;
+        protected override void OnLeave(IFsm<BattleUnit> fsm, bool isShutdown)
+        {
+            base.OnLeave(fsm, isShutdown);
+        }
 
-        //    GameEntry.Battle.HideAreaSelectEffect();
-        //    GameEntry.Effect.HideGridMapEffect();
-        //    GameEntry.Event.Unsubscribe(EventName.PointerDownGridMap, OnPointGridMap);
-
-        //    base.OnLeave(fsm, isShutdown);
-        //}
-
-        //public void ReleaseSkill(int skillId)
-        //{
-        //    GameEntry.UI.CloseUIForm(m_SerilId);
-        //    m_SkillId = skillId;
-        //    m_CanReleaseList = m_GridMap.Data.GetSkillReleaseRange(Owner, m_SkillId);
-        //    m_GridMap.ShowAttackArea(m_CanReleaseList);
-        //    GameEntry.Battle.SetAreaSelectEffect(m_CanReleaseList.ConvertAll((input) => input.GridPos), m_GridMap);
-        //}
+        public void ReqReleaseSkill(int skillId)
+        {
+            //GameEntry.UI.CloseUIForm(m_SerilId);
+            //m_SkillId = skillId;
+            //m_CanReleaseList = m_GridMap.Data.GetSkillReleaseRange(Owner, m_SkillId);
+            //m_GridMap.ShowAttackArea(m_CanReleaseList);
+            //GameEntry.Battle.SetAreaSelectEffect(m_CanReleaseList.ConvertAll((input) => input.GridPos), m_GridMap);
+        }
 
         //private void OnPointGridMap(object sender, GameEventArgs e)
         //{

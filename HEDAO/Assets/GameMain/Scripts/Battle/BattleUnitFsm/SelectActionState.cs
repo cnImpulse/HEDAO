@@ -13,7 +13,7 @@ namespace HEDAO
         Await,
     }
 
-    public class ActionState : BattleUnitBaseState
+    public class SelectActionState : BattleUnitStateBase
     {
         protected override void OnEnter(IFsm<BattleUnit> fsm)
         {

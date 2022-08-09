@@ -59,7 +59,7 @@ namespace HEDAO
             else
             {
                 BattleUnitFsm = GameEntry.Fsm.CreateFsm(battleUnit, new MoveState(),
-                    new ActionState(), new SkillState(), new EndActionState());
+                    new SelectActionState(), new SkillState(), new EndActionState());
             }
             
             return true;

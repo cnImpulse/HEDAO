@@ -7,7 +7,7 @@ using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
-    public class MoveState : BattleUnitBaseState
+    public class MoveState : BattleUnitStateBase
     {
         private List<GridData> m_CanMoveList = null;
 
@@ -42,12 +42,12 @@ namespace HEDAO
             var gridUnit = gridData.GridUnit;
             if (gridUnit == Owner)
             {
-                ChangeState<ActionState>();
+                ChangeState<SelectActionState>();
             }
             else if (m_CanMoveList.Contains(gridData))
             {
                 Owner.Move(gridData);
-                ChangeState<ActionState>();
+                ChangeState<SelectActionState>();
             }
             else
             {
