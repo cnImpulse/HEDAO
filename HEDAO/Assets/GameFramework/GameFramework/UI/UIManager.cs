@@ -12,6 +12,8 @@ using System.Collections.Generic;
 
 namespace GameFramework.UI
 {
+    public delegate void CreatFormSuccessCallback(string uiFormAssetName, object uiFormInstance, float duration, object userData);
+
     /// <summary>
     /// 界面管理器。
     /// </summary>
@@ -753,7 +755,8 @@ namespace GameFramework.UI
             if (uiFormInstanceObject == null)
             {
                 m_UIFormsBeingLoaded.Add(serialId, uiFormAssetName);
-                m_ResourceManager.LoadAsset(uiFormAssetName, priority, m_LoadAssetCallbacks, OpenUIFormInfo.Create(serialId, uiGroup, pauseCoveredUIForm, userData));
+                m_UIFormHelper.InstantiateUIFormAsync(uiFormAssetName, OpenUIFormInfo.Create(serialId, uiGroup, pauseCoveredUIForm, userData), CreatFormSuccessCallback);
+                //m_ResourceManager.LoadAsset(uiFormAssetName, priority, m_LoadAssetCallbacks, OpenUIFormInfo.Create(serialId, uiGroup, pauseCoveredUIForm, userData));
             }
             else
             {
@@ -971,6 +974,29 @@ namespace GameFramework.UI
 
                 throw;
             }
+        }
+
+        private void CreatFormSuccessCallback(string uiFormName, object uiFormInstance, float duration, object userData)
+        {
+            OpenUIFormInfo openUIFormInfo = (OpenUIFormInfo)userData;
+            if (openUIFormInfo == null)
+            {
+                throw new GameFrameworkException("Open UI form info is invalid.");
+            }
+
+            if (m_UIFormsToReleaseOnLoad.Contains(openUIFormInfo.SerialId))
+            {
+                m_UIFormsToReleaseOnLoad.Remove(openUIFormInfo.SerialId);
+                ReferencePool.Release(openUIFormInfo);
+                return;
+            }
+
+            m_UIFormsBeingLoaded.Remove(openUIFormInfo.SerialId);
+            UIFormInstanceObject uiFormInstanceObject = UIFormInstanceObject.Create(uiFormName, null, uiFormInstance, m_UIFormHelper);
+            m_InstancePool.Register(uiFormInstanceObject, true);
+
+            InternalOpenUIForm(openUIFormInfo.SerialId, uiFormName, openUIFormInfo.UIGroup, uiFormInstanceObject.Target, openUIFormInfo.PauseCoveredUIForm, true, duration, openUIFormInfo.UserData);
+            ReferencePool.Release(openUIFormInfo);
         }
 
         private void LoadAssetSuccessCallback(string uiFormAssetName, object uiFormAsset, float duration, object userData)

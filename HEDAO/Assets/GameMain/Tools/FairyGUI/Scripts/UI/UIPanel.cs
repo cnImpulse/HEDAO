@@ -239,6 +239,42 @@ namespace FairyGUI
             CreateUI_PlayMode();
         }
 
+        public void CreateUI(string url)
+        {
+            if (_ui != null)
+            {
+                _ui.Dispose();
+                _ui = null;
+            }
+
+            _created = true;
+
+            if (string.IsNullOrEmpty(url))
+                return;
+
+            _ui = (GComponent)UIPackage.CreateObjectFromURL(url);
+            if (_ui != null)
+            {
+                _ui.position = position;
+                if (scale.x != 0 && scale.y != 0)
+                    _ui.scale = scale;
+                _ui.rotationX = rotation.x;
+                _ui.rotationY = rotation.y;
+                _ui.rotation = rotation.z;
+                if (this.container.hitArea != null)
+                {
+                    UpdateHitArea();
+                    _ui.onSizeChanged.Add(UpdateHitArea);
+                    _ui.onPositionChanged.Add(UpdateHitArea);
+                }
+                this.container.AddChildAt(_ui.displayObject, 0);
+
+                HandleScreenSizeChanged();
+            }
+            else
+                Debug.LogError("Create " + packageName + "/" + componentName + " failed!");
+        }
+
         /// <summary>
         /// Change the sorting order of the panel in runtime.
         /// </summary>

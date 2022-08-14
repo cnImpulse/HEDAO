@@ -1,31 +1,16 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
 using GameFramework.UI;
 using UnityEngine;
+using FairyGUI;
+using UnityGameFramework.Runtime;
 
-namespace UnityGameFramework.Runtime
+namespace HEDAO
 {
     /// <summary>
     /// 默认界面辅助器。
     /// </summary>
-    public class DefaultUIFormHelper : UIFormHelperBase
+    public class FGUIFormHelper : UIFormHelperBase
     {
         private ResourceComponent m_ResourceComponent = null;
-
-        /// <summary>
-        /// 实例化界面。
-        /// </summary>
-        /// <param name="uiFormAsset">要实例化的界面资源。</param>
-        /// <returns>实例化后的界面。</returns>
-        public override object InstantiateUIForm(object uiFormAsset)
-        {
-            return Instantiate((Object)uiFormAsset);
-        }
 
         /// <summary>
         /// 创建界面。
@@ -56,21 +41,30 @@ namespace UnityGameFramework.Runtime
         /// <param name="uiFormInstance">要释放的界面实例。</param>
         public override void ReleaseUIForm(object uiFormAsset, object uiFormInstance)
         {
-            m_ResourceComponent.UnloadAsset(uiFormAsset);
             Destroy((Object)uiFormInstance);
         }
 
-        private void Start()
+        public override void InstantiateUIFormAsync(string uiFormName, object userData, CreatFormSuccessCallback callback)
         {
-            m_ResourceComponent = GameEntry.GetComponent<ResourceComponent>();
-            if (m_ResourceComponent == null)
-            {
-                Log.Fatal("Resource component is invalid.");
-                return;
-            }
+            //var startTime = Time.realtimeSinceStartup;
+
+            var uiCfg = UICfg.GetCfg(uiFormName);
+            GameObject go = new GameObject(uiFormName);
+            go.layer = LayerMask.NameToLayer("UI");
+            var panel = go.GetOrAddComponent<UIPanel>();
+            panel.CreateUI(uiCfg.FormURL);
+            go.GetOrAddComponent(uiCfg.FormType);
+            callback(uiFormName, go, 0f, userData);
+
+            //var form = go.GetOrAddComponent(uiCfg.FormType) as FGUIFormBase;
+            //UIPackage.CreateObjectFromURL(uiCfg.FormURL, (view) => {
+            //    form.InitView(view);
+            //    GRoot.inst.AddChild(view);
+            //    callback(uiFormName, go, Time.realtimeSinceStartup - startTime, userData);
+            //});
         }
 
-        public override void InstantiateUIFormAsync(string uiFormName, object userData, CreatFormSuccessCallback callback)
+        public override object InstantiateUIForm(object uiFormAsset)
         {
             throw new System.NotImplementedException();
         }

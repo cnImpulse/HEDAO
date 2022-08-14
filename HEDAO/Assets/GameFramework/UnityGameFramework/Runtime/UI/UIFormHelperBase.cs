@@ -22,6 +22,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>实例化后的界面。</returns>
         public abstract object InstantiateUIForm(object uiFormAsset);
 
+        public abstract void InstantiateUIFormAsync(string uiFormName, object userData, CreatFormSuccessCallback callback);
+
         /// <summary>
         /// 创建界面。
         /// </summary>

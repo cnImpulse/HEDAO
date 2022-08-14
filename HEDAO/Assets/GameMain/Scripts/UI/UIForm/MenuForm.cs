@@ -13,7 +13,7 @@ namespace HEDAO
         {
             base.OnInit(userData);
 
-            View.m_btn_start.onClick.Add(() => { GameEntry.UI.OpenUIForm("LoadGameForm"); });
+            View.m_btn_start.onClick.Add(() => { GameEntry.UI.OpenUIForm(UIFromName.LoadGameForm); });
             View.m_btn_exit.onClick.Add(() => { Log.Info("退出游戏。"); });
         }
 

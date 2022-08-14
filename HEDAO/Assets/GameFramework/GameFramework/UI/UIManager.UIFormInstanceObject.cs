@@ -27,11 +27,6 @@ namespace GameFramework.UI
 
             public static UIFormInstanceObject Create(string name, object uiFormAsset, object uiFormInstance, IUIFormHelper uiFormHelper)
             {
-                if (uiFormAsset == null)
-                {
-                    throw new GameFrameworkException("UI form asset is invalid.");
-                }
-
                 if (uiFormHelper == null)
                 {
                     throw new GameFrameworkException("UI form helper is invalid.");

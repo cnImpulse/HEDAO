@@ -291,6 +291,7 @@ namespace UnityGameFramework.Runtime
         /// <param name="depthInUIGroup">界面在界面组中的深度。</param>
         public void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)
         {
+
             m_DepthInUIGroup = depthInUIGroup;
             try
             {

@@ -18,6 +18,7 @@ namespace UnityGameFramework.Runtime
         /// <param name="depth">界面组深度。</param>
         public override void SetDepth(int depth)
         {
+            
         }
     }
 }

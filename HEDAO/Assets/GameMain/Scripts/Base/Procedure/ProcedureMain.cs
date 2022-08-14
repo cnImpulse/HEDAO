@@ -37,6 +37,7 @@ namespace HEDAO
         {
             m_StartGame = false;
 
+            GameEntry.UI.CloseUIForm(UIFromName.MenuForm);
             GameEntry.Event.Unsubscribe(EventName.StartGame, OnStartGame);
 
             base.OnLeave(procedureOwner, isShutdown);

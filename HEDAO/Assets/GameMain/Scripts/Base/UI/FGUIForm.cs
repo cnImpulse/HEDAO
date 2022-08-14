@@ -6,6 +6,7 @@ namespace HEDAO
     public class FGUIForm<T> : UIFormLogic
         where T : GComponent
     {
+        private UIPanel m_UIPanel = default;
         private T m_View = default;
         public T View => m_View;
 
@@ -13,12 +14,8 @@ namespace HEDAO
         {
             base.OnInit(userData);
 
-            m_View = GetComponent<UIPanel>()?.ui as T;
-            if (m_View == null)
-            {
-                Log.Error("FGUI View is null!");
-                return;
-            }
+            m_UIPanel = GetComponent<UIPanel>();
+            m_View = m_UIPanel.ui as T;
         }
 
         protected override void OnOpen(object userData)
@@ -39,6 +36,13 @@ namespace HEDAO
         public void Close()
         {
             GameEntry.UI.CloseUIForm(UIForm);
+        }
+
+        protected override void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)
+        {
+            Log.Info("界面: {0}, uiGroupDepth: {1}, depthInUIGroup: {2}", UIForm.UIFormAssetName, uiGroupDepth, depthInUIGroup);
+
+            m_UIPanel.SetSortingOrder(uiGroupDepth * 10 + depthInUIGroup, true);
         }
     }
 }

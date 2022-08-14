@@ -20,6 +20,13 @@ namespace GameFramework.UI
         object InstantiateUIForm(object uiFormAsset);
 
         /// <summary>
+        /// 实例化界面。
+        /// </summary>
+        /// <param name="uiFormName">界面名。</param>
+        /// <returns>实例化后的界面。</returns>
+        void InstantiateUIFormAsync(string uiFormName, object userData, CreatFormSuccessCallback callback);
+
+        /// <summary>
         /// 创建界面。
         /// </summary>
         /// <param name="uiFormInstance">界面实例。</param>
