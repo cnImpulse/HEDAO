@@ -10,6 +10,7 @@ namespace HEDAO
     public class ReleaseSkillForm : FGUIForm<FGUIActionForm>
     {
         private SkillState m_Owner = null;
+        private List<int> m_SkillList = new List<int>();
 
         public GList actionList => View.m_panel_action.m_list_action;
 
@@ -20,7 +21,7 @@ namespace HEDAO
             actionList.defaultItem = FGUISkillItem.URL;
             actionList.itemRenderer = RenderListItem;
 
-            
+            View.m_panel_action.m_title.text = "技能";
         }
 
         protected override void OnOpen(object userData)
@@ -30,7 +31,12 @@ namespace HEDAO
             m_Owner = userData as SkillState;
             View.m_btn_cancel.onClick.Add(m_Owner.CancelAction);
 
-            actionList.numItems = 2;
+            m_SkillList.Clear();
+            foreach (var id in m_Owner.Owner.Data.RoleData.BattleSkillSet)
+            {
+                m_SkillList.Add(id);
+            }
+            actionList.numItems = m_SkillList.Count;
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -42,14 +48,16 @@ namespace HEDAO
 
         private void RenderListItem(int index, GObject obj)
         {
+            var skillId = m_SkillList[index];
             var item = obj as GButton;
-            item.onClick.Add(() => { OnClickSkillBtn(index); });
+            item.onClick.Clear();
+            item.onClick.Add(() => { OnClickSkillBtn(skillId); });
         }
 
         private void OnClickSkillBtn(int index)
         {
             Log.Info("请求释放技能: {0}", index);
-            m_Owner.ReqReleaseSkill(index);
+            m_Owner.OnSelectSkill(index);
         }
     }
 }

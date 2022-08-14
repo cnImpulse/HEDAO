@@ -9,6 +9,7 @@ namespace HEDAO
     public abstract class Entity : EntityLogic
     {
         private EntityData m_Data = null;
+        public EntityData Data => m_Data;
 
         public int Id => Entity.Id;
 

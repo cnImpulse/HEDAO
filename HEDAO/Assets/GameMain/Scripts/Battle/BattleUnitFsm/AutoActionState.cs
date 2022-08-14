@@ -43,7 +43,7 @@ namespace HEDAO
             {
                 yield return battleUnit.Move(path, end);
 
-                var canReleaseList = GridMap.Data.GetRangeGridList(Owner.Data.GridPos, 1);
+                var canReleaseList = GridMap.Data.GetRangeGridList(Owner.Data.GridPos, AI.MaxATKRange);
                 GameEntry.Effect.ShowAttackAreaEffect(canReleaseList, 0.5f);
                 yield return new WaitForSeconds(0.7f);
 

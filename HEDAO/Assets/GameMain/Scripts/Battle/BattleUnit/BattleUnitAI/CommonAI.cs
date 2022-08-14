@@ -16,17 +16,20 @@ namespace HEDAO
     public class CommonAI
     {
         private BattleUnit m_Owner = null;
+        private int m_MaxATKRange = 0;
 
         private GridMap m_GridMap => m_Owner.GridMap;
+        public int MaxATKRange => m_MaxATKRange;
 
         public CommonAI(BattleUnit battleUnit)
         {
             m_Owner = battleUnit;
-        }
 
-        protected virtual int GetATKRange()
-        {
-            return 1;
+            foreach (var skillId in m_Owner.Data.RoleData.BattleSkillSet)
+            {
+                var skillCfg = GameEntry.Cfg.Tables.TbBattleSkillCfg.Get(skillId);
+                m_MaxATKRange = Mathf.Max(m_MaxATKRange, skillCfg.CastDistance);
+            }
         }
 
         public void Attack(BattleUnit battleUnit)
@@ -36,14 +39,19 @@ namespace HEDAO
                 return;
             }
 
-            //battleUnit.Data.HP -= 10;
+            foreach(var skillId in m_Owner.Data.RoleData.BattleSkillSet)
+            {
+                var success = SkillMgr.Instance.ReqReleaseBattleSkill(skillId, m_Owner.Id, battleUnit.Id);
+                if (success)
+                {
+                    break;
+                }
+            }
         }
 
         public virtual BattleUnit SelectAttackTarget()
         {
-            var atkRange = GetATKRange();
-
-            var canAttackList = GetCanAttackGrids(atkRange, m_Owner.Data.MOV);
+            var canAttackList = GetCanAttackGrids(m_MaxATKRange, m_Owner.Data.MOV);
             var targetCamp = BattleUtl.GetHostileCamp(m_Owner.Data.CampType);
             BattleUnit target = null;
             foreach (var gridData in canAttackList)
@@ -74,8 +82,7 @@ namespace HEDAO
             foreach (var gridData in canMoveList)
             {
                 int distance = GridMapUtl.GetDistance(target.GridData, gridData);
-                int atkRange = GetATKRange();
-                if (distance > atkRange)
+                if (distance > m_MaxATKRange)
                 {
                     continue;
                 }

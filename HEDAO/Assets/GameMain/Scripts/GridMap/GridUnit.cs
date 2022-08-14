@@ -14,7 +14,7 @@ namespace HEDAO
     {
         private GridUnitData m_Data = null;
 
-        public GridUnitData Data => m_Data;
+        public new GridUnitData Data => m_Data;
 
         public GridMap GridMap { get; private set; }
         public GridData GridData => GridMap.Data.GetGridData(Data.GridPos);

@@ -11,11 +11,14 @@ namespace HEDAO
     {
         private SelectActionState m_Owner = null;
 
+        public GList actionList => View.m_panel_action.m_list_action;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
 
-            View.m_panel_action.m_list_action.itemRenderer = RenderListItem;
+            actionList.itemRenderer = RenderListItem;
+            View.m_panel_action.m_title.text = "行动";
         }
 
         protected override void OnOpen(object userData)
@@ -23,7 +26,7 @@ namespace HEDAO
             base.OnOpen(userData);
 
             m_Owner = userData as SelectActionState;
-            View.m_panel_action.m_list_action.numItems = 2;
+            actionList.numItems = 2;
         }
 
         protected override void OnClose(bool isShutdown, object userData)

@@ -13,8 +13,8 @@ namespace HEDAO
         public Attribute RoleAttribute => RoleData.Attribute;
         public Attribute ModifyAttribute { get; set; }
 
-        public int HP => RoleData.HP;
-        public int QI => RoleData.QI;
+        public int HP { get => RoleData.HP; set => RoleData.HP = value; }
+        public int QI { get => RoleData.QI; set => RoleData.QI = value; }
         public int MaxHP => Attribute.MaxHP;
         public int MaxQI => Attribute.MaxQI;
         public int STR => Attribute.STR;
@@ -35,6 +35,7 @@ namespace HEDAO
         {
             RoleData = roleData;
             ModifyAttribute = default;
+            Name = string.Format("{0}-{1}", roleData.Name, Id);
         }
     }
 }

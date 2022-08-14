@@ -9,6 +9,9 @@ namespace HEDAO
 {
     public class SkillState : ActionStateBase
     {
+        private int m_SkillId = 0;
+        private List<GridData> m_CanReleaseList = null;
+
         protected override void OnInit(IFsm<BattleUnit> fsm)
         {
             base.OnInit(fsm);
@@ -20,7 +23,7 @@ namespace HEDAO
         {
             base.OnEnter(fsm);
 
-            
+            GameEntry.Event.Subscribe(EventName.PointerDownGridMap, OnPointGridMap);
         }
 
         protected override void OnUpdate(IFsm<BattleUnit> fsm, float elapseSeconds, float realElapseSeconds)
@@ -30,39 +33,61 @@ namespace HEDAO
 
         protected override void OnLeave(IFsm<BattleUnit> fsm, bool isShutdown)
         {
+            m_SkillId = 0;
+            GameEntry.Effect.HideGridEffect();
+            GameEntry.Event.Unsubscribe(EventName.PointerDownGridMap, OnPointGridMap);
+
             base.OnLeave(fsm, isShutdown);
         }
 
-        public void ReqReleaseSkill(int skillId)
+        public void OnSelectSkill(int skillId)
         {
-            //GameEntry.UI.CloseUIForm(m_SerilId);
-            //m_SkillId = skillId;
-            //m_CanReleaseList = m_GridMap.Data.GetSkillReleaseRange(Owner, m_SkillId);
-            //m_GridMap.ShowAttackArea(m_CanReleaseList);
-            //GameEntry.Battle.SetAreaSelectEffect(m_CanReleaseList.ConvertAll((input) => input.GridPos), m_GridMap);
+            GameEntry.UI.CloseUIForm(m_ActionFormName);
+            var cfg = GameEntry.Cfg.Tables.TbBattleSkillCfg.Get(skillId);
+            if (cfg.CastDistance == 0)
+            {
+                // 直接释放
+                ChangeState<EndActionState>();
+                return;
+            }
+
+            m_SkillId = skillId;
+            m_CanReleaseList = GetSkillReleaseRange(m_SkillId);
+            GameEntry.Effect.ShowAttackAreaEffect(m_CanReleaseList);
         }
 
-        //private void OnPointGridMap(object sender, GameEventArgs e)
-        //{
-        //    var ne = e as GameEventBase;
-        //    var gridData = ne.UserData as GridData;
-        //    var gridUnit = gridData.GridUnit;
-        //    if (m_CanReleaseList.Contains(gridData))
-        //    {
-        //        if (gridUnit == null || !(gridUnit is BattleUnit))
-        //        {
-        //            return;
-        //        }
+        public List<GridData> GetSkillReleaseRange(int skillId)
+        {
+            var cfg = GameEntry.Cfg.Tables.TbBattleSkillCfg.Get(skillId);
+            return GridMap.Data.GetRangeGridList(Owner.Data.GridPos, cfg.CastDistance);
+        }
 
-        //        if (GameEntry.Skill.RequestReleaseSkill(m_SkillId, Owner.Id, gridUnit.Id))
-        //        {
-        //            ChangeState<EndActionState>();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        ChangeState<SkillState>();
-        //    }
-        //}
+        private void OnPointGridMap(object sender, GameEventArgs e)
+        {
+            if (m_SkillId == 0)
+            {
+                return;
+            }
+
+            var ne = e as GameEventBase;
+            var gridData = ne.EventData as GridData;
+            if (m_CanReleaseList.Contains(gridData))
+            {
+                var target = gridData.GridUnit as BattleUnit;
+                if (target == null)
+                {
+                    return;
+                }
+
+                if (SkillMgr.Instance.ReqReleaseBattleSkill(m_SkillId, Owner.Id, target.Id))
+                {
+                    ChangeState<EndActionState>();
+                }
+            }
+            else
+            {
+                ChangeState<SkillState>();
+            }
+        }
     }
 }

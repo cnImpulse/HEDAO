@@ -49,5 +49,11 @@ namespace HEDAO
         {
             entityComponent.ShowEffect<Effect>(data);
         }
+
+        public static T GetEntityData<T>(this EntityComponent entityComponent, int entityId)
+            where T : EntityData
+        {
+            return (entityComponent.GetEntity(entityId)?.Logic as Entity)?.Data as T;
+        }
     }
 }

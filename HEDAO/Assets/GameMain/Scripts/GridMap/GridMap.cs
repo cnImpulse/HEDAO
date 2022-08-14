@@ -17,7 +17,7 @@ namespace HEDAO
 
         private GridMapData m_Data = null;
 
-        public GridMapData Data => m_Data;
+        public new GridMapData Data => m_Data;
 
         private Dictionary<Vector2Int, GridUnit> m_GridUnitDic = default;
 

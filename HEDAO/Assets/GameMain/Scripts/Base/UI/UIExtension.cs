@@ -19,12 +19,12 @@ namespace HEDAO
     {
         private static Dictionary<string, UICfgItem> cfg = new Dictionary<string, UICfgItem>()
         {
-            [UIFromName.MenuForm]           = new UICfgItem(typeof(MenuForm),         UIFromName.MenuForm,         FGUIMenuForm.URL),
-            [UIFromName.SelectForm]         = new UICfgItem(typeof(SelectForm),       UIFromName.SelectForm,       FGUISelectForm.URL),
-            [UIFromName.LoadGameForm]       = new UICfgItem(typeof(LoadGameForm),     UIFromName.LoadGameForm,     FGUILoadGame.URL),
-            [UIFromName.BattleForm]         = new UICfgItem(typeof(BattleForm),       UIFromName.BattleForm,       FGUIBattleForm.URL),
-            [UIFromName.ActionForm]         = new UICfgItem(typeof(ActionForm),       UIFromName.ActionForm,       FGUIActionForm.URL),
-            [UIFromName.ReleaseSkillForm]   = new UICfgItem(typeof(ReleaseSkillForm), UIFromName.ReleaseSkillForm, FGUIActionForm.URL),
+            [UIFromName.MenuForm]           = new UICfgItem(typeof(MenuForm),         FGUIMenuForm.URL),
+            [UIFromName.SelectForm]         = new UICfgItem(typeof(SelectForm),       FGUISelectForm.URL),
+            [UIFromName.LoadGameForm]       = new UICfgItem(typeof(LoadGameForm),     FGUILoadGame.URL),
+            [UIFromName.BattleForm]         = new UICfgItem(typeof(BattleForm),       FGUIBattleForm.URL),
+            [UIFromName.ActionForm]         = new UICfgItem(typeof(ActionForm),       FGUIActionForm.URL),
+            [UIFromName.ReleaseSkillForm]   = new UICfgItem(typeof(ReleaseSkillForm), FGUIActionForm.URL),
         };
 
         public static UICfgItem GetCfg(string name)
@@ -36,14 +36,12 @@ namespace HEDAO
     public class UICfgItem
     {
         public Type FormType = default;
-        public string FormName = "";
         public string FormURL = "";
         public string FormGroup = "Default";
 
-        public UICfgItem(Type type, string name, string url, string group = "Default")
+        public UICfgItem(Type type, string url, string group = "Default")
         {
             FormType = type;
-            FormName = name;
             FormURL = url;
             FormGroup = group;
         }
