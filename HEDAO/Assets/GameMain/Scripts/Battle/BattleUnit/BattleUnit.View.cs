@@ -12,6 +12,7 @@ namespace HEDAO
     /// </summary>
     public partial class BattleUnit : GridUnit
     {
+        private HPBar m_HPBar = null;
         private SpriteRenderer m_SpriteRenderer = null;
 
         private BattleUnitData m_Data = null;
@@ -50,11 +51,13 @@ namespace HEDAO
             m_Data = userData as BattleUnitData;
 
             InitSprite();
+            m_HPBar = HPBar.CreateInstance(this);
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
             m_Data = null;
+            m_HPBar.Release();
 
             base.OnHide(isShutdown, userData);
         }

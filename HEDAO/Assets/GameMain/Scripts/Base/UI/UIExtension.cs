@@ -13,6 +13,7 @@ namespace HEDAO
         public const string BattleForm = "BattleForm";
         public const string ActionForm = "ActionForm";
         public const string ReleaseSkillForm = "ReleaseSkillForm";
+        public const string HPBar = "HPBar";
     }
 
     public static class UICfg
