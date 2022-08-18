@@ -9,6 +9,7 @@ namespace HEDAO
 {
     public class MoveState : BattleUnitStateBase
     {
+        private int m_EffectId = 0;
         private List<GridData> m_CanMoveList = null;
 
         protected override void OnEnter(IFsm<BattleUnit> fsm)
@@ -24,12 +25,36 @@ namespace HEDAO
         protected override void OnUpdate(IFsm<BattleUnit> fsm, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
+
+            if (m_CanMoveList != null)
+            {
+                var gridPos = GridMap.WorldPosToGridPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                if (m_CanMoveList.Contains(GridMap.Data.GetGridData(gridPos)))
+                {
+                    var position = GridMap.GridPosToWorldPos(gridPos);
+                    if (m_EffectId > 0)
+                    {
+                        GameEntry.Effect.SetEffectPos(m_EffectId, position);
+                    }
+                    else
+                    {
+                        m_EffectId = GameEntry.Effect.ShowEffect(GameEntry.Cfg.Effect.Select, position, true);
+                    }
+                }
+                else
+                {
+                    GameEntry.Effect.HideEffect(m_EffectId);
+                    m_EffectId = 0;
+                }
+            }
         }
 
         protected override void OnLeave(IFsm<BattleUnit> fsm, bool isShutdown)
         {
             m_CanMoveList = null;
             GameEntry.Effect.HideGridEffect();
+            GameEntry.Effect.HideEffect(m_EffectId);
+            m_EffectId = 0;
             GameEntry.Event.Unsubscribe(EventName.PointerDownGridMap, OnPointGridMap);
 
             base.OnLeave(fsm, isShutdown);

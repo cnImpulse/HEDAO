@@ -42,7 +42,7 @@ namespace HEDAO
         {
             Log.Info("界面: {0}, uiGroupDepth: {1}, depthInUIGroup: {2}", UIForm.UIFormAssetName, uiGroupDepth, depthInUIGroup);
 
-            m_UIPanel.SetSortingOrder(uiGroupDepth * 10 + depthInUIGroup, true);
+            m_UIPanel.SetSortingOrder(uiGroupDepth * 1000 + depthInUIGroup, true);
         }
     }
 }

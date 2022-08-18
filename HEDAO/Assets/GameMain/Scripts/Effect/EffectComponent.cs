@@ -44,7 +44,10 @@ namespace HEDAO
 
         public void HideEffect(int effectId)
         {
-            GameEntry.Entity.HideEntity(effectId);
+            if (GameEntry.Entity.HasEntity(effectId) || GameEntry.Entity.IsLoadingEntity(effectId))
+            {
+                GameEntry.Entity.HideEntity(effectId);
+            }
         }
 
         public void HideEffect(string name)
@@ -79,6 +82,15 @@ namespace HEDAO
         public int ShowAttackAreaEffect(List<GridData> area, float life = -1)
         {
             return ShowGridEffect(GameEntry.Cfg.GridEffect.Streak, area.ConvertAll((input) => input.GridPos), life, Color.red);
+        }
+
+        public void SetEffectPos(int effectId, Vector3 position)
+        {
+            var effectData = GameEntry.Entity.GetEntityData<EffectData>(effectId);
+            if (effectData != null)
+            {
+                effectData.Position = position;
+            }
         }
     }
 }
