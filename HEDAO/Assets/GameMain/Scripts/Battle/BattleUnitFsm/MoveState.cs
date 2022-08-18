@@ -24,8 +24,6 @@ namespace HEDAO
 
         protected override void OnUpdate(IFsm<BattleUnit> fsm, float elapseSeconds, float realElapseSeconds)
         {
-            base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
-
             if (m_CanMoveList != null)
             {
                 var gridPos = GridMap.WorldPosToGridPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -47,6 +45,8 @@ namespace HEDAO
                     m_EffectId = 0;
                 }
             }
+
+            base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
         }
 
         protected override void OnLeave(IFsm<BattleUnit> fsm, bool isShutdown)

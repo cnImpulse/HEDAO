@@ -37,6 +37,8 @@ namespace HEDAO
 
         public int ShowGridEffect(string name, List<Vector2Int> gridPosList, float lifetime = -1, Color color = default, Vector3 position = default)
         {
+            if (color == default) color = Color.white;
+
             GridEffectData effectData = new GridEffectData(gridPosList, name, color, position, lifetime);
             GameEntry.Entity.ShowEffect<GridEffect>(effectData);
             return effectData.Id;

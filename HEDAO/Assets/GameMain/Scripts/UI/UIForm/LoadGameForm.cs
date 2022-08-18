@@ -30,9 +30,14 @@ namespace HEDAO
             if (GameEntry.Save.HasData(index))
             {
                 item.m_btn_load.title = GameEntry.Save.GetSaveName(index);
+                item.m_btn_clear.onClick.Set(() => { GameEntry.Save.DeleteData(index); RenderListItem(index, obj); });
+            }
+            else
+            {
+                item.m_btn_load.title = "empty";
             }
 
-            item.m_btn_load.onClick.Add(() => { OnClickLoad(index); });
+            item.m_btn_load.onClick.Set(() => { OnClickLoad(index); });
         }
 
         private void OnClickLoad(int index)

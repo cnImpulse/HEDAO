@@ -9,7 +9,7 @@ namespace HEDAO
 {
     public class SelectForm : FGUIForm<FGUISelectForm>
     {
-        private List<int> m_CanSelectRoleList = new List<int> { 1 };
+        private List<int> m_CanSelectRoleList = new List<int> { 1, 2 };
 
         protected override void OnInit(object userData)
         {
@@ -57,14 +57,14 @@ namespace HEDAO
 
         private void OnClickSure()
         {
-            int index = View.m_list.selectedIndex;
-            if (index < 0)
+            var list = View.m_list.GetSelection();
+            if (list.Count == 0)
             {
-                Log.Info("选择一名开局角色。");
+                Log.Info("至少选择一名开局角色。");
                 return;
             }
 
-            GameEntry.Save.SaveData.RoleList.Add(m_CanSelectRoleList[index]);
+            GameEntry.Save.SaveData.RoleList.AddRange(list.ConvertAll((input) => { return m_CanSelectRoleList[input]; }));
             GameEntry.Event.Fire(this, EventName.StartGame);
             Close();
         }

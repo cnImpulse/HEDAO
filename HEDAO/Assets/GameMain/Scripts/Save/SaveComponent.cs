@@ -18,6 +18,7 @@ namespace HEDAO
 
         public SaveData LoadGame(int index)
         {
+            Log.Info("加载存档.");
             if (HasData(index))
             {
                 SaveData = GameEntry.Setting.GetObject<SaveData>(GetSaveName(index));
@@ -38,6 +39,7 @@ namespace HEDAO
 
         public void DeleteData(int index)
         {
+            Log.Info("删除存档.");
             GameEntry.Setting.RemoveSetting(GetSaveName(index));
         }
 

@@ -26,12 +26,19 @@ namespace HEDAO
             base.OnOpen(userData);
 
             m_Owner = userData as SelectActionState;
+            InitActionPanelPos();
             actionList.numItems = 2;
         }
 
         protected override void OnClose(bool isShutdown, object userData)
         {
             base.OnClose(isShutdown, userData);
+        }
+
+        private void InitActionPanelPos()
+        {
+            var isLeft = Camera.main.WorldToViewportPoint(m_Owner.Owner.transform.position).x < 0.5;
+            View.m_panel_action.position = new Vector3(isLeft ? Screen.width - 320 : 320, 85);
         }
 
         private void RenderListItem(int index, GObject obj)

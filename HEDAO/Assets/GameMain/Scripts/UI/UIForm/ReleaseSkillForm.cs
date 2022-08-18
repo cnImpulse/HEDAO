@@ -49,9 +49,12 @@ namespace HEDAO
         private void RenderListItem(int index, GObject obj)
         {
             var skillId = m_SkillList[index];
-            var item = obj as GButton;
-            item.onClick.Clear();
-            item.onClick.Add(() => { OnClickSkillBtn(skillId); });
+            var item = obj as FGUISkillItem;
+
+            var skillCfg = GameEntry.Cfg.Tables.TbBattleSkillCfg.Get(skillId);
+            item.m_text_name.text = skillCfg.Name;
+            item.m_text_cost.text = string.Format("Cost: {0} Power: {1}", skillCfg.Cost, skillCfg.Power);
+            item.onClick.Set(() => { OnClickSkillBtn(skillId); });
         }
 
         private void OnClickSkillBtn(int index)
