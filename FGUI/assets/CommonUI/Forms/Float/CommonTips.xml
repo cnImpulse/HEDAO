@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" extention="Button">
+  <displayList>
+    <text id="n0_rzkn" name="title" xy="1738,700" pivot="1,0" size="152,44" fontSize="32" color="#ff7777" align="center" vAlign="middle" bold="true" singleLine="true" text="阿巴阿巴">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+  <Button/>
+  <transition name="fade_close" autoPlay="true">
+    <item time="0" type="Alpha" target="n0_rzkn" tween="true" startValue="0" endValue="0.96" duration="19"/>
+    <item time="0" type="XY" target="n0_rzkn" value="-,700"/>
+    <item time="30" type="Alpha" target="n0_rzkn" tween="true" startValue="1" endValue="0" duration="24" ease="Quad.In"/>
+    <item time="30" type="XY" target="n0_rzkn" tween="true" startValue="-,700" endValue="-,500" duration="24" ease="Quad.In"/>
+  </transition>
+</component>

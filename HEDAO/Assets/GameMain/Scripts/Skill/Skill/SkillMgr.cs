@@ -40,6 +40,7 @@ namespace HEDAO
             target.HP -= skillCfg.Power;
 
             string log = string.Format("{0}释放技能{1}, 对{2}造成{3}点伤害.", caster.Name, skillCfg.Name, target.Name, skillCfg.Power);
+            GameEntry.UI.OpenUIForm(UIFromName.CommonTips, log as object);
             Log.Info(log);
             return true;
         }
