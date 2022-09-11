@@ -13,8 +13,9 @@ namespace HEDAO
         public const string BattleForm = "BattleForm";
         public const string ActionForm = "ActionForm";
         public const string ReleaseSkillForm = "ReleaseSkillForm";
-        public const string HPBar = "HPBar";
+        
         public const string CommonTips = "CommonTips";
+        public const string BattleUnitInfo = "BattleUnitInfo";
     }
 
     public static class UICfg
@@ -28,6 +29,7 @@ namespace HEDAO
             [UIFromName.ActionForm]         = new UICfgItem(typeof(ActionForm),       FGUIActionForm.URL),
             [UIFromName.ReleaseSkillForm]   = new UICfgItem(typeof(ReleaseSkillForm), FGUIActionForm.URL),
             [UIFromName.CommonTips]         = new UICfgItem(typeof(CommonTips),       FGUICommonTips.URL),
+            [UIFromName.BattleUnitInfo]     = new UICfgItem(typeof(BattleUnitInfo),   FGUIBattleUnitInfo.URL),
         };
 
         public static UICfgItem GetCfg(string name)

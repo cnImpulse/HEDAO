@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="100,40" pivot="0.5,0.5" anchor="true">
+  <displayList>
+    <component id="n0_qwwl" name="hp_bar" src="dl574x" fileName="Components/Progress/HPBar.xml" xy="50,10" size="100,20">
+      <relation target="" sidePair="width-width,height-height"/>
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <component id="n2_ty09" name="qi_bar" src="ty0953" fileName="Components/Progress/QIBar.xml" xy="50,30" size="100,20">
+      <relation target="" sidePair="width-width,height-height"/>
+      <ProgressBar value="50" max="100"/>
+    </component>
+  </displayList>
+</component>

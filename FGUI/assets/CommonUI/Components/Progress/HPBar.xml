@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="100,20" pivot="0.5,0.5" anchor="true" extention="ProgressBar">
+  <displayList>
+    <graph id="n0_dl57" name="n0" xy="0,0" size="100,20" type="rect" lineSize="3" lineColor="#ff333333" fillColor="#ff666666">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <graph id="n1_dl57" name="bar" xy="3,3" size="94,14" type="rect" lineSize="0" lineColor="#ff666666" fillColor="#ffff7777">
+      <relation target="" sidePair="width-width,height-height"/>
+    </graph>
+    <text id="n3_dl57" name="title" xy="0,-3" pivot="0.5,0.5" size="100,27" fontSize="15" align="center" vAlign="middle" autoSize="none" text="1">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+  <ProgressBar titleType="valueAndmax"/>
+</component>

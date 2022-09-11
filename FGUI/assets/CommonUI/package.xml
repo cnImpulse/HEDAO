@@ -23,8 +23,10 @@
     <component id="uyzr4t" name="ActionPanel.xml" path="/Components/Temp/" exported="true"/>
     <component id="uyzr4v" name="ActionItem.xml" path="/Components/ListItem/" exported="true"/>
     <component id="l0qc4w" name="SkillItem.xml" path="/Components/ListItem/" exported="true"/>
-    <component id="dl574x" name="HPBar.xml" path="/Forms/Float/" exported="true"/>
+    <component id="dl574x" name="HPBar.xml" path="/Components/Progress/"/>
     <component id="rzkn50" name="CommonTips.xml" path="/Forms/Float/" exported="true"/>
+    <component id="qwwl51" name="BattleUnitInfo.xml" path="/Forms/Float/" exported="true"/>
+    <component id="ty0953" name="QIBar.xml" path="/Components/Progress/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>
