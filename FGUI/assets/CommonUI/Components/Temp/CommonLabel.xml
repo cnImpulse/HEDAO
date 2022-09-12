@@ -2,6 +2,6 @@
 <component size="300,100" extention="Label">
   <displayList>
     <loader id="n2_t810" name="icon" xy="0,0" pivot="0.5,0.5" size="300,100" url="ui://rt51n0kjaoboa" fill="scaleFree"/>
-    <text id="n3_t810" name="title" xy="0,0" pivot="0.5,0.5" size="300,100" fontSize="40" align="center" vAlign="middle" autoSize="none" bold="true" text="玩家回合"/>
+    <text id="n3_t810" name="title" xy="1,0" pivot="0.5,0.5" size="300,100" fontSize="40" align="center" vAlign="middle" autoSize="none" bold="true" text="玩家回合"/>
   </displayList>
 </component>

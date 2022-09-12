@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace FGUI.CommonUI
 {
-    public partial class FGUICommonTips : GButton
+    public partial class FGUICommonTips : GLabel
     {
         public Transition m_fade_close;
         public const string URL = "ui://rt51n0kjrzkn50";

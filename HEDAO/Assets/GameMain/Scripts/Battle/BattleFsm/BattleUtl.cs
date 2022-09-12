@@ -43,7 +43,16 @@ namespace HEDAO
         public static string GetText(CampType camp, string text)
         {
             string color = GetHexCampColor(camp);
-            return string.Format("<color={0}>{1}</color>", color, text);
+            return string.Format("[color={0}]{1}[/color]", color, text);
+        }
+
+        public static string GetCampText(CampType camp)
+        {
+            if (camp == CampType.Player)
+            {
+                return "己方";
+            }
+            return "敌方";
         }
     }
 }

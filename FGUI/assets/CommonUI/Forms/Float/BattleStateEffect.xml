@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" extention="Label">
+  <displayList>
+    <image id="n3_vg3s" name="n3" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="960,540" pivot="0.5,0.5" anchor="true" size="300,100" alpha="0.7"/>
+    <richtext id="n4_vg3s" name="title" xy="964,539" pivot="0.5,0.5" anchor="true" size="300,100" fontSize="48" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" bold="true" singleLine="true" text="[color=#70FFF0]文本[/color]"/>
+  </displayList>
+  <transition name="anim">
+    <item time="0" type="XY" target="n3_vg3s" tween="true" startValue="960,540" endValue="960,400" duration="24" ease="Quad.InOut"/>
+    <item time="0" type="XY" target="n4_vg3s" value="964,540"/>
+    <item time="0" type="XY" target="n4_vg3s" tween="true" startValue="960,540" endValue="960,400" duration="24" ease="Quad.InOut"/>
+    <item time="24" type="Alpha" target="n3_vg3s" tween="true" startValue="0.7" endValue="0" duration="12" ease="Quad.InOut"/>
+    <item time="24" type="Alpha" target="n4_vg3s" tween="true" startValue="1" endValue="0" duration="12" ease="Quad.InOut"/>
+  </transition>
+</component>

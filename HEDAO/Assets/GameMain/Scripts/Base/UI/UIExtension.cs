@@ -16,20 +16,22 @@ namespace HEDAO
         
         public const string CommonTips = "CommonTips";
         public const string BattleUnitInfo = "BattleUnitInfo";
+        public const string BattleStateEffect = "BattleStateEffect";
     }
 
     public static class UICfg
     {
         private static Dictionary<string, UICfgItem> cfg = new Dictionary<string, UICfgItem>()
         {
-            [UIFromName.MenuForm]           = new UICfgItem(typeof(MenuForm),         FGUIMenuForm.URL),
-            [UIFromName.SelectForm]         = new UICfgItem(typeof(SelectForm),       FGUISelectForm.URL),
-            [UIFromName.LoadGameForm]       = new UICfgItem(typeof(LoadGameForm),     FGUILoadGame.URL),
-            [UIFromName.BattleForm]         = new UICfgItem(typeof(BattleForm),       FGUIBattleForm.URL),
-            [UIFromName.ActionForm]         = new UICfgItem(typeof(ActionForm),       FGUIActionForm.URL),
-            [UIFromName.ReleaseSkillForm]   = new UICfgItem(typeof(ReleaseSkillForm), FGUIActionForm.URL),
-            [UIFromName.CommonTips]         = new UICfgItem(typeof(CommonTips),       FGUICommonTips.URL),
-            [UIFromName.BattleUnitInfo]     = new UICfgItem(typeof(BattleUnitInfo),   FGUIBattleUnitInfo.URL),
+            [UIFromName.MenuForm]           = new UICfgItem(typeof(MenuForm),           FGUIMenuForm.URL),
+            [UIFromName.SelectForm]         = new UICfgItem(typeof(SelectForm),         FGUISelectForm.URL),
+            [UIFromName.LoadGameForm]       = new UICfgItem(typeof(LoadGameForm),       FGUILoadGame.URL),
+            [UIFromName.BattleForm]         = new UICfgItem(typeof(BattleForm),         FGUIBattleForm.URL),
+            [UIFromName.ActionForm]         = new UICfgItem(typeof(ActionForm),         FGUIActionForm.URL),
+            [UIFromName.ReleaseSkillForm]   = new UICfgItem(typeof(ReleaseSkillForm),   FGUIActionForm.URL),
+            [UIFromName.CommonTips]         = new UICfgItem(typeof(CommonTips),         FGUICommonTips.URL),
+            [UIFromName.BattleUnitInfo]     = new UICfgItem(typeof(BattleUnitInfo),     FGUIBattleUnitInfo.URL),
+            [UIFromName.BattleStateEffect]  = new UICfgItem(typeof(BattleStateEffect),  FGUIBattleStateEffect.URL),
         };
 
         public static UICfgItem GetCfg(string name)

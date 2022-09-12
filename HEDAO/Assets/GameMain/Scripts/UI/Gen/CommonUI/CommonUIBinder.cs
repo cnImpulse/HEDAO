@@ -18,6 +18,7 @@ namespace FGUI.CommonUI
             UIObjectFactory.SetPackageItemExtension(FGUIBattleForm.URL, typeof(FGUIBattleForm));
             UIObjectFactory.SetPackageItemExtension(FGUIActionForm.URL, typeof(FGUIActionForm));
             UIObjectFactory.SetPackageItemExtension(FGUIActionPanel.URL, typeof(FGUIActionPanel));
+            UIObjectFactory.SetPackageItemExtension(FGUIBattleStateEffect.URL, typeof(FGUIBattleStateEffect));
             UIObjectFactory.SetPackageItemExtension(FGUISelectForm.URL, typeof(FGUISelectForm));
             UIObjectFactory.SetPackageItemExtension(FGUIRolePanel.URL, typeof(FGUIRolePanel));
         }

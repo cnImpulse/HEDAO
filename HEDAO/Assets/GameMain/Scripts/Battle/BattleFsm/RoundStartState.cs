@@ -13,6 +13,8 @@ namespace HEDAO
         {
             base.OnEnter(fsm);
 
+            GameEntry.UI.OpenUIForm(UIFromName.BattleStateEffect, this);
+
             var battleUnitList = BattleData.GridMap.GetBattleUnitList(BattleData.ActiveCamp);
             foreach (var battleUnit in battleUnitList)
             {
@@ -23,8 +25,6 @@ namespace HEDAO
         protected override void OnUpdate(IFsm<ProcedureBattle> fsm, float elapseSeconds, float realElapseSeconds)
         {
             base.OnUpdate(fsm, elapseSeconds, realElapseSeconds);
-
-            ChangeState<BattleUnitSelectState>(fsm);
         }
 
         protected override void OnLeave(IFsm<ProcedureBattle> fsm, bool isShutdown)

@@ -42,8 +42,6 @@ namespace HEDAO
 
         protected override void OnHide(bool isShutdown, object userData)
         {
-            GameEntry.Entity.DetachChildEntities(Id);
-
             GameEntry.Event.Unsubscribe(EventName.BattleUnitDead, OnBattleUnitDead);
             GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowBattleUnitScuess);
 
