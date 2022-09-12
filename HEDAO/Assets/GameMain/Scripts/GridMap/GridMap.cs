@@ -35,15 +35,35 @@ namespace HEDAO
             base.OnShow(userData);
 
             GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowBattleUnitScuess);
+            GameEntry.Event.Subscribe(EventName.BattleUnitDead, OnBattleUnitDead);
 
             m_Data = userData as GridMapData;
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
+            GameEntry.Entity.DetachChildEntities(Id);
+
+            GameEntry.Event.Unsubscribe(EventName.BattleUnitDead, OnBattleUnitDead);
             GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowBattleUnitScuess);
 
             base.OnHide(isShutdown, userData);
+        }
+
+        protected override void OnAttached(EntityLogic childEntity, Transform parentTransform, object userData)
+        {
+            base.OnAttached(childEntity, parentTransform, userData);
+
+            var gridUnit = childEntity as GridUnit;
+            m_GridUnitDic.Add(gridUnit.Data.GridPos, gridUnit);
+        }
+
+        protected override void OnDetached(EntityLogic childEntity, object userData)
+        {
+            var gridUnit = childEntity as GridUnit;
+            m_GridUnitDic.Remove(gridUnit.Data.GridPos);
+
+            base.OnDetached(childEntity, userData);
         }
 
         /// <summary>
@@ -68,30 +88,7 @@ namespace HEDAO
         public bool RegisterBattleUnit(RoleData roleData, Vector2Int gridPos, CampType campType)
         {
             BattleUnitData battleUnitData = new BattleUnitData(roleData, gridPos, campType);
-            //if (gridData == null || !gridData.CanArrive())
-            //{
-            //    Log.Warning("注册战斗单位失败!");
-            //    return false;
-            //}
-
             GameEntry.Entity.ShowBattleUnit(battleUnitData);
-            return true;
-        }
-
-        /// <summary>
-        /// 注销网格单位实体
-        /// </summary>
-        public bool UnRegisterGridUnit(GridUnit gridUnit)
-        {
-            if (gridUnit == null)
-            {
-                Log.Warning("注销网格单位失败!");
-                return false;
-            }
-
-            m_GridUnitDic.Remove(gridUnit.Data.GridPos);
-            gridUnit.GridData.OnGridUnitLeave();
-            GameEntry.Entity.HideEntity(gridUnit);
             return true;
         }
 
@@ -140,7 +137,7 @@ namespace HEDAO
             gridUnit.transform.position = GridPosToWorldPos(gridPos);
         }
 
-        public void OnShowBattleUnitScuess(object sender, GameEventArgs e)
+        private void OnShowBattleUnitScuess(object sender, GameEventArgs e)
         {
             var ne = (ShowEntitySuccessEventArgs)e;
 
@@ -150,9 +147,7 @@ namespace HEDAO
                 return;
             }
 
-            m_GridUnitDic.Add(battleUnit.Data.GridPos, battleUnit);
             GameEntry.Entity.AttachEntity(battleUnit.Id, Id);
-            battleUnit.GridData.OnGridUnitEnter(battleUnit);
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -175,6 +170,13 @@ namespace HEDAO
                 }
                 GameEntry.Event.Fire(this, EventName.PointerDownGridMap, gridData);
             }
+        }
+
+        private void OnBattleUnitDead(object sender, GameEventArgs e)
+        {
+            var ne = (GameEventBase)e;
+            var id = (VarInt32)ne.EventData;
+            GameEntry.Entity.HideEntity(id);
         }
     }
 }

@@ -55,5 +55,11 @@ namespace HEDAO
         {
             return (entityComponent.GetEntity(entityId)?.Logic as Entity)?.Data as T;
         }
+
+        public static T GetEntityLogic<T>(this EntityComponent entityComponent, int entityId)
+            where T : EntityLogic
+        {
+            return entityComponent.GetEntity(entityId)?.Logic as T;
+        }
     }
 }

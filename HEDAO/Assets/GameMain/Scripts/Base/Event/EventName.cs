@@ -8,5 +8,7 @@ namespace HEDAO
 
         public const string BattleUnitMove = "BattleUnitMove";
         public const string BattleUnitActionEnd = "BattleUnitActionEnd";
+
+        public const string BattleUnitDead = "BattleUnitDead";
     }
 }

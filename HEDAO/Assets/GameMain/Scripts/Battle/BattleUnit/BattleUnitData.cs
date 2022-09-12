@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using GameFramework.DataTable;
 using System.Collections.Generic;
+using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
@@ -13,7 +14,18 @@ namespace HEDAO
         public Attribute RoleAttribute => RoleData.Attribute;
         public Attribute ModifyAttribute { get; set; }
 
-        public int HP { get => RoleData.HP; set => RoleData.HP = value; }
+        public int HP
+        {
+            get => RoleData.HP;
+            set
+            {
+                if (value <= 0)
+                {
+                    GameEntry.Event.Fire(this, EventName.BattleUnitDead, (VarInt32)Id);
+                }
+                RoleData.HP = value;
+            }
+        }
         public int QI { get => RoleData.QI; set => RoleData.QI = value; }
         public int MaxHP => Attribute.MaxHP;
         public int MaxQI => Attribute.MaxQI;

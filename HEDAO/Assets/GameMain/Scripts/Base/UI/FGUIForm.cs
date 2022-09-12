@@ -40,7 +40,7 @@ namespace HEDAO
 
         protected override void OnDepthChanged(int uiGroupDepth, int depthInUIGroup)
         {
-            Log.Info("界面: {0}, uiGroupDepth: {1}, depthInUIGroup: {2}", UIForm.UIFormAssetName, uiGroupDepth, depthInUIGroup);
+            //Log.Info("界面: {0}, uiGroupDepth: {1}, depthInUIGroup: {2}", UIForm.UIFormAssetName, uiGroupDepth, depthInUIGroup);
 
             m_UIPanel.SetSortingOrder(uiGroupDepth * 1000 + depthInUIGroup, true);
         }

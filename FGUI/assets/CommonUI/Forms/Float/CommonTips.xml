@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1920,1080" extention="Button">
+<component size="1920,1080" opaque="false" extention="Button">
   <displayList>
     <text id="n0_rzkn" name="title" xy="1738,700" pivot="1,0" size="152,44" fontSize="32" color="#ff7777" align="center" vAlign="middle" bold="true" singleLine="true" text="阿巴阿巴">
       <relation target="" sidePair="width-width,height-height"/>

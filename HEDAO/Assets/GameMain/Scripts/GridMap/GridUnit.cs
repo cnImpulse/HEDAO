@@ -45,10 +45,12 @@ namespace HEDAO
 
             GridMap = parentEntity as GridMap;
             transform.position = GridMap.GridPosToWorldPos(m_Data.GridPos);
+            GridData.OnGridUnitEnter(this);
         }
 
         protected override void OnDetachFrom(EntityLogic parentEntity, object userData)
         {
+            GridData.OnGridUnitLeave();
             GridMap = null;
 
             base.OnDetachFrom(parentEntity, userData);
