@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <image id="n24_mf1c" name="n24" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="362,85" pivot="0.5,0.5" size="1200,200"/>
+    <list id="n0_mf1c" name="list_disciple" xy="362,85" pivot="0.5,0.5" size="1200,200" layout="row" overflow="scroll" scroll="horizontal" margin="0,0,50,50" colGap="20" defaultItem="ui://rt51n0kjmv3559" vAlign="middle">
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <loader id="n1_mf1c" name="n1" xy="362,284" pivot="0.5,0.5" size="1200,750" url="ui://rt51n0kjaoboa" fill="scaleFree"/>
+    <loader id="n2_mf1c" name="img_disciple" xy="812,404" pivot="0.5,0.5" size="300,500" url="ui://rt51n0kjaoboa" fill="scaleFree"/>
+    <text id="n8_mf1c" name="n8" xy="452,582" pivot="0.5,0.5" size="120,80" group="n10_mf1c" fontSize="24" vAlign="middle" autoSize="none" text="生命值:"/>
+    <text id="n9_mf1c" name="txt_hp" xy="572,582" pivot="0.5,0.5" size="180,80" group="n10_mf1c" fontSize="24" vAlign="middle" autoSize="none" text="0"/>
+    <group id="n10_mf1c" name="n10" xy="452,582" size="300,80" group="n20_mf1c" advanced="true" layout="hz" excludeInvisibles="true"/>
+    <text id="n11_mf1c" name="n11" xy="452,662" pivot="0.5,0.5" size="120,80" group="n13_mf1c" fontSize="24" vAlign="middle" autoSize="none" text="灵气值:"/>
+    <text id="n12_mf1c" name="txt_qi" xy="572,662" pivot="0.5,0.5" size="180,80" group="n13_mf1c" fontSize="24" vAlign="middle" autoSize="none" text="0"/>
+    <group id="n13_mf1c" name="n13" xy="452,662" size="300,80" group="n20_mf1c" advanced="true" layout="hz" excludeInvisibles="true"/>
+    <text id="n14_mf1c" name="n14" xy="452,742" pivot="0.5,0.5" size="120,80" group="n16_mf1c" fontSize="24" vAlign="middle" autoSize="none" text="攻击力:"/>
+    <text id="n15_mf1c" name="txt_atk" xy="572,742" pivot="0.5,0.5" size="180,80" group="n16_mf1c" fontSize="24" vAlign="middle" autoSize="none" text="0"/>
+    <group id="n16_mf1c" name="n16" xy="452,742" size="300,80" group="n20_mf1c" advanced="true" layout="hz" excludeInvisibles="true"/>
+    <text id="n17_mf1c" name="n17" xy="452,822" pivot="0.5,0.5" size="120,80" group="n19_mf1c" fontSize="24" vAlign="middle" autoSize="none" text="防御力:"/>
+    <text id="n18_mf1c" name="txt_def" xy="572,822" pivot="0.5,0.5" size="180,80" group="n19_mf1c" fontSize="24" vAlign="middle" autoSize="none" text="0"/>
+    <group id="n19_mf1c" name="n19" xy="452,822" size="300,80" group="n20_mf1c" advanced="true" layout="hz" excludeInvisibles="true"/>
+    <group id="n20_mf1c" name="n20" xy="452,582" size="300,320" advanced="true" layout="vt" excludeInvisibles="true"/>
+    <image id="n21_mf1c" name="n21" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="452,407" pivot="0.5,0.5" size="300,120" group="n23_mf1c"/>
+    <text id="n22_mf1c" name="txt_name" xy="452,407" pivot="0.5,0.5" size="300,120" group="n23_mf1c" fontSize="32" align="center" vAlign="middle" autoSize="none" text="阿三"/>
+    <group id="n23_mf1c" name="n23" xy="452,407" size="300,120"/>
+    <component id="n27_mf1c" name="btn_close" src="ja3th" fileName="Components/Button/CloseButton.xml" xy="1476,316" pivot="0.5,0.5"/>
+  </displayList>
+</component>

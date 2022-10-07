@@ -10,6 +10,8 @@ namespace HEDAO
         public const string MenuForm = "MenuForm";
         public const string SelectForm = "SelectForm";
         public const string LoadGameForm = "LoadGame";
+        public const string MainForm = "MainForm";
+        public const string DiscipleForm = "DiscipleForm";
         public const string BattleForm = "BattleForm";
         public const string ActionForm = "ActionForm";
         public const string ReleaseSkillForm = "ReleaseSkillForm";
@@ -32,6 +34,8 @@ namespace HEDAO
             [UIFromName.CommonTips]         = new UICfgItem(typeof(CommonTips),         FGUICommonTips.URL),
             [UIFromName.BattleUnitInfo]     = new UICfgItem(typeof(BattleUnitInfo),     FGUIBattleUnitInfo.URL),
             [UIFromName.BattleStateEffect]  = new UICfgItem(typeof(BattleStateEffect),  FGUIBattleStateEffect.URL),
+            [UIFromName.MainForm]           = new UICfgItem(typeof(MainForm),           FGUIMainForm.URL),
+            [UIFromName.DiscipleForm]       = new UICfgItem(typeof(DiscipleForm),       FGUIDiscipleForm.URL),
         };
 
         public static UICfgItem GetCfg(string name)

@@ -14,11 +14,9 @@
     <component id="ja3th" name="CloseButton.xml" path="/Components/Button/"/>
     <component id="zjyej" name="SelectForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="zjyek" name="RolePanel.xml" path="/Components/Temp/" exported="true"/>
-    <component id="zjyel" name="CommonButton.xml" path="/Components/Button/"/>
     <component id="ga5tm" name="RoleItem.xml" path="/Components/ListItem/" exported="true"/>
     <component id="105c4o" name="Check.xml" path="/Components/Button/"/>
     <component id="ut3j4p" name="BattleForm.xml" path="/Forms/FullScreen/" exported="true"/>
-    <component id="t8104q" name="CommonLabel.xml" path="/Components/Temp/"/>
     <component id="uyzr4r" name="ActionForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="uyzr4t" name="ActionPanel.xml" path="/Components/Temp/" exported="true"/>
     <component id="uyzr4v" name="ActionItem.xml" path="/Components/ListItem/" exported="true"/>
@@ -28,6 +26,11 @@
     <component id="qwwl51" name="BattleUnitInfo.xml" path="/Forms/Float/" exported="true"/>
     <component id="ty0953" name="QIBar.xml" path="/Components/Progress/"/>
     <component id="vg3s54" name="BattleStateEffect.xml" path="/Forms/Float/" exported="true"/>
+    <component id="mv3555" name="MainForm.xml" path="/Forms/FullScreen/" exported="true"/>
+    <component id="mv3556" name="CommonButton.xml" path="/Components/Button/"/>
+    <component id="mv3557" name="DiscipleForm.xml" path="/Forms/Popup/" exported="true"/>
+    <component id="mv3558" name="PrepareForm.xml" path="/Forms/FullScreen/" exported="true"/>
+    <component id="mv3559" name="DiscipleItem.xml" path="/Components/ListItem/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

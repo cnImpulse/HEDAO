@@ -16,6 +16,12 @@ namespace HEDAO
 
             m_UIPanel = GetComponent<UIPanel>();
             m_View = m_UIPanel.ui as T;
+
+            var btnClose = m_View.GetChild("btn_close");
+            if (btnClose != null)
+            {
+                btnClose.asButton.onClick.Set(Close);
+            }
         }
 
         protected override void OnOpen(object userData)

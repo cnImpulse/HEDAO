@@ -13,7 +13,6 @@ namespace HEDAO
         {
             base.OnInit(userData);
 
-            View.m_btn_close.onClick.Add(() => { Close(); });
             View.m_list.RemoveChildren();
             View.m_list.itemRenderer = RenderListItem;
             View.m_list.numItems = 3;
