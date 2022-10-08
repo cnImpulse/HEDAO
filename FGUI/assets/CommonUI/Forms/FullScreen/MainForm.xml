@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
   <displayList>
-    <component id="n2_mv35" name="btn_go" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="1610,901" size="240,120">
+    <component id="n2_mv35" name="btn_go" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="1620,900" size="240,120">
       <Button title="历练"/>
     </component>
     <component id="n3_mv35" name="btn_disciple" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="1320,900" size="240,120">

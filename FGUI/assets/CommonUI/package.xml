@@ -31,6 +31,7 @@
     <component id="mv3557" name="DiscipleForm.xml" path="/Forms/Popup/" exported="true"/>
     <component id="mv3558" name="PrepareForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="mv3559" name="DiscipleItem.xml" path="/Components/ListItem/" exported="true"/>
+    <component id="soef5a" name="RadarGraph.xml" path="/Components/Temp/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

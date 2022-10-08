@@ -7,20 +7,21 @@ using FairyGUI;
 
 namespace HEDAO
 {
-    public class MainForm : FGUIForm<FGUIMainForm>
+    public class PrepareForm : FGUIForm<FGUIPrepareForm>
     {
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
 
-            View.m_btn_disciple.onClick.Set(OnClickDisciple);
-            View.m_btn_go.onClick.Set(OnClickGo);
+            View.m_list_team.itemRenderer = RenderListItem;
+            View.m_btn_return.onClick.Set(OnClickReturn);
         }
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
+            View.m_list_team.numItems = 4;
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -28,14 +29,15 @@ namespace HEDAO
             base.OnClose(isShutdown, userData);
         }
 
-        private void OnClickDisciple()
+        private void RenderListItem(int index, GObject obj)
         {
-            GameEntry.UI.OpenUIForm(UIFromName.DiscipleForm);
+            var item = obj.asButton;
+            item.title = "Пе";
         }
 
-        private void OnClickGo()
+        private void OnClickReturn()
         {
-            GameEntry.UI.OpenUIForm(UIFromName.PrepareForm);
+            GameEntry.UI.OpenUIForm(UIFromName.MainForm);
             Close();
         }
     }

@@ -9,6 +9,7 @@ namespace FGUI.CommonUI
     {
         public GList m_list_team;
         public GButton m_btn_go;
+        public GButton m_btn_return;
         public const string URL = "ui://rt51n0kjmv3558";
 
         public static FGUIPrepareForm CreateInstance()
@@ -22,6 +23,7 @@ namespace FGUI.CommonUI
 
             m_list_team = (GList)GetChild("list_team");
             m_btn_go = (GButton)GetChild("btn_go");
+            m_btn_return = (GButton)GetChild("btn_return");
         }
     }
 }

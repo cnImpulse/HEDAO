@@ -18,6 +18,7 @@ namespace FGUI.CommonUI
             UIObjectFactory.SetPackageItemExtension(FGUIPrepareForm.URL, typeof(FGUIPrepareForm));
             UIObjectFactory.SetPackageItemExtension(FGUIBattleUnitInfo.URL, typeof(FGUIBattleUnitInfo));
             UIObjectFactory.SetPackageItemExtension(FGUICommonTips.URL, typeof(FGUICommonTips));
+            UIObjectFactory.SetPackageItemExtension(FGUIRadarGraph.URL, typeof(FGUIRadarGraph));
             UIObjectFactory.SetPackageItemExtension(FGUIBattleForm.URL, typeof(FGUIBattleForm));
             UIObjectFactory.SetPackageItemExtension(FGUIActionForm.URL, typeof(FGUIActionForm));
             UIObjectFactory.SetPackageItemExtension(FGUIActionPanel.URL, typeof(FGUIActionPanel));
