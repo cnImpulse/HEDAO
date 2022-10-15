@@ -83,7 +83,7 @@ namespace HEDAO
             }
 
             // 初始化己方单位
-            Queue<int> roleQueue = new(GameEntry.Save.SaveData.RoleList);
+            Queue<int> roleQueue = new(GameEntry.Save.PlayerData.RoleList);
             foreach (var gridIndex in BattleData.LevelData.PlayerBrithList)
             {
                 if (roleQueue.Count == 0)

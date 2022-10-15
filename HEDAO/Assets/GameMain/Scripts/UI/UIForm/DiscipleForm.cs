@@ -12,11 +12,15 @@ namespace HEDAO
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
+
+            View.m_list_disciple.itemRenderer = RenderListItem;
         }
 
         protected override void OnOpen(object userData)
         {
             base.OnOpen(userData);
+
+            View.m_list_disciple.numItems = GameEntry.Save.PlayerData.RoleList.Count;
 
             float[] arr = { 0.9f, 0.4f, 0.3f, 0.8f, 0.5f };
             View.m_rader.m_graph_wuxing.shape.DrawRegularPolygon(5, 4, Color.white, Color.black, Color.white, 54, arr);
@@ -33,6 +37,14 @@ namespace HEDAO
         protected override void OnClose(bool isShutdown, object userData)
         {
             base.OnClose(isShutdown, userData);
+        }
+
+        private void RenderListItem(int index, GObject obj)
+        {
+            var item = obj.asButton;
+
+            //var data = GameEntry.Save.PlayerData.RoleList[index];
+            //item.title = data.
         }
     }
 }

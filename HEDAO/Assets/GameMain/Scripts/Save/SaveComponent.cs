@@ -8,12 +8,12 @@ namespace HEDAO
     public class SaveComponent : GameFrameworkComponent
     {
         public int SaveIndex { get; private set; } = -1;
-        public SaveData SaveData { get; private set; }
+        public SaveData PlayerData { get; private set; }
 
         public void NewData(int index)
         {
             SaveIndex = index;
-            SaveData = new SaveData();
+            PlayerData = new SaveData();
         }
 
         public SaveData LoadGame(int index)
@@ -21,20 +21,20 @@ namespace HEDAO
             Log.Info("加载存档.");
             if (HasData(index))
             {
-                SaveData = GameEntry.Setting.GetObject<SaveData>(GetSaveName(index));
+                PlayerData = GameEntry.Setting.GetObject<SaveData>(GetSaveName(index));
             }
             else
             {
-                SaveData = new SaveData();
+                PlayerData = new SaveData();
             }
             SaveIndex = index;
 
-            return SaveData;
+            return PlayerData;
         }
 
         public void SaveGame()
         {
-            GameEntry.Setting.SetObject(GetSaveName(SaveIndex), SaveData);
+            GameEntry.Setting.SetObject(GetSaveName(SaveIndex), PlayerData);
         }
 
         public void DeleteData(int index)

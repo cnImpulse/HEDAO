@@ -15,6 +15,7 @@ namespace HEDAO
 
             View.m_list_team.itemRenderer = RenderListItem;
             View.m_btn_return.onClick.Set(OnClickReturn);
+            View.m_btn_go.onClick.Set(OnClickRGo);
         }
 
         protected override void OnOpen(object userData)
@@ -38,6 +39,12 @@ namespace HEDAO
         private void OnClickReturn()
         {
             GameEntry.UI.OpenUIForm(UIFromName.MainForm);
+            Close();
+        }
+
+        private void OnClickRGo()
+        {
+            GameEntry.Event.Fire(this, EventName.StartBattle);
             Close();
         }
     }

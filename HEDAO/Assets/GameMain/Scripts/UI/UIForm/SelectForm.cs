@@ -64,7 +64,7 @@ namespace HEDAO
                 return;
             }
 
-            GameEntry.Save.SaveData.RoleList.AddRange(list.ConvertAll((input) => { return m_CanSelectRoleList[input]; }));
+            GameEntry.Save.PlayerData.RoleList.AddRange(list.ConvertAll((input) => { return m_CanSelectRoleList[input]; }));
             GameEntry.Event.Fire(this, EventName.StartGame);
             Close();
         }
