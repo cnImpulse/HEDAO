@@ -6,6 +6,7 @@
 [Bb]uilds/
 Assets/StreamingAssets/
 [Uu]serSettings/
+[Hh]ybridCLRData/
 
 # Visual Studio cache directory
 .vs/
