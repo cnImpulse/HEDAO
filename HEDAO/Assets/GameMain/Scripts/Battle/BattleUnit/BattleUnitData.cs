@@ -8,11 +8,11 @@ namespace HEDAO
 {
     public class BattleUnitData : GridUnitData
     {
-        public RoleData RoleData { get; private set; }
+        public CharacterData RoleData { get; private set; }
 
-        public Attribute Attribute => RoleAttribute + ModifyAttribute;
-        public Attribute RoleAttribute => RoleData.Attribute;
-        public Attribute ModifyAttribute { get; set; }
+        public BattleProperty Attribute => RoleAttribute + ModifyAttribute;
+        public BattleProperty RoleAttribute => RoleData.Attribute;
+        public BattleProperty ModifyAttribute { get; set; }
 
         public int HP
         {
@@ -43,7 +43,7 @@ namespace HEDAO
             }
         }
 
-        public BattleUnitData(RoleData roleData, Vector2Int gridPos, CampType campType) : base(gridPos, campType)
+        public BattleUnitData(CharacterData roleData, Vector2Int gridPos, CampType campType) : base(gridPos, campType)
         {
             RoleData = roleData;
             ModifyAttribute = default;

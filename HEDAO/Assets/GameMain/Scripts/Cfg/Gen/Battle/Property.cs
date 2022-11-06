@@ -13,30 +13,32 @@ using System.Collections.Generic;
 namespace Cfg.Battle
 {
 
-public sealed partial class Attribute :  Bright.Config.BeanBase 
+public sealed partial class Property :  Bright.Config.BeanBase 
 {
-    public Attribute(ByteBuf _buf) 
+    public Property(ByteBuf _buf) 
     {
         MaxHP = _buf.ReadInt();
         MaxQI = _buf.ReadInt();
+        SPD = _buf.ReadInt();
         STR = _buf.ReadInt();
         TPO = _buf.ReadInt();
         SSI = _buf.ReadInt();
         PostInit();
     }
 
-    public static Attribute DeserializeAttribute(ByteBuf _buf)
+    public static Property DeserializeProperty(ByteBuf _buf)
     {
-        return new Battle.Attribute(_buf);
+        return new Battle.Property(_buf);
     }
 
     public int MaxHP { get; private set; }
     public int MaxQI { get; private set; }
+    public int SPD { get; private set; }
     public int STR { get; private set; }
     public int TPO { get; private set; }
     public int SSI { get; private set; }
 
-    public const int __ID__ = -97178394;
+    public const int __ID__ = -303961525;
     public override int GetTypeId() => __ID__;
 
     public  void Resolve(Dictionary<string, object> _tables)
@@ -53,6 +55,7 @@ public sealed partial class Attribute :  Bright.Config.BeanBase
         return "{ "
         + "MaxHP:" + MaxHP + ","
         + "MaxQI:" + MaxQI + ","
+        + "SPD:" + SPD + ","
         + "STR:" + STR + ","
         + "TPO:" + TPO + ","
         + "SSI:" + SSI + ","

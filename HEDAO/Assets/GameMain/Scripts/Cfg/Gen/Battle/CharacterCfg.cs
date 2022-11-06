@@ -13,23 +13,23 @@ using System.Collections.Generic;
 namespace Cfg.Battle
 {
 
-public sealed partial class RoleCfg :  Bright.Config.BeanBase 
+public sealed partial class CharacterCfg :  Bright.Config.BeanBase 
 {
-    public RoleCfg(ByteBuf _buf) 
+    public CharacterCfg(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
         Desc = _buf.ReadString();
         Image = _buf.ReadString();
-        BaseAttribute = Battle.Attribute.DeserializeAttribute(_buf);
+        BaseProperty = Battle.Property.DeserializeProperty(_buf);
         MoveSkillId = _buf.ReadInt();
         {int n = System.Math.Min(_buf.ReadSize(), _buf.Size);SkillSet = new System.Collections.Generic.HashSet<int>(/*n * 3 / 2*/);for(var i = 0 ; i < n ; i++) { int _e;  _e = _buf.ReadInt(); SkillSet.Add(_e);}}
         PostInit();
     }
 
-    public static RoleCfg DeserializeRoleCfg(ByteBuf _buf)
+    public static CharacterCfg DeserializeCharacterCfg(ByteBuf _buf)
     {
-        return new Battle.RoleCfg(_buf);
+        return new Battle.CharacterCfg(_buf);
     }
 
     /// <summary>
@@ -48,7 +48,7 @@ public sealed partial class RoleCfg :  Bright.Config.BeanBase
     /// 图片
     /// </summary>
     public string Image { get; private set; }
-    public Battle.Attribute BaseAttribute { get; private set; }
+    public Battle.Property BaseProperty { get; private set; }
     /// <summary>
     /// 移动技能Id
     /// </summary>
@@ -58,18 +58,18 @@ public sealed partial class RoleCfg :  Bright.Config.BeanBase
     /// </summary>
     public System.Collections.Generic.HashSet<int> SkillSet { get; private set; }
 
-    public const int __ID__ = 2091825368;
+    public const int __ID__ = -660147727;
     public override int GetTypeId() => __ID__;
 
     public  void Resolve(Dictionary<string, object> _tables)
     {
-        BaseAttribute?.Resolve(_tables);
+        BaseProperty?.Resolve(_tables);
         PostResolve();
     }
 
     public  void TranslateText(System.Func<string, string, string> translator)
     {
-        BaseAttribute?.TranslateText(translator);
+        BaseProperty?.TranslateText(translator);
     }
 
     public override string ToString()
@@ -79,7 +79,7 @@ public sealed partial class RoleCfg :  Bright.Config.BeanBase
         + "Name:" + Name + ","
         + "Desc:" + Desc + ","
         + "Image:" + Image + ","
-        + "BaseAttribute:" + BaseAttribute + ","
+        + "BaseProperty:" + BaseProperty + ","
         + "MoveSkillId:" + MoveSkillId + ","
         + "SkillSet:" + Bright.Common.StringUtil.CollectionToString(SkillSet) + ","
         + "}";

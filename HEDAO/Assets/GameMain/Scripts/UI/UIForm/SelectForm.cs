@@ -39,13 +39,13 @@ namespace HEDAO
         private void RenderListItem(int index, GObject obj)
         {
             var id = m_CanSelectRoleList[index];
-            var roleData = GameEntry.Cfg.Tables.TbRoleCfg.GetOrDefault(id);
+            var roleData = GameEntry.Cfg.Tables.TbCharacter.GetOrDefault(id);
             if (roleData != null)
             {
                 var item = obj as FGUIRoleItem;
                 item.m_panel_role.m_txt_name.text = roleData.Name;
-                item.m_panel_role.m_txt_hp.text = roleData.BaseAttribute.MaxHP.ToString();
-                item.m_panel_role.m_txt_qi.text = roleData.BaseAttribute.MaxQI.ToString();
+                item.m_panel_role.m_txt_hp.text = roleData.BaseProperty.MaxHP.ToString();
+                item.m_panel_role.m_txt_qi.text = roleData.BaseProperty.MaxQI.ToString();
             }
         }
 

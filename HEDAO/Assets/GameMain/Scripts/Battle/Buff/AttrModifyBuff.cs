@@ -6,7 +6,7 @@ namespace HEDAO.Skill
 {
     public class AttrModifyBuff : BattleBuff
     {
-        private Attribute m_ModifyAttribute;
+        private BattleProperty m_ModifyAttribute;
 
         public AttrModifyBuff(int id) : base(id)
         {

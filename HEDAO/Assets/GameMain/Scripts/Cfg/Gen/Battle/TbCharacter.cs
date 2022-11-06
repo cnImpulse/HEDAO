@@ -11,32 +11,32 @@ using System.Collections.Generic;
 namespace Cfg.Battle
 {
    
-public partial class TbRoleCfg
+public partial class TbCharacter
 {
-    private readonly Dictionary<int, Battle.RoleCfg> _dataMap;
-    private readonly List<Battle.RoleCfg> _dataList;
+    private readonly Dictionary<int, Battle.CharacterCfg> _dataMap;
+    private readonly List<Battle.CharacterCfg> _dataList;
     
-    public TbRoleCfg(ByteBuf _buf)
+    public TbCharacter(ByteBuf _buf)
     {
-        _dataMap = new Dictionary<int, Battle.RoleCfg>();
-        _dataList = new List<Battle.RoleCfg>();
+        _dataMap = new Dictionary<int, Battle.CharacterCfg>();
+        _dataList = new List<Battle.CharacterCfg>();
         
         for(int n = _buf.ReadSize() ; n > 0 ; --n)
         {
-            Battle.RoleCfg _v;
-            _v = Battle.RoleCfg.DeserializeRoleCfg(_buf);
+            Battle.CharacterCfg _v;
+            _v = Battle.CharacterCfg.DeserializeCharacterCfg(_buf);
             _dataList.Add(_v);
             _dataMap.Add(_v.Id, _v);
         }
         PostInit();
     }
 
-    public Dictionary<int, Battle.RoleCfg> DataMap => _dataMap;
-    public List<Battle.RoleCfg> DataList => _dataList;
+    public Dictionary<int, Battle.CharacterCfg> DataMap => _dataMap;
+    public List<Battle.CharacterCfg> DataList => _dataList;
 
-    public Battle.RoleCfg GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
-    public Battle.RoleCfg Get(int key) => _dataMap[key];
-    public Battle.RoleCfg this[int key] => _dataMap[key];
+    public Battle.CharacterCfg GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
+    public Battle.CharacterCfg Get(int key) => _dataMap[key];
+    public Battle.CharacterCfg this[int key] => _dataMap[key];
 
     public void Resolve(Dictionary<string, object> _tables)
     {

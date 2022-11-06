@@ -13,7 +13,7 @@ namespace Cfg
    
 public partial class Tables
 {
-    public Battle.TbRoleCfg TbRoleCfg {get; }
+    public Battle.TbCharacter TbCharacter {get; }
     public Effect.TbEffect TbEffect {get; }
     public Effect.TbGridEffect TbGridEffect {get; }
     public Battle.TbBattleSkillCfg TbBattleSkillCfg {get; }
@@ -22,8 +22,8 @@ public partial class Tables
     public Tables(System.Func<string, ByteBuf> loader)
     {
         var tables = new System.Collections.Generic.Dictionary<string, object>();
-        TbRoleCfg = new Battle.TbRoleCfg(loader("battle_tbrolecfg")); 
-        tables.Add("Battle.TbRoleCfg", TbRoleCfg);
+        TbCharacter = new Battle.TbCharacter(loader("battle_tbcharacter")); 
+        tables.Add("Battle.TbCharacter", TbCharacter);
         TbEffect = new Effect.TbEffect(loader("effect_tbeffect")); 
         tables.Add("Effect.TbEffect", TbEffect);
         TbGridEffect = new Effect.TbGridEffect(loader("effect_tbgrideffect")); 
@@ -34,7 +34,7 @@ public partial class Tables
         tables.Add("Battle.TbMoveSkillCfg", TbMoveSkillCfg);
 
         PostInit();
-        TbRoleCfg.Resolve(tables); 
+        TbCharacter.Resolve(tables); 
         TbEffect.Resolve(tables); 
         TbGridEffect.Resolve(tables); 
         TbBattleSkillCfg.Resolve(tables); 
@@ -44,7 +44,7 @@ public partial class Tables
 
     public void TranslateText(System.Func<string, string, string> translator)
     {
-        TbRoleCfg.TranslateText(translator); 
+        TbCharacter.TranslateText(translator); 
         TbEffect.TranslateText(translator); 
         TbGridEffect.TranslateText(translator); 
         TbBattleSkillCfg.TranslateText(translator); 

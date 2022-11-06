@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace HEDAO
 {
-    public struct Attribute
+    public struct BattleProperty
     {
         public int MaxHP { get; private set; }  // 生命值
         public int MaxQI { get; private set; }  // 灵气值
@@ -12,18 +12,18 @@ namespace HEDAO
         public int TPO { get; private set; }
         public int SSI { get; private set; }
 
-        public Attribute(Cfg.Battle.Attribute attribute)
+        public BattleProperty(Cfg.Battle.Property property)
         {
-            MaxHP = attribute.MaxHP;
-            MaxQI = attribute.MaxQI;
-            STR = attribute.STR;
-            TPO = attribute.TPO;
-            SSI = attribute.SSI;
+            MaxHP = property.MaxHP;
+            MaxQI = property.MaxQI;
+            STR = property.STR;
+            TPO = property.TPO;
+            SSI = property.SSI;
         }
 
-        public static Attribute operator +(Attribute a, Attribute b)
+        public static BattleProperty operator +(BattleProperty a, BattleProperty b)
         {
-            return new Attribute
+            return new BattleProperty
             {
                 MaxHP = a.MaxHP + b.MaxHP,
                 MaxQI = a.MaxQI + b.MaxQI,
@@ -33,9 +33,9 @@ namespace HEDAO
             };
         }
 
-        public static Attribute operator -(Attribute a, Attribute b)
+        public static BattleProperty operator -(BattleProperty a, BattleProperty b)
         {
-            return new Attribute
+            return new BattleProperty
             {
                 MaxHP = a.MaxHP - b.MaxHP,
                 MaxQI = a.MaxQI - b.MaxQI,

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HEDAO
 {
-    public class RoleData
+    public class CharacterData
     {
         private int m_HP = 0;
         private int m_QI = 0;
@@ -20,16 +20,16 @@ namespace HEDAO
         public int MoveSkillId { get; private set; }
         public string Name { get; private set; }
         public string Image { get; private set; }
-        public Attribute BaseAttribute { get; private set; }
-        public Attribute Attribute => BaseAttribute;
+        public BattleProperty BaseAttribute { get; private set; }
+        public BattleProperty Attribute => BaseAttribute;
         public HashSet<int> BattleSkillSet { get; private set; }
 
-        public RoleData(int roleId)
+        public CharacterData(int roleId)
         {
-            var cfg = GameEntry.Cfg.Tables.TbRoleCfg.Get(roleId);
+            var cfg = GameEntry.Cfg.Tables.TbCharacter.Get(roleId);
             Name = cfg.Name;
             Image = cfg.Image;
-            BaseAttribute = new Attribute(cfg.BaseAttribute);
+            BaseAttribute = new BattleProperty(cfg.BaseProperty);
             MoveSkillId = cfg.MoveSkillId;
             BattleSkillSet = cfg.SkillSet;
 

@@ -4,7 +4,7 @@
     <loader id="n0_mv35" name="icon" xy="0,0" pivot="0.5,0.5" size="150,150" url="ui://rt51n0kjntsy4" align="center" vAlign="middle" fill="scale">
       <relation target="" sidePair="width-width,height-height"/>
     </loader>
-    <text id="n1_mv35" name="title" xy="0,100" pivot="0.5,0.5" size="150,50" fontSize="24" align="center" autoSize="none" text="阿三">
+    <text id="n1_mv35" name="title" xy="0,100" pivot="0.5,0.5" size="150,50" fontSize="24" align="center" autoSize="none" text="阿ba">
       <relation target="" sidePair="width-width,height-height"/>
     </text>
   </displayList>

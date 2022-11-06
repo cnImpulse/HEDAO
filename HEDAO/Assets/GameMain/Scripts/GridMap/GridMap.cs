@@ -83,9 +83,9 @@ namespace HEDAO
         /// <summary>
         /// 注册战斗单位实体
         /// </summary>
-        public bool RegisterBattleUnit(RoleData roleData, Vector2Int gridPos, CampType campType)
+        public bool RegisterBattleUnit(CharacterData data, Vector2Int gridPos, CampType campType)
         {
-            BattleUnitData battleUnitData = new BattleUnitData(roleData, gridPos, campType);
+            BattleUnitData battleUnitData = new BattleUnitData(data, gridPos, campType);
             GameEntry.Entity.ShowBattleUnit(battleUnitData);
             return true;
         }

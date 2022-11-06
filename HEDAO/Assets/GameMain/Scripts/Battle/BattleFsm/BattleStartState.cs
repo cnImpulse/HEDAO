@@ -79,7 +79,7 @@ namespace HEDAO
                     continue;
                 }
                 
-                gridMap.RegisterBattleUnit(new RoleData(pair.Value), gridData.GridPos, CampType.Enemy);
+                gridMap.RegisterBattleUnit(new CharacterData(pair.Value), gridData.GridPos, CampType.Enemy);
             }
 
             // 初始化己方单位
@@ -97,7 +97,7 @@ namespace HEDAO
                     continue;
                 }
 
-                gridMap.RegisterBattleUnit(new RoleData(roleQueue.Dequeue()), gridData.GridPos, CampType.Player);
+                gridMap.RegisterBattleUnit(new CharacterData(roleQueue.Dequeue()), gridData.GridPos, CampType.Player);
             }
         }
 
