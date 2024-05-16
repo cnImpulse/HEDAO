@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.code-philosophy.luban": "https://github.com/focus-creative-games/luban_unity.git",
     "com.focus-creative-games.hybridclr_unity": "https://github.com/focus-creative-games/hybridclr_unity.git",
     "com.tuyoogame.yooasset": "1.1.1",
     "com.unity.ai.navigation": "1.1.5",

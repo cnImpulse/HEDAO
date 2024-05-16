@@ -4,9 +4,9 @@ using UnityEngine;
 using GameFramework.Resource;
 using UnityGameFramework.Runtime;
 using Cfg;
-using Bright.Serialization;
 using System.IO;
 using Cfg.Effect;
+using Luban;
 
 namespace HEDAO
 {
