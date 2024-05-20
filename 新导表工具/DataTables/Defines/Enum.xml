@@ -1,0 +1,6 @@
+<module name="">
+	<enum name="EDamageType" comment="伤害类型">
+		<var name="Physics" alias="物理" />
+		<var name="Magic" alias="法术" />
+	</enum>
+</module>

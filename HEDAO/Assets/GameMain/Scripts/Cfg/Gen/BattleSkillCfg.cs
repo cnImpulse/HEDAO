@@ -24,6 +24,7 @@ public sealed partial class BattleSkillCfg : Luban.BeanBase
         Power = _buf.ReadInt();
         CastDistance = _buf.ReadInt();
         EffectDistance = _buf.ReadInt();
+        Effect? = Battle.Effect.DeserializeEffect(_buf);
     }
 
     public static BattleSkillCfg DeserializeBattleSkillCfg(ByteBuf _buf)
@@ -63,6 +64,10 @@ public sealed partial class BattleSkillCfg : Luban.BeanBase
     /// 作用距离
     /// </summary>
     public readonly int EffectDistance;
+    /// <summary>
+    /// 效果
+    /// </summary>
+    public readonly Battle.Effect Effect?;
    
     public const int __ID__ = -1602479797;
     public override int GetTypeId() => __ID__;
@@ -77,6 +82,7 @@ public sealed partial class BattleSkillCfg : Luban.BeanBase
         
         
         
+        Effect??.ResolveRef(tables);
     }
 
     public override string ToString()
@@ -90,6 +96,7 @@ public sealed partial class BattleSkillCfg : Luban.BeanBase
         + "Power:" + Power + ","
         + "CastDistance:" + CastDistance + ","
         + "EffectDistance:" + EffectDistance + ","
+        + "Effect?:" + Effect? + ","
         + "}";
     }
 }
