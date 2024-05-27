@@ -31,37 +31,13 @@ public sealed partial class SkillCfg : Luban.BeanBase
         return new SkillCfg(_buf);
     }
 
-    /// <summary>
-    /// 编号
-    /// </summary>
     public readonly int Id;
-    /// <summary>
-    /// 名字
-    /// </summary>
     public readonly string Name;
-    /// <summary>
-    /// 简介
-    /// </summary>
     public readonly string Desc;
-    /// <summary>
-    /// 图标
-    /// </summary>
     public readonly string Icon;
-    /// <summary>
-    /// 释放消耗灵气
-    /// </summary>
     public readonly int Cost;
-    /// <summary>
-    /// 释放距离
-    /// </summary>
     public readonly int CastDistance;
-    /// <summary>
-    /// 作用距离
-    /// </summary>
     public readonly int EffectDistance;
-    /// <summary>
-    /// 类型
-    /// </summary>
     public readonly System.Collections.Generic.List<Battle.Effect> Effect;
    
     public const int __ID__ = -2087897997;
