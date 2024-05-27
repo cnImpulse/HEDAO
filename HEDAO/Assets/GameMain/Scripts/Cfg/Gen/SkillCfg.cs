@@ -23,7 +23,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         Cost = _buf.ReadInt();
         CastDistance = _buf.ReadInt();
         EffectDistance = _buf.ReadInt();
-        if(_buf.ReadBool()){ Effect = Battle.Effect.DeserializeEffect(_buf); } else { Effect = null; }
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);Effect = new System.Collections.Generic.List<Battle.Effect>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { Battle.Effect _e0;  _e0 = Battle.Effect.DeserializeEffect(_buf); Effect.Add(_e0);}}
     }
 
     public static SkillCfg DeserializeSkillCfg(ByteBuf _buf)
@@ -60,9 +60,9 @@ public sealed partial class SkillCfg : Luban.BeanBase
     /// </summary>
     public readonly int EffectDistance;
     /// <summary>
-    /// 效果
+    /// 类型
     /// </summary>
-    public readonly Battle.Effect Effect;
+    public readonly System.Collections.Generic.List<Battle.Effect> Effect;
    
     public const int __ID__ = -2087897997;
     public override int GetTypeId() => __ID__;
@@ -76,7 +76,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         
         
         
-        Effect?.ResolveRef(tables);
+        foreach (var _e in Effect) { _e?.ResolveRef(tables); }
     }
 
     public override string ToString()
@@ -89,7 +89,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         + "Cost:" + Cost + ","
         + "CastDistance:" + CastDistance + ","
         + "EffectDistance:" + EffectDistance + ","
-        + "Effect:" + Effect + ","
+        + "Effect:" + Luban.StringUtil.CollectionToString(Effect) + ","
         + "}";
     }
 }

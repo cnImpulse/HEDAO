@@ -3,4 +3,5 @@
 		<var name="Physics" alias="物理" />
 		<var name="Magic" alias="法术" />
 	</enum>
+
 </module>

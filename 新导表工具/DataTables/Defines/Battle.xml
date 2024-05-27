@@ -9,4 +9,9 @@
     <bean name="AttackEffect" parent="Effect" alias="Attack">
         <var name="Power" type="int"/>
     </bean>
+
+    <bean name="MoveEffect" parent="Effect" alias="Move">
+        <var name="Distance" type="int"/>
+        <var name="IsTarget" type="bool"/>
+    </bean>
 </module>
