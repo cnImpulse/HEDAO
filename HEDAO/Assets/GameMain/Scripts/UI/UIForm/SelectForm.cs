@@ -9,7 +9,7 @@ namespace HEDAO
 {
     public class SelectForm : FGUIForm<FGUISelectForm>
     {
-        private List<int> m_CanSelectRoleList = new List<int> { 1, 2 };
+        private List<int> m_CanSelectRoleList = new List<int> { 1001};
 
         protected override void OnInit(object userData)
         {

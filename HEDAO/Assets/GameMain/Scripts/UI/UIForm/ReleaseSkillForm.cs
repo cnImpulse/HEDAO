@@ -51,9 +51,10 @@ namespace HEDAO
             var skillId = m_SkillList[index];
             var item = obj as FGUISkillItem;
 
-            var skillCfg = GameEntry.Cfg.Tables.TbBattleSkillCfg.Get(skillId);
+            var skillCfg = GameEntry.Cfg.Tables.TbSkillCfg.Get(skillId);
             item.m_text_name.text = skillCfg.Name;
-            item.m_text_cost.text = string.Format("Cost: {0} Power: {1}", skillCfg.Cost, skillCfg.Power);
+            item.m_text_cost.visible = false;
+            item.m_text_cost.text = string.Format("Cost: {0} ", skillCfg.Cost);
             item.onClick.Set(() => { OnClickSkillBtn(skillId); });
         }
 

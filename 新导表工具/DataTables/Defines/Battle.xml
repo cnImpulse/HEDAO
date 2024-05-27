@@ -5,4 +5,8 @@
     <bean name="AddBuffEffect" parent="Effect" alias="AddBuff">
         <var name="BuffId" type="int"/>
     </bean>
+
+    <bean name="AttackEffect" parent="Effect" alias="Attack">
+        <var name="Power" type="int"/>
+    </bean>
 </module>

@@ -17,7 +17,10 @@ namespace HEDAO
 
         public virtual void OnBattleStart()
         {
-            AI = new CommonAI(this);
+            if (Data.CampType != CampType.Player)
+            {
+                AI = new CommonAI(this);
+            }
             BuffDic = new Dictionary<int, BattleBuff>();
         }
 

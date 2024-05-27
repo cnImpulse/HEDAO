@@ -12,31 +12,33 @@ using Luban;
 
 namespace Cfg.Battle
 {
-public abstract partial class Effect : Luban.BeanBase
+public sealed partial class AttackEffect : Effect
 {
-    public Effect(ByteBuf _buf) 
+    public AttackEffect(ByteBuf _buf)  : base(_buf) 
     {
+        Power = _buf.ReadInt();
     }
 
-    public static Effect DeserializeEffect(ByteBuf _buf)
+    public static AttackEffect DeserializeAttackEffect(ByteBuf _buf)
     {
-        switch (_buf.ReadInt())
-        {
-            case Battle.AddBuffEffect.__ID__: return new Battle.AddBuffEffect(_buf);
-            case Battle.AttackEffect.__ID__: return new Battle.AttackEffect(_buf);
-            default: throw new SerializationException();
-        }
+        return new Battle.AttackEffect(_buf);
     }
 
+    public readonly int Power;
    
+    public const int __ID__ = 867016559;
+    public override int GetTypeId() => __ID__;
 
-    public virtual void ResolveRef(Tables tables)
+    public override void ResolveRef(Tables tables)
     {
+        base.ResolveRef(tables);
+        
     }
 
     public override string ToString()
     {
         return "{ "
+        + "Power:" + Power + ","
         + "}";
     }
 }
