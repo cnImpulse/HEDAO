@@ -63,24 +63,24 @@ namespace HEDAO
                 return false;
             }
 
-            var caster = GameEntry.Entity.GetEntityData<BattleUnitData>(casterId);
+            var caster = GameEntry.Entity.GetEntityLogic<BattleUnit>(casterId);
             if (caster == null)
             {
                 Log.Error("施法者{0}不存在!", casterId);
                 return false;
             }
             
-            if (caster.QI < skillCfg.Cost)
+            if (caster.Data.QI < skillCfg.Cost)
             {
                 Log.Error("施法者{0}灵气不足!", casterId);
                 return false;
             }
             
-            caster.QI -= skillCfg.Cost;
+            caster.Data.QI -= skillCfg.Cost;
 
             foreach (var effect in skillCfg.Effect)
             {
-                effect.OnTakeEffect(target);
+                effect.OnTakeEffect(caster, target);
             }
             
             return true;
