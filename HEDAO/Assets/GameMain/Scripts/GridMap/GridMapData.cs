@@ -167,8 +167,32 @@ namespace HEDAO
             {
                 return GetCrossRangeGridList(centerPos, gridRange.Distance);
             }
+            else if (gridRange.Type == EGridRangeType.Square)
+            {
+                return GetSquareRangeGridList(centerPos, gridRange.Distance);
+            }
 
             return null;
+        }
+        
+        public List<GridData> GetSquareRangeGridList(Vector2Int centerPos, int range)
+        {
+            List<GridData> gridList = new List<GridData>();
+
+            for (int x = -range; x <= range; ++x)
+            {
+                for (int y = -range; y <= range; ++y)
+                {
+                    Vector2Int position = new Vector2Int(centerPos.x + x, centerPos.y + y);
+                    GridData gridData = GetGridData(position);
+                    if (gridData != null)
+                    {
+                        gridList.Add(gridData);
+                    }
+                }
+            }
+
+            return gridList;
         }
         
         public List<GridData> GetCrossRangeGridList(Vector2Int centerPos, int range)
