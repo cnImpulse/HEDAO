@@ -3,13 +3,14 @@ using HEDAO.Skill;
 using UnityGameFramework.Runtime;
 using UnityEngine;
 using System.Collections;
+using Cfg.Battle;
 
 namespace HEDAO
 {
     /// <summary>
     /// 战斗单位。
     /// </summary>
-    public partial class BattleUnit : GridUnit, IBuffTarget
+    public partial class BattleUnit : GridUnit, IBuffTarget, IEffectTarget
     {
         public CommonAI AI { get; private set; }
         public Dictionary<int, BattleBuff> BuffDic { get; private set; }
@@ -143,6 +144,11 @@ namespace HEDAO
             GridMap.SetGridUnitPos(this, end.GridPos);
 
             GameEntry.Event.Fire(this, EventName.BattleUnitMove);
+        }
+
+        public void TakeDamage(int damage)
+        {
+            Data.HP -= damage;
         }
     }
 }

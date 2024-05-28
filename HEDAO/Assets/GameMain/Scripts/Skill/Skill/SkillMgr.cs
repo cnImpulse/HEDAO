@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cfg.Battle;
+using HEDAO.Battle;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
@@ -42,6 +44,45 @@ namespace HEDAO
             string log = string.Format("{0}释放技能{1}, 对{2}造成{3}点伤害.", caster.Name, skillCfg.Name, target.Name, skillCfg.Power);
             GameEntry.UI.OpenUIForm(UIFromName.CommonTips, log as object);
             Log.Info(log);
+            return true;
+        }
+
+        public bool ReleaseBattleSkill(int skillId, int casterId, int targetId)
+        {
+            var skillCfg = GameEntry.Cfg.Tables.TbSkillCfg.GetOrDefault(skillId);
+            if (skillCfg == null)
+            {
+                Log.Error("战斗技能{0}配置不存在!", skillId);
+                return false;
+            }
+
+            var target = GameEntry.Entity.GetEntityLogic<BattleUnit>(targetId);
+            if (target == null)
+            {
+                Log.Error("目标{0}不存在!", targetId);
+                return false;
+            }
+
+            var caster = GameEntry.Entity.GetEntityData<BattleUnitData>(casterId);
+            if (caster == null)
+            {
+                Log.Error("施法者{0}不存在!", casterId);
+                return false;
+            }
+            
+            if (caster.QI < skillCfg.Cost)
+            {
+                Log.Error("施法者{0}灵气不足!", casterId);
+                return false;
+            }
+            
+            caster.QI -= skillCfg.Cost;
+
+            foreach (var effect in skillCfg.Effect)
+            {
+                effect.OnTakeEffect(target);
+            }
+            
             return true;
         }
     }

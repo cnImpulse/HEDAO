@@ -1,10 +1,10 @@
-namespace HEDAO.Battle
+namespace Cfg.Battle
 {
-    public class AttackEffect : Effect
+    public partial class AttackEffect
     {
         public override void OnTakeEffect(IEffectTarget target)
         {
-            
+            target.TakeDamage(Power);   
         }
     }
 }

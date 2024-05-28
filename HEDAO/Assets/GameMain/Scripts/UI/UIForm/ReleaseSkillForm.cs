@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using Cfg.Battle;
 using UnityEngine;
 using FGUI.CommonUI;
 using UnityGameFramework.Runtime;
@@ -53,15 +55,29 @@ namespace HEDAO
 
             var skillCfg = GameEntry.Cfg.Tables.TbSkillCfg.Get(skillId);
             item.m_text_name.text = skillCfg.Name;
-            item.m_text_cost.visible = false;
-            item.m_text_cost.text = string.Format("Cost: {0} ", skillCfg.Cost);
+
+            var sb = new StringBuilder(100); // 预估额外需要的长度
+            sb.AppendLine($"消耗:{skillCfg.Cost}");
+            foreach (var effect in skillCfg.Effect)
+            {
+                if (effect is AttackEffect attackEffect)
+                {
+                    sb.AppendLine($"伤害:{attackEffect.Power}");
+                }
+                else if (effect is MoveEffect moveEffect)
+                {
+                    sb.AppendLine($"{(moveEffect.IsTarget ? "目标" : "己方")}移动:{moveEffect.Distance}");
+                }
+            }
+            item.m_text_cost.text = sb.ToString();
+            
             item.onClick.Set(() => { OnClickSkillBtn(skillId); });
         }
 
-        private void OnClickSkillBtn(int index)
+        private void OnClickSkillBtn(int skillId)
         {
-            Log.Info("请求释放技能: {0}", index);
-            m_Owner.OnSelectSkill(index);
+            Log.Info("请求释放技能: {0}", skillId);
+            m_Owner.OnSelectSkill(skillId);
         }
     }
 }

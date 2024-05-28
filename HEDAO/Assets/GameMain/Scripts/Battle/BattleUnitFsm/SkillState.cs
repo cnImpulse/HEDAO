@@ -68,7 +68,7 @@ namespace HEDAO
         public void OnSelectSkill(int skillId)
         {
             GameEntry.UI.CloseUIForm(m_ActionFormName);
-            var cfg = GameEntry.Cfg.Tables.TbBattleSkillCfg.Get(skillId);
+            var cfg = GameEntry.Cfg.Tables.TbSkillCfg.Get(skillId);
             if (cfg.CastDistance == 0)
             {
                 // 直接释放
@@ -77,14 +77,8 @@ namespace HEDAO
             }
 
             m_SkillId = skillId;
-            m_CanReleaseList = GetSkillReleaseRange(m_SkillId);
+            m_CanReleaseList = GridMap.Data.GetRangeGridList(Owner.Data.GridPos, cfg.CastDistance);;
             GameEntry.Effect.ShowAttackAreaEffect(m_CanReleaseList);
-        }
-
-        public List<GridData> GetSkillReleaseRange(int skillId)
-        {
-            var cfg = GameEntry.Cfg.Tables.TbBattleSkillCfg.Get(skillId);
-            return GridMap.Data.GetRangeGridList(Owner.Data.GridPos, cfg.CastDistance);
         }
 
         private void OnPointGridMap(object sender, GameEventArgs e)
@@ -104,7 +98,7 @@ namespace HEDAO
                     return;
                 }
 
-                if (SkillMgr.Instance.ReqReleaseBattleSkill(m_SkillId, Owner.Id, target.Id))
+                if (SkillMgr.Instance.ReleaseBattleSkill(m_SkillId, Owner.Id, target.Id))
                 {
                     ChangeState<EndActionState>();
                 }
