@@ -14,4 +14,9 @@
         <var name="Distance" type="int"/>
         <var name="IsTarget" type="bool"/>
     </bean>
+
+    <bean name="GridRange">
+        <var name="Type" type="EGridRangeType"/>
+        <var name="Distance" type="int"/>
+    </bean>
 </module>

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using Cfg;
 using Newtonsoft.Json;
 using UnityGameFramework.Runtime;
 
@@ -156,6 +157,41 @@ namespace HEDAO
             return null;
         }
 
+        public List<GridData> GetRangeGridList(Vector2Int centerPos, Cfg.Battle.GridRange gridRange)
+        {
+            if (gridRange.Type == EGridRangeType.Default)
+            {
+                return GetRangeGridList(centerPos, gridRange.Distance);
+            }
+            else if (gridRange.Type == EGridRangeType.Cross)
+            {
+                return GetCrossRangeGridList(centerPos, gridRange.Distance);
+            }
+
+            return null;
+        }
+        
+        public List<GridData> GetCrossRangeGridList(Vector2Int centerPos, int range)
+        {
+            GridData center = GetGridData(centerPos);
+            List<GridData> gridList = new List<GridData>() { center };
+
+            for (int i = 1; i <= range; ++i)
+            {
+                foreach (var dir in s_DirArray4)
+                {
+                    Vector2Int position = centerPos + dir * i;
+                    GridData gridData = GetGridData(position);
+                    if (gridData != null)
+                    {
+                        gridList.Add(gridData);
+                    }
+                }
+            }
+
+            return gridList;
+        }
+        
         // 菱形遍历
         public List<GridData> GetRangeGridList(Vector2Int centerPos, int range)
         {

@@ -69,7 +69,7 @@ namespace HEDAO
         {
             GameEntry.UI.CloseUIForm(m_ActionFormName);
             var cfg = GameEntry.Cfg.Tables.TbSkillCfg.Get(skillId);
-            if (cfg.CastDistance == 0)
+            if (cfg.ReleaseRange.Distance == 0)
             {
                 // 直接释放
                 ChangeState<EndActionState>();
@@ -77,7 +77,7 @@ namespace HEDAO
             }
 
             m_SkillId = skillId;
-            m_CanReleaseList = GridMap.Data.GetRangeGridList(Owner.Data.GridPos, cfg.CastDistance);;
+            m_CanReleaseList = GridMap.Data.GetRangeGridList(Owner.Data.GridPos, cfg.ReleaseRange);;
             GameEntry.Effect.ShowAttackAreaEffect(m_CanReleaseList);
         }
 

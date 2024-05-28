@@ -4,4 +4,10 @@
 		<var name="Magic" alias="法术" />
 	</enum>
 
+	<enum name="EGridRangeType" comment="网格范围类型">
+		<var name="Default" alias="默认" />
+		<var name="Cross" alias="十字" />
+		<var name="Square" alias="正方形" />
+		<var name="Strip" alias="长条" />
+	</enum>
 </module>

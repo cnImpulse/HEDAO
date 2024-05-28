@@ -22,6 +22,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         Icon = _buf.ReadString();
         Cost = _buf.ReadInt();
         CastDistance = _buf.ReadInt();
+        ReleaseRange = Battle.GridRange.DeserializeGridRange(_buf);
         EffectDistance = _buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);Effect = new System.Collections.Generic.List<Battle.Effect>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { Battle.Effect _e0;  _e0 = Battle.Effect.DeserializeEffect(_buf); Effect.Add(_e0);}}
     }
@@ -37,6 +38,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
     public readonly string Icon;
     public readonly int Cost;
     public readonly int CastDistance;
+    public readonly Battle.GridRange ReleaseRange;
     public readonly int EffectDistance;
     public readonly System.Collections.Generic.List<Battle.Effect> Effect;
    
@@ -51,6 +53,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         
         
         
+        ReleaseRange?.ResolveRef(tables);
         
         foreach (var _e in Effect) { _e?.ResolveRef(tables); }
     }
@@ -64,6 +67,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         + "Icon:" + Icon + ","
         + "Cost:" + Cost + ","
         + "CastDistance:" + CastDistance + ","
+        + "ReleaseRange:" + ReleaseRange + ","
         + "EffectDistance:" + EffectDistance + ","
         + "Effect:" + Luban.StringUtil.CollectionToString(Effect) + ","
         + "}";
