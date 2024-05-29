@@ -27,7 +27,7 @@ namespace HEDAO
 
             foreach (var skillId in m_Owner.Data.RoleData.BattleSkillSet)
             {
-                var skillCfg = GameEntry.Cfg.Tables.TbBattleSkillCfg.GetOrDefault(skillId);
+                var skillCfg = GameEntry.Cfg.Tables.TbSkillCfg.GetOrDefault(skillId);
                 m_MaxATKRange = Mathf.Max(m_MaxATKRange, skillCfg.CastDistance);
             }
         }
@@ -41,7 +41,7 @@ namespace HEDAO
 
             foreach(var skillId in m_Owner.Data.RoleData.BattleSkillSet)
             {
-                var success = SkillMgr.Instance.ReqReleaseBattleSkill(skillId, m_Owner.Id, battleUnit.Id);
+                var success = SkillMgr.Instance.ReleaseBattleSkill(skillId, m_Owner.Id, battleUnit.Id);
                 if (success)
                 {
                     break;
