@@ -157,7 +157,7 @@ namespace HEDAO
             return null;
         }
 
-        public List<GridData> GetRangeGridList(Vector2Int centerPos, Cfg.Battle.GridRange gridRange)
+        public List<GridData> GetRangeGridList(Vector2Int centerPos, Cfg.Battle.GridRange gridRange, Vector2Int direction = default)
         {
             if (gridRange.Type == EGridRangeType.Default)
             {
@@ -170,6 +170,10 @@ namespace HEDAO
             else if (gridRange.Type == EGridRangeType.Square)
             {
                 return GetSquareRangeGridList(centerPos, gridRange.Distance);
+            }
+            else if (gridRange.Type == EGridRangeType.Strip)
+            {
+                return GetLineRangeGridList(centerPos, gridRange.Distance, direction);
             }
 
             return null;
@@ -241,6 +245,23 @@ namespace HEDAO
             return gridList;
         }
 
+        public List<GridData> GetLineRangeGridList(Vector2Int centerPos, int range, Vector2Int direction)
+        {
+            List<GridData> gridList = new List<GridData>();
+
+            for (int i = 1; i <= range; ++i)
+            {
+                Vector2Int position = centerPos + direction * i;
+                GridData gridData = GetGridData(position);
+                if (gridData != null)
+                {
+                    gridList.Add(gridData);
+                }
+            }
+
+            return gridList;
+        }
+        
         // 广度优先搜索
         public List<GridData> GetCanMoveGrids(BattleUnit battleUnit)
         {

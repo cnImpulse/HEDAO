@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cfg;
 using Cfg.Battle;
 using HEDAO.Battle;
 using UnityEngine;
@@ -47,7 +48,7 @@ namespace HEDAO
             return true;
         }
 
-        public bool ReleaseBattleSkill(int skillId, int casterId, int targetId)
+        public bool ReleaseBattleSkill(int skillId, BattleUnit caster, GridData targetGridData)
         {
             var skillCfg = GameEntry.Cfg.Tables.TbSkillCfg.GetOrDefault(skillId);
             if (skillCfg == null)
@@ -55,31 +56,28 @@ namespace HEDAO
                 Log.Error("战斗技能{0}配置不存在!", skillId);
                 return false;
             }
-
-            var target = GameEntry.Entity.GetEntityLogic<BattleUnit>(targetId);
-            if (target == null)
+            
+            Vector2Int dir = default;
+            var target = targetGridData.GridUnit as BattleUnit;
+            if (skillCfg.EffectRange.Type == EGridRangeType.Strip)
             {
-                Log.Error("目标{0}不存在!", targetId);
-                return false;
+                dir = GridMapUtl.NormalizeDirection(targetGridData.GridPos - caster.Data.GridPos);
             }
-
-            var caster = GameEntry.Entity.GetEntityLogic<BattleUnit>(casterId);
-            if (caster == null)
+            else if (target == null)
             {
-                Log.Error("施法者{0}不存在!", casterId);
                 return false;
             }
             
             if (caster.Data.QI < skillCfg.Cost)
             {
-                Log.Error("施法者{0}灵气不足!", casterId);
+                Log.Error("施法者{0}灵气不足!", caster.Id);
                 return false;
             }
             
             caster.Data.QI -= skillCfg.Cost;
-
+            
             var targetCamp = BattleUtl.GetHostileCamp(caster.Data.CampType);
-            var range = target.GridMap.Data.GetRangeGridList(target.Data.GridPos, skillCfg.EffectRange);
+            var range = caster.GridMap.Data.GetRangeGridList(targetGridData.GridPos, skillCfg.EffectRange, dir);
             foreach (var gridData in range)
             {
                 var battleUnit = gridData.GridUnit as BattleUnit;

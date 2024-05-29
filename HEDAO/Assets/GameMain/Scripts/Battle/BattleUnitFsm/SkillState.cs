@@ -92,13 +92,7 @@ namespace HEDAO
             var gridData = ne.EventData as GridData;
             if (m_CanReleaseList.Contains(gridData))
             {
-                var target = gridData.GridUnit as BattleUnit;
-                if (target == null)
-                {
-                    return;
-                }
-
-                if (SkillMgr.Instance.ReleaseBattleSkill(m_SkillId, Owner.Id, target.Id))
+                if (SkillMgr.Instance.ReleaseBattleSkill(m_SkillId, Owner, gridData))
                 {
                     ChangeState<EndActionState>();
                 }

@@ -41,7 +41,7 @@ namespace HEDAO
 
             foreach(var skillId in m_Owner.Data.RoleData.BattleSkillSet)
             {
-                var success = SkillMgr.Instance.ReleaseBattleSkill(skillId, m_Owner.Id, battleUnit.Id);
+                var success = SkillMgr.Instance.ReleaseBattleSkill(skillId, m_Owner, battleUnit.GridData);
                 if (success)
                 {
                     break;
