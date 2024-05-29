@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" bgColor="#666666">
   <displayList>
-    <component id="n16_aobo" name="btn_start" src="aobob" fileName="Components/Button/Button.xml" xy="170,550" size="240,120" group="n18_aobo">
+    <text id="n21_qecl" name="n21" xy="1115,243" pivot="0.5,0.5" size="288,154" fontSize="120" align="center" vAlign="middle" autoSize="none" bold="true" text="合道"/>
+    <component id="n22_pz7h" name="btn_battle" src="aobob" fileName="Components/Button/Button.xml" xy="170,548" size="240,120" group="n24_pz7h">
+      <Button title="开始战斗" icon="ui://rt51n0kjntsy4"/>
+    </component>
+    <component id="n16_aobo" name="btn_start" src="aobob" fileName="Components/Button/Button.xml" xy="170,698" size="240,120" group="n24_pz7h">
       <Button title="开始游戏" icon="ui://rt51n0kjntsy4"/>
     </component>
-    <component id="n17_aobo" name="btn_exit" src="aobob" fileName="Components/Button/Button.xml" xy="170,700" size="240,120" group="n18_aobo">
+    <component id="n17_aobo" name="btn_exit" src="aobob" fileName="Components/Button/Button.xml" xy="170,848" size="240,120" group="n24_pz7h">
       <Button title="退出游戏" icon="ui://rt51n0kjntsy4"/>
     </component>
-    <group id="n18_aobo" name="n18" xy="170,550" size="240,270" advanced="true" layout="vt" lineGap="30" excludeInvisibles="true"/>
-    <text id="n21_qecl" name="n21" xy="1115,243" pivot="0.5,0.5" size="288,154" fontSize="120" align="center" vAlign="middle" autoSize="none" bold="true" text="合道"/>
+    <group id="n24_pz7h" name="n24" xy="170,548" size="240,420" advanced="true" layout="vt" lineGap="30" excludeInvisibles="true"/>
   </displayList>
 </component>

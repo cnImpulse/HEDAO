@@ -15,6 +15,13 @@ namespace HEDAO
 
             View.m_btn_start.onClick.Add(() => { GameEntry.UI.OpenUIForm(UIFromName.LoadGameForm); });
             View.m_btn_exit.onClick.Add(() => { Log.Info("退出游戏。"); });
+            
+            View.m_btn_battle.onClick.Add(() =>
+            {
+                GameEntry.Save.LoadGame(1);
+                GameEntry.Save.PlayerData.RoleList.AddRange(new[] { 1001, 1002, 1003 });
+                GameEntry.Event.Fire(this, EventName.StartBattle);
+            });
         }
 
         protected override void OnOpen(object userData)
