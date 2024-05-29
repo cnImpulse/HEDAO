@@ -78,9 +78,18 @@ namespace HEDAO
             
             caster.Data.QI -= skillCfg.Cost;
 
-            foreach (var effect in skillCfg.Effect)
+            var targetCamp = BattleUtl.GetHostileCamp(caster.Data.CampType);
+            var range = target.GridMap.Data.GetRangeGridList(target.Data.GridPos, skillCfg.EffectRange);
+            foreach (var gridData in range)
             {
-                effect.OnTakeEffect(caster, target);
+                var battleUnit = gridData.GridUnit as BattleUnit;
+                if (battleUnit != null && battleUnit.Data.CampType == targetCamp)
+                {
+                    foreach (var effect in skillCfg.Effect)
+                    {
+                        effect.OnTakeEffect(caster, gridData.GridUnit as BattleUnit);
+                    }
+                }
             }
             
             return true;

@@ -28,7 +28,7 @@ namespace HEDAO
             foreach (var skillId in m_Owner.Data.RoleData.BattleSkillSet)
             {
                 var skillCfg = GameEntry.Cfg.Tables.TbSkillCfg.GetOrDefault(skillId);
-                m_MaxATKRange = Mathf.Max(m_MaxATKRange, skillCfg.CastDistance);
+                m_MaxATKRange = Mathf.Max(m_MaxATKRange, skillCfg.ReleaseRange.Distance);
             }
         }
 

@@ -19,7 +19,7 @@ namespace HEDAO
             View.m_btn_battle.onClick.Add(() =>
             {
                 GameEntry.Save.LoadGame(1);
-                GameEntry.Save.PlayerData.RoleList.AddRange(new[] { 1001, 1002, 1003 });
+                GameEntry.Save.PlayerData.RoleList = new List<int>{ 1001, 1002, 1003 };
                 GameEntry.Event.Fire(this, EventName.StartBattle);
             });
         }
