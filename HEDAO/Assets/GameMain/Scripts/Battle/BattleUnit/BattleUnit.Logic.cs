@@ -10,11 +10,12 @@ namespace HEDAO
     /// <summary>
     /// 战斗单位。
     /// </summary>
-    public partial class BattleUnit : GridUnit, IBuffTarget, IEffectTarget
+    public partial class BattleUnit : GridUnit, IEffectTarget
     {
         public CommonAI AI { get; private set; }
-        public Dictionary<int, BattleBuff> BuffDic { get; private set; }
         public bool CanAction { get; private set; }
+
+        public Dictionary<int, Buff> BuffDict { get; private set; } = new();
 
         public virtual void OnBattleStart()
         {
@@ -22,13 +23,18 @@ namespace HEDAO
             {
                 AI = new CommonAI(this);
             }
-            BuffDic = new Dictionary<int, BattleBuff>();
+            
+            BuffDict.Clear();
         }
 
         public virtual void OnRoundStart()
         {
             CanAction = true;
-            UpdateAllBuff();
+
+            foreach (var buff in BuffDict.Values)
+            {
+                buff.OnRoundStart();
+            }
         }
 
         public virtual void OnRoundEnd()
@@ -45,73 +51,6 @@ namespace HEDAO
         public virtual void OnBattleEnd()
         {
             RemoveAllBuff();
-        }
-
-        public void AddBuff(IBuff buff)
-        {
-            if (HasBuff(buff.Id))
-            {
-                RemoveBuff(buff.Id);
-            }
-
-            var battleBuff = buff as BattleBuff;
-            if (battleBuff == null)
-            {
-                return;
-            }
-
-            BuffDic.Add(battleBuff.Id, battleBuff);
-            buff.OnAdd(this);
-        }
-
-        public bool HasBuff(int buffId)
-        {
-            return BuffDic.ContainsKey(buffId);
-        }
-
-        public void RemoveAllBuff()
-        {
-            foreach (var buff in BuffDic.Values)
-            {
-                buff.OnRemove();
-            }
-
-            BuffDic.Clear();
-        }
-
-        public void RemoveBuff(int buffId)
-        {
-            if (BuffDic.TryGetValue(buffId, out var buff))
-            {
-                buff.OnRemove();
-                BuffDic.Remove(buffId);
-            }
-        }
-
-        public void UpdateAllBuff()
-        {
-            List<int> m_RemoveBuffList = new List<int>();
-            foreach (var buff in BuffDic.Values)
-            {
-                buff.OnUpdate();
-                if (buff.Life == 0)
-                {
-                    m_RemoveBuffList.Add(buff.Id);
-                }
-            }
-
-            foreach(var id in m_RemoveBuffList)
-            {
-                RemoveBuff(id);
-            }
-        }
-
-        public void UpdateBuff(int buffId)
-        {
-            if (BuffDic.TryGetValue(buffId, out var buff))
-            {
-                buff.OnUpdate();
-            }
         }
 
         public IEnumerator Move(List<GridData> path, GridData end)
@@ -149,6 +88,32 @@ namespace HEDAO
         public void TakeDamage(int damage)
         {
             Data.HP -= damage;
+        }
+        
+        public void AddBuff(int id)
+        {
+            var buff = new Buff(id, this);
+            BuffDict.Add(id, buff);
+            
+            buff.OnAdd();
+        }
+        
+        public void RemoveBuff(int id)
+        {
+            if (BuffDict.TryGetValue(id, out var buff))
+            {
+                buff.OnRemove();
+                BuffDict.Remove(id);
+            }
+        }
+
+        public void RemoveAllBuff()
+        {
+            foreach (var buff in BuffDict.Values)
+            {
+                buff.OnRemove();
+            }
+            BuffDict.Clear();
         }
     }
 }
