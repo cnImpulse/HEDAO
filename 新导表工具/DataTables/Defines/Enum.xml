@@ -10,4 +10,14 @@
 		<var name="Square" alias="正方形" />
 		<var name="Strip" alias="长条" />
 	</enum>
+
+	<enum name="EAttrType" comment="属性类型">
+		<var name="None" alias="默认" />
+		<var name="MaxHP" alias="最大生命" />
+		<var name="MaxQI" alias="最大灵气" />
+		<var name="SPD" alias="速度" />
+		<var name="STR" alias="力量" />
+		<var name="TPO" alias="体魄" />
+		<var name="SSI" alias="神识" />
+	</enum>
 </module>

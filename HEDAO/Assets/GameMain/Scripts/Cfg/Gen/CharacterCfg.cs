@@ -21,6 +21,7 @@ public sealed partial class CharacterCfg : Luban.BeanBase
         Desc = _buf.ReadString();
         Image = _buf.ReadString();
         BaseProperty = Battle.Property.DeserializeProperty(_buf);
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);BaseAttr = new System.Collections.Generic.Dictionary<EAttrType, int>(n0 * 3 / 2);for(var i0 = 0 ; i0 < n0 ; i0++) { EAttrType _k0;  _k0 = (EAttrType)_buf.ReadInt(); int _v0;  _v0 = _buf.ReadInt();     BaseAttr.Add(_k0, _v0);}}
         MoveSkillId = _buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);SkillSet = new System.Collections.Generic.HashSet<int>(/*n0 * 3 / 2*/);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); SkillSet.Add(_e0);}}
     }
@@ -47,6 +48,7 @@ public sealed partial class CharacterCfg : Luban.BeanBase
     /// </summary>
     public readonly string Image;
     public readonly Battle.Property BaseProperty;
+    public readonly System.Collections.Generic.Dictionary<EAttrType, int> BaseAttr;
     /// <summary>
     /// 移动技能Id
     /// </summary>
@@ -68,6 +70,7 @@ public sealed partial class CharacterCfg : Luban.BeanBase
         BaseProperty?.ResolveRef(tables);
         
         
+        
     }
 
     public override string ToString()
@@ -78,6 +81,7 @@ public sealed partial class CharacterCfg : Luban.BeanBase
         + "Desc:" + Desc + ","
         + "Image:" + Image + ","
         + "BaseProperty:" + BaseProperty + ","
+        + "BaseAttr:" + Luban.StringUtil.CollectionToString(BaseAttr) + ","
         + "MoveSkillId:" + MoveSkillId + ","
         + "SkillSet:" + Luban.StringUtil.CollectionToString(SkillSet) + ","
         + "}";
