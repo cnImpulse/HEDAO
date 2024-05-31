@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cfg;
 using UnityEngine;
 using FGUI.CommonUI;
 using UnityGameFramework.Runtime;
@@ -44,8 +45,8 @@ namespace HEDAO
             {
                 var item = obj as FGUIRoleItem;
                 item.m_panel_role.m_txt_name.text = roleData.Name;
-                item.m_panel_role.m_txt_hp.text = roleData.BaseProperty.MaxHP.ToString();
-                item.m_panel_role.m_txt_qi.text = roleData.BaseProperty.MaxQI.ToString();
+                item.m_panel_role.m_txt_hp.text = roleData.BaseAttr[EAttrType.MaxHP].ToString();
+                item.m_panel_role.m_txt_qi.text = roleData.BaseAttr[EAttrType.MaxQI].ToString();
             }
         }
 
