@@ -15,6 +15,11 @@
         <var name="IsTarget" type="bool"/>
     </bean>
 
+    <bean name="AttrModifyEffect" parent="Effect" alias="AttrModify">
+        <var name="AttrType" type="EAttrType"/>
+        <var name="Value" type="int"/>
+    </bean>
+
     <bean name="GridRange">
         <var name="Type" type="EGridRangeType"/>
         <var name="Distance" type="int"/>

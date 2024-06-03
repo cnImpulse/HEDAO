@@ -1,3 +1,4 @@
+using Cfg;
 using Cfg.Battle;
 
 namespace HEDAO.Skill
@@ -7,7 +8,8 @@ namespace HEDAO.Skill
         public int Id { get; private set; }
         public int Life { get; private set; }
         public IEffectTarget Target { get; private set; }
-
+        public BuffCfg Cfg => GameEntry.Cfg.Tables.TbBuffCfg.Get(Id);
+        
         public Buff(int id, IEffectTarget target)
         {
             Id = id;
@@ -18,14 +20,24 @@ namespace HEDAO.Skill
         {
             var cfg = GameEntry.Cfg.Tables.TbBuffCfg.Get(Id);
             Life = cfg.Round;
+            
+            if (Cfg.CondType == EBuffCondType.Add)
+            {
+                foreach (var effect in Cfg.Effect)
+                {
+                    effect.OnTakeEffect(null, Target);
+                }
+            }
         }
 
         public virtual void OnRoundStart()
         {
-            var cfg = GameEntry.Cfg.Tables.TbBuffCfg.Get(Id);
-            foreach (var effect in cfg.Effect)
+            if (Cfg.CondType == EBuffCondType.RoundStart)
             {
-                effect.OnTakeEffect(null, Target);
+                foreach (var effect in Cfg.Effect)
+                {
+                    effect.OnTakeEffect(null, Target);
+                }
             }
 
             --Life;
@@ -37,6 +49,14 @@ namespace HEDAO.Skill
 
         public virtual void OnRemove()
         {
+            if (Cfg.CondType == EBuffCondType.Add)
+            {
+                foreach (var effect in Cfg.Effect)
+                {
+                    effect.OnResetEffect(null, Target);
+                }
+            }
+            
             Id = 0;
             Target = null;
         }

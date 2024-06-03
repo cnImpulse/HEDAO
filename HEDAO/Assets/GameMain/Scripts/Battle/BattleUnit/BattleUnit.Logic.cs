@@ -3,7 +3,9 @@ using HEDAO.Skill;
 using UnityGameFramework.Runtime;
 using UnityEngine;
 using System.Collections;
+using Cfg;
 using Cfg.Battle;
+using GameFramework;
 
 namespace HEDAO
 {
@@ -87,12 +89,23 @@ namespace HEDAO
 
         public void TakeDamage(int damage)
         {
+            int shield = Data.RoleData.BattleAttr.GetAttr<int>(EAttrType.Shield);
+            if (shield > 0)
+            {
+                int remainingDamage = damage - shield;
+                shield = Mathf.Max(0, shield - damage);
+                damage = Mathf.Max(0, remainingDamage);
+        
+                Data.RoleData.BattleAttr.SetAttr(EAttrType.Shield, shield);
+            }
+    
             Data.HP -= damage;
         }
         
         public void AddBuff(int id)
         {
             var buff = new Buff(id, this);
+            BuffDict.Remove(id);
             BuffDict.Add(id, buff);
             
             buff.OnAdd();
@@ -114,6 +127,12 @@ namespace HEDAO
                 buff.OnRemove();
             }
             BuffDict.Clear();
+        }
+        
+        public void ModifyAttr<T>(EAttrType type, T value)
+            where T : Variable
+        {
+            Data.RoleData.BattleAttr.ModifyAttr(type, value);
         }
     }
 }

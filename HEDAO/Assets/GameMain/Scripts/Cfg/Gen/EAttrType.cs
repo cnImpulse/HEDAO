@@ -44,6 +44,10 @@ namespace Cfg
         /// 神识
         /// </summary>
         SSI = 6,
+        /// <summary>
+        /// 护盾
+        /// </summary>
+        Shield = 7,
     }
 
 } 

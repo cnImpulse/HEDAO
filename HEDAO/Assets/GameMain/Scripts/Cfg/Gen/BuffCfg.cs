@@ -18,6 +18,7 @@ public sealed partial class BuffCfg : Luban.BeanBase
     {
         Id = _buf.ReadInt();
         Round = _buf.ReadInt();
+        CondType = (EBuffCondType)_buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);Effect = new System.Collections.Generic.List<Battle.Effect>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { Battle.Effect _e0;  _e0 = Battle.Effect.DeserializeEffect(_buf); Effect.Add(_e0);}}
     }
 
@@ -28,6 +29,7 @@ public sealed partial class BuffCfg : Luban.BeanBase
 
     public readonly int Id;
     public readonly int Round;
+    public readonly EBuffCondType CondType;
     public readonly System.Collections.Generic.List<Battle.Effect> Effect;
    
     public const int __ID__ = 1892616945;
@@ -35,6 +37,7 @@ public sealed partial class BuffCfg : Luban.BeanBase
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         foreach (var _e in Effect) { _e?.ResolveRef(tables); }
@@ -45,6 +48,7 @@ public sealed partial class BuffCfg : Luban.BeanBase
         return "{ "
         + "Id:" + Id + ","
         + "Round:" + Round + ","
+        + "CondType:" + CondType + ","
         + "Effect:" + Luban.StringUtil.CollectionToString(Effect) + ","
         + "}";
     }

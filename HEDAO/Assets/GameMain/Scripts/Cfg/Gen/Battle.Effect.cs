@@ -25,6 +25,7 @@ public abstract partial class Effect : Luban.BeanBase
             case Battle.AddBuffEffect.__ID__: return new Battle.AddBuffEffect(_buf);
             case Battle.AttackEffect.__ID__: return new Battle.AttackEffect(_buf);
             case Battle.MoveEffect.__ID__: return new Battle.MoveEffect(_buf);
+            case Battle.AttrModifyEffect.__ID__: return new Battle.AttrModifyEffect(_buf);
             default: throw new SerializationException();
         }
     }

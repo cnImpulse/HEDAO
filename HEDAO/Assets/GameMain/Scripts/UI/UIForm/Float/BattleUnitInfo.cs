@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cfg;
 using UnityEngine;
 using FGUI.CommonUI;
 using UnityGameFramework.Runtime;
@@ -27,11 +28,13 @@ namespace HEDAO
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
-            View.m_hp_bar.value = m_Owner.Data.HP;
-            View.m_qi_bar.value = m_Owner.Data.QI;
-            View.m_hp_bar.max = m_Owner.Data.MaxHP;
-            View.m_qi_bar.max = m_Owner.Data.MaxQI;
+            int shield = m_Owner.Data.RoleData.BattleAttr.GetAttr<int>(EAttrType.Shield);
 
+            View.m_hp_bar.value = m_Owner.Data.HP + shield;
+            View.m_qi_bar.value = m_Owner.Data.QI;
+            View.m_hp_bar.max = m_Owner.Data.MaxHP + shield;
+            View.m_qi_bar.max = m_Owner.Data.MaxQI;
+            
             Vector3 screenPos = Camera.main.WorldToScreenPoint(m_Owner.transform.position);
             screenPos.y = Screen.height - screenPos.y;
             View.SetXY(screenPos.x, screenPos.y + 55f);

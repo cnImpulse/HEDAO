@@ -76,7 +76,7 @@ namespace HEDAO
             }
             else
             {
-                //GameEntry.Event.Fire(this, EventName.BattleUnitActionCancel);
+                GameEntry.Event.Fire(this, EventName.BattleUnitActionCancel);
             }
         }
     }

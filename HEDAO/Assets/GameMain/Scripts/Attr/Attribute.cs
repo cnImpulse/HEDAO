@@ -30,12 +30,30 @@ namespace HEDAO
 
         public T GetAttr<T>(EAttrType type)
         {
-            return (T)AttrDict[type].GetValue();
+            if (AttrDict.TryGetValue(type, out var attr))
+            {
+                return (T) attr.GetValue();
+            }
+
+            return default;
         }
 
         public void SetAttr<T>(EAttrType type, T value)
         {
             AttrDict[type].SetValue(value);
+        }
+
+        public void ModifyAttr<T>(EAttrType type, T value)
+            where T : Variable
+        {
+            if (AttrDict.TryGetValue(type, out var attr))
+            {
+                attr.SetValue((dynamic) attr.GetValue() + (dynamic) value.GetValue());
+            }
+            else
+            {
+                AddAttr(type, value);
+            }
         }
     }
 }

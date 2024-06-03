@@ -9,8 +9,6 @@ namespace HEDAO
 {
     public class BattleState : BattleStateBase
     {
-        private int m_GridUnitInfoFormId = 0;
-
         protected override void OnInit(IFsm<ProcedureBattle> fsm)
         {
             base.OnInit(fsm);
@@ -22,11 +20,9 @@ namespace HEDAO
         {
             base.OnEnter(fsm);
 
-            //GameEntry.Event.Subscribe(EventName.BattleUnitActionCancel, OnBattleUnitActionCancel);
+            GameEntry.Event.Subscribe(EventName.BattleUnitActionCancel, OnBattleUnitActionCancel);
             GameEntry.Event.Subscribe(EventName.BattleUnitActionEnd, OnBattleUnitActionEnd);
 
-            //GameEntry.UI.CloseUIForm(false, m_GridUnitInfoFormId);
-            //m_GridUnitInfoFormId = GameEntry.UI.OpenUIForm(Cfg.UI.FormType.GridUnitInfoForm, m_BattleUnitFsm.Owner);
             if (IsAutoBattle)
             {
                 BattleUnitFsm.Start<AutoActionState>();
@@ -44,9 +40,8 @@ namespace HEDAO
 
         protected override void OnLeave(IFsm<ProcedureBattle> fsm, bool isShutdown)
         {
-            //DestoryBattleUnitFsm();
-            //GameEntry.UI.CloseUIForm(false, m_GridUnitInfoFormId);
-            //GameEntry.Event.Unsubscribe(EventName.BattleUnitActionCancel, OnBattleUnitActionCancel);
+            DestoryBattleUnitFsm();
+            GameEntry.Event.Unsubscribe(EventName.BattleUnitActionCancel, OnBattleUnitActionCancel);
             GameEntry.Event.Unsubscribe(EventName.BattleUnitActionEnd, OnBattleUnitActionEnd);
 
             base.OnLeave(fsm, isShutdown);
@@ -87,24 +82,13 @@ namespace HEDAO
 
         private void OnPointGridMap(object sender, GameEventArgs e)
         {
-            //var ne = e as GameEventBase;
-            //var gridData = ne.UserData as GridData;
-            //var gridUnit = gridData.GridUnit;
-            //if (gridUnit == null)
-            //{
-            //    GameEntry.UI.CloseUIForm(false, m_GridUnitInfoFormId);
-            //    return;
-            //}
-
-            //var form = GameEntry.UI.GetUIForm(m_GridUnitInfoFormId);
-            //var logic = form?.Logic as GridUnitInfoForm;
-            //if (logic?.Owner == gridUnit)
-            //{
-            //    return;
-            //}
-
-            //GameEntry.UI.CloseUIForm(false, m_GridUnitInfoFormId);
-            //m_GridUnitInfoFormId = GameEntry.UI.OpenUIForm(Cfg.UI.FormType.GridUnitInfoForm, gridUnit);
+            var ne = e as GameEventBase;
+            var gridData = ne.EventData as GridData;
+            var gridUnit = gridData.GridUnit;
+            if (gridUnit == null)
+            {
+                return;
+            }
         }
     }
 }

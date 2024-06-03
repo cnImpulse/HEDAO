@@ -19,5 +19,12 @@
 		<var name="STR" alias="力量" />
 		<var name="TPO" alias="体魄" />
 		<var name="SSI" alias="神识" />
+
+		<var name="Shield" alias="护盾" />
+	</enum>
+
+	<enum name="EBuffCondType" comment="触发条件">
+		<var name="Add" alias="挂载生效" />
+		<var name="RoundStart" alias="回合开始" />
 	</enum>
 </module>
