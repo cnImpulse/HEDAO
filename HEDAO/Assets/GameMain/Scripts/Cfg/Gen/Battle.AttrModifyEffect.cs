@@ -41,6 +41,7 @@ public sealed partial class AttrModifyEffect : Effect
     public override string ToString()
     {
         return "{ "
+        + "TargetType:" + TargetType + ","
         + "AttrType:" + AttrType + ","
         + "Value:" + Value + ","
         + "}";

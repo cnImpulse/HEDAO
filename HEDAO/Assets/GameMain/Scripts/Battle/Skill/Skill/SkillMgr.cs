@@ -40,15 +40,22 @@ namespace HEDAO
             
             var targetCamp = BattleUtl.GetHostileCamp(caster.Data.CampType);
             var range = caster.GridMap.Data.GetRangeGridList(targetGridData.GridPos, skillCfg.EffectRange, dir);
-            foreach (var gridData in range)
+            foreach (var effect in skillCfg.Effect)
             {
-                var battleUnit = gridData.GridUnit as BattleUnit;
-                if (battleUnit != null && battleUnit.Data.CampType == targetCamp)
+                if (effect.TargetType == EEffectTargetType.None)
                 {
-                    foreach (var effect in skillCfg.Effect)
+                    foreach (var gridData in range)
                     {
-                        effect.OnTakeEffect(caster, gridData.GridUnit as BattleUnit);
+                        var battleUnit = gridData.GridUnit as BattleUnit;
+                        if (battleUnit != null && battleUnit.Data.CampType == targetCamp)
+                        {
+                            effect.OnTakeEffect(caster, gridData.GridUnit as BattleUnit);
+                        }
                     }
+                }
+                else if (effect.TargetType == EEffectTargetType.Caster)
+                {
+                    effect.OnTakeEffect(caster, caster);
                 }
             }
             

@@ -27,4 +27,9 @@
 		<var name="Add" alias="挂载生效" />
 		<var name="RoundStart" alias="回合开始" />
 	</enum>
+
+	<enum name="EEffectTargetType" comment="效果目标">
+		<var name="None" alias="默认" />
+		<var name="Caster" alias="施法者" />
+	</enum>
 </module>

@@ -1,5 +1,6 @@
 <module name="Battle">
 	<bean name="Effect">
+        <var name="TargetType" type="EEffectTargetType"/>
     </bean>
 
     <bean name="AddBuffEffect" parent="Effect" alias="AddBuff">

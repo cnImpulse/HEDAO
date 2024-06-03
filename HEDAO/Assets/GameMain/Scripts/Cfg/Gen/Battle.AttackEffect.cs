@@ -38,6 +38,7 @@ public sealed partial class AttackEffect : Effect
     public override string ToString()
     {
         return "{ "
+        + "TargetType:" + TargetType + ","
         + "Power:" + Power + ","
         + "}";
     }

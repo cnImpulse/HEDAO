@@ -16,6 +16,7 @@ public abstract partial class Effect : Luban.BeanBase
 {
     public Effect(ByteBuf _buf) 
     {
+        TargetType = (EEffectTargetType)_buf.ReadInt();
     }
 
     public static Effect DeserializeEffect(ByteBuf _buf)
@@ -30,15 +31,18 @@ public abstract partial class Effect : Luban.BeanBase
         }
     }
 
+    public readonly EEffectTargetType TargetType;
    
 
     public virtual void ResolveRef(Tables tables)
     {
+        
     }
 
     public override string ToString()
     {
         return "{ "
+        + "TargetType:" + TargetType + ","
         + "}";
     }
 }

@@ -72,7 +72,14 @@ namespace HEDAO
             if (cfg.ReleaseRange.Distance == 0)
             {
                 // 直接释放
-                ChangeState<EndActionState>();
+                if (SkillMgr.Instance.ReleaseBattleSkill(skillId, Owner, Owner.GridData))
+                {
+                    ChangeState<EndActionState>();
+                }
+                else
+                {
+                    ChangeState<SkillState>();
+                }
                 return;
             }
 

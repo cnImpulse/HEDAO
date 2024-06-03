@@ -41,6 +41,7 @@ public sealed partial class MoveEffect : Effect
     public override string ToString()
     {
         return "{ "
+        + "TargetType:" + TargetType + ","
         + "Distance:" + Distance + ","
         + "IsTarget:" + IsTarget + ","
         + "}";

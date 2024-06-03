@@ -38,6 +38,7 @@ public sealed partial class AddBuffEffect : Effect
     public override string ToString()
     {
         return "{ "
+        + "TargetType:" + TargetType + ","
         + "BuffId:" + BuffId + ","
         + "}";
     }
