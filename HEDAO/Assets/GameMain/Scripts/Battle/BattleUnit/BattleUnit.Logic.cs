@@ -128,11 +128,5 @@ namespace HEDAO
             }
             BuffDict.Clear();
         }
-        
-        public void ModifyAttr<T>(EAttrType type, T value)
-            where T : Variable
-        {
-            Data.RoleData.BattleAttr.ModifyAttr(type, value);
-        }
     }
 }

@@ -20,12 +20,6 @@ namespace Cfg.Battle
         {
             
         }
-
-        void ModifyAttr<T>(EAttrType type, T value)
-            where T : Variable
-        {
-            
-        }
     }
     
     public partial class Effect
