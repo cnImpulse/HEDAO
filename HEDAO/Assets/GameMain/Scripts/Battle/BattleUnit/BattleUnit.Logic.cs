@@ -89,7 +89,7 @@ namespace HEDAO
 
         public void TakeDamage(int damage)
         {
-            int shield = Data.RoleData.BattleAttr.GetAttr<int>(EAttrType.Shield);
+            int shield = Data.RoleData.BattleAttr.GetAttr(EAttrType.Shield);
             if (shield > 0)
             {
                 int remainingDamage = damage - shield;

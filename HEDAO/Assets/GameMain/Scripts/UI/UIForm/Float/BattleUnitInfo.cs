@@ -30,7 +30,7 @@ namespace HEDAO
 
             var hp = m_Owner.Data.HP;
             var maxHp = m_Owner.Data.MaxHP;
-            int shield = m_Owner.Data.RoleData.BattleAttr.GetAttr<int>(EAttrType.Shield);
+            int shield = m_Owner.Data.RoleData.BattleAttr.GetAttr(EAttrType.Shield);
             var text = shield > 0 ? $"{hp}+{shield}/{maxHp}+{shield}" : $"{hp}/{maxHp}";
             
             View.m_hp_bar.value = hp + shield;

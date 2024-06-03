@@ -9,14 +9,14 @@ namespace Cfg.Battle
         public override void OnTakeEffect(IEffectTarget caster, IEffectTarget target)
         {
             var targetUnit = target as BattleUnit;
-            targetUnit.Data.RoleData.BattleAttr.ModifyAttr<VarInt32>(AttrType, Value);
+            targetUnit.Data.RoleData.BattleAttr.ModifyAttr(AttrType, Value);
         }
         
         public override void OnResetEffect(IEffectTarget caster, IEffectTarget target)
         {
             var targetUnit = target as BattleUnit;
             var battleAttr = targetUnit.Data.RoleData.BattleAttr;
-            battleAttr.SetAttr(AttrType, Mathf.Max(0, battleAttr.GetAttr<int>(AttrType) - Value));
+            battleAttr.SetAttr(AttrType, Mathf.Max(0, battleAttr.GetAttr(AttrType) - Value));
         }
     }
 }

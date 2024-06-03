@@ -14,11 +14,11 @@ namespace HEDAO
 
         public int HP { get => m_HP; set => m_HP = Mathf.Clamp(value, 0, MaxHP); }
         public int QI { get => m_QI; set => m_QI = Mathf.Clamp(value, 0, MaxQI); }
-        public int MaxHP => BattleAttr.GetAttr<int>(EAttrType.MaxHP);
-        public int MaxQI => BattleAttr.GetAttr<int>(EAttrType.MaxQI);
-        public int STR => BattleAttr.GetAttr<int>(EAttrType.STR);
-        public int TPO => BattleAttr.GetAttr<int>(EAttrType.TPO);
-        public int SSI => BattleAttr.GetAttr<int>(EAttrType.SSI);
+        public int MaxHP => BattleAttr.GetAttr(EAttrType.MaxHP);
+        public int MaxQI => BattleAttr.GetAttr(EAttrType.MaxQI);
+        public int STR => BattleAttr.GetAttr(EAttrType.STR);
+        public int TPO => BattleAttr.GetAttr(EAttrType.TPO);
+        public int SSI => BattleAttr.GetAttr(EAttrType.SSI);
         public int Level { get; private set; }
         public int MoveSkillId { get; private set; }
         public string Name { get; private set; }
@@ -38,8 +38,9 @@ namespace HEDAO
             BattleAttr = new AttributeDict();
             foreach (var pair in cfg.BaseAttr)
             {
-                BattleAttr.AddAttr(pair.Key, (VarInt32)pair.Value);
+                BattleAttr.AddAttr(pair.Key, (VarInt32)pair.Value, 0);
             }
+            BattleAttr.AddAttr(EAttrType.Shield, 0, 0);
             
             Init();
         }
