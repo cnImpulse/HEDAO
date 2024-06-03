@@ -28,11 +28,16 @@ namespace HEDAO
         {
             base.OnUpdate(elapseSeconds, realElapseSeconds);
 
+            var hp = m_Owner.Data.HP;
+            var maxHp = m_Owner.Data.MaxHP;
             int shield = m_Owner.Data.RoleData.BattleAttr.GetAttr<int>(EAttrType.Shield);
-
-            View.m_hp_bar.value = m_Owner.Data.HP + shield;
+            var text = shield > 0 ? $"{hp}+{shield}/{maxHp}+{shield}" : $"{hp}/{maxHp}";
+            
+            View.m_hp_bar.value = hp + shield;
+            View.m_hp_bar.max = maxHp + shield;
+            View.m_hp_bar.m_text.text = text;
+            
             View.m_qi_bar.value = m_Owner.Data.QI;
-            View.m_hp_bar.max = m_Owner.Data.MaxHP + shield;
             View.m_qi_bar.max = m_Owner.Data.MaxQI;
             
             Vector3 screenPos = Camera.main.WorldToScreenPoint(m_Owner.transform.position);
