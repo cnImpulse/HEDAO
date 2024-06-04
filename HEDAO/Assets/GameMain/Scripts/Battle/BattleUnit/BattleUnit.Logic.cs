@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using HEDAO.Skill;
 using UnityGameFramework.Runtime;
@@ -86,6 +87,20 @@ namespace HEDAO
 
             GameEntry.Event.Fire(this, EventName.BattleUnitMove);
         }
+        
+        public void MoveImmediate(GridData end)
+        {
+            var start = GridData;
+            if (end == null || end == start)
+            {
+                Log.Info("没有找到终点或终点无效!");
+                return;
+            }
+
+            start.OnGridUnitLeave();
+            end.OnGridUnitEnter(this);
+            GridMap.SetGridUnitPos(this, end.GridPos);
+        }
 
         public void TakeDamage(int damage)
         {
@@ -104,11 +119,13 @@ namespace HEDAO
         
         public void AddBuff(int id)
         {
+            RemoveBuff(id);
+
             var buff = new Buff(id, this);
-            BuffDict.Remove(id);
             BuffDict.Add(id, buff);
-            
             buff.OnAdd();
+            
+            Log.Info("Entity:{0}, 添加BuffId: {1}", Name, id);
         }
         
         public void RemoveBuff(int id)
@@ -117,6 +134,8 @@ namespace HEDAO
             {
                 buff.OnRemove();
                 BuffDict.Remove(id);
+                
+                Log.Info("移除BuffId: {0}", Name, id);
             }
         }
 

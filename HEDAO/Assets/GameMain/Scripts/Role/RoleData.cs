@@ -9,11 +9,14 @@ namespace HEDAO
 {
     public class CharacterData
     {
-        private int m_HP = 0;
-        private int m_QI = 0;
-
-        public int HP { get => m_HP; set => m_HP = Mathf.Clamp(value, 0, MaxHP); }
-        public int QI { get => m_QI; set => m_QI = Mathf.Clamp(value, 0, MaxQI); }
+        public int HP {
+            get => BattleAttr.GetAttr(EAttrType.HP);
+            set => BattleAttr.SetAttr(EAttrType.HP, value);
+        }
+        public int QI {
+            get => BattleAttr.GetAttr(EAttrType.QI);
+            set => BattleAttr.SetAttr(EAttrType.QI, value);
+        }
         public int MaxHP => BattleAttr.GetAttr(EAttrType.MaxHP);
         public int MaxQI => BattleAttr.GetAttr(EAttrType.MaxQI);
         public int STR => BattleAttr.GetAttr(EAttrType.STR);
@@ -40,6 +43,8 @@ namespace HEDAO
             {
                 BattleAttr.AddAttr(pair.Key, (VarInt32)pair.Value, 0);
             }
+            BattleAttr.AddAttr(EAttrType.HP, MaxHP, 0, MaxHP);
+            BattleAttr.AddAttr(EAttrType.QI, MaxHP, 0, MaxQI);
             BattleAttr.AddAttr(EAttrType.Shield, 0, 0);
             
             Init();

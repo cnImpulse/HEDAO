@@ -137,7 +137,7 @@ namespace HEDAO
             }
             else
             {
-                gridMap.SetGridUnitPos(m_CurSelectedUnit, gridData.GridPos);
+                m_CurSelectedUnit.MoveImmediate(gridData);
                 m_CurSelectedUnit = null;
             }
         }

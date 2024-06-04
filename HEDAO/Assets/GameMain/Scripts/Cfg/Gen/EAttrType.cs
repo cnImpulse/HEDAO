@@ -21,33 +21,41 @@ namespace Cfg
         /// </summary>
         None = 0,
         /// <summary>
+        /// 生命
+        /// </summary>
+        HP = 1,
+        /// <summary>
+        /// 灵气
+        /// </summary>
+        QI = 2,
+        /// <summary>
         /// 最大生命
         /// </summary>
-        MaxHP = 1,
+        MaxHP = 3,
         /// <summary>
         /// 最大灵气
         /// </summary>
-        MaxQI = 2,
+        MaxQI = 4,
         /// <summary>
         /// 速度
         /// </summary>
-        SPD = 3,
+        SPD = 5,
         /// <summary>
         /// 力量
         /// </summary>
-        STR = 4,
+        STR = 6,
         /// <summary>
         /// 体魄
         /// </summary>
-        TPO = 5,
+        TPO = 7,
         /// <summary>
         /// 神识
         /// </summary>
-        SSI = 6,
+        SSI = 8,
         /// <summary>
         /// 护盾
         /// </summary>
-        Shield = 7,
+        Shield = 9,
     }
 
 } 

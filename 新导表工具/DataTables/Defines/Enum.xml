@@ -13,6 +13,8 @@
 
 	<enum name="EAttrType" comment="属性类型">
 		<var name="None" alias="默认" />
+		<var name="HP" alias="生命" />
+		<var name="QI" alias="灵气" />
 		<var name="MaxHP" alias="最大生命" />
 		<var name="MaxQI" alias="最大灵气" />
 		<var name="SPD" alias="速度" />
@@ -31,5 +33,15 @@
 	<enum name="EEffectTargetType" comment="效果目标">
 		<var name="None" alias="默认" />
 		<var name="Caster" alias="施法者" />
+	</enum>
+
+	<enum name="ERelationType" comment="关系类型">
+		<var name="Self" alias="己方" />
+		<var name="Friend" alias="友方" />
+		<var name="Enemy" alias="敌方" />
+	</enum>
+
+	<enum name="ESkillTargetType" comment="技能目标">
+		<var name="All" alias="任意" />
 	</enum>
 </module>

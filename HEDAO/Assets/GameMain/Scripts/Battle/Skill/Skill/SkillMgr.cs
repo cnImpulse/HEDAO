@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Cfg;
 using Cfg.Battle;
 using HEDAO.Battle;
@@ -20,9 +21,11 @@ namespace HEDAO
             }
             
             Vector2Int dir = default;
+            var center = targetGridData.GridPos;
             var target = targetGridData.GridUnit as BattleUnit;
             if (skillCfg.EffectRange.Type == EGridRangeType.Strip)
             {
+                center = caster.GridData.GridPos;
                 dir = GridMapUtl.NormalizeDirection(targetGridData.GridPos - caster.Data.GridPos);
             }
             else if (target == null)
@@ -36,30 +39,58 @@ namespace HEDAO
                 return false;
             }
             
-            caster.Data.QI -= skillCfg.Cost;
-            
-            var targetCamp = BattleUtl.GetHostileCamp(caster.Data.CampType);
-            var range = caster.GridMap.Data.GetRangeGridList(targetGridData.GridPos, skillCfg.EffectRange, dir);
+            var range = caster.GridMap.Data.GetRangeGridList(center, skillCfg.EffectRange, dir);
+            var targetRange = range.Where(data =>
+                {
+                    var battleUnit = data.GridUnit as BattleUnit;
+                    if (battleUnit != null)
+                    {
+                        var relation = GetRelationType(caster, battleUnit);
+                        return relation == skillCfg.TargetType;
+                    }
+                    
+                    return false;
+                }).Select(data => data.GridUnit as BattleUnit);
+
+            var result = false;
             foreach (var effect in skillCfg.Effect)
             {
                 if (effect.TargetType == EEffectTargetType.None)
                 {
-                    foreach (var gridData in range)
+                    foreach (var battleUnit in targetRange)
                     {
-                        var battleUnit = gridData.GridUnit as BattleUnit;
-                        if (battleUnit != null && battleUnit.Data.CampType == targetCamp)
-                        {
-                            effect.OnTakeEffect(caster, gridData.GridUnit as BattleUnit);
-                        }
+                        effect.OnTakeEffect(caster, battleUnit);
+                        result = true;
                     }
                 }
                 else if (effect.TargetType == EEffectTargetType.Caster)
                 {
                     effect.OnTakeEffect(caster, caster);
+                    result = true;
                 }
             }
+
+            if (result)
+            {
+                caster.Data.QI -= skillCfg.Cost;
+            }
             
-            return true;
+            return result;
+        }
+
+        public ERelationType GetRelationType(BattleUnit a, BattleUnit b)
+        {
+            if (a == b)
+            {
+                return ERelationType.Self;
+            }
+
+            if (a.Data.CampType == b.Data.CampType)
+            {
+                return ERelationType.Friend;
+            }
+
+            return ERelationType.Enemy;
         }
     }
 }

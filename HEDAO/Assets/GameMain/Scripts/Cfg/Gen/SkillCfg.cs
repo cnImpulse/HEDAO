@@ -23,6 +23,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         Cost = _buf.ReadInt();
         ReleaseRange = Battle.GridRange.DeserializeGridRange(_buf);
         EffectRange = Battle.GridRange.DeserializeGridRange(_buf);
+        TargetType = (ERelationType)_buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);Effect = new System.Collections.Generic.List<Battle.Effect>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { Battle.Effect _e0;  _e0 = Battle.Effect.DeserializeEffect(_buf); Effect.Add(_e0);}}
     }
 
@@ -38,6 +39,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
     public readonly int Cost;
     public readonly Battle.GridRange ReleaseRange;
     public readonly Battle.GridRange EffectRange;
+    public readonly ERelationType TargetType;
     public readonly System.Collections.Generic.List<Battle.Effect> Effect;
    
     public const int __ID__ = -2087897997;
@@ -52,6 +54,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         
         ReleaseRange?.ResolveRef(tables);
         EffectRange?.ResolveRef(tables);
+        
         foreach (var _e in Effect) { _e?.ResolveRef(tables); }
     }
 
@@ -65,6 +68,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         + "Cost:" + Cost + ","
         + "ReleaseRange:" + ReleaseRange + ","
         + "EffectRange:" + EffectRange + ","
+        + "TargetType:" + TargetType + ","
         + "Effect:" + Luban.StringUtil.CollectionToString(Effect) + ","
         + "}";
     }
