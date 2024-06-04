@@ -22,6 +22,7 @@ namespace HEDAO
         public int STR => BattleAttr.GetAttr(EAttrType.STR);
         public int TPO => BattleAttr.GetAttr(EAttrType.TPO);
         public int SSI => BattleAttr.GetAttr(EAttrType.SSI);
+        public int FAS => BattleAttr.GetAttr(EAttrType.FAS);
         public int Level { get; private set; }
         public int MoveSkillId { get; private set; }
         public string Name { get; private set; }

@@ -53,9 +53,13 @@ namespace Cfg
         /// </summary>
         SSI = 8,
         /// <summary>
+        /// 法身
+        /// </summary>
+        FAS = 9,
+        /// <summary>
         /// 护盾
         /// </summary>
-        Shield = 9,
+        Shield = 10,
     }
 
 } 

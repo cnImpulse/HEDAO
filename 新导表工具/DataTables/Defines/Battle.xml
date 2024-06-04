@@ -9,6 +9,7 @@
 
     <bean name="AttackEffect" parent="Effect" alias="Attack">
         <var name="Power" type="int"/>
+        <var name="DamageType" type="EDamageType"/>
     </bean>
 
     <bean name="MoveEffect" parent="Effect" alias="Move">

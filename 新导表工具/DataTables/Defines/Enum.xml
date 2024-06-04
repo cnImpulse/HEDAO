@@ -2,6 +2,7 @@
 	<enum name="EDamageType" comment="伤害类型">
 		<var name="Physics" alias="物理" />
 		<var name="Magic" alias="法术" />
+		<var name="Real" alias="真伤" />
 	</enum>
 
 	<enum name="EGridRangeType" comment="网格范围类型">
@@ -21,6 +22,7 @@
 		<var name="STR" alias="力量" />
 		<var name="TPO" alias="体魄" />
 		<var name="SSI" alias="神识" />
+		<var name="FAS" alias="法身" />
 
 		<var name="Shield" alias="护盾" />
 	</enum>
