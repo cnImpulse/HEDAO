@@ -10,6 +10,7 @@
     <bean name="AttackEffect" parent="Effect" alias="Attack">
         <var name="Power" type="int"/>
         <var name="DamageType" type="EDamageType"/>
+        <var name="DamageTag" type="EDamageTag"/>
     </bean>
 
     <bean name="MoveEffect" parent="Effect" alias="Move">

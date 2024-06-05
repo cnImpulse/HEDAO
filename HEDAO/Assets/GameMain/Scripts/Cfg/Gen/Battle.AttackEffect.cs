@@ -18,6 +18,7 @@ public sealed partial class AttackEffect : Effect
     {
         Power = _buf.ReadInt();
         DamageType = (EDamageType)_buf.ReadInt();
+        DamageTag = (EDamageTag)_buf.ReadInt();
     }
 
     public static AttackEffect DeserializeAttackEffect(ByteBuf _buf)
@@ -27,6 +28,7 @@ public sealed partial class AttackEffect : Effect
 
     public readonly int Power;
     public readonly EDamageType DamageType;
+    public readonly EDamageTag DamageTag;
    
     public const int __ID__ = 867016559;
     public override int GetTypeId() => __ID__;
@@ -34,6 +36,7 @@ public sealed partial class AttackEffect : Effect
     public override void ResolveRef(Tables tables)
     {
         base.ResolveRef(tables);
+        
         
         
     }
@@ -44,6 +47,7 @@ public sealed partial class AttackEffect : Effect
         + "TargetType:" + TargetType + ","
         + "Power:" + Power + ","
         + "DamageType:" + DamageType + ","
+        + "DamageTag:" + DamageTag + ","
         + "}";
     }
 }
