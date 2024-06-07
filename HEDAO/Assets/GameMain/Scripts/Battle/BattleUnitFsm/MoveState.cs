@@ -71,7 +71,7 @@ namespace HEDAO
             }
             else if (m_CanMoveList.Contains(gridData))
             {
-                Owner.Move(gridData);
+                CmdMgr.Instance.Execute(new MoveCmd(Owner, gridData.GridPos));
                 ChangeState<SelectActionState>();
             }
             else

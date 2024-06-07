@@ -12,6 +12,13 @@ namespace HEDAO
         public GameObject BattleUnit = null;
         public LevelData LevelData = new LevelData();
 
+        [ContextMenu("ClearTiles")]
+        private void ClearTiles()
+        {
+            var battleUnitTilemap = BattleUnit?.transform.Find("m_BattleUnit")?.GetComponent<Tilemap>();
+            battleUnitTilemap.ClearAllTiles();
+        }
+        
         [ContextMenu("GenerateGridMap")]
         private void GenerateGridMap()
         {
@@ -64,7 +71,7 @@ namespace HEDAO
             GridMapData gridMapData = new GridMapData();
             for (int i = tilemapList.Length - 1; i >= 0; --i)
             {
-                var tileDic = GetAllTile<Grid>(tilemapList[i]);
+                var tileDic = GetAllTile<GridTile>(tilemapList[i]);
                 foreach(var pair in tileDic)
                 {
                     if (gridMapData.ExitData(pair.Key))
@@ -97,9 +104,9 @@ namespace HEDAO
             foreach (var pair in tileDic)
             {
                 var tile = pair.Value;
-                if (pair.Value is BattleUnitTile)
+                if (pair.Value is GridUnitTile)
                 {
-                    LevelData.EnemyDic.Add(GridMapUtl.GridPosToIndex(pair.Key), (tile as BattleUnitTile).Id);
+                    LevelData.EnemyDic.Add(GridMapUtl.GridPosToIndex(pair.Key), (tile as GridUnitTile).Id);
                 }
                 else if (tile.name == "brith")
                 {

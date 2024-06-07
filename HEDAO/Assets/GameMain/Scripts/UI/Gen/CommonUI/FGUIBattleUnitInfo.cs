@@ -7,6 +7,7 @@ namespace FGUI.CommonUI
 {
     public partial class FGUIBattleUnitInfo : GComponent
     {
+        public GTextField m_name_txt;
         public FGUIHPBar m_hp_bar;
         public GProgressBar m_qi_bar;
         public const string URL = "ui://rt51n0kjqwwl51";
@@ -20,6 +21,7 @@ namespace FGUI.CommonUI
         {
             base.ConstructFromXML(xml);
 
+            m_name_txt = (GTextField)GetChild("name_txt");
             m_hp_bar = (FGUIHPBar)GetChild("hp_bar");
             m_qi_bar = (GProgressBar)GetChild("qi_bar");
         }

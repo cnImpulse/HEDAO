@@ -65,6 +65,11 @@ namespace HEDAO
             }
             Move(end);
         }
+        
+        public void Move(Vector2Int end)
+        {
+            Move(GridMap.Data.GetGridData(end));
+        }
 
         public void Move(GridData end)
         {
@@ -84,8 +89,6 @@ namespace HEDAO
             start.OnGridUnitLeave();
             end.OnGridUnitEnter(this);
             GridMap.SetGridUnitPos(this, end.GridPos);
-
-            GameEntry.Event.Fire(this, EventName.BattleUnitMove);
         }
         
         public void MoveImmediate(GridData end)

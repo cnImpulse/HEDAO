@@ -20,7 +20,7 @@ namespace HEDAO
         {
             base.OnEnter(procedureOwner);
 
-            InitBattle(1);
+            InitBattle(2);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)

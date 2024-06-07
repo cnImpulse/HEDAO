@@ -13,7 +13,7 @@ namespace HEDAO
             m_Target = battleUnit;
         }
 
-        public virtual void Execute()
+        public virtual void Redo()
         {
 
         }

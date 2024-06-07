@@ -31,8 +31,8 @@ namespace HEDAO
             GameEntry.Resource.LoadAsset(path, 
             (assetName, asset, duration, userData) =>
             {
-                var tile = asset as RuleTile;
-                m_SpriteRenderer.sprite = tile.m_DefaultSprite;
+                var tile = asset as Tile;
+                m_SpriteRenderer.sprite = tile.sprite;
                 InternalSetVisible(true);
             });
         }
