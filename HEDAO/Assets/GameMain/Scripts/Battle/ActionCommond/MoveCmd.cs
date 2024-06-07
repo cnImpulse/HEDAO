@@ -18,12 +18,12 @@ namespace HEDAO
 
         public override void Redo()
         {
-            m_Target.Move(m_End);
+            Owner.Move(m_End);
         }
 
         public override void Undo()
         {
-            m_Target.Move(m_Start);
+            Owner.Move(m_Start);
         }
     }
 }

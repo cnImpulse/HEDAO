@@ -13,7 +13,7 @@ namespace HEDAO
         {
             base.OnEnter(fsm);
 
-            Owner.OnEndAction();
+            CmdMgr.Instance.Execute(new AwaitCmd(Owner));
         }
 
         protected override void OnUpdate(IFsm<BattleUnit> fsm, float elapseSeconds, float realElapseSeconds)

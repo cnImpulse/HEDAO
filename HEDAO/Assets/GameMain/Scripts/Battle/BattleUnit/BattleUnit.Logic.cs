@@ -16,7 +16,7 @@ namespace HEDAO
     public partial class BattleUnit : GridUnit, IEffectTarget
     {
         public CommonAI AI { get; private set; }
-        public bool CanAction { get; private set; }
+        public bool CanAction { get; set; }
 
         public Dictionary<int, Buff> BuffDict { get; private set; } = new();
 

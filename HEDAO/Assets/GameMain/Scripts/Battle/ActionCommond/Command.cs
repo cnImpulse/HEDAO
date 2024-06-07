@@ -6,11 +6,11 @@ namespace HEDAO
 {
     public abstract class Command
     {
-        protected BattleUnit m_Target = null;
+        public BattleUnit Owner = null;
 
         public Command(BattleUnit battleUnit)
         {
-            m_Target = battleUnit;
+            Owner = battleUnit;
         }
 
         public virtual void Redo()

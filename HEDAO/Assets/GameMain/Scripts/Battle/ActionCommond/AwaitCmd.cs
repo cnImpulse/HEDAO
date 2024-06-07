@@ -12,10 +12,12 @@ namespace HEDAO
 
         public override void Redo()
         {
+            Owner.OnEndAction();
         }
 
         public override void Undo()
         {
+            Owner.CanAction = true;
         }
     }
 }

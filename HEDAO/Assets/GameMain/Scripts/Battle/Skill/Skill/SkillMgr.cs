@@ -52,30 +52,9 @@ namespace HEDAO
                     return false;
                 }).Select(data => data.GridUnit as BattleUnit);
 
-            var result = false;
-            foreach (var effect in skillCfg.Effect)
-            {
-                if (effect.TargetType == EEffectTargetType.None)
-                {
-                    foreach (var battleUnit in targetRange)
-                    {
-                        effect.OnTakeEffect(caster, battleUnit);
-                        result = true;
-                    }
-                }
-                else if (effect.TargetType == EEffectTargetType.Caster)
-                {
-                    effect.OnTakeEffect(caster, caster);
-                    result = true;
-                }
-            }
-
-            if (result)
-            {
-                caster.Data.QI -= skillCfg.Cost;
-            }
+            CmdMgr.Instance.Execute(new ReleaseSkillCmd(caster, skillId, targetRange));
             
-            return result;
+            return true;
         }
 
         public ERelationType GetRelationType(BattleUnit a, BattleUnit b)
