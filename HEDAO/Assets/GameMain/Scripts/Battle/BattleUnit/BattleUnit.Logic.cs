@@ -85,9 +85,7 @@ namespace HEDAO
                 Log.Error("移动力不足!");
                 return;
             }
-
-            start.OnGridUnitLeave();
-            end.OnGridUnitEnter(this);
+            
             GridMap.SetGridUnitPos(this, end.GridPos);
         }
         
@@ -100,8 +98,6 @@ namespace HEDAO
                 return;
             }
 
-            start.OnGridUnitLeave();
-            end.OnGridUnitEnter(this);
             GridMap.SetGridUnitPos(this, end.GridPos);
         }
 

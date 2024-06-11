@@ -70,7 +70,7 @@ namespace HEDAO
             var ne = e as GameEventBase;
             var gridData = ne.EventData as GridData;
 
-            var battleUnit = GridMap.GetBattleUnit(gridData.GridPos);
+            var battleUnit = gridData.GridUnit as BattleUnit;
             if (battleUnit == null)
             {
                 return;

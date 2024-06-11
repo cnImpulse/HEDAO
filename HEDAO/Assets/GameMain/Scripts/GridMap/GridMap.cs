@@ -19,13 +19,13 @@ namespace HEDAO
 
         public new GridMapData Data => m_Data;
 
-        private Dictionary<Vector2Int, GridUnit> m_GridUnitDic = default;
+        private Dictionary<int, GridUnit> m_GridUnitDic = default;
 
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
 
-            m_GridUnitDic = new Dictionary<Vector2Int, GridUnit>();
+            m_GridUnitDic = new Dictionary<int, GridUnit>();
             m_TilemapList = GetComponentsInChildren<Tilemap>();
             m_TilemapList[0].gameObject.GetOrAddComponent<BoxCollider2D>();
         }
@@ -53,13 +53,13 @@ namespace HEDAO
             base.OnAttached(childEntity, parentTransform, userData);
 
             var gridUnit = childEntity as GridUnit;
-            m_GridUnitDic.Add(gridUnit.Data.GridPos, gridUnit);
+            m_GridUnitDic.Add(gridUnit.Id, gridUnit);
         }
 
         protected override void OnDetached(EntityLogic childEntity, object userData)
         {
             var gridUnit = childEntity as GridUnit;
-            m_GridUnitDic.Remove(gridUnit.Data.GridPos);
+            m_GridUnitDic.Remove(gridUnit.Id);
 
             base.OnDetached(childEntity, userData);
         }
@@ -90,9 +90,9 @@ namespace HEDAO
             return true;
         }
 
-        public BattleUnit GetBattleUnit(Vector2Int gridPos)
+        public BattleUnit GetBattleUnit(int entityId)
         {
-            if (m_GridUnitDic.TryGetValue(gridPos, out var gridUnit))
+            if (m_GridUnitDic.TryGetValue(entityId, out var gridUnit))
             {
                 return gridUnit as BattleUnit;
             }
@@ -117,20 +117,29 @@ namespace HEDAO
 
         public void SetGridUnitPos(GridUnit gridUnit, Vector2Int gridPos)
         {
-            if (m_GridUnitDic.ContainsKey(gridPos))
+            if (!m_GridUnitDic.ContainsKey(gridUnit.Id))
             {
-                Log.Error("单元格{0}被占据。", gridPos);
+                Log.Error("单位{0}不在地图中。", gridUnit.Id);
                 return;
             }
 
-            var gridData = m_Data.GetGridData(gridPos);
-            if (gridData == null)
+            var end = m_Data.GetGridData(gridPos);
+            if (end == null)
             {
                 Log.Error("单元格{0}不存在。", gridPos);
+                return;
+            }
+            
+            if (end.GridUnit != null)
+            {
+                Log.Error("单元格已经被占据,无法进入!");
+                return;
             }
 
-            m_GridUnitDic.Remove(gridUnit.Data.GridPos);
-            m_GridUnitDic.Add(gridPos, gridUnit);
+            var start = gridUnit.GridData;
+            start.OnGridUnitLeave();
+            end.OnGridUnitEnter(gridUnit);
+            
             gridUnit.Data.GridPos = gridPos;
             gridUnit.transform.position = GridPosToWorldPos(gridPos);
         }

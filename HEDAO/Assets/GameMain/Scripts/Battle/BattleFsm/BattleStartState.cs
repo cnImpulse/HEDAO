@@ -127,7 +127,7 @@ namespace HEDAO
             var gridMap = BattleData.GridMap;
             if (m_CurSelectedUnit == null)
             {
-                var battleUnit = gridMap.GetBattleUnit(gridData.GridPos);
+                var battleUnit = gridData.GridUnit as BattleUnit;
                 if (battleUnit == null || battleUnit.Data.CampType != CampType.Player)
                 {
                     return;
