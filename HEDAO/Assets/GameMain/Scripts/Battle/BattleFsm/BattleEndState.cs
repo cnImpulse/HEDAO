@@ -13,11 +13,11 @@ namespace HEDAO
         {
             base.OnEnter(fsm);
 
-            //var battleUnitList = m_GridMap.GetGridUnitList<BattleUnit>();
-            //foreach (var battleUnit in battleUnitList)
-            //{
-            //    battleUnit.OnBattleEnd();
-            //}
+            var battleUnitList = GridMap.GetBattleUnitList();
+            foreach (var battleUnit in battleUnitList)
+            {
+                battleUnit.OnBattleEnd();
+            }
         }
 
         protected override void OnUpdate(IFsm<ProcedureBattle> fsm, float elapseSeconds, float realElapseSeconds)

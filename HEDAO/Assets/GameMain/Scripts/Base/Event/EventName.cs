@@ -12,5 +12,6 @@ namespace HEDAO
         public const string BattleUnitActionCancel = "BattleUnitActionCancel";
 
         public const string BattleUnitDead = "BattleUnitDead";
+        public const string BattleEnd = "BattleEnd";
     }
 }

@@ -183,7 +183,14 @@ namespace HEDAO
         {
             var ne = (GameEventBase)e;
             var id = (VarInt32)ne.EventData;
+            var battleUnit = GetBattleUnit(id);
+            var battleEnd = GetBattleUnitList(battleUnit.Data.CampType).Count <= 1;
+            
             GameEntry.Entity.HideEntity(id);
+            if (battleEnd)
+            {
+                GameEntry.Event.Fire(this, EventName.BattleEnd, battleUnit.Data.CampType);            
+            }
         }
     }
 }

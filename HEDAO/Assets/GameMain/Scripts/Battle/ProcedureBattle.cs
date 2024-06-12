@@ -21,6 +21,8 @@ namespace HEDAO
             base.OnEnter(procedureOwner);
 
             InitBattle(2);
+            
+            GameEntry.Event.Subscribe(EventName.BattleEnd, OnBattleEnd);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -30,6 +32,8 @@ namespace HEDAO
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
+            GameEntry.Event.Unsubscribe(EventName.BattleEnd, OnBattleEnd);
+            
             GameEntry.Fsm.DestroyFsm(m_Fsm);
             m_BattleInfo = null;
 
@@ -63,6 +67,13 @@ namespace HEDAO
             m_Fsm = GameEntry.Fsm.CreateFsm(this, new BattleStartState(), new RoundStartState(),
                 new BattleUnitSelectState(), new BattleState(), new RoundEndState(), new BattleEndState());
             m_Fsm.Start<BattleStartState>();
+        }
+        
+        private void OnBattleEnd(object sender, GameEventArgs e)
+        {
+            var ne = (GameEventBase)e;
+            var failCampType = (CampType)ne.EventData;
+            (m_Fsm.CurrentState as BattleStateBase).ChangeState<BattleEndState>();
         }
     }
 }
