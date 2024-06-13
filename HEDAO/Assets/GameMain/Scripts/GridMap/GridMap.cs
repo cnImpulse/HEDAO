@@ -42,6 +42,12 @@ namespace HEDAO
 
         protected override void OnHide(bool isShutdown, object userData)
         {
+            foreach (var gridUnit in m_GridUnitDic.Values)
+            {
+                GameEntry.Entity.HideEntity(gridUnit);
+            }
+            m_GridUnitDic.Clear();
+            
             GameEntry.Event.Unsubscribe(EventName.BattleUnitDead, OnBattleUnitDead);
             GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowBattleUnitScuess);
 
@@ -185,11 +191,11 @@ namespace HEDAO
             var id = (VarInt32)ne.EventData;
             var battleUnit = GetBattleUnit(id);
             var battleEnd = GetBattleUnitList(battleUnit.Data.CampType).Count <= 1;
-            
+            var failCampType = battleUnit.Data.CampType;
             GameEntry.Entity.HideEntity(id);
             if (battleEnd)
             {
-                GameEntry.Event.Fire(this, EventName.BattleEnd, battleUnit.Data.CampType);            
+                GameEntry.Event.Fire(this, EventName.BattleEnd, failCampType);            
             }
         }
     }

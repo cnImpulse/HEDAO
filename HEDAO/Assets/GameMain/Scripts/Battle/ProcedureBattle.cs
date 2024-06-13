@@ -74,6 +74,7 @@ namespace HEDAO
             var ne = (GameEventBase)e;
             var failCampType = (CampType)ne.EventData;
             (m_Fsm.CurrentState as BattleStateBase).ChangeState<BattleEndState>();
+            
         }
     }
 }

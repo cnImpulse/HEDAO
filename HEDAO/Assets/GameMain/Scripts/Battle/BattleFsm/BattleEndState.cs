@@ -18,6 +18,8 @@ namespace HEDAO
             {
                 battleUnit.OnBattleEnd();
             }
+            
+            GameEntry.Entity.HideEntity(BattleData.GridMap);
         }
 
         protected override void OnUpdate(IFsm<ProcedureBattle> fsm, float elapseSeconds, float realElapseSeconds)
