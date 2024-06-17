@@ -30,7 +30,7 @@ namespace HEDAO
             if (m_StartBattle)
             {
                 GameEntry.Save.SaveGame();
-                ChangeState<ProcedureBattle>(procedureOwner);
+                ChangeState<ProcedureLiLian>(procedureOwner);
             }
         }
 

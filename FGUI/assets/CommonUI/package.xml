@@ -32,6 +32,7 @@
     <component id="mv3558" name="PrepareForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="mv3559" name="DiscipleItem.xml" path="/Components/ListItem/" exported="true"/>
     <component id="soef5a" name="RadarGraph.xml" path="/Components/Temp/" exported="true"/>
+    <component id="lvkb5b" name="LiLianForm.xml" path="/Forms/FullScreen/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>
