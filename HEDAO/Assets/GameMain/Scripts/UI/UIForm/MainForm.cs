@@ -13,6 +13,7 @@ namespace HEDAO
         {
             base.OnInit(userData);
 
+            View.m_list_building.m_list.itemRenderer = RenderListItem;
             View.m_btn_disciple.onClick.Set(OnClickDisciple);
             View.m_btn_go.onClick.Set(OnClickGo);
         }
@@ -21,6 +22,7 @@ namespace HEDAO
         {
             base.OnOpen(userData);
 
+            
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -37,6 +39,11 @@ namespace HEDAO
         {
             GameEntry.UI.OpenUIForm(UIFromName.PrepareForm);
             Close();
+        }
+
+        private void RenderListItem(int index, GObject obj)
+        {
+            
         }
     }
 }

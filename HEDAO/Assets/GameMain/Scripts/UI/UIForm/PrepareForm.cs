@@ -13,7 +13,7 @@ namespace HEDAO
         {
             base.OnInit(userData);
 
-            View.m_list_team.itemRenderer = RenderListItem;
+            View.m_list_team.m_list.itemRenderer = RenderListItem;
             View.m_btn_return.onClick.Set(OnClickReturn);
             View.m_btn_go.onClick.Set(OnClickRGo);
         }
@@ -22,7 +22,7 @@ namespace HEDAO
         {
             base.OnOpen(userData);
 
-            View.m_list_team.numItems = 4;
+            View.m_list_team.m_list.numItems = 4;
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -33,7 +33,7 @@ namespace HEDAO
         private void RenderListItem(int index, GObject obj)
         {
             var item = obj.asButton;
-            item.title = "ø’";
+            item.title = "Èòü‰ºç";
         }
 
         private void OnClickReturn()

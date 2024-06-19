@@ -7,5 +7,7 @@
     <component id="n3_mv35" name="btn_disciple" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="1320,900" size="240,120">
       <Button title="弟子名册"/>
     </component>
+    <component id="n4_qgic" name="list_building" src="aow85c" fileName="Components/Temp/List.xml" xy="0,0" pivot="0.5,0.5"/>
+    <component id="n14_aow8" name="list_role" src="aow85e" fileName="Components/Temp/VerticalList.xml" xy="0,156" pivot="0.5,0.5" size="200,924"/>
   </displayList>
 </component>
