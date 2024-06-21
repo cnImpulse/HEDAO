@@ -19,6 +19,7 @@ public partial class Tables
     public Battle.TbMoveSkillCfg TbMoveSkillCfg {get; }
     public Battle.TbSkillCfg TbSkillCfg {get; }
     public Battle.TbBuffCfg TbBuffCfg {get; }
+    public Building.TbBuildingCfg TbBuildingCfg {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
     {
@@ -28,6 +29,7 @@ public partial class Tables
         TbMoveSkillCfg = new Battle.TbMoveSkillCfg(loader("battle_tbmoveskillcfg"));
         TbSkillCfg = new Battle.TbSkillCfg(loader("battle_tbskillcfg"));
         TbBuffCfg = new Battle.TbBuffCfg(loader("battle_tbbuffcfg"));
+        TbBuildingCfg = new Building.TbBuildingCfg(loader("building_tbbuildingcfg"));
         ResolveRef();
     }
     
@@ -39,6 +41,7 @@ public partial class Tables
         TbMoveSkillCfg.ResolveRef(this);
         TbSkillCfg.ResolveRef(this);
         TbBuffCfg.ResolveRef(this);
+        TbBuildingCfg.ResolveRef(this);
     }
 }
 

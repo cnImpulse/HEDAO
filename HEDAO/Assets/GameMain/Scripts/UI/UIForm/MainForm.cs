@@ -22,7 +22,7 @@ namespace HEDAO
         {
             base.OnOpen(userData);
 
-            
+            View.m_list_building.m_list.numItems = GameEntry.Cfg.Tables.TbBuildingCfg.DataList.Count;
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -43,7 +43,8 @@ namespace HEDAO
 
         private void RenderListItem(int index, GObject obj)
         {
-            
+            var cfg = GameEntry.Cfg.Tables.TbBuildingCfg.DataList[index];
+            obj.asButton.title = cfg.Name;
         }
     }
 }
