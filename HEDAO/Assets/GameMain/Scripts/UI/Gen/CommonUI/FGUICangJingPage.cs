@@ -5,22 +5,22 @@ using FairyGUI.Utils;
 
 namespace FGUI.CommonUI
 {
-    public partial class FGUIList : GComponent
+    public partial class FGUICangJingPage : GComponent
     {
-        public Controller m_select;
+        public FGUIVerticalList m_list_role;
         public GList m_list;
-        public const string URL = "ui://rt51n0kjaow85c";
+        public const string URL = "ui://rt51n0kjlcvv5g";
 
-        public static FGUIList CreateInstance()
+        public static FGUICangJingPage CreateInstance()
         {
-            return (FGUIList)UIPackage.CreateObject("CommonUI", "List");
+            return (FGUICangJingPage)UIPackage.CreateObject("CommonUI", "CangJingPage");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            m_select = GetController("select");
+            m_list_role = (FGUIVerticalList)GetChild("list_role");
             m_list = (GList)GetChild("list");
         }
     }

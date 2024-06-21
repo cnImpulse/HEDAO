@@ -16,10 +16,12 @@ namespace FGUI.CommonUI
             UIObjectFactory.SetPackageItemExtension(FGUILoadGame.URL, typeof(FGUILoadGame));
             UIObjectFactory.SetPackageItemExtension(FGUISaveItem.URL, typeof(FGUISaveItem));
             UIObjectFactory.SetPackageItemExtension(FGUISkillItem.URL, typeof(FGUISkillItem));
+            UIObjectFactory.SetPackageItemExtension(FGUICangJingPage.URL, typeof(FGUICangJingPage));
             UIObjectFactory.SetPackageItemExtension(FGUILiLianForm.URL, typeof(FGUILiLianForm));
             UIObjectFactory.SetPackageItemExtension(FGUIMainForm.URL, typeof(FGUIMainForm));
             UIObjectFactory.SetPackageItemExtension(FGUIDiscipleForm.URL, typeof(FGUIDiscipleForm));
             UIObjectFactory.SetPackageItemExtension(FGUIPrepareForm.URL, typeof(FGUIPrepareForm));
+            UIObjectFactory.SetPackageItemExtension(FGUIQiuDaoPage.URL, typeof(FGUIQiuDaoPage));
             UIObjectFactory.SetPackageItemExtension(FGUIBattleUnitInfo.URL, typeof(FGUIBattleUnitInfo));
             UIObjectFactory.SetPackageItemExtension(FGUICommonTips.URL, typeof(FGUICommonTips));
             UIObjectFactory.SetPackageItemExtension(FGUIRadarGraph.URL, typeof(FGUIRadarGraph));

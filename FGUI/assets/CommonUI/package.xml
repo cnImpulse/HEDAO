@@ -35,6 +35,9 @@
     <component id="lvkb5b" name="LiLianForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="aow85c" name="List.xml" path="/Components/Temp/" exported="true"/>
     <component id="aow85e" name="VerticalList.xml" path="/Components/Temp/" exported="true"/>
+    <component id="nenx5f" name="QiuDaoPage.xml" path="/Components/" exported="true"/>
+    <component id="lcvv5g" name="CangJingPage.xml" path="/Components/" exported="true"/>
+    <component id="lcvv5h" name="Button2.xml" path="/Components/Button/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

@@ -10,7 +10,8 @@ namespace FGUI.CommonUI
         public GButton m_btn_go;
         public GButton m_btn_disciple;
         public FGUIList m_list_building;
-        public FGUIVerticalList m_list_role;
+        public FGUIQiuDaoPage m_page_qiudao;
+        public FGUICangJingPage m_page_cangjing;
         public const string URL = "ui://rt51n0kjmv3555";
 
         public static FGUIMainForm CreateInstance()
@@ -25,7 +26,8 @@ namespace FGUI.CommonUI
             m_btn_go = (GButton)GetChild("btn_go");
             m_btn_disciple = (GButton)GetChild("btn_disciple");
             m_list_building = (FGUIList)GetChild("list_building");
-            m_list_role = (FGUIVerticalList)GetChild("list_role");
+            m_page_qiudao = (FGUIQiuDaoPage)GetChild("page_qiudao");
+            m_page_cangjing = (FGUICangJingPage)GetChild("page_cangjing");
         }
     }
 }

@@ -20,6 +20,8 @@ public partial class Tables
     public Battle.TbSkillCfg TbSkillCfg {get; }
     public Battle.TbBuffCfg TbBuffCfg {get; }
     public Building.TbBuildingCfg TbBuildingCfg {get; }
+    public XiuLian.TbXiuLianCfg TbXiuLianCfg {get; }
+    public XiuLian.TbLevelCfg TbLevelCfg {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
     {
@@ -30,6 +32,8 @@ public partial class Tables
         TbSkillCfg = new Battle.TbSkillCfg(loader("battle_tbskillcfg"));
         TbBuffCfg = new Battle.TbBuffCfg(loader("battle_tbbuffcfg"));
         TbBuildingCfg = new Building.TbBuildingCfg(loader("building_tbbuildingcfg"));
+        TbXiuLianCfg = new XiuLian.TbXiuLianCfg(loader("xiulian_tbxiuliancfg"));
+        TbLevelCfg = new XiuLian.TbLevelCfg(loader("xiulian_tblevelcfg"));
         ResolveRef();
     }
     
@@ -42,6 +46,8 @@ public partial class Tables
         TbSkillCfg.ResolveRef(this);
         TbBuffCfg.ResolveRef(this);
         TbBuildingCfg.ResolveRef(this);
+        TbXiuLianCfg.ResolveRef(this);
+        TbLevelCfg.ResolveRef(this);
     }
 }
 
