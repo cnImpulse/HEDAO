@@ -7,11 +7,9 @@ namespace FGUI.CommonUI
 {
     public partial class FGUIMainForm : GComponent
     {
-        public GButton m_btn_go;
-        public GButton m_btn_disciple;
-        public FGUIList m_list_building;
-        public FGUIQiuDaoPage m_page_qiudao;
-        public FGUICangJingPage m_page_cangjing;
+        public Controller m_ctrl_page;
+        public GList m_list_building;
+        public GList m_list_page;
         public const string URL = "ui://rt51n0kjmv3555";
 
         public static FGUIMainForm CreateInstance()
@@ -23,11 +21,9 @@ namespace FGUI.CommonUI
         {
             base.ConstructFromXML(xml);
 
-            m_btn_go = (GButton)GetChild("btn_go");
-            m_btn_disciple = (GButton)GetChild("btn_disciple");
-            m_list_building = (FGUIList)GetChild("list_building");
-            m_page_qiudao = (FGUIQiuDaoPage)GetChild("page_qiudao");
-            m_page_cangjing = (FGUICangJingPage)GetChild("page_cangjing");
+            m_ctrl_page = GetController("ctrl_page");
+            m_list_building = (GList)GetChild("list_building");
+            m_list_page = (GList)GetChild("list_page");
         }
     }
 }

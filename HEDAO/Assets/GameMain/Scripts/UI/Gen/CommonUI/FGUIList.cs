@@ -7,7 +7,6 @@ namespace FGUI.CommonUI
 {
     public partial class FGUIList : GComponent
     {
-        public Controller m_select;
         public GList m_list;
         public const string URL = "ui://rt51n0kjaow85c";
 
@@ -20,7 +19,6 @@ namespace FGUI.CommonUI
         {
             base.ConstructFromXML(xml);
 
-            m_select = GetController("select");
             m_list = (GList)GetChild("list");
         }
     }

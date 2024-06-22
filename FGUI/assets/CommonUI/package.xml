@@ -38,6 +38,7 @@
     <component id="nenx5f" name="QiuDaoPage.xml" path="/Components/" exported="true"/>
     <component id="lcvv5g" name="CangJingPage.xml" path="/Components/" exported="true"/>
     <component id="lcvv5h" name="Button2.xml" path="/Components/Button/"/>
+    <component id="mbqm5i" name="Button3.xml" path="/Components/Button/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>
