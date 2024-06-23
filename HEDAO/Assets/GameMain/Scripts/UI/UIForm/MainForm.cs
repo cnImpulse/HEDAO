@@ -89,16 +89,33 @@ namespace HEDAO
             obj.asButton.title = role.Name;
         }
 
+        private static List<string> WuXin = new List<string>() { "金", "木", "水", "火", "土" };
         private void OnRoleChanged(FGUIQiuDaoPage QiuDaoPage)
         {
-            var role = m_RoleList[QiuDaoPage.m_list_role.m_ctrl_select.selectedIndex];
-            var info = $"名字：{role.Name}\n";
-            foreach (var pair in role.WuXin)
+            var selectIndex = QiuDaoPage.m_list_role.m_ctrl_select.selectedIndex;
+            if (selectIndex < 0)
             {
-                info += $"{pair.Key.ToString()}：{pair.Value}\n";
+                return;
             }
             
+            var role = m_RoleList[selectIndex];
+            var info = $"名字：{role.Name}\n";
+
             QiuDaoPage.m_text_role.text = info;
+
+            float[] arr = new float[5];
+            foreach (var pair in role.WuXin)
+            {
+                var index = (int)pair.Key;
+                var value = pair.Value / 100f;
+                arr[index] = value;
+                var text = QiuDaoPage.m_rader.GetChildAt(
+                    QiuDaoPage.m_rader.GetChildIndex(QiuDaoPage.m_rader.m_text_wuxin_0) + index);
+                text.text = $"{WuXin[index]}：{pair.Value}";
+            }
+            
+            QiuDaoPage.m_rader.m_img_wuxing.shape.DrawRegularPolygon(5, 4, Color.white, 
+                Color.black, Color.white, 54, arr);
         }
 
         private List<Role> RandomGenRole(int count)

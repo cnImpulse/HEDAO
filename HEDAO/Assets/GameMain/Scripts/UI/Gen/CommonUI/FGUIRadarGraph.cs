@@ -7,7 +7,12 @@ namespace FGUI.CommonUI
 {
     public partial class FGUIRadarGraph : GComponent
     {
-        public GGraph m_graph_wuxing;
+        public GGraph m_img_wuxing;
+        public GTextField m_text_wuxin_0;
+        public GTextField m_text_wuxin_1;
+        public GTextField m_text_wuxin_2;
+        public GTextField m_text_wuxin_3;
+        public GTextField m_text_wuxin_4;
         public const string URL = "ui://rt51n0kjsoef5a";
 
         public static FGUIRadarGraph CreateInstance()
@@ -19,7 +24,12 @@ namespace FGUI.CommonUI
         {
             base.ConstructFromXML(xml);
 
-            m_graph_wuxing = (GGraph)GetChild("graph_wuxing");
+            m_img_wuxing = (GGraph)GetChild("img_wuxing");
+            m_text_wuxin_0 = (GTextField)GetChild("text_wuxin_0");
+            m_text_wuxin_1 = (GTextField)GetChild("text_wuxin_1");
+            m_text_wuxin_2 = (GTextField)GetChild("text_wuxin_2");
+            m_text_wuxin_3 = (GTextField)GetChild("text_wuxin_3");
+            m_text_wuxin_4 = (GTextField)GetChild("text_wuxin_4");
         }
     }
 }

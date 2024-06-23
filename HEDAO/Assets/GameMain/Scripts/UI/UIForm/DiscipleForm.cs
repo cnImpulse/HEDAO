@@ -23,7 +23,7 @@ namespace HEDAO
             View.m_list_disciple.numItems = GameEntry.Save.PlayerData.RoleList.Count;
 
             float[] arr = { 0.9f, 0.4f, 0.3f, 0.8f, 0.5f };
-            View.m_rader.m_graph_wuxing.shape.DrawRegularPolygon(5, 4, Color.white, Color.black, Color.white, 54, arr);
+            View.m_rader.m_img_wuxing.shape.DrawRegularPolygon(5, 4, Color.white, Color.black, Color.white, 54, arr);
 
             int length = 50;
             var a = Mathf.Sin(54 * Mathf.Deg2Rad) * length;
