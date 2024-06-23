@@ -9,6 +9,8 @@ namespace HEDAO
 {
     public class MainForm : FGUIForm<FGUIMainForm>
     {
+        private List<Role> m_RoleList;
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -63,16 +65,51 @@ namespace HEDAO
             if (index == 0)
             {
                 var qiudao = page as FGUIQiuDaoPage;
-                qiudao.m_list_role.m_list.numItems = 3;
+                m_RoleList = RandomGenRole(3);
 
                 var ctrl = qiudao.m_list_role.m_ctrl_select;
                 ctrl.ClearPages();
+                ctrl.onChanged.Clear();
+                ctrl.onChanged.Add(() => { OnRoleChanged(qiudao);});
+                
+                qiudao.m_list_role.m_list.itemRenderer = OnRenderRole;
+                qiudao.m_list_role.m_list.numItems = m_RoleList.Count;
+
                 for (int i = 0; i < 3; i++)
                 {
                     ctrl.AddPage("");
                 }
                 ctrl.selectedIndex = 0;
             }
+        }
+
+        private void OnRenderRole(int index, GObject obj)
+        {
+            var role = m_RoleList[index];
+            obj.asButton.title = role.Name;
+        }
+
+        private void OnRoleChanged(FGUIQiuDaoPage QiuDaoPage)
+        {
+            var role = m_RoleList[QiuDaoPage.m_list_role.m_ctrl_select.selectedIndex];
+            var info = $"名字：{role.Name}\n";
+            foreach (var pair in role.WuXin)
+            {
+                info += $"{pair.Key.ToString()}：{pair.Value}\n";
+            }
+            
+            QiuDaoPage.m_text_role.text = info;
+        }
+
+        private List<Role> RandomGenRole(int count)
+        {
+            var ret = new List<Role>(count);
+            for (int i = 0; i < count; i++)
+            {
+                ret.Add(new Role());
+            }
+
+            return ret;
         }
     }
 }

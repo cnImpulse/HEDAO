@@ -23,8 +23,9 @@
 		<var name="TPO" alias="体魄" />
 		<var name="SSI" alias="神识" />
 		<var name="FAS" alias="法身" />
-
 		<var name="Shield" alias="护盾" />
+
+		<var name="Luck" alias="幸运" />
 	</enum>
 
 	<enum name="EBuffCondType" comment="触发条件">
@@ -48,4 +49,19 @@
 		<var name="LinHu" alias="灵护" />
 		<var name="ZhuXie" alias="诛邪" />
 	</enum>
+
+	<enum name="EWuXinType" comment="五行">
+		<var name="Jin" alias="金" />
+		<var name="Mu" alias="木" />
+		<var name="Sui" alias="水" />
+		<var name="Huo" alias="火" />
+		<var name="Tu" alias="土" />
+	</enum>
+
+	<enum name="EGenderType" comment="性别">
+		<var name="None" alias="未知" />
+		<var name="Man" alias="男" />
+		<var name="WoMan" alias="女" />
+	</enum>
+	
 </module>

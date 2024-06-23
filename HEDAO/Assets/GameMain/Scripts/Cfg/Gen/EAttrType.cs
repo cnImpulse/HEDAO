@@ -60,6 +60,10 @@ namespace Cfg
         /// 护盾
         /// </summary>
         Shield = 10,
+        /// <summary>
+        /// 幸运
+        /// </summary>
+        Luck = 11,
     }
 
 } 

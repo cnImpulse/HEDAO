@@ -22,6 +22,7 @@ public partial class Tables
     public Building.TbBuildingCfg TbBuildingCfg {get; }
     public XiuLian.TbXiuLianCfg TbXiuLianCfg {get; }
     public XiuLian.TbLevelCfg TbLevelCfg {get; }
+    public ZongMen.TbRoleTempCfg TbRoleTempCfg {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
     {
@@ -34,6 +35,7 @@ public partial class Tables
         TbBuildingCfg = new Building.TbBuildingCfg(loader("building_tbbuildingcfg"));
         TbXiuLianCfg = new XiuLian.TbXiuLianCfg(loader("xiulian_tbxiuliancfg"));
         TbLevelCfg = new XiuLian.TbLevelCfg(loader("xiulian_tblevelcfg"));
+        TbRoleTempCfg = new ZongMen.TbRoleTempCfg(loader("zongmen_tbroletempcfg"));
         ResolveRef();
     }
     
@@ -48,6 +50,7 @@ public partial class Tables
         TbBuildingCfg.ResolveRef(this);
         TbXiuLianCfg.ResolveRef(this);
         TbLevelCfg.ResolveRef(this);
+        TbRoleTempCfg.ResolveRef(this);
     }
 }
 

@@ -18,6 +18,7 @@ public sealed partial class GongFaCfg : Luban.BeanBase
     {
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
+        WuXinType = (EWuXinType)_buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);Effect = new System.Collections.Generic.List<Battle.Effect>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { Battle.Effect _e0;  _e0 = Battle.Effect.DeserializeEffect(_buf); Effect.Add(_e0);}}
     }
 
@@ -35,6 +36,10 @@ public sealed partial class GongFaCfg : Luban.BeanBase
     /// </summary>
     public readonly string Name;
     /// <summary>
+    /// 五行类型
+    /// </summary>
+    public readonly EWuXinType WuXinType;
+    /// <summary>
     /// 效果
     /// </summary>
     public readonly System.Collections.Generic.List<Battle.Effect> Effect;
@@ -46,6 +51,7 @@ public sealed partial class GongFaCfg : Luban.BeanBase
     {
         
         
+        
         foreach (var _e in Effect) { _e?.ResolveRef(tables); }
     }
 
@@ -54,6 +60,7 @@ public sealed partial class GongFaCfg : Luban.BeanBase
         return "{ "
         + "Id:" + Id + ","
         + "Name:" + Name + ","
+        + "WuXinType:" + WuXinType + ","
         + "Effect:" + Luban.StringUtil.CollectionToString(Effect) + ","
         + "}";
     }

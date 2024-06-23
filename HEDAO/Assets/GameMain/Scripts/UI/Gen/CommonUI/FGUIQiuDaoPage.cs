@@ -8,6 +8,7 @@ namespace FGUI.CommonUI
     public partial class FGUIQiuDaoPage : GComponent
     {
         public FGUIVerticalList m_list_role;
+        public GRichTextField m_text_role;
         public const string URL = "ui://rt51n0kjnenx5f";
 
         public static FGUIQiuDaoPage CreateInstance()
@@ -20,6 +21,7 @@ namespace FGUI.CommonUI
             base.ConstructFromXML(xml);
 
             m_list_role = (FGUIVerticalList)GetChild("list_role");
+            m_text_role = (GRichTextField)GetChild("text_role");
         }
     }
 }
