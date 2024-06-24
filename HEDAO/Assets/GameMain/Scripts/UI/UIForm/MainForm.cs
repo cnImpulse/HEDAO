@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cfg;
 using UnityEngine;
 using FGUI.CommonUI;
 using UnityGameFramework.Runtime;
@@ -99,7 +100,9 @@ namespace HEDAO
             }
             
             var role = m_RoleList[selectIndex];
-            var info = $"名字：{role.Name}\n";
+            var info = $"姓名：{role.Name}\n";
+            info += $"年龄：{role.BattleAttr.GetAttr(EAttrType.Age)} 寿命：{role.BattleAttr.GetAttr(EAttrType.Life)}\n";
+            info += $"xiny：{role.BattleAttr.GetAttr(EAttrType.Age)} 寿命：{role.BattleAttr.GetAttr(EAttrType.Life)}\n";
 
             QiuDaoPage.m_text_role.text = info;
 

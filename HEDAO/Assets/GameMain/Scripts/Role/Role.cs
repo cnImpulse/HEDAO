@@ -18,8 +18,12 @@ namespace HEDAO
             var cfg = GameEntry.Cfg.Tables.TbRoleTempCfg.Get(1);
 
             Name = "农民";
-            
             BattleAttr = new AttributeDict();
+            BattleAttr.AddAttr(EAttrType.Life, 100, 0);
+            foreach (var pair in cfg.AttrRange)
+            {
+                BattleAttr.AddAttr(pair.Key, Random.Range(pair.Value.Min, pair.Value.Max));
+            }
             
             WuXin = new Dictionary<EWuXinType, int>();
             for (int i = 0; i < 5; i++)

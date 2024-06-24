@@ -61,9 +61,17 @@ namespace Cfg
         /// </summary>
         Shield = 10,
         /// <summary>
+        /// 年龄
+        /// </summary>
+        Age = 11,
+        /// <summary>
+        /// 寿命
+        /// </summary>
+        Life = 12,
+        /// <summary>
         /// 幸运
         /// </summary>
-        Luck = 11,
+        Luck = 13,
     }
 
 } 

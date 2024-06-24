@@ -18,6 +18,8 @@ namespace HEDAO
             get => m_Value;
             set => m_Value = Mathf.Clamp(value, m_Min, m_Max);
         }
+
+        public int Max => m_Max;
         
         public AttributeField(int value, int min, int max)
         {

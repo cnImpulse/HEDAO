@@ -17,9 +17,9 @@ public sealed partial class RoleTempCfg : Luban.BeanBase
     public RoleTempCfg(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
-        LifeRange = Range.DeserializeRange(_buf);
         WuXinRange = Range.DeserializeRange(_buf);
         BattleAttrGrowRange = Range.DeserializeRange(_buf);
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);AttrRange = new System.Collections.Generic.Dictionary<EAttrType, Range>(n0 * 3 / 2);for(var i0 = 0 ; i0 < n0 ; i0++) { EAttrType _k0;  _k0 = (EAttrType)_buf.ReadInt(); Range _v0;  _v0 = Range.DeserializeRange(_buf);     AttrRange.Add(_k0, _v0);}}
     }
 
     public static RoleTempCfg DeserializeRoleTempCfg(ByteBuf _buf)
@@ -32,10 +32,6 @@ public sealed partial class RoleTempCfg : Luban.BeanBase
     /// </summary>
     public readonly int Id;
     /// <summary>
-    /// 年龄区间
-    /// </summary>
-    public readonly Range LifeRange;
-    /// <summary>
     /// 五行天赋区间
     /// </summary>
     public readonly Range WuXinRange;
@@ -43,6 +39,10 @@ public sealed partial class RoleTempCfg : Luban.BeanBase
     /// 战斗属性成长率区间
     /// </summary>
     public readonly Range BattleAttrGrowRange;
+    /// <summary>
+    /// 属性区间
+    /// </summary>
+    public readonly System.Collections.Generic.Dictionary<EAttrType, Range> AttrRange;
    
     public const int __ID__ = 870822522;
     public override int GetTypeId() => __ID__;
@@ -50,18 +50,18 @@ public sealed partial class RoleTempCfg : Luban.BeanBase
     public  void ResolveRef(Tables tables)
     {
         
-        LifeRange?.ResolveRef(tables);
         WuXinRange?.ResolveRef(tables);
         BattleAttrGrowRange?.ResolveRef(tables);
+        foreach (var _e in AttrRange.Values) { _e?.ResolveRef(tables); }
     }
 
     public override string ToString()
     {
         return "{ "
         + "Id:" + Id + ","
-        + "LifeRange:" + LifeRange + ","
         + "WuXinRange:" + WuXinRange + ","
         + "BattleAttrGrowRange:" + BattleAttrGrowRange + ","
+        + "AttrRange:" + Luban.StringUtil.CollectionToString(AttrRange) + ","
         + "}";
     }
 }

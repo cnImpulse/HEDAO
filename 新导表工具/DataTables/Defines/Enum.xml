@@ -25,6 +25,8 @@
 		<var name="FAS" alias="法身" />
 		<var name="Shield" alias="护盾" />
 
+		<var name="Age" alias="年龄" />
+		<var name="Life" alias="寿命" />
 		<var name="Luck" alias="幸运" />
 	</enum>
 
