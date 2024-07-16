@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-
 namespace Cfg
 { 
+
     /// <summary>
     /// 触发条件
     /// </summary>
@@ -19,12 +19,14 @@ namespace Cfg
         /// <summary>
         /// 挂载生效
         /// </summary>
+        [EnumName("挂载生效")]
         Add = 0,
         /// <summary>
         /// 回合开始
         /// </summary>
+        [EnumName("回合开始")]
         RoundStart = 1,
     }
 
-} 
+}
 

@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-
 namespace Cfg
 { 
+
     /// <summary>
     /// 网格范围类型
     /// </summary>
@@ -19,20 +19,24 @@ namespace Cfg
         /// <summary>
         /// 默认
         /// </summary>
+        [EnumName("默认")]
         Default = 0,
         /// <summary>
         /// 十字
         /// </summary>
+        [EnumName("十字")]
         Cross = 1,
         /// <summary>
         /// 正方形
         /// </summary>
+        [EnumName("正方形")]
         Square = 2,
         /// <summary>
         /// 长条
         /// </summary>
+        [EnumName("长条")]
         Strip = 3,
     }
 
-} 
+}
 

@@ -90,7 +90,6 @@ namespace HEDAO
             obj.asButton.title = role.Name;
         }
 
-        private static List<string> WuXin = new List<string>() { "金", "木", "水", "火", "土" };
         private void OnRoleChanged(FGUIQiuDaoPage QiuDaoPage)
         {
             var selectIndex = QiuDaoPage.m_list_role.m_ctrl_select.selectedIndex;
@@ -102,7 +101,6 @@ namespace HEDAO
             var role = m_RoleList[selectIndex];
             var info = $"姓名：{role.Name}\n";
             info += $"年龄：{role.BattleAttr.GetAttr(EAttrType.Age)} 寿命：{role.BattleAttr.GetAttr(EAttrType.Life)}\n";
-            info += $"xiny：{role.BattleAttr.GetAttr(EAttrType.Age)} 寿命：{role.BattleAttr.GetAttr(EAttrType.Life)}\n";
 
             QiuDaoPage.m_text_role.text = info;
 
@@ -114,7 +112,7 @@ namespace HEDAO
                 arr[index] = value;
                 var text = QiuDaoPage.m_rader.GetChildAt(
                     QiuDaoPage.m_rader.GetChildIndex(QiuDaoPage.m_rader.m_text_wuxin_0) + index);
-                text.text = $"{WuXin[index]}：{pair.Value}";
+                text.text = $"{pair.Key.GetName()}：{pair.Value}";
             }
             
             QiuDaoPage.m_rader.m_img_wuxing.shape.DrawRegularPolygon(5, 4, Color.white, 

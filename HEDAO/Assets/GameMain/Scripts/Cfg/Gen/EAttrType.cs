@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-
 namespace Cfg
 { 
+
     /// <summary>
     /// 属性类型
     /// </summary>
@@ -19,60 +19,74 @@ namespace Cfg
         /// <summary>
         /// 默认
         /// </summary>
+        [EnumName("默认")]
         None = 0,
         /// <summary>
         /// 生命
         /// </summary>
+        [EnumName("生命")]
         HP = 1,
         /// <summary>
         /// 灵气
         /// </summary>
+        [EnumName("灵气")]
         QI = 2,
         /// <summary>
         /// 最大生命
         /// </summary>
+        [EnumName("最大生命")]
         MaxHP = 3,
         /// <summary>
         /// 最大灵气
         /// </summary>
+        [EnumName("最大灵气")]
         MaxQI = 4,
         /// <summary>
         /// 速度
         /// </summary>
+        [EnumName("速度")]
         SPD = 5,
         /// <summary>
         /// 力量
         /// </summary>
+        [EnumName("力量")]
         STR = 6,
         /// <summary>
         /// 体魄
         /// </summary>
+        [EnumName("体魄")]
         TPO = 7,
         /// <summary>
         /// 神识
         /// </summary>
+        [EnumName("神识")]
         SSI = 8,
         /// <summary>
         /// 法身
         /// </summary>
+        [EnumName("法身")]
         FAS = 9,
         /// <summary>
         /// 护盾
         /// </summary>
+        [EnumName("护盾")]
         Shield = 10,
         /// <summary>
         /// 年龄
         /// </summary>
+        [EnumName("年龄")]
         Age = 11,
         /// <summary>
         /// 寿命
         /// </summary>
+        [EnumName("寿命")]
         Life = 12,
         /// <summary>
         /// 幸运
         /// </summary>
+        [EnumName("幸运")]
         Luck = 13,
     }
 
-} 
+}
 

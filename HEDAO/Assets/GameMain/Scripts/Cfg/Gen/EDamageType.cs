@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-
 namespace Cfg
 { 
+
     /// <summary>
     /// 伤害类型
     /// </summary>
@@ -19,16 +19,19 @@ namespace Cfg
         /// <summary>
         /// 物理
         /// </summary>
+        [EnumName("物理")]
         Physics = 0,
         /// <summary>
         /// 法术
         /// </summary>
+        [EnumName("法术")]
         Magic = 1,
         /// <summary>
         /// 真伤
         /// </summary>
+        [EnumName("真伤")]
         Real = 2,
     }
 
-} 
+}
 

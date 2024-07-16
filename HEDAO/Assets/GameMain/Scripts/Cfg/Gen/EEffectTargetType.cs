@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-
 namespace Cfg
 { 
+
     /// <summary>
     /// 效果目标
     /// </summary>
@@ -19,12 +19,14 @@ namespace Cfg
         /// <summary>
         /// 默认
         /// </summary>
+        [EnumName("默认")]
         None = 0,
         /// <summary>
         /// 施法者
         /// </summary>
+        [EnumName("施法者")]
         Caster = 1,
     }
 
-} 
+}
 

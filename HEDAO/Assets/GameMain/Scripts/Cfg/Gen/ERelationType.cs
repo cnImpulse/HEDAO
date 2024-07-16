@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-
 namespace Cfg
 { 
+
     /// <summary>
     /// 关系类型
     /// </summary>
@@ -19,16 +19,19 @@ namespace Cfg
         /// <summary>
         /// 己方
         /// </summary>
+        [EnumName("己方")]
         Self = 0,
         /// <summary>
         /// 友方
         /// </summary>
+        [EnumName("友方")]
         Friend = 1,
         /// <summary>
         /// 敌方
         /// </summary>
+        [EnumName("敌方")]
         Enemy = 2,
     }
 
-} 
+}
 

@@ -19,7 +19,6 @@ namespace HEDAO
 
             Name = "农民";
             BattleAttr = new AttributeDict();
-            BattleAttr.AddAttr(EAttrType.Life, 100, 0);
             foreach (var pair in cfg.AttrRange)
             {
                 BattleAttr.AddAttr(pair.Key, Random.Range(pair.Value.Min, pair.Value.Max));

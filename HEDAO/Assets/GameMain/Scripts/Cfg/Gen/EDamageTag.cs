@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-
 namespace Cfg
 { 
+
     /// <summary>
     /// 伤害标签
     /// </summary>
@@ -19,16 +19,19 @@ namespace Cfg
         /// <summary>
         /// 默认
         /// </summary>
+        [EnumName("默认")]
         None = 0,
         /// <summary>
         /// 灵护
         /// </summary>
+        [EnumName("灵护")]
         LinHu = 1,
         /// <summary>
         /// 诛邪
         /// </summary>
+        [EnumName("诛邪")]
         ZhuXie = 2,
     }
 
-} 
+}
 
