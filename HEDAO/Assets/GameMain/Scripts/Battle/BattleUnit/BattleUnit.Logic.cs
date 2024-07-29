@@ -13,12 +13,10 @@ namespace HEDAO
     /// <summary>
     /// 战斗单位。
     /// </summary>
-    public partial class BattleUnit : GridUnit, IEffectTarget
+    public partial class BattleUnit : GridUnit
     {
         public CommonAI AI { get; private set; }
         public bool CanAction { get; set; }
-
-        public Dictionary<int, Buff> BuffDict { get; private set; } = new();
 
         public virtual void OnBattleStart()
         {
@@ -27,14 +25,14 @@ namespace HEDAO
                 AI = new CommonAI(this);
             }
             
-            BuffDict.Clear();
+            Data.RemoveAllBuff();
         }
 
         public virtual void OnRoundStart()
         {
             CanAction = true;
 
-            foreach (var buff in BuffDict.Values)
+            foreach (var buff in Data.BuffDict.Values)
             {
                 buff.OnRoundStart();
             }
@@ -53,7 +51,7 @@ namespace HEDAO
 
         public virtual void OnBattleEnd()
         {
-            RemoveAllBuff();
+             Data.RemoveAllBuff();
         }
 
         public IEnumerator Move(List<GridData> path, GridData end)
@@ -114,37 +112,6 @@ namespace HEDAO
             }
     
             Data.HP -= damage;
-        }
-        
-        public void AddBuff(int id)
-        {
-            RemoveBuff(id);
-
-            var buff = new Buff(id, this);
-            BuffDict.Add(id, buff);
-            buff.OnAdd();
-            
-            Log.Info("Entity:{0}, 添加BuffId: {1}", Name, id);
-        }
-        
-        public void RemoveBuff(int id)
-        {
-            if (BuffDict.TryGetValue(id, out var buff))
-            {
-                buff.OnRemove();
-                BuffDict.Remove(id);
-                
-                Log.Info("移除BuffId: {0}", Name, id);
-            }
-        }
-
-        public void RemoveAllBuff()
-        {
-            foreach (var buff in BuffDict.Values)
-            {
-                buff.OnRemove();
-            }
-            BuffDict.Clear();
         }
     }
 }

@@ -9,15 +9,15 @@ namespace Cfg.Battle
         public override void OnTakeEffect(IEffectTarget caster, IEffectTarget target)
         {
             var damage = Power;
-            var casterUnit = caster as BattleUnit;
-            var targetUnit = target as BattleUnit;
+            var casterData = caster as BattleUnitData;
+            var targetData = target as BattleUnitData;
              if (DamageType == EDamageType.Physics)
             {
-                damage = Power + (casterUnit?.Data?.RoleData?.STR ?? 0) - targetUnit.Data.RoleData.TPO;
+                damage = Power + (casterData.RoleData?.STR ?? 0) - targetData.RoleData.TPO;
             }
             else if (DamageType == EDamageType.Magic)
             {
-                damage = Power + (casterUnit?.Data?.RoleData?.SSI ?? 0) - targetUnit.Data.RoleData.FAS;
+                damage = Power + (casterData.RoleData?.SSI ?? 0) - targetData.RoleData.FAS;
             }
             
             target.TakeDamage(Mathf.Max(0, damage));

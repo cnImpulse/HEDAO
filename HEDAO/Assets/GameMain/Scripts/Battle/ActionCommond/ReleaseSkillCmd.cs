@@ -25,12 +25,12 @@ namespace HEDAO
                 {
                     foreach (var battleUnit in m_TargetList)
                     {
-                        effect.OnTakeEffect(Owner, battleUnit);
+                        effect.OnTakeEffect(Owner.Data, battleUnit.Data);
                     }
                 }
                 else if (effect.TargetType == EEffectTargetType.Caster)
                 {
-                    effect.OnTakeEffect(Owner, Owner);
+                    effect.OnTakeEffect(Owner.Data, Owner.Data);
                 }
             }
 
@@ -48,12 +48,12 @@ namespace HEDAO
                 {
                     foreach (var battleUnit in m_TargetList)
                     {
-                        effect.OnResetEffect(Owner, battleUnit);
+                        effect.OnResetEffect(Owner.Data, battleUnit.Data);
                     }
                 }
                 else if (effect.TargetType == EEffectTargetType.Caster)
                 {
-                    effect.OnResetEffect(Owner, Owner);
+                    effect.OnResetEffect(Owner.Data, Owner.Data);
                 }
             }
         }

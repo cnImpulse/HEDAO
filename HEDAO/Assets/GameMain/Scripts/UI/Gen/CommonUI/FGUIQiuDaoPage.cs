@@ -10,6 +10,7 @@ namespace FGUI.CommonUI
         public FGUIVerticalList m_list_role;
         public GRichTextField m_text_role;
         public FGUIRadarGraph m_rader;
+        public GButton m_btn_get;
         public const string URL = "ui://rt51n0kjnenx5f";
 
         public static FGUIQiuDaoPage CreateInstance()
@@ -24,6 +25,7 @@ namespace FGUI.CommonUI
             m_list_role = (FGUIVerticalList)GetChild("list_role");
             m_text_role = (GRichTextField)GetChild("text_role");
             m_rader = (FGUIRadarGraph)GetChild("rader");
+            m_btn_get = (GButton)GetChild("btn_get");
         }
     }
 }

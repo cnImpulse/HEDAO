@@ -9,5 +9,6 @@ namespace HEDAO
     {
         public string SaveName = DateTime.Now.ToShortDateString();
         public List<int> RoleList = new List<int>();
+        public Dictionary<int, Role> DiscipleList = new Dictionary<int, Role>();
     }
 }

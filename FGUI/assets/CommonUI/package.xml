@@ -39,6 +39,8 @@
     <component id="lcvv5g" name="CangJingPage.xml" path="/Components/" exported="true"/>
     <component id="lcvv5h" name="Button2.xml" path="/Components/Button/"/>
     <component id="mbqm5i" name="Button3.xml" path="/Components/Button/"/>
+    <component id="oq905j" name="WuDaoPage.xml" path="/Components/" exported="true"/>
+    <component id="oq905k" name="DangMoPage.xml" path="/Components/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

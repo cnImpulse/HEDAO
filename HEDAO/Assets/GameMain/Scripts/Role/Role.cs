@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cfg;
+using Cfg.Battle;
 using GameFramework;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
-    public class Role
+    public class Role : EntityData
     {
         public string Name { get; private set; }
         public Dictionary<EWuXinType, int> WuXin { get; private set; }

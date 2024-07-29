@@ -66,6 +66,8 @@ namespace HEDAO
             if (index == 0)
             {
                 var qiudao = page as FGUIQiuDaoPage;
+                qiudao.m_btn_get.asButton.onClick.Set(() => { OnClickBtnGet(qiudao);});
+                
                 m_RoleList = RandomGenRole(3);
 
                 var ctrl = qiudao.m_list_role.m_ctrl_select;
@@ -90,19 +92,29 @@ namespace HEDAO
             obj.asButton.title = role.Name;
         }
 
-        private void OnRoleChanged(FGUIQiuDaoPage QiuDaoPage)
+        private static List<EAttrType> AttrList = new List<EAttrType>()
         {
-            var selectIndex = QiuDaoPage.m_list_role.m_ctrl_select.selectedIndex;
+            EAttrType.MaxHP, EAttrType.MaxQI, EAttrType.SPD, EAttrType.STR,
+            EAttrType.TPO, EAttrType.SSI, EAttrType.FAS
+        };
+        private void OnRoleChanged(FGUIQiuDaoPage qiuDaoPage)
+        {
+            var selectIndex = qiuDaoPage.m_list_role.m_ctrl_select.selectedIndex;
             if (selectIndex < 0)
             {
                 return;
             }
-            
-            var role = m_RoleList[selectIndex];
-            var info = $"姓名：{role.Name}\n";
-            info += $"年龄：{role.BattleAttr.GetAttr(EAttrType.Age)} 寿命：{role.BattleAttr.GetAttr(EAttrType.Life)}\n";
 
-            QiuDaoPage.m_text_role.text = info;
+            var role = m_RoleList[selectIndex];
+            var attr = role.BattleAttr;
+            var info = $"姓名：{role.Name}\n";
+            info += $"年龄：{attr.GetAttr(EAttrType.Age)} 寿命：{attr.GetAttr(EAttrType.Life)}\n";
+            foreach (var attrType in AttrList)
+            {
+                info += $"{attrType.GetName()}：{attr.GetAttr(attrType)} \n";
+            }
+
+            qiuDaoPage.m_text_role.text = info;
 
             float[] arr = new float[5];
             foreach (var pair in role.WuXin)
@@ -110,12 +122,12 @@ namespace HEDAO
                 var index = (int)pair.Key;
                 var value = pair.Value / 100f;
                 arr[index] = value;
-                var text = QiuDaoPage.m_rader.GetChildAt(
-                    QiuDaoPage.m_rader.GetChildIndex(QiuDaoPage.m_rader.m_text_wuxin_0) + index);
+                var text = qiuDaoPage.m_rader.GetChildAt(
+                    qiuDaoPage.m_rader.GetChildIndex(qiuDaoPage.m_rader.m_text_wuxin_0) + index);
                 text.text = $"{pair.Key.GetName()}：{pair.Value}";
             }
             
-            QiuDaoPage.m_rader.m_img_wuxing.shape.DrawRegularPolygon(5, 4, Color.white, 
+            qiuDaoPage.m_rader.m_img_wuxing.shape.DrawRegularPolygon(5, 4, Color.white, 
                 Color.black, Color.white, 54, arr);
         }
 
@@ -128,6 +140,22 @@ namespace HEDAO
             }
 
             return ret;
+        }
+
+        private void OnClickBtnGet(FGUIQiuDaoPage qiuDaoPage)
+        {
+            var selectIndex = qiuDaoPage.m_list_role.m_ctrl_select.selectedIndex;
+            if (selectIndex < 0)
+            {
+                return;
+            }
+
+            var role = m_RoleList[selectIndex];
+            GameEntry.Save.PlayerData.DiscipleList.Add(role.Id, role);
+            
+            m_RoleList.RemoveAt(selectIndex);
+            qiuDaoPage.m_list_role.m_ctrl_select.selectedIndex = 0;
+            qiuDaoPage.m_list_role.m_list.numItems = m_RoleList.Count;
         }
     }
 }

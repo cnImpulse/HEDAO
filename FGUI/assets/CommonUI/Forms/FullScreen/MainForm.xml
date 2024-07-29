@@ -17,6 +17,8 @@
     <list id="n18_mbqm" name="list_page" xy="0,156" pivot="0.5,0.5" size="1920,924" pageController="ctrl_page" layout="pagination" selectionMode="none" overflow="scroll" scroll="horizontal" scrollBarFlags="8">
       <item url="ui://rt51n0kjnenx5f"/>
       <item url="ui://rt51n0kjlcvv5g"/>
+      <item url="ui://rt51n0kjoq905j"/>
+      <item url="ui://rt51n0kjoq905k"/>
     </list>
   </displayList>
 </component>
