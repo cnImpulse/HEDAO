@@ -13,12 +13,12 @@ namespace HEDAO
         public string Name { get; private set; }
         public Dictionary<EWuXinType, int> WuXin { get; private set; }
         public AttributeDict BattleAttr { get; private set; }
-        
-        public Role()
+
+        public Role(string name)
         {
             var cfg = GameEntry.Cfg.Tables.TbRoleTempCfg.Get(1);
 
-            Name = "农民";
+            Name = name;
             BattleAttr = new AttributeDict();
             foreach (var pair in cfg.AttrRange)
             {

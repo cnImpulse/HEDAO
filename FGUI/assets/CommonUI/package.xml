@@ -41,6 +41,8 @@
     <component id="mbqm5i" name="Button3.xml" path="/Components/Button/"/>
     <component id="oq905j" name="WuDaoPage.xml" path="/Components/" exported="true"/>
     <component id="oq905k" name="DangMoPage.xml" path="/Components/" exported="true"/>
+    <component id="u7915m" name="TeamList.xml" path="/Components/Temp/" exported="true"/>
+    <component id="u7915p" name="CommonIcon.xml" path="/Components/Button/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

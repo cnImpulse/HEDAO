@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,924">
-  <displayList/>
+  <displayList>
+    <component id="n0_u791" name="list_role" src="aow85e" fileName="Components/Temp/VerticalList.xml" xy="0,0" pivot="0.5,0.5" size="200,924"/>
+    <component id="n2_u791" name="btn_go" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="1577,735">
+      <Button title="下山" titleFontSize="32"/>
+    </component>
+    <component id="n6_u791" name="list_team" src="u7915m" fileName="Components/Temp/TeamList.xml" xy="575,200" pivot="0.5,0.5"/>
+  </displayList>
 </component>

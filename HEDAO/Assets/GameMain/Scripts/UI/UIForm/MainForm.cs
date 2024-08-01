@@ -67,8 +67,13 @@ namespace HEDAO
             {
                 var qiudao = page as FGUIQiuDaoPage;
                 qiudao.m_btn_get.asButton.onClick.Set(() => { OnClickBtnGet(qiudao);});
-                
-                m_RoleList = RandomGenRole(3);
+
+                m_RoleList = GameEntry.Save.PlayerData.RandomRoleList;
+                qiudao.visible = m_RoleList.Count != 0;
+                if (m_RoleList.Count == 0)
+                {
+                    return;
+                }
 
                 var ctrl = qiudao.m_list_role.m_ctrl_select;
                 ctrl.ClearPages();
@@ -83,6 +88,11 @@ namespace HEDAO
                     ctrl.AddPage("");
                 }
                 ctrl.selectedIndex = 0;
+            }
+            else if(index == 3)
+            {
+                var dangMoPage = page as FGUIDangMoPage;
+                dangMoPage.RefreshPage();
             }
         }
 
@@ -129,17 +139,6 @@ namespace HEDAO
             
             qiuDaoPage.m_rader.m_img_wuxing.shape.DrawRegularPolygon(5, 4, Color.white, 
                 Color.black, Color.white, 54, arr);
-        }
-
-        private List<Role> RandomGenRole(int count)
-        {
-            var ret = new List<Role>(count);
-            for (int i = 0; i < count; i++)
-            {
-                ret.Add(new Role());
-            }
-
-            return ret;
         }
 
         private void OnClickBtnGet(FGUIQiuDaoPage qiuDaoPage)
