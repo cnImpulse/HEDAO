@@ -11,11 +11,22 @@ namespace FGUI.CommonUI
         private List<Role> m_RoleList;
         private List<Role> m_TeamList;
 
+        public HashSet<int> RoleTeamSet => GameEntry.Save.PlayerData.RoleTeamSet;
+        public Dictionary<int, Role> DiscipleList => GameEntry.Save.PlayerData.DiscipleList;
+
+        public void OnCreat()
+        {
+            m_btn_go.onClick.Set(OnClickBtnGo);
+            m_btn_add.onClick.Set(OnClickBtnAddOrRemove);
+        }
+        
         public void RefreshPage()
         {
-            m_RoleList = GameEntry.Save.PlayerData.DiscipleList.Select((pair) => pair.Value).ToList();
+            m_RoleList = DiscipleList.Select((pair) => pair.Value).ToList();
             
             var ctrl = m_list_role.m_ctrl_select;
+            ctrl.onChanged.Add(() => { OnRoleChanged();});
+
             m_list_role.m_list.itemRenderer = OnRenderRole;
             m_list_role.m_list.numItems = m_RoleList.Count;
 
@@ -30,7 +41,7 @@ namespace FGUI.CommonUI
 
         public void RefreshTeamList()
         {
-            m_TeamList = new List<Role>();
+            m_TeamList = RoleTeamSet.Select(id => DiscipleList[id]).ToList();
             m_list_team.m_list.itemRenderer = OnRenderTeamRole;
             m_list_team.m_list.numItems = 4;
         }
@@ -50,7 +61,54 @@ namespace FGUI.CommonUI
             else
             {
                 var role = m_TeamList[index];
-                obj.asButton.title = role.Name;
+                obj.asLabel.title = role.Name;
+            }
+        }
+
+        private Role GetSelectedRole()
+        {
+            var selectIndex = m_list_role.m_ctrl_select.selectedIndex;
+            if (selectIndex < 0)
+            {
+                return null;
+            }
+
+            return m_RoleList[selectIndex];
+        }
+        
+        public void OnClickBtnAddOrRemove()
+        {
+            var role = GetSelectedRole();
+            if (role == null)
+            {
+                return;    
+            }
+            
+            if (RoleTeamSet.Contains(role.Id))
+            {
+                RoleTeamSet.Remove(role.Id);
+            }
+            else
+            {
+                RoleTeamSet.Add(role.Id);
+            }
+
+            RefreshTeamList();
+            OnRoleChanged();
+        }
+        
+        public void OnClickBtnGo()
+        {
+            
+        }
+        
+        private void OnRoleChanged()
+        {
+            var role = GetSelectedRole();
+            m_btn_add.visible = role != null;
+            if (role != null)
+            {
+                m_btn_add.title = RoleTeamSet.Contains(role.Id) ? "退出" : "加入";
             }
         }
     }

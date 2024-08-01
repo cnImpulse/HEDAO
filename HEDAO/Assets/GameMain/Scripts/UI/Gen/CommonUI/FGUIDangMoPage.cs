@@ -10,6 +10,7 @@ namespace FGUI.CommonUI
         public FGUIVerticalList m_list_role;
         public GButton m_btn_go;
         public FGUITeamList m_list_team;
+        public GButton m_btn_add;
         public const string URL = "ui://rt51n0kjoq905k";
 
         public static FGUIDangMoPage CreateInstance()
@@ -24,6 +25,9 @@ namespace FGUI.CommonUI
             m_list_role = (FGUIVerticalList)GetChild("list_role");
             m_btn_go = (GButton)GetChild("btn_go");
             m_list_team = (FGUITeamList)GetChild("list_team");
+            m_btn_add = (GButton)GetChild("btn_add");
+
+            OnCreat();
         }
     }
 }
