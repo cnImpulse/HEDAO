@@ -9,7 +9,7 @@ namespace HEDAO
 {
     public class ProcedureMain : ProcedureBase
     {
-        private bool m_StartBattle = false;
+        private bool m_StartAdventure = false;
 
         protected override void OnEnter(ProcedureOwner procedureOwner)
         {
@@ -18,7 +18,7 @@ namespace HEDAO
             Log.Info("游戏开始。");
 
             GameEntry.Event.Subscribe(EventName.StartGame, OnStartGame);
-            GameEntry.Event.Subscribe(EventName.StartBattle, OnStartBattle);
+            GameEntry.Event.Subscribe(EventName.StartAdventure, OnStartAdventure);
 
             GameEntry.UI.OpenUIForm(UIFromName.MenuForm);
         }
@@ -27,7 +27,7 @@ namespace HEDAO
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
 
-            if (m_StartBattle)
+            if (m_StartAdventure)
             {
                 GameEntry.Save.SaveGame();
                 ChangeState<ProcedureLiLian>(procedureOwner);
@@ -36,11 +36,11 @@ namespace HEDAO
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
-            m_StartBattle = false;
+            m_StartAdventure = false;
             GameEntry.UI.CloseUIForm(UIFromName.MenuForm);
             GameEntry.UI.CloseUIForm(UIFromName.MainForm);
             GameEntry.Event.Unsubscribe(EventName.StartGame, OnStartGame);
-            GameEntry.Event.Unsubscribe(EventName.StartBattle, OnStartBattle);
+            GameEntry.Event.Unsubscribe(EventName.StartBattle, OnStartAdventure);
 
             base.OnLeave(procedureOwner, isShutdown);
         }
@@ -51,9 +51,9 @@ namespace HEDAO
             GameEntry.UI.OpenUIForm(UIFromName.MainForm);
         }
 
-        private void OnStartBattle(object sender, GameEventArgs e)
+        private void OnStartAdventure(object sender, GameEventArgs e)
         {
-            m_StartBattle = true;
+            m_StartAdventure = true;
         }
     }
 }

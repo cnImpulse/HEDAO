@@ -99,7 +99,7 @@ namespace FGUI.CommonUI
         
         public void OnClickBtnGo()
         {
-            
+            GameEntry.Event.Fire(this, EventName.StartAdventure);
         }
         
         private void OnRoleChanged()

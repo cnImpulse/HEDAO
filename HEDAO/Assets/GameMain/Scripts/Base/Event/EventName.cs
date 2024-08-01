@@ -5,6 +5,7 @@ namespace HEDAO
         public const string PointerDownGridMap = "PointerDownGridMap";
 
         public const string StartGame = "StartGame";
+        public const string StartAdventure = "StartAdventure";
         public const string StartBattle = "StartBattle";
 
         public const string BattleUnitMove = "BattleUnitMove";
