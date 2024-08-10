@@ -36,6 +36,8 @@ namespace HEDAO
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
+            GameEntry.Save.SaveGame();
+            
             m_StartAdventure = false;
             GameEntry.UI.CloseUIForm(UIFromName.MenuForm);
             GameEntry.UI.CloseUIForm(UIFromName.MainForm);

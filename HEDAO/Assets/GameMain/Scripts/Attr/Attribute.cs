@@ -8,6 +8,7 @@ using Cfg;
 
 namespace HEDAO
 {
+    [JsonObject(MemberSerialization.Fields)]
     public class AttributeField
     {
         public int m_Min = int.MinValue;
@@ -29,6 +30,7 @@ namespace HEDAO
         }
     }
     
+    [JsonObject(MemberSerialization.Fields)]
     public class AttributeDict
     {
         private Dictionary<EAttrType, AttributeField> AttrDict = new Dictionary<EAttrType, AttributeField>();

@@ -8,9 +8,10 @@ using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
-    [JsonObject(MemberSerialization.OptIn)]
+    [JsonObject(MemberSerialization.Fields)]
     public abstract class EntityData : IEffectTarget
     {
+        [JsonProperty]
         private int m_Id = 0;
 
         [JsonProperty]
@@ -30,6 +31,7 @@ namespace HEDAO
             set => m_Name = value;
         }
         
+        [JsonProperty]
         public Dictionary<int, Buff> BuffDict { get; private set; } = new();
 
         [JsonConstructor]

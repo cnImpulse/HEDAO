@@ -22,14 +22,29 @@ namespace HEDAO
             if (HasData(index))
             {
                 PlayerData = GameEntry.Setting.GetObject<SaveData>(GetSaveName(index));
+                SaveIndex = index;
             }
             else
             {
                 PlayerData = new SaveData();
+                PlayerData.RandomRoleList = RandomGenRole(3);
+                SaveIndex = index;
+                SaveGame();
             }
-            SaveIndex = index;
 
             return PlayerData;
+        }
+        
+        private static List<string> NameList = new List<string>() { "消炎", "叶黑", "韩跑跑" };
+        private List<Role> RandomGenRole(int count)
+        {
+            var ret = new List<Role>(count);
+            for (int i = 0; i < count; i++)
+            {
+                ret.Add(new Role(NameList[i]));
+            }
+
+            return ret;
         }
 
         public void SaveGame()

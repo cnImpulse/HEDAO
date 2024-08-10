@@ -43,14 +43,7 @@ namespace HEDAO
         {
             GameEntry.Save.LoadGame(index);
             GameEntry.UI.CloseUIForm(UIFromName.MenuForm);
-            if (GameEntry.Save.HasData(index))
-            {
-                GameEntry.Event.Fire(this, EventName.StartGame);
-            }
-            else
-            {
-                GameEntry.UI.OpenUIForm(UIFromName.SelectForm);
-            }
+            GameEntry.Event.Fire(this, EventName.StartGame);
 
             Close();
         }

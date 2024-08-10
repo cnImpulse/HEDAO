@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cfg;
 using Cfg.Battle;
 using GameFramework;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
@@ -10,7 +11,6 @@ namespace HEDAO
 {
     public class Role : EntityData
     {
-        public string Name { get; private set; }
         public Dictionary<EWuXinType, int> WuXin { get; private set; }
         public AttributeDict BattleAttr { get; private set; }
 
