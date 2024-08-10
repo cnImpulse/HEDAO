@@ -26,8 +26,6 @@ namespace FGUI.CommonUI
             m_btn_go = (GButton)GetChild("btn_go");
             m_list_team = (FGUITeamList)GetChild("list_team");
             m_btn_add = (GButton)GetChild("btn_add");
-
-            OnCreat();
         }
     }
 }

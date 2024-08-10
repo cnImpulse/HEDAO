@@ -40,7 +40,7 @@ namespace HEDAO
             GameEntry.UI.CloseUIForm(UIFromName.MenuForm);
             GameEntry.UI.CloseUIForm(UIFromName.MainForm);
             GameEntry.Event.Unsubscribe(EventName.StartGame, OnStartGame);
-            GameEntry.Event.Unsubscribe(EventName.StartBattle, OnStartAdventure);
+            GameEntry.Event.Unsubscribe(EventName.StartAdventure, OnStartAdventure);
 
             base.OnLeave(procedureOwner, isShutdown);
         }

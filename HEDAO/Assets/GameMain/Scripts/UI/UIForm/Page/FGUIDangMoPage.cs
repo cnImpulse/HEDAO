@@ -14,7 +14,7 @@ namespace FGUI.CommonUI
         public HashSet<int> RoleTeamSet => GameEntry.Save.PlayerData.RoleTeamSet;
         public Dictionary<int, Role> DiscipleList => GameEntry.Save.PlayerData.DiscipleList;
 
-        public void OnCreat()
+        public void OnInit()
         {
             m_btn_go.onClick.Set(OnClickBtnGo);
             m_btn_add.onClick.Set(OnClickBtnAddOrRemove);
@@ -22,6 +22,8 @@ namespace FGUI.CommonUI
         
         public void RefreshPage()
         {
+            OnInit();
+            
             m_RoleList = DiscipleList.Select((pair) => pair.Value).ToList();
             
             var ctrl = m_list_role.m_ctrl_select;
@@ -36,33 +38,13 @@ namespace FGUI.CommonUI
             }
             ctrl.selectedIndex = 0;
 
-            RefreshTeamList();
+            m_list_team.Refresh();
         }
 
-        public void RefreshTeamList()
-        {
-            m_TeamList = RoleTeamSet.Select(id => DiscipleList[id]).ToList();
-            m_list_team.m_list.itemRenderer = OnRenderTeamRole;
-            m_list_team.m_list.numItems = 4;
-        }
-        
         private void OnRenderRole(int index, GObject obj)
         {
             var role = m_RoleList[index];
             obj.asButton.title = role.Name;
-        }
-
-        private void OnRenderTeamRole(int index, GObject obj)
-        {
-            if (m_TeamList.Count <= index)
-            {
-                obj.asLabel.title = "空缺";
-            }
-            else
-            {
-                var role = m_TeamList[index];
-                obj.asLabel.title = role.Name;
-            }
         }
 
         private Role GetSelectedRole()
@@ -93,7 +75,7 @@ namespace FGUI.CommonUI
                 RoleTeamSet.Add(role.Id);
             }
 
-            RefreshTeamList();
+            m_list_team.Refresh();
             OnRoleChanged();
         }
         

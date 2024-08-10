@@ -18,7 +18,7 @@ namespace HEDAO
             RandomRoleList = RandomGenRole(3);
         }
         
-        private static List<string> NameList = new List<string>() { "消炎", "叶黑", "厉飞羽" };
+        private static List<string> NameList = new List<string>() { "消炎", "叶黑", "韩跑跑" };
         private List<Role> RandomGenRole(int count)
         {
             var ret = new List<Role>(count);

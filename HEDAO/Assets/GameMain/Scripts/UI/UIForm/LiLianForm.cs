@@ -10,8 +10,6 @@ namespace HEDAO
 {
     public class LiLianForm : FGUIForm<FGUILiLianForm>
     {
-        private List<int> LevelList = new List<int> { 1, 2, 3, 4 };
-        
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -22,17 +20,12 @@ namespace HEDAO
         {
             base.OnOpen(userData);
 
-            View.m_select_list.numItems = LevelList.Count;
+            View.m_list_team.Refresh();
         }
 
         protected override void OnClose(bool isShutdown, object userData)
         {
             base.OnClose(isShutdown, userData);
-        }
-
-        private void RenderListItem(int index, GObject obj)
-        {
-            obj.asButton.title = LevelList[index].ToString();
         }
     }
 }

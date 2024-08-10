@@ -7,7 +7,8 @@ namespace FGUI.CommonUI
 {
     public partial class FGUILiLianForm : GComponent
     {
-        public GList m_select_list;
+        public GTextField m_txt_info;
+        public FGUITeamList m_list_team;
         public const string URL = "ui://rt51n0kjlvkb5b";
 
         public static FGUILiLianForm CreateInstance()
@@ -19,7 +20,8 @@ namespace FGUI.CommonUI
         {
             base.ConstructFromXML(xml);
 
-            m_select_list = (GList)GetChild("select_list");
+            m_txt_info = (GTextField)GetChild("txt_info");
+            m_list_team = (FGUITeamList)GetChild("list_team");
         }
     }
 }

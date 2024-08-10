@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080">
   <displayList>
-    <list id="n0_lvkb" name="select_list" xy="650,620" pivot="0.5,0.5" size="620,280" layout="pagination" lineGap="20" colGap="20" lineItemCount="2" lineItemCount2="2" defaultItem="ui://rt51n0kjaobob" autoItemSize="true" align="center" autoClearItems="true">
-      <item/>
-      <item/>
-      <item/>
-      <item/>
-    </list>
+    <text id="n6_u791" name="txt_info" xy="1610,134" pivot="0.5,0.5" size="268,340" font="ui://rt51n0kjekn09" fontSize="24" vAlign="middle" autoSize="none" text="当前：1月&#xA;归期：12月"/>
+    <component id="n7_gv66" name="list_team" src="u7915m" fileName="Components/Temp/TeamList.xml" xy="635,864" pivot="0.5,0.5" size="650,170"/>
   </displayList>
 </component>
