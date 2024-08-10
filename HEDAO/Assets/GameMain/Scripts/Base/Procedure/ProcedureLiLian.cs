@@ -23,6 +23,8 @@ namespace HEDAO
         
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
+            GameEntry.Save.SaveGame();
+            
             GameEntry.UI.CloseUIForm(UIFromName.LiLianForm);
             
             base.OnLeave(procedureOwner, isShutdown);

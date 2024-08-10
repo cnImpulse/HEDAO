@@ -11,23 +11,12 @@ namespace HEDAO
     /// <summary>
     /// 网格地图。
     /// </summary>
-    public class GridMap : Entity, IPointerDownHandler
+    public class BattleMap : GridMap
     {
-        private Tilemap[] m_TilemapList = null;
-
-        private GridMapData m_Data = null;
-
-        public new GridMapData Data => m_Data;
-
-        private Dictionary<int, GridUnit> m_GridUnitDic = default;
-
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
 
-            m_GridUnitDic = new Dictionary<int, GridUnit>();
-            m_TilemapList = GetComponentsInChildren<Tilemap>();
-            m_TilemapList[0].gameObject.GetOrAddComponent<BoxCollider2D>();
         }
 
         protected override void OnShow(object userData)
@@ -36,18 +25,10 @@ namespace HEDAO
 
             GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowBattleUnitScuess);
             GameEntry.Event.Subscribe(EventName.BattleUnitDead, OnBattleUnitDead);
-
-            m_Data = userData as GridMapData;
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
-            foreach (var gridUnit in m_GridUnitDic.Values)
-            {
-                GameEntry.Entity.HideEntity(gridUnit);
-            }
-            m_GridUnitDic.Clear();
-            
             GameEntry.Event.Unsubscribe(EventName.BattleUnitDead, OnBattleUnitDead);
             GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowBattleUnitScuess);
 
@@ -58,32 +39,12 @@ namespace HEDAO
         {
             base.OnAttached(childEntity, parentTransform, userData);
 
-            var gridUnit = childEntity as GridUnit;
-            m_GridUnitDic.Add(gridUnit.Id, gridUnit);
         }
 
         protected override void OnDetached(EntityLogic childEntity, object userData)
         {
-            var gridUnit = childEntity as GridUnit;
-            m_GridUnitDic.Remove(gridUnit.Id);
 
             base.OnDetached(childEntity, userData);
-        }
-
-        /// <summary>
-        /// 网格坐标转世界坐标
-        /// </summary>
-        public Vector3 GridPosToWorldPos(Vector2Int gridPos)
-        {
-            return m_TilemapList[0].GetCellCenterWorld((Vector3Int)gridPos);
-        }
-
-        /// <summary>
-        /// 世界坐标转网格坐标
-        /// </summary>
-        public Vector2Int WorldPosToGridPos(Vector3 worldPosition)
-        {
-            return (Vector2Int)m_TilemapList[0].WorldToCell(worldPosition);
         }
 
         /// <summary>
@@ -161,28 +122,6 @@ namespace HEDAO
             }
 
             GameEntry.Entity.AttachEntity(battleUnit.Id, Id);
-        }
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            // UI阻塞射线
-            if (Stage.isTouchOnUI)
-            {
-                return;
-            }
-
-            var gridPos = WorldPosToGridPos(eventData.pointerCurrentRaycast.worldPosition);
-            var gridData = m_Data.GetGridData(gridPos);
-            if (gridData != null)
-            {
-                Log.Info("PointerDownGridMap {0}", gridPos);
-                var battleUnit = gridData.GridUnit as BattleUnit;
-                if (battleUnit != null)
-                {
-                    Log.Info("HP: {0}, QI: {1}", battleUnit.Data.HP, battleUnit.Data.QI);
-                }
-                GameEntry.Event.Fire(this, EventName.PointerDownGridMap, gridData);
-            }
         }
 
         private void OnBattleUnitDead(object sender, GameEventArgs e)
