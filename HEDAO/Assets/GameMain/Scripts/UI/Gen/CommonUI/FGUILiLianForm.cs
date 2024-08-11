@@ -9,6 +9,7 @@ namespace FGUI.CommonUI
     {
         public GTextField m_txt_info;
         public FGUITeamList m_list_team;
+        public FGUITaskList m_list_task;
         public const string URL = "ui://rt51n0kjlvkb5b";
 
         public static FGUILiLianForm CreateInstance()
@@ -22,6 +23,7 @@ namespace FGUI.CommonUI
 
             m_txt_info = (GTextField)GetChild("txt_info");
             m_list_team = (FGUITeamList)GetChild("list_team");
+            m_list_task = (FGUITaskList)GetChild("list_task");
         }
     }
 }

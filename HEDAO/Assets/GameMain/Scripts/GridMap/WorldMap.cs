@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using HEDAO;
 using UnityEngine;
 
@@ -13,8 +14,8 @@ namespace HEDAO
 
             m_Data = userData as BattleMapData;
 
-            GridUnitData data = new GridUnitData(new Vector2Int(0, 0), CampType.None);
-            GameEntry.Entity.ShowGridUnit(data);
+            GameEntry.Entity.ShowGridUnit(GameEntry.Save.PlayerData.World.ZongMeng);
+            GameEntry.Entity.ShowGridUnit(GameEntry.Save.PlayerData.World.Building[0]);
         }
     }
 }

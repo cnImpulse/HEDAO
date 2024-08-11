@@ -34,6 +34,8 @@ namespace HEDAO
             m_Data = userData as BattleMapData;
             
             GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowGridUnitScuess);
+            
+            
         }
 
         protected override void OnHide(bool isShutdown, object userData)

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using FairyGUI;
+using GameFramework.Event;
 using GameFramework.Procedure;
+using UnityEngine;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
@@ -12,8 +14,8 @@ namespace HEDAO
         {
             base.OnEnter(procedureOwner);
 
-            GameEntry.UI.OpenUIForm(UIFromName.LiLianForm);
-            GameEntry.Entity.ShowGridMap<WorldMap>(1);
+            GameEntry.UI.OpenUIForm(UIFromName.LiLianForm, this);
+            GameEntry.Entity.ShowGridMap<WorldMap>(100);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -29,6 +31,11 @@ namespace HEDAO
             GameEntry.UI.CloseUIForm(UIFromName.LiLianForm);
             
             base.OnLeave(procedureOwner, isShutdown);
+        }
+
+        public void StartLiLian(Vector2Int TargetPos)
+        {
+            
         }
     }
 }

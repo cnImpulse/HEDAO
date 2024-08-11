@@ -13,14 +13,12 @@ namespace HEDAO
     public partial class BattleUnit : GridUnit
     {
         private int m_BattleUnitInfoId = 0;
-        private SpriteRenderer m_SpriteRenderer = null;
 
         private BattleUnitData m_Data = null;
         public new BattleUnitData Data => m_Data;
 
         private void InitSprite()
         {
-            m_SpriteRenderer.color = BattleUtl.GetCampColor(Data.CampType);
             string path = AssetUtl.GetTilePath("BattleUnit", Data.RoleData.Image);
             if (GameEntry.Resource.HasAsset(path) == HasAssetResult.NotExist)
             {
@@ -41,7 +39,6 @@ namespace HEDAO
         {
             base.OnInit(userData);
 
-            m_SpriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         protected override void OnShow(object userData)

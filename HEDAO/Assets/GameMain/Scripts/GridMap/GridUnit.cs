@@ -12,6 +12,8 @@ namespace HEDAO
     /// </summary>
     public class GridUnit : Entity
     {
+        protected SpriteRenderer m_SpriteRenderer = null;
+        
         private GridUnitData m_Data = null;
 
         public new GridUnitData Data => m_Data;
@@ -23,13 +25,17 @@ namespace HEDAO
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
+            
+            m_SpriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         protected override void OnShow(object userData)
         {
             base.OnShow(userData);
-
+            
             m_Data = userData as GridUnitData;
+            
+            m_SpriteRenderer.color = BattleUtl.GetCampColor(Data.CampType);
         }
 
         protected override void OnHide(bool isShutdown, object userData)

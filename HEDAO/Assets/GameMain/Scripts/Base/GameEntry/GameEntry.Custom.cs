@@ -11,12 +11,14 @@ namespace HEDAO
         public static CfgComponent Cfg { get; private set; }
         public static EffectComponent Effect { get; private set; }
         public static SaveComponent Save { get; private set; }
+        public static CameraComponent Camera { get; private set; }
 
         private static void InitCustomComponents()
         {
             Cfg = GFGameEntry.GetComponent<CfgComponent>();
             Effect = GFGameEntry.GetComponent<EffectComponent>();
             Save = GFGameEntry.GetComponent<SaveComponent>();
+            Camera = GFGameEntry.GetComponent<CameraComponent>();
         }
     }
 }

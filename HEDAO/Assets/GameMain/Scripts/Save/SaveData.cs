@@ -12,6 +12,7 @@ namespace HEDAO
         public List<Role> RandomRoleList = null;
         public Dictionary<int, Role> DiscipleList = new Dictionary<int, Role>();
         public HashSet<int> RoleTeamSet = new HashSet<int>();
+        public World World = new World();
 
         public SaveData()
         {

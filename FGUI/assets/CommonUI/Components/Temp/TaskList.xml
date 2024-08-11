@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="600,800">
+  <displayList>
+    <image id="n9_gv66" name="n9" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" pivot="0.5,0.5" size="600,800">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <list id="n8_gv66" name="list" xy="0,0" pivot="0.5,0.5" size="600,628" overflow="scroll" scrollBarFlags="1024" scrollBar="hidden" margin="40,40,40,40" lineGap="20" defaultItem="ui://rt51n0kjlcvv5h">
+      <relation target="" sidePair="width-width,height-height"/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n10_gv66" name="btn_go" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="180,650">
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+      <Button title="确认任务"/>
+    </component>
+  </displayList>
+</component>
