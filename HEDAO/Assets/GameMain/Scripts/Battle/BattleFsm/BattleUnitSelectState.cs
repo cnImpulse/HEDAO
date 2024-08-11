@@ -22,7 +22,7 @@ namespace HEDAO
 
             if (IsAutoBattle)
             {
-                var battleUnitList = GridMap.GetBattleUnitList(ActiveCamp);
+                var battleUnitList = BattleMap.GetBattleUnitList(ActiveCamp);
                 foreach (var battleUnit in battleUnitList)
                 {
                     if (CreatBattleUnitFsm(battleUnit))

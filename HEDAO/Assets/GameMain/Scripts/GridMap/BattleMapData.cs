@@ -110,7 +110,7 @@ namespace HEDAO
         }
     }
 
-    public class GridMapData : EntityData
+    public class BattleMapData : EntityData
     {
         public static Vector2Int[] s_DirArray4 = { Vector2Int.down, Vector2Int.up, Vector2Int.left, Vector2Int.right };
         public static Vector2Int[] s_Dir2Array4 = { Vector2Int.one, new Vector2Int(1, -1), new Vector2Int(-1, -1), new Vector2Int(-1, 1) };
@@ -120,9 +120,9 @@ namespace HEDAO
 
         public Dictionary<int, GridData> GridDataDic => m_GridDataDic;
 
-        public GridMapData()
+        public BattleMapData()
         {
-            Name = "GridMap";
+            Name = "BattleMap";
             m_GridDataDic = new Dictionary<int, GridData>();
         }
 

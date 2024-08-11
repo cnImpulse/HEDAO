@@ -73,12 +73,12 @@ namespace Cfg.Battle
             var dir = NormalizeDirection(targetUnit.Data.GridPos - casterUnit.Data.GridPos);
             if (IsTarget)
             {
-                var gridData = targetUnit.GridMap.Data.GetGridData(targetUnit.Data.GridPos + dir * Distance);
+                var gridData = targetUnit.BattleMap.Data.GetGridData(targetUnit.Data.GridPos + dir * Distance);
                 targetUnit.Move(gridData);
             }
             else
             {
-                var gridData = casterUnit.GridMap.Data.GetGridData(casterUnit.Data.GridPos + dir * Distance);
+                var gridData = casterUnit.BattleMap.Data.GetGridData(casterUnit.Data.GridPos + dir * Distance);
                 casterUnit.Move(gridData);
             }
         }

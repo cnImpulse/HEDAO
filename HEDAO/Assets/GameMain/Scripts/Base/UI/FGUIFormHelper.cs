@@ -10,8 +10,6 @@ namespace HEDAO
     /// </summary>
     public class FGUIFormHelper : UIFormHelperBase
     {
-        private ResourceComponent m_ResourceComponent = null;
-
         /// <summary>
         /// 创建界面。
         /// </summary>

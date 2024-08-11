@@ -61,7 +61,7 @@ namespace HEDAO
         private void OnBattleUnitActionEnd(object sender, GameEventArgs e)
         {
             DestoryBattleUnitFsm();
-            var battleUnitList = GridMap.GetBattleUnitList(ActiveCamp);
+            var battleUnitList = BattleMap.GetBattleUnitList(ActiveCamp);
             foreach (var battleUnit in battleUnitList)
             {
                 if (battleUnit.CanAction)

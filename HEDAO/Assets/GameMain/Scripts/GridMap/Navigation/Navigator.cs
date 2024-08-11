@@ -29,7 +29,7 @@ namespace HEDAO
         /// <summary>
         /// 获取到达目的地的路径,终点需要可到达,路径可通过,但是不一定能站立。例如队友占据的单位格可通过,但是不能站立。
         /// </summary>
-        public static bool Navigate(GridMapData mapData, BattleUnit battleUnit, GridData end, out List<GridData> path)
+        public static bool Navigate(BattleMapData mapData, BattleUnit battleUnit, GridData end, out List<GridData> path)
         {
             path = new List<GridData>();
 

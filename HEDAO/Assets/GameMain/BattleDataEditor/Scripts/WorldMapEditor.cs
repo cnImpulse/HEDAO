@@ -6,19 +6,13 @@ using UnityEngine.Tilemaps;
 
 namespace HEDAO
 {
-    public class BattleDataEditor : MonoBehaviour
+    public class WorldMapEditor : MonoBehaviour
     {
         public GameObject GridMap = null;
-        public GameObject BattleUnit = null;
-        public LevelData LevelData = new LevelData();
+        public World World = new World();
+        public int MapWidth = 50;
+        public int MapHeight = 50;
 
-        [ContextMenu("ClearTiles")]
-        private void ClearTiles()
-        {
-            var battleUnitTilemap = BattleUnit?.transform.Find("m_BattleUnit")?.GetComponent<Tilemap>();
-            battleUnitTilemap.ClearAllTiles();
-        }
-        
         [ContextMenu("GenerateGridMap")]
         private void GenerateGridMap()
         {
@@ -33,7 +27,7 @@ namespace HEDAO
                 DestroyImmediate(GridMap.transform.GetChild(0).gameObject);
             }
 
-            var path = AssetUtl.GetGridMapPath(LevelData.MapId);
+            var path = AssetUtl.GetGridMapPath(World.MapId);
             var mapPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             if (mapPrefab == null)
             {
@@ -46,22 +40,13 @@ namespace HEDAO
             }
 
             var gridMap = Instantiate(mapPrefab, GridMap.transform);
-            gridMap.name = string.Format("GridMap_{0}", LevelData.MapId);
+            gridMap.name = string.Format("GridMap_{0}", World.MapId);
         }
 
-        [ContextMenu("SaveBattleData")]
-        private void SaveBattleData()
-        {
-            SaveGridMap();
-            SaveBattleUnitData();
-
-            string path = AssetUtl.GetLevelDataPath(LevelData.LevelId);
-            AssetUtl.SaveData(path, LevelData);
-        }
-
+        [ContextMenu("SaveGridMap")]
         private void SaveGridMap()
         {
-            var girdMap = GridMap?.transform.Find(string.Format("GridMap_{0}", LevelData.MapId));
+            var girdMap = GridMap?.transform.Find(string.Format("GridMap_{0}", World.MapId));
             var tilemapList = girdMap?.GetComponentsInChildren<Tilemap>();
             if (tilemapList == null || tilemapList.Length <= 0)
             {
@@ -83,42 +68,17 @@ namespace HEDAO
                 }
             }
 
-            PrefabUtility.SaveAsPrefabAssetAndConnect(girdMap.gameObject, AssetUtl.GetGridMapPath(LevelData.MapId), InteractionMode.AutomatedAction);
+            PrefabUtility.SaveAsPrefabAssetAndConnect(girdMap.gameObject, AssetUtl.GetGridMapPath(World.MapId), InteractionMode.AutomatedAction);
             GenerateGridMap();
 
-            string path = AssetUtl.GetGridMapDataPath(LevelData.MapId);
+            string path = AssetUtl.GetGridMapDataPath(World.MapId);
             AssetUtl.SaveData(path, battleMapData);
-        }
-
-        private void SaveBattleUnitData()
-        {
-            var battleUnitTilemap = BattleUnit?.transform.Find("m_BattleUnit")?.GetComponent<Tilemap>();
-            if (battleUnitTilemap == null)
-            {
-                return;
-            }
-
-            LevelData.EnemyDic.Clear();
-            LevelData.PlayerBrithList.Clear();
-            var tileDic = GetAllTile<TileBase>(battleUnitTilemap);
-            foreach (var pair in tileDic)
-            {
-                var tile = pair.Value;
-                if (pair.Value is GridUnitTile)
-                {
-                    LevelData.EnemyDic.Add(GridMapUtl.GridPosToIndex(pair.Key), (tile as GridUnitTile).Id);
-                }
-                else if (tile.name == "brith")
-                {
-                    LevelData.PlayerBrithList.Add(GridMapUtl.GridPosToIndex(pair.Key));
-                }
-            }
         }
 
         private Dictionary<Vector2Int, T> GetAllTile<T>(Tilemap tilemap) where T : TileBase
         {
-            var width = LevelData.MapWidth;
-            var height = LevelData.MapHeight;
+            var width = MapWidth;
+            var height = MapHeight;
             Dictionary<Vector2Int, T> tileDic = new Dictionary<Vector2Int, T>();
             for (int x = -width / 2; x < width / 2; ++x)
             {

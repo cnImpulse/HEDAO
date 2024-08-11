@@ -38,12 +38,12 @@ namespace HEDAO
             }
 
             GridData end = AI.SelectMoveTarget(attackTarget);
-            bool result = Navigator.Navigate(GridMap.Data, Owner, end, out var path);
+            bool result = Navigator.Navigate(BattleMap.Data, Owner, end, out var path);
             if (result)
             {
                 yield return battleUnit.Move(path, end);
 
-                var canReleaseList = GridMap.Data.GetRangeGridList(Owner.Data.GridPos, AI.MaxATKRange);
+                var canReleaseList = BattleMap.Data.GetRangeGridList(Owner.Data.GridPos, AI.MaxATKRange);
                 GameEntry.Effect.ShowAttackAreaEffect(canReleaseList, 0.5f);
                 yield return new WaitForSeconds(0.7f);
 
@@ -59,7 +59,7 @@ namespace HEDAO
             GameEntry.Effect.ShowEffect(GameEntry.Cfg.Effect.Select, battleUnit.transform.position, true, 1.5f);
             yield return new WaitForSeconds(1.5f);
 
-            var canMoveList = GridMap.Data.GetCanMoveGrids(battleUnit);
+            var canMoveList = BattleMap.Data.GetCanMoveGrids(battleUnit);
             GameEntry.Effect.ShowMoveAreaEffect(canMoveList, 0.8f);
             yield return new WaitForSeconds(0.8f);
         }

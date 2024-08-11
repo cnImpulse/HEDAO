@@ -11,10 +11,8 @@ namespace HEDAO
     [JsonObject(MemberSerialization.Fields)]
     public abstract class EntityData : IEffectTarget
     {
-        [JsonProperty]
         private int m_Id = 0;
 
-        [JsonProperty]
         private string m_Name = "Entity";
 
         /// <summary>
@@ -31,7 +29,6 @@ namespace HEDAO
             set => m_Name = value;
         }
         
-        [JsonProperty]
         public Dictionary<int, Buff> BuffDict { get; private set; } = new();
 
         [JsonConstructor]

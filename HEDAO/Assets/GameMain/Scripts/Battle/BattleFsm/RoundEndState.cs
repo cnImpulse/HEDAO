@@ -13,7 +13,7 @@ namespace HEDAO
         {
             base.OnEnter(fsm);
 
-            var battleUnitList = GridMap.GetBattleUnitList(ActiveCamp);
+            var battleUnitList = BattleMap.GetBattleUnitList(ActiveCamp);
             foreach (var battleUnit in battleUnitList)
             {
                 battleUnit.OnRoundEnd();

@@ -22,14 +22,20 @@ namespace HEDAO
             entityComponent.HideEntity(entity.Entity);
         }
 
-        public static void ShowGridMap(this EntityComponent entityComponent, int mapId)
+        public static void ShowBattleMap(this EntityComponent entityComponent, int mapId)
+        {
+            ShowGridMap<BattleMap>(entityComponent, mapId);
+        }
+        
+        public static void ShowGridMap<T>(this EntityComponent entityComponent, int mapId)
+            where T : GridMap
         {
             string path = AssetUtl.GetGridMapDataPath(mapId);
             GameEntry.Resource.LoadAsset(path, (assetName, asset, duration, userData) =>
             {
                 TextAsset text = asset as TextAsset;
-                GridMapData data = Utility.Json.ToObject<GridMapData>(text.text);
-                entityComponent.ShowEntity<GridMap>(data.Id, AssetUtl.GetGridMapPath(mapId), "GridMap", data);
+                BattleMapData data = Utility.Json.ToObject<BattleMapData>(text.text);
+                entityComponent.ShowEntity<T>(data.Id, AssetUtl.GetGridMapPath(mapId), "GridMap", data);
             });
         }
 

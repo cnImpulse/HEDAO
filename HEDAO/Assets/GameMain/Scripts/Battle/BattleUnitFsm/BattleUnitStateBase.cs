@@ -9,7 +9,7 @@ namespace HEDAO
         public IFsm<BattleUnit> Fsm { get; private set; }
         public BattleUnit Owner => Fsm?.Owner;
 
-        protected GridMap GridMap => Owner.GridMap;
+        protected BattleMap BattleMap => Owner.BattleMap;
 
         private Type m_NextState = null;
 

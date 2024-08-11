@@ -9,7 +9,7 @@ namespace HEDAO
     {
         public LevelData LevelData { get; private set; }
         public CampType ActiveCamp { get; set; } = CampType.Player;
-        public GridMap GridMap { get; set; }
+        public BattleMap BattleMap { get; set; }
         public IFsm<BattleUnit> BattleUnitFsm { get; set; }
 
         public BattleRunTimeData(LevelData data)

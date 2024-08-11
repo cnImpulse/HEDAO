@@ -31,10 +31,10 @@ namespace HEDAO
         {
             if (m_CanReleaseList != null)
             {
-                var gridPos = GridMap.WorldPosToGridPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                if (m_CanReleaseList.Contains(GridMap.Data.GetGridData(gridPos)))
+                var gridPos = BattleMap.WorldPosToGridPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                if (m_CanReleaseList.Contains(BattleMap.Data.GetGridData(gridPos)))
                 {
-                    var position = GridMap.GridPosToWorldPos(gridPos);
+                    var position = BattleMap.GridPosToWorldPos(gridPos);
                     if (m_EffectId > 0)
                     {
                         GameEntry.Effect.SetEffectPos(m_EffectId, position);
@@ -84,7 +84,7 @@ namespace HEDAO
             }
 
             m_SkillId = skillId;
-            m_CanReleaseList = GridMap.Data.GetRangeGridList(Owner.Data.GridPos, cfg.ReleaseRange);;
+            m_CanReleaseList = BattleMap.Data.GetRangeGridList(Owner.Data.GridPos, cfg.ReleaseRange);;
             GameEntry.Effect.ShowAttackAreaEffect(m_CanReleaseList);
         }
 

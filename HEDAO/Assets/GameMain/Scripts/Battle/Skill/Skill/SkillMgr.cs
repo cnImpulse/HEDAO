@@ -39,7 +39,7 @@ namespace HEDAO
                 return false;
             }
             
-            var range = caster.GridMap.Data.GetRangeGridList(center, skillCfg.EffectRange, dir);
+            var range = caster.BattleMap.Data.GetRangeGridList(center, skillCfg.EffectRange, dir);
             var targetRange = range.Where(data =>
                 {
                     var battleUnit = data.GridUnit as BattleUnit;

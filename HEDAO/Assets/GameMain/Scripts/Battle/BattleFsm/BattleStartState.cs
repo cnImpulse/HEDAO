@@ -29,7 +29,7 @@ namespace HEDAO
 
             if (m_StartBattle)
             {
-                var battleUnitList = BattleData.GridMap.GetBattleUnitList();
+                var battleUnitList = BattleData.BattleMap.GetBattleUnitList();
                 foreach (var battleUnit in battleUnitList)
                 {
                     battleUnit.OnBattleStart();
@@ -57,18 +57,18 @@ namespace HEDAO
 
         private void InitGridMap()
         {
-            GameEntry.Entity.ShowGridMap(BattleData.LevelData.MapId);
+            GameEntry.Entity.ShowBattleMap(BattleData.LevelData.MapId);
         }
 
         private void ShowPlayerBrith()
         {
-            List<Vector2Int> playerBrith = BattleData.LevelData.PlayerBrithList.ConvertAll((input) => BattleData.GridMap.Data.GetGridData(input).GridPos);
+            List<Vector2Int> playerBrith = BattleData.LevelData.PlayerBrithList.ConvertAll((input) => BattleData.BattleMap.Data.GetGridData(input).GridPos);
             GameEntry.Effect.ShowGridEffect(GameEntry.Cfg.GridEffect.Brith, playerBrith);
         }
 
         private void InitBattleUnit()
         {
-            var gridMap = BattleData.GridMap;
+            var gridMap = BattleData.BattleMap;
 
             // 初始化敌方单位
             foreach (var pair in BattleData.LevelData.EnemyDic)
@@ -104,9 +104,9 @@ namespace HEDAO
         private void OnShowGirdMapSuccess(object sender, GameEventArgs e)
         {
             ShowEntitySuccessEventArgs ne = (ShowEntitySuccessEventArgs)e;
-            if (ne.Entity.Logic is GridMap)
+            if (ne.Entity.Logic is BattleMap)
             {
-                BattleData.GridMap = ne.Entity.Logic as GridMap;
+                BattleData.BattleMap = ne.Entity.Logic as BattleMap;
                 ShowPlayerBrith();
                 InitBattleUnit();
             }
@@ -124,7 +124,7 @@ namespace HEDAO
                 return;
             }
 
-            var gridMap = BattleData.GridMap;
+            var gridMap = BattleData.BattleMap;
             if (m_CurSelectedUnit == null)
             {
                 var battleUnit = gridData.GridUnit as BattleUnit;

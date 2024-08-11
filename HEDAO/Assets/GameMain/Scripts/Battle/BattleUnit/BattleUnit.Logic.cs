@@ -58,7 +58,7 @@ namespace HEDAO
         {
             foreach (var gridData in path)
             {
-                transform.position = GridMap.GridPosToWorldPos(gridData.GridPos);
+                transform.position = BattleMap.GridPosToWorldPos(gridData.GridPos);
                 yield return new WaitForSeconds(0.3f);
             }
             Move(end);
@@ -66,7 +66,7 @@ namespace HEDAO
         
         public void Move(Vector2Int end)
         {
-            Move(GridMap.Data.GetGridData(end));
+            Move(BattleMap.Data.GetGridData(end));
         }
 
         public void Move(GridData end)
@@ -84,7 +84,7 @@ namespace HEDAO
                 return;
             }
             
-            GridMap.SetGridUnitPos(this, end.GridPos);
+            BattleMap.SetGridUnitPos(this, end.GridPos);
         }
         
         public void MoveImmediate(GridData end)
@@ -96,7 +96,7 @@ namespace HEDAO
                 return;
             }
 
-            GridMap.SetGridUnitPos(this, end.GridPos);
+            BattleMap.SetGridUnitPos(this, end.GridPos);
         }
 
         public void TakeDamage(int damage)

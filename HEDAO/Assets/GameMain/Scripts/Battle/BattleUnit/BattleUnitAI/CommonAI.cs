@@ -18,7 +18,7 @@ namespace HEDAO
         private BattleUnit m_Owner = null;
         private int m_MaxATKRange = 0;
 
-        private GridMap m_GridMap => m_Owner.GridMap;
+        private BattleMap BattleMap => m_Owner.BattleMap;
         public int MaxATKRange => m_MaxATKRange;
 
         public CommonAI(BattleUnit battleUnit)
@@ -78,7 +78,7 @@ namespace HEDAO
             }
 
             GridData end = null;
-            var canMoveList = m_GridMap.Data.GetCanMoveGrids(m_Owner);
+            var canMoveList = BattleMap.Data.GetCanMoveGrids(m_Owner);
             foreach (var gridData in canMoveList)
             {
                 int distance = GridMapUtl.GetDistance(target.GridData, gridData);
@@ -100,14 +100,14 @@ namespace HEDAO
         {
             if (mov <= 0)
             {
-                return m_GridMap.Data.GetRangeGridList(m_Owner.Data.GridPos, atkRange);
+                return BattleMap.Data.GetRangeGridList(m_Owner.Data.GridPos, atkRange);
             }
 
-            List<GridData> canMoveList = m_GridMap.Data.GetCanMoveGrids(m_Owner);
+            List<GridData> canMoveList = BattleMap.Data.GetCanMoveGrids(m_Owner);
             List<GridData> canAttackList = new List<GridData>();
             foreach (var gridData in canMoveList)
             {
-                var gridList = m_GridMap.Data.GetRangeGridList(gridData.GridPos, atkRange);
+                var gridList = BattleMap.Data.GetRangeGridList(gridData.GridPos, atkRange);
                 foreach (var grid in gridList)
                 {
                     if (canAttackList.Contains(grid))

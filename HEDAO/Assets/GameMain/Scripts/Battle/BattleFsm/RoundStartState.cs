@@ -15,7 +15,7 @@ namespace HEDAO
 
             GameEntry.UI.OpenUIForm(UIFromName.BattleStateEffect, this);
 
-            var battleUnitList = BattleData.GridMap.GetBattleUnitList(BattleData.ActiveCamp);
+            var battleUnitList = BattleData.BattleMap.GetBattleUnitList(BattleData.ActiveCamp);
             foreach (var battleUnit in battleUnitList)
             {
                 battleUnit.OnRoundStart();

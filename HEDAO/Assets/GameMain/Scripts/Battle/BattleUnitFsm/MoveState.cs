@@ -18,7 +18,7 @@ namespace HEDAO
 
             GameEntry.Event.Subscribe(EventName.PointerDownGridMap, OnPointGridMap);
 
-            m_CanMoveList = GridMap.Data.GetCanMoveGrids(Owner);
+            m_CanMoveList = BattleMap.Data.GetCanMoveGrids(Owner);
             GameEntry.Effect.ShowMoveAreaEffect(m_CanMoveList);
         }
 
@@ -26,10 +26,10 @@ namespace HEDAO
         {
             if (m_CanMoveList != null)
             {
-                var gridPos = GridMap.WorldPosToGridPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                if (m_CanMoveList.Contains(GridMap.Data.GetGridData(gridPos)))
+                var gridPos = BattleMap.WorldPosToGridPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                if (m_CanMoveList.Contains(BattleMap.Data.GetGridData(gridPos)))
                 {
-                    var position = GridMap.GridPosToWorldPos(gridPos);
+                    var position = BattleMap.GridPosToWorldPos(gridPos);
                     if (m_EffectId > 0)
                     {
                         GameEntry.Effect.SetEffectPos(m_EffectId, position);
