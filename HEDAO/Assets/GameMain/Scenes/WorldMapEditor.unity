@@ -171,8 +171,8 @@ MonoBehaviour:
   World:
     WorldId: 1
     MapId: 100
-  MapWidth: 50
-  MapHeight: 50
+  MapWidth: 26
+  MapHeight: 18
 --- !u!1 &982718352
 GameObject:
   m_ObjectHideFlags: 0

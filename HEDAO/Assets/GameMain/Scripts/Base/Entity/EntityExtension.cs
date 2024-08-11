@@ -42,7 +42,13 @@ namespace HEDAO
         public static void ShowBattleUnit(this EntityComponent entityComponent, BattleUnitData data)
         {
             string path = AssetUtl.GetBattleUnitPath();
-            entityComponent.ShowEntity<BattleUnit>(data.Id, path, "BattleUnit", data);
+            entityComponent.ShowEntity<BattleUnit>(data.Id, path, "GridUnit", data);
+        }
+        
+        public static void ShowGridUnit(this EntityComponent entityComponent, GridUnitData data)
+        {
+            string path = AssetUtl.GetGridUnitPath();
+            entityComponent.ShowEntity<GridUnit>(data.Id, path, "GridUnit", data);
         }
 
         public static void ShowEffect<T>(this EntityComponent entityComponent, EffectData data)

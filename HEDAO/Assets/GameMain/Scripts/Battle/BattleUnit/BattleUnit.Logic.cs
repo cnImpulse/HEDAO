@@ -15,6 +15,8 @@ namespace HEDAO
     /// </summary>
     public partial class BattleUnit : GridUnit
     {
+        public BattleMap BattleMap => GridMap as BattleMap;
+        
         public CommonAI AI { get; private set; }
         public bool CanAction { get; set; }
 
@@ -58,7 +60,7 @@ namespace HEDAO
         {
             foreach (var gridData in path)
             {
-                transform.position = BattleMap.GridPosToWorldPos(gridData.GridPos);
+                transform.position = GridMap.GridPosToWorldPos(gridData.GridPos);
                 yield return new WaitForSeconds(0.3f);
             }
             Move(end);
@@ -66,7 +68,7 @@ namespace HEDAO
         
         public void Move(Vector2Int end)
         {
-            Move(BattleMap.Data.GetGridData(end));
+            Move(GridMap.Data.GetGridData(end));
         }
 
         public void Move(GridData end)

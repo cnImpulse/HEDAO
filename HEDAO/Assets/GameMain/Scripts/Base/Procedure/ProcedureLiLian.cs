@@ -13,7 +13,7 @@ namespace HEDAO
             base.OnEnter(procedureOwner);
 
             GameEntry.UI.OpenUIForm(UIFromName.LiLianForm);
-            GameEntry.Entity.ShowGridMap<WorldMap>(100);
+            GameEntry.Entity.ShowGridMap<WorldMap>(1);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)

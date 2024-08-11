@@ -16,8 +16,8 @@ namespace HEDAO
 
         public new GridUnitData Data => m_Data;
 
-        public BattleMap BattleMap { get; private set; }
-        public GridData GridData => BattleMap.Data.GetGridData(Data.GridPos);
+        public GridMap GridMap { get; private set; }
+        public GridData GridData => GridMap.Data.GetGridData(Data.GridPos);
         public int GridIndex => GridMapUtl.GridPosToIndex(Data.GridPos);
 
         protected override void OnInit(object userData)
@@ -43,15 +43,15 @@ namespace HEDAO
         {
             base.OnAttachTo(parentEntity, parentTransform, userData);
 
-            BattleMap = parentEntity as BattleMap;
-            transform.position = BattleMap.GridPosToWorldPos(m_Data.GridPos);
+            GridMap = parentEntity as GridMap;
+            transform.position = GridMap.GridPosToWorldPos(m_Data.GridPos);
             GridData.OnGridUnitEnter(this);
         }
 
         protected override void OnDetachFrom(EntityLogic parentEntity, object userData)
         {
             GridData.OnGridUnitLeave();
-            BattleMap = null;
+            GridMap = null;
 
             base.OnDetachFrom(parentEntity, userData);
         }

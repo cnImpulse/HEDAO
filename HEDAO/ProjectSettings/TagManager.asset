@@ -44,7 +44,7 @@ TagManager:
   - name: GridMap
     uniqueID: 3723920725
     locked: 0
-  - name: BattleUnit
+  - name: GridUnit
     uniqueID: 2477858411
     locked: 0
   - name: Effect

@@ -36,6 +36,11 @@ namespace HEDAO
         {
             return EntityPath + "BattleUnit/BattleUnit.prefab";
         }
+        
+        public static string GetGridUnitPath()
+        {
+            return EntityPath + "GridUnit/GridUnit.prefab";
+        }
 
         public static string GetEffectPath(string name)
         {

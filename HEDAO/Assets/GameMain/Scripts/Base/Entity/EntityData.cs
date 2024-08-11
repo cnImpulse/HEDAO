@@ -11,6 +11,7 @@ namespace HEDAO
     [JsonObject(MemberSerialization.Fields)]
     public abstract class EntityData : IEffectTarget
     {
+        [JsonIgnore]
         private int m_Id = 0;
 
         private string m_Name = "Entity";

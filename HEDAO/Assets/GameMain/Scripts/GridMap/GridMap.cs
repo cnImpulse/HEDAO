@@ -32,10 +32,14 @@ namespace HEDAO
             base.OnShow(userData);
 
             m_Data = userData as BattleMapData;
+            
+            GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowGridUnitScuess);
         }
 
         protected override void OnHide(bool isShutdown, object userData)
         {
+            GameEntry.Event.Unsubscribe(ShowEntitySuccessEventArgs.EventId, OnShowGridUnitScuess);
+            
             foreach (var gridUnit in m_GridUnitDic.Values)
             {
                 GameEntry.Entity.HideEntity(gridUnit);
@@ -97,6 +101,19 @@ namespace HEDAO
                 }
                 GameEntry.Event.Fire(this, EventName.PointerDownGridMap, gridData);
             }
+        }
+        
+        private void OnShowGridUnitScuess(object sender, GameEventArgs e)
+        {
+            var ne = (ShowEntitySuccessEventArgs)e;
+
+            var gridUnit = ne.Entity.Logic as GridUnit;
+            if (gridUnit == null)
+            {
+                return;
+            }
+
+            GameEntry.Entity.AttachEntity(gridUnit.Id, Id);
         }
     }
 }

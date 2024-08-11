@@ -115,7 +115,6 @@ namespace HEDAO
         public static Vector2Int[] s_DirArray4 = { Vector2Int.down, Vector2Int.up, Vector2Int.left, Vector2Int.right };
         public static Vector2Int[] s_Dir2Array4 = { Vector2Int.one, new Vector2Int(1, -1), new Vector2Int(-1, -1), new Vector2Int(-1, 1) };
 
-        [JsonProperty]
         private Dictionary<int, GridData> m_GridDataDic = null;
 
         public Dictionary<int, GridData> GridDataDic => m_GridDataDic;
