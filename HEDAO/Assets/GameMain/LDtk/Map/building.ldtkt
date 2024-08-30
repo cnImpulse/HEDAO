@@ -1,0 +1,46 @@
+{
+  "Rects": [
+    {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "x": 32,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    }
+  ],
+  "Def": {
+    "__cHei": 3,
+    "__cWid": 3,
+    "cachedPixelData": {
+      "opaqueTiles": "000000000",
+      "averageColors": "100020000000000000000000000000000000"
+    },
+    "customData": [
+
+    ],
+    "embedAtlas": null,
+    "enumTags": [
+
+    ],
+    "identifier": "building",
+    "padding": 0,
+    "pxHei": 96,
+    "pxWid": 96,
+    "relPath": "../Res/LDtk/building.png",
+    "savedSelections": [
+
+    ],
+    "spacing": 0,
+    "tags": [
+
+    ],
+    "tagsSourceEnumUid": null,
+    "tileGridSize": 32,
+    "uid": 290
+  }
+}
