@@ -73,5 +73,12 @@ namespace HEDAO
         {
             return entityComponent.GetEntity(entityId)?.Logic as T;
         }
+
+        public static void ShowEntity<T>(this EntityComponent entityComponent, EntityData data, int cfgId)
+            where T : EntityLogic
+        {
+            var cfg = GameEntry.Cfg.Tables.TbEntityCfg.Get(cfgId);
+            entityComponent.ShowEntity<T>(data.Id, cfg.Path, cfg.Group, data);
+        }
     }
 }

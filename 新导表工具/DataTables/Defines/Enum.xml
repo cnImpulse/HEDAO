@@ -66,11 +66,4 @@
 		<var name="WoMan" alias="女" />
 	</enum>
 	
-	<enum name="EGenderType" comment="性别">
-		<var name="None" alias="未知" />
-		<var name="Man" alias="男" />
-		<var name="WoMan" alias="女" />
-	</enum>
-
-	
 </module>
