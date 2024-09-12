@@ -4,18 +4,25 @@ using System.Linq;
 using HEDAO;
 using UnityEngine;
 using LDtkUnity;
+using UnityEngine.Tilemaps;
+using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
     public class WorldMap : Entity
     {
-        protected List<LDtkComponentEntity> EntityList;
+        protected Tilemap[] m_TilemapList = null;
+        
+        protected List<LDtkComponentEntity> EntityList = new List<LDtkComponentEntity>();
         public new WorldMapData Data { get; private set; }
+        
         
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
 
+            m_TilemapList = GetComponentsInChildren<Tilemap>();
+            
             InitEntityList();
         }
         
@@ -24,6 +31,20 @@ namespace HEDAO
             base.OnShow(userData);
 
             Data = userData as WorldMapData;
+            ShowAllGridUnit();
+        }
+        
+        protected override void OnAttached(EntityLogic childEntity, Transform parentTransform, object userData)
+        {
+            base.OnAttached(childEntity, parentTransform, userData);
+
+            var gridUnit = childEntity as WorldGridUnit;
+        }
+
+        protected override void OnDetached(EntityLogic childEntity, object userData)
+        {
+            var gridUnit = childEntity as WorldGridUnit;
+            base.OnDetached(childEntity, userData);
         }
 
         private void InitEntityList()
@@ -45,12 +66,17 @@ namespace HEDAO
             }
         }
 
-        private void ShowAllEntity()
+        private void ShowAllGridUnit()
         {
             foreach (var entity in EntityList)
             {
-                // GameEntry.Entity.ShowEntity<GridUnit>();
+                Data.RegisterGridUnit(entity.Grid, entity);
             }
+        }
+        
+        public Vector3 GridPosToWorldPos(Vector2Int gridPos)
+        {
+            return m_TilemapList[0].GetCellCenterWorld((Vector3Int)gridPos);
         }
     }
 }
