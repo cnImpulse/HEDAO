@@ -9,6 +9,8 @@ namespace HEDAO
 {
     public class WorldGridUnit : Entity
     {
+        private int m_FloatId = 0;
+        
         private SpriteRenderer m_Renderer;
         
         public WorldMap Parent => GameEntry.Entity.GetEntityLogic<WorldMap>(Data.Parent.Id);
@@ -30,6 +32,16 @@ namespace HEDAO
             m_Renderer.sprite = Data.Template.Tile;
             transform.parent = Parent.transform;
             transform.position = Parent.GridPosToWorldPos(Data.GridPos);
+            
+            m_FloatId = GameEntry.UI.OpenUIForm(UIFromName.FloatGridUnit, this);
+        }
+
+        protected override void OnHide(bool isShutdown, object userData)
+        {
+            GameEntry.UI.CloseUIForm(m_FloatId);
+            Data = null;
+            
+            base.OnHide(isShutdown, userData);
         }
     }
 }

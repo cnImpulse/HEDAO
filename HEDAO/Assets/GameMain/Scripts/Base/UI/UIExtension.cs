@@ -21,12 +21,15 @@ namespace HEDAO
         public const string CommonTips = "CommonTips";
         public const string BattleUnitInfo = "BattleUnitInfo";
         public const string BattleStateEffect = "BattleStateEffect";
+        public const string FloatGridUnit = "FloatGridUnit";
     }
 
     public static class UICfg
     {
         private static Dictionary<string, UICfgItem> cfg = new Dictionary<string, UICfgItem>()
         {
+            [UIFromName.FloatGridUnit]      = new UICfgItem(typeof(FloatBase),          FGUIFloatGridUnit.URL),
+            
             [UIFromName.MenuForm]           = new UICfgItem(typeof(MenuForm),           FGUIMenuForm.URL),
             [UIFromName.SelectForm]         = new UICfgItem(typeof(SelectForm),         FGUISelectForm.URL),
             [UIFromName.LoadGameForm]       = new UICfgItem(typeof(LoadGameForm),       FGUILoadGame.URL),
