@@ -17,9 +17,9 @@ namespace HEDAO
             return ++s_SerialId;
         }
 
-        public static void HideEntity(this EntityComponent entityComponent, Entity entity)
+        public static void HideEntity(this EntityComponent entityComponent, EntityView entityView)
         {
-            entityComponent.HideEntity(entity.Entity);
+            entityComponent.HideEntity(entityView.Entity);
         }
 
         public static void ShowBattleMap(this EntityComponent entityComponent, int mapId)
@@ -65,7 +65,7 @@ namespace HEDAO
         public static T GetEntityData<T>(this EntityComponent entityComponent, int entityId)
             where T : EntityData
         {
-            return (entityComponent.GetEntity(entityId)?.Logic as Entity)?.Data as T;
+            return (entityComponent.GetEntity(entityId)?.Logic as EntityView)?.Data as T;
         }
 
         public static T GetEntityLogic<T>(this EntityComponent entityComponent, int entityId)

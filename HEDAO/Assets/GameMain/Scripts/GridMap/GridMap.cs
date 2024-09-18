@@ -10,7 +10,7 @@ using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
-    public class GridMap : Entity, IPointerDownHandler
+    public class GridMap : EntityView, IPointerDownHandler
     {
         protected Tilemap[] m_TilemapList = null;
         protected BattleMapData m_Data = null;

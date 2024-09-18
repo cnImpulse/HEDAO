@@ -11,7 +11,7 @@ namespace HEDAO
 {
     public class FloatBase : FGUIForm<FGUIFloatGridUnit>
     {
-        private Entity m_Owner = default;
+        private EntityView m_Owner = default;
 
         protected override void OnInit(object userData)
         {
@@ -22,7 +22,7 @@ namespace HEDAO
         {
             base.OnOpen(userData);
 
-            m_Owner = userData as Entity;
+            m_Owner = userData as EntityView;
             View.m_title.text = m_Owner.Data.Name.ToString();
         }
 

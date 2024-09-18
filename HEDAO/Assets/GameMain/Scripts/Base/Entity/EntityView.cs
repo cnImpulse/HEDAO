@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace HEDAO
 {
-    public abstract class Entity : EntityLogic
+    public abstract class EntityView : EntityLogic
     {
         private EntityData m_Data = null;
         public EntityData Data => m_Data;

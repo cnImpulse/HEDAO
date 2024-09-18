@@ -9,7 +9,7 @@ using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
-    public class WorldMap : Entity
+    public class WorldMap : EntityView
     {
         protected Tilemap[] m_TilemapList = null;
         

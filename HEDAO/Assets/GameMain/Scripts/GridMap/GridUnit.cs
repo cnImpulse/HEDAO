@@ -10,7 +10,7 @@ namespace HEDAO
     /// <summary>
     /// 网格单位。
     /// </summary>
-    public class GridUnit : Entity
+    public class GridUnit : EntityView
     {
         protected SpriteRenderer m_SpriteRenderer = null;
         

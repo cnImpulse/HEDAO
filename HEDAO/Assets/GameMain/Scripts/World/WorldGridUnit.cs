@@ -7,7 +7,7 @@ using LDtkUnity;
 
 namespace HEDAO
 {
-    public class WorldGridUnit : Entity
+    public class WorldGridUnit : EntityView
     {
         private int m_FloatId = 0;
         

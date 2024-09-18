@@ -4,7 +4,7 @@ using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
-    public class Effect : Entity
+    public class Effect : EntityView
     {
         private EffectData m_Data = null;
 

@@ -12,8 +12,6 @@ namespace HEDAO
     {
         private ProcedureLiLian Owner;
         
-        public List<GridUnitData> Building => GameEntry.Save.PlayerData.World.Building;
-        
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
@@ -33,7 +31,7 @@ namespace HEDAO
 
             View.m_txt_info.text = "选择目的地";
 
-            View.m_list_task.m_list.numItems = Building.Count;
+            // View.m_list_task.m_list.numItems = Building.Count;
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -49,11 +47,11 @@ namespace HEDAO
 
         public void OnClickTask(int index)
         {
-            var girdUnit = GameEntry.Entity.GetEntity(Building[index].Id);
-            
-            GameEntry.Camera.VirtualCamera.Follow = girdUnit.transform;
-            
-            GameEntry.Effect.ShowEffect(GameEntry.Cfg.Effect.Select, girdUnit.transform.position, true);
+            // var girdUnit = GameEntry.Entity.GetEntity(Building[index].Id);
+            //
+            // GameEntry.Camera.VirtualCamera.Follow = girdUnit.transform;
+            //
+            // GameEntry.Effect.ShowEffect(GameEntry.Cfg.Effect.Select, girdUnit.transform.position, true);
         }
 
         public void OnClickGo()
@@ -66,8 +64,8 @@ namespace HEDAO
             
             GameEntry.Effect.HideEffect(GameEntry.Cfg.Effect.Select);
 
-            var data = Building[index];
-            Owner.StartLiLian(data.GridPos);
+            // var data = Building[index];
+            // Owner.StartLiLian(data.GridPos);
             Close();
         }
     }
