@@ -11,7 +11,7 @@
 	"iid": "2023a840-4ce0-11ef-bb75-45edbf95facb",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 478021,
-	"nextUid": 294,
+	"nextUid": 298,
 	"identifierStyle": "Lowercase",
 	"toc": [],
 	"worldLayout": "Free",
@@ -799,7 +799,45 @@
 			"limitBehavior": "MoveLastOne",
 			"pivotX": 0,
 			"pivotY": 0,
-			"fieldDefs": []
+			"fieldDefs": [
+				{
+					"identifier": "cfgId",
+					"doc": null,
+					"__type": "Int",
+					"uid": 297,
+					"type": "F_Int",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": { "id": "V_Int", "params": [10000] },
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
 		},
 		{
 			"identifier": "village",
@@ -834,7 +872,45 @@
 			"limitBehavior": "MoveLastOne",
 			"pivotX": 0,
 			"pivotY": 0,
-			"fieldDefs": []
+			"fieldDefs": [
+				{
+					"identifier": "cfgId",
+					"doc": "配置Id",
+					"__type": "Int",
+					"uid": 294,
+					"type": "F_Int",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "NameAndValue",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Beneath",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": true,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": { "id": "V_Int", "params": [10001] },
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
 		}
 	], "tilesets": [
 		{
@@ -1340,22 +1416,6 @@
 					"gridTiles": [],
 					"entityInstances": [
 						{
-							"__identifier": "home",
-							"__grid": [8,10],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 290, "x": 0, "y": 0, "w": 32, "h": 32 },
-							"__smartColor": "#BE4A2F",
-							"iid": "f81cceb0-4ce0-11ef-8bba-f9ecf0ed96a2",
-							"width": 32,
-							"height": 32,
-							"defUid": 291,
-							"px": [256,320],
-							"fieldInstances": [],
-							"__worldX": -128,
-							"__worldY": 32
-						},
-						{
 							"__identifier": "village",
 							"__grid": [13,7],
 							"__pivot": [0,0],
@@ -1367,7 +1427,7 @@
 							"height": 32,
 							"defUid": 292,
 							"px": [416,224],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "cfgId", "__type": "Int", "__value": 10003, "__tile": null, "defUid": 294, "realEditorValues": [{ "id": "V_Int", "params": [10003] }] }],
 							"__worldX": 32,
 							"__worldY": -64
 						},
@@ -1383,25 +1443,9 @@
 							"height": 32,
 							"defUid": 292,
 							"px": [384,416],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "cfgId", "__type": "Int", "__value": 10002, "__tile": null, "defUid": 294, "realEditorValues": [{ "id": "V_Int", "params": [10002] }] }],
 							"__worldX": 0,
 							"__worldY": 128
-						},
-						{
-							"__identifier": "village",
-							"__grid": [13,2],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 290, "x": 32, "y": 0, "w": 32, "h": 32 },
-							"__smartColor": "#D77643",
-							"iid": "0c9e9800-4ce0-11ef-8bba-1b49652a5299",
-							"width": 32,
-							"height": 32,
-							"defUid": 292,
-							"px": [416,64],
-							"fieldInstances": [],
-							"__worldX": 32,
-							"__worldY": -224
 						},
 						{
 							"__identifier": "village",
@@ -1415,9 +1459,25 @@
 							"height": 32,
 							"defUid": 292,
 							"px": [128,384],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "cfgId", "__type": "Int", "__value": 10001, "__tile": null, "defUid": 294, "realEditorValues": [] }],
 							"__worldX": -256,
 							"__worldY": 96
+						},
+						{
+							"__identifier": "home",
+							"__grid": [8,10],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 290, "x": 0, "y": 0, "w": 32, "h": 32 },
+							"__smartColor": "#BE4A2F",
+							"iid": "0fd00510-73f0-11ef-902c-0552383679de",
+							"width": 32,
+							"height": 32,
+							"defUid": 291,
+							"px": [256,320],
+							"fieldInstances": [{ "__identifier": "cfgId", "__type": "Int", "__value": 10000, "__tile": null, "defUid": 297, "realEditorValues": [] }],
+							"__worldX": -128,
+							"__worldY": 32
 						}
 					]
 				}
