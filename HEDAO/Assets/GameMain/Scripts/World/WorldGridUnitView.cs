@@ -33,7 +33,7 @@ namespace HEDAO
             transform.parent = Parent.transform;
             transform.position = Parent.GridPosToWorldPos(Data.GridPos);
             
-            m_FloatId = GameEntry.UI.OpenUIForm(UIFromName.FloatGridUnit, this);
+            //m_FloatId = GameEntry.UI.OpenUIForm(UIFromName.FloatGridUnit, this);
         }
 
         protected override void OnHide(bool isShutdown, object userData)

@@ -28,7 +28,7 @@ namespace HEDAO
     {
         private static Dictionary<string, UICfgItem> cfg = new Dictionary<string, UICfgItem>()
         {
-            [UIFromName.FloatGridUnit]      = new UICfgItem(typeof(FloatBase),          FGUIFloatGridUnit.URL),
+            //[UIFromName.FloatGridUnit]      = new UICfgItem(typeof(FloatBase),          FGUIFloatGridUnit.URL),
             
             [UIFromName.MenuForm]           = new UICfgItem(typeof(MenuForm),           FGUIMenuForm.URL),
             [UIFromName.SelectForm]         = new UICfgItem(typeof(SelectForm),         FGUISelectForm.URL),
@@ -36,9 +36,6 @@ namespace HEDAO
             [UIFromName.BattleForm]         = new UICfgItem(typeof(BattleForm),         FGUIBattleForm.URL),
             [UIFromName.ActionForm]         = new UICfgItem(typeof(ActionForm),         FGUIActionForm.URL),
             [UIFromName.ReleaseSkillForm]   = new UICfgItem(typeof(ReleaseSkillForm),   FGUIActionForm.URL),
-            [UIFromName.CommonTips]         = new UICfgItem(typeof(CommonTips),         FGUICommonTips.URL),
-            [UIFromName.BattleUnitInfo]     = new UICfgItem(typeof(BattleUnitInfo),     FGUIBattleUnitInfo.URL),
-            [UIFromName.BattleStateEffect]  = new UICfgItem(typeof(BattleStateEffect),  FGUIBattleStateEffect.URL),
             [UIFromName.MainForm]           = new UICfgItem(typeof(MainForm),           FGUIMainForm.URL),
             [UIFromName.DiscipleForm]       = new UICfgItem(typeof(DiscipleForm),       FGUIDiscipleForm.URL),
             [UIFromName.PrepareForm]        = new UICfgItem(typeof(PrepareForm),        FGUIPrepareForm.URL),

@@ -14,7 +14,7 @@ namespace HEDAO
         {
             base.OnEnter(procedureOwner);
 
-            // GameEntry.UI.OpenUIForm(UIFromName.LiLianForm, this);
+             GameEntry.UI.OpenUIForm(UIFromName.LiLianForm, this);
             GameEntry.Entity.ShowEntity<WorldMapView>(new WorldMap(), 10000);
         }
 
