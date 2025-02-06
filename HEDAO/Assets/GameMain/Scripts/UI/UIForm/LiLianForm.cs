@@ -5,22 +5,22 @@ using UnityEngine;
 using FGUI.CommonUI;
 using UnityGameFramework.Runtime;
 using FairyGUI;
+using System.Linq;
 
 namespace HEDAO
 {
     public class LiLianForm : FGUIForm<FGUILiLianForm>
     {
         private ProcedureLiLian Owner;
-        
+        public List<Task> TaskList => GameEntry.Save.PlayerData.TaskDict.Values.ToList();
+
         protected override void OnInit(object userData)
         {
             base.OnInit(userData);
     
             Owner = userData as ProcedureLiLian;
             
-            View.m_list_task.m_list.itemRenderer = OnRenderTask;
-            View.m_list_task.m_btn_go.onClick.Set(OnClickGo);
-            // View.m_list_task.m_ctrl_select.selectedIndex = -1;
+            View.m_panel_task.m_btn_go.onClick.Set(OnClickGo);
         }
 
         protected override void OnOpen(object userData)
@@ -28,10 +28,7 @@ namespace HEDAO
             base.OnOpen(userData);
 
             View.m_list_team.Refresh();
-
-            View.m_txt_info.text = "选择目的地";
-
-            // View.m_list_task.m_list.numItems = Building.Count;
+            RefreshTaskPanel(0);
         }
 
         protected override void OnClose(bool isShutdown, object userData)
@@ -39,34 +36,15 @@ namespace HEDAO
             base.OnClose(isShutdown, userData);
         }
 
-        private void OnRenderTask(int index, GObject item)
+        public void RefreshTaskPanel(int index)
         {
-            item.asButton.title = "解救清风村";
-            item.asButton.onClick.Add(() => { OnClickTask(index); });
-        }
-
-        public void OnClickTask(int index)
-        {
-            // var girdUnit = GameEntry.Entity.GetEntity(Building[index].Id);
-            //
-            // GameEntry.Camera.VirtualCamera.Follow = girdUnit.transform;
-            //
-            // GameEntry.Effect.ShowEffect(GameEntry.Cfg.Effect.Select, girdUnit.transform.position, true);
+            var task = TaskList[index];
+            GameEntry.Camera.SetFollowPos(task.TargetPos);
         }
 
         public void OnClickGo()
         {
-            var index = View.m_list_task.m_list.selectedIndex;
-            if (index < 0)
-            {
-                return;
-            }
-            
-            GameEntry.Effect.HideEffect(GameEntry.Cfg.Effect.Select);
-
-            // var data = Building[index];
-            // Owner.StartLiLian(data.GridPos);
-            Close();
+            View.m_panel_task.visible = false;
         }
     }
 }

@@ -5,22 +5,24 @@ using FairyGUI.Utils;
 
 namespace FGUI.CommonUI
 {
-    public partial class FGUITaskList : GComponent
+    public partial class FGUITaskPanel : GComponent
     {
-        public GList m_list;
+        public GTextField m_title;
+        public GTextField m_txt_taskinfo;
         public GButton m_btn_go;
         public const string URL = "ui://rt51n0kjgv665q";
 
-        public static FGUITaskList CreateInstance()
+        public static FGUITaskPanel CreateInstance()
         {
-            return (FGUITaskList)UIPackage.CreateObject("CommonUI", "TaskList");
+            return (FGUITaskPanel)UIPackage.CreateObject("CommonUI", "TaskPanel");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            m_list = (GList)GetChild("list");
+            m_title = (GTextField)GetChild("title");
+            m_txt_taskinfo = (GTextField)GetChild("txt_taskinfo");
             m_btn_go = (GButton)GetChild("btn_go");
         }
     }

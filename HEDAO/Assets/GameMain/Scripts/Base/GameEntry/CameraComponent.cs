@@ -9,5 +9,10 @@ namespace HEDAO
     public class CameraComponent : GameFrameworkComponent
     {
         public CinemachineVirtualCamera VirtualCamera;
+
+        public void SetFollowPos(Vector2Int gridPos)
+        {
+
+        }
     }
 }

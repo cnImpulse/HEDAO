@@ -4,17 +4,15 @@
     <image id="n9_gv66" name="n9" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" pivot="0.5,0.5" size="600,800">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <list id="n8_gv66" name="list" xy="0,0" pivot="0.5,0.5" size="600,628" overflow="scroll" scrollBarFlags="1024" scrollBar="hidden" margin="40,40,40,40" lineGap="20" defaultItem="ui://rt51n0kjlcvv5h">
+    <text id="n12_e2ll" name="title" xy="300,30" pivot="0.5,0" anchor="true" size="600,60" fontSize="36" align="center" vAlign="middle" autoSize="none" text="除妖">
+      <relation target="" sidePair="width-width"/>
+    </text>
+    <text id="n11_e2ll" name="txt_taskinfo" xy="24,120" pivot="0.5,0.5" size="552,514" fontSize="24" autoSize="none" text="方位：狐棺村&#xA;民愿：消灭妖兽&#xA;简介：消灭盘踞在狐棺村外的妖兽。&#xA;">
       <relation target="" sidePair="width-width,height-height"/>
-      <item/>
-      <item/>
-      <item/>
-      <item/>
-      <item/>
-    </list>
+    </text>
     <component id="n10_gv66" name="btn_go" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="180,650">
       <relation target="" sidePair="center-center,bottom-bottom"/>
-      <Button title="确认任务"/>
+      <Button title="出发"/>
     </component>
   </displayList>
 </component>

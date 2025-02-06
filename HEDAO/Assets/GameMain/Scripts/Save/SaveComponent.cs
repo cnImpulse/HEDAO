@@ -10,12 +10,6 @@ namespace HEDAO
         public int SaveIndex { get; private set; } = -1;
         public SaveData PlayerData { get; private set; }
 
-        public void NewData(int index)
-        {
-            SaveIndex = index;
-            PlayerData = new SaveData();
-        }
-
         public SaveData LoadGame(int index)
         {
             Log.Info("加载存档.");
@@ -28,6 +22,8 @@ namespace HEDAO
             {
                 PlayerData = new SaveData();
                 PlayerData.RandomRoleList = RandomGenRole(3);
+                PlayerData.Init();
+
                 SaveIndex = index;
                 SaveGame();
             }
