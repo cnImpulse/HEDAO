@@ -1,0 +1,11 @@
+{
+  "name": "codegen",
+  "displayName": "",
+  "description": "",
+  "version": "1.0",
+  "author": {
+    "name": "xuanguo"
+  },
+  "icon": "",
+  "main": "main.lua"
+}

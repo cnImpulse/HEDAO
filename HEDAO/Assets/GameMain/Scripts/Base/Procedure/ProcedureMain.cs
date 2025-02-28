@@ -20,7 +20,7 @@ namespace HEDAO
             GameEntry.Event.Subscribe(EventName.StartGame, OnStartGame);
             GameEntry.Event.Subscribe(EventName.StartAdventure, OnStartAdventure);
 
-            GameEntry.UI.OpenUIForm(UIFromName.MenuForm);
+            GameEntry.UI.OpenUIForm(UIName.MenuForm);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -39,8 +39,8 @@ namespace HEDAO
             GameEntry.Save.SaveGame();
             
             m_StartAdventure = false;
-            GameEntry.UI.CloseUIForm(UIFromName.MenuForm);
-            GameEntry.UI.CloseUIForm(UIFromName.MainForm);
+            GameEntry.UI.CloseUIForm(UIName.MenuForm);
+            GameEntry.UI.CloseUIForm(UIName.MainForm);
             GameEntry.Event.Unsubscribe(EventName.StartGame, OnStartGame);
             GameEntry.Event.Unsubscribe(EventName.StartAdventure, OnStartAdventure);
 
@@ -50,7 +50,7 @@ namespace HEDAO
         private void OnStartGame(object sender, GameEventArgs e)
         {
             GameEntry.Save.SaveGame();
-            GameEntry.UI.OpenUIForm(UIFromName.MainForm);
+            GameEntry.UI.OpenUIForm(UIName.MainForm);
         }
 
         private void OnStartAdventure(object sender, GameEventArgs e)

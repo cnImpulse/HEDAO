@@ -13,7 +13,7 @@ namespace HEDAO
         {
             base.OnEnter(fsm);
 
-            GameEntry.UI.OpenUIForm(UIFromName.BattleStateEffect, this);
+            GameEntry.UI.OpenUIForm(UIName.BattleStateEffect, this);
 
             var battleUnitList = BattleData.BattleMap.GetBattleUnitList(BattleData.ActiveCamp);
             foreach (var battleUnit in battleUnitList)

@@ -19,7 +19,7 @@ namespace HEDAO
         {
             base.OnEnter(fsm);
 
-            GameEntry.UI.OpenUIForm(UIFromName.ActionForm, this);
+            GameEntry.UI.OpenUIForm(UIName.ActionForm, this);
         }
 
         protected override void OnUpdate(IFsm<BattleUnit> fsm, float elapseSeconds, float realElapseSeconds)
@@ -29,7 +29,7 @@ namespace HEDAO
 
         protected override void OnLeave(IFsm<BattleUnit> fsm, bool isShutdown)
         {
-            GameEntry.UI.CloseUIForm(UIFromName.ActionForm);
+            GameEntry.UI.CloseUIForm(UIName.ActionForm);
 
             base.OnLeave(fsm, isShutdown);
         }

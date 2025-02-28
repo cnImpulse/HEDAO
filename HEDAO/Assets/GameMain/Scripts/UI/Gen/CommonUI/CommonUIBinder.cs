@@ -24,6 +24,8 @@ namespace FGUI.CommonUI
             UIObjectFactory.SetPackageItemExtension(FGUIDiscipleForm.URL, typeof(FGUIDiscipleForm));
             UIObjectFactory.SetPackageItemExtension(FGUIPrepareForm.URL, typeof(FGUIPrepareForm));
             UIObjectFactory.SetPackageItemExtension(FGUIQiuDaoPage.URL, typeof(FGUIQiuDaoPage));
+            UIObjectFactory.SetPackageItemExtension(FGUIMenuActionSelect.URL, typeof(FGUIMenuActionSelect));
+            UIObjectFactory.SetPackageItemExtension(FGUICompAction.URL, typeof(FGUICompAction));
             UIObjectFactory.SetPackageItemExtension(FGUIWuDaoPage.URL, typeof(FGUIWuDaoPage));
             UIObjectFactory.SetPackageItemExtension(FGUIDangMoPage.URL, typeof(FGUIDangMoPage));
             UIObjectFactory.SetPackageItemExtension(FGUIBattleUnitInfo.URL, typeof(FGUIBattleUnitInfo));

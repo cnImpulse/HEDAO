@@ -42,7 +42,7 @@ namespace HEDAO
         private void OnClickLoad(int index)
         {
             GameEntry.Save.LoadGame(index);
-            GameEntry.UI.CloseUIForm(UIFromName.MenuForm);
+            GameEntry.UI.CloseUIForm(UIName.MenuForm);
             GameEntry.Event.Fire(this, EventName.StartGame);
 
             Close();

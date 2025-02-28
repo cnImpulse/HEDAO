@@ -38,13 +38,12 @@ namespace HEDAO
 
         public void RefreshTaskPanel(int index)
         {
-            var task = TaskList[index];
-            GameEntry.Camera.SetFollowPos(task.TargetPos);
         }
 
         public void OnClickGo()
         {
             View.m_panel_task.visible = false;
+            GameEntry.UI.OpenUIForm(UIName.MenuActionSelect);
         }
     }
 }

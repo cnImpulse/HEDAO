@@ -6,9 +6,7 @@ namespace HEDAO
 {
     public class Task : EntityData
     {
-        public Vector2Int TargetPos;
-
-        public Task(Vector2Int targetPos)
+        public Task()
         {
 
         }

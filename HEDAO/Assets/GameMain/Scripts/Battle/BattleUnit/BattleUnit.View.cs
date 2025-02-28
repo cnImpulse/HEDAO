@@ -48,7 +48,7 @@ namespace HEDAO
             m_Data = userData as BattleUnitData;
 
             InitSprite();
-            m_BattleUnitInfoId = GameEntry.UI.OpenUIForm(UIFromName.BattleUnitInfo, this);
+            m_BattleUnitInfoId = GameEntry.UI.OpenUIForm(UIName.BattleUnitInfo, this);
         }
 
         protected override void OnHide(bool isShutdown, object userData)

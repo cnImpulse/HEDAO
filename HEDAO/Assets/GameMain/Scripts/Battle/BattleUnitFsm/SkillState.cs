@@ -17,7 +17,7 @@ namespace HEDAO
         {
             base.OnInit(fsm);
 
-            m_ActionFormName = UIFromName.ReleaseSkillForm;
+            m_ActionFormName = UIName.ReleaseSkillForm;
         }
 
         protected override void OnEnter(IFsm<BattleUnit> fsm)

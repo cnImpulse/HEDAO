@@ -44,12 +44,12 @@ namespace HEDAO
 
         private void OnClickDisciple()
         {
-            GameEntry.UI.OpenUIForm(UIFromName.DiscipleForm);
+            GameEntry.UI.OpenUIForm(UIName.DiscipleForm);
         }
 
         private void OnClickGo()
         {
-            GameEntry.UI.OpenUIForm(UIFromName.PrepareForm);
+            GameEntry.UI.OpenUIForm(UIName.PrepareForm);
             Close();
         }
 

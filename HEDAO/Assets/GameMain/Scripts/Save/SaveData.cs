@@ -21,7 +21,6 @@ namespace HEDAO
 
         public void Init()
         {
-
         }
     }
 }

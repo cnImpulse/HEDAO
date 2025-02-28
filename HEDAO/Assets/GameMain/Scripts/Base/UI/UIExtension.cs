@@ -5,9 +5,8 @@ using UnityGameFramework.Runtime;
 
 namespace HEDAO
 {
-    public static class UIFromName
+    public static partial class UIName
     {
-        public const string MenuForm = "MenuForm";
         public const string SelectForm = "SelectForm";
         public const string LoadGameForm = "LoadGame";
         public const string MainForm = "MainForm";
@@ -23,23 +22,20 @@ namespace HEDAO
         public const string BattleStateEffect = "BattleStateEffect";
         public const string FloatGridUnit = "FloatGridUnit";
     }
-
-    public static class UICfg
+    
+    public static partial class UICfg
     {
         private static Dictionary<string, UICfgItem> cfg = new Dictionary<string, UICfgItem>()
         {
-            //[UIFromName.FloatGridUnit]      = new UICfgItem(typeof(FloatBase),          FGUIFloatGridUnit.URL),
-            
-            [UIFromName.MenuForm]           = new UICfgItem(typeof(MenuForm),           FGUIMenuForm.URL),
-            [UIFromName.SelectForm]         = new UICfgItem(typeof(SelectForm),         FGUISelectForm.URL),
-            [UIFromName.LoadGameForm]       = new UICfgItem(typeof(LoadGameForm),       FGUILoadGame.URL),
-            [UIFromName.BattleForm]         = new UICfgItem(typeof(BattleForm),         FGUIBattleForm.URL),
-            [UIFromName.ActionForm]         = new UICfgItem(typeof(ActionForm),         FGUIActionForm.URL),
-            [UIFromName.ReleaseSkillForm]   = new UICfgItem(typeof(ReleaseSkillForm),   FGUIActionForm.URL),
-            [UIFromName.MainForm]           = new UICfgItem(typeof(MainForm),           FGUIMainForm.URL),
-            [UIFromName.DiscipleForm]       = new UICfgItem(typeof(DiscipleForm),       FGUIDiscipleForm.URL),
-            [UIFromName.PrepareForm]        = new UICfgItem(typeof(PrepareForm),        FGUIPrepareForm.URL),
-            [UIFromName.LiLianForm]         = new UICfgItem(typeof(LiLianForm),         FGUILiLianForm.URL),
+            [UIName.SelectForm]         = new UICfgItem(typeof(SelectForm),         FGUISelectForm.URL),
+            [UIName.LoadGameForm]       = new UICfgItem(typeof(LoadGameForm),       FGUILoadGame.URL),
+            [UIName.BattleForm]         = new UICfgItem(typeof(BattleForm),         FGUIBattleForm.URL),
+            [UIName.ActionForm]         = new UICfgItem(typeof(ActionForm),         FGUIActionForm.URL),
+            [UIName.ReleaseSkillForm]   = new UICfgItem(typeof(ReleaseSkillForm),   FGUIActionForm.URL),
+            [UIName.MainForm]           = new UICfgItem(typeof(MainForm),           FGUIMainForm.URL),
+            [UIName.DiscipleForm]       = new UICfgItem(typeof(DiscipleForm),       FGUIDiscipleForm.URL),
+            [UIName.PrepareForm]        = new UICfgItem(typeof(PrepareForm),        FGUIPrepareForm.URL),
+            [UIName.LiLianForm]         = new UICfgItem(typeof(LiLianForm),         FGUILiLianForm.URL),
         };
 
         public static UICfgItem GetCfg(string name)

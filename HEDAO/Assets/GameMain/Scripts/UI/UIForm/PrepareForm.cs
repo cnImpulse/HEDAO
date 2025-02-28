@@ -38,7 +38,7 @@ namespace HEDAO
 
         private void OnClickReturn()
         {
-            GameEntry.UI.OpenUIForm(UIFromName.MainForm);
+            GameEntry.UI.OpenUIForm(UIName.MainForm);
             Close();
         }
 

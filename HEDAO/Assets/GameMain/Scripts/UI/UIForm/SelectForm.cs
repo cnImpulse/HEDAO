@@ -52,7 +52,7 @@ namespace HEDAO
 
         private void OnClickReturn()
         {
-            GameEntry.UI.OpenUIForm(UIFromName.MenuForm);
+            GameEntry.UI.OpenUIForm(UIName.MenuForm);
             Close();
         }
 

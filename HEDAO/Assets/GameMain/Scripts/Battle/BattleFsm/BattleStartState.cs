@@ -20,7 +20,7 @@ namespace HEDAO
             GameEntry.Event.Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowGirdMapSuccess);
 
             InitGridMap();
-            GameEntry.UI.OpenUIForm(UIFromName.BattleForm, this);
+            GameEntry.UI.OpenUIForm(UIName.BattleForm, this);
         }
 
         protected override void OnUpdate(IFsm<ProcedureBattle> fsm, float elapseSeconds, float realElapseSeconds)

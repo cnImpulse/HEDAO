@@ -14,7 +14,7 @@ namespace HEDAO
         {
             base.OnEnter(procedureOwner);
 
-             GameEntry.UI.OpenUIForm(UIFromName.LiLianForm, this);
+             GameEntry.UI.OpenUIForm(UIName.LiLianForm, this);
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -27,7 +27,7 @@ namespace HEDAO
         {
             GameEntry.Save.SaveGame();
             
-            GameEntry.UI.CloseUIForm(UIFromName.LiLianForm);
+            GameEntry.UI.CloseUIForm(UIName.LiLianForm);
             
             base.OnLeave(procedureOwner, isShutdown);
         }
