@@ -20,7 +20,8 @@ namespace HEDAO
         {
             base.OnEnter(procedureOwner);
 
-            InitBattle(2);
+            var id = procedureOwner.GetData<VarInt32>("BattleId");
+            InitBattle(id);
             
             GameEntry.Event.Subscribe(EventName.BattleEnd, OnBattleEnd);
         }

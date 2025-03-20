@@ -12,7 +12,6 @@ namespace HEDAO
     public class LiLianForm : FGUIForm<FGUILiLianForm>
     {
         private ProcedureLiLian Owner;
-        public List<Task> TaskList => GameEntry.Save.PlayerData.TaskDict.Values.ToList();
 
         protected override void OnInit(object userData)
         {
@@ -43,6 +42,7 @@ namespace HEDAO
         public void OnClickGo()
         {
             View.m_panel_task.visible = false;
+
             GameEntry.UI.OpenUIForm(UIName.MenuActionSelect);
         }
     }
