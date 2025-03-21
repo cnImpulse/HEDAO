@@ -5,7 +5,9 @@ using UnityEngine;
 
 public static class GameMgr
 {
+    public static ResManager Res;
     public static CfgManager Cfg;
+    public static SaveManager Save;
     public static UIManager UI;
 
     private static List<BaseManager> ManagerList = new List<BaseManager>();
@@ -22,7 +24,9 @@ public static class GameMgr
 
     public static void CreateManagers()
     {
+        Res = CreateManager<ResManager>();
         Cfg = CreateManager<CfgManager>();
+        Save = CreateManager<SaveManager>();
         UI = CreateManager<UIManager>();
     }
 

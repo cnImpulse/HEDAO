@@ -11,6 +11,13 @@ public class MenuMain : UIBase
     {
         base.OnInit(userData);
 
+        //View.m_btn_start.onClick.Add(() => { GameMgr.UI.OpenUI(UIName.); });
+        //View.m_btn_exit.onClick.Add(() => { Log.Info("退出游戏。"); });
+
+        View.m_btn_battle.onClick.Add(() =>
+        {
+            
+        });
     }
 
     protected override void OnShow()
