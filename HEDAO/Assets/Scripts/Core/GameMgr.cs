@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GameManager
+public static class GameMgr
 {
     public static UIManager UI;
+    public static CfgManager Cfg;
 
     private static List<BaseManager> ManagerList = new List<BaseManager>();
 
@@ -22,6 +23,7 @@ public static class GameManager
     public static void CreateManagers()
     {
         UI = CreateManager<UIManager>();
+        Cfg = CreateManager<CfgManager>();
     }
 
     private static T CreateManager<T>()
