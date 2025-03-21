@@ -1,5 +1,5 @@
 {
-  "path": "../HEDAO/Assets/GameMain/Res/Fgui",
+  "path": "../HEDAO/Assets/Res/Fgui",
   "branchPath": "",
   "fileExtension": "bytes",
   "packageCount": 2,
@@ -9,7 +9,7 @@
   "compressPNG": false,
   "codeGeneration": {
     "allowGenCode": true,
-    "codePath": "../HEDAO/Assets/GameMain/Scripts/UI/Gen",
+    "codePath": "../HEDAO/Assets/Scripts/UI/Gen",
     "classNamePrefix": "FGUI",
     "memberNamePrefix": "m_",
     "packageName": "FGUI",

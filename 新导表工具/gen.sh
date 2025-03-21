@@ -6,5 +6,5 @@ dotnet Luban/Luban.dll \
     -c cs-bin \
     -d bin  \
     --conf DataTables/luban.conf \
-    -x outputCodeDir=../HEDAO/Assets/GameMain/Scripts/Cfg/Gen \
-    -x outputDataDir=../HEDAO/Assets/GameMain/Res/Cfg/Bytes \
+    -x outputCodeDir=../HEDAO/Assets/Scripts/Cfg/Gen \
+    -x outputDataDir=../HEDAO/Assets/Res/Cfg/Bytes \
