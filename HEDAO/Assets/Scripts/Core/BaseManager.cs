@@ -12,7 +12,7 @@ public abstract class BaseManager
 
     public void Init()
     {
-
+        OnInit();
     }
 
     protected virtual void OnInit()
@@ -22,7 +22,7 @@ public abstract class BaseManager
 
     public void CleanUp()
     {
-
+        OnCleanUp();
     }
 
     protected virtual void OnCleanUp()

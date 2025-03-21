@@ -2,34 +2,28 @@ local CodePath = "/../Form/"
 
 function codegen(className, path)
     local str = [[
-    using System;
-    using UnityEngine;
-    using FairyGUI;
-    using FGUI.CommonUI;
-    
-    namespace HEDAO
+using System;
+using UnityEngine;
+using FairyGUI;
+using FGUI.Common;
+
+public class ]]..className..[[ : UIBase
+{
+    public new FGUI]]..className..[[ View;
+
+    protected override void OnInit(object userData)
     {
-        public class ]]..className..[[ : FGUIForm<FGUI]]..className..[[>
-        {
-            protected override void OnInit(object userData)
-            {
-                base.OnInit(userData);
-    
-            }
-    
-            protected override void OnOpen(object userData)
-            {
-                base.OnOpen(userData);
-    
-            }
-            
-            protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-            {
-    
-            }
-        }
+        base.OnInit(userData);
+
     }
-    ]]
+
+    protected override void OnShow()
+    {
+        base.OnShow();
+
+    }
+}
+]]
 
     path = path..className..'.cs'
     local file, err = io.open(path, "r")
@@ -50,10 +44,8 @@ end
 
 function GenerateUINameFile(path, uiNames)
     local content = [[
-namespace HEDAO
+public static partial class UIName
 {
-    public static partial class UIName
-    {
 ]]
 
     -- 添加每个UI名称常量
@@ -62,7 +54,6 @@ namespace HEDAO
     end
 
     content = content .. [[
-    }
 }
 ]]
 
@@ -82,23 +73,20 @@ function GenerateUICfgFile(path, uiNames)
     local content = [[
 using System;
 using System.Collections.Generic;
-using FGUI.CommonUI;
+using FGUI.Common;
 
-namespace HEDAO
+public static partial class UICfg
 {
-    public static partial class UICfg
+    static UICfg()
     {
-        static UICfg()
-        {
 ]]
 
     -- 添加每个UI配置项
     for _, name in ipairs(uiNames) do
-        content = content .. string.format('            cfg[UIName.%s] = new UICfgItem(typeof(%s), FGUI%s.URL);\n', name, name, name)
+    content = content .. string.format('        cfg[UIName.%s] = new UICfgItem(typeof(%s), FGUI%s.URL);\n', name, name, name)
     end
 
     content = content .. [[
-        }
     }
 }
 ]]

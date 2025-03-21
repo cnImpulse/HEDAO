@@ -5,8 +5,8 @@ using UnityEngine;
 
 public static class GameMgr
 {
-    public static UIManager UI;
     public static CfgManager Cfg;
+    public static UIManager UI;
 
     private static List<BaseManager> ManagerList = new List<BaseManager>();
 
@@ -22,8 +22,8 @@ public static class GameMgr
 
     public static void CreateManagers()
     {
-        UI = CreateManager<UIManager>();
         Cfg = CreateManager<CfgManager>();
+        UI = CreateManager<UIManager>();
     }
 
     private static T CreateManager<T>()

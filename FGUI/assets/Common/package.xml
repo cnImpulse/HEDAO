@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="rt51n0kj">
+  <resources>
+    <component id="dsjm0" name="MenuMain.xml" path="/Forms/Menu/MenuMain/" exported="true"/>
+    <image id="ntsy1" name="BaGua.png" path="/Resources/Images/" scale9grid="15,15,2,2" gridTile="16" smoothing="false"/>
+    <image id="ntsy3" name="SiGua.png" path="/Resources/Images/" scale="9grid" scale9grid="15,14,2,1" smoothing="false"/>
+    <image id="ntsy4" name="SiGuax4.png" path="/Resources/Images/" scale="9grid" scale9grid="32,32,64,64" smoothing="false"/>
+    <font id="ekn09" name="mplus_hzk_12.ttf" path="/Resources/Fonts/" renderMode="sdfaa" samplePointSize="12" boldWeight="0.03" atlasPadding="60"/>
+    <image id="aoboa" name="TianDix4.png" path="/Resources/Images/" scale="9grid" scale9grid="32,32,64,64" smoothing="false"/>
+    <component id="aobob" name="Button.xml" path="/Components/Button/"/>
+    <component id="ja3tc" name="LoadGame.xml" path="/Forms/Popup/" exported="true"/>
+    <component id="ja3td" name="SaveItem.xml" path="/Components/ListItem/" exported="true"/>
+    <image id="ja3tf" name="Close.png" path="/Resources/Images/" smoothing="false"/>
+    <component id="ja3th" name="CloseButton.xml" path="/Components/Button/"/>
+    <component id="zjyej" name="SelectForm.xml" path="/Forms/FullScreen/" exported="true"/>
+    <component id="zjyek" name="RolePanel.xml" path="/Components/Temp/" exported="true"/>
+    <component id="ga5tm" name="RoleItem.xml" path="/Components/ListItem/" exported="true"/>
+    <component id="105c4o" name="Check.xml" path="/Components/Button/"/>
+    <component id="ut3j4p" name="BattleForm.xml" path="/Forms/FullScreen/" exported="true"/>
+    <component id="uyzr4r" name="ActionForm.xml" path="/Forms/FullScreen/" exported="true"/>
+    <component id="uyzr4t" name="ActionPanel.xml" path="/Components/Temp/" exported="true"/>
+    <component id="uyzr4v" name="ActionItem.xml" path="/Components/ListItem/" exported="true"/>
+    <component id="l0qc4w" name="SkillItem.xml" path="/Components/ListItem/" exported="true"/>
+    <component id="dl574x" name="HPBar.xml" path="/Components/Progress/"/>
+    <component id="rzkn50" name="CommonTips.xml" path="/Forms/Float/" exported="true"/>
+    <component id="qwwl51" name="BattleUnitInfo.xml" path="/Forms/Float/" exported="true"/>
+    <component id="ty0953" name="QIBar.xml" path="/Components/Progress/"/>
+    <component id="vg3s54" name="BattleStateEffect.xml" path="/Forms/Float/" exported="true"/>
+    <component id="mv3555" name="MainForm.xml" path="/Forms/FullScreen/" exported="true"/>
+    <component id="mv3556" name="CommonButton.xml" path="/Components/Button/"/>
+    <component id="mv3557" name="DiscipleForm.xml" path="/Forms/Popup/" exported="true"/>
+    <component id="mv3558" name="PrepareForm.xml" path="/Forms/FullScreen/" exported="true"/>
+    <component id="mv3559" name="DiscipleItem.xml" path="/Components/ListItem/" exported="true"/>
+    <component id="soef5a" name="RadarGraph.xml" path="/Components/Temp/" exported="true"/>
+    <component id="lvkb5b" name="LiLianForm.xml" path="/Forms/FullScreen/" exported="true"/>
+    <component id="aow85c" name="List.xml" path="/Components/Temp/" exported="true"/>
+    <component id="aow85e" name="VerticalList.xml" path="/Components/Temp/" exported="true"/>
+    <component id="nenx5f" name="QiuDaoPage.xml" path="/Components/" exported="true"/>
+    <component id="lcvv5g" name="CangJingPage.xml" path="/Components/" exported="true"/>
+    <component id="lcvv5h" name="Button2.xml" path="/Components/Button/"/>
+    <component id="mbqm5i" name="Button3.xml" path="/Components/Button/"/>
+    <component id="oq905j" name="WuDaoPage.xml" path="/Components/" exported="true"/>
+    <component id="oq905k" name="DangMoPage.xml" path="/Components/" exported="true"/>
+    <component id="u7915m" name="TeamList.xml" path="/Components/Temp/" exported="true"/>
+    <component id="u7915p" name="CommonIcon.xml" path="/Components/Button/"/>
+    <component id="gv665q" name="TaskPanel.xml" path="/Components/Panel/" exported="true"/>
+    <component id="gq3i5r" name="FloatGridUnit.xml" path="/Forms/Float/" exported="true"/>
+    <component id="okxa5s" name="MenuActionSelect.xml" path="/Forms/Menu/MenuActionSelect/" exported="true"/>
+    <component id="okxa5t" name="BtnAction.xml" path="/Forms/Menu/MenuActionSelect/" exported="true"/>
+  </resources>
+  <publish name="" genCode="true"/>
+</packageDescription>

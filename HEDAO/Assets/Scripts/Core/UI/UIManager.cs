@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using FairyGUI;
-using FGUI.CommonUI;
+using FGUI.Common;
 
 public class UIManager : BaseManager
 {
@@ -10,10 +10,9 @@ public class UIManager : BaseManager
 
     protected override void OnInit()
     {
-        UIPackage.AddPackage("Assets/Resources/Fgui/Common");
-        CommonUIBinder.BindAll();
+        UIPackage.AddPackage("Assets/Res/Fgui/Common");
+        CommonBinder.BindAll();
     }
-
 
     protected override void OnCleanUp()
     {
