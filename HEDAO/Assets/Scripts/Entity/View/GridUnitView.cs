@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridMapData : EntityData
+public class GridUnitView : EntityView
 {
     
 }

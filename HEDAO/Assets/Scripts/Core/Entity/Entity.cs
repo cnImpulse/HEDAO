@@ -1,16 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public abstract class Entity : MonoBehaviour
+public class Entity
 {
+    public int Id { get; private set; }
+
+    public Entity()
+    {
+        
+    }
+
     public void Init()
     {
 
     }
 
-    //public abstract void OnInit()
-    //{
+    public void Destroy()
+    {
+         
+    }
 
-    //}
+    protected virtual void OnInit()
+    {
+
+    }
+
+    protected virtual void OnDestroy()
+    {
+
+    }
 }

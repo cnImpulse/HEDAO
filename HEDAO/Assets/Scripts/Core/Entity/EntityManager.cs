@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class EntityManager : BaseManager
 {
-    private readonly Dictionary<long, Entity> m_EntityDict;
+    private readonly Dictionary<long, EntityView> m_EntityViewDict;
 
-    public void CreateEntity<T>()
+    public void ShowEntity<T>(Entity entity)
+        where T : EntityView
     {
 
     }
 
-    public void DestroyEntity<T>()
+    public void HideEntity<T>(long id)
+        where T : EntityView
     {
         
     }
