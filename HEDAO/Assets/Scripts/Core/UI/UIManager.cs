@@ -31,7 +31,7 @@ public class UIManager : BaseManager
         GRoot.inst.AddChild(view);
 
         var ui = Activator.CreateInstance(uiCfg.UIType) as UIBase;
-        ui.Init(userData, view);
+        ui.Init(uiName, view, userData);
 
         UIDict.Add(uiName, ui);
     }
@@ -40,7 +40,7 @@ public class UIManager : BaseManager
     {
         if (UIDict.TryGetValue(uiName, out var ui))
         {
-            ui.Close();
+            ui.Dispose();
             UIDict.Remove(uiName);
         }
     }

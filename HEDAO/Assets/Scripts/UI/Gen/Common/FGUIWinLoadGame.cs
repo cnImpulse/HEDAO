@@ -5,15 +5,15 @@ using FairyGUI.Utils;
 
 namespace FGUI.Common
 {
-    public partial class FGUILoadGame : GComponent
+    public partial class FGUIWinLoadGame : GComponent
     {
         public GList m_list;
         public GButton m_btn_close;
         public const string URL = "ui://rt51n0kjja3tc";
 
-        public static FGUILoadGame CreateInstance()
+        public static FGUIWinLoadGame CreateInstance()
         {
-            return (FGUILoadGame)UIPackage.CreateObject("Common", "LoadGame");
+            return (FGUIWinLoadGame)UIPackage.CreateObject("Common", "WinLoadGame");
         }
 
         public override void ConstructFromXML(XML xml)

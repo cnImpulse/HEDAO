@@ -8,8 +8,8 @@
     <font id="ekn09" name="mplus_hzk_12.ttf" path="/Resources/Fonts/" renderMode="sdfaa" samplePointSize="12" boldWeight="0.03" atlasPadding="60"/>
     <image id="aoboa" name="TianDix4.png" path="/Resources/Images/" scale="9grid" scale9grid="32,32,64,64" smoothing="false"/>
     <component id="aobob" name="Button.xml" path="/Components/Button/"/>
-    <component id="ja3tc" name="LoadGame.xml" path="/Forms/Popup/" exported="true"/>
-    <component id="ja3td" name="SaveItem.xml" path="/Components/ListItem/" exported="true"/>
+    <component id="ja3tc" name="WinLoadGame.xml" path="/Forms/Window/WinLoadGame/" exported="true"/>
+    <component id="ja3td" name="SaveItem.xml" path="/Forms/Window/WinLoadGame/" exported="true"/>
     <image id="ja3tf" name="Close.png" path="/Resources/Images/" smoothing="false"/>
     <component id="ja3th" name="CloseButton.xml" path="/Components/Button/"/>
     <component id="zjyej" name="SelectForm.xml" path="/Forms/FullScreen/" exported="true"/>
@@ -28,7 +28,7 @@
     <component id="vg3s54" name="BattleStateEffect.xml" path="/Forms/Float/" exported="true"/>
     <component id="mv3555" name="MainForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="mv3556" name="CommonButton.xml" path="/Components/Button/"/>
-    <component id="mv3557" name="DiscipleForm.xml" path="/Forms/Popup/" exported="true"/>
+    <component id="mv3557" name="DiscipleForm.xml" path="/Forms/Float/" exported="true"/>
     <component id="mv3558" name="PrepareForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="mv3559" name="DiscipleItem.xml" path="/Components/ListItem/" exported="true"/>
     <component id="soef5a" name="RadarGraph.xml" path="/Components/Temp/" exported="true"/>

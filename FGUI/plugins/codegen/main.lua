@@ -9,7 +9,7 @@ using FGUI.Common;
 
 public class ]]..className..[[ : UIBase
 {
-    public new FGUI]]..className..[[ View;
+    public new FGUI]]..className..[[ View => base.View as FGUI]]..className..[[;
 
     protected override void OnInit(object userData)
     {
@@ -116,7 +116,7 @@ function CheckPrefix(str, list)
     return false
 end
 
-local ExportList = {"Menu", "Hud"}
+local ExportList = {"Menu", "Hud", "Win"}
 ---@param handler CS.FairyEditor.PublishHandler
 function onPublish(handler)
     ---@type CS.FairyEditor.PublishHandler.ClassInfo[]

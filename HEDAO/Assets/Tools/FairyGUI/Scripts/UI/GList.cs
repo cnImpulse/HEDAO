@@ -1577,6 +1577,16 @@ namespace FairyGUI
             }
         }
 
+        public void RefreshList()
+        {
+            if (itemRenderer == null) return;
+            
+            for (int i = 0; i < _children.Count; i++)
+            {
+                itemRenderer(i, GetChildAt(i));
+            }
+        }
+
         public void RefreshVirtualList()
         {
             if (!_virtual)

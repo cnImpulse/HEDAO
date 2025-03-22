@@ -15,7 +15,7 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIRoleItem.URL, typeof(FGUIRoleItem));
             UIObjectFactory.SetPackageItemExtension(FGUIFloatGridUnit.URL, typeof(FGUIFloatGridUnit));
             UIObjectFactory.SetPackageItemExtension(FGUITaskPanel.URL, typeof(FGUITaskPanel));
-            UIObjectFactory.SetPackageItemExtension(FGUILoadGame.URL, typeof(FGUILoadGame));
+            UIObjectFactory.SetPackageItemExtension(FGUIWinLoadGame.URL, typeof(FGUIWinLoadGame));
             UIObjectFactory.SetPackageItemExtension(FGUISaveItem.URL, typeof(FGUISaveItem));
             UIObjectFactory.SetPackageItemExtension(FGUISkillItem.URL, typeof(FGUISkillItem));
             UIObjectFactory.SetPackageItemExtension(FGUICangJingPage.URL, typeof(FGUICangJingPage));

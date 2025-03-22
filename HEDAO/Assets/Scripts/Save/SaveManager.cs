@@ -10,7 +10,6 @@ public class SaveManager : BaseManager
 
     protected override void OnInit()
     {
-        LoadGame(0);
     }
 
     public void LoadGame(int index)
