@@ -17,11 +17,15 @@ public class SaveManager : BaseManager
         SaveIndex = index;
         if (HasData(index))
         {
-            Data = JsonConvert.DeserializeObject<SaveData>(GetSaveName(index));
+            var json = PlayerPrefs.GetString(GetSaveName(index));
+            Data = JsonConvert.DeserializeObject<SaveData>(json);
         }
         else
         {
             Data = new SaveData();
+            Data.RandomRoleList = RandomGenRole(3);
+            Data.Init();
+            
             SaveGame();
         }
     }
@@ -45,5 +49,17 @@ public class SaveManager : BaseManager
     public string GetSaveName(int index)
     {
         return string.Format("SaveData_{0}", index);
+    }
+    
+    private static List<string> NameList = new List<string>() { "消炎", "叶黑", "韩跑跑" };
+    private List<Role> RandomGenRole(int count)
+    {
+        var ret = new List<Role>(count);
+        for (int i = 0; i < count; i++)
+        {
+            ret.Add(new Role(NameList[i]));
+        }
+
+        return ret;
     }
 }

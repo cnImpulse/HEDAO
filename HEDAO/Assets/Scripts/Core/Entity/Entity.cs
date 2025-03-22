@@ -9,24 +9,4 @@ public class Entity
     {
         
     }
-
-    public void Init()
-    {
-
-    }
-
-    public void Destroy()
-    {
-         
-    }
-
-    protected virtual void OnInit()
-    {
-
-    }
-
-    protected virtual void OnDestroy()
-    {
-
-    }
 }

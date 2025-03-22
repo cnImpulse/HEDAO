@@ -5,16 +5,16 @@ using FairyGUI.Utils;
 
 namespace FGUI.Common
 {
-    public partial class FGUIMainForm : GComponent
+    public partial class FGUIMenuHome : GComponent
     {
         public Controller m_ctrl_page;
         public GList m_list_building;
         public GList m_list_page;
         public const string URL = "ui://rt51n0kjmv3555";
 
-        public static FGUIMainForm CreateInstance()
+        public static FGUIMenuHome CreateInstance()
         {
-            return (FGUIMainForm)UIPackage.CreateObject("Common", "MainForm");
+            return (FGUIMenuHome)UIPackage.CreateObject("Common", "MenuHome");
         }
 
         public override void ConstructFromXML(XML xml)

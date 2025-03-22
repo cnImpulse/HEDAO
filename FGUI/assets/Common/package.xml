@@ -26,7 +26,7 @@
     <component id="qwwl51" name="BattleUnitInfo.xml" path="/Forms/Float/" exported="true"/>
     <component id="ty0953" name="QIBar.xml" path="/Components/Progress/"/>
     <component id="vg3s54" name="BattleStateEffect.xml" path="/Forms/Float/" exported="true"/>
-    <component id="mv3555" name="MainForm.xml" path="/Forms/FullScreen/" exported="true"/>
+    <component id="mv3555" name="MenuHome.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="mv3556" name="CommonButton.xml" path="/Components/Button/"/>
     <component id="mv3557" name="DiscipleForm.xml" path="/Forms/Float/" exported="true"/>
     <component id="mv3558" name="PrepareForm.xml" path="/Forms/FullScreen/" exported="true"/>

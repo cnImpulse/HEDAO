@@ -44,4 +44,13 @@ public class UIManager : BaseManager
             UIDict.Remove(uiName);
         }
     }
+
+    public void CloseAllUI()
+    {
+        foreach (var ui in UIDict.Values)
+        {
+            ui.Dispose();
+        }
+        UIDict.Clear();
+    }
 }
