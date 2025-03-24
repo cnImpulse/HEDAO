@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EntityManager : BaseManager
 {
+    private long m_CurMaxId = 0;
     private readonly Dictionary<long, EntityView> m_EntityViewDict;
 
     public void ShowEntity<T>(Entity entity)
@@ -16,5 +17,11 @@ public class EntityManager : BaseManager
         where T : EntityView
     {
         
+    }
+
+    public long GetNextId()
+    {
+        m_CurMaxId++;
+        return m_CurMaxId;
     }
 }

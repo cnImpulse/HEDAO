@@ -23,7 +23,7 @@ public class SaveManager : BaseManager
         else
         {
             Data = new SaveData();
-            Data.RandomRoleList = RandomGenRole(3);
+            Data.RandomRoleList = RandomGenRole(NameList.Count);
             Data.Init();
             
             SaveGame();
@@ -51,7 +51,7 @@ public class SaveManager : BaseManager
         return string.Format("SaveData_{0}", index);
     }
     
-    private static List<string> NameList = new List<string>() { "消炎", "叶黑", "韩跑跑" };
+    private static List<string> NameList = new List<string>() { "萧一", "萧二", "萧三", "叶一", "叶二", "叶三" };
     private List<Role> RandomGenRole(int count)
     {
         var ret = new List<Role>(count);

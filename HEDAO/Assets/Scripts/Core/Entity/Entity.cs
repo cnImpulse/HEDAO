@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 public class Entity
 {
-    public int Id { get; private set; }
+    public long Id { get; private set; }
 
     public Entity()
     {
-        
+        Id = GameMgr.Entity.GetNextId();
     }
 }

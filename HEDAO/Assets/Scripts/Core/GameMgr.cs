@@ -10,6 +10,7 @@ public static class GameMgr
     public static SaveManager Save;
     public static UIManager UI;
     public static ProcedureManager Procedure;
+    public static EntityManager Entity;
 
     private static List<BaseManager> ManagerList = new List<BaseManager>();
 
@@ -30,6 +31,7 @@ public static class GameMgr
         Save = CreateManager<SaveManager>();
         UI = CreateManager<UIManager>();
         Procedure = CreateManager<ProcedureManager>();
+        Entity = CreateManager<EntityManager>();
     }
 
     private static T CreateManager<T>()

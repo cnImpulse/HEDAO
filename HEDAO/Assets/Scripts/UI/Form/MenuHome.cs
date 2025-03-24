@@ -64,7 +64,7 @@ public class MenuHome : UIBase
             qiudao.m_list_role.m_list.itemRenderer = OnRenderRole;
             qiudao.m_list_role.m_list.numItems = m_RoleList.Count;
         
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < m_RoleList.Count; i++)
             {
                 ctrl.AddPage("");
             }
