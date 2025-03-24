@@ -7,5 +7,7 @@ public class Launcher : MonoBehaviour
     void Awake()
     {
         GameMgr.Init();
+
+        GameMgr.Procedure.Fsm.Start(typeof(ProcedureMain));
     }
 }
