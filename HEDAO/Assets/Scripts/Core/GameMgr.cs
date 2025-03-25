@@ -24,6 +24,14 @@ public static class GameMgr
         }
     }
 
+    public static void CleanUp()
+    {
+        foreach (var mgr in ManagerList)
+        {
+            mgr.CleanUp();
+        }
+    }
+
     public static void CreateManagers()
     {
         Res = CreateManager<ResManager>();

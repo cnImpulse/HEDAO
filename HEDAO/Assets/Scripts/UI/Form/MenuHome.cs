@@ -137,4 +137,11 @@ public class MenuHome : UIBase
         qiuDaoPage.m_rader.m_img_wuxing.shape.DrawRegularPolygon(5, 4, Color.white, 
             Color.black, Color.white, 54, arr);
     }
+
+    protected override void OnClose()
+    {
+        GameMgr.Save.SaveGame();
+
+        base.OnClose();
+    }
 }

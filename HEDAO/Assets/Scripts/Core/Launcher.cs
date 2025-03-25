@@ -10,4 +10,9 @@ public class Launcher : MonoBehaviour
 
         GameMgr.Procedure.Fsm.Start(typeof(ProcedureMain));
     }
+
+    private void OnDestroy()
+    {
+        GameMgr.CleanUp();
+    }
 }

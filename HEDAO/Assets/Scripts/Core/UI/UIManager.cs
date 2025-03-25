@@ -16,7 +16,7 @@ public class UIManager : BaseManager
 
     protected override void OnCleanUp()
     {
-
+        CloseAllUI();
     }
 
     public void OpenUI(string uiName, object userData = default)
