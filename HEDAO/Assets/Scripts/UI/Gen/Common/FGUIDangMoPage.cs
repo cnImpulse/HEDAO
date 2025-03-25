@@ -8,9 +8,8 @@ namespace FGUI.Common
     public partial class FGUIDangMoPage : GComponent
     {
         public FGUIVerticalList m_list_role;
-        public GButton m_btn_go;
         public FGUITeamList m_list_team;
-        public GButton m_btn_add;
+        public FGUITaskPanel m_panel_task;
         public const string URL = "ui://rt51n0kjoq905k";
 
         public static FGUIDangMoPage CreateInstance()
@@ -23,9 +22,8 @@ namespace FGUI.Common
             base.ConstructFromXML(xml);
 
             m_list_role = (FGUIVerticalList)GetChild("list_role");
-            m_btn_go = (GButton)GetChild("btn_go");
             m_list_team = (FGUITeamList)GetChild("list_team");
-            m_btn_add = (GButton)GetChild("btn_add");
+            m_panel_task = (FGUITaskPanel)GetChild("panel_task");
         }
     }
 }

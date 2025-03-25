@@ -32,15 +32,14 @@
     <component id="mv3558" name="PrepareForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="mv3559" name="DiscipleItem.xml" path="/Components/ListItem/" exported="true"/>
     <component id="soef5a" name="RadarGraph.xml" path="/Components/Temp/" exported="true"/>
-    <component id="lvkb5b" name="LiLianForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="aow85c" name="List.xml" path="/Components/Temp/" exported="true"/>
     <component id="aow85e" name="VerticalList.xml" path="/Components/Temp/" exported="true"/>
-    <component id="nenx5f" name="QiuDaoPage.xml" path="/Components/" exported="true"/>
-    <component id="lcvv5g" name="CangJingPage.xml" path="/Components/" exported="true"/>
+    <component id="nenx5f" name="QiuDaoPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
+    <component id="lcvv5g" name="CangJingPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="lcvv5h" name="Button2.xml" path="/Components/Button/"/>
     <component id="mbqm5i" name="Button3.xml" path="/Components/Button/"/>
-    <component id="oq905j" name="WuDaoPage.xml" path="/Components/" exported="true"/>
-    <component id="oq905k" name="DangMoPage.xml" path="/Components/" exported="true"/>
+    <component id="oq905j" name="WuDaoPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
+    <component id="oq905k" name="DangMoPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="u7915m" name="TeamList.xml" path="/Components/Temp/" exported="true"/>
     <component id="u7915p" name="CommonIcon.xml" path="/Components/Button/"/>
     <component id="gv665q" name="TaskPanel.xml" path="/Components/Panel/" exported="true"/>

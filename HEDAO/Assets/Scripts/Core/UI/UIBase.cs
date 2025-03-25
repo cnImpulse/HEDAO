@@ -12,6 +12,7 @@ public abstract class UIBase
     {
         Name = name;
         View = view;
+
         OnInit(userData);
         OnShow();
     }

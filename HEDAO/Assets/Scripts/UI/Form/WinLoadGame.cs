@@ -14,7 +14,7 @@ public class WinLoadGame : UIBase
         View.m_list.itemRenderer = OnRenderList;
     }
 
-    private void OnRenderList(int index, GObject obj)
+    private void OnRenderList(int index, GObject obj, object data)
     {
         var item = obj as FGUISaveItem;
         if (GameMgr.Save.HasData(index))

@@ -34,7 +34,7 @@ public class MenuHome : UIBase
         View.m_ctrl_page.selectedIndex = 0;
     }
     
-    private void RenderListItem(int index, GObject obj)
+    private void RenderListItem(int index, GObject obj, object data)
     {
         var cfg = GameMgr.Cfg.Tables.TbBuildingCfg.DataList[index];
         obj.asButton.title = cfg.Name;
@@ -93,7 +93,7 @@ public class MenuHome : UIBase
         qiuDaoPage.m_list_role.m_list.numItems = m_RoleList.Count;
     }
     
-    private void OnRenderRole(int index, GObject obj)
+    private void OnRenderRole(int index, GObject obj, object data)
     {
         var role = m_RoleList[index];
         obj.asButton.title = role.Name;

@@ -19,7 +19,6 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUISaveItem.URL, typeof(FGUISaveItem));
             UIObjectFactory.SetPackageItemExtension(FGUISkillItem.URL, typeof(FGUISkillItem));
             UIObjectFactory.SetPackageItemExtension(FGUICangJingPage.URL, typeof(FGUICangJingPage));
-            UIObjectFactory.SetPackageItemExtension(FGUILiLianForm.URL, typeof(FGUILiLianForm));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuHome.URL, typeof(FGUIMenuHome));
             UIObjectFactory.SetPackageItemExtension(FGUIDiscipleForm.URL, typeof(FGUIDiscipleForm));
             UIObjectFactory.SetPackageItemExtension(FGUIPrepareForm.URL, typeof(FGUIPrepareForm));

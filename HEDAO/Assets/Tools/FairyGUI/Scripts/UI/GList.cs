@@ -10,7 +10,7 @@ namespace FairyGUI
     /// </summary>
     /// <param name="index">Item index.</param>
     /// <param name="item">Item object.</param>
-    public delegate void ListItemRenderer(int index, GObject item);
+    public delegate void ListItemRenderer(int index, GObject item, object data = default);
 
     /// <summary>
     /// 
@@ -1571,10 +1571,21 @@ namespace FairyGUI
                     if (itemRenderer != null)
                     {
                         for (int i = 0; i < value; i++)
-                            itemRenderer(i, GetChildAt(i));
+                            itemRenderer(i, GetChildAt(i), GetItemData(i));
                     }
                 }
             }
+        }
+
+        public object GetItemData(int index)
+        {
+            var list = data as List<object>;
+            if (list != null && list.Count > index)
+            {
+                return list[index];
+            }
+
+            return default;
         }
 
         public void RefreshList()
@@ -1583,8 +1594,16 @@ namespace FairyGUI
             
             for (int i = 0; i < _children.Count; i++)
             {
-                itemRenderer(i, GetChildAt(i));
+                itemRenderer(i, GetChildAt(i), GetItemData(i));
             }
+        }
+
+        public void RefreshList(List<object> dataList)
+        {
+            if (itemRenderer == null) return;
+
+            data = dataList;
+            numItems = dataList.Count;
         }
 
         public void RefreshVirtualList()
@@ -2042,7 +2061,8 @@ namespace FairyGUI
                     if (_autoResizeItem && (_layout == ListLayoutType.SingleColumn || _columnCount > 0))
                         ii.obj.SetSize(partSize, ii.obj.height, true);
 
-                    itemRenderer(curIndex % _numItems, ii.obj);
+                    var i = curIndex % _numItems;
+                    itemRenderer(i, ii.obj, GetItemData(i));
                     if (curIndex % _curLineItemCount == 0)
                     {
                         deltaSize += Mathf.CeilToInt(ii.obj.size.y) - ii.size.y;
@@ -2211,7 +2231,8 @@ namespace FairyGUI
                     if (_autoResizeItem && (_layout == ListLayoutType.SingleRow || _lineCount > 0))
                         ii.obj.SetSize(ii.obj.width, partSize, true);
 
-                    itemRenderer(curIndex % _numItems, ii.obj);
+                    var i = curIndex % _numItems;
+                    itemRenderer(i, ii.obj, GetItemData(i));
                     if (curIndex % _curLineItemCount == 0)
                     {
                         deltaSize += Mathf.CeilToInt(ii.obj.size.x) - ii.size.x;
@@ -2393,7 +2414,8 @@ namespace FairyGUI
                             ii.obj.SetSize(ii.obj.width, partHeight, true);
                     }
 
-                    itemRenderer(i % _numItems, ii.obj);
+                    var index = i % _numItems;
+                    itemRenderer(index, ii.obj, GetItemData(index));
                     ii.size.x = Mathf.CeilToInt(ii.obj.size.x);
                     ii.size.y = Mathf.CeilToInt(ii.obj.size.y);
                 }
