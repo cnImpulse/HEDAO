@@ -33,17 +33,15 @@
     <component id="aow85e" name="VerticalList.xml" path="/Components/Temp/" exported="true"/>
     <component id="nenx5f" name="QiuDaoPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="lcvv5g" name="CangJingPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
-    <component id="lcvv5h" name="Button2.xml" path="/Components/Button/"/>
-    <component id="mbqm5i" name="Button3.xml" path="/Components/Button/"/>
     <component id="oq905j" name="WuDaoPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="oq905k" name="DangMoPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="u7915m" name="TeamList.xml" path="/Components/Temp/" exported="true"/>
-    <component id="u7915p" name="CommonIcon.xml" path="/Components/Button/"/>
     <component id="gv665q" name="TaskPanel.xml" path="/Components/Panel/" exported="true"/>
     <component id="gq3i5r" name="FloatGridUnit.xml" path="/Forms/Float/" exported="true"/>
     <component id="okxa5s" name="MenuActionSelect.xml" path="/Forms/Menu/MenuActionSelect/" exported="true"/>
     <component id="okxa5t" name="BtnAction.xml" path="/Forms/Menu/MenuActionSelect/" exported="true"/>
     <component id="fbqy5v" name="BtnRole.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
+    <component id="hmyt5w" name="BtnBuilding.xml" path="/Forms/Menu/MenuHome/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

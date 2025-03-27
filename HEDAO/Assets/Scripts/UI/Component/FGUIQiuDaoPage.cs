@@ -26,13 +26,7 @@ namespace FGUI.Common
             ctrl.onChanged.Set(() => { OnRoleChanged(); });
 
             m_list_role.m_list.itemRenderer = OnRenderRole;
-            m_list_role.m_list.numItems = m_RoleList.Count;
-
-            for (int i = 0; i < m_RoleList.Count; i++)
-            {
-                ctrl.AddPage("");
-            }
-            ctrl.selectedIndex = 0;
+            RefreshRoleList();
         }
 
         private void OnRenderRole(int index, GObject obj, object data)
@@ -56,8 +50,21 @@ namespace FGUI.Common
             GameMgr.Save.Data.DiscipleList.Add(role.Id, role);
 
             m_RoleList.RemoveAt(selectIndex);
-            m_list_role.m_ctrl_select.selectedIndex = 0;
+            RefreshRoleList();
+        }
+
+        private void RefreshRoleList()
+        {
             m_list_role.m_list.numItems = m_RoleList.Count;
+            if (m_RoleList.Count == 0) return;
+
+            var ctrl = m_list_role.m_ctrl_select;
+            ctrl.ClearPages();
+            for (int i = 0; i < m_RoleList.Count; i++)
+            {
+                ctrl.AddPage("");
+            }
+            ctrl.selectedIndex = 0;
         }
 
         private static List<EAttrType> AttrList = new List<EAttrType>()

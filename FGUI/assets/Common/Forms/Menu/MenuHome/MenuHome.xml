@@ -8,7 +8,7 @@
     <image id="n16_lcvv" name="n16" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,156" pivot="0.5,0.5" size="1920,924">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <list id="n19_mbqm" name="list_building" xy="0,0" pivot="0.5,0.5" size="1920,160" layout="row" margin="20,20,20,20" colGap="30" defaultItem="ui://rt51n0kjlcvv5h" align="center" vAlign="middle" selectionController="ctrl_page" autoClearItems="true">
+    <list id="n19_mbqm" name="list_building" xy="0,0" pivot="0.5,0.5" size="1920,160" layout="row" margin="20,20,20,20" colGap="30" defaultItem="ui://rt51n0kjhmyt5w" align="center" vAlign="middle" selectionController="ctrl_page" autoClearItems="true">
       <relation target="" sidePair="width-width,height-height"/>
       <item/>
       <item/>

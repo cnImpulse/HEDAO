@@ -10,7 +10,7 @@
     <text id="n11_e2ll" name="txt_taskinfo" xy="24,120" pivot="0.5,0.5" size="552,514" fontSize="24" autoSize="none" text="方位：狐棺村&#xA;民愿：消灭妖兽&#xA;简介：消灭盘踞在狐棺村外的妖兽。&#xA;">
       <relation target="" sidePair="width-width,height-height"/>
     </text>
-    <component id="n10_gv66" name="btn_go" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="180,650">
+    <component id="n10_gv66" name="btn_go" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="189,650" size="222,120">
       <relation target="" sidePair="center-center,bottom-bottom"/>
       <Button title="出发"/>
     </component>
