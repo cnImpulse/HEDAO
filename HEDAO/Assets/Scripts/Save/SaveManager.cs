@@ -2,6 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System.Reflection;
+
+public class IncludeAllContractResolver : DefaultContractResolver
+{
+    protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
+    {
+        JsonProperty property = base.CreateProperty(member, memberSerialization);
+        if (property.Writable == false && member is PropertyInfo propertyInfo)
+        {
+            property.Writable = propertyInfo.GetSetMethod(true) != null;
+        }
+
+        if (property.Writable == false && member is FieldInfo fieldInfo)
+        {
+            property.Writable = true;
+        }
+
+        return property;
+    }
+}
 
 public class SaveManager : BaseManager
 {
@@ -10,6 +31,10 @@ public class SaveManager : BaseManager
 
     protected override void OnInit()
     {
+        JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+        {
+            ContractResolver = new IncludeAllContractResolver()
+        };
     }
 
     public void LoadGame(int index)
@@ -57,7 +82,9 @@ public class SaveManager : BaseManager
         var ret = new List<Role>(count);
         for (int i = 0; i < count; i++)
         {
-            ret.Add(new Role(NameList[i]));
+            var role = new Role();
+            role.Init(NameList[i]);
+            ret.Add(role);
         }
 
         return ret;

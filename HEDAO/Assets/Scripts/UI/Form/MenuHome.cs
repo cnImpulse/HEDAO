@@ -113,7 +113,7 @@ public class MenuHome : UIBase
         }
 
         var role = m_RoleList[selectIndex];
-        var attr = role.BattleAttr;
+        AttributeDict attr = role.BattleAttr;
         var info = $"姓名：{role.Name}\n";
         info += $"年龄：{attr.GetAttr(EAttrType.Age)} 寿命：{attr.GetAttr(EAttrType.Life)}\n";
         foreach (var attrType in AttrList)

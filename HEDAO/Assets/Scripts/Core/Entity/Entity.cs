@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using Newtonsoft.Json;
 
 public class Entity
 {
@@ -8,5 +10,11 @@ public class Entity
     public Entity()
     {
         Id = GameMgr.Entity.GetNextId();
+    }
+
+    [JsonConstructor]
+    public Entity(long id)
+    {
+        Id = id;
     }
 }

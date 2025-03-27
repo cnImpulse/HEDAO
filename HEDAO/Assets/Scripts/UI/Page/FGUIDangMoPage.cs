@@ -8,26 +8,74 @@ namespace FGUI.Common
 {
     public partial class FGUIDangMoPage : GComponent
     {
-         public HashSet<long> RoleTeamSet => GameMgr.Save.Data.RoleTeamSet;
-         public Dictionary<long, Role> DiscipleList => GameMgr.Save.Data.DiscipleList;
+        private List<object> m_RoleList = new List<object>();
+        private List<object> m_TeamList = new List<object>();
+
+        public HashSet<long> RoleTeamSet => GameMgr.Save.Data.RoleTeamSet;
+        public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.DiscipleList;
 
         public void OnInit()
         {
             m_list_role.m_list.itemRenderer = OnRenderRole;
-            m_list_team.m_list.itemRenderer = OnRenderRole;
+            m_list_team.m_list.itemRenderer = OnRenderTeamRole;
         }
 
         private void OnRenderRole(int index, GObject item, object data)
         {
             var role = data as Role;
             item.asButton.title = role.Name;
+
+            item.onClick.Set(() => OnClickRole(role.Id));
+        }
+
+        private void OnRenderTeamRole(int index, GObject item, object data)
+        {
+            var role = data as Role;
+            item.asButton.title = role.Name;
+
+            item.onClick.Set(() => OnClickRole(role.Id));
+        }
+
+        private void OnClickRole(long roleId)
+        {
+            if (RoleTeamSet.Contains(roleId))
+            {
+                RoleTeamSet.Remove(roleId);
+            }
+            else
+            {
+                RoleTeamSet.Add(roleId);
+            }
+
+            RefreshList();
+        }
+
+        private void OnClickTeamRole(long roleId)
+        {
+            if (RoleTeamSet.Contains(roleId))
+            {
+                RoleTeamSet.Remove(roleId);
+            }
+            else
+            {
+                RoleTeamSet.Add(roleId);
+            }
+        }
+
+        public void RefreshList()
+        {
+            m_RoleList = DiscipleDict.Values.Where((role) => { return !RoleTeamSet.Contains(role.Id); }).AsEnumerable<object>().ToList();
+            m_TeamList = RoleTeamSet.Select((id) => { return DiscipleDict[id]; }).AsEnumerable<object>().ToList();
+
+            m_list_role.m_list.RefreshList(m_RoleList);
+            m_list_team.m_list.RefreshList(m_TeamList);
         }
 
         public void RefreshPage()
         {
             OnInit();
 
-            m_list_role.m_list.RefreshList(DiscipleList.Values.AsEnumerable<object>().ToList());
-        } 
+            RefreshList();
+        }
     }
 }
