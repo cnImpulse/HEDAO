@@ -20,19 +20,19 @@ namespace FGUI.Common
             m_list_team.m_list.itemRenderer = OnRenderTeamRole;
         }
 
-        private void OnRenderRole(int index, GObject item, object data)
+        private void OnRenderRole(int index, GObject obj, object data)
         {
             var role = data as Role;
-            item.asButton.title = role.Name;
-
+            var item = obj as FGUIBtnRole;
+            item.Refresh(role);
             item.onClick.Set(() => OnClickRole(role.Id));
         }
 
-        private void OnRenderTeamRole(int index, GObject item, object data)
+        private void OnRenderTeamRole(int index, GObject obj, object data)
         {
             var role = data as Role;
-            item.asButton.title = role.Name;
-
+            var item = obj as FGUIBtnRole;
+            item.Refresh(role);
             item.onClick.Set(() => OnClickRole(role.Id));
         }
 
@@ -71,7 +71,7 @@ namespace FGUI.Common
             m_list_team.m_list.RefreshList(m_TeamList);
         }
 
-        public void RefreshPage()
+        public void Refresh()
         {
             OnInit();
 

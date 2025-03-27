@@ -12,6 +12,8 @@ public class UIManager : BaseManager
     {
         UIPackage.AddPackage("Assets/Res/Fgui/Common");
         CommonBinder.BindAll();
+
+        UIObjectFactory.SetPackageItemExtension("ui://rt51n0kjfbqy5v", typeof(FGUIBtnRole));
     }
 
     protected override void OnCleanUp()

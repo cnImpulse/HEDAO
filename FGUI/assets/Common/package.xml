@@ -13,8 +13,6 @@
     <image id="ja3tf" name="Close.png" path="/Resources/Images/" smoothing="false"/>
     <component id="ja3th" name="CloseButton.xml" path="/Components/Button/"/>
     <component id="zjyej" name="SelectForm.xml" path="/Forms/FullScreen/" exported="true"/>
-    <component id="zjyek" name="RolePanel.xml" path="/Components/Temp/" exported="true"/>
-    <component id="ga5tm" name="RoleItem.xml" path="/Components/ListItem/" exported="true"/>
     <component id="105c4o" name="Check.xml" path="/Components/Button/"/>
     <component id="ut3j4p" name="BattleForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="uyzr4r" name="ActionForm.xml" path="/Forms/FullScreen/" exported="true"/>
@@ -30,7 +28,6 @@
     <component id="mv3556" name="CommonButton.xml" path="/Components/Button/"/>
     <component id="mv3557" name="DiscipleForm.xml" path="/Forms/Float/" exported="true"/>
     <component id="mv3558" name="PrepareForm.xml" path="/Forms/FullScreen/" exported="true"/>
-    <component id="mv3559" name="DiscipleItem.xml" path="/Components/ListItem/" exported="true"/>
     <component id="soef5a" name="RadarGraph.xml" path="/Components/Temp/" exported="true"/>
     <component id="aow85c" name="List.xml" path="/Components/Temp/" exported="true"/>
     <component id="aow85e" name="VerticalList.xml" path="/Components/Temp/" exported="true"/>
@@ -46,6 +43,7 @@
     <component id="gq3i5r" name="FloatGridUnit.xml" path="/Forms/Float/" exported="true"/>
     <component id="okxa5s" name="MenuActionSelect.xml" path="/Forms/Menu/MenuActionSelect/" exported="true"/>
     <component id="okxa5t" name="BtnAction.xml" path="/Forms/Menu/MenuActionSelect/" exported="true"/>
+    <component id="fbqy5v" name="BtnRole.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

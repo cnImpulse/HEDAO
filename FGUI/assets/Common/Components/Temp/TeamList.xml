@@ -4,7 +4,7 @@
     <image id="n1_aow8" name="n1" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" pivot="0.5,0.5" size="650,200">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <list id="n0_mv35" name="list" xy="0,-2" pivot="0.5,0.5" size="650,200" layout="row" margin="30,30,30,30" clipSoftness="0,20" colGap="20" defaultItem="ui://rt51n0kjmbqm5i" align="center" vAlign="middle" autoClearItems="true">
+    <list id="n0_mv35" name="list" xy="0,-2" pivot="0.5,0.5" size="650,200" layout="row" margin="30,30,30,30" clipSoftness="0,20" colGap="20" defaultItem="ui://rt51n0kjfbqy5v" align="center" vAlign="middle" autoClearItems="true">
       <relation target="" sidePair="width-width,height-height"/>
       <item/>
       <item/>
