@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,924">
   <displayList>
-    <component id="n0_lcvv" name="list_role" src="aow85e" fileName="Components/Temp/VerticalList.xml" xy="0,0" pivot="0.5,0.5" size="200,924"/>
-    <list id="n3_lcvv" name="list_type" xy="200,0" pivot="0.5,0.5" size="1720,160" layout="row" margin="20,20,20,20" colGap="30" defaultItem="ui://rt51n0kjlcvv5h" align="center" vAlign="middle" autoClearItems="true">
-      <relation target="" sidePair="width-width,height-height"/>
-      <item title="道"/>
-      <item title="术"/>
-    </list>
+    <component id="n0_lcvv" name="list_role" src="aow85e" fileName="Components/Temp/VerticalList.xml" xy="1720,0" pivot="0.5,0.5" size="200,924"/>
   </displayList>
 </component>

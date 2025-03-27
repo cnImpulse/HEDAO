@@ -7,5 +7,6 @@
     <component id="n5_n9mh" name="btn_get" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="256,754">
       <Button title="招募" titleFontSize="32"/>
     </component>
+    <component id="n6_hmyt" name="list_role2" src="aow85e" fileName="Components/Temp/VerticalList.xml" xy="1720,0" pivot="0.5,0.5" size="200,924"/>
   </displayList>
 </component>

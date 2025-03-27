@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class SaveData
 {
-    public string SaveName = DateTime.Now.ToShortDateString();
     public List<Role> RandomRoleList = null;
     public Dictionary<long, Role> DiscipleList = new Dictionary<long, Role>();
     public HashSet<long> RoleTeamSet = new HashSet<long>();
 
+    public int Year = 1;
+
     public SaveData()
     {
-            
+
     }
 
     public void Init()

@@ -20,5 +20,6 @@
       <item url="ui://rt51n0kjoq905j"/>
       <item url="ui://rt51n0kjoq905k"/>
     </list>
+    <text id="n21_hmyt" name="txt_time" xy="1464,918" pivot="0.5,0.5" size="232,142" fontSize="24" align="right" vAlign="bottom" autoSize="none" text="天历一年"/>
   </displayList>
 </component>

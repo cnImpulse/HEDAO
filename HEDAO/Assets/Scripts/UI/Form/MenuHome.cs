@@ -23,6 +23,8 @@ public class MenuHome : UIBase
     {
         base.OnShow();
 
+        RefreshTime();
+
         var buildingCount = GameMgr.Cfg.Tables.TbBuildingCfg.DataList.Count;
         View.m_list_building.numItems = buildingCount;
 
@@ -61,5 +63,10 @@ public class MenuHome : UIBase
         GameMgr.Save.SaveGame();
 
         base.OnClose();
+    }
+
+    private void RefreshTime()
+    {
+        View.m_txt_time.text = string.Format("天历{0}年", GameMgr.Save.Data.Year);
     }
 }

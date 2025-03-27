@@ -10,6 +10,7 @@ namespace FGUI.Common
         public Controller m_ctrl_page;
         public GList m_list_building;
         public GList m_list_page;
+        public GTextField m_txt_time;
         public const string URL = "ui://rt51n0kjmv3555";
 
         public static FGUIMenuHome CreateInstance()
@@ -24,6 +25,7 @@ namespace FGUI.Common
             m_ctrl_page = GetController("ctrl_page");
             m_list_building = (GList)GetChild("list_building");
             m_list_page = (GList)GetChild("list_page");
+            m_txt_time = (GTextField)GetChild("txt_time");
         }
     }
 }

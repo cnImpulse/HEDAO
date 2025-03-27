@@ -8,7 +8,6 @@ namespace FGUI.Common
     public partial class FGUICangJingPage : GComponent
     {
         public FGUIVerticalList m_list_role;
-        public GList m_list_type;
         public const string URL = "ui://rt51n0kjlcvv5g";
 
         public static FGUICangJingPage CreateInstance()
@@ -21,7 +20,6 @@ namespace FGUI.Common
             base.ConstructFromXML(xml);
 
             m_list_role = (FGUIVerticalList)GetChild("list_role");
-            m_list_type = (GList)GetChild("list_type");
         }
     }
 }
