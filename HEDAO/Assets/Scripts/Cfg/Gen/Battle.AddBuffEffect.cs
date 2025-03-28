@@ -16,7 +16,7 @@ public sealed partial class AddBuffEffect : EffectCfg
 {
     public AddBuffEffect(ByteBuf _buf)  : base(_buf) 
     {
-        BuffId = _buf.ReadInt();
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);BuffList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); BuffList.Add(_e0);}}
     }
 
     public static AddBuffEffect DeserializeAddBuffEffect(ByteBuf _buf)
@@ -24,7 +24,7 @@ public sealed partial class AddBuffEffect : EffectCfg
         return new Battle.AddBuffEffect(_buf);
     }
 
-    public readonly int BuffId;
+    public readonly System.Collections.Generic.List<int> BuffList;
    
     public const int __ID__ = -494651249;
     public override int GetTypeId() => __ID__;
@@ -38,8 +38,8 @@ public sealed partial class AddBuffEffect : EffectCfg
     public override string ToString()
     {
         return "{ "
-        + "ConditionId:" + ConditionId + ","
-        + "BuffId:" + BuffId + ","
+        + "Id:" + Id + ","
+        + "BuffList:" + Luban.StringUtil.CollectionToString(BuffList) + ","
         + "}";
     }
 }

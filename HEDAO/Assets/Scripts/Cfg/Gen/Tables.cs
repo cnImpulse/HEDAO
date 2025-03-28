@@ -20,7 +20,7 @@ public partial class Tables
     public Battle.TbEffectCfg TbEffectCfg {get; }
     public Battle.TbConditionCfg TbConditionCfg {get; }
     public Building.TbBuildingCfg TbBuildingCfg {get; }
-    public XiuLian.TbXiuLianCfg TbXiuLianCfg {get; }
+    public XiuLian.TbGongFaCfg TbGongFaCfg {get; }
     public XiuLian.TbLevelCfg TbLevelCfg {get; }
     public ZongMen.TbRoleTempCfg TbRoleTempCfg {get; }
     public Entity.TbEntityCfg TbEntityCfg {get; }
@@ -36,7 +36,7 @@ public partial class Tables
         TbEffectCfg = new Battle.TbEffectCfg(loader("battle_tbeffectcfg"));
         TbConditionCfg = new Battle.TbConditionCfg(loader("battle_tbconditioncfg"));
         TbBuildingCfg = new Building.TbBuildingCfg(loader("building_tbbuildingcfg"));
-        TbXiuLianCfg = new XiuLian.TbXiuLianCfg(loader("xiulian_tbxiuliancfg"));
+        TbGongFaCfg = new XiuLian.TbGongFaCfg(loader("xiulian_tbgongfacfg"));
         TbLevelCfg = new XiuLian.TbLevelCfg(loader("xiulian_tblevelcfg"));
         TbRoleTempCfg = new ZongMen.TbRoleTempCfg(loader("zongmen_tbroletempcfg"));
         TbEntityCfg = new Entity.TbEntityCfg(loader("entity_tbentitycfg"));
@@ -54,7 +54,7 @@ public partial class Tables
         TbEffectCfg.ResolveRef(this);
         TbConditionCfg.ResolveRef(this);
         TbBuildingCfg.ResolveRef(this);
-        TbXiuLianCfg.ResolveRef(this);
+        TbGongFaCfg.ResolveRef(this);
         TbLevelCfg.ResolveRef(this);
         TbRoleTempCfg.ResolveRef(this);
         TbEntityCfg.ResolveRef(this);

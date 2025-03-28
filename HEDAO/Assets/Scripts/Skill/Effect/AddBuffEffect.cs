@@ -4,7 +4,10 @@ namespace Cfg.Battle
     {
         public override void OnTakeEffect(IEffectTarget caster, IEffectTarget target)
         {
-            target.AddBuff(BuffId);
+            foreach(var buffId in BuffList)
+            {
+                target.AddBuff(buffId);
+            }
         }
     }
 }

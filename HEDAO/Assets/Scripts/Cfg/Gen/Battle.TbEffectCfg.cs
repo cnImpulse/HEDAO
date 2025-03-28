@@ -27,7 +27,7 @@ public partial class TbEffectCfg
             Battle.EffectCfg _v;
             _v = Battle.EffectCfg.DeserializeEffectCfg(_buf);
             _dataList.Add(_v);
-            _dataMap.Add(_v.ConditionId, _v);
+            _dataMap.Add(_v.Id, _v);
         }
     }
 

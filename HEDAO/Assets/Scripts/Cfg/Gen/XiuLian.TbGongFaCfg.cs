@@ -12,12 +12,12 @@ using Luban;
 
 namespace Cfg.XiuLian
 {
-public partial class TbXiuLianCfg
+public partial class TbGongFaCfg
 {
     private readonly System.Collections.Generic.Dictionary<int, GongFaCfg> _dataMap;
     private readonly System.Collections.Generic.List<GongFaCfg> _dataList;
     
-    public TbXiuLianCfg(ByteBuf _buf)
+    public TbGongFaCfg(ByteBuf _buf)
     {
         _dataMap = new System.Collections.Generic.Dictionary<int, GongFaCfg>();
         _dataList = new System.Collections.Generic.List<GongFaCfg>();

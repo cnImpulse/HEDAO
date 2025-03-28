@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cfg;
+using Cfg.Battle;
 
-public class Role : Entity
+public class Role : Entity, IEffectTarget
 {
     public string Name;
     public int Level { get; private set; }
@@ -30,5 +31,42 @@ public class Role : Entity
     public void LevelUp(int level)
     {
 
+    }
+
+    private Dictionary<int, Buff> BuffDict = new Dictionary<int, Buff>();
+
+    public void AddBuff(int id)
+    {
+        RemoveBuff(id);
+
+        var buff = new Buff(id, this);
+        BuffDict.Add(id, buff);
+    }
+
+    void RemoveBuff(int id)
+    {
+        if (BuffDict.TryGetValue(id, out var buff))
+        {
+            buff.OnRemove();
+            BuffDict.Remove(id);
+        }
+    }
+
+    public void LearnGongFa(int cfgId)
+    {
+        var cfg = GameMgr.Cfg.Tables.TbGongFaCfg.Get(cfgId);
+        foreach(var buffId in cfg.BuffList)
+        {
+            AddBuff(buffId);
+        }
+    }
+
+    public void ForgetGongFa(int cfgId)
+    {
+        var cfg = GameMgr.Cfg.Tables.TbGongFaCfg.Get(cfgId);
+        foreach (var buffId in cfg.BuffList)
+        {
+            RemoveBuff(buffId);
+        }
     }
 }

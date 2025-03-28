@@ -18,8 +18,9 @@ public sealed partial class GongFaCfg : Luban.BeanBase
     {
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
+        Desc = _buf.ReadString();
         WuXinType = (EWuXinType)_buf.ReadInt();
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);EffectList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); EffectList.Add(_e0);}}
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);BuffList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); BuffList.Add(_e0);}}
     }
 
     public static GongFaCfg DeserializeGongFaCfg(ByteBuf _buf)
@@ -36,19 +37,21 @@ public sealed partial class GongFaCfg : Luban.BeanBase
     /// </summary>
     public readonly string Name;
     /// <summary>
+    /// 描述
+    /// </summary>
+    public readonly string Desc;
+    /// <summary>
     /// 五行类型
     /// </summary>
     public readonly EWuXinType WuXinType;
-    /// <summary>
-    ///  效果列表
-    /// </summary>
-    public readonly System.Collections.Generic.List<int> EffectList;
+    public readonly System.Collections.Generic.List<int> BuffList;
    
     public const int __ID__ = -1739232920;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -60,8 +63,9 @@ public sealed partial class GongFaCfg : Luban.BeanBase
         return "{ "
         + "Id:" + Id + ","
         + "Name:" + Name + ","
+        + "Desc:" + Desc + ","
         + "WuXinType:" + WuXinType + ","
-        + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
+        + "BuffList:" + Luban.StringUtil.CollectionToString(BuffList) + ","
         + "}";
     }
 }

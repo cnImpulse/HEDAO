@@ -1,10 +1,10 @@
 <module name="Battle">
 	<bean name="EffectCfg">
-        <var name="ConditionId" type="int"/>
+        <var name="Id" type="int"/>
     </bean>
 
     <bean name="AddBuffEffect" parent="EffectCfg" alias="AddBuff">
-        <var name="BuffId" type="int"/>
+        <var name="BuffList" type="list,int"/>
     </bean>
 
     <bean name="AttackEffect" parent="EffectCfg" alias="Attack">

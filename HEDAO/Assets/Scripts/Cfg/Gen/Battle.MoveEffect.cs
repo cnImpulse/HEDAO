@@ -41,7 +41,7 @@ public sealed partial class MoveEffect : EffectCfg
     public override string ToString()
     {
         return "{ "
-        + "ConditionId:" + ConditionId + ","
+        + "Id:" + Id + ","
         + "Distance:" + Distance + ","
         + "IsTarget:" + IsTarget + ","
         + "}";

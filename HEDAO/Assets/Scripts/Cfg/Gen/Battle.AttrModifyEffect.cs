@@ -38,7 +38,7 @@ public sealed partial class AttrModifyEffect : EffectCfg
     public override string ToString()
     {
         return "{ "
-        + "ConditionId:" + ConditionId + ","
+        + "Id:" + Id + ","
         + "AttrDict:" + Luban.StringUtil.CollectionToString(AttrDict) + ","
         + "}";
     }

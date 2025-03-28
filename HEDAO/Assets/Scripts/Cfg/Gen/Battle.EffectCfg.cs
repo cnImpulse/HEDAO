@@ -16,7 +16,7 @@ public abstract partial class EffectCfg : Luban.BeanBase
 {
     public EffectCfg(ByteBuf _buf) 
     {
-        ConditionId = _buf.ReadInt();
+        Id = _buf.ReadInt();
     }
 
     public static EffectCfg DeserializeEffectCfg(ByteBuf _buf)
@@ -31,7 +31,7 @@ public abstract partial class EffectCfg : Luban.BeanBase
         }
     }
 
-    public readonly int ConditionId;
+    public readonly int Id;
    
 
     public virtual void ResolveRef(Tables tables)
@@ -42,7 +42,7 @@ public abstract partial class EffectCfg : Luban.BeanBase
     public override string ToString()
     {
         return "{ "
-        + "ConditionId:" + ConditionId + ","
+        + "Id:" + Id + ","
         + "}";
     }
 }

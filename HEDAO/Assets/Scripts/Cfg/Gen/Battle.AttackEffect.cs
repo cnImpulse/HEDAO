@@ -44,7 +44,7 @@ public sealed partial class AttackEffect : EffectCfg
     public override string ToString()
     {
         return "{ "
-        + "ConditionId:" + ConditionId + ","
+        + "Id:" + Id + ","
         + "Power:" + Power + ","
         + "DamageType:" + DamageType + ","
         + "DamageTag:" + DamageTag + ","
