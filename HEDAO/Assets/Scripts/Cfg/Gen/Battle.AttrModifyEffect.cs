@@ -12,12 +12,11 @@ using Luban;
 
 namespace Cfg.Battle
 {
-public sealed partial class AttrModifyEffect : Effect
+public sealed partial class AttrModifyEffect : EffectCfg
 {
     public AttrModifyEffect(ByteBuf _buf)  : base(_buf) 
     {
-        AttrType = (EAttrType)_buf.ReadInt();
-        Value = _buf.ReadInt();
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);AttrDict = new System.Collections.Generic.Dictionary<EAttrType, int>(n0 * 3 / 2);for(var i0 = 0 ; i0 < n0 ; i0++) { EAttrType _k0;  _k0 = (EAttrType)_buf.ReadInt(); int _v0;  _v0 = _buf.ReadInt();     AttrDict.Add(_k0, _v0);}}
     }
 
     public static AttrModifyEffect DeserializeAttrModifyEffect(ByteBuf _buf)
@@ -25,8 +24,7 @@ public sealed partial class AttrModifyEffect : Effect
         return new Battle.AttrModifyEffect(_buf);
     }
 
-    public readonly EAttrType AttrType;
-    public readonly int Value;
+    public readonly System.Collections.Generic.Dictionary<EAttrType, int> AttrDict;
    
     public const int __ID__ = 483143154;
     public override int GetTypeId() => __ID__;
@@ -35,15 +33,13 @@ public sealed partial class AttrModifyEffect : Effect
     {
         base.ResolveRef(tables);
         
-        
     }
 
     public override string ToString()
     {
         return "{ "
-        + "TargetType:" + TargetType + ","
-        + "AttrType:" + AttrType + ","
-        + "Value:" + Value + ","
+        + "ConditionId:" + ConditionId + ","
+        + "AttrDict:" + Luban.StringUtil.CollectionToString(AttrDict) + ","
         + "}";
     }
 }

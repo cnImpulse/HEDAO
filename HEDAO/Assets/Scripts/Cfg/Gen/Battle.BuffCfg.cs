@@ -10,47 +10,32 @@
 using Luban;
 
 
-namespace Cfg
+namespace Cfg.Battle
 {
-public sealed partial class GongFaCfg : Luban.BeanBase
+public abstract partial class BuffCfg : Luban.BeanBase
 {
-    public GongFaCfg(ByteBuf _buf) 
+    public BuffCfg(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
-        Name = _buf.ReadString();
-        WuXinType = (EWuXinType)_buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);EffectList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); EffectList.Add(_e0);}}
     }
 
-    public static GongFaCfg DeserializeGongFaCfg(ByteBuf _buf)
+    public static BuffCfg DeserializeBuffCfg(ByteBuf _buf)
     {
-        return new GongFaCfg(_buf);
+        switch (_buf.ReadInt())
+        {
+            case Battle.CommonBuffCfg.__ID__: return new Battle.CommonBuffCfg(_buf);
+            case Battle.BattleBuffCfg.__ID__: return new Battle.BattleBuffCfg(_buf);
+            default: throw new SerializationException();
+        }
     }
 
-    /// <summary>
-    /// 编号
-    /// </summary>
     public readonly int Id;
-    /// <summary>
-    /// 名字
-    /// </summary>
-    public readonly string Name;
-    /// <summary>
-    /// 五行类型
-    /// </summary>
-    public readonly EWuXinType WuXinType;
-    /// <summary>
-    ///  效果列表
-    /// </summary>
     public readonly System.Collections.Generic.List<int> EffectList;
    
-    public const int __ID__ = -1739232920;
-    public override int GetTypeId() => __ID__;
 
-    public  void ResolveRef(Tables tables)
+    public virtual void ResolveRef(Tables tables)
     {
-        
-        
         
         
     }
@@ -59,8 +44,6 @@ public sealed partial class GongFaCfg : Luban.BeanBase
     {
         return "{ "
         + "Id:" + Id + ","
-        + "Name:" + Name + ","
-        + "WuXinType:" + WuXinType + ","
         + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
         + "}";
     }

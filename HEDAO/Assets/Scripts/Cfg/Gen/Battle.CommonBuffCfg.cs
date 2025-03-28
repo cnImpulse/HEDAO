@@ -12,38 +12,31 @@ using Luban;
 
 namespace Cfg.Battle
 {
-public sealed partial class MoveEffect : EffectCfg
+public sealed partial class CommonBuffCfg : BuffCfg
 {
-    public MoveEffect(ByteBuf _buf)  : base(_buf) 
+    public CommonBuffCfg(ByteBuf _buf)  : base(_buf) 
     {
-        Distance = _buf.ReadInt();
-        IsTarget = _buf.ReadBool();
     }
 
-    public static MoveEffect DeserializeMoveEffect(ByteBuf _buf)
+    public static CommonBuffCfg DeserializeCommonBuffCfg(ByteBuf _buf)
     {
-        return new Battle.MoveEffect(_buf);
+        return new Battle.CommonBuffCfg(_buf);
     }
 
-    public readonly int Distance;
-    public readonly bool IsTarget;
    
-    public const int __ID__ = -1117796424;
+    public const int __ID__ = -8175632;
     public override int GetTypeId() => __ID__;
 
     public override void ResolveRef(Tables tables)
     {
         base.ResolveRef(tables);
-        
-        
     }
 
     public override string ToString()
     {
         return "{ "
-        + "ConditionId:" + ConditionId + ","
-        + "Distance:" + Distance + ","
-        + "IsTarget:" + IsTarget + ","
+        + "Id:" + Id + ","
+        + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
         + "}";
     }
 }

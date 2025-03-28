@@ -10,25 +10,25 @@
 using Luban;
 
 
-namespace Cfg.Battle
+namespace Cfg
 {
-public sealed partial class GridRange : Luban.BeanBase
+public sealed partial class ConditionCfg : Luban.BeanBase
 {
-    public GridRange(ByteBuf _buf) 
+    public ConditionCfg(ByteBuf _buf) 
     {
-        Type = (EGridRangeType)_buf.ReadInt();
-        Distance = _buf.ReadInt();
+        Id = _buf.ReadInt();
+        Level = _buf.ReadInt();
     }
 
-    public static GridRange DeserializeGridRange(ByteBuf _buf)
+    public static ConditionCfg DeserializeConditionCfg(ByteBuf _buf)
     {
-        return new Battle.GridRange(_buf);
+        return new ConditionCfg(_buf);
     }
 
-    public readonly EGridRangeType Type;
-    public readonly int Distance;
+    public readonly int Id;
+    public readonly int Level;
    
-    public const int __ID__ = 1157651425;
+    public const int __ID__ = -1038346903;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
@@ -40,8 +40,8 @@ public sealed partial class GridRange : Luban.BeanBase
     public override string ToString()
     {
         return "{ "
-        + "Type:" + Type + ","
-        + "Distance:" + Distance + ","
+        + "Id:" + Id + ","
+        + "Level:" + Level + ","
         + "}";
     }
 }

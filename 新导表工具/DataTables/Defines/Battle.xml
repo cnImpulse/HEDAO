@@ -1,30 +1,41 @@
 <module name="Battle">
-	<bean name="Effect">
-        <var name="TargetType" type="EEffectTargetType"/>
+	<bean name="EffectCfg">
+        <var name="ConditionId" type="int"/>
     </bean>
 
-    <bean name="AddBuffEffect" parent="Effect" alias="AddBuff">
+    <bean name="AddBuffEffect" parent="EffectCfg" alias="AddBuff">
         <var name="BuffId" type="int"/>
     </bean>
 
-    <bean name="AttackEffect" parent="Effect" alias="Attack">
+    <bean name="AttackEffect" parent="EffectCfg" alias="Attack">
         <var name="Power" type="int"/>
         <var name="DamageType" type="EDamageType"/>
         <var name="DamageTag" type="EDamageTag"/>
     </bean>
 
-    <bean name="MoveEffect" parent="Effect" alias="Move">
-        <var name="Distance" type="int"/>
-        <var name="IsTarget" type="bool"/>
+    <bean name="AttrModifyEffect" parent="EffectCfg" alias="修改属性">
+        <var name="AttrDict" type="(map#sep=:|),EAttrType,int"/>
     </bean>
 
-    <bean name="AttrModifyEffect" parent="Effect" alias="AttrModify">
-        <var name="AttrType" type="EAttrType"/>
-        <var name="Value" type="int"/>
+    <bean name="MoveEffect" parent="EffectCfg" alias="Move">
+        <var name="Distance" type="int"/>
+        <var name="IsTarget" type="bool"/>
     </bean>
 
     <bean name="GridRange">
         <var name="Type" type="EGridRangeType"/>
         <var name="Distance" type="int"/>
     </bean>
+
+	<bean name="BuffCfg">
+		<var name="Id" type="int"/>
+		<var name="EffectList" type="list,int"/>
+	</bean>
+
+	<bean name="CommonBuffCfg" parent="BuffCfg" alias="通用" >
+	</bean>
+
+	<bean name="BattleBuffCfg" parent="BuffCfg" alias="战斗">
+		<var name="Round" type="int"/>
+	</bean>
 </module>

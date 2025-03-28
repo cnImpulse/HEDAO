@@ -14,8 +14,13 @@
 
 	<enum name="EAttrType" comment="属性类型">
 		<var name="None" alias="默认" />
-		<var name="HP" alias="生命" />
-		<var name="QI" alias="灵气" />
+
+		<!-- 基础属性 -->
+		<var name="Age" alias="年龄" />
+		<var name="Life" alias="寿命" />
+		<var name="Luck" alias="幸运" />
+
+		<!-- 基础战斗属性 -->
 		<var name="MaxHP" alias="最大生命" />
 		<var name="MaxQI" alias="最大灵气" />
 		<var name="SPD" alias="速度" />
@@ -23,11 +28,20 @@
 		<var name="TPO" alias="体魄" />
 		<var name="SSI" alias="神识" />
 		<var name="FAS" alias="法身" />
-		<var name="Shield" alias="护盾" />
 
-		<var name="Age" alias="年龄" />
-		<var name="Life" alias="寿命" />
-		<var name="Luck" alias="幸运" />
+		<var name="HP" alias="生命" />
+		<var name="QI" alias="灵气" />
+
+		<!-- 基础属性成长 -->
+		<var name="MaxHPUp" alias="生命成长" />
+		<var name="MaxQIUp" alias="灵气成长" />
+		<var name="SPDUp" alias="速度成长" />
+		<var name="STRUp" alias="力量成长" />
+		<var name="TPOUp" alias="体魄成长" />
+		<var name="SSIUp" alias="神识成长" />
+		<var name="FASUp" alias="法身成长" />
+
+		<var name="Shield" alias="护盾" />
 	</enum>
 
 	<enum name="EBuffCondType" comment="触发条件">

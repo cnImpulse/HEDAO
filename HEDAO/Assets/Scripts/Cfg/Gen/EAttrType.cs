@@ -22,70 +22,105 @@ namespace Cfg
         [EnumName("默认")]
         None = 0,
         /// <summary>
-        /// 生命
-        /// </summary>
-        [EnumName("生命")]
-        HP = 1,
-        /// <summary>
-        /// 灵气
-        /// </summary>
-        [EnumName("灵气")]
-        QI = 2,
-        /// <summary>
-        /// 最大生命
-        /// </summary>
-        [EnumName("最大生命")]
-        MaxHP = 3,
-        /// <summary>
-        /// 最大灵气
-        /// </summary>
-        [EnumName("最大灵气")]
-        MaxQI = 4,
-        /// <summary>
-        /// 速度
-        /// </summary>
-        [EnumName("速度")]
-        SPD = 5,
-        /// <summary>
-        /// 力量
-        /// </summary>
-        [EnumName("力量")]
-        STR = 6,
-        /// <summary>
-        /// 体魄
-        /// </summary>
-        [EnumName("体魄")]
-        TPO = 7,
-        /// <summary>
-        /// 神识
-        /// </summary>
-        [EnumName("神识")]
-        SSI = 8,
-        /// <summary>
-        /// 法身
-        /// </summary>
-        [EnumName("法身")]
-        FAS = 9,
-        /// <summary>
-        /// 护盾
-        /// </summary>
-        [EnumName("护盾")]
-        Shield = 10,
-        /// <summary>
         /// 年龄
         /// </summary>
         [EnumName("年龄")]
-        Age = 11,
+        Age = 1,
         /// <summary>
         /// 寿命
         /// </summary>
         [EnumName("寿命")]
-        Life = 12,
+        Life = 2,
         /// <summary>
         /// 幸运
         /// </summary>
         [EnumName("幸运")]
-        Luck = 13,
+        Luck = 3,
+        /// <summary>
+        /// 最大生命
+        /// </summary>
+        [EnumName("最大生命")]
+        MaxHP = 4,
+        /// <summary>
+        /// 最大灵气
+        /// </summary>
+        [EnumName("最大灵气")]
+        MaxQI = 5,
+        /// <summary>
+        /// 速度
+        /// </summary>
+        [EnumName("速度")]
+        SPD = 6,
+        /// <summary>
+        /// 力量
+        /// </summary>
+        [EnumName("力量")]
+        STR = 7,
+        /// <summary>
+        /// 体魄
+        /// </summary>
+        [EnumName("体魄")]
+        TPO = 8,
+        /// <summary>
+        /// 神识
+        /// </summary>
+        [EnumName("神识")]
+        SSI = 9,
+        /// <summary>
+        /// 法身
+        /// </summary>
+        [EnumName("法身")]
+        FAS = 10,
+        /// <summary>
+        /// 生命
+        /// </summary>
+        [EnumName("生命")]
+        HP = 11,
+        /// <summary>
+        /// 灵气
+        /// </summary>
+        [EnumName("灵气")]
+        QI = 12,
+        /// <summary>
+        /// 生命成长
+        /// </summary>
+        [EnumName("生命成长")]
+        MaxHPUp = 13,
+        /// <summary>
+        /// 灵气成长
+        /// </summary>
+        [EnumName("灵气成长")]
+        MaxQIUp = 14,
+        /// <summary>
+        /// 速度成长
+        /// </summary>
+        [EnumName("速度成长")]
+        SPDUp = 15,
+        /// <summary>
+        /// 力量成长
+        /// </summary>
+        [EnumName("力量成长")]
+        STRUp = 16,
+        /// <summary>
+        /// 体魄成长
+        /// </summary>
+        [EnumName("体魄成长")]
+        TPOUp = 17,
+        /// <summary>
+        /// 神识成长
+        /// </summary>
+        [EnumName("神识成长")]
+        SSIUp = 18,
+        /// <summary>
+        /// 法身成长
+        /// </summary>
+        [EnumName("法身成长")]
+        FASUp = 19,
+        /// <summary>
+        /// 护盾
+        /// </summary>
+        [EnumName("护盾")]
+        Shield = 20,
     }
 
 }

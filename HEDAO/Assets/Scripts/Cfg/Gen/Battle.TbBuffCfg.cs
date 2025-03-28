@@ -14,29 +14,31 @@ namespace Cfg.Battle
 {
 public partial class TbBuffCfg
 {
-    private readonly System.Collections.Generic.Dictionary<int, BuffCfg> _dataMap;
-    private readonly System.Collections.Generic.List<BuffCfg> _dataList;
+    private readonly System.Collections.Generic.Dictionary<int, Battle.BuffCfg> _dataMap;
+    private readonly System.Collections.Generic.List<Battle.BuffCfg> _dataList;
     
     public TbBuffCfg(ByteBuf _buf)
     {
-        _dataMap = new System.Collections.Generic.Dictionary<int, BuffCfg>();
-        _dataList = new System.Collections.Generic.List<BuffCfg>();
+        _dataMap = new System.Collections.Generic.Dictionary<int, Battle.BuffCfg>();
+        _dataList = new System.Collections.Generic.List<Battle.BuffCfg>();
         
         for(int n = _buf.ReadSize() ; n > 0 ; --n)
         {
-            BuffCfg _v;
-            _v = BuffCfg.DeserializeBuffCfg(_buf);
+            Battle.BuffCfg _v;
+            _v = Battle.BuffCfg.DeserializeBuffCfg(_buf);
             _dataList.Add(_v);
             _dataMap.Add(_v.Id, _v);
         }
     }
 
-    public System.Collections.Generic.Dictionary<int, BuffCfg> DataMap => _dataMap;
-    public System.Collections.Generic.List<BuffCfg> DataList => _dataList;
+    public System.Collections.Generic.Dictionary<int, Battle.BuffCfg> DataMap => _dataMap;
+    public System.Collections.Generic.List<Battle.BuffCfg> DataList => _dataList;
 
-    public BuffCfg GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
-    public BuffCfg Get(int key) => _dataMap[key];
-    public BuffCfg this[int key] => _dataMap[key];
+    public T GetOrDefaultAs<T>(int key) where T : Battle.BuffCfg => _dataMap.TryGetValue(key, out var v) ? (T)v : null;
+    public T GetAs<T>(int key) where T : Battle.BuffCfg => (T)_dataMap[key];
+    public Battle.BuffCfg GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
+    public Battle.BuffCfg Get(int key) => _dataMap[key];
+    public Battle.BuffCfg this[int key] => _dataMap[key];
 
     public void ResolveRef(Tables tables)
     {

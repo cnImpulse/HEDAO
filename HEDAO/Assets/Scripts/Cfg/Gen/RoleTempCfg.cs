@@ -18,8 +18,7 @@ public sealed partial class RoleTempCfg : Luban.BeanBase
     {
         Id = _buf.ReadInt();
         WuXinRange = Range.DeserializeRange(_buf);
-        BattleAttrGrowRange = Range.DeserializeRange(_buf);
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);AttrRange = new System.Collections.Generic.Dictionary<EAttrType, Range>(n0 * 3 / 2);for(var i0 = 0 ; i0 < n0 ; i0++) { EAttrType _k0;  _k0 = (EAttrType)_buf.ReadInt(); Range _v0;  _v0 = Range.DeserializeRange(_buf);     AttrRange.Add(_k0, _v0);}}
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);InitAttr = new System.Collections.Generic.Dictionary<EAttrType, int>(n0 * 3 / 2);for(var i0 = 0 ; i0 < n0 ; i0++) { EAttrType _k0;  _k0 = (EAttrType)_buf.ReadInt(); int _v0;  _v0 = _buf.ReadInt();     InitAttr.Add(_k0, _v0);}}
     }
 
     public static RoleTempCfg DeserializeRoleTempCfg(ByteBuf _buf)
@@ -35,14 +34,7 @@ public sealed partial class RoleTempCfg : Luban.BeanBase
     /// 五行天赋区间
     /// </summary>
     public readonly Range WuXinRange;
-    /// <summary>
-    /// 战斗属性成长率区间
-    /// </summary>
-    public readonly Range BattleAttrGrowRange;
-    /// <summary>
-    /// 属性区间
-    /// </summary>
-    public readonly System.Collections.Generic.Dictionary<EAttrType, Range> AttrRange;
+    public readonly System.Collections.Generic.Dictionary<EAttrType, int> InitAttr;
    
     public const int __ID__ = 870822522;
     public override int GetTypeId() => __ID__;
@@ -51,8 +43,7 @@ public sealed partial class RoleTempCfg : Luban.BeanBase
     {
         
         WuXinRange?.ResolveRef(tables);
-        BattleAttrGrowRange?.ResolveRef(tables);
-        foreach (var _e in AttrRange.Values) { _e?.ResolveRef(tables); }
+        
     }
 
     public override string ToString()
@@ -60,8 +51,7 @@ public sealed partial class RoleTempCfg : Luban.BeanBase
         return "{ "
         + "Id:" + Id + ","
         + "WuXinRange:" + WuXinRange + ","
-        + "BattleAttrGrowRange:" + BattleAttrGrowRange + ","
-        + "AttrRange:" + Luban.StringUtil.CollectionToString(AttrRange) + ","
+        + "InitAttr:" + Luban.StringUtil.CollectionToString(InitAttr) + ","
         + "}";
     }
 }

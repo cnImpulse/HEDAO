@@ -35,8 +35,27 @@ public class AttributeDict
     {
             
     }
-        
-    public void AddAttr(EAttrType type, int value, int min = int.MinValue, int max = int.MaxValue)
+
+    public void ModifyAttrDict(Dictionary<EAttrType, int> attrDict)
+    {
+        foreach(var pair in attrDict)
+        {
+            ModifyAttr(pair.Key, pair.Value);
+        }
+    }
+
+    public void ModifyAttr(EAttrType type, int value)
+    {
+        if (!AttrDict.ContainsKey(type))
+        {
+            InitAttr(type, value);
+            return;
+        }
+
+        AttrDict[type].Value += value;
+    }
+
+    public void InitAttr(EAttrType type, int value, int min = int.MinValue, int max = int.MaxValue)
     {
         if (AttrDict.ContainsKey(type))
         {
@@ -59,10 +78,5 @@ public class AttributeDict
     public void SetAttr(EAttrType type, int value)
     {
         AttrDict[type].Value = value;
-    }
-
-    public void ModifyAttr(EAttrType type, int value)
-    {
-        AttrDict[type].Value += value;
     }
 }

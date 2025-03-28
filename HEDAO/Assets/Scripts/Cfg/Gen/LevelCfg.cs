@@ -20,7 +20,6 @@ public sealed partial class LevelCfg : Luban.BeanBase
         Name = _buf.ReadString();
         MaxQi = _buf.ReadInt();
         Bottleneck = _buf.ReadInt();
-        Life = _buf.ReadInt();
     }
 
     public static LevelCfg DeserializeLevelCfg(ByteBuf _buf)
@@ -44,17 +43,12 @@ public sealed partial class LevelCfg : Luban.BeanBase
     /// 突破瓶颈值
     /// </summary>
     public readonly int Bottleneck;
-    /// <summary>
-    /// 寿命
-    /// </summary>
-    public readonly int Life;
    
     public const int __ID__ = -2067008928;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
-        
         
         
         
@@ -68,7 +62,6 @@ public sealed partial class LevelCfg : Luban.BeanBase
         + "Name:" + Name + ","
         + "MaxQi:" + MaxQi + ","
         + "Bottleneck:" + Bottleneck + ","
-        + "Life:" + Life + ","
         + "}";
     }
 }

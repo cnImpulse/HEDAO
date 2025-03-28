@@ -12,26 +12,26 @@ using Luban;
 
 namespace Cfg.Battle
 {
-public abstract partial class Effect : Luban.BeanBase
+public abstract partial class EffectCfg : Luban.BeanBase
 {
-    public Effect(ByteBuf _buf) 
+    public EffectCfg(ByteBuf _buf) 
     {
-        TargetType = (EEffectTargetType)_buf.ReadInt();
+        ConditionId = _buf.ReadInt();
     }
 
-    public static Effect DeserializeEffect(ByteBuf _buf)
+    public static EffectCfg DeserializeEffectCfg(ByteBuf _buf)
     {
         switch (_buf.ReadInt())
         {
             case Battle.AddBuffEffect.__ID__: return new Battle.AddBuffEffect(_buf);
             case Battle.AttackEffect.__ID__: return new Battle.AttackEffect(_buf);
-            case Battle.MoveEffect.__ID__: return new Battle.MoveEffect(_buf);
             case Battle.AttrModifyEffect.__ID__: return new Battle.AttrModifyEffect(_buf);
+            case Battle.MoveEffect.__ID__: return new Battle.MoveEffect(_buf);
             default: throw new SerializationException();
         }
     }
 
-    public readonly EEffectTargetType TargetType;
+    public readonly int ConditionId;
    
 
     public virtual void ResolveRef(Tables tables)
@@ -42,7 +42,7 @@ public abstract partial class Effect : Luban.BeanBase
     public override string ToString()
     {
         return "{ "
-        + "TargetType:" + TargetType + ","
+        + "ConditionId:" + ConditionId + ","
         + "}";
     }
 }

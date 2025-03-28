@@ -12,7 +12,7 @@ using Luban;
 
 namespace Cfg.Battle
 {
-public sealed partial class AddBuffEffect : Effect
+public sealed partial class AddBuffEffect : EffectCfg
 {
     public AddBuffEffect(ByteBuf _buf)  : base(_buf) 
     {
@@ -38,7 +38,7 @@ public sealed partial class AddBuffEffect : Effect
     public override string ToString()
     {
         return "{ "
-        + "TargetType:" + TargetType + ","
+        + "ConditionId:" + ConditionId + ","
         + "BuffId:" + BuffId + ","
         + "}";
     }

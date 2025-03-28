@@ -16,9 +16,9 @@ public partial class Tables
     public Battle.TbCharacter TbCharacter {get; }
     public Effect.TbEffect TbEffect {get; }
     public Effect.TbGridEffect TbGridEffect {get; }
-    public Battle.TbMoveSkillCfg TbMoveSkillCfg {get; }
-    public Battle.TbSkillCfg TbSkillCfg {get; }
     public Battle.TbBuffCfg TbBuffCfg {get; }
+    public Battle.TbEffectCfg TbEffectCfg {get; }
+    public Battle.TbConditionCfg TbConditionCfg {get; }
     public Building.TbBuildingCfg TbBuildingCfg {get; }
     public XiuLian.TbXiuLianCfg TbXiuLianCfg {get; }
     public XiuLian.TbLevelCfg TbLevelCfg {get; }
@@ -32,9 +32,9 @@ public partial class Tables
         TbCharacter = new Battle.TbCharacter(loader("battle_tbcharacter"));
         TbEffect = new Effect.TbEffect(loader("effect_tbeffect"));
         TbGridEffect = new Effect.TbGridEffect(loader("effect_tbgrideffect"));
-        TbMoveSkillCfg = new Battle.TbMoveSkillCfg(loader("battle_tbmoveskillcfg"));
-        TbSkillCfg = new Battle.TbSkillCfg(loader("battle_tbskillcfg"));
         TbBuffCfg = new Battle.TbBuffCfg(loader("battle_tbbuffcfg"));
+        TbEffectCfg = new Battle.TbEffectCfg(loader("battle_tbeffectcfg"));
+        TbConditionCfg = new Battle.TbConditionCfg(loader("battle_tbconditioncfg"));
         TbBuildingCfg = new Building.TbBuildingCfg(loader("building_tbbuildingcfg"));
         TbXiuLianCfg = new XiuLian.TbXiuLianCfg(loader("xiulian_tbxiuliancfg"));
         TbLevelCfg = new XiuLian.TbLevelCfg(loader("xiulian_tblevelcfg"));
@@ -50,9 +50,9 @@ public partial class Tables
         TbCharacter.ResolveRef(this);
         TbEffect.ResolveRef(this);
         TbGridEffect.ResolveRef(this);
-        TbMoveSkillCfg.ResolveRef(this);
-        TbSkillCfg.ResolveRef(this);
         TbBuffCfg.ResolveRef(this);
+        TbEffectCfg.ResolveRef(this);
+        TbConditionCfg.ResolveRef(this);
         TbBuildingCfg.ResolveRef(this);
         TbXiuLianCfg.ResolveRef(this);
         TbLevelCfg.ResolveRef(this);
