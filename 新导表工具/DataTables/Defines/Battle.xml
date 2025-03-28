@@ -29,6 +29,7 @@
 
 	<bean name="BuffCfg">
 		<var name="Id" type="int"/>
+        <var name="Desc" type="string"/>
 		<var name="EffectList" type="list,int"/>
 	</bean>
 

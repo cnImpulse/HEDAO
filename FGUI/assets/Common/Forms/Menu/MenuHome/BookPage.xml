@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,924">
+  <controller name="ctrl_select" pages="0,,1," selected="0"/>
+  <displayList>
+    <image id="n6_8r1d" name="n6" src="ntsy4" fileName="Resources/Images/SiGuax4.png" xy="0,0" pivot="0.5,0.5" size="870,468"/>
+    <component id="n0_lcvv" name="list_role" src="aow85e" fileName="Components/Temp/VerticalList.xml" xy="1720,0" pivot="0.5,0.5" size="200,924"/>
+    <list id="n1_8r1d" name="list_book" xy="0,0" pivot="0.5,0.5" size="870,470" layout="flow_hz" overflow="scroll" scroll="horizontal" margin="25,25,25,25" lineGap="20" colGap="20" defaultItem="ui://rt51n0kj8r1d5x" selectionController="ctrl_select" autoClearItems="true">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n4_8r1d" name="btn_learn" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="1168,721" size="228,134">
+      <Button title="学习" titleFontSize="32"/>
+    </component>
+    <component id="n5_8r1d" name="txt_book" src="8r1d5y" fileName="Components/Button/CommonTxt.xml" xy="0,462" pivot="0.5,0.5" size="870,462"/>
+    <component id="n7_8r1d" name="rader" src="soef5a" fileName="Components/Temp/RadarGraph.xml" xy="1463,104" pivot="0.5,0.5"/>
+  </displayList>
+</component>

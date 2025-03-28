@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 
 namespace FGUI.Common
 {
-    public partial class FGUIRadarGraph : GComponent
+    public partial class FGUIRadarWidget : GComponent
     {
         public GGraph m_img_wuxing;
         public GTextField m_text_wuxin_0;
@@ -15,9 +15,9 @@ namespace FGUI.Common
         public GTextField m_text_wuxin_4;
         public const string URL = "ui://rt51n0kjsoef5a";
 
-        public static FGUIRadarGraph CreateInstance()
+        public static FGUIRadarWidget CreateInstance()
         {
-            return (FGUIRadarGraph)UIPackage.CreateObject("Common", "RadarGraph");
+            return (FGUIRadarWidget)UIPackage.CreateObject("Common", "RadarWidget");
         }
 
         public override void ConstructFromXML(XML xml)

@@ -9,7 +9,7 @@ namespace FGUI.Common
     {
         public FGUIVerticalList m_list_role;
         public GRichTextField m_text_role;
-        public FGUIRadarGraph m_rader;
+        public FGUIRadarWidget m_rader;
         public GButton m_btn_get;
         public FGUIVerticalList m_list_role2;
         public const string URL = "ui://rt51n0kjnenx5f";
@@ -25,7 +25,7 @@ namespace FGUI.Common
 
             m_list_role = (FGUIVerticalList)GetChild("list_role");
             m_text_role = (GRichTextField)GetChild("text_role");
-            m_rader = (FGUIRadarGraph)GetChild("rader");
+            m_rader = (FGUIRadarWidget)GetChild("rader");
             m_btn_get = (GButton)GetChild("btn_get");
             m_list_role2 = (FGUIVerticalList)GetChild("list_role2");
         }

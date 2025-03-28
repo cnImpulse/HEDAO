@@ -16,7 +16,7 @@ namespace FGUI.Common
         public GTextField m_txt_def;
         public GTextField m_txt_name;
         public GButton m_btn_close;
-        public FGUIRadarGraph m_rader;
+        public FGUIRadarWidget m_rader;
         public GList m_list_skill;
         public const string URL = "ui://rt51n0kjmv3557";
 
@@ -38,7 +38,7 @@ namespace FGUI.Common
             m_txt_def = (GTextField)GetChild("txt_def");
             m_txt_name = (GTextField)GetChild("txt_name");
             m_btn_close = (GButton)GetChild("btn_close");
-            m_rader = (FGUIRadarGraph)GetChild("rader");
+            m_rader = (FGUIRadarWidget)GetChild("rader");
             m_list_skill = (GList)GetChild("list_skill");
         }
     }

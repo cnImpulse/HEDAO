@@ -90,20 +90,7 @@ namespace FGUI.Common
             }
 
             m_text_role.text = info;
-
-            float[] arr = new float[5];
-            foreach (var pair in role.WuXin)
-            {
-                var index = (int)pair.Key;
-                var value = pair.Value / 100f;
-                arr[index] = value;
-                var text = m_rader.GetChildAt(
-                    m_rader.GetChildIndex(m_rader.m_text_wuxin_0) + index);
-                text.text = $"{pair.Key.GetName()}：{pair.Value}";
-            }
-
-            m_rader.m_img_wuxing.shape.DrawRegularPolygon(5, 4, Color.white,
-                Color.black, Color.white, 54, arr);
+            m_rader.Refresh(role);
         }
     }
 }

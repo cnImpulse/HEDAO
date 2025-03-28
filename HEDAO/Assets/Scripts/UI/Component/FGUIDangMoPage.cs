@@ -50,18 +50,6 @@ namespace FGUI.Common
             RefreshList();
         }
 
-        private void OnClickTeamRole(long roleId)
-        {
-            if (RoleTeamSet.Contains(roleId))
-            {
-                RoleTeamSet.Remove(roleId);
-            }
-            else
-            {
-                RoleTeamSet.Add(roleId);
-            }
-        }
-
         public void RefreshList()
         {
             m_RoleList = DiscipleDict.Values.Where((role) => { return !RoleTeamSet.Contains(role.Id); }).AsEnumerable<object>().ToList();

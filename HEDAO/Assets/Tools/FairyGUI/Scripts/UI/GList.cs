@@ -509,6 +509,16 @@ namespace FairyGUI
             set { _selectionController = value; }
         }
 
+        public void RefreshSelectionController()
+        {
+            selectionController.ClearPages();
+            for (int i = 0; i < numItems; i++)
+            {
+                selectionController.AddPage("");
+            }
+            selectionController.selectedIndex = 0;
+        }
+
         /// <summary>
         /// 
         /// </summary>

@@ -17,7 +17,7 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIWinLoadGame.URL, typeof(FGUIWinLoadGame));
             UIObjectFactory.SetPackageItemExtension(FGUISaveItem.URL, typeof(FGUISaveItem));
             UIObjectFactory.SetPackageItemExtension(FGUISkillItem.URL, typeof(FGUISkillItem));
-            UIObjectFactory.SetPackageItemExtension(FGUICangJingPage.URL, typeof(FGUICangJingPage));
+            UIObjectFactory.SetPackageItemExtension(FGUIBookPage.URL, typeof(FGUIBookPage));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuHome.URL, typeof(FGUIMenuHome));
             UIObjectFactory.SetPackageItemExtension(FGUIDiscipleForm.URL, typeof(FGUIDiscipleForm));
             UIObjectFactory.SetPackageItemExtension(FGUIPrepareForm.URL, typeof(FGUIPrepareForm));
@@ -28,7 +28,7 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIDangMoPage.URL, typeof(FGUIDangMoPage));
             UIObjectFactory.SetPackageItemExtension(FGUIBattleUnitInfo.URL, typeof(FGUIBattleUnitInfo));
             UIObjectFactory.SetPackageItemExtension(FGUICommonTips.URL, typeof(FGUICommonTips));
-            UIObjectFactory.SetPackageItemExtension(FGUIRadarGraph.URL, typeof(FGUIRadarGraph));
+            UIObjectFactory.SetPackageItemExtension(FGUIRadarWidget.URL, typeof(FGUIRadarWidget));
             UIObjectFactory.SetPackageItemExtension(FGUITeamList.URL, typeof(FGUITeamList));
             UIObjectFactory.SetPackageItemExtension(FGUIBattleForm.URL, typeof(FGUIBattleForm));
             UIObjectFactory.SetPackageItemExtension(FGUIActionForm.URL, typeof(FGUIActionForm));

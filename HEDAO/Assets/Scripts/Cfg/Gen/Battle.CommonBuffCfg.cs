@@ -36,6 +36,7 @@ public sealed partial class CommonBuffCfg : BuffCfg
     {
         return "{ "
         + "Id:" + Id + ","
+        + "Desc:" + Desc + ","
         + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
         + "}";
     }

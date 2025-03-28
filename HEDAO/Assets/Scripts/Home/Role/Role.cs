@@ -8,6 +8,7 @@ public class Role : Entity, IEffectTarget
 {
     public string Name;
     public int Level { get; private set; }
+    public int GongFaId { get; private set; } = 0;
 
     public Dictionary<EWuXinType, int> WuXin { get; private set; }
     public AttributeDict BattleAttr { get; private set; }
@@ -54,6 +55,7 @@ public class Role : Entity, IEffectTarget
 
     public void LearnGongFa(int cfgId)
     {
+        GongFaId = cfgId;
         var cfg = GameMgr.Cfg.Tables.TbGongFaCfg.Get(cfgId);
         foreach(var buffId in cfg.BuffList)
         {
@@ -63,6 +65,7 @@ public class Role : Entity, IEffectTarget
 
     public void ForgetGongFa(int cfgId)
     {
+        GongFaId = 0;
         var cfg = GameMgr.Cfg.Tables.TbGongFaCfg.Get(cfgId);
         foreach (var buffId in cfg.BuffList)
         {

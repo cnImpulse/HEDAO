@@ -28,11 +28,11 @@
     <component id="mv3556" name="CommonButton.xml" path="/Components/Button/"/>
     <component id="mv3557" name="DiscipleForm.xml" path="/Forms/Float/" exported="true"/>
     <component id="mv3558" name="PrepareForm.xml" path="/Forms/FullScreen/" exported="true"/>
-    <component id="soef5a" name="RadarGraph.xml" path="/Components/Temp/" exported="true"/>
+    <component id="soef5a" name="RadarWidget.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="aow85c" name="List.xml" path="/Components/Temp/" exported="true"/>
     <component id="aow85e" name="VerticalList.xml" path="/Components/Temp/" exported="true"/>
     <component id="nenx5f" name="QiuDaoPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
-    <component id="lcvv5g" name="CangJingPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
+    <component id="lcvv5g" name="BookPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="oq905j" name="WuDaoPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="oq905k" name="DangMoPage.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="u7915m" name="TeamList.xml" path="/Components/Temp/" exported="true"/>
@@ -42,6 +42,8 @@
     <component id="okxa5t" name="BtnAction.xml" path="/Forms/Menu/MenuActionSelect/" exported="true"/>
     <component id="fbqy5v" name="BtnRole.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="hmyt5w" name="BtnBuilding.xml" path="/Forms/Menu/MenuHome/"/>
+    <component id="8r1d5x" name="BtnBook.xml" path="/Forms/Menu/MenuHome/"/>
+    <component id="8r1d5y" name="CommonTxt.xml" path="/Components/Button/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

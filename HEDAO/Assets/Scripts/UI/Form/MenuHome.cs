@@ -51,6 +51,11 @@ public class MenuHome : UIBase
             var dangMoPage = page as FGUIQiuDaoPage;
             dangMoPage.Refresh();
         }
+        else if (index == 1)
+        {
+            var bookPage = page as FGUIBookPage;
+            bookPage.Refresh();
+        }
         else if(index == 3)
         {
             var dangMoPage = page as FGUIDangMoPage;
