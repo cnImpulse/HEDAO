@@ -7,10 +7,23 @@ namespace FGUI.Common
 {
     public partial class FGUIBtnRole : GButton
     {
-        public void Refresh(Role role)
+        public void Refresh(Role role, bool enableRight = true)
         {
             var cfg = GameMgr.Cfg.Tables.TbLevelCfg.Get(role.Level);
             text = string.Format("{0}\n{1}", role.Name, cfg.Name);
+            if (enableRight)
+            {
+                onRightClick.Set(() => OnRightClickRole(role));
+            }
+            else
+            {
+                onRightClick.Clear();
+            }
+        }
+
+        private void OnRightClickRole(Role role)
+        {
+            GameMgr.UI.OpenUI(UIName.MenuRole, role);
         }
     }
 }

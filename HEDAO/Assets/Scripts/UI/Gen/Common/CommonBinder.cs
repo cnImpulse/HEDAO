@@ -27,6 +27,7 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIWuDaoPage.URL, typeof(FGUIWuDaoPage));
             UIObjectFactory.SetPackageItemExtension(FGUIDangMoPage.URL, typeof(FGUIDangMoPage));
             UIObjectFactory.SetPackageItemExtension(FGUIBattleUnitInfo.URL, typeof(FGUIBattleUnitInfo));
+            UIObjectFactory.SetPackageItemExtension(FGUIMenuRole.URL, typeof(FGUIMenuRole));
             UIObjectFactory.SetPackageItemExtension(FGUICommonTips.URL, typeof(FGUICommonTips));
             UIObjectFactory.SetPackageItemExtension(FGUIRadarWidget.URL, typeof(FGUIRadarWidget));
             UIObjectFactory.SetPackageItemExtension(FGUITeamList.URL, typeof(FGUITeamList));

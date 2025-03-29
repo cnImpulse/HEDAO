@@ -8,7 +8,9 @@ public class Role : Entity, IEffectTarget
 {
     public string Name;
     public int Level { get; private set; }
-    public int GongFaId { get; private set; } = 0;
+    
+    public Dictionary<EBookType, int> BookDict = new Dictionary<EBookType, int>();
+    public HashSet<int> SkillSet = new HashSet<int>();
 
     public Dictionary<EWuXinType, int> WuXin { get; private set; }
     public AttributeDict BattleAttr { get; private set; }
@@ -44,7 +46,7 @@ public class Role : Entity, IEffectTarget
         BuffDict.Add(id, buff);
     }
 
-    void RemoveBuff(int id)
+    public void RemoveBuff(int id)
     {
         if (BuffDict.TryGetValue(id, out var buff))
         {
@@ -53,23 +55,48 @@ public class Role : Entity, IEffectTarget
         }
     }
 
+    public void AddSkill(int id)
+    {
+        SkillSet.Add(id);
+    }
+
+    public void RemoveSkill(int id)
+    {
+        SkillSet.Remove(id);
+    }
+
     public void LearnGongFa(int cfgId)
     {
-        GongFaId = cfgId;
         var cfg = GameMgr.Cfg.Tables.TbGongFaCfg.Get(cfgId);
-        foreach(var buffId in cfg.BuffList)
+        if (BookDict.TryAdd(cfg.BookType, cfgId))
         {
-            AddBuff(buffId);
+            foreach(var buffId in cfg.BuffList)
+            {
+                AddBuff(buffId);
+            }
+
+            foreach (var skillId in cfg.SkillList)
+            {
+                AddSkill(skillId);
+            }
         }
     }
 
     public void ForgetGongFa(int cfgId)
     {
-        GongFaId = 0;
         var cfg = GameMgr.Cfg.Tables.TbGongFaCfg.Get(cfgId);
-        foreach (var buffId in cfg.BuffList)
+        if (BookDict.ContainsKey(cfg.BookType))
         {
-            RemoveBuff(buffId);
+            BookDict.Remove(cfg.BookType);
+            foreach(var buffId in cfg.BuffList)
+            {
+                RemoveBuff(buffId);
+            }
+            
+            foreach (var skillId in cfg.SkillList)
+            {
+                RemoveSkill(skillId);
+            }
         }
     }
 }

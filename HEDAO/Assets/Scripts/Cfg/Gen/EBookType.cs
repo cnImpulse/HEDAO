@@ -27,10 +27,10 @@ namespace Cfg
         [EnumName("术法")]
         ShuFa = 1,
         /// <summary>
-        /// 遁术
+        /// 遁法
         /// </summary>
-        [EnumName("遁术")]
-        DunShu = 2,
+        [EnumName("遁法")]
+        DunFa = 2,
     }
 
 }

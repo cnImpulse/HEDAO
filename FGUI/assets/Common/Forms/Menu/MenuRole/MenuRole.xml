@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <image id="n3_rnio" name="n3" src="ntsy4" fileName="Resources/Images/SiGuax4.png" xy="0,0" pivot="0.5,0.5" size="1920,1080"/>
+    <component id="n5_rnio" name="btn_close" src="ja3th" fileName="Components/Button/CloseButton.xml" xy="31,28" pivot="0.5,0.5"/>
+    <component id="n6_rnio" name="txt_role" src="8r1d5y" fileName="Components/Button/CommonTxt.xml" xy="112,98" pivot="0.5,0.5" size="868,876">
+      <Label title="1. 角色属性&#xA;2. 角色功法&#xA;3. 角色技能"/>
+    </component>
+    <component id="n8_rnio" name="rader" src="soef5a" fileName="Forms/Menu/MenuHome/RadarWidget.xml" xy="1439,119" pivot="0.5,0.5"/>
+  </displayList>
+</component>

@@ -77,6 +77,6 @@
 	<enum name="EBookType" comment="秘籍">
 		<var name="DaoFa" alias="道法" />
 		<var name="ShuFa" alias="术法" />
-		<var name="DunShu" alias="遁术" />
+		<var name="DunFa" alias="遁法" />
 	</enum>
 </module>

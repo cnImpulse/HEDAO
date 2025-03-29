@@ -14,7 +14,7 @@ namespace FGUI.Common
         private List<object> m_BookList = new List<object>();
 
         public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.DiscipleList;
-        public List<EBookType> BookTypeList = new List<EBookType>() { EBookType.DaoFa, EBookType.ShuFa, EBookType.DunShu };
+        public List<EBookType> BookTypeList => GameMgr.Cfg.Tables.TbMisc.BookTypeList;
 
         public void OnInit()
         {
@@ -26,7 +26,7 @@ namespace FGUI.Common
             m_list_role.m_list.selectionController.onChanged.Set(RefreshRoleInfo);
 
             m_list_book_type.numItems = BookTypeList.Count;
-            m_list_book_type.selectionController.onChanged.Set(RefreshBookList);
+            m_list_book_type.selectionController.onChanged.Set(RefreshList);
         }
 
         public void Refresh()
@@ -38,7 +38,7 @@ namespace FGUI.Common
 
         public void RefreshList()
         {
-            m_RoleList = DiscipleDict.Values.Where((role) => { return role.GongFaId == 0; }).AsEnumerable<object>().ToList();
+            m_RoleList = DiscipleDict.Values.Where((role) => { return !role.BookDict.ContainsKey(GetSelectedBookType()); }).AsEnumerable<object>().ToList();
             m_list_role.m_list.RefreshList(m_RoleList);
             m_list_role.m_list.RefreshSelectionController();
 
@@ -78,14 +78,13 @@ namespace FGUI.Common
 
         private void RefreshBookText()
         {
-            var index = m_list_book.selectedIndex;
-            if (index < 0)
+            var cfg = GetSelectedBook();
+            if (cfg == null)
             {
                 m_txt_book.text = "";
                 return;
             }
-
-            var cfg = m_BookList[index] as GongFaCfg;
+            
             var txt = string.Format("{0}\n简介：{1}\n", cfg.Name, cfg.Desc);
             foreach(var buffId in cfg.BuffList)
             {
@@ -131,6 +130,14 @@ namespace FGUI.Common
             RefreshList();
         }
 
+        private GongFaCfg GetSelectedBook()
+        {
+            var index = m_list_book.selectedIndex;
+            if (index < 0) return null;
+
+            return m_BookList[index] as GongFaCfg;
+        }
+        
         private Role GetSelectedRole()
         {
             var index = m_list_role.m_list.selectedIndex;
