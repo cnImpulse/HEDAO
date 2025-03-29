@@ -33,6 +33,7 @@
 	<bean name="BuffCfg">
 		<var name="Id" type="int"/>
         <var name="Desc" type="string"/>
+        <var name="ConditionId" type="int"/>
 		<var name="EffectList" type="(list#sep=,),int"/>
 	</bean>
 

@@ -66,12 +66,7 @@ namespace FGUI.Common
             }
             ctrl.selectedIndex = 0;
         }
-
-        private static List<EAttrType> AttrList = new List<EAttrType>()
-        {
-            EAttrType.MaxHP, EAttrType.MaxQI, EAttrType.SPD, EAttrType.STR,
-            EAttrType.TPO, EAttrType.SSI, EAttrType.FAS
-        };
+        
         private void OnRoleChanged()
         {
             var selectIndex = m_list_role.m_ctrl_select.selectedIndex;
@@ -84,9 +79,16 @@ namespace FGUI.Common
             var attr = role.BattleAttr;
             var info = $"姓名：{role.Name}\n";
             info += $"年龄：{attr.GetAttr(EAttrType.Age)} 寿命：{attr.GetAttr(EAttrType.Life)}\n";
-            foreach (var attrType in AttrList)
+
+            var attrList = GameMgr.Cfg.Tables.TbMisc.AttrTypeList;
+            for (int i = 0; i < attrList.Count; i++)
             {
-                info += $"{attrType.GetName()}：{attr.GetAttr(attrType)} \n";
+                var attrType= attrList[i];
+                info += $"{attrType.GetName()}：{attr.GetAttr(attrType)} ";
+                if (i % 2 == 1)
+                {
+                    info += '\n';
+                }
             }
 
             m_text_role.text = info;

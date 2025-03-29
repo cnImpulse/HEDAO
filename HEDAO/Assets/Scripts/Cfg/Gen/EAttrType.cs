@@ -37,90 +37,95 @@ namespace Cfg
         [EnumName("幸运")]
         Luck = 3,
         /// <summary>
+        /// 破境值
+        /// </summary>
+        [EnumName("破境值")]
+        Exp = 4,
+        /// <summary>
         /// 最大生命
         /// </summary>
         [EnumName("最大生命")]
-        MaxHP = 4,
+        MaxHP = 5,
         /// <summary>
         /// 最大灵气
         /// </summary>
         [EnumName("最大灵气")]
-        MaxQI = 5,
+        MaxQI = 6,
         /// <summary>
         /// 速度
         /// </summary>
         [EnumName("速度")]
-        SPD = 6,
+        SPD = 7,
         /// <summary>
         /// 力量
         /// </summary>
         [EnumName("力量")]
-        STR = 7,
+        STR = 8,
         /// <summary>
         /// 体魄
         /// </summary>
         [EnumName("体魄")]
-        TPO = 8,
+        TPO = 9,
         /// <summary>
         /// 神识
         /// </summary>
         [EnumName("神识")]
-        SSI = 9,
+        SSI = 10,
         /// <summary>
         /// 法身
         /// </summary>
         [EnumName("法身")]
-        FAS = 10,
+        FAS = 11,
         /// <summary>
         /// 生命
         /// </summary>
         [EnumName("生命")]
-        HP = 11,
+        HP = 12,
         /// <summary>
         /// 灵气
         /// </summary>
         [EnumName("灵气")]
-        QI = 12,
+        QI = 13,
         /// <summary>
         /// 生命成长
         /// </summary>
         [EnumName("生命成长")]
-        MaxHPUp = 13,
+        MaxHPUp = 14,
         /// <summary>
         /// 灵气成长
         /// </summary>
         [EnumName("灵气成长")]
-        MaxQIUp = 14,
+        MaxQIUp = 15,
         /// <summary>
         /// 速度成长
         /// </summary>
         [EnumName("速度成长")]
-        SPDUp = 15,
+        SPDUp = 16,
         /// <summary>
         /// 力量成长
         /// </summary>
         [EnumName("力量成长")]
-        STRUp = 16,
+        STRUp = 17,
         /// <summary>
         /// 体魄成长
         /// </summary>
         [EnumName("体魄成长")]
-        TPOUp = 17,
+        TPOUp = 18,
         /// <summary>
         /// 神识成长
         /// </summary>
         [EnumName("神识成长")]
-        SSIUp = 18,
+        SSIUp = 19,
         /// <summary>
         /// 法身成长
         /// </summary>
         [EnumName("法身成长")]
-        FASUp = 19,
+        FASUp = 20,
         /// <summary>
         /// 护盾
         /// </summary>
         [EnumName("护盾")]
-        Shield = 20,
+        Shield = 21,
     }
 
 }

@@ -8,7 +8,7 @@ namespace Cfg.Battle
         void AddBuff(int id);
         void RemoveBuff(int id);
         void AddSkill(int id);
-
+        bool CheckCondition(int id);
         void TakeDamage(int damage)
         {
             

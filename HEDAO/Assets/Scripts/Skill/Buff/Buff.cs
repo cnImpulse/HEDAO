@@ -1,13 +1,14 @@
 using Cfg;
 using Cfg.Battle;
 
-public class Buff
+public abstract class Buff
 {
     public int Id { get; private set; }
-    public int Life { get; private set; }
     public IEffectTarget Target { get; private set; }
     public BuffCfg Cfg => GameMgr.Cfg.Tables.TbBuffCfg.Get(Id);
-        
+
+    public bool IsEffectActive { get; private set; } = false;
+    
     public Buff(int id, IEffectTarget target)
     {
         Id = id;
@@ -16,16 +17,30 @@ public class Buff
 
     public virtual void OnAdd()
     {
-        var cfg = GameMgr.Cfg.Tables.TbBuffCfg.Get(Id);
-
-    }
-
-    public virtual void OnRoundStart()
-    {
 
     }
 
     public virtual void OnRemove()
     {
+
+    }
+
+    public virtual void SetEffectActive(bool active)
+    {
+        if (IsEffectActive == active) return;
+
+        IsEffectActive = active;
+        foreach (var effectId in Cfg.EffectList)
+        {
+            var effectCfg = GameMgr.Cfg.Tables.TbEffectCfg.Get(effectId);
+            if (active)
+            {
+                effectCfg.OnTakeEffect(null, Target);
+            }
+            else
+            {
+                effectCfg.OnResetEffect(null, Target);
+            }
+        }
     }
 }

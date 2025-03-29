@@ -40,6 +40,7 @@ public sealed partial class BattleBuffCfg : BuffCfg
         return "{ "
         + "Id:" + Id + ","
         + "Desc:" + Desc + ","
+        + "ConditionId:" + ConditionId + ","
         + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
         + "Round:" + Round + ","
         + "}";

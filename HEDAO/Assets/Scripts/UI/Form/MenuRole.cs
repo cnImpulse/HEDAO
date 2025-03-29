@@ -26,12 +26,6 @@ public class MenuRole : UIBase
         RefreshRole();
     }
     
-    private static List<EAttrType> AttrList = new List<EAttrType>()
-    {
-        EAttrType.MaxHP, EAttrType.MaxQI, EAttrType.SPD, EAttrType.STR,
-        EAttrType.TPO, EAttrType.SSI, EAttrType.FAS
-    };
-    
     private void RefreshRole()
     {
         var attrInfo = GetRoleAttrInfo(Role);
@@ -43,12 +37,22 @@ public class MenuRole : UIBase
 
     private string GetRoleAttrInfo(Role role)
     {
-        var attr = Role.BattleAttr;
-        var info = $"姓名：{Role.Name}\n";
+        var attr = role.BattleAttr;
+        var info = $"姓名：{role.Name}\n";
         info += $"年龄：{attr.GetAttr(EAttrType.Age)} 寿命：{attr.GetAttr(EAttrType.Life)}\n";
-        foreach (var attrType in AttrList)
+
+        var levelCfg = GameMgr.Cfg.Tables.TbLevelCfg.Get(role.Level);
+        info += $"境界：{levelCfg.Name} {EAttrType.Exp.GetName()}: {attr.GetAttr(EAttrType.Exp)}/{levelCfg.Exp}\n";
+        
+        var attrList = GameMgr.Cfg.Tables.TbMisc.AttrTypeList;
+        for (int i = 0; i < attrList.Count; i++)
         {
-            info += $"{attrType.GetName()}：{attr.GetAttr(attrType)} \n";
+            var attrType= attrList[i];
+            info += $"{attrType.GetName()}：{attr.GetAttr(attrType)} ";
+            if (i % 2 == 1)
+            {
+                info += '\n';
+            }
         }
 
         return info;

@@ -42,8 +42,9 @@ public class Role : Entity, IEffectTarget
     {
         RemoveBuff(id);
 
-        var buff = new Buff(id, this);
+        var buff = new CommonBuff(id, this);
         BuffDict.Add(id, buff);
+        buff.OnAdd();
     }
 
     public void RemoveBuff(int id)
@@ -58,6 +59,17 @@ public class Role : Entity, IEffectTarget
     public void AddSkill(int id)
     {
         SkillSet.Add(id);
+    }
+
+    public bool CheckCondition(int id)
+    {
+        if (!GameMgr.Cfg.Tables.TbConditionCfg.DataMap.ContainsKey(id))
+        {
+            return true;
+        }
+        
+        var cfg = GameMgr.Cfg.Tables.TbConditionCfg.Get(id);
+        return Level >= cfg.Level;
     }
 
     public void RemoveSkill(int id)

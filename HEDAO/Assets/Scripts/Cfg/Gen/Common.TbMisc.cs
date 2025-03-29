@@ -31,6 +31,10 @@ public partial class TbMisc
     /// 功法类型列表
     /// </summary>
      public System.Collections.Generic.List<EBookType> BookTypeList => _data.BookTypeList;
+    /// <summary>
+    /// 属性类型列表
+    /// </summary>
+     public System.Collections.Generic.List<EAttrType> AttrTypeList => _data.AttrTypeList;
     
     public void ResolveRef(Tables tables)
     {

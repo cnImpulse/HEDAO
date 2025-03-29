@@ -19,6 +19,7 @@
 		<var name="Age" alias="年龄" />
 		<var name="Life" alias="寿命" />
 		<var name="Luck" alias="幸运" />
+		<var name="Exp" alias="破境值" />
 
 		<!-- 基础战斗属性 -->
 		<var name="MaxHP" alias="最大生命" />

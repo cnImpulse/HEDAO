@@ -17,6 +17,7 @@ public sealed partial class MiscCfg : Luban.BeanBase
     public MiscCfg(ByteBuf _buf) 
     {
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);BookTypeList = new System.Collections.Generic.List<EBookType>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { EBookType _e0;  _e0 = (EBookType)_buf.ReadInt(); BookTypeList.Add(_e0);}}
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);AttrTypeList = new System.Collections.Generic.List<EAttrType>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { EAttrType _e0;  _e0 = (EAttrType)_buf.ReadInt(); AttrTypeList.Add(_e0);}}
     }
 
     public static MiscCfg DeserializeMiscCfg(ByteBuf _buf)
@@ -28,6 +29,10 @@ public sealed partial class MiscCfg : Luban.BeanBase
     /// 功法类型列表
     /// </summary>
     public readonly System.Collections.Generic.List<EBookType> BookTypeList;
+    /// <summary>
+    /// 属性类型列表
+    /// </summary>
+    public readonly System.Collections.Generic.List<EAttrType> AttrTypeList;
    
     public const int __ID__ = -1561377864;
     public override int GetTypeId() => __ID__;
@@ -35,12 +40,14 @@ public sealed partial class MiscCfg : Luban.BeanBase
     public  void ResolveRef(Tables tables)
     {
         
+        
     }
 
     public override string ToString()
     {
         return "{ "
         + "BookTypeList:" + Luban.StringUtil.CollectionToString(BookTypeList) + ","
+        + "AttrTypeList:" + Luban.StringUtil.CollectionToString(AttrTypeList) + ","
         + "}";
     }
 }

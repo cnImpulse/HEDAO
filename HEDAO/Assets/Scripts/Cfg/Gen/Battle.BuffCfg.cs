@@ -18,6 +18,7 @@ public abstract partial class BuffCfg : Luban.BeanBase
     {
         Id = _buf.ReadInt();
         Desc = _buf.ReadString();
+        ConditionId = _buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);EffectList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); EffectList.Add(_e0);}}
     }
 
@@ -33,11 +34,13 @@ public abstract partial class BuffCfg : Luban.BeanBase
 
     public readonly int Id;
     public readonly string Desc;
+    public readonly int ConditionId;
     public readonly System.Collections.Generic.List<int> EffectList;
    
 
     public virtual void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -48,6 +51,7 @@ public abstract partial class BuffCfg : Luban.BeanBase
         return "{ "
         + "Id:" + Id + ","
         + "Desc:" + Desc + ","
+        + "ConditionId:" + ConditionId + ","
         + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
         + "}";
     }
