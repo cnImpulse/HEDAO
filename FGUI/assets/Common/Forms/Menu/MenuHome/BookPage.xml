@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,924">
   <controller name="ctrl_select" pages="0,,1," selected="0"/>
+  <controller name="ctrl_book_type" pages="0,,1,,2," selected="0"/>
   <displayList>
     <image id="n6_8r1d" name="n6" src="ntsy4" fileName="Resources/Images/SiGuax4.png" xy="0,0" pivot="0.5,0.5" size="870,468"/>
     <component id="n0_lcvv" name="list_role" src="aow85e" fileName="Components/Temp/VerticalList.xml" xy="1720,0" pivot="0.5,0.5" size="200,924"/>
@@ -16,10 +17,15 @@
       <item/>
       <item/>
     </list>
-    <component id="n4_8r1d" name="btn_learn" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="1168,721" size="228,134">
+    <list id="n8_m46u" name="list_book_type" xy="866,0" pivot="0.5,0.5" size="120,456" scroll="horizontal" lineGap="-5" defaultItem="ui://rt51n0kjm46u5z" vAlign="middle" selectionController="ctrl_book_type">
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n4_8r1d" name="btn_learn" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="1260,720" size="228,134">
       <Button title="学习" titleFontSize="32"/>
     </component>
-    <component id="n5_8r1d" name="txt_book" src="8r1d5y" fileName="Components/Button/CommonTxt.xml" xy="0,462" pivot="0.5,0.5" size="870,462"/>
-    <component id="n7_8r1d" name="rader" src="soef5a" fileName="Components/Temp/RadarGraph.xml" xy="1463,104" pivot="0.5,0.5"/>
+    <component id="n5_8r1d" name="txt_book" src="8r1d5y" fileName="Components/Button/CommonTxt.xml" xy="0,462" pivot="0.5,0.5" size="986,462"/>
+    <component id="n7_8r1d" name="rader" src="soef5a" fileName="Forms/Menu/MenuHome/RadarWidget.xml" xy="1463,104" pivot="0.5,0.5"/>
   </displayList>
 </component>

@@ -12,29 +12,26 @@ using Luban;
 
 namespace Cfg.Battle
 {
-public sealed partial class AttackEffect : EffectCfg
+public sealed partial class AddSkillEffect : EffectCfg
 {
-    public AttackEffect(ByteBuf _buf)  : base(_buf) 
+    public AddSkillEffect(ByteBuf _buf)  : base(_buf) 
     {
-        DamageRatio = _buf.ReadInt();
-        DamageType = (EDamageType)_buf.ReadInt();
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);SkillList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); SkillList.Add(_e0);}}
     }
 
-    public static AttackEffect DeserializeAttackEffect(ByteBuf _buf)
+    public static AddSkillEffect DeserializeAddSkillEffect(ByteBuf _buf)
     {
-        return new Battle.AttackEffect(_buf);
+        return new Battle.AddSkillEffect(_buf);
     }
 
-    public readonly int DamageRatio;
-    public readonly EDamageType DamageType;
+    public readonly System.Collections.Generic.List<int> SkillList;
    
-    public const int __ID__ = 867016559;
+    public const int __ID__ = -919847977;
     public override int GetTypeId() => __ID__;
 
     public override void ResolveRef(Tables tables)
     {
         base.ResolveRef(tables);
-        
         
     }
 
@@ -42,8 +39,7 @@ public sealed partial class AttackEffect : EffectCfg
     {
         return "{ "
         + "Id:" + Id + ","
-        + "DamageRatio:" + DamageRatio + ","
-        + "DamageType:" + DamageType + ","
+        + "SkillList:" + Luban.StringUtil.CollectionToString(SkillList) + ","
         + "}";
     }
 }

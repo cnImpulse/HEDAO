@@ -512,6 +512,8 @@ namespace FairyGUI
         public void RefreshSelectionController()
         {
             selectionController.ClearPages();
+            if (numItems == 0) return;
+
             for (int i = 0; i < numItems; i++)
             {
                 selectionController.AddPage("");

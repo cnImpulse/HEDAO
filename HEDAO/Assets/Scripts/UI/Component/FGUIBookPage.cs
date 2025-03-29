@@ -11,16 +11,22 @@ namespace FGUI.Common
     public partial class FGUIBookPage : GComponent
     {
         private List<object> m_RoleList = new List<object>();
+        private List<object> m_BookList = new List<object>();
 
         public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.DiscipleList;
+        public List<EBookType> BookTypeList = new List<EBookType>() { EBookType.DaoFa, EBookType.ShuFa, EBookType.DunShu };
 
         public void OnInit()
         {
             m_btn_learn.onClick.Set(OnClickBtnLearn);
             m_list_role.m_list.itemRenderer = OnRenderRole;
             m_list_book.itemRenderer = OnRenderBook;
+            m_list_book_type.itemRenderer = OnRenderBookType;
             m_list_book.selectionController.onChanged.Set(RefreshBookText);
             m_list_role.m_list.selectionController.onChanged.Set(RefreshRoleInfo);
+
+            m_list_book_type.numItems = BookTypeList.Count;
+            m_list_book_type.selectionController.onChanged.Set(RefreshBookList);
         }
 
         public void Refresh()
@@ -33,12 +39,18 @@ namespace FGUI.Common
         public void RefreshList()
         {
             m_RoleList = DiscipleDict.Values.Where((role) => { return role.GongFaId == 0; }).AsEnumerable<object>().ToList();
-
             m_list_role.m_list.RefreshList(m_RoleList);
-
-            m_list_book.numItems = GameMgr.Cfg.Tables.TbGongFaCfg.DataList.Count;
-            m_list_book.RefreshSelectionController();
             m_list_role.m_list.RefreshSelectionController();
+
+            RefreshBookList();
+        }
+
+        public void RefreshBookList()
+        {
+            m_BookList = GameMgr.Cfg.Tables.TbGongFaCfg.DataList.Where((cfg) => { return cfg.BookType == GetSelectedBookType(); }).AsEnumerable<object>().ToList();
+            m_list_book.RefreshList(m_BookList);
+
+            m_list_book.RefreshSelectionController();
         }
 
         private void OnRenderRole(int index, GObject obj, object data)
@@ -50,8 +62,13 @@ namespace FGUI.Common
 
         private void OnRenderBook(int index, GObject item, object data)
         {
-            var cfg = GameMgr.Cfg.Tables.TbGongFaCfg.DataList[index];
+            var cfg = data as GongFaCfg;
             item.asButton.title = cfg.Name;
+        }
+
+        private void OnRenderBookType(int index, GObject item, object data)
+        {
+            item.text = BookTypeList[index].GetName();
         }
 
         private void RefreshRoleInfo()
@@ -64,10 +81,11 @@ namespace FGUI.Common
             var index = m_list_book.selectedIndex;
             if (index < 0)
             {
+                m_txt_book.text = "";
                 return;
             }
 
-            var cfg = GameMgr.Cfg.Tables.TbGongFaCfg.DataList[index];
+            var cfg = m_BookList[index] as GongFaCfg;
             var txt = string.Format("{0}\n简介：{1}\n", cfg.Name, cfg.Desc);
             foreach(var buffId in cfg.BuffList)
             {
@@ -75,7 +93,6 @@ namespace FGUI.Common
             }
 
             m_txt_book.text = txt;
-
         }
 
         private string GetBuffDesc(int id)
@@ -108,7 +125,7 @@ namespace FGUI.Common
         private void OnClickBtnLearn()
         {
             var role = GetSelectedRole();
-            var bookCfg = GameMgr.Cfg.Tables.TbGongFaCfg.DataList[m_list_book.selectedIndex];
+            var bookCfg = m_BookList[m_list_book.selectedIndex] as GongFaCfg;
             role?.LearnGongFa(bookCfg.Id);
 
             RefreshList();
@@ -123,6 +140,12 @@ namespace FGUI.Common
             }
 
             return m_RoleList[index] as Role;
+        }
+
+        public EBookType GetSelectedBookType()
+        {
+            var index = m_list_book_type.selectedIndex;
+            return BookTypeList[index];
         }
     }
 }

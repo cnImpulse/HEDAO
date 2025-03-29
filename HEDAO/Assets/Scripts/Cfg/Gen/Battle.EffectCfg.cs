@@ -24,6 +24,7 @@ public abstract partial class EffectCfg : Luban.BeanBase
         switch (_buf.ReadInt())
         {
             case Battle.AddBuffEffect.__ID__: return new Battle.AddBuffEffect(_buf);
+            case Battle.AddSkillEffect.__ID__: return new Battle.AddSkillEffect(_buf);
             case Battle.AttackEffect.__ID__: return new Battle.AttackEffect(_buf);
             case Battle.AttrModifyEffect.__ID__: return new Battle.AttrModifyEffect(_buf);
             case Battle.MoveEffect.__ID__: return new Battle.MoveEffect(_buf);

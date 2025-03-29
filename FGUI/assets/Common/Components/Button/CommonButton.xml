@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="120,120" pivot="0.5,0.5" extention="Button" initName="btn_">
-  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="1"/>
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
   <displayList>
-    <loader id="n2_aobo" name="icon" xy="0,0" pivot="0.5,0.5" size="120,120" url="ui://rt51n0kjntsy4" align="center" vAlign="middle" fill="scaleFree" color="#cccccc">
+    <loader id="n2_aobo" name="icon" xy="0,0" pivot="0.5,0.5" size="120,120" url="ui://rt51n0kjntsy4" align="center" vAlign="middle" fill="scaleFree">
       <gearColor controller="button" pages="1,2,3" values="#cccccc|#cccccc|#cccccc" default="#ffffff" tween="true" duration=".2"/>
       <relation target="" sidePair="width-width,height-height"/>
     </loader>

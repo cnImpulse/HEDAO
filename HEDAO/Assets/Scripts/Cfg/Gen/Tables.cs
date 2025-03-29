@@ -16,6 +16,7 @@ public partial class Tables
     public Battle.TbCharacter TbCharacter {get; }
     public Effect.TbEffect TbEffect {get; }
     public Effect.TbGridEffect TbGridEffect {get; }
+    public Battle.TbSkillCfg TbSkillCfg {get; }
     public Battle.TbBuffCfg TbBuffCfg {get; }
     public Battle.TbEffectCfg TbEffectCfg {get; }
     public Battle.TbConditionCfg TbConditionCfg {get; }
@@ -32,6 +33,7 @@ public partial class Tables
         TbCharacter = new Battle.TbCharacter(loader("battle_tbcharacter"));
         TbEffect = new Effect.TbEffect(loader("effect_tbeffect"));
         TbGridEffect = new Effect.TbGridEffect(loader("effect_tbgrideffect"));
+        TbSkillCfg = new Battle.TbSkillCfg(loader("battle_tbskillcfg"));
         TbBuffCfg = new Battle.TbBuffCfg(loader("battle_tbbuffcfg"));
         TbEffectCfg = new Battle.TbEffectCfg(loader("battle_tbeffectcfg"));
         TbConditionCfg = new Battle.TbConditionCfg(loader("battle_tbconditioncfg"));
@@ -50,6 +52,7 @@ public partial class Tables
         TbCharacter.ResolveRef(this);
         TbEffect.ResolveRef(this);
         TbGridEffect.ResolveRef(this);
+        TbSkillCfg.ResolveRef(this);
         TbBuffCfg.ResolveRef(this);
         TbEffectCfg.ResolveRef(this);
         TbConditionCfg.ResolveRef(this);

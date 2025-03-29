@@ -60,12 +60,6 @@
 		<var name="Enemy" alias="敌方" />
 	</enum>
 
-	<enum name="EDamageTag" comment="伤害标签">
-		<var name="None" alias="默认" />
-		<var name="LinHu" alias="灵护" />
-		<var name="ZhuXie" alias="诛邪" />
-	</enum>
-
 	<enum name="EWuXinType" comment="五行">
 		<var name="Jin" alias="金" />
 		<var name="Mu" alias="木" />
@@ -80,4 +74,9 @@
 		<var name="WoMan" alias="女" />
 	</enum>
 	
+	<enum name="EBookType" comment="秘籍">
+		<var name="DaoFa" alias="道法" />
+		<var name="ShuFa" alias="术法" />
+		<var name="DunShu" alias="遁术" />
+	</enum>
 </module>

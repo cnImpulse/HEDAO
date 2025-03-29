@@ -44,6 +44,7 @@
     <component id="hmyt5w" name="BtnBuilding.xml" path="/Forms/Menu/MenuHome/"/>
     <component id="8r1d5x" name="BtnBook.xml" path="/Forms/Menu/MenuHome/"/>
     <component id="8r1d5y" name="CommonTxt.xml" path="/Components/Button/"/>
+    <component id="m46u5z" name="BtnBookType.xml" path="/Forms/Menu/MenuHome/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

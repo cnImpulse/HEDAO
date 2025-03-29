@@ -10,11 +10,11 @@
     <graph id="n7_xmrn" name="n7" xy="72,72" pivot="0.5,0.5" size="5,5" type="eclipse" lineSize="3" fillColor="#ff000000">
       <relation target="" sidePair="width-width,height-height"/>
     </graph>
-    <text id="n4_xmrn" name="text_wuxin_0" xy="86,137" pivot="0.5,0.5" size="84,34" fontSize="24" align="center" vAlign="middle" text="金：99"/>
-    <text id="n6_xmrn" name="text_wuxin_1" xy="-22,137" pivot="0.5,0.5" size="84,34" fontSize="24" align="center" vAlign="middle" text="木：00"/>
-    <text id="n5_xmrn" name="text_wuxin_2" xy="-84,39" pivot="0.5,0.5" size="84,34" fontSize="24" align="center" vAlign="middle" text="水：99"/>
-    <text id="n2_xmrn" name="text_wuxin_3" xy="25,-38" pivot="0.5,0.5" size="98,34" fontSize="24" align="center" vAlign="middle" text="火：100"/>
-    <text id="n3_xmrn" name="text_wuxin_4" xy="147,39" pivot="0.5,0.5" size="84,34" fontSize="24" align="center" vAlign="middle" text="土：99"/>
-    <text id="n8_xmrn" name="n8" xy="1,185" pivot="0.5,0.5" size="148,44" fontSize="32" align="center" vAlign="middle" text="五行资质"/>
+    <text id="n4_xmrn" name="text_wuxin_0" xy="86,137" pivot="0.5,0.5" size="84,34" font="ui://rt51n0kjekn09" fontSize="24" align="center" vAlign="middle" text="金：99"/>
+    <text id="n6_xmrn" name="text_wuxin_1" xy="-22,137" pivot="0.5,0.5" size="84,34" font="ui://rt51n0kjekn09" fontSize="24" align="center" vAlign="middle" text="木：00"/>
+    <text id="n5_xmrn" name="text_wuxin_2" xy="-84,39" pivot="0.5,0.5" size="84,34" font="ui://rt51n0kjekn09" fontSize="24" align="center" vAlign="middle" text="水：99"/>
+    <text id="n2_xmrn" name="text_wuxin_3" xy="25,-38" pivot="0.5,0.5" size="98,34" font="ui://rt51n0kjekn09" fontSize="24" align="center" vAlign="middle" text="火：100"/>
+    <text id="n3_xmrn" name="text_wuxin_4" xy="147,39" pivot="0.5,0.5" size="84,34" font="ui://rt51n0kjekn09" fontSize="24" align="center" vAlign="middle" text="土：99"/>
+    <text id="n8_xmrn" name="n8" xy="1,185" pivot="0.5,0.5" size="148,44" font="ui://rt51n0kjekn09" fontSize="32" align="center" vAlign="middle" text="五行资质"/>
   </displayList>
 </component>

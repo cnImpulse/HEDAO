@@ -12,25 +12,25 @@ namespace Cfg
 { 
 
     /// <summary>
-    /// 伤害标签
+    /// 关系类型
     /// </summary>
-    public enum EDamageTag
+    public enum ERelationType
     {
         /// <summary>
-        /// 默认
+        /// 己方
         /// </summary>
-        [EnumName("默认")]
-        None = 0,
+        [EnumName("己方")]
+        Self = 0,
         /// <summary>
-        /// 灵护
+        /// 友方
         /// </summary>
-        [EnumName("灵护")]
-        LinHu = 1,
+        [EnumName("友方")]
+        Friend = 1,
         /// <summary>
-        /// 诛邪
+        /// 敌方
         /// </summary>
-        [EnumName("诛邪")]
-        ZhuXie = 2,
+        [EnumName("敌方")]
+        Enemy = 2,
     }
 
 }

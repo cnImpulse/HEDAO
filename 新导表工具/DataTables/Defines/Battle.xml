@@ -7,10 +7,13 @@
         <var name="BuffList" type="list,int"/>
     </bean>
 
-    <bean name="AttackEffect" parent="EffectCfg" alias="Attack">
-        <var name="Power" type="int"/>
+    <bean name="AddSkillEffect" parent="EffectCfg" alias="获取技能">
+        <var name="SkillList" type="list,int"/>
+    </bean>
+
+    <bean name="AttackEffect" parent="EffectCfg" alias="攻击">
+        <var name="DamageRatio" type="int"/>
         <var name="DamageType" type="EDamageType"/>
-        <var name="DamageTag" type="EDamageTag"/>
     </bean>
 
     <bean name="AttrModifyEffect" parent="EffectCfg" alias="修改属性">
@@ -30,7 +33,7 @@
 	<bean name="BuffCfg">
 		<var name="Id" type="int"/>
         <var name="Desc" type="string"/>
-		<var name="EffectList" type="list,int"/>
+		<var name="EffectList" type="(list#sep=,),int"/>
 	</bean>
 
 	<bean name="CommonBuffCfg" parent="BuffCfg" alias="通用" >
