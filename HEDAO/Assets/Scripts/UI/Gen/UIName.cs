@@ -5,4 +5,5 @@ public static partial class UIName
         public const string MenuHome = "MenuHome";
         public const string MenuActionSelect = "MenuActionSelect";
         public const string MenuRole = "MenuRole";
+        public const string MenuExplore = "MenuExplore";
 }

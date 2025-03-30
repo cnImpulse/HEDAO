@@ -9,7 +9,6 @@ namespace FGUI.Common
     {
         public GButton m_btn_close;
         public GLabel m_txt_role;
-        public FGUIVerticalList m_list_role;
         public FGUIRadarWidget m_rader;
         public const string URL = "ui://rt51n0kjrnio61";
 
@@ -24,7 +23,6 @@ namespace FGUI.Common
 
             m_btn_close = (GButton)GetChild("btn_close");
             m_txt_role = (GLabel)GetChild("txt_role");
-            m_list_role = (FGUIVerticalList)GetChild("list_role");
             m_rader = (FGUIRadarWidget)GetChild("rader");
         }
     }

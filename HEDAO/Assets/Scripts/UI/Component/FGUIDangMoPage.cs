@@ -18,6 +18,12 @@ namespace FGUI.Common
         {
             m_list_role.m_list.itemRenderer = OnRenderRole;
             m_list_team.m_list.itemRenderer = OnRenderTeamRole;
+            m_panel_task.m_btn_go.onClick.Set(OnClickGo);
+        }
+
+        private void OnClickGo()
+        {
+            GameMgr.Procedure.Fsm.ChangeState<ProcedureExplore>();
         }
 
         private void OnRenderRole(int index, GObject obj, object data)

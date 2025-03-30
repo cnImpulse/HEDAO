@@ -23,12 +23,19 @@ public class Role : Entity, IEffectTarget
 
         BattleAttr = new AttributeDict();
         BattleAttr.ModifyAttrDict(cfg.InitAttr);
+        ResetBattleState();
 
         WuXin = new Dictionary<EWuXinType, int>();
         for (int i = 0; i < 5; i++)
         {
             WuXin.Add((EWuXinType)i, Random.Range(cfg.WuXinRange.Min, cfg.WuXinRange.Max));
         }
+    }
+
+    public void ResetBattleState()
+    {
+        BattleAttr.InitAttr(EAttrType.HP, BattleAttr.GetAttr(EAttrType.MaxHP), 0, BattleAttr.GetAttr(EAttrType.MaxHP));
+        BattleAttr.InitAttr(EAttrType.QI, BattleAttr.GetAttr(EAttrType.MaxQI), 0, BattleAttr.GetAttr(EAttrType.MaxQI));
     }
 
     public void LevelUp(int level)

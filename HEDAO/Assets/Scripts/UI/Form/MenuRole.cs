@@ -42,8 +42,9 @@ public class MenuRole : UIBase
         info += $"年龄：{attr.GetAttr(EAttrType.Age)} 寿命：{attr.GetAttr(EAttrType.Life)}\n";
 
         var levelCfg = GameMgr.Cfg.Tables.TbLevelCfg.Get(role.Level);
-        info += $"境界：{levelCfg.Name} {EAttrType.Exp.GetName()}: {attr.GetAttr(EAttrType.Exp)}/{levelCfg.Exp}\n";
-        
+        info += $"境界：{levelCfg.Name} {EAttrType.Exp.GetName()}: {attr.GetAttr(EAttrType.Exp)}/{levelCfg.UpExp} ";
+        info += $"{EAttrType.Break.GetName()}: {attr.GetAttr(EAttrType.Break)}/{levelCfg.UpBreak}\n";
+
         var attrList = GameMgr.Cfg.Tables.TbMisc.AttrTypeList;
         for (int i = 0; i < attrList.Count; i++)
         {

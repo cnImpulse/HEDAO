@@ -11,5 +11,6 @@ public static partial class UICfg
         cfg[UIName.MenuHome] = new UICfgItem(typeof(MenuHome), FGUIMenuHome.URL);
         cfg[UIName.MenuActionSelect] = new UICfgItem(typeof(MenuActionSelect), FGUIMenuActionSelect.URL);
         cfg[UIName.MenuRole] = new UICfgItem(typeof(MenuRole), FGUIMenuRole.URL);
+        cfg[UIName.MenuExplore] = new UICfgItem(typeof(MenuExplore), FGUIMenuExplore.URL);
     }
 }

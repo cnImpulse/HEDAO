@@ -19,7 +19,8 @@ public sealed partial class LevelCfg : Luban.BeanBase
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
         MaxQi = _buf.ReadInt();
-        Exp = _buf.ReadInt();
+        UpExp = _buf.ReadInt();
+        UpBreak = _buf.ReadInt();
     }
 
     public static LevelCfg DeserializeLevelCfg(ByteBuf _buf)
@@ -40,15 +41,20 @@ public sealed partial class LevelCfg : Luban.BeanBase
     /// </summary>
     public readonly int MaxQi;
     /// <summary>
-    /// 突破瓶颈值
+    /// 突破修为
     /// </summary>
-    public readonly int Exp;
+    public readonly int UpExp;
+    /// <summary>
+    /// 破境值
+    /// </summary>
+    public readonly int UpBreak;
    
     public const int __ID__ = -2067008928;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -61,7 +67,8 @@ public sealed partial class LevelCfg : Luban.BeanBase
         + "Id:" + Id + ","
         + "Name:" + Name + ","
         + "MaxQi:" + MaxQi + ","
-        + "Exp:" + Exp + ","
+        + "UpExp:" + UpExp + ","
+        + "UpBreak:" + UpBreak + ","
         + "}";
     }
 }

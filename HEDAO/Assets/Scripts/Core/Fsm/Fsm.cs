@@ -31,8 +31,14 @@ public class Fsm
         return fsm;
     }
 
-    public void ChangeState(FsmState state)
+    public void ChangeState<T>()
+        where T : FsmState
     {
+        if (!m_States.TryGetValue(typeof(T), out var state))
+        {
+            return;
+        }
+
         if (m_CurState == state)
         {
             return;
