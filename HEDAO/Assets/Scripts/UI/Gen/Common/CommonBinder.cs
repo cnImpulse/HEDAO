@@ -18,7 +18,6 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUISkillItem.URL, typeof(FGUISkillItem));
             UIObjectFactory.SetPackageItemExtension(FGUIBookPage.URL, typeof(FGUIBookPage));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuHome.URL, typeof(FGUIMenuHome));
-            UIObjectFactory.SetPackageItemExtension(FGUIDiscipleForm.URL, typeof(FGUIDiscipleForm));
             UIObjectFactory.SetPackageItemExtension(FGUIQiuDaoPage.URL, typeof(FGUIQiuDaoPage));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuActionSelect.URL, typeof(FGUIMenuActionSelect));
             UIObjectFactory.SetPackageItemExtension(FGUIBtnAction.URL, typeof(FGUIBtnAction));

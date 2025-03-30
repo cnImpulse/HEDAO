@@ -31,7 +31,7 @@ public class Fsm
         return fsm;
     }
 
-    public void ChangeState<T>()
+    public void ChangeState<T>(object data = default)
         where T : FsmState
     {
         if (!m_States.TryGetValue(typeof(T), out var state))
@@ -46,13 +46,13 @@ public class Fsm
 
         m_CurState.OnLeave();
         m_CurState = state;
-        m_CurState.OnEnter();
+        m_CurState.OnEnter(data);
     }
 
     public void Start(Type stateType)
     {
         m_CurState = GetState(stateType); ;
-        m_CurState.OnEnter();
+        m_CurState.OnEnter(default);
     }
 
     public FsmState GetState(Type type)

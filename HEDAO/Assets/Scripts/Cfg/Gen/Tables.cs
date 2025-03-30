@@ -25,8 +25,7 @@ public partial class Tables
     public XiuLian.TbLevelCfg TbLevelCfg {get; }
     public ZongMen.TbRoleTempCfg TbRoleTempCfg {get; }
     public Entity.TbEntityCfg TbEntityCfg {get; }
-    public World.TbWorldUnitCfg TbWorldUnitCfg {get; }
-    public World.TbActionCfg TbActionCfg {get; }
+    public Common.TbExploreNodeCfg TbExploreNodeCfg {get; }
     public Common.TbMisc TbMisc {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
@@ -43,8 +42,7 @@ public partial class Tables
         TbLevelCfg = new XiuLian.TbLevelCfg(loader("xiulian_tblevelcfg"));
         TbRoleTempCfg = new ZongMen.TbRoleTempCfg(loader("zongmen_tbroletempcfg"));
         TbEntityCfg = new Entity.TbEntityCfg(loader("entity_tbentitycfg"));
-        TbWorldUnitCfg = new World.TbWorldUnitCfg(loader("world_tbworldunitcfg"));
-        TbActionCfg = new World.TbActionCfg(loader("world_tbactioncfg"));
+        TbExploreNodeCfg = new Common.TbExploreNodeCfg(loader("common_tbexplorenodecfg"));
         TbMisc = new Common.TbMisc(loader("common_tbmisc"));
         ResolveRef();
     }
@@ -63,8 +61,7 @@ public partial class Tables
         TbLevelCfg.ResolveRef(this);
         TbRoleTempCfg.ResolveRef(this);
         TbEntityCfg.ResolveRef(this);
-        TbWorldUnitCfg.ResolveRef(this);
-        TbActionCfg.ResolveRef(this);
+        TbExploreNodeCfg.ResolveRef(this);
         TbMisc.ResolveRef(this);
     }
 }

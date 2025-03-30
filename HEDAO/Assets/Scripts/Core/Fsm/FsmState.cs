@@ -10,7 +10,7 @@ public abstract class FsmState
     {
     }
 
-    public virtual void OnEnter()
+    public virtual void OnEnter(object data)
     {
     }
 

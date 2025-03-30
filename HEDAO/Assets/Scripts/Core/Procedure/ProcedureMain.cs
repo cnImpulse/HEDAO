@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ProcedureMain : FsmState
 {
-    public override void OnEnter()
+    public override void OnEnter(object data)
     {
-        base.OnEnter();
+        base.OnEnter(data);
 
         GameMgr.UI.OpenUI(UIName.MenuMain);
     }

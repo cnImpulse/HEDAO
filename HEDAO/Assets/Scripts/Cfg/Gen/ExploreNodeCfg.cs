@@ -12,19 +12,20 @@ using Luban;
 
 namespace Cfg
 {
-public sealed partial class ActionCfg : Luban.BeanBase
+public sealed partial class ExploreNodeCfg : Luban.BeanBase
 {
-    public ActionCfg(ByteBuf _buf) 
+    public ExploreNodeCfg(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
         Desc = _buf.ReadString();
         BattleId = _buf.ReadInt();
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);EffectList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); EffectList.Add(_e0);}}
     }
 
-    public static ActionCfg DeserializeActionCfg(ByteBuf _buf)
+    public static ExploreNodeCfg DeserializeExploreNodeCfg(ByteBuf _buf)
     {
-        return new ActionCfg(_buf);
+        return new ExploreNodeCfg(_buf);
     }
 
     /// <summary>
@@ -43,12 +44,17 @@ public sealed partial class ActionCfg : Luban.BeanBase
     /// 战斗
     /// </summary>
     public readonly int BattleId;
+    /// <summary>
+    ///  效果列表
+    /// </summary>
+    public readonly System.Collections.Generic.List<int> EffectList;
    
-    public const int __ID__ = -2092730834;
+    public const int __ID__ = -1412534001;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -62,6 +68,7 @@ public sealed partial class ActionCfg : Luban.BeanBase
         + "Name:" + Name + ","
         + "Desc:" + Desc + ","
         + "BattleId:" + BattleId + ","
+        + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
         + "}";
     }
 }

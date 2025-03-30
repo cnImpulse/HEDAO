@@ -25,7 +25,6 @@
     <component id="vg3s54" name="BattleStateEffect.xml" path="/Forms/Float/" exported="true"/>
     <component id="mv3555" name="MenuHome.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="mv3556" name="CommonButton.xml" path="/Components/Button/"/>
-    <component id="mv3557" name="DiscipleForm.xml" path="/Forms/Float/" exported="true"/>
     <component id="soef5a" name="RadarWidget.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="aow85c" name="List.xml" path="/Components/Temp/" exported="true"/>
     <component id="aow85e" name="VerticalList.xml" path="/Components/Temp/" exported="true"/>
@@ -46,6 +45,7 @@
     <component id="rnio61" name="MenuRole.xml" path="/Forms/Menu/MenuRole/" exported="true"/>
     <component id="seah62" name="MenuExplore.xml" path="/Forms/Menu/MenuExplore/" exported="true"/>
     <component id="seah63" name="RoleItem.xml" path="/Forms/Menu/MenuExplore/" exported="true"/>
+    <component id="seah64" name="BtnNode.xml" path="/Forms/Menu/MenuExplore/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

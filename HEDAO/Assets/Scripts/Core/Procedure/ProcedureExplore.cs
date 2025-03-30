@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ProcedureExplore : FsmState
 {
-    public override void OnEnter()
+    public override void OnEnter(object data)
     {
-        base.OnEnter();
+        base.OnEnter(data);
 
         foreach (var id in GameMgr.Save.Data.RoleTeamSet)
         {

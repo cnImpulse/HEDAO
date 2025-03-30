@@ -8,6 +8,7 @@ namespace FGUI.Common
     public partial class FGUIMenuExplore : GComponent
     {
         public GList m_list_role;
+        public GList m_list_node;
         public const string URL = "ui://rt51n0kjseah62";
 
         public static FGUIMenuExplore CreateInstance()
@@ -20,6 +21,7 @@ namespace FGUI.Common
             base.ConstructFromXML(xml);
 
             m_list_role = (GList)GetChild("list_role");
+            m_list_node = (GList)GetChild("list_node");
         }
     }
 }
