@@ -77,10 +77,10 @@ namespace Cfg
         [EnumName("神识")]
         SSI = 11,
         /// <summary>
-        /// 法身
+        /// 灵抗
         /// </summary>
-        [EnumName("法身")]
-        FAS = 12,
+        [EnumName("灵抗")]
+        LNK = 12,
         /// <summary>
         /// 生命
         /// </summary>
@@ -122,10 +122,10 @@ namespace Cfg
         [EnumName("神识成长")]
         SSIUp = 20,
         /// <summary>
-        /// 法身成长
+        /// 灵抗成长
         /// </summary>
-        [EnumName("法身成长")]
-        FASUp = 21,
+        [EnumName("灵抗成长")]
+        LNKUp = 21,
         /// <summary>
         /// 护盾
         /// </summary>

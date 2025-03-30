@@ -26,6 +26,7 @@ public partial class Tables
     public ZongMen.TbRoleTempCfg TbRoleTempCfg {get; }
     public Entity.TbEntityCfg TbEntityCfg {get; }
     public Common.TbExploreNodeCfg TbExploreNodeCfg {get; }
+    public Common.TbRoleTagCfg TbRoleTagCfg {get; }
     public Common.TbMisc TbMisc {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
@@ -43,6 +44,7 @@ public partial class Tables
         TbRoleTempCfg = new ZongMen.TbRoleTempCfg(loader("zongmen_tbroletempcfg"));
         TbEntityCfg = new Entity.TbEntityCfg(loader("entity_tbentitycfg"));
         TbExploreNodeCfg = new Common.TbExploreNodeCfg(loader("common_tbexplorenodecfg"));
+        TbRoleTagCfg = new Common.TbRoleTagCfg(loader("common_tbroletagcfg"));
         TbMisc = new Common.TbMisc(loader("common_tbmisc"));
         ResolveRef();
     }
@@ -62,6 +64,7 @@ public partial class Tables
         TbRoleTempCfg.ResolveRef(this);
         TbEntityCfg.ResolveRef(this);
         TbExploreNodeCfg.ResolveRef(this);
+        TbRoleTagCfg.ResolveRef(this);
         TbMisc.ResolveRef(this);
     }
 }

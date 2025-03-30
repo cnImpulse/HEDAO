@@ -29,7 +29,7 @@
 		<var name="STR" alias="力量" />
 		<var name="TPO" alias="体魄" />
 		<var name="SSI" alias="神识" />
-		<var name="FAS" alias="法身" />
+		<var name="LNK" alias="灵抗" />
 
 		<var name="HP" alias="生命" />
 		<var name="QI" alias="灵气" />
@@ -41,7 +41,7 @@
 		<var name="STRUp" alias="力量成长" />
 		<var name="TPOUp" alias="体魄成长" />
 		<var name="SSIUp" alias="神识成长" />
-		<var name="FASUp" alias="法身成长" />
+		<var name="LNKUp" alias="灵抗成长" />
 
 		<var name="Shield" alias="护盾" />
 	</enum>

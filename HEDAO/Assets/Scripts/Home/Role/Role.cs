@@ -11,6 +11,7 @@ public class Role : Entity, IEffectTarget
     
     public Dictionary<EBookType, int> BookDict = new Dictionary<EBookType, int>();
     public HashSet<int> SkillSet = new HashSet<int>();
+    public HashSet<int> TagSet = new HashSet<int>();
 
     public Dictionary<EWuXinType, int> WuXin { get; private set; }
     public AttributeDict BattleAttr { get; private set; }
@@ -30,6 +31,16 @@ public class Role : Entity, IEffectTarget
         {
             WuXin.Add((EWuXinType)i, Random.Range(cfg.WuXinRange.Min, cfg.WuXinRange.Max));
         }
+
+        var tagList = GameMgr.Cfg.Tables.TbRoleTagCfg.DataList;
+        AddTag(tagList[Random.Range(0, tagList.Count)].Id);
+    }
+
+    public void AddTag(int id)
+    {
+        TagSet.Add(id);
+        var cfg = GameMgr.Cfg.Tables.TbRoleTagCfg.Get(id);
+        EffectCfg.TakeEffectList(cfg.EffectList, null, this);
     }
 
     public void ResetBattleState()

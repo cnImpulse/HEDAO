@@ -2,8 +2,8 @@
 <component size="1920,924">
   <displayList>
     <component id="n1_nenx" name="list_role" src="aow85e" fileName="Components/Temp/VerticalList.xml" xy="0,-1" pivot="0.5,0.5" size="200,924"/>
-    <richtext id="n2_nenx" name="text_role" xy="230,30" pivot="0.5,0.5" size="1660,864" font="ui://rt51n0kjekn09" fontSize="48" autoSize="none" text="名字：陆羽"/>
-    <component id="n3_xmrn" name="rader" src="soef5a" fileName="Forms/Menu/MenuHome/RadarWidget.xml" xy="1059,90" pivot="0.5,0.5"/>
+    <richtext id="n2_nenx" name="text_role" xy="230,30" pivot="0.5,0.5" size="1660,864" font="ui://rt51n0kjekn09" fontSize="32" autoSize="none" text="名字：陆羽"/>
+    <component id="n3_xmrn" name="rader" src="soef5a" fileName="Forms/Menu/MenuHome/RadarWidget.xml" xy="1146,93" pivot="0.5,0.5"/>
     <component id="n5_n9mh" name="btn_get" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="256,754">
       <Button title="招募" titleFontSize="32"/>
     </component>

@@ -76,22 +76,7 @@ namespace FGUI.Common
             }
 
             var role = m_RoleList[selectIndex];
-            var attr = role.BattleAttr;
-            var info = $"姓名：{role.Name}\n";
-            info += $"年龄：{attr.GetAttr(EAttrType.Age)} 寿命：{attr.GetAttr(EAttrType.Life)}\n";
-
-            var attrList = GameMgr.Cfg.Tables.TbMisc.AttrTypeList;
-            for (int i = 0; i < attrList.Count; i++)
-            {
-                var attrType= attrList[i];
-                info += $"{attrType.GetName()}：{attr.GetAttr(attrType)} ";
-                if (i % 2 == 1)
-                {
-                    info += '\n';
-                }
-            }
-
-            m_text_role.text = info;
+            m_text_role.text = RoleUtil.GetRoleInfo(role);
             m_rader.Refresh(role);
         }
     }
