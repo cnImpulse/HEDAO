@@ -11,6 +11,8 @@ public static class GameMgr
     public static UIManager UI;
     public static ProcedureManager Procedure;
     public static EntityManager Entity;
+    public static BattleManager Battle;
+    public static ExploreManager Explore;
 
     private static List<BaseManager> ManagerList = new List<BaseManager>();
 
@@ -40,6 +42,8 @@ public static class GameMgr
         UI = CreateManager<UIManager>();
         Procedure = CreateManager<ProcedureManager>();
         Entity = CreateManager<EntityManager>();
+        Battle = CreateManager<BattleManager>();
+        Explore = CreateManager<ExploreManager>();
     }
 
     private static T CreateManager<T>()

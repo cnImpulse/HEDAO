@@ -23,7 +23,7 @@ namespace FGUI.Common
 
         private void OnClickGo()
         {
-            GameMgr.Procedure.Fsm.ChangeState<ProcedureExplore>();
+            GameMgr.Explore.StartExplore();
         }
 
         private void OnRenderRole(int index, GObject obj, object data)

@@ -10,6 +10,6 @@ public class BattleNode : ExploreNode
 
     public override void OnSelected()
     {
-        GameMgr.Procedure.Fsm.ChangeState<ProcedureBattle>();
+        GameMgr.Battle.StartBattle(Cfg.BattleId);
     }
 }

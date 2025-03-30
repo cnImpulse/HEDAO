@@ -38,9 +38,8 @@ public class WinLoadGame : UIBase
 
     private void OnClickLoad(int index)
     {
-        GameMgr.Save.LoadGame(index);
         GameMgr.UI.CloseAllUI();
-        GameMgr.UI.OpenUI(UIName.MenuHome);
+        GameMgr.Save.LoadGame(index);
     }
 
     protected override void OnShow()

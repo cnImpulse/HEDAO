@@ -8,6 +8,7 @@ public class ProcedureBattle : FsmState
     {
         base.OnEnter(data);
 
+        GameMgr.Save.Data.SceneType = SceneType.Battle;
     }
 
     public override void OnLeave()

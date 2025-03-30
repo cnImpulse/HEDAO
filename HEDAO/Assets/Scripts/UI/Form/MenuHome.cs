@@ -65,8 +65,6 @@ public class MenuHome : UIBase
     
     protected override void OnClose()
     {
-        GameMgr.Save.SaveGame();
-
         base.OnClose();
     }
 

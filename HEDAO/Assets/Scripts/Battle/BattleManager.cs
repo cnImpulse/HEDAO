@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BattleManager : BaseManager
 {
-    public GridMap BattleMap { get; private set; }
+    public BattleData Data => GameMgr.Save.Data.BattleData;
 
     protected override void OnInit()
     {
@@ -14,7 +14,8 @@ public class BattleManager : BaseManager
 
     public void StartBattle(int id)
     {
-
+        GameMgr.Save.Data.BattleData = new BattleData();
+        GameMgr.Procedure.Fsm.ChangeState<ProcedureBattle>();
     }
 
     protected void CreatBattleMap(int id)

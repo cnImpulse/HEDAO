@@ -37,6 +37,13 @@ public class SaveManager : BaseManager
         };
     }
 
+    protected override void OnCleanUp()
+    {
+        SaveGame();
+
+        base.OnCleanUp();
+    }
+
     public void LoadGame(int index)
     {
         SaveIndex = index;
@@ -52,6 +59,13 @@ public class SaveManager : BaseManager
             Data.Init();
             
             SaveGame();
+        }
+
+        switch (Data.SceneType)
+        {
+            case SceneType.Home: GameMgr.Procedure.Fsm.ChangeState<ProcedureHome>(); break;
+            case SceneType.Explore: GameMgr.Procedure.Fsm.ChangeState<ProcedureExplore>(); break;
+            case SceneType.Battle: GameMgr.Procedure.Fsm.ChangeState<ProcedureBattle>(); break;
         }
     }
 
