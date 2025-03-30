@@ -5,14 +5,14 @@ using FairyGUI.Utils;
 
 namespace FGUI.Common
 {
-    public partial class FGUIBattleForm : GComponent
+    public partial class FGUIHudBattle : GComponent
     {
         public GButton m_btn_start;
         public const string URL = "ui://rt51n0kjut3j4p";
 
-        public static FGUIBattleForm CreateInstance()
+        public static FGUIHudBattle CreateInstance()
         {
-            return (FGUIBattleForm)UIPackage.CreateObject("Common", "BattleForm");
+            return (FGUIHudBattle)UIPackage.CreateObject("Common", "HudBattle");
         }
 
         public override void ConstructFromXML(XML xml)

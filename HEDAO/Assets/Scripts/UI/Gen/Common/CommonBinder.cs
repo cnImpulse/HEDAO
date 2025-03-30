@@ -30,7 +30,7 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIRoleItem.URL, typeof(FGUIRoleItem));
             UIObjectFactory.SetPackageItemExtension(FGUIRadarWidget.URL, typeof(FGUIRadarWidget));
             UIObjectFactory.SetPackageItemExtension(FGUITeamList.URL, typeof(FGUITeamList));
-            UIObjectFactory.SetPackageItemExtension(FGUIBattleForm.URL, typeof(FGUIBattleForm));
+            UIObjectFactory.SetPackageItemExtension(FGUIHudBattle.URL, typeof(FGUIHudBattle));
             UIObjectFactory.SetPackageItemExtension(FGUIActionForm.URL, typeof(FGUIActionForm));
             UIObjectFactory.SetPackageItemExtension(FGUIActionPanel.URL, typeof(FGUIActionPanel));
             UIObjectFactory.SetPackageItemExtension(FGUIBattleStateEffect.URL, typeof(FGUIBattleStateEffect));

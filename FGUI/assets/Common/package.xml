@@ -13,7 +13,7 @@
     <image id="ja3tf" name="Close.png" path="/Resources/Images/" smoothing="false"/>
     <component id="ja3th" name="CloseButton.xml" path="/Components/Button/"/>
     <component id="105c4o" name="Check.xml" path="/Components/Button/"/>
-    <component id="ut3j4p" name="BattleForm.xml" path="/Forms/FullScreen/" exported="true"/>
+    <component id="ut3j4p" name="HudBattle.xml" path="/Forms/Menu/" exported="true"/>
     <component id="uyzr4r" name="ActionForm.xml" path="/Forms/FullScreen/" exported="true"/>
     <component id="uyzr4t" name="ActionPanel.xml" path="/Components/Temp/" exported="true"/>
     <component id="uyzr4v" name="ActionItem.xml" path="/Components/ListItem/" exported="true"/>
