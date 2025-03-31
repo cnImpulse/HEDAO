@@ -8,13 +8,13 @@ namespace Cfg.Battle
         public override void OnTakeEffect(IEffectTarget caster, IEffectTarget target)
         {
             var targetUnit = target as Role;
-            targetUnit.BattleAttr.ModifyAttrDict(AttrDict);
+            targetUnit.Attr.ModifyAttrDict(AttrDict);
         }
         
         public override void OnResetEffect(IEffectTarget caster, IEffectTarget target)
         {
             var targetUnit = target as Role;
-            var battleAttr = targetUnit.BattleAttr;
+            var battleAttr = targetUnit.Attr;
         }
     }
 }

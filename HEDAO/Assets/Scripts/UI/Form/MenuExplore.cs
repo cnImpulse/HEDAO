@@ -43,10 +43,10 @@ public class MenuExplore : UIBase
     {
         var role = data as Role;
         var item = obj as FGUIRoleItem;
-        item.m_bar_hp.value = role.BattleAttr.GetAttr(EAttrType.HP);
-        item.m_bar_hp.max = role.BattleAttr.GetAttr(EAttrType.MaxHP);
-        item.m_bar_qi.value = role.BattleAttr.GetAttr(EAttrType.QI);
-        item.m_bar_qi.max = role.BattleAttr.GetAttr(EAttrType.MaxQI);
+        item.m_bar_hp.value = role.Attr.GetAttrValue(EAttrType.HP);
+        item.m_bar_hp.max = role.Attr.GetAttrValue(EAttrType.MaxHP);
+        item.m_bar_qi.value = role.Attr.GetAttrValue(EAttrType.QI);
+        item.m_bar_qi.max = role.Attr.GetAttrValue(EAttrType.MaxQI);
 
         var btn = item.m_btn_role as FGUIBtnRole;
         btn.mode = ButtonMode.Common;

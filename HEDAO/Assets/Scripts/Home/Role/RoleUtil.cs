@@ -16,20 +16,20 @@ public static class RoleUtil
 
     public static string GetRoleAttrInfo(Role role)
     {
-        var attr = role.BattleAttr;
+        var attr = role.Attr;
         var info = $"姓名：{role.Name} {GetRoleTagInfo(role)}\n";
 
-        info += $"年龄：{attr.GetAttr(EAttrType.Age)} 寿命：{attr.GetAttr(EAttrType.Life)}\n";
+        info += $"年龄：{attr.GetAttrValue(EAttrType.Age)} 寿命：{attr.GetAttrValue(EAttrType.Life)}\n";
 
         var levelCfg = GameMgr.Cfg.TbLevelCfg.Get(role.Level);
-        info += $"境界：{levelCfg.Name} {EAttrType.Exp.GetName()}: {attr.GetAttr(EAttrType.Exp)}/{levelCfg.UpExp} ";
-        info += $"{EAttrType.Break.GetName()}: {attr.GetAttr(EAttrType.Break)}/{levelCfg.UpBreak}\n";
+        info += $"境界：{levelCfg.Name} {EAttrType.Exp.GetName()}: {attr.GetAttrValue(EAttrType.Exp)}/{levelCfg.UpExp} ";
+        info += $"{EAttrType.Break.GetName()}: {attr.GetAttrValue(EAttrType.Break)}/{levelCfg.UpBreak}\n";
 
         var attrList = GameMgr.Cfg.TbMisc.AttrTypeList;
         for (int i = 0; i < attrList.Count; i++)
         {
             var attrType = attrList[i];
-            info += $"{attrType.GetName()}：{attr.GetAttr(attrType)} ";
+            info += $"{attrType.GetName()}：{attr.GetAttrValue(attrType)} ";
             if (i % 2 == 1)
             {
                 info += '\n';

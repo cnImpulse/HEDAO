@@ -19,7 +19,7 @@ public class ExploreManager : BaseManager
         foreach (var id in GameMgr.Save.Data.RoleTeamSet)
         {
             var role = GameMgr.Save.Data.DiscipleList[id];
-            role.ResetBattleState();
+            role.Attr.OnStartExplore();
         }
 
         GameMgr.Procedure.Fsm.ChangeState<ProcedureExplore>();
