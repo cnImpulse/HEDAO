@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cfg;
@@ -20,7 +20,7 @@ public class Role : Entity, IEffectTarget
     {
         Name = name;
         Level = 1;
-        var cfg = GameMgr.Cfg.Tables.TbRoleTempCfg.Get(1);
+        var cfg = GameMgr.Cfg.TbRoleTempCfg.Get(1);
 
         BattleAttr = new AttributeDict();
         BattleAttr.ModifyAttrDict(cfg.InitAttr);
@@ -32,14 +32,14 @@ public class Role : Entity, IEffectTarget
             WuXin.Add((EWuXinType)i, Random.Range(cfg.WuXinRange.Min, cfg.WuXinRange.Max));
         }
 
-        var tagList = GameMgr.Cfg.Tables.TbRoleTagCfg.DataList;
+        var tagList = GameMgr.Cfg.TbRoleTagCfg.DataList;
         AddTag(tagList[Random.Range(0, tagList.Count)].Id);
     }
 
     public void AddTag(int id)
     {
         TagSet.Add(id);
-        var cfg = GameMgr.Cfg.Tables.TbRoleTagCfg.Get(id);
+        var cfg = GameMgr.Cfg.TbRoleTagCfg.Get(id);
         EffectCfg.TakeEffectList(cfg.EffectList, null, this);
     }
 
@@ -81,12 +81,12 @@ public class Role : Entity, IEffectTarget
 
     public bool CheckCondition(int id)
     {
-        if (!GameMgr.Cfg.Tables.TbConditionCfg.DataMap.ContainsKey(id))
+        if (!GameMgr.Cfg.TbConditionCfg.DataMap.ContainsKey(id))
         {
             return true;
         }
         
-        var cfg = GameMgr.Cfg.Tables.TbConditionCfg.Get(id);
+        var cfg = GameMgr.Cfg.TbConditionCfg.Get(id);
         return Level >= cfg.Level;
     }
 
@@ -97,7 +97,7 @@ public class Role : Entity, IEffectTarget
 
     public void LearnGongFa(int cfgId)
     {
-        var cfg = GameMgr.Cfg.Tables.TbGongFaCfg.Get(cfgId);
+        var cfg = GameMgr.Cfg.TbGongFaCfg.Get(cfgId);
         if (BookDict.TryAdd(cfg.BookType, cfgId))
         {
             foreach(var buffId in cfg.BuffList)
@@ -114,7 +114,7 @@ public class Role : Entity, IEffectTarget
 
     public void ForgetGongFa(int cfgId)
     {
-        var cfg = GameMgr.Cfg.Tables.TbGongFaCfg.Get(cfgId);
+        var cfg = GameMgr.Cfg.TbGongFaCfg.Get(cfgId);
         if (BookDict.ContainsKey(cfg.BookType))
         {
             BookDict.Remove(cfg.BookType);

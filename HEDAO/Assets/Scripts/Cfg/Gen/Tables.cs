@@ -69,4 +69,25 @@ public partial class Tables
     }
 }
 
+public partial class CfgManager : BaseManager
+{
+    public Battle.TbCharacter TbCharacter => Tables.TbCharacter;
+    public Effect.TbEffect TbEffect => Tables.TbEffect;
+    public Effect.TbGridEffect TbGridEffect => Tables.TbGridEffect;
+    public Battle.TbSkillCfg TbSkillCfg => Tables.TbSkillCfg;
+    public Battle.TbBuffCfg TbBuffCfg => Tables.TbBuffCfg;
+    public Battle.TbEffectCfg TbEffectCfg => Tables.TbEffectCfg;
+    public Battle.TbConditionCfg TbConditionCfg => Tables.TbConditionCfg;
+    public Building.TbBuildingCfg TbBuildingCfg => Tables.TbBuildingCfg;
+    public XiuLian.TbGongFaCfg TbGongFaCfg => Tables.TbGongFaCfg;
+    public XiuLian.TbLevelCfg TbLevelCfg => Tables.TbLevelCfg;
+    public ZongMen.TbRoleTempCfg TbRoleTempCfg => Tables.TbRoleTempCfg;
+    public Entity.TbEntityCfg TbEntityCfg => Tables.TbEntityCfg;
+    public Common.TbExploreNodeCfg TbExploreNodeCfg => Tables.TbExploreNodeCfg;
+    public Common.TbRoleTagCfg TbRoleTagCfg => Tables.TbRoleTagCfg;
+    public Common.TbMisc TbMisc => Tables.TbMisc;
 }
+
+}
+
+

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cfg;
@@ -21,11 +21,11 @@ public static class RoleUtil
 
         info += $"年龄：{attr.GetAttr(EAttrType.Age)} 寿命：{attr.GetAttr(EAttrType.Life)}\n";
 
-        var levelCfg = GameMgr.Cfg.Tables.TbLevelCfg.Get(role.Level);
+        var levelCfg = GameMgr.Cfg.TbLevelCfg.Get(role.Level);
         info += $"境界：{levelCfg.Name} {EAttrType.Exp.GetName()}: {attr.GetAttr(EAttrType.Exp)}/{levelCfg.UpExp} ";
         info += $"{EAttrType.Break.GetName()}: {attr.GetAttr(EAttrType.Break)}/{levelCfg.UpBreak}\n";
 
-        var attrList = GameMgr.Cfg.Tables.TbMisc.AttrTypeList;
+        var attrList = GameMgr.Cfg.TbMisc.AttrTypeList;
         for (int i = 0; i < attrList.Count; i++)
         {
             var attrType = attrList[i];
@@ -44,7 +44,7 @@ public static class RoleUtil
         string info = "天赋: ";
         foreach (var id in role.TagSet)
         {
-            var cfg = GameMgr.Cfg.Tables.TbRoleTagCfg.Get(id);
+            var cfg = GameMgr.Cfg.TbRoleTagCfg.Get(id);
             info += string.Format("{0} ", cfg.Name);
         }
 
@@ -54,11 +54,11 @@ public static class RoleUtil
     public static string GetRoleBookInfo(Role role)
     {
         string info = string.Empty;
-        foreach (var bookType in GameMgr.Cfg.Tables.TbMisc.BookTypeList)
+        foreach (var bookType in GameMgr.Cfg.TbMisc.BookTypeList)
         {
             if (role.BookDict.TryGetValue(bookType, out var id))
             {
-                var cfg = GameMgr.Cfg.Tables.TbGongFaCfg.Get(id);
+                var cfg = GameMgr.Cfg.TbGongFaCfg.Get(id);
                 info += string.Format("{0}:{1}  ", bookType.GetName(), cfg.Name);
             }
             else
@@ -74,7 +74,7 @@ public static class RoleUtil
         string info = "技能: ";
         foreach (var id in role.SkillSet)
         {
-            var cfg = GameMgr.Cfg.Tables.TbSkillCfg.Get(id);
+            var cfg = GameMgr.Cfg.TbSkillCfg.Get(id);
             info += cfg.Name;
         }
 

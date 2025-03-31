@@ -5,7 +5,7 @@ public abstract class Buff
 {
     public int Id { get; private set; }
     public IEffectTarget Target { get; private set; }
-    public BuffCfg Cfg => GameMgr.Cfg.Tables.TbBuffCfg.Get(Id);
+    public BuffCfg Cfg => GameMgr.Cfg.TbBuffCfg.Get(Id);
 
     public bool IsEffectActive { get; private set; } = false;
     
@@ -32,7 +32,7 @@ public abstract class Buff
         IsEffectActive = active;
         foreach (var effectId in Cfg.EffectList)
         {
-            var effectCfg = GameMgr.Cfg.Tables.TbEffectCfg.Get(effectId);
+            var effectCfg = GameMgr.Cfg.TbEffectCfg.Get(effectId);
             if (active)
             {
                 effectCfg.OnTakeEffect(null, Target);

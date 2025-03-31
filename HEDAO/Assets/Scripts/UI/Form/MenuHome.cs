@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Cfg;
 using UnityEngine;
@@ -25,7 +25,7 @@ public class MenuHome : UIBase
 
         RefreshTime();
 
-        var buildingCount = GameMgr.Cfg.Tables.TbBuildingCfg.DataList.Count;
+        var buildingCount = GameMgr.Cfg.TbBuildingCfg.DataList.Count;
         View.m_list_building.numItems = buildingCount;
 
         View.m_ctrl_page.ClearPages();
@@ -38,7 +38,7 @@ public class MenuHome : UIBase
     
     private void RenderListItem(int index, GObject obj, object data)
     {
-        var cfg = GameMgr.Cfg.Tables.TbBuildingCfg.DataList[index];
+        var cfg = GameMgr.Cfg.TbBuildingCfg.DataList[index];
         obj.asButton.title = cfg.Name;
     }
     

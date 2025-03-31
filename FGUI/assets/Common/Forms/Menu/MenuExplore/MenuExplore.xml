@@ -12,5 +12,9 @@
       <item/>
       <item/>
     </list>
+    <component id="n5_9itq" name="btn_return" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="0,0" size="218,120">
+      <Button title="退出"/>
+    </component>
+    <text id="n7_9itq" name="txt_time" xy="1666,924" pivot="0.5,0.5" size="232,142" fontSize="24" align="right" vAlign="bottom" autoSize="none" text="天历一年"/>
   </displayList>
 </component>

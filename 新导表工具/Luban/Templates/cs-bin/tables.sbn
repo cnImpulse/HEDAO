@@ -28,4 +28,12 @@ public partial class {{__name}}
     }
 }
 
+public partial class CfgManager : BaseManager
+{
+    {{~for table in __tables ~}}
+    public {{table.full_name}} {{format_property_name __code_style table.name}} => Tables.{{format_property_name __code_style table.name}};
+    {{~end~}}
+}
+
 {{namespace_with_grace_end __namespace}}
+

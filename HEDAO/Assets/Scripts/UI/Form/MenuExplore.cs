@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using FairyGUI;
 using FGUI.Common;
@@ -31,7 +31,7 @@ public class MenuExplore : UIBase
         m_TeamList = RoleTeamSet.Select((id) => { return DiscipleDict[id]; }).AsEnumerable<object>().ToList();
         View.m_list_role.RefreshList(m_TeamList);
 
-        foreach(var cfg in GameMgr.Cfg.Tables.TbExploreNodeCfg.DataList.GetRandom(3))
+        foreach(var cfg in GameMgr.Cfg.TbExploreNodeCfg.DataList.GetRandom(3))
         {
             m_NodeList.Add(new BattleNode(cfg.Id));
         }

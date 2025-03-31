@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using HEDAO;
 using UnityEngine;
 
@@ -32,7 +32,7 @@ namespace Cfg.Battle
         {
             foreach(var id in list)
             {
-                var cfg = GameMgr.Cfg.Tables.TbEffectCfg.Get(id);
+                var cfg = GameMgr.Cfg.TbEffectCfg.Get(id);
                 cfg.OnTakeEffect(caster, target);
             }
         }
@@ -41,7 +41,7 @@ namespace Cfg.Battle
         {
             foreach (var id in list)
             {
-                var cfg = GameMgr.Cfg.Tables.TbEffectCfg.Get(id);
+                var cfg = GameMgr.Cfg.TbEffectCfg.Get(id);
                 cfg.OnResetEffect(caster, target);
             }
         }

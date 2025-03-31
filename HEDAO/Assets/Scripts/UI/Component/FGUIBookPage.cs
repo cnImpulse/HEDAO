@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cfg.Battle;
@@ -14,7 +14,7 @@ namespace FGUI.Common
         private List<object> m_BookList = new List<object>();
 
         public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.DiscipleList;
-        public List<EBookType> BookTypeList => GameMgr.Cfg.Tables.TbMisc.BookTypeList;
+        public List<EBookType> BookTypeList => GameMgr.Cfg.TbMisc.BookTypeList;
 
         public void OnInit()
         {
@@ -47,7 +47,7 @@ namespace FGUI.Common
 
         public void RefreshBookList()
         {
-            m_BookList = GameMgr.Cfg.Tables.TbGongFaCfg.DataList.Where((cfg) => { return cfg.BookType == GetSelectedBookType(); }).AsEnumerable<object>().ToList();
+            m_BookList = GameMgr.Cfg.TbGongFaCfg.DataList.Where((cfg) => { return cfg.BookType == GetSelectedBookType(); }).AsEnumerable<object>().ToList();
             m_list_book.RefreshList(m_BookList);
 
             m_list_book.RefreshSelectionController();
@@ -96,7 +96,7 @@ namespace FGUI.Common
 
         private string GetBuffDesc(int id)
         {
-            var cfg = GameMgr.Cfg.Tables.TbBuffCfg.Get(id);
+            var cfg = GameMgr.Cfg.TbBuffCfg.Get(id);
             var str = cfg.Desc + ": ";
             foreach (var effectId in cfg.EffectList)
             {
@@ -109,7 +109,7 @@ namespace FGUI.Common
         private string GetEffectDesc(int id)
         {
             var str = "";
-            var cfg = GameMgr.Cfg.Tables.TbEffectCfg.Get(id);
+            var cfg = GameMgr.Cfg.TbEffectCfg.Get(id);
             if (cfg is AttrModifyEffect)
             {
                 foreach(var pair in ((AttrModifyEffect)cfg).AttrDict)

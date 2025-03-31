@@ -442,7 +442,7 @@ namespace FairyGUI
             Vector3 p2 = _points[adjustedIndex + 2];
             Vector3 p3 = _points[adjustedIndex + 3];
 
-            float adjustedT = (t == 1f) ? 1f : Mathf.Repeat(t * (ptCount - 4), 1f); // Then we adjust t to be that value on that new piece of segment... for t == 1f don't use repeat (that would return 0f);
+            float adjustedT = (t == 1f) ? 1f : Mathf.Repeat(t * (ptCount - 4), 1f); // Then we adjust t to be that value on that new piece of segment. for t == 1f don't use repeat (that would return 0f);
 
             float t0 = ((-adjustedT + 2f) * adjustedT - 1f) * adjustedT * 0.5f;
             float t1 = (((3f * adjustedT - 5f) * adjustedT) * adjustedT + 2f) * 0.5f;
