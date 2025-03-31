@@ -10,7 +10,7 @@ public class EntityManager : BaseManager
     public void ShowEntity<T>(Entity entity)
         where T : EntityView
     {
-
+        
     }
 
     public void HideEntity<T>(long id)

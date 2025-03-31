@@ -35,7 +35,6 @@ public class MenuExplore : UIBase
         {
             m_NodeList.Add(new BattleNode(cfg.Id));
         }
-
         View.m_list_node.RefreshList(m_NodeList);
     }
 

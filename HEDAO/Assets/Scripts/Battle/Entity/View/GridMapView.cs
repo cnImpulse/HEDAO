@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class GridMapView : EntityView
 {
-    
+    protected override void OnInit()
+    {
+        
+    }
 }
