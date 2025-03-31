@@ -10,6 +10,6 @@ public class BattleData
     public BattleData(int cfgId)
     {
         CfgId = cfgId;
-        GridMap = new GridMap(cfgId);
+        GridMap = new GridMap(1);
     }
 }

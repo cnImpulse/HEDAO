@@ -17,29 +17,29 @@ public class GridMap : Entity
     public static Vector2Int[] s_DirArray4 = { Vector2Int.down, Vector2Int.up, Vector2Int.left, Vector2Int.right };
     public static Vector2Int[] s_Dir2Array4 = { Vector2Int.one, new Vector2Int(1, -1), new Vector2Int(-1, -1), new Vector2Int(-1, 1) };
 
-    private Dictionary<int, GridData> m_GridDataDic = null;
-    public Dictionary<int, GridData> GridDataDic => m_GridDataDic;
+    public Dictionary<int, GridData> GridDataDic;
     
     public int CfgId {get; private set;}
 
     public GridMap(int CfgId)
     {
-        m_GridDataDic = new Dictionary<int, GridData>();
+        var cfg = AssetUtl.ReadData<GridMapCfg>(AssetUtl.GetGridMapDataPath(CfgId));
+        GridDataDic = cfg.GridDataDic;
     }
 
     public bool ExitData(Vector2Int gridPos)
     {
-        return m_GridDataDic.ContainsKey(GridMapUtl.GridPosToIndex(gridPos));
+        return GridDataDic.ContainsKey(GridMapUtl.GridPosToIndex(gridPos));
     }
 
     public void SetGridData(GridData gridData)
     {
-        m_GridDataDic[GridMapUtl.GridPosToIndex(gridData.GridPos)] = gridData;
+        GridDataDic[GridMapUtl.GridPosToIndex(gridData.GridPos)] = gridData;
     }
 
     public GridData GetGridData(int gridIndex)
     {
-        if (m_GridDataDic.TryGetValue(gridIndex, out var gridData))
+        if (GridDataDic.TryGetValue(gridIndex, out var gridData))
         {
             return gridData;
         }
@@ -50,7 +50,7 @@ public class GridMap : Entity
     public GridData GetGridData(Vector2Int gridPos)
     {
         var gridIndex = GridMapUtl.GridPosToIndex(gridPos);
-        if (m_GridDataDic.TryGetValue(gridIndex, out var gridData))
+        if (GridDataDic.TryGetValue(gridIndex, out var gridData))
         {
             return gridData;
         }
