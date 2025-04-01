@@ -12,6 +12,7 @@ namespace FGUI.Common
         public FGUIRadarWidget m_rader;
         public GButton m_btn_get;
         public FGUIVerticalList m_list_role2;
+        public GLabel m_txt_role_num;
         public const string URL = "ui://rt51n0kjnenx5f";
 
         public static FGUIQiuDaoPage CreateInstance()
@@ -28,6 +29,7 @@ namespace FGUI.Common
             m_rader = (FGUIRadarWidget)GetChild("rader");
             m_btn_get = (GButton)GetChild("btn_get");
             m_list_role2 = (FGUIVerticalList)GetChild("list_role2");
+            m_txt_role_num = (GLabel)GetChild("txt_role_num");
         }
     }
 }

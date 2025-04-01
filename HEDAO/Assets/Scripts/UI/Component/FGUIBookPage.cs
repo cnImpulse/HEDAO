@@ -10,8 +10,8 @@ namespace FGUI.Common
 {
     public partial class FGUIBookPage : GComponent
     {
-        private List<object> m_RoleList = new List<object>();
-        private List<object> m_BookList = new List<object>();
+        private List<Role> m_RoleList = new List<Role>();
+        private List<GongFaCfg> m_BookList = new List<GongFaCfg>();
 
         public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.RoleDict;
         public List<EBookType> BookTypeList => GameMgr.Cfg.TbMisc.BookTypeList;
@@ -38,7 +38,7 @@ namespace FGUI.Common
 
         public void RefreshList()
         {
-            m_RoleList = DiscipleDict.Values.Where((role) => { return !role.BookDict.ContainsKey(GetSelectedBookType()); }).AsEnumerable<object>().ToList();
+            m_RoleList = DiscipleDict.Values.Where((role) => { return !role.BookDict.ContainsKey(GetSelectedBookType()); }).ToList();
             m_list_role.m_list.RefreshList(m_RoleList);
             m_list_role.m_list.RefreshSelectionController();
 
@@ -47,7 +47,7 @@ namespace FGUI.Common
 
         public void RefreshBookList()
         {
-            m_BookList = GameMgr.Cfg.TbGongFaCfg.DataList.Where((cfg) => { return cfg.BookType == GetSelectedBookType(); }).AsEnumerable<object>().ToList();
+            m_BookList = GameMgr.Cfg.TbGongFaCfg.DataList.Where((cfg) => { return cfg.BookType == GetSelectedBookType(); }).ToList();
             m_list_book.RefreshList(m_BookList);
 
             m_list_book.RefreshSelectionController();

@@ -46,6 +46,7 @@
     <component id="seah62" name="MenuExplore.xml" path="/Forms/Menu/MenuExplore/" exported="true"/>
     <component id="seah63" name="RoleItem.xml" path="/Forms/Menu/MenuExplore/" exported="true"/>
     <component id="seah64" name="BtnNode.xml" path="/Forms/Menu/MenuExplore/"/>
+    <component id="gjxc65" name="CommonTxtCenter.xml" path="/Components/Button/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

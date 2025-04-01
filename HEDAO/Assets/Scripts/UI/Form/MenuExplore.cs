@@ -8,8 +8,8 @@ using Cfg;
 
 public class MenuExplore : UIBase
 {
-    private List<object> m_TeamList = new List<object>();
-    public List<object> m_NodeList = new List<object>();
+    private List<Role> m_TeamList = new List<Role>();
+    public List<ExploreNode> m_NodeList = new List<ExploreNode>();
 
     public Dictionary<long, Role> RoleTeamSet => GameMgr.Save.Data.TeamDict;
     public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.RoleDict;
@@ -28,7 +28,7 @@ public class MenuExplore : UIBase
     {
         base.OnShow();
 
-        m_TeamList = RoleTeamSet.Values.AsEnumerable<object>().ToList();
+        m_TeamList = RoleTeamSet.Values.ToList();
         View.m_list_role.RefreshList(m_TeamList);
 
         foreach(var cfg in GameMgr.Cfg.TbExploreNodeCfg.DataList.GetRandom(3))

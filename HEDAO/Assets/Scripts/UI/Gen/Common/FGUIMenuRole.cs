@@ -7,9 +7,10 @@ namespace FGUI.Common
 {
     public partial class FGUIMenuRole : GComponent
     {
+        public FGUIRadarWidget m_rader;
         public GButton m_btn_close;
         public GLabel m_txt_role;
-        public FGUIRadarWidget m_rader;
+        public GButton m_btn_remove;
         public const string URL = "ui://rt51n0kjrnio61";
 
         public static FGUIMenuRole CreateInstance()
@@ -21,9 +22,10 @@ namespace FGUI.Common
         {
             base.ConstructFromXML(xml);
 
+            m_rader = (FGUIRadarWidget)GetChild("rader");
             m_btn_close = (GButton)GetChild("btn_close");
             m_txt_role = (GLabel)GetChild("txt_role");
-            m_rader = (FGUIRadarWidget)GetChild("rader");
+            m_btn_remove = (GButton)GetChild("btn_remove");
         }
     }
 }

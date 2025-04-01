@@ -26,16 +26,24 @@ namespace FGUI.Common
             ctrl.onChanged.Set(() => { OnRoleChanged(); });
 
             m_list_role.m_list.itemRenderer = OnRenderRole;
+            m_list_role2.m_list.itemRenderer = OnRenderRole2;
+
             RefreshRoleList();
         }
 
         private void OnRenderRole(int index, GObject obj, object data)
         {
-            var role = m_RoleList[index];
+            var role = data as Role;
             var item = obj as FGUIBtnRole;
             item.Refresh(role);
-            item.onClick.Set(() => {
-                m_list_role.m_ctrl_select.selectedIndex = index; });
+        }
+
+        private void OnRenderRole2(int index, GObject obj, object data)
+        {
+            var role = data as Role;
+            var item = obj as FGUIBtnRole;
+            item.mode = ButtonMode.Common;
+            item.Refresh(role);
         }
 
         private void OnClickBtnGet()
@@ -55,18 +63,13 @@ namespace FGUI.Common
 
         private void RefreshRoleList()
         {
-            m_list_role.m_list.numItems = m_RoleList.Count;
-            if (m_RoleList.Count == 0) return;
+            m_list_role.m_list.RefreshList(m_RoleList.ToList());
 
-            var ctrl = m_list_role.m_ctrl_select;
-            ctrl.ClearPages();
-            for (int i = 0; i < m_RoleList.Count; i++)
-            {
-                ctrl.AddPage("");
-            }
-            ctrl.selectedIndex = 0;
+            var list = GameMgr.Save.Data.RoleDict.Values.ToList();
+            m_list_role2.m_list.RefreshList(list);
+            m_txt_role_num.text = string.Format("{0}/{1}", list.Count, 8);
         }
-        
+
         private void OnRoleChanged()
         {
             var selectIndex = m_list_role.m_ctrl_select.selectedIndex;

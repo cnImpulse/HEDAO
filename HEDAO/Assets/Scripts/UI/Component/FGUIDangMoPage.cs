@@ -8,8 +8,8 @@ namespace FGUI.Common
 {
     public partial class FGUIDangMoPage : GComponent
     {
-        private List<object> m_RoleList = new List<object>();
-        private List<object> m_TeamList = new List<object>();
+        private List<Role> m_RoleList = null;
+        private List<Role> m_TeamList = null;
 
         public Dictionary<long, Role> TeamDict => GameMgr.Save.Data.TeamDict;
         public Dictionary<long, Role> RoleDict => GameMgr.Save.Data.RoleDict;
@@ -58,8 +58,8 @@ namespace FGUI.Common
 
         public void RefreshList()
         {
-            m_RoleList = RoleDict.Values.Where((role) => { return !TeamDict.ContainsKey(role.Id); }).AsEnumerable<object>().ToList();
-            m_TeamList = TeamDict.Keys.Select((id) => { return RoleDict[id]; }).AsEnumerable<object>().ToList();
+            m_RoleList = RoleDict.Values.Where((role) => { return !TeamDict.ContainsKey(role.Id); }).ToList();
+            m_TeamList = TeamDict.Keys.Select((id) => { return RoleDict[id]; }).ToList();
 
             m_list_role.m_list.RefreshList(m_RoleList);
             m_list_team.m_list.RefreshList(m_TeamList);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using FairyGUI.Utils;
 using UnityEngine;
@@ -511,6 +512,8 @@ namespace FairyGUI
 
         public void RefreshSelectionController()
         {
+            if (selectionController == null) return;
+
             selectionController.ClearPages();
             if (numItems == 0) return;
 
@@ -1591,7 +1594,7 @@ namespace FairyGUI
 
         public object GetItemData(int index)
         {
-            var list = data as List<object>;
+            var list = data as IList;
             if (list != null && list.Count > index)
             {
                 return list[index];
@@ -1610,12 +1613,13 @@ namespace FairyGUI
             }
         }
 
-        public void RefreshList(List<object> dataList)
+        public void RefreshList<T>(List<T> dataList)
         {
             if (itemRenderer == null) return;
 
             data = dataList;
             numItems = dataList.Count;
+            RefreshSelectionController();
         }
 
         public void RefreshVirtualList()
