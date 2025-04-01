@@ -35,6 +35,11 @@ public static class GridMapUtl
     {
         return gridPos.x + gridPos.y * maxWidth;
     }
+
+    public static Vector3 GridPos2WorldPos(Vector2Int gridPos)
+    {
+        return new Vector3(gridPos.x + 0.5f, gridPos.y + 0.5f);
+    }
     
     public static Vector2Int[] s_DirArray8 = {
         Vector2Int.down, // (0, -1)

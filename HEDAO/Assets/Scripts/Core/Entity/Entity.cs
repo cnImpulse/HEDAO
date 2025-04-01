@@ -18,7 +18,12 @@ public class Entity
         Id = id;
     }
 
-    public virtual void Init(object data = default)
+    public void Init(object data = default)
+    {
+        OnInit(data);
+    }
+
+    protected virtual void OnInit(object data)
     {
 
     }

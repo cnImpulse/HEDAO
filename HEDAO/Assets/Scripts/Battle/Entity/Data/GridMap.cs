@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -27,15 +28,17 @@ public class GridMap : Entity
         CfgId = cfgId;
     }
 
-    public override void Init(object data = default)
+    protected override void OnInit(object data)
     {
         var cfg = AssetUtl.ReadData<GridMapCfg>(AssetUtl.GetGridMapDataPath(CfgId));
         GridDataDict = cfg.GridDataDic;
 
-        foreach(var role in GameMgr.Save.Data.TeamDict)
+        var list = GridDataDict.Values.ToList();
+        foreach (var role in GameMgr.Save.Data.TeamDict)
         {
             var gridUnit = new GridUnit();
             gridUnit.Init(role);
+            gridUnit.GridPos = list.GetRandom().GridPos;
 
             GridUnitDict.Add(gridUnit.Id, gridUnit);
         }
