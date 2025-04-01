@@ -53,4 +53,12 @@ public static class GameMgr
         ManagerList.Add(manager);
         return manager;
     }
+
+    public static void Update()
+    {
+        foreach (var mgr in ManagerList)
+        {
+            mgr.OnUpdate();
+        }
+    }
 }

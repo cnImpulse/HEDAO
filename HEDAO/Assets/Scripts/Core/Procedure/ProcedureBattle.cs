@@ -11,7 +11,10 @@ public class ProcedureBattle : FsmState
         base.OnEnter(data);
 
         GameMgr.Save.Data.SceneType = SceneType.Battle;
+        
+        GameMgr.Battle.InitFsm(Data.BattleState);
         GameMgr.Entity.ShowEntity<GridMapView>(Data.GridMap);
+        GameMgr.UI.ShowUI(UIName.HudBattle);
     }
 
     public override void OnLeave()

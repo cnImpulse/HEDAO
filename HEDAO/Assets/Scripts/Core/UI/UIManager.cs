@@ -20,8 +20,8 @@ public class UIManager : BaseManager
     {
         CloseAllUI();
     }
-
-    public void OpenUI(string uiName, object userData = default)
+    
+    public void ShowUI(string uiName, object userData = default)
     {
         if (UIDict.ContainsKey(uiName))
         {
@@ -54,5 +54,15 @@ public class UIManager : BaseManager
             ui.Dispose();
         }
         UIDict.Clear();
+    }
+
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+        
+        foreach (var ui in UIDict.Values)
+        {
+            ui.OnUpdate();
+        }
     }
 }

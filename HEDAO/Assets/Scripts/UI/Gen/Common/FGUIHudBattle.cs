@@ -8,6 +8,7 @@ namespace FGUI.Common
     public partial class FGUIHudBattle : GComponent
     {
         public GButton m_btn_start;
+        public GTextField m_txt_battle_state;
         public const string URL = "ui://rt51n0kjut3j4p";
 
         public static FGUIHudBattle CreateInstance()
@@ -20,6 +21,7 @@ namespace FGUI.Common
             base.ConstructFromXML(xml);
 
             m_btn_start = (GButton)GetChild("btn_start");
+            m_txt_battle_state = (GTextField)GetChild("txt_battle_state");
         }
     }
 }

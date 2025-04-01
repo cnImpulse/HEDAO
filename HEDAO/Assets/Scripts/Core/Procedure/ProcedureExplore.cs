@@ -9,7 +9,7 @@ public class ProcedureExplore : FsmState
         base.OnEnter(data);
 
         GameMgr.Save.Data.SceneType = SceneType.Explore;
-        GameMgr.UI.OpenUI(UIName.MenuExplore);
+        GameMgr.UI.ShowUI(UIName.MenuExplore);
     }
 
     public override void OnLeave()

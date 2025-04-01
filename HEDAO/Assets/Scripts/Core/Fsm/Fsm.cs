@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Fsm
 {
-    private readonly Dictionary<Type, FsmState> m_States;
-    private FsmState m_CurState;
+    private readonly Dictionary<Type, FsmState> m_States = new Dictionary<Type, FsmState>();
+    public FsmState CurState { get; private set; }
 
     protected Fsm()
     {
-        m_States = new Dictionary<Type, FsmState>();
     }
 
     public static Fsm CreatFsm(params FsmState[] states)
@@ -39,20 +38,27 @@ public class Fsm
             return;
         }
 
-        if (m_CurState == state)
+        if (CurState == state)
         {
             return;
         }
 
-        m_CurState.OnLeave();
-        m_CurState = state;
-        m_CurState.OnEnter(data);
+        CurState.OnLeave();
+        CurState = state;
+        CurState.OnEnter(data);
     }
 
-    public void Start(Type stateType)
+    public void Start<T>()
+        where T : FsmState
     {
-        m_CurState = GetState(stateType); ;
-        m_CurState.OnEnter(default);
+        CurState = GetState(typeof(T));
+        CurState.OnEnter(default);
+    }
+    
+    public void Start(Type type)
+    {
+        CurState = GetState(type);
+        CurState.OnEnter(default);
     }
 
     public FsmState GetState(Type type)

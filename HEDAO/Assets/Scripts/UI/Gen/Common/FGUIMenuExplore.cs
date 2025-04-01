@@ -9,6 +9,8 @@ namespace FGUI.Common
     {
         public GList m_list_role;
         public GList m_list_node;
+        public GButton m_btn_return;
+        public GTextField m_txt_time;
         public const string URL = "ui://rt51n0kjseah62";
 
         public static FGUIMenuExplore CreateInstance()
@@ -22,6 +24,8 @@ namespace FGUI.Common
 
             m_list_role = (GList)GetChild("list_role");
             m_list_node = (GList)GetChild("list_node");
+            m_btn_return = (GButton)GetChild("btn_return");
+            m_txt_time = (GTextField)GetChild("txt_time");
         }
     }
 }

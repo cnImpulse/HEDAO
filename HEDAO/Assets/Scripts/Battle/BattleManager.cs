@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleManager : BaseManager
 {
+    public Fsm Fsm { get; private set; }
     public BattleData Data => GameMgr.Save.Data.BattleData;
 
     protected override void OnInit()
@@ -18,18 +20,16 @@ public class BattleManager : BaseManager
         GameMgr.Procedure.Fsm.ChangeState<ProcedureBattle>();
     }
 
-    protected void CreatBattleMap(int id)
+    public static Dictionary<EBattleState, Type> BattleStateDict = new Dictionary<EBattleState, Type>()
     {
-
-    }
-
-    protected void AddGridUnit()
+        [EBattleState.Prepare] = typeof(BattlePrepare), [EBattleState.Start] = typeof(BattleStart), 
+        [EBattleState.Loop] = typeof(BattleLoop), [EBattleState.Player] = typeof(BattlePlayer), 
+        [EBattleState.AI] = typeof(BattleAI), [EBattleState.End] = typeof(BattleEnd), 
+    };
+    public void InitFsm(EBattleState state)
     {
-
-    }
-
-    public void EndBattle(int id)
-    {
-
+        Fsm = Fsm.CreatFsm(new BattlePrepare(), new BattleStart(), new BattleLoop(), new BattleEnd(),
+            new BattlePlayer(), new BattleAI());
+        Fsm.Start(BattleStateDict[state]);
     }
 }

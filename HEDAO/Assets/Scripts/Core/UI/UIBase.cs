@@ -42,6 +42,11 @@ public abstract class UIBase
 
     }
 
+    public virtual void OnUpdate()
+    {
+        
+    }
+    
     protected virtual void OnClose()
     {
         

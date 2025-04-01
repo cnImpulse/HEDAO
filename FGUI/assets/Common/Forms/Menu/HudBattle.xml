@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" opaque="false">
   <displayList>
-    <component id="n1_ut3j" name="btn_start" src="aobob" fileName="Components/Button/Button.xml" xy="1820,1000" pivot="1,1" anchor="true" size="240,120">
-      <Button title="开始战斗"/>
+    <component id="n2_q92f" name="btn_start" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="1631,914" size="240,120">
+      <Button title="开始"/>
     </component>
+    <text id="n3_q92f" name="txt_battle_state" xy="806,0" pivot="0.5,0.5" size="308,74" fontSize="32" align="center" vAlign="middle" autoSize="none" text="准备阶段"/>
   </displayList>
 </component>

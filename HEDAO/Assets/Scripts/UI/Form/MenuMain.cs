@@ -13,7 +13,7 @@ public class MenuMain : UIBase
 
         View.m_btn_start.onClick.Add(() =>
         {
-            GameMgr.UI.OpenUI(UIName.WinLoadGame);
+            GameMgr.UI.ShowUI(UIName.WinLoadGame);
         });
         //View.m_btn_exit.onClick.Add(() => { Log.Info("退出游戏。"); });
 

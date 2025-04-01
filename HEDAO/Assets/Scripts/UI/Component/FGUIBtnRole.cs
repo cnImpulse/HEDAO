@@ -23,7 +23,7 @@ namespace FGUI.Common
 
         private void OnRightClickRole(Role role)
         {
-            GameMgr.UI.OpenUI(UIName.MenuRole, role);
+            GameMgr.UI.ShowUI(UIName.MenuRole, role);
         }
     }
 }

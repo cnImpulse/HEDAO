@@ -8,7 +8,7 @@ public class ProcedureMain : FsmState
     {
         base.OnEnter(data);
 
-        GameMgr.UI.OpenUI(UIName.MenuMain);
+        GameMgr.UI.ShowUI(UIName.MenuMain);
     }
 
     public override void OnLeave()

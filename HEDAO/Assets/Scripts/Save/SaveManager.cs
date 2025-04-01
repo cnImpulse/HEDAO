@@ -71,6 +71,8 @@ public class SaveManager : BaseManager
 
     public void SaveGame()
     {
+        if (Data == null) return;
+        
         var json = JsonConvert.SerializeObject(Data);
         PlayerPrefs.SetString(GetSaveName(SaveIndex), json);
     }

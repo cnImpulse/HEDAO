@@ -29,4 +29,9 @@ public abstract class BaseManager
     {
 
     }
+
+    public virtual void OnUpdate()
+    {
+        
+    }
 }
