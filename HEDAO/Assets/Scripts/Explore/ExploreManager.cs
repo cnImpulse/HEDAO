@@ -16,9 +16,8 @@ public class ExploreManager : BaseManager
     {
         GameMgr.Save.Data.ExploreDate = new ExploreDate();
 
-        foreach (var id in GameMgr.Save.Data.RoleTeamSet)
+        foreach (var role in GameMgr.Save.Data.TeamDict.Values)
         {
-            var role = GameMgr.Save.Data.DiscipleList[id];
             role.Attr.OnStartExplore();
         }
 

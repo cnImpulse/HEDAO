@@ -14,8 +14,7 @@ namespace Cfg
 public partial class Tables
 {
     public Battle.TbCharacter TbCharacter {get; }
-    public Effect.TbEffect TbEffect {get; }
-    public Effect.TbGridEffect TbGridEffect {get; }
+    public Common.TbRes TbRes {get; }
     public Battle.TbSkillCfg TbSkillCfg {get; }
     public Battle.TbBuffCfg TbBuffCfg {get; }
     public Battle.TbEffectCfg TbEffectCfg {get; }
@@ -32,8 +31,7 @@ public partial class Tables
     public Tables(System.Func<string, ByteBuf> loader)
     {
         TbCharacter = new Battle.TbCharacter(loader("battle_tbcharacter"));
-        TbEffect = new Effect.TbEffect(loader("effect_tbeffect"));
-        TbGridEffect = new Effect.TbGridEffect(loader("effect_tbgrideffect"));
+        TbRes = new Common.TbRes(loader("common_tbres"));
         TbSkillCfg = new Battle.TbSkillCfg(loader("battle_tbskillcfg"));
         TbBuffCfg = new Battle.TbBuffCfg(loader("battle_tbbuffcfg"));
         TbEffectCfg = new Battle.TbEffectCfg(loader("battle_tbeffectcfg"));
@@ -52,8 +50,7 @@ public partial class Tables
     private void ResolveRef()
     {
         TbCharacter.ResolveRef(this);
-        TbEffect.ResolveRef(this);
-        TbGridEffect.ResolveRef(this);
+        TbRes.ResolveRef(this);
         TbSkillCfg.ResolveRef(this);
         TbBuffCfg.ResolveRef(this);
         TbEffectCfg.ResolveRef(this);
@@ -72,8 +69,7 @@ public partial class Tables
 public partial class CfgManager : BaseManager
 {
     public Battle.TbCharacter TbCharacter => Tables.TbCharacter;
-    public Effect.TbEffect TbEffect => Tables.TbEffect;
-    public Effect.TbGridEffect TbGridEffect => Tables.TbGridEffect;
+    public Common.TbRes TbRes => Tables.TbRes;
     public Battle.TbSkillCfg TbSkillCfg => Tables.TbSkillCfg;
     public Battle.TbBuffCfg TbBuffCfg => Tables.TbBuffCfg;
     public Battle.TbEffectCfg TbEffectCfg => Tables.TbEffectCfg;

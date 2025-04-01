@@ -11,5 +11,6 @@ public class BattleData
     {
         CfgId = cfgId;
         GridMap = new GridMap(1);
+        GridMap.Init();
     }
 }

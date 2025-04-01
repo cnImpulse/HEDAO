@@ -6,10 +6,10 @@ using UnityEngine;
 public class SaveData
 {
     public List<Role> RandomRoleList = null;
-    public Dictionary<long, Role> DiscipleList = new Dictionary<long, Role>();
-    public HashSet<long> RoleTeamSet = new HashSet<long>();
-    public int Year = 1;
+    public Dictionary<long, Role> RoleDict = new Dictionary<long, Role>();
+    public Dictionary<long, Role> TeamDict = new Dictionary<long, Role>();
 
+    public int Year = 1;
     public SceneType SceneType = SceneType.Home;
     public ExploreDate ExploreDate;
     public BattleData BattleData;

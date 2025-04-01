@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class GridUnit : Entity
 {
-
+    public override int GetPrefabId()
+    {
+        return 10002;
+    }
 }

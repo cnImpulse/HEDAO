@@ -11,8 +11,8 @@ namespace FGUI.Common
         private List<object> m_RoleList = new List<object>();
         private List<object> m_TeamList = new List<object>();
 
-        public HashSet<long> RoleTeamSet => GameMgr.Save.Data.RoleTeamSet;
-        public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.DiscipleList;
+        public Dictionary<long, Role> TeamDict => GameMgr.Save.Data.TeamDict;
+        public Dictionary<long, Role> RoleDict => GameMgr.Save.Data.RoleDict;
 
         public void OnInit()
         {
@@ -31,7 +31,7 @@ namespace FGUI.Common
             var role = data as Role;
             var item = obj as FGUIBtnRole;
             item.Refresh(role);
-            item.onClick.Set(() => OnClickRole(role.Id));
+            item.onClick.Set(() => OnClickRole(role));
         }
 
         private void OnRenderTeamRole(int index, GObject obj, object data)
@@ -39,18 +39,18 @@ namespace FGUI.Common
             var role = data as Role;
             var item = obj as FGUIBtnRole;
             item.Refresh(role);
-            item.onClick.Set(() => OnClickRole(role.Id));
+            item.onClick.Set(() => OnClickRole(role));
         }
 
-        private void OnClickRole(long roleId)
+        private void OnClickRole(Role role)
         {
-            if (RoleTeamSet.Contains(roleId))
+            if (TeamDict.ContainsKey(role.Id))
             {
-                RoleTeamSet.Remove(roleId);
+                TeamDict.Remove(role.Id);
             }
             else
             {
-                RoleTeamSet.Add(roleId);
+                TeamDict.Add(role.Id, role);
             }
 
             RefreshList();
@@ -58,8 +58,8 @@ namespace FGUI.Common
 
         public void RefreshList()
         {
-            m_RoleList = DiscipleDict.Values.Where((role) => { return !RoleTeamSet.Contains(role.Id); }).AsEnumerable<object>().ToList();
-            m_TeamList = RoleTeamSet.Select((id) => { return DiscipleDict[id]; }).AsEnumerable<object>().ToList();
+            m_RoleList = RoleDict.Values.Where((role) => { return !TeamDict.ContainsKey(role.Id); }).AsEnumerable<object>().ToList();
+            m_TeamList = TeamDict.Keys.Select((id) => { return RoleDict[id]; }).AsEnumerable<object>().ToList();
 
             m_list_role.m_list.RefreshList(m_RoleList);
             m_list_team.m_list.RefreshList(m_TeamList);

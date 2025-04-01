@@ -12,29 +12,29 @@ using Luban;
 
 namespace Cfg
 {
-public sealed partial class EffectRes : Luban.BeanBase
+public sealed partial class ResCfg : Luban.BeanBase
 {
-    public EffectRes(ByteBuf _buf) 
+    public ResCfg(ByteBuf _buf) 
     {
-        Select = _buf.ReadString();
-        Attack = _buf.ReadString();
+        Id = _buf.ReadInt();
+        Path = _buf.ReadString();
     }
 
-    public static EffectRes DeserializeEffectRes(ByteBuf _buf)
+    public static ResCfg DeserializeResCfg(ByteBuf _buf)
     {
-        return new EffectRes(_buf);
+        return new ResCfg(_buf);
     }
 
     /// <summary>
-    /// 选择特效
+    /// 编号
     /// </summary>
-    public readonly string Select;
+    public readonly int Id;
     /// <summary>
-    /// 攻击特效
+    /// 路径
     /// </summary>
-    public readonly string Attack;
+    public readonly string Path;
    
-    public const int __ID__ = 535294255;
+    public const int __ID__ = -1850607676;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
@@ -46,8 +46,8 @@ public sealed partial class EffectRes : Luban.BeanBase
     public override string ToString()
     {
         return "{ "
-        + "Select:" + Select + ","
-        + "Attack:" + Attack + ","
+        + "Id:" + Id + ","
+        + "Path:" + Path + ","
         + "}";
     }
 }

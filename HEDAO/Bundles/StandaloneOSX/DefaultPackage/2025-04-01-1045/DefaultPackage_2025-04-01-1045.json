@@ -5,10 +5,10 @@
     "IncludeAssetGUID": false,
     "OutputNameStyle": 0,
     "BuildBundleType": 1,
-    "BuildPipeline": "EditorSimulateBuildPipeline",
+    "BuildPipeline": "RawFileBuildPipeline",
     "PackageName": "DefaultPackage",
-    "PackageVersion": "Simulate",
-    "PackageNote": "4/1/2025 8:58:04 PM",
+    "PackageVersion": "2025-04-01-1045",
+    "PackageNote": "4/1/2025 5:26:02 PM",
     "AssetList": [
         {
             "Address": "",
@@ -385,7 +385,7 @@
             "UnityCRC": 0,
             "FileHash": "1360b8ace261e41ee09e27cd5a658cf3",
             "FileCRC": "00000000",
-            "FileSize": 2398,
+            "FileSize": 2388,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -395,7 +395,7 @@
             "UnityCRC": 0,
             "FileHash": "b53a776b2131b9cfee02878560583c3b",
             "FileCRC": "00000000",
-            "FileSize": 108468,
+            "FileSize": 108450,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []

@@ -17,29 +17,48 @@ public class GridMap : Entity
     public static Vector2Int[] s_DirArray4 = { Vector2Int.down, Vector2Int.up, Vector2Int.left, Vector2Int.right };
     public static Vector2Int[] s_Dir2Array4 = { Vector2Int.one, new Vector2Int(1, -1), new Vector2Int(-1, -1), new Vector2Int(-1, 1) };
 
-    public Dictionary<int, GridData> GridDataDic;
+    public Dictionary<int, GridData> GridDataDict;
+    public Dictionary<long, GridUnit> GridUnitDict = new Dictionary<long, GridUnit>();
     
     public int CfgId {get; private set;}
 
-    public GridMap(int CfgId)
+    public GridMap(int cfgId)
+    {
+        CfgId = cfgId;
+    }
+
+    public override void Init(object data = default)
     {
         var cfg = AssetUtl.ReadData<GridMapCfg>(AssetUtl.GetGridMapDataPath(CfgId));
-        GridDataDic = cfg.GridDataDic;
+        GridDataDict = cfg.GridDataDic;
+
+        foreach(var role in GameMgr.Save.Data.TeamDict)
+        {
+            var gridUnit = new GridUnit();
+            gridUnit.Init(role);
+
+            GridUnitDict.Add(gridUnit.Id, gridUnit);
+        }
+    }
+
+    public override int GetPrefabId()
+    {
+        return 10001;
     }
 
     public bool ExitData(Vector2Int gridPos)
     {
-        return GridDataDic.ContainsKey(GridMapUtl.GridPosToIndex(gridPos));
+        return GridDataDict.ContainsKey(GridMapUtl.GridPosToIndex(gridPos));
     }
 
     public void SetGridData(GridData gridData)
     {
-        GridDataDic[GridMapUtl.GridPosToIndex(gridData.GridPos)] = gridData;
+        GridDataDict[GridMapUtl.GridPosToIndex(gridData.GridPos)] = gridData;
     }
 
     public GridData GetGridData(int gridIndex)
     {
-        if (GridDataDic.TryGetValue(gridIndex, out var gridData))
+        if (GridDataDict.TryGetValue(gridIndex, out var gridData))
         {
             return gridData;
         }
@@ -50,7 +69,7 @@ public class GridMap : Entity
     public GridData GetGridData(Vector2Int gridPos)
     {
         var gridIndex = GridMapUtl.GridPosToIndex(gridPos);
-        if (GridDataDic.TryGetValue(gridIndex, out var gridData))
+        if (GridDataDict.TryGetValue(gridIndex, out var gridData))
         {
             return gridData;
         }

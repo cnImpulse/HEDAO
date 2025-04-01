@@ -13,7 +13,7 @@ namespace FGUI.Common
         private List<object> m_RoleList = new List<object>();
         private List<object> m_BookList = new List<object>();
 
-        public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.DiscipleList;
+        public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.RoleDict;
         public List<EBookType> BookTypeList => GameMgr.Cfg.TbMisc.BookTypeList;
 
         public void OnInit()

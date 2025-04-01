@@ -17,7 +17,6 @@ public sealed partial class EntityCfg : Luban.BeanBase
     public EntityCfg(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
-        Group = _buf.ReadString();
         Path = _buf.ReadString();
     }
 
@@ -31,11 +30,7 @@ public sealed partial class EntityCfg : Luban.BeanBase
     /// </summary>
     public readonly int Id;
     /// <summary>
-    /// 实体组
-    /// </summary>
-    public readonly string Group;
-    /// <summary>
-    /// 资源路径
+    /// 路径
     /// </summary>
     public readonly string Path;
    
@@ -46,14 +41,12 @@ public sealed partial class EntityCfg : Luban.BeanBase
     {
         
         
-        
     }
 
     public override string ToString()
     {
         return "{ "
         + "Id:" + Id + ","
-        + "Group:" + Group + ","
         + "Path:" + Path + ","
         + "}";
     }

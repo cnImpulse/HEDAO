@@ -47,7 +47,7 @@ namespace FGUI.Common
             }
 
             var role = m_RoleList[selectIndex];
-            GameMgr.Save.Data.DiscipleList.Add(role.Id, role);
+            GameMgr.Save.Data.RoleDict.Add(role.Id, role);
 
             m_RoleList.RemoveAt(selectIndex);
             RefreshRoleList();

@@ -11,8 +11,8 @@ public class MenuExplore : UIBase
     private List<object> m_TeamList = new List<object>();
     public List<object> m_NodeList = new List<object>();
 
-    public HashSet<long> RoleTeamSet => GameMgr.Save.Data.RoleTeamSet;
-    public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.DiscipleList;
+    public Dictionary<long, Role> RoleTeamSet => GameMgr.Save.Data.TeamDict;
+    public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.RoleDict;
 
     public new FGUIMenuExplore View => base.View as FGUIMenuExplore;
 
@@ -28,7 +28,7 @@ public class MenuExplore : UIBase
     {
         base.OnShow();
 
-        m_TeamList = RoleTeamSet.Select((id) => { return DiscipleDict[id]; }).AsEnumerable<object>().ToList();
+        m_TeamList = RoleTeamSet.Values.AsEnumerable<object>().ToList();
         View.m_list_role.RefreshList(m_TeamList);
 
         foreach(var cfg in GameMgr.Cfg.TbExploreNodeCfg.DataList.GetRandom(3))

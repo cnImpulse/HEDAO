@@ -17,4 +17,14 @@ public class Entity
     {
         Id = id;
     }
+
+    public virtual void Init(object data = default)
+    {
+
+    }
+
+    public virtual int GetPrefabId()
+    {
+        return 0;
+    }
 }

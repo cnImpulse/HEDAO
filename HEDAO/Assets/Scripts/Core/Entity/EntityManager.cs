@@ -10,7 +10,7 @@ public class EntityManager : BaseManager
     public void ShowEntity<T>(Entity entity)
         where T : EntityView
     {
-        var path = AssetUtl.GetGridMapPath(1);
+        var path = GameMgr.Cfg.TbRes.Get(entity.GetPrefabId()).Path;
         var go = GameMgr.Res.LoadAsset<GameObject>(path);
         
         var view = go.AddComponent<T>();
