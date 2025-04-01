@@ -12,6 +12,7 @@ public class EntityManager : BaseManager
     {
         var path = AssetUtl.GetGridMapPath(1);
         var go = GameMgr.Res.LoadAsset<GameObject>(path);
+        
         var view = go.AddComponent<T>();
         view.Init(entity);
     }

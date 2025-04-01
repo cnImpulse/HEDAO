@@ -14,23 +14,33 @@ public class ResManager : BaseManager
     {
         var package = YooAssets.CreatePackage("DefaultPackage");
         YooAssets.SetDefaultPackage(package);
-        
-        var buildinFileSystemParams = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
-        var initParameters = new OfflinePlayModeParameters();
-        initParameters.BuildinFileSystemParameters = null;
+
+        var buildResult = EditorSimulateModeHelper.SimulateBuild("DefaultPackage");
+        var packageRoot = buildResult.PackageRootDirectory;
+        var editorFileSystemParams = FileSystemParameters.CreateDefaultEditorFileSystemParameters(packageRoot);
+        var initParameters = new EditorSimulateModeParameters();
+        initParameters.EditorFileSystemParameters = editorFileSystemParams;
         var initOperation = package.InitializeAsync(initParameters);
         yield return initOperation;
-    
-        if(initOperation.Status == EOperationStatus.Succeed)
+
+        var operation2 = package.RequestPackageVersionAsync();
+        yield return operation2;
+        if (operation2.Status != EOperationStatus.Succeed) yield break;
+
+        var operation3 = package.UpdatePackageManifestAsync(operation2.PackageVersion);
+        yield return operation3;
+        if (operation3.Status != EOperationStatus.Succeed) yield break;
+
+        if (operation3.Status == EOperationStatus.Succeed)
             Debug.Log("资源包初始化成功！");
-        else 
-            Debug.LogError($"资源包初始化失败：{initOperation.Error}");
+        else
+            Debug.LogError($"资源包初始化失败：{operation2.Error}");
     }
     
     public T LoadAsset<T>(string path)
         where T : Object
     {
-        var loader = YooAssets.LoadAssetSync<T>(path);
-        return loader.AssetObject as T;
+        var handle = YooAssets.LoadAssetSync<T>(path);
+        return handle.InstantiateSync() as T;
     }
 }
