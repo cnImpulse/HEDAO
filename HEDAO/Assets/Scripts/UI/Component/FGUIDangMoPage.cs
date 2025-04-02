@@ -8,11 +8,11 @@ namespace FGUI.Common
 {
     public partial class FGUIDangMoPage : GComponent
     {
-        private List<Role> m_RoleList = null;
-        private List<Role> m_TeamList = null;
+        private List<PlayerRole> m_RoleList = null;
+        private List<PlayerRole> m_TeamList = null;
 
-        public Dictionary<long, Role> TeamDict => GameMgr.Save.Data.TeamDict;
-        public Dictionary<long, Role> RoleDict => GameMgr.Save.Data.RoleDict;
+        public Dictionary<long, PlayerRole> TeamDict => GameMgr.Save.Data.TeamDict;
+        public Dictionary<long, PlayerRole> RoleDict => GameMgr.Save.Data.RoleDict;
 
         public void OnInit()
         {
@@ -28,7 +28,7 @@ namespace FGUI.Common
 
         private void OnRenderRole(int index, GObject obj, object data)
         {
-            var role = data as Role;
+            var role = data as PlayerRole;
             var item = obj as FGUIBtnRole;
             item.Refresh(role);
             item.onClick.Set(() => OnClickRole(role));
@@ -36,13 +36,13 @@ namespace FGUI.Common
 
         private void OnRenderTeamRole(int index, GObject obj, object data)
         {
-            var role = data as Role;
+            var role = data as PlayerRole;
             var item = obj as FGUIBtnRole;
             item.Refresh(role);
             item.onClick.Set(() => OnClickRole(role));
         }
 
-        private void OnClickRole(Role role)
+        private void OnClickRole(PlayerRole role)
         {
             if (TeamDict.ContainsKey(role.Id))
             {

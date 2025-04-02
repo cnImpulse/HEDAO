@@ -18,7 +18,7 @@ public class EffectManager : BaseManager
 
     public void HideEffect(int entityId)
     {
-
+        GameMgr.Entity.HideEntity(entityId);
     }
 
     public void HideEffectByPrefabId(int prefabId)

@@ -12,9 +12,9 @@ using Luban;
 
 namespace Cfg
 {
-public sealed partial class CharacterCfg : Luban.BeanBase
+public sealed partial class RoleCfg : Luban.BeanBase
 {
-    public CharacterCfg(ByteBuf _buf) 
+    public RoleCfg(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
@@ -26,9 +26,9 @@ public sealed partial class CharacterCfg : Luban.BeanBase
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);SkillSet = new System.Collections.Generic.HashSet<int>(/*n0 * 3 / 2*/);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); SkillSet.Add(_e0);}}
     }
 
-    public static CharacterCfg DeserializeCharacterCfg(ByteBuf _buf)
+    public static RoleCfg DeserializeRoleCfg(ByteBuf _buf)
     {
-        return new CharacterCfg(_buf);
+        return new RoleCfg(_buf);
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ public sealed partial class CharacterCfg : Luban.BeanBase
     /// </summary>
     public readonly System.Collections.Generic.HashSet<int> SkillSet;
    
-    public const int __ID__ = -1278909285;
+    public const int __ID__ = -1253456914;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)

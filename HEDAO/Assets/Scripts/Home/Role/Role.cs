@@ -4,38 +4,17 @@ using UnityEngine;
 using Cfg;
 using Cfg.Battle;
 
-public class Role : Entity, IEffectTarget
+public abstract class Role : Entity, IEffectTarget
 {
     public string Name;
-    public int Level { get; private set; }
-    
+    public int Level { get; protected set; }
+
+    public RoleAttrComponent Attr { get; protected set; } = new RoleAttrComponent();
+    public Dictionary<EWuXinType, int> WuXin = new Dictionary<EWuXinType, int>();
+
     public Dictionary<EBookType, int> BookDict = new Dictionary<EBookType, int>();
     public HashSet<int> SkillSet = new HashSet<int>();
     public HashSet<int> TagSet = new HashSet<int>();
-
-    public RoleAttrComponent Attr { get; private set; }
-    public Dictionary<EWuXinType, int> WuXin { get; private set; }
-
-    public RoleTempCfg Cfg => GameMgr.Cfg.TbRoleTempCfg.Get(1);
-
-    public void Init(string name)
-    {
-        Name = name;
-        Level = 1;
-        var cfg = Cfg;
-
-        Attr = new RoleAttrComponent();
-        Attr.Init(this);
-
-        WuXin = new Dictionary<EWuXinType, int>();
-        for (int i = 0; i < 5; i++)
-        {
-            WuXin.Add((EWuXinType)i, Random.Range(cfg.WuXinRange.Min, cfg.WuXinRange.Max));
-        }
-
-        var tagList = GameMgr.Cfg.TbRoleTagCfg.DataList;
-        AddTag(tagList[Random.Range(0, tagList.Count)].Id);
-    }
 
     public void AddTag(int id)
     {

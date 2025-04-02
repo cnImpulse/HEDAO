@@ -8,11 +8,11 @@ using Cfg;
 
 public class MenuExplore : UIBase
 {
-    private List<Role> m_TeamList = new List<Role>();
+    private List<PlayerRole> m_TeamList = new List<PlayerRole>();
     public List<ExploreNode> m_NodeList = new List<ExploreNode>();
 
-    public Dictionary<long, Role> RoleTeamSet => GameMgr.Save.Data.TeamDict;
-    public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.RoleDict;
+    public Dictionary<long, PlayerRole> RoleTeamSet => GameMgr.Save.Data.TeamDict;
+    public Dictionary<long, PlayerRole> DiscipleDict => GameMgr.Save.Data.RoleDict;
 
     public new FGUIMenuExplore View => base.View as FGUIMenuExplore;
 

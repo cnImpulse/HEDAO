@@ -14,13 +14,14 @@ public class EntityManager : BaseManager
         var go = GameMgr.Res.LoadAsset<GameObject>(path);
         
         var view = go.AddComponent<T>();
+        m_EntityViewDict.Add(entity.Id, view);
+
         view.Init(entity, data);
     }
 
-    public void HideEntity<T>(long id)
-        where T : EntityView
+    public void HideEntity(long id)
     {
-        
+        m_EntityViewDict.Remove(id);
     }
 
     public long GetNextId()

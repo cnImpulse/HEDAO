@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EffectView : EntityView
 {
-    private EffectData Data => Entity as EffectData;
+    public EffectData Data => Entity as EffectData;
 
     private float m_RealLifeTime = 0;
 
@@ -15,20 +15,18 @@ public class EffectView : EntityView
         transform.position = Data.Position;
     }
 
-    //protected override void OnUpdate(float elapseSeconds, float realElapseSeconds)
-    //{
-    //    base.OnUpdate(elapseSeconds, realElapseSeconds);
+    private void Update()
+    {
+        transform.position = Data.Position;
+        if (Data.LifeTime <= 0)
+        {
+            return;
+        }
 
-    //    transform.position = m_Data.Position;
-    //    if (m_Data.LifeTime <= 0)
-    //    {
-    //        return;
-    //    }
-
-    //    m_RealLifeTime += elapseSeconds;
-    //    if (m_RealLifeTime >= m_Data.LifeTime)
-    //    {
-    //        Hide();
-    //    }
-    //}
+        m_RealLifeTime += Time.deltaTime;
+        if (m_RealLifeTime >= Data.LifeTime)
+        {
+            Hide();
+        }
+    }
 }

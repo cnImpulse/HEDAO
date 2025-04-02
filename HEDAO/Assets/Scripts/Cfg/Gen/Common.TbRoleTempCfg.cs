@@ -10,7 +10,7 @@
 using Luban;
 
 
-namespace Cfg.ZongMen
+namespace Cfg.Common
 {
 public partial class TbRoleTempCfg
 {

@@ -10,10 +10,10 @@ namespace FGUI.Common
 {
     public partial class FGUIBookPage : GComponent
     {
-        private List<Role> m_RoleList = new List<Role>();
+        private List<PlayerRole> m_RoleList = new List<PlayerRole>();
         private List<GongFaCfg> m_BookList = new List<GongFaCfg>();
 
-        public Dictionary<long, Role> DiscipleDict => GameMgr.Save.Data.RoleDict;
+        public Dictionary<long, PlayerRole> DiscipleDict => GameMgr.Save.Data.RoleDict;
         public List<EBookType> BookTypeList => GameMgr.Cfg.TbMisc.BookTypeList;
 
         public void OnInit()

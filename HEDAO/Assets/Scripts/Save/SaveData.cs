@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class SaveData
 {
-    public List<Role> RandomRoleList = null;
-    public Dictionary<long, Role> RoleDict = new Dictionary<long, Role>();
-    public Dictionary<long, Role> TeamDict = new Dictionary<long, Role>();
+    public List<PlayerRole> RandomRoleList = null;
+    public Dictionary<long, PlayerRole> RoleDict = new Dictionary<long, PlayerRole>();
+    public Dictionary<long, PlayerRole> TeamDict = new Dictionary<long, PlayerRole>();
 
     public int Year = 1;
     public SceneType SceneType = SceneType.Home;

@@ -8,7 +8,7 @@ namespace FGUI.Common
 {
     public partial class FGUIQiuDaoPage : GComponent
     {
-        private List<Role> m_RoleList;
+        private List<PlayerRole> m_RoleList;
 
         public void Refresh()
         {

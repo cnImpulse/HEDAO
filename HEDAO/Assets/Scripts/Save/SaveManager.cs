@@ -93,12 +93,12 @@ public class SaveManager : BaseManager
     }
     
     private static List<string> NameList = new List<string>() { "萧一", "萧二", "萧三", "叶一", "叶二", "叶三" };
-    private List<Role> RandomGenRole(int count)
+    private List<PlayerRole> RandomGenRole(int count)
     {
-        var ret = new List<Role>(count);
+        var ret = new List<PlayerRole>(count);
         for (int i = 0; i < count; i++)
         {
-            var role = new Role();
+            var role = new PlayerRole();
             role.Init(NameList[i]);
             ret.Add(role);
         }

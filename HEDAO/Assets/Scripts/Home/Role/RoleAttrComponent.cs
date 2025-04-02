@@ -6,9 +6,9 @@ using System;
     
 public class RoleAttrComponent : AttrComponent
 {
-    public void Init(Role role)
+    public void Init(Dictionary<EAttrType, int> initAttr)
     {
-        ModifyAttrDict(role.Cfg.InitAttr);
+        ModifyAttrDict(initAttr);
 
         SetAttr(EAttrType.HP, GetAttrValue(EAttrType.MaxHP));
         SetAttr(EAttrType.QI, GetAttrValue(EAttrType.MaxQI));

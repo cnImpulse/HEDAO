@@ -22,8 +22,9 @@ public partial class Tables
     public Building.TbBuildingCfg TbBuildingCfg {get; }
     public XiuLian.TbGongFaCfg TbGongFaCfg {get; }
     public XiuLian.TbLevelCfg TbLevelCfg {get; }
-    public ZongMen.TbRoleTempCfg TbRoleTempCfg {get; }
-    public Entity.TbEntityCfg TbEntityCfg {get; }
+    public Common.TbRole TbRole {get; }
+    public Common.TbRoleTempCfg TbRoleTempCfg {get; }
+    public Common.TbEntityCfg TbEntityCfg {get; }
     public Common.TbExploreNodeCfg TbExploreNodeCfg {get; }
     public Common.TbRoleTagCfg TbRoleTagCfg {get; }
     public Common.TbMisc TbMisc {get; }
@@ -39,8 +40,9 @@ public partial class Tables
         TbBuildingCfg = new Building.TbBuildingCfg(loader("building_tbbuildingcfg"));
         TbGongFaCfg = new XiuLian.TbGongFaCfg(loader("xiulian_tbgongfacfg"));
         TbLevelCfg = new XiuLian.TbLevelCfg(loader("xiulian_tblevelcfg"));
-        TbRoleTempCfg = new ZongMen.TbRoleTempCfg(loader("zongmen_tbroletempcfg"));
-        TbEntityCfg = new Entity.TbEntityCfg(loader("entity_tbentitycfg"));
+        TbRole = new Common.TbRole(loader("common_tbrole"));
+        TbRoleTempCfg = new Common.TbRoleTempCfg(loader("common_tbroletempcfg"));
+        TbEntityCfg = new Common.TbEntityCfg(loader("common_tbentitycfg"));
         TbExploreNodeCfg = new Common.TbExploreNodeCfg(loader("common_tbexplorenodecfg"));
         TbRoleTagCfg = new Common.TbRoleTagCfg(loader("common_tbroletagcfg"));
         TbMisc = new Common.TbMisc(loader("common_tbmisc"));
@@ -58,6 +60,7 @@ public partial class Tables
         TbBuildingCfg.ResolveRef(this);
         TbGongFaCfg.ResolveRef(this);
         TbLevelCfg.ResolveRef(this);
+        TbRole.ResolveRef(this);
         TbRoleTempCfg.ResolveRef(this);
         TbEntityCfg.ResolveRef(this);
         TbExploreNodeCfg.ResolveRef(this);
@@ -77,8 +80,9 @@ public partial class CfgManager : BaseManager
     public Building.TbBuildingCfg TbBuildingCfg => Tables.TbBuildingCfg;
     public XiuLian.TbGongFaCfg TbGongFaCfg => Tables.TbGongFaCfg;
     public XiuLian.TbLevelCfg TbLevelCfg => Tables.TbLevelCfg;
-    public ZongMen.TbRoleTempCfg TbRoleTempCfg => Tables.TbRoleTempCfg;
-    public Entity.TbEntityCfg TbEntityCfg => Tables.TbEntityCfg;
+    public Common.TbRole TbRole => Tables.TbRole;
+    public Common.TbRoleTempCfg TbRoleTempCfg => Tables.TbRoleTempCfg;
+    public Common.TbEntityCfg TbEntityCfg => Tables.TbEntityCfg;
     public Common.TbExploreNodeCfg TbExploreNodeCfg => Tables.TbExploreNodeCfg;
     public Common.TbRoleTagCfg TbRoleTagCfg => Tables.TbRoleTagCfg;
     public Common.TbMisc TbMisc => Tables.TbMisc;

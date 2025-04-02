@@ -10,7 +10,7 @@
 using Luban;
 
 
-namespace Cfg.Entity
+namespace Cfg.Common
 {
 public partial class TbEntityCfg
 {
