@@ -16,6 +16,8 @@ public abstract class Role : Entity, IEffectTarget
     public HashSet<int> SkillSet = new HashSet<int>();
     public HashSet<int> TagSet = new HashSet<int>();
 
+    private Dictionary<int, Buff> BuffDict = new Dictionary<int, Buff>();
+
     public void AddTag(int id)
     {
         TagSet.Add(id);
@@ -27,9 +29,7 @@ public abstract class Role : Entity, IEffectTarget
     {
 
     }
-
-    private Dictionary<int, Buff> BuffDict = new Dictionary<int, Buff>();
-
+    
     public void AddBuff(int id)
     {
         RemoveBuff(id);

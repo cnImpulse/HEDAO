@@ -6,10 +6,21 @@ using System;
 
 public class AttributeField
 {
-    public int m_Value = 0;
+    private int m_Max = int.MaxValue;
+    private int m_Value = 0;
 
-    public int Min { get; private set; } = int.MinValue;
-    public int Max => MaxProvider?.Invoke() ?? int.MaxValue;
+    public int Min = int.MinValue;
+
+    public int Max
+    {
+        get => m_Max;
+        set
+        {
+            m_Max = value;
+            Value = Value;
+        }
+    }
+    
     public int Value
     {
         get => m_Value;
@@ -24,7 +35,6 @@ public class AttributeField
         }
     }
 
-    public Func<int> MaxProvider;
     public event Action<int> OnValueChanged;
 
     public AttributeField(int value)
@@ -40,7 +50,7 @@ public class AttributeField
     
 public class AttrComponent
 {
-    private Dictionary<EAttrType, AttributeField> AttrDict = new Dictionary<EAttrType, AttributeField>();
+    public Dictionary<EAttrType, AttributeField> AttrDict = new Dictionary<EAttrType, AttributeField>();
 
     public AttrComponent()
     {
@@ -107,6 +117,8 @@ public class AttrComponent
         var attr = GetAttr(type);
         if (attr == null) return;
 
-        attr.MaxProvider = () => GetAttrValue(maxType);
+        var maxAttr = GetAttr(maxType);
+        attr.Max = maxAttr.Value;
+        maxAttr.OnValueChanged += (value => attr.Max = value);
     }
 }

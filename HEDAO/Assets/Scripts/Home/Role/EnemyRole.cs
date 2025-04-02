@@ -14,6 +14,7 @@ public class EnemyRole : Role
         var cfg = GameMgr.Cfg.TbRole.Get(cfgId);
         Name = cfg.Name;
         Level = cfg.Level;
+        
         Attr.Init(cfg.BaseAttr);
     }
 }

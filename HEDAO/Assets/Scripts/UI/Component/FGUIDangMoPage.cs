@@ -17,7 +17,7 @@ namespace FGUI.Common
         public void OnInit()
         {
             m_list_role.m_list.itemRenderer = OnRenderRole;
-            m_list_team.m_list.itemRenderer = OnRenderTeamRole;
+            m_list_team.m_list.itemRenderer = OnRenderRole;
             m_panel_task.m_btn_go.onClick.Set(OnClickGo);
         }
 
@@ -30,18 +30,11 @@ namespace FGUI.Common
         {
             var role = data as PlayerRole;
             var item = obj as FGUIBtnRole;
+            item.mode = ButtonMode.Common;
             item.Refresh(role);
             item.onClick.Set(() => OnClickRole(role));
         }
-
-        private void OnRenderTeamRole(int index, GObject obj, object data)
-        {
-            var role = data as PlayerRole;
-            var item = obj as FGUIBtnRole;
-            item.Refresh(role);
-            item.onClick.Set(() => OnClickRole(role));
-        }
-
+        
         private void OnClickRole(PlayerRole role)
         {
             if (TeamDict.ContainsKey(role.Id))

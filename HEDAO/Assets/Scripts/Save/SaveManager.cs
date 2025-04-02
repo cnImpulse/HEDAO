@@ -33,7 +33,9 @@ public class SaveManager : BaseManager
     {
         JsonConvert.DefaultSettings = () => new JsonSerializerSettings
         {
-            ContractResolver = new IncludeAllContractResolver()
+            ContractResolver = new IncludeAllContractResolver(),
+            PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+            ReferenceLoopHandling = ReferenceLoopHandling.Serialize
         };
     }
 
