@@ -5,23 +5,23 @@ using FairyGUI.Utils;
 
 namespace FGUI.Common
 {
-    public partial class FGUIBattleUnitInfo : GComponent
+    public partial class FGUIFloatBattleUnit : GComponent
     {
-        public GTextField m_name_txt;
+        public GTextField m_txt_name;
         public GProgressBar m_hp_bar;
         public GProgressBar m_qi_bar;
         public const string URL = "ui://rt51n0kjqwwl51";
 
-        public static FGUIBattleUnitInfo CreateInstance()
+        public static FGUIFloatBattleUnit CreateInstance()
         {
-            return (FGUIBattleUnitInfo)UIPackage.CreateObject("Common", "BattleUnitInfo");
+            return (FGUIFloatBattleUnit)UIPackage.CreateObject("Common", "FloatBattleUnit");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            m_name_txt = (GTextField)GetChild("name_txt");
+            m_txt_name = (GTextField)GetChild("txt_name");
             m_hp_bar = (GProgressBar)GetChild("hp_bar");
             m_qi_bar = (GProgressBar)GetChild("qi_bar");
         }

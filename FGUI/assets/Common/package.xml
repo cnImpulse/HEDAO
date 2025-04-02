@@ -7,46 +7,45 @@
     <image id="ntsy4" name="SiGuax4.png" path="/Resources/Images/" scale="9grid" scale9grid="32,32,64,64" smoothing="false"/>
     <font id="ekn09" name="mplus_hzk_12.ttf" path="/Resources/Fonts/" renderMode="sdfaa" samplePointSize="12" boldWeight="0.03" atlasPadding="60"/>
     <image id="aoboa" name="TianDix4.png" path="/Resources/Images/" scale="9grid" scale9grid="32,32,64,64" smoothing="false"/>
-    <component id="aobob" name="Button.xml" path="/Components/Button/"/>
+    <component id="aobob" name="Button.xml" path="/MetaComponent/Button/"/>
     <component id="ja3tc" name="WinLoadGame.xml" path="/Forms/Window/WinLoadGame/" exported="true"/>
     <component id="ja3td" name="SaveItem.xml" path="/Forms/Window/WinLoadGame/" exported="true"/>
     <image id="ja3tf" name="Close.png" path="/Resources/Images/" smoothing="false"/>
-    <component id="ja3th" name="CloseButton.xml" path="/Components/Button/"/>
-    <component id="105c4o" name="Check.xml" path="/Components/Button/"/>
+    <component id="ja3th" name="CloseButton.xml" path="/MetaComponent/Button/"/>
+    <component id="105c4o" name="Check.xml" path="/MetaComponent/Button/"/>
     <component id="ut3j4p" name="HudBattle.xml" path="/Forms/Menu/" exported="true"/>
     <component id="uyzr4r" name="ActionForm.xml" path="/Forms/FullScreen/" exported="true"/>
-    <component id="uyzr4t" name="ActionPanel.xml" path="/Components/Temp/" exported="true"/>
-    <component id="uyzr4v" name="ActionItem.xml" path="/Components/ListItem/" exported="true"/>
-    <component id="l0qc4w" name="SkillItem.xml" path="/Components/ListItem/" exported="true"/>
-    <component id="dl574x" name="HPBar.xml" path="/Components/Progress/"/>
+    <component id="uyzr4t" name="ActionPanel.xml" path="/MetaComponent/Temp/" exported="true"/>
+    <component id="uyzr4v" name="ActionItem.xml" path="/MetaComponent/ListItem/" exported="true"/>
+    <component id="l0qc4w" name="SkillItem.xml" path="/MetaComponent/ListItem/" exported="true"/>
+    <component id="dl574x" name="HPBar.xml" path="/MetaComponent/Progress/"/>
     <component id="rzkn50" name="CommonTips.xml" path="/Forms/Float/" exported="true"/>
-    <component id="qwwl51" name="BattleUnitInfo.xml" path="/Forms/Float/" exported="true"/>
-    <component id="ty0953" name="QIBar.xml" path="/Components/Progress/"/>
+    <component id="qwwl51" name="FloatBattleUnit.xml" path="/Forms/Float/" exported="true"/>
+    <component id="ty0953" name="QIBar.xml" path="/MetaComponent/Progress/"/>
     <component id="vg3s54" name="BattleStateEffect.xml" path="/Forms/Float/" exported="true"/>
     <component id="mv3555" name="MenuHome.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
-    <component id="mv3556" name="CommonButton.xml" path="/Components/Button/"/>
+    <component id="mv3556" name="CommonButton.xml" path="/MetaComponent/Button/"/>
     <component id="soef5a" name="RadarWidget.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
-    <component id="aow85c" name="List.xml" path="/Components/Temp/" exported="true"/>
-    <component id="aow85e" name="VerticalList.xml" path="/Components/Temp/" exported="true"/>
+    <component id="aow85c" name="List.xml" path="/MetaComponent/Temp/" exported="true"/>
+    <component id="aow85e" name="VerticalList.xml" path="/MetaComponent/Temp/" exported="true"/>
     <component id="nenx5f" name="QiuDaoPage.xml" path="/Forms/Menu/MenuHome/Page/" exported="true"/>
     <component id="lcvv5g" name="BookPage.xml" path="/Forms/Menu/MenuHome/Page/" exported="true"/>
     <component id="oq905j" name="WuDaoPage.xml" path="/Forms/Menu/MenuHome/Page/" exported="true"/>
     <component id="oq905k" name="DangMoPage.xml" path="/Forms/Menu/MenuHome/Page/" exported="true"/>
-    <component id="u7915m" name="TeamList.xml" path="/Components/Temp/" exported="true"/>
-    <component id="gv665q" name="TaskPanel.xml" path="/Components/Panel/" exported="true"/>
-    <component id="gq3i5r" name="FloatGridUnit.xml" path="/Forms/Float/" exported="true"/>
+    <component id="u7915m" name="TeamList.xml" path="/MetaComponent/Temp/" exported="true"/>
+    <component id="gv665q" name="TaskWidget.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="okxa5s" name="MenuActionSelect.xml" path="/Forms/Menu/MenuActionSelect/" exported="true"/>
     <component id="okxa5t" name="BtnAction.xml" path="/Forms/Menu/MenuActionSelect/" exported="true"/>
     <component id="fbqy5v" name="BtnRole.xml" path="/Forms/Menu/MenuHome/" exported="true"/>
     <component id="hmyt5w" name="BtnBuilding.xml" path="/Forms/Menu/MenuHome/"/>
     <component id="8r1d5x" name="BtnBook.xml" path="/Forms/Menu/MenuHome/"/>
-    <component id="8r1d5y" name="CommonTxt.xml" path="/Components/Button/"/>
+    <component id="8r1d5y" name="CommonTxt.xml" path="/MetaComponent/Text/"/>
     <component id="m46u5z" name="BtnBookType.xml" path="/Forms/Menu/MenuHome/"/>
     <component id="rnio61" name="MenuRole.xml" path="/Forms/Menu/MenuRole/" exported="true"/>
     <component id="seah62" name="MenuExplore.xml" path="/Forms/Menu/MenuExplore/" exported="true"/>
     <component id="seah63" name="RoleItem.xml" path="/Forms/Menu/MenuExplore/" exported="true"/>
     <component id="seah64" name="BtnNode.xml" path="/Forms/Menu/MenuExplore/"/>
-    <component id="gjxc65" name="CommonTxtCenter.xml" path="/Components/Button/"/>
+    <component id="gjxc65" name="CommonTxtCenter.xml" path="/MetaComponent/Text/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

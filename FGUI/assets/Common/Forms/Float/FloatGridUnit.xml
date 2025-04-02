@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="100,100" pivot="0.5,0.5" anchor="true" opaque="false">
-  <displayList>
-    <text id="n0_gq3i" name="title" xy="-22,66" pivot="0.5,0.5" size="144,34" fontSize="24" align="center" vAlign="middle" text="abbbbbbbbb"/>
-  </displayList>
-</component>

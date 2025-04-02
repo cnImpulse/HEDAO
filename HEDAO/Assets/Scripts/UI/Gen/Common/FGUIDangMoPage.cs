@@ -9,7 +9,7 @@ namespace FGUI.Common
     {
         public FGUIVerticalList m_list_role;
         public FGUITeamList m_list_team;
-        public FGUITaskPanel m_panel_task;
+        public FGUITaskWidget m_panel_task;
         public const string URL = "ui://rt51n0kjoq905k";
 
         public static FGUIDangMoPage CreateInstance()
@@ -23,7 +23,7 @@ namespace FGUI.Common
 
             m_list_role = (FGUIVerticalList)GetChild("list_role");
             m_list_team = (FGUITeamList)GetChild("list_team");
-            m_panel_task = (FGUITaskPanel)GetChild("panel_task");
+            m_panel_task = (FGUITaskWidget)GetChild("panel_task");
         }
     }
 }

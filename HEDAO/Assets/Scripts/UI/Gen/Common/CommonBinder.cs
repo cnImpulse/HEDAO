@@ -11,8 +11,7 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIList.URL, typeof(FGUIList));
             UIObjectFactory.SetPackageItemExtension(FGUIVerticalList.URL, typeof(FGUIVerticalList));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuMain.URL, typeof(FGUIMenuMain));
-            UIObjectFactory.SetPackageItemExtension(FGUIFloatGridUnit.URL, typeof(FGUIFloatGridUnit));
-            UIObjectFactory.SetPackageItemExtension(FGUITaskPanel.URL, typeof(FGUITaskPanel));
+            UIObjectFactory.SetPackageItemExtension(FGUITaskWidget.URL, typeof(FGUITaskWidget));
             UIObjectFactory.SetPackageItemExtension(FGUIWinLoadGame.URL, typeof(FGUIWinLoadGame));
             UIObjectFactory.SetPackageItemExtension(FGUISaveItem.URL, typeof(FGUISaveItem));
             UIObjectFactory.SetPackageItemExtension(FGUISkillItem.URL, typeof(FGUISkillItem));
@@ -23,7 +22,7 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIBtnAction.URL, typeof(FGUIBtnAction));
             UIObjectFactory.SetPackageItemExtension(FGUIWuDaoPage.URL, typeof(FGUIWuDaoPage));
             UIObjectFactory.SetPackageItemExtension(FGUIDangMoPage.URL, typeof(FGUIDangMoPage));
-            UIObjectFactory.SetPackageItemExtension(FGUIBattleUnitInfo.URL, typeof(FGUIBattleUnitInfo));
+            UIObjectFactory.SetPackageItemExtension(FGUIFloatBattleUnit.URL, typeof(FGUIFloatBattleUnit));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuRole.URL, typeof(FGUIMenuRole));
             UIObjectFactory.SetPackageItemExtension(FGUICommonTips.URL, typeof(FGUICommonTips));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuExplore.URL, typeof(FGUIMenuExplore));

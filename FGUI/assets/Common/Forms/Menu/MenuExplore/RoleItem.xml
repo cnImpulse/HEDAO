@@ -2,11 +2,12 @@
 <component size="120,164">
   <displayList>
     <component id="n1_seah" name="btn_role" src="fbqy5v" fileName="Forms/Menu/MenuHome/BtnRole.xml" xy="0,44"/>
-    <component id="n2_seah" name="bar_hp" src="dl574x" fileName="Components/Progress/HPBar.xml" xy="60,10" size="120,20">
+    <component id="n2_seah" name="bar_hp" src="dl574x" fileName="MetaComponent/Progress/HPBar.xml" xy="60,10" size="120,20" group="n4_vl2o">
       <ProgressBar value="50" max="100"/>
     </component>
-    <component id="n3_seah" name="bar_qi" src="ty0953" fileName="Components/Progress/QIBar.xml" xy="60,32" size="120,20">
+    <component id="n3_seah" name="bar_qi" src="ty0953" fileName="MetaComponent/Progress/QIBar.xml" xy="60,27" size="120,20" group="n4_vl2o">
       <ProgressBar value="50" max="100"/>
     </component>
+    <group id="n4_vl2o" name="n4" xy="0,0" size="120,37"/>
   </displayList>
 </component>

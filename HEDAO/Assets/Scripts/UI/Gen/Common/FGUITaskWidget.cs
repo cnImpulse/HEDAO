@@ -5,16 +5,16 @@ using FairyGUI.Utils;
 
 namespace FGUI.Common
 {
-    public partial class FGUITaskPanel : GComponent
+    public partial class FGUITaskWidget : GComponent
     {
         public GTextField m_title;
         public GTextField m_txt_taskinfo;
         public GButton m_btn_go;
         public const string URL = "ui://rt51n0kjgv665q";
 
-        public static FGUITaskPanel CreateInstance()
+        public static FGUITaskWidget CreateInstance()
         {
-            return (FGUITaskPanel)UIPackage.CreateObject("Common", "TaskPanel");
+            return (FGUITaskWidget)UIPackage.CreateObject("Common", "TaskWidget");
         }
 
         public override void ConstructFromXML(XML xml)
