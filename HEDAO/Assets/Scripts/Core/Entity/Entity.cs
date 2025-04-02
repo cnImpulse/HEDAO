@@ -13,7 +13,7 @@ public class Entity
     }
 
     [JsonConstructor]
-    public Entity(long id)
+    protected Entity(long id)
     {
         Id = id;
     }

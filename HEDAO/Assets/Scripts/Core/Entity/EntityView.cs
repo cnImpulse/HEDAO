@@ -6,14 +6,14 @@ public abstract class EntityView : MonoBehaviour
 {
     public Entity Entity;
 
-    public void Init(Entity entity)
+    public void Init(Entity entity, object data = default)
     {
         Entity = entity;
 
-        OnInit();
+        OnInit(data);
     }
 
-    protected virtual void OnInit()
+    protected virtual void OnInit(object data)
     {
 
     }

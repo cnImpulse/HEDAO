@@ -40,7 +40,12 @@ public static class GridMapUtl
     {
         return new Vector3(gridPos.x + 0.5f, gridPos.y + 0.5f);
     }
-    
+
+    public static Vector2Int WorldPos2GridPos(Vector3 position)
+    {
+        return new Vector2Int((int) (position.x - 0.5f), (int)(position.y - 0.5f));
+    }
+
     public static Vector2Int[] s_DirArray8 = {
         Vector2Int.down, // (0, -1)
         Vector2Int.up, // (0, 1)

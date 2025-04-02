@@ -7,14 +7,14 @@ public class EntityManager : BaseManager
     private long m_CurMaxId = 0;
     private readonly Dictionary<long, EntityView> m_EntityViewDict;
 
-    public void ShowEntity<T>(Entity entity)
+    public void ShowEntity<T>(Entity entity, object data = default)
         where T : EntityView
     {
         var path = GameMgr.Cfg.TbRes.Get(entity.GetPrefabId()).Path;
         var go = GameMgr.Res.LoadAsset<GameObject>(path);
         
         var view = go.AddComponent<T>();
-        view.Init(entity);
+        view.Init(entity, data);
     }
 
     public void HideEntity<T>(long id)

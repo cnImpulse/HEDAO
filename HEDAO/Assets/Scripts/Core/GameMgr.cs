@@ -14,6 +14,9 @@ public static class GameMgr
     public static BattleManager Battle;
     public static ExploreManager Explore;
 
+    // 纯表现
+    public static EffectManager Effect;
+
     private static List<BaseManager> ManagerList = new List<BaseManager>();
 
     public static void Init()
@@ -44,6 +47,8 @@ public static class GameMgr
         Entity = CreateManager<EntityManager>();
         Battle = CreateManager<BattleManager>();
         Explore = CreateManager<ExploreManager>();
+
+        Effect = CreateManager<EffectManager>();
     }
 
     private static T CreateManager<T>()

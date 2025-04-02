@@ -5,15 +5,19 @@ using UnityEngine;
 public class GridUnitView : EntityView
 {
     public new GridUnit Entity => base.Entity as GridUnit;
+    public GridMapView GridMapView = default;
 
-    protected override void OnInit()
+    protected override void OnInit(object data)
     {
-        base.OnInit();
+        base.OnInit(data);
 
+        GridMapView = data as GridMapView;
     }
 
     private void Update()
     {
-        transform.position = GridMapUtl.GridPos2WorldPos(Entity.GridPos);
+        if (GridMapView == null) return;
+
+        transform.position = GridMapView.GridPosToWorldPos(Entity.GridPos);
     }
 }
