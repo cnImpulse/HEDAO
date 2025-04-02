@@ -12,6 +12,8 @@ public class GridUnitView : EntityView
         base.OnInit(data);
 
         GridMapView = data as GridMapView;
+        
+        GameMgr.UI.ShowFloatUI(UIName.FloatBattleUnit, this);
     }
 
     private void Update()

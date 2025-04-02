@@ -5,9 +5,15 @@ using UnityEngine;
 
 public abstract class UIBase
 {
+    public long Id;
     public string Name { get; private set; }
     public GComponent View;
 
+    public UIBase()
+    {
+        Id = GameMgr.Entity.GetNextId();
+    }
+    
     public void Init(string name, GComponent view, object userData)
     {
         Name = name;

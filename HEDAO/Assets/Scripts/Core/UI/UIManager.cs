@@ -6,7 +6,8 @@ using FGUI.Common;
 
 public class UIManager : BaseManager
 {
-    private Dictionary<string, UIBase> UIDict = new Dictionary<string, UIBase>();
+    private Dictionary<long, UIBase> UIDict = new Dictionary<long, UIBase>();
+    private Dictionary<string, UIBase> NameDict = new Dictionary<string, UIBase>();
 
     protected override void OnInit()
     {
@@ -20,10 +21,21 @@ public class UIManager : BaseManager
     {
         CloseAllUI();
     }
+
+    public void ShowFloatUI(string uiName, object userData = default)
+    {
+        var uiCfg = UICfg.GetCfg(uiName);
+        var view = UIPackage.CreateObjectFromURL(uiCfg.UIURL) as GComponent;
+        GRoot.inst.AddChild(view);
+        
+        var ui = Activator.CreateInstance(uiCfg.UIType) as UIBase;
+        ui.Init(uiName, view, userData);
+        UIDict.Add(ui.Id, ui);
+    }
     
     public void ShowUI(string uiName, object userData = default)
     {
-        if (UIDict.ContainsKey(uiName))
+        if (NameDict.ContainsKey(uiName))
         {
             return;
         }
@@ -35,15 +47,17 @@ public class UIManager : BaseManager
         var ui = Activator.CreateInstance(uiCfg.UIType) as UIBase;
         ui.Init(uiName, view, userData);
 
-        UIDict.Add(uiName, ui);
+        UIDict.Add(ui.Id, ui);
+        NameDict.Add(uiName, ui);
     }
 
     public void CloseUI(string uiName)
     {
-        if (UIDict.TryGetValue(uiName, out var ui))
+        if (NameDict.TryGetValue(uiName, out var ui))
         {
             ui.Dispose();
-            UIDict.Remove(uiName);
+            UIDict.Remove(ui.Id);
+            NameDict.Remove(uiName);
         }
     }
 
@@ -54,6 +68,7 @@ public class UIManager : BaseManager
             ui.Dispose();
         }
         UIDict.Clear();
+        NameDict.Clear();
     }
 
     public override void OnUpdate()

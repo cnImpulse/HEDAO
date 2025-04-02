@@ -5,7 +5,7 @@ using UnityEngine;
 public class EntityManager : BaseManager
 {
     private long m_CurMaxId = 0;
-    private readonly Dictionary<long, EntityView> m_EntityViewDict;
+    private readonly Dictionary<long, EntityView> m_EntityViewDict = new Dictionary<long, EntityView>();
 
     public void ShowEntity<T>(Entity entity, object data = default)
         where T : EntityView

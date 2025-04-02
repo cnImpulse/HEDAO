@@ -10,6 +10,7 @@ public static partial class UICfg
         cfg[UIName.WinLoadGame] = new UICfgItem(typeof(WinLoadGame), FGUIWinLoadGame.URL);
         cfg[UIName.MenuHome] = new UICfgItem(typeof(MenuHome), FGUIMenuHome.URL);
         cfg[UIName.MenuActionSelect] = new UICfgItem(typeof(MenuActionSelect), FGUIMenuActionSelect.URL);
+        cfg[UIName.FloatBattleUnit] = new UICfgItem(typeof(FloatBattleUnit), FGUIFloatBattleUnit.URL);
         cfg[UIName.MenuRole] = new UICfgItem(typeof(MenuRole), FGUIMenuRole.URL);
         cfg[UIName.MenuExplore] = new UICfgItem(typeof(MenuExplore), FGUIMenuExplore.URL);
         cfg[UIName.HudBattle] = new UICfgItem(typeof(HudBattle), FGUIHudBattle.URL);

@@ -50,6 +50,8 @@ public class GridMapView : EntityView, IPointerDownHandler
         if (Stage.isTouchOnUI) return;
 
         var gridPos = WorldPosToGridPos(eventData.pointerCurrentRaycast.worldPosition);
-        GameMgr.Effect.ShowEffect(10003, GridPosToWorldPos(gridPos));
+        // GameMgr.Effect.ShowEffect(10003, GridPosToWorldPos(gridPos));
+        
+        Log.Info($"OnPointerDown gridPos: {gridPos}");
     }
 }

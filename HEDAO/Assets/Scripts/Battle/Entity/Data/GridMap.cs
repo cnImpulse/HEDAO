@@ -34,7 +34,7 @@ public class GridMap : Entity
         GridDataDict = cfg.GridDataDic;
 
         var list = GridDataDict.Values.ToList();
-        foreach (var role in GameMgr.Save.Data.TeamDict)
+        foreach (var role in GameMgr.Save.Data.TeamDict.Values)
         {
             var gridUnit = new GridUnit();
             gridUnit.Init(role);

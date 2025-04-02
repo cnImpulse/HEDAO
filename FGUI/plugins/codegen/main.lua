@@ -116,7 +116,7 @@ function CheckPrefix(str, list)
     return false
 end
 
-local ExportList = {"Menu", "Hud", "Win"}
+local ExportList = {"Menu", "Hud", "Win", "Float"}
 ---@param handler CS.FairyEditor.PublishHandler
 function onPublish(handler)
     ---@type CS.FairyEditor.PublishHandler.ClassInfo[]
