@@ -5,7 +5,7 @@ using Cfg;
 using System;
 using System.Runtime.Serialization;
 
-public class RoleAttrComponent : AttrComponent
+public partial class RoleAttrComponent : AttrComponent
 {
     public void Init(Dictionary<EAttrType, int> initAttr)
     {

@@ -135,3 +135,30 @@ namespace Cfg
 
 }
 
+public partial class RoleAttrComponent : AttrComponent
+{
+    public int None => GetAttrValue(Cfg.EAttrType.None);
+    public int Age => GetAttrValue(Cfg.EAttrType.Age);
+    public int Life => GetAttrValue(Cfg.EAttrType.Life);
+    public int Luck => GetAttrValue(Cfg.EAttrType.Luck);
+    public int Exp => GetAttrValue(Cfg.EAttrType.Exp);
+    public int Break => GetAttrValue(Cfg.EAttrType.Break);
+    public int MaxHP => GetAttrValue(Cfg.EAttrType.MaxHP);
+    public int MaxQI => GetAttrValue(Cfg.EAttrType.MaxQI);
+    public int SPD => GetAttrValue(Cfg.EAttrType.SPD);
+    public int STR => GetAttrValue(Cfg.EAttrType.STR);
+    public int TPO => GetAttrValue(Cfg.EAttrType.TPO);
+    public int SSI => GetAttrValue(Cfg.EAttrType.SSI);
+    public int LNK => GetAttrValue(Cfg.EAttrType.LNK);
+    public int HP => GetAttrValue(Cfg.EAttrType.HP);
+    public int QI => GetAttrValue(Cfg.EAttrType.QI);
+    public int MaxHPUp => GetAttrValue(Cfg.EAttrType.MaxHPUp);
+    public int MaxQIUp => GetAttrValue(Cfg.EAttrType.MaxQIUp);
+    public int SPDUp => GetAttrValue(Cfg.EAttrType.SPDUp);
+    public int STRUp => GetAttrValue(Cfg.EAttrType.STRUp);
+    public int TPOUp => GetAttrValue(Cfg.EAttrType.TPOUp);
+    public int SSIUp => GetAttrValue(Cfg.EAttrType.SSIUp);
+    public int LNKUp => GetAttrValue(Cfg.EAttrType.LNKUp);
+    public int Shield => GetAttrValue(Cfg.EAttrType.Shield);
+}
+

@@ -13,6 +13,7 @@ public class FloatBattleUnit : UIBase
         base.OnInit(userData);
 
         Owner = userData as GridUnitView;
+        View.m_txt_name.text = Owner.Entity.Role.Name;
     }
 
     protected override void OnShow()
@@ -25,8 +26,11 @@ public class FloatBattleUnit : UIBase
     {
         base.OnUpdate();
 
-        View.m_hp_bar.value = Owner.Entity.HP;
-        View.m_hp_bar.max = Owner.Entity.MaxHP;
+        var attr = Owner.Entity.Role.Attr;
+        View.m_hp_bar.value = attr.HP;
+        View.m_hp_bar.max = attr.MaxHP;
+        View.m_qi_bar.value = attr.QI;
+        View.m_qi_bar.max = attr.MaxQI;
 
         Vector3 screenPos = Camera.main.WorldToScreenPoint(Owner.transform.position);
         screenPos.y = Screen.height - screenPos.y;
