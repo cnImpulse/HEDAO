@@ -5,7 +5,7 @@ using UnityEngine;
 public class EntityManager : BaseManager
 {
     private long m_CurMaxId = 0;
-    private readonly Dictionary<long, EntityView> m_EntityViewDict = new Dictionary<long, EntityView>();
+    public readonly Dictionary<long, EntityView> EntityViewDict = new Dictionary<long, EntityView>();
 
     public void ShowEntity<T>(Entity entity, object data = default)
         where T : EntityView
@@ -14,20 +14,20 @@ public class EntityManager : BaseManager
         var go = GameMgr.Res.LoadAsset<GameObject>(path);
         
         var view = go.AddComponent<T>();
-        m_EntityViewDict.Add(entity.Id, view);
+        EntityViewDict.Add(entity.Id, view);
 
         view.Init(entity, data);
     }
 
     public void HideEntity(long id)
     {
-        m_EntityViewDict.Remove(id);
+        EntityViewDict.Remove(id);
     }
 
     public T GetEntityView<T>(long id)
         where T : EntityView
     {
-        return m_EntityViewDict[id] as T;
+        return EntityViewDict[id] as T;
     }
 
     public long GetNextId()

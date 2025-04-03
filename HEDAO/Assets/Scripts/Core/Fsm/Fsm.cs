@@ -48,6 +48,11 @@ public class Fsm
         CurState.OnEnter(data);
     }
 
+    public void OnUpdate()
+    {
+        CurState?.OnUpdate();
+    }
+
     public void Start<T>()
         where T : FsmState
     {

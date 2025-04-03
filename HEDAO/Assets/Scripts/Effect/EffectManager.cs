@@ -9,7 +9,7 @@ public class EffectManager : BaseManager
         EffectData data = new EffectData(prefabId, position, lifetime);
         if (isSingleton)
         {
-            HideEffect(prefabId);
+            HideEffectByPrefabId(prefabId);
         }
 
         GameMgr.Entity.ShowEntity<EffectView>(data);
@@ -23,6 +23,13 @@ public class EffectManager : BaseManager
 
     public void HideEffectByPrefabId(int prefabId)
     {
-
+        foreach(var view in GameMgr.Entity.EntityViewDict.Values)
+        {
+            if (view is EffectView)
+            {
+                view.Hide();
+                break;
+            }
+        }
     }
 }

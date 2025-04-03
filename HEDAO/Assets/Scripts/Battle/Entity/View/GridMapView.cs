@@ -29,27 +29,11 @@ public class GridMapView : EntityView, IPointerDownHandler
         }
     }
 
-    /// <summary>
-    /// 网格坐标转世界坐标
-    /// </summary>
-    public Vector3 GridPosToWorldPos(Vector2Int gridPos)
-    {
-        return m_TilemapList[0].GetCellCenterWorld((Vector3Int)gridPos);
-    }
-
-    /// <summary>
-    /// 世界坐标转网格坐标
-    /// </summary>
-    public Vector2Int WorldPosToGridPos(Vector3 worldPosition)
-    {
-        return (Vector2Int)m_TilemapList[0].WorldToCell(worldPosition);
-    }
-
     public void OnPointerDown(PointerEventData eventData)
     {
         if (Stage.isTouchOnUI) return;
 
-        var gridPos = WorldPosToGridPos(eventData.pointerCurrentRaycast.worldPosition);
+        var gridPos = GridMapUtl.WorldPos2GridPos(eventData.pointerCurrentRaycast.worldPosition);
         GameMgr.Event.Fire(GameEventType.OnPointerDownMap, gridPos);
 
         Log.Info($"OnPointerDown gridPos: {gridPos}");

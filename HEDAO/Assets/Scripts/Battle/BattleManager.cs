@@ -15,6 +15,13 @@ public class BattleManager : BaseManager
 
     }
 
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        Fsm?.OnUpdate();
+    }
+
     public void StartBattle(int id)
     {
         GameMgr.Save.Data.BattleData = new BattleData(id);

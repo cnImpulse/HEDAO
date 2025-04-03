@@ -20,6 +20,6 @@ public class GridUnitView : EntityView
     {
         if (GridMapView == null) return;
 
-        transform.position = GridMapView.GridPosToWorldPos(Entity.GridPos);
+        transform.position = GridMapUtl.GridPos2WorldPos(Entity.GridPos);
     }
 }
