@@ -60,10 +60,22 @@ public class BattleDataEditor : MonoBehaviour
         GridMapCfg GridMapCfg = new GridMapCfg();
         for (int i = tilemapList.Length - 1; i >= 0; --i)
         {
-            var tileDic = GetAllTile<Tile>(tilemapList[i]);
-            foreach(var pair in tileDic)
+            var map = tilemapList[i];
+            var tileDic = GetAllTile<Tile>(map);
+            if (map.name == "m_PlayerArea")
             {
-                GridMapCfg.SetGridData(new GridData(pair.Key, 0));
+                foreach (var pair in tileDic)
+                {
+                    GridMapCfg.PlayerArea.Add(pair.Key);
+                }
+                map.gameObject.SetActive(false);
+            }
+            else
+            {
+                foreach (var pair in tileDic)
+                {
+                    GridMapCfg.SetGridData(new GridData(pair.Key, 0));
+                }
             }
         }
     

@@ -8,6 +8,7 @@ public class BattleStart : FsmState
     {
         base.OnEnter(data);
 
+        GameMgr.Battle.Fsm.ChangeState<BattleLoop>();
     }
 
     public override void OnLeave()

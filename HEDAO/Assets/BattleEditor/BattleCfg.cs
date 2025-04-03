@@ -7,6 +7,9 @@ using UnityEngine;
 public class BattleCfg
 {
     public int BattleId = 0;
+    public int EnemyId = 10001;
+    public int EnemyNum = 4;
+
     public int MapId;
     [Range(2, 36)]
     public int MapWidth = 18;

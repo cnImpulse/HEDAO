@@ -21,27 +21,40 @@ public class GridMap : Entity
     public Dictionary<int, GridData> GridDataDict;
     public Dictionary<long, GridUnit> GridUnitDict = new Dictionary<long, GridUnit>();
     
-    public int CfgId {get; private set;}
-
-    public GridMap(int cfgId)
-    {
-        CfgId = cfgId;
-    }
-
     protected override void OnInit(object data)
     {
-        var cfg = AssetUtl.ReadData<GridMapCfg>(AssetUtl.GetGridMapDataPath(CfgId));
+        BattleCfg battleCfg = data as BattleCfg;
+        var cfg = AssetUtl.ReadData<GridMapCfg>(AssetUtl.GetGridMapDataPath(battleCfg.MapId));
         GridDataDict = cfg.GridDataDic;
 
-        var list = GridDataDict.Values.ToList();
-        foreach (var role in GameMgr.Save.Data.TeamDict.Values)
-        {
-            var gridUnit = new GridUnit();
-            gridUnit.Init(role);
-            gridUnit.GridPos = list.GetRandom().GridPos;
+        InitPlayerBattleUnit(battleCfg, cfg);
+    }
 
-            GridUnitDict.Add(gridUnit.Id, gridUnit);
+    private void InitPlayerBattleUnit(BattleCfg battleCfg, GridMapCfg cfg)
+    {
+        var playArea = cfg.PlayerArea.ToList();
+        var roleList = GameMgr.Save.Data.TeamDict.Values.ToList();
+        var gridPosList = playArea.GetRandom(roleList.Count);
+        for (int i = 0; i < gridPosList.Count; ++i)
+        {
+            AddBattleUnit(roleList[i], gridPosList[i]);
         }
+
+        var gridDataList = GridDataDict.Values.Where((gridData) => { return !playArea.Contains(gridData.GridPos); }).ToList().GetRandom(battleCfg.EnemyNum);
+        for (int i = 0; i < gridDataList.Count; ++i)
+        {
+            var role = new EnemyRole();
+            role.Init(battleCfg.EnemyId);
+            AddBattleUnit(role, gridDataList[i].GridPos);
+        }
+    }
+
+    public void AddBattleUnit(Role role, Vector2Int pos)
+    {
+        var gridUnit = new GridUnit();
+        gridUnit.Init(role);
+        gridUnit.GridPos = pos;
+        GridUnitDict.Add(gridUnit.Id, gridUnit);
     }
 
     public override int GetPrefabId()
