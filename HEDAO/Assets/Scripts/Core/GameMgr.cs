@@ -13,6 +13,7 @@ public static class GameMgr
     public static EntityManager Entity;
     public static BattleManager Battle;
     public static ExploreManager Explore;
+    public static EventManager Event;
 
     // 纯表现
     public static EffectManager Effect;
@@ -47,6 +48,7 @@ public static class GameMgr
         Entity = CreateManager<EntityManager>();
         Battle = CreateManager<BattleManager>();
         Explore = CreateManager<ExploreManager>();
+        Event = CreateManager<EventManager>();
 
         Effect = CreateManager<EffectManager>();
     }

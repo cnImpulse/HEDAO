@@ -6,10 +6,6 @@ using Cfg.Battle;
 
 public class PlayerRole : Role
 {
-    public PlayerRole()
-    {
-    }
-    
     protected override void OnInit(object data)
     {
         base.OnInit(data);

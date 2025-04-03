@@ -24,6 +24,12 @@ public class EntityManager : BaseManager
         m_EntityViewDict.Remove(id);
     }
 
+    public T GetEntityView<T>(long id)
+        where T : EntityView
+    {
+        return m_EntityViewDict[id] as T;
+    }
+
     public long GetNextId()
     {
         m_CurMaxId++;

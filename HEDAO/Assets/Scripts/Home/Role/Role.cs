@@ -4,7 +4,7 @@ using UnityEngine;
 using Cfg;
 using Cfg.Battle;
 
-public abstract class Role : Entity, IEffectTarget
+public class Role : Entity, IEffectTarget
 {
     public string Name;
     public int Level { get; protected set; }

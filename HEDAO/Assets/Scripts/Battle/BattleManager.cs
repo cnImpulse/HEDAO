@@ -7,6 +7,7 @@ public class BattleManager : BaseManager
 {
     public Fsm Fsm { get; private set; }
     public BattleData Data => GameMgr.Save.Data.BattleData;
+    public GridMapView GridMapView => GameMgr.Entity.GetEntityView<GridMapView>(Data.GridMap.Id);
 
     protected override void OnInit()
     {
