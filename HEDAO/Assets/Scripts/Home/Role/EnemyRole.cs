@@ -16,5 +16,6 @@ public class EnemyRole : Role
         Level = cfg.Level;
         
         Attr.Init(cfg.BaseAttr);
+        MoveSkillSet.Add(cfg.MoveSkillId);
     }
 }

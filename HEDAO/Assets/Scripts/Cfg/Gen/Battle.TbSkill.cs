@@ -12,12 +12,12 @@ using Luban;
 
 namespace Cfg.Battle
 {
-public partial class TbSkillCfg
+public partial class TbSkill
 {
     private readonly System.Collections.Generic.Dictionary<int, SkillCfg> _dataMap;
     private readonly System.Collections.Generic.List<SkillCfg> _dataList;
     
-    public TbSkillCfg(ByteBuf _buf)
+    public TbSkill(ByteBuf _buf)
     {
         _dataMap = new System.Collections.Generic.Dictionary<int, SkillCfg>();
         _dataList = new System.Collections.Generic.List<SkillCfg>();

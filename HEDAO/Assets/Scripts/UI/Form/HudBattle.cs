@@ -12,6 +12,8 @@ public class HudBattle : UIBase
     {
         base.OnInit(userData);
 
+        GameMgr.Event.Subscribe(GameEventType.OnSelectBattleUnit, OnSelectBattleUnit);
+        
         View.m_btn_start.onClick.Set(OnClickStart);
         View.m_list_action.itemRenderer = OnRenderRole;
     }
@@ -49,5 +51,10 @@ public class HudBattle : UIBase
     private void OnClickStart()
     {
         GameMgr.Battle.Fsm.ChangeState<BattleStart>();
+    }
+    
+    private void OnSelectBattleUnit(GameEvent obj)
+    {
+        GameMgr.UI.ShowUI(UIName.MenuAction);
     }
 }

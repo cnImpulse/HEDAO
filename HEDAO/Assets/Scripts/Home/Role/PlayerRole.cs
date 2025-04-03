@@ -19,6 +19,8 @@ public class PlayerRole : Role
             WuXin.Add((EWuXinType)i, Random.Range(cfg.WuXinRange.Min, cfg.WuXinRange.Max));
         }
 
+        MoveSkillSet.Add(1001);
+        
         var tagList = GameMgr.Cfg.TbRoleTagCfg.DataList;
         AddTag(tagList[Random.Range(0, tagList.Count)].Id);
     }

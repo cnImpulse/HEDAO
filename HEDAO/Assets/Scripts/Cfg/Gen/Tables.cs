@@ -15,7 +15,8 @@ public partial class Tables
 {
     public Battle.TbCharacter TbCharacter {get; }
     public Common.TbRes TbRes {get; }
-    public Battle.TbSkillCfg TbSkillCfg {get; }
+    public Battle.TbSkill TbSkill {get; }
+    public Battle.TbMoveSkill TbMoveSkill {get; }
     public Battle.TbBuffCfg TbBuffCfg {get; }
     public Battle.TbEffectCfg TbEffectCfg {get; }
     public Battle.TbConditionCfg TbConditionCfg {get; }
@@ -33,7 +34,8 @@ public partial class Tables
     {
         TbCharacter = new Battle.TbCharacter(loader("battle_tbcharacter"));
         TbRes = new Common.TbRes(loader("common_tbres"));
-        TbSkillCfg = new Battle.TbSkillCfg(loader("battle_tbskillcfg"));
+        TbSkill = new Battle.TbSkill(loader("battle_tbskill"));
+        TbMoveSkill = new Battle.TbMoveSkill(loader("battle_tbmoveskill"));
         TbBuffCfg = new Battle.TbBuffCfg(loader("battle_tbbuffcfg"));
         TbEffectCfg = new Battle.TbEffectCfg(loader("battle_tbeffectcfg"));
         TbConditionCfg = new Battle.TbConditionCfg(loader("battle_tbconditioncfg"));
@@ -53,7 +55,8 @@ public partial class Tables
     {
         TbCharacter.ResolveRef(this);
         TbRes.ResolveRef(this);
-        TbSkillCfg.ResolveRef(this);
+        TbSkill.ResolveRef(this);
+        TbMoveSkill.ResolveRef(this);
         TbBuffCfg.ResolveRef(this);
         TbEffectCfg.ResolveRef(this);
         TbConditionCfg.ResolveRef(this);
@@ -73,7 +76,8 @@ public partial class CfgManager : BaseManager
 {
     public Battle.TbCharacter TbCharacter => Tables.TbCharacter;
     public Common.TbRes TbRes => Tables.TbRes;
-    public Battle.TbSkillCfg TbSkillCfg => Tables.TbSkillCfg;
+    public Battle.TbSkill TbSkill => Tables.TbSkill;
+    public Battle.TbMoveSkill TbMoveSkill => Tables.TbMoveSkill;
     public Battle.TbBuffCfg TbBuffCfg => Tables.TbBuffCfg;
     public Battle.TbEffectCfg TbEffectCfg => Tables.TbEffectCfg;
     public Battle.TbConditionCfg TbConditionCfg => Tables.TbConditionCfg;

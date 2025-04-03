@@ -74,7 +74,7 @@ public static class RoleUtil
         string info = "技能: ";
         foreach (var id in role.SkillSet)
         {
-            var cfg = GameMgr.Cfg.TbSkillCfg.Get(id);
+            var cfg = GameMgr.Cfg.TbSkill.Get(id);
             info += cfg.Name;
         }
 

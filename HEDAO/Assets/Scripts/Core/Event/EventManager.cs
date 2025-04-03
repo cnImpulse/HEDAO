@@ -7,6 +7,7 @@ public enum GameEventType
 {
     None,
     OnPointerDownMap,
+    OnSelectBattleUnit,
 }
 
 public class GameEvent
@@ -47,7 +48,7 @@ public class EventManager : BaseManager
         }
     }
 
-    public void Fire(GameEventType type, object data)
+    public void Fire(GameEventType type, object data = default)
     {
         var e = GameEvent.Create(type, data);
         if (m_EventHandlers.TryGetValue(type, out Delegate handlers))

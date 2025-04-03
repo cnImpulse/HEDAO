@@ -8,4 +8,5 @@ public static partial class UIName
         public const string MenuRole = "MenuRole";
         public const string MenuExplore = "MenuExplore";
         public const string HudBattle = "HudBattle";
+        public const string MenuAction = "MenuAction";
 }

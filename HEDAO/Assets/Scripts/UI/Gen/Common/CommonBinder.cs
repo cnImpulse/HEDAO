@@ -14,7 +14,6 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUITaskWidget.URL, typeof(FGUITaskWidget));
             UIObjectFactory.SetPackageItemExtension(FGUIWinLoadGame.URL, typeof(FGUIWinLoadGame));
             UIObjectFactory.SetPackageItemExtension(FGUISaveItem.URL, typeof(FGUISaveItem));
-            UIObjectFactory.SetPackageItemExtension(FGUISkillItem.URL, typeof(FGUISkillItem));
             UIObjectFactory.SetPackageItemExtension(FGUIBookPage.URL, typeof(FGUIBookPage));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuHome.URL, typeof(FGUIMenuHome));
             UIObjectFactory.SetPackageItemExtension(FGUIQiuDaoPage.URL, typeof(FGUIQiuDaoPage));
@@ -30,7 +29,7 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIRadarWidget.URL, typeof(FGUIRadarWidget));
             UIObjectFactory.SetPackageItemExtension(FGUITeamList.URL, typeof(FGUITeamList));
             UIObjectFactory.SetPackageItemExtension(FGUIHudBattle.URL, typeof(FGUIHudBattle));
-            UIObjectFactory.SetPackageItemExtension(FGUIActionForm.URL, typeof(FGUIActionForm));
+            UIObjectFactory.SetPackageItemExtension(FGUIMenuAction.URL, typeof(FGUIMenuAction));
             UIObjectFactory.SetPackageItemExtension(FGUIActionPanel.URL, typeof(FGUIActionPanel));
             UIObjectFactory.SetPackageItemExtension(FGUIBattleStateEffect.URL, typeof(FGUIBattleStateEffect));
         }

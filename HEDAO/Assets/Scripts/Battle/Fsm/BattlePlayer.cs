@@ -13,6 +13,7 @@ public class BattlePlayer : FsmState
 
         GameMgr.Event.Subscribe(GameEventType.OnPointerDownMap, OnPointerDownMap);
 
+        GameMgr.Event.Fire(GameEventType.OnSelectBattleUnit);
         GameMgr.Effect.ShowEffect(10003, GridMapUtl.GridPos2WorldPos(BattleUnit.GridPos));
     }
 

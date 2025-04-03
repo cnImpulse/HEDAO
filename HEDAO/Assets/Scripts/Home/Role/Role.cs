@@ -12,11 +12,11 @@ public class Role : Entity, IEffectTarget
     public RoleAttrComponent Attr { get; protected set; } = new RoleAttrComponent();
     public Dictionary<EWuXinType, int> WuXin = new Dictionary<EWuXinType, int>();
 
-    public Dictionary<EBookType, int> BookDict = new Dictionary<EBookType, int>();
     public HashSet<int> SkillSet = new HashSet<int>();
+    public HashSet<int> MoveSkillSet = new HashSet<int>();
+    public Dictionary<int, Buff> BuffDict = new Dictionary<int, Buff>();
     public HashSet<int> TagSet = new HashSet<int>();
-
-    private Dictionary<int, Buff> BuffDict = new Dictionary<int, Buff>();
+    public Dictionary<EBookType, int> BookDict = new Dictionary<EBookType, int>();
 
     public void AddTag(int id)
     {
