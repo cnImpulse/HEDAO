@@ -55,6 +55,9 @@ public class GridMap : Entity
         gridUnit.Init(role);
         gridUnit.GridPos = pos;
         GridUnitDict.Add(gridUnit.Id, gridUnit);
+
+        var gridData = GetGridData(pos);
+        gridData.OnGridUnitEnter(gridUnit);
     }
 
     public override int GetPrefabId()
@@ -62,12 +65,12 @@ public class GridMap : Entity
         return 10001;
     }
 
-    public bool ExitData(Vector2Int gridPos)
+    public bool HasGrid(Vector2Int gridPos)
     {
         return GridDataDict.ContainsKey(GridMapUtl.GridPosToIndex(gridPos));
     }
 
-    public void SetGridData(GridData gridData)
+    public void SetGrid(GridData gridData)
     {
         GridDataDict[GridMapUtl.GridPosToIndex(gridData.GridPos)] = gridData;
     }
@@ -199,78 +202,78 @@ public class GridMap : Entity
     }
         
     // 广度优先搜索
-    // public List<GridData> GetCanMoveGrids(GridUnit battleUnit)
-    // {
-    //     GridData start = GetGridData(battleUnit.Data.GridPos);
-    //
-    //     Queue<GridData> open = new Queue<GridData>();
-    //     List<GridData> close = new List<GridData>();
-    //
-    //     open.Enqueue(start);
-    //     for (int i = 0; i <= battleUnit.Data.MOV; ++i)
-    //     {
-    //         int length = open.Count;
-    //         if (length == 0)
-    //         {
-    //             break;
-    //         }
-    //
-    //         for (int j = 0; j < length; ++j)
-    //         {
-    //             GridData gridData = open.Dequeue();
-    //             List<GridData> neighbors = GetNeighbors(gridData.GridPos, battleUnit, NeighborType.CanAcross);
-    //             foreach (var neighbor in neighbors)
-    //             {
-    //                 if (!close.Contains(neighbor) && !open.Contains(neighbor))
-    //                 {
-    //                     open.Enqueue(neighbor);
-    //                 }
-    //             }
-    //             close.Add(gridData);
-    //         }
-    //     }
-    //
-    //     // 排除被占据的单元格
-    //     List<GridData> canMoveList = new List<GridData>();
-    //     foreach (var grid in close)
-    //     {
-    //         if (grid == start || grid.CanArrive())
-    //         {
-    //             canMoveList.Add(grid);
-    //         }
-    //     }
-    //
-    //     return canMoveList;
-    // }
-    //
-    //     // 战斗单位可穿过的邻居
-    // public List<GridData> GetNeighbors(Vector2Int centerPos, BattleUnit battleUnit, NeighborType type = NeighborType.None)
-    // {
-    //     GridData gridData = GetGridData(centerPos);
-    //     List<GridData> neighbors = new List<GridData>();
-    //     for (int i = 0; i < s_DirArray4.Length; ++i)
-    //     {
-    //         GridData grid = GetGridData(gridData.GridPos + s_DirArray4[i]);
-    //         if (grid == null)
-    //         {
-    //             continue;
-    //         }
-    //
-    //         bool flag = true;
-    //         switch (type)
-    //         {
-    //             case NeighborType.CanArrive: flag = grid.CanArrive(); break;
-    //             case NeighborType.CanAcross: flag = grid.CanAcross(battleUnit); break;
-    //         }
-    //
-    //         if (flag == false)
-    //         {
-    //             continue;
-    //         }
-    //
-    //         neighbors.Add(grid);
-    //     }
-    //
-    //     return neighbors;
-    // }
+    public List<GridData> GetCanMoveGrids(GridUnit battleUnit, int mov)
+    {
+        GridData start = GetGridData(battleUnit.GridPos);
+    
+        Queue<GridData> open = new Queue<GridData>();
+        List<GridData> close = new List<GridData>();
+    
+        open.Enqueue(start);
+        for (int i = 0; i <= mov; ++i)
+        {
+            int length = open.Count;
+            if (length == 0)
+            {
+                break;
+            }
+    
+            for (int j = 0; j < length; ++j)
+            {
+                GridData gridData = open.Dequeue();
+                List<GridData> neighbors = GetNeighbors(gridData.GridPos, battleUnit, NeighborType.CanAcross);
+                foreach (var neighbor in neighbors)
+                {
+                    if (!close.Contains(neighbor) && !open.Contains(neighbor))
+                    {
+                        open.Enqueue(neighbor);
+                    }
+                }
+                close.Add(gridData);
+            }
+        }
+    
+        // 排除被占据的单元格
+        List<GridData> canMoveList = new List<GridData>();
+        foreach (var grid in close)
+        {
+            if (grid == start || grid.CanArrive())
+            {
+                canMoveList.Add(grid);
+            }
+        }
+    
+        return canMoveList;
+    }
+    
+    // 战斗单位可穿过的邻居
+    public List<GridData> GetNeighbors(Vector2Int centerPos, GridUnit battleUnit, NeighborType type = NeighborType.None)
+    {
+        GridData gridData = GetGridData(centerPos);
+        List<GridData> neighbors = new List<GridData>();
+        for (int i = 0; i < s_DirArray4.Length; ++i)
+        {
+            GridData grid = GetGridData(gridData.GridPos + s_DirArray4[i]);
+            if (grid == null)
+            {
+                continue;
+            }
+    
+            bool flag = true;
+            switch (type)
+            {
+                case NeighborType.CanArrive: flag = grid.CanArrive(); break;
+                case NeighborType.CanAcross: flag = grid.CanAcross(battleUnit); break;
+            }
+    
+            if (flag == false)
+            {
+                continue;
+            }
+    
+            neighbors.Add(grid);
+        }
+    
+        return neighbors;
+    }
 }

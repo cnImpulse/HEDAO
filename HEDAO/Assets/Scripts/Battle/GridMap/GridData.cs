@@ -41,40 +41,40 @@ public class GridData
         GridUnit = null;
     }
 
-    // /// <summary>
-    // /// 是否可以经过
-    // /// </summary>
-    // /// <param name="战斗单位数据"></param>
-    // public bool CanAcross(BattleUnit battleUnit)
-    // {
-    //     if (battleUnit == null)
-    //     {
-    //         return false;
-    //     }
-    //
-    //     if (GridType == GridType.Obstacle)
-    //     {
-    //         return false;
-    //     }
-    //
-    //     if (GridUnit != null && GridUnit.Data.CampType != battleUnit.Data.CampType)
-    //     {
-    //         return false;
-    //     }
-    //
-    //     return true;
-    // }
-    //
-    // /// <summary>
-    // /// 是否可以到达
-    // /// </summary>
-    // public bool CanArrive()
-    // {
-    //     if (GridType == GridType.Obstacle || GridUnit != null)
-    //     {
-    //         return false;
-    //     }
-    //
-    //     return true;
-    // }
+    /// <summary>
+    /// 是否可以经过
+    /// </summary>
+    /// <param name="战斗单位数据"></param>
+    public bool CanAcross(GridUnit battleUnit)
+    {
+        if (battleUnit == null)
+        {
+            return false;
+        }
+    
+        // if (GridType == GridType.Obstacle)
+        // {
+        //     return false;
+        // }
+        //
+        if (GridUnit != null && GridUnit.CampType != battleUnit.CampType)
+        {
+            return false;
+        }
+    
+        return true;
+    }
+    
+    /// <summary>
+    /// 是否可以到达
+    /// </summary>
+    public bool CanArrive()
+    {
+        if (GridUnit != null)
+        {
+            return false;
+        }
+    
+        return true;
+    }
 }

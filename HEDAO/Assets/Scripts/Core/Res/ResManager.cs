@@ -41,6 +41,18 @@ public class ResManager : BaseManager
         where T : Object
     {
         var handle = YooAssets.LoadAssetSync<T>(path);
-        return handle.InstantiateSync() as T;
+        if (handle.AssetObject is GameObject)
+        {
+            return handle.InstantiateSync() as T;
+        }
+        
+        return handle.AssetObject as T;
+    }
+    
+    public T LoadAsset<T>(int prefabId)
+        where T : Object
+    {
+        var path = GameMgr.Cfg.TbRes.Get(prefabId).Path;
+        return LoadAsset<T>(path);
     }
 }

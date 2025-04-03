@@ -21,7 +21,11 @@ public class EntityManager : BaseManager
 
     public void HideEntity(long id)
     {
-        EntityViewDict.Remove(id);
+        if (EntityViewDict.TryGetValue(id, out EntityView view))
+        {
+            GameObject.Destroy(view.gameObject);
+            EntityViewDict.Remove(id);
+        }
     }
 
     public T GetEntityView<T>(long id)

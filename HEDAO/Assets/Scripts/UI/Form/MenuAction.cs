@@ -27,8 +27,6 @@ public class MenuAction : UIBase
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
-
-        View.m_btn_check.onClick.Set(OnClickCheck);
         
         InitFsm();
     }
@@ -43,10 +41,5 @@ public class MenuAction : UIBase
     private void InitFsm()
     {
         m_Fsm = Fsm.CreatFsm(this,  new ActionSelect(), new ActionMove(), new ActionSkill(), new ActionWait());
-    }
-
-    private void OnClickCheck()
-    {
-        m_Fsm.ChangeState<ActionSelect>();
     }
 }
