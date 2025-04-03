@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ProcedureExplore : FsmState
 {
-    public override void OnEnter(object data)
+    public override void OnEnter()
     {
-        base.OnEnter(data);
+        base.OnEnter();
 
         GameMgr.Save.Data.SceneType = SceneType.Explore;
         GameMgr.UI.ShowUI(UIName.MenuExplore);

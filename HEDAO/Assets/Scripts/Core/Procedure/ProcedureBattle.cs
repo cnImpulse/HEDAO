@@ -6,9 +6,9 @@ public class ProcedureBattle : FsmState
 {
     public BattleData Data => GameMgr.Save.Data.BattleData;
     
-    public override void OnEnter(object data)
+    public override void OnEnter()
     {
-        base.OnEnter(data);
+        base.OnEnter();
 
         GameMgr.Save.Data.SceneType = SceneType.Battle;
         

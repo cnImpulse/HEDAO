@@ -8,6 +8,6 @@ public class ProcedureManager : BaseManager
 
     protected override void OnInit()
     {
-        Fsm = Fsm.CreatFsm(new ProcedureMain(), new ProcedureHome(), new ProcedureExplore(), new ProcedureBattle());
+        Fsm = Fsm.CreatFsm(this, new ProcedureMain(), new ProcedureHome(), new ProcedureExplore(), new ProcedureBattle());
     }
 }

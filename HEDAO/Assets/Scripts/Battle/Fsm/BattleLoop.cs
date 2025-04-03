@@ -7,9 +7,9 @@ public class BattleLoop : FsmState
 {
     public BattleData Data => GameMgr.Battle.Data;
 
-    public override void OnEnter(object data)
+    public override void OnEnter()
     {
-        base.OnEnter(data);
+        base.OnEnter();
 
         RefreshQueue();
         if (Data.BattleUnitQueue.Peek().CampType == ECampType.Player)

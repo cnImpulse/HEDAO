@@ -6,15 +6,16 @@ public class Fsm
 {
     private readonly Dictionary<Type, FsmState> m_States = new Dictionary<Type, FsmState>();
     public FsmState CurState { get; private set; }
+    public object Owner { get; private set; }
 
-    protected Fsm()
+    protected Fsm(object owner)
     {
+        Owner = owner;
     }
 
-    public static Fsm CreatFsm(params FsmState[] states)
+    public static Fsm CreatFsm(object owner, params FsmState[] states)
     {
-        var fsm = new Fsm();
-
+        var fsm = new Fsm(owner);
         foreach (FsmState state in states)
         {
             Type stateType = state.GetType();
@@ -24,13 +25,13 @@ public class Fsm
             }
 
             fsm.m_States.Add(stateType, state);
-            state.OnInit();
+            state.Init(fsm);
         }
 
         return fsm;
     }
 
-    public void ChangeState<T>(object data = default)
+    public void ChangeState<T>()
         where T : FsmState
     {
         if (!m_States.TryGetValue(typeof(T), out var state))
@@ -45,7 +46,7 @@ public class Fsm
 
         CurState.OnLeave();
         CurState = state;
-        CurState.OnEnter(data);
+        CurState.OnEnter();
     }
 
     public void OnUpdate()
@@ -57,13 +58,13 @@ public class Fsm
         where T : FsmState
     {
         CurState = GetState(typeof(T));
-        CurState.OnEnter(default);
+        CurState.OnEnter();
     }
     
     public void Start(Type type)
     {
         CurState = GetState(type);
-        CurState.OnEnter(default);
+        CurState.OnEnter();
     }
 
     public FsmState GetState(Type type)

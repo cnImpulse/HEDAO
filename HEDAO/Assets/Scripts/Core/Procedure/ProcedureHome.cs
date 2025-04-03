@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ProcedureHome : FsmState
 {
-    public override void OnEnter(object data)
+    public override void OnEnter()
     {
-        base.OnEnter(data);
+        base.OnEnter();
 
         GameMgr.Save.Data.SceneType = SceneType.Home;
         GameMgr.UI.ShowUI(UIName.MenuHome);

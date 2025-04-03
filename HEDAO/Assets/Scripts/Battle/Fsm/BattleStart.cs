@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BattleStart : FsmState
 {
-    public override void OnEnter(object data)
+    public override void OnEnter()
     {
-        base.OnEnter(data);
+        base.OnEnter();
 
         GameMgr.Battle.Fsm.ChangeState<BattleLoop>();
     }

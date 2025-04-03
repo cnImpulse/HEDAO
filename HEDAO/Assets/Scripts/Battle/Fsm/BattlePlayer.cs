@@ -7,9 +7,9 @@ public class BattlePlayer : FsmState
 {
     public GridUnit BattleUnit => GameMgr.Battle.Data.BattleUnitQueue.Peek();
 
-    public override void OnEnter(object data)
+    public override void OnEnter()
     {
-        base.OnEnter(data);
+        base.OnEnter();
 
         GameMgr.Event.Subscribe(GameEventType.OnPointerDownMap, OnPointerDownMap);
 

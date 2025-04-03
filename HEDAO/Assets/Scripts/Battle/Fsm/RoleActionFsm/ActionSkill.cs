@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ActionSkill : ActionStateBase
 {
-    public override void OnEnter(object data)
+    public override void OnEnter( )
     {
-        base.OnEnter(data);
+        base.OnEnter();
 
     }
 

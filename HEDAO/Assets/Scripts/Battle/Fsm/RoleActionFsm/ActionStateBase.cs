@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using FairyGUI;
+using FGUI.Common;
 using UnityEngine;
 
-public class ActionStateBase : FsmState
+public abstract class ActionStateBase : FsmState
 {
-    public override void OnEnter(object data)
+    public new MenuAction Owner => base.Owner as MenuAction;
+    public FGUIMenuAction View => Owner.View as FGUIMenuAction;
+    protected GList m_list => View.m_panel_action.m_list_action;
+    
+    public override void OnEnter()
     {
-        base.OnEnter(data);
+        base.OnEnter();
 
     }
 

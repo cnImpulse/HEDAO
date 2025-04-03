@@ -38,7 +38,7 @@ public class BattleManager : BaseManager
     };
     public void InitFsm(EBattleState state)
     {
-        Fsm = Fsm.CreatFsm(new BattlePrepare(), new BattleStart(), new BattleLoop(), new BattleEnd(),
+        Fsm = Fsm.CreatFsm(this, new BattlePrepare(), new BattleStart(), new BattleLoop(), new BattleEnd(),
             new BattlePlayer(), new BattleAI());
         Fsm.Start(BattleStateDict[state]);
     }
