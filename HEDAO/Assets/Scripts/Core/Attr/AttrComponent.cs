@@ -47,8 +47,8 @@ public class AttributeField
         Value = Max;
     }
 }
-    
-public class AttrComponent
+
+public abstract class AttrComponent
 {
     public Dictionary<EAttrType, AttributeField> AttrDict = new Dictionary<EAttrType, AttributeField>();
 

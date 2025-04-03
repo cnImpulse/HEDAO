@@ -8,7 +8,7 @@ using FGUI.Common;
 
 public enum RoleActionType
 {
-    None = 0,
+    None,
     [EnumName("术法")]
     Skill,
     [EnumName("遁术")]

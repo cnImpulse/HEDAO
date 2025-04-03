@@ -37,5 +37,9 @@ public class ActionSelect : ActionStateBase
         {
             ChangeState<ActionMove>();
         }
+        else if (type == RoleActionType.Skill)
+        {
+            ChangeState<ActionSkill>();
+        }
     }
 }

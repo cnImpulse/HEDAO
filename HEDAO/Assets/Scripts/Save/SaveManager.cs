@@ -12,7 +12,9 @@ public class IncludeAllContractResolver : DefaultContractResolver
         JsonProperty property = base.CreateProperty(member, memberSerialization);
         if (property.Writable == false && member is PropertyInfo propertyInfo)
         {
-            property.Writable = propertyInfo.GetSetMethod(true) != null;
+            var hasSet = propertyInfo.GetSetMethod(true) != null;
+            property.Writable = hasSet;
+            property.Ignored = !hasSet;
         }
 
         if (property.Writable == false && member is FieldInfo fieldInfo)
@@ -35,7 +37,8 @@ public class SaveManager : BaseManager
         {
             ContractResolver = new IncludeAllContractResolver(),
             PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-            ReferenceLoopHandling = ReferenceLoopHandling.Serialize
+            ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
+            TypeNameHandling = TypeNameHandling.Auto
         };
     }
 
