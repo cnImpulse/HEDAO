@@ -43,7 +43,12 @@ public static class GridMapUtl
 
     public static Vector2Int WorldPos2GridPos(Vector3 position)
     {
-        return new Vector2Int((int) (position.x - 0.5f), (int)(position.y - 0.5f));
+        return GameMgr.Battle.GridMapView.WorldToCell(position);
+    }
+
+    public static Vector2Int GetMouseGridPos()
+    {
+        return WorldPos2GridPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
     public static Vector2Int[] s_DirArray8 = {

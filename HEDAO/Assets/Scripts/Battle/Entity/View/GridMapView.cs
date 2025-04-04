@@ -34,8 +34,16 @@ public class GridMapView : EntityView, IPointerDownHandler
         if (Stage.isTouchOnUI) return;
 
         var gridPos = GridMapUtl.WorldPos2GridPos(eventData.pointerCurrentRaycast.worldPosition);
-        GameMgr.Event.Fire(GameEventType.OnPointerDownMap, gridPos);
+        var gridData = Entity.GetGridData(gridPos);
+        if (gridData == null) return;
+        
+        GameMgr.Event.Fire(GameEventType.OnPointerDownMap, gridData);
 
         Log.Info($"OnPointerDown gridPos: {gridPos}");
+    }
+
+    public Vector2Int WorldToCell(Vector3 position)
+    {
+        return (Vector2Int)m_TilemapList[0].WorldToCell(position);
     }
 }

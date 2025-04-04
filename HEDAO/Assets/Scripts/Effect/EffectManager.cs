@@ -18,6 +18,8 @@ public class EffectManager : BaseManager
 
     public long ShowGridEffect(List<Vector2Int> gridList, Color color)
     {
+        HideGridEffect();
+        
         GridEffectData data = new GridEffectData(10004, default, -1);
         data.GridList = gridList;
         data.Color = color;
@@ -39,7 +41,8 @@ public class EffectManager : BaseManager
     {
         foreach(var view in GameMgr.Entity.EntityViewDict.Values)
         {
-            if (view is EffectView)
+            var effect = view as EffectView;
+            if (effect != null && effect.Data.PrefabId == prefabId)
             {
                 view.Hide();
                 break;

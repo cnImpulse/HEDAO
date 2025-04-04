@@ -12,7 +12,8 @@ public class BattleLoop : FsmState
         base.OnEnter();
 
         RefreshQueue();
-        if (Data.BattleUnitQueue.Peek().CampType == ECampType.Player)
+        var battleUnit = Data.BattleUnitQueue.Peek();
+        if (battleUnit.CampType == ECampType.Player)
         {
             GameMgr.Battle.Fsm.ChangeState<BattlePlayer>();
         }

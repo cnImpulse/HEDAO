@@ -7,7 +7,6 @@ namespace FGUI.Common
 {
     public partial class FGUIMenuAction : GComponent
     {
-        public GButton m_btn_check;
         public FGUIActionPanel m_panel_action;
         public const string URL = "ui://rt51n0kjuyzr4r";
 
@@ -20,7 +19,6 @@ namespace FGUI.Common
         {
             base.ConstructFromXML(xml);
 
-            m_btn_check = (GButton)GetChild("btn_check");
             m_panel_action = (FGUIActionPanel)GetChild("panel_action");
         }
     }

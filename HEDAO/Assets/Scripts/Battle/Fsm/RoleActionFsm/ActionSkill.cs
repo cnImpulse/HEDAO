@@ -6,24 +6,48 @@ using UnityEngine;
 
 public class ActionSkill : ActionStateBase
 {
-    public int CurCfgId = 0;
+    private List<GridData> m_Area;
     public List<int> SkillList => Owner.BattleUnit.Role.SkillSet.ToList();
     
     public override void OnEnter( )
     {
         base.OnEnter();
 
-        View.m_btn_check.onClick.Set(OnClickCheck);
-
         View.m_panel_action.m_title.text = "术";
+        
+        m_list.selectionController.onChanged.Set(OnSelectSkill);
         m_list.itemRenderer = OnRenderAction;
         m_list.numItems = SkillList.Count;
+        m_list.RefreshSelectionCtrl();
         m_list.ResizeToFit();
+        
+        GameMgr.Event.Subscribe(GameEventType.OnPointerDownMap, OnPointerDownMap);
     }
 
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+        
+        if (m_Area != null)
+        {
+            var gridPos = GridMapUtl.GetMouseGridPos();
+            if (m_Area.Contains(GridMap.GetGridData(gridPos)))
+            {
+                var position = GridMapUtl.GridPos2WorldPos(gridPos);
+                GameMgr.Effect.ShowEffect(10003, position, true);
+            }
+            else
+            {
+                GameMgr.Effect.HideEffectByPrefabId(10003);
+            }
+        }
+    }
+    
     public override void OnLeave()
     {
-
+        GameMgr.Effect.HideGridEffect();
+        GameMgr.Event.Unsubscribe(GameEventType.OnPointerDownMap, OnPointerDownMap);
+        
         base.OnLeave();
     }
     
@@ -32,20 +56,26 @@ public class ActionSkill : ActionStateBase
         var cfgId = SkillList[index];
         var cfg = GameMgr.Cfg.TbSkill.Get(cfgId);
         item.text = cfg.Name;
-        item.onClick.Set(()=>OnClickAction(cfgId));
+        item.asButton.mode = ButtonMode.Radio;
+        item.onClick.Set(()=>{m_list.selectedIndex = index;});
     }
     
-    private void OnClickAction(int cfgId)
+    private void OnSelectSkill()
     {
-        CurCfgId = cfgId;
+        if (m_list.selectedIndex < 0) return;
+        
+        var cfgId = SkillList[m_list.selectedIndex];
+        var cfg = GameMgr.Cfg.TbSkill.Get(cfgId);
+        m_Area = GameMgr.Battle.Data.GridMap.GetRangeGridList(BattleUnit.GridPos, cfg.ReleaseRange);
+        GameMgr.Effect.ShowGridEffect(m_Area.Select((grid)=> { return grid.GridPos; }).ToList(), Color.red);
     }
-
-    private void OnClickCheck()
+    
+    private void OnPointerDownMap(GameEvent obj)
     {
-        if (CurCfgId > 0)
+        var gridData = obj.Data as GridData;
+        if (m_Area.Contains(gridData))
         {
-            CurCfgId = 0;
-            GameMgr.Effect.HideGridEffect();
+            GridUnit
         }
         else
         {

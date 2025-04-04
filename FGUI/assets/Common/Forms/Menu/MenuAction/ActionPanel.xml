@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="400,600">
+  <controller name="ctrl_select" pages="0,,1," selected="0"/>
   <displayList>
     <image id="n2_uyzr" name="n2" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" size="400,600">
       <relation target="n4_uyzr" sidePair="width-width,height-height"/>
     </image>
     <text id="n3_uyzr" name="title" xy="0,0" pivot="0.5,0.5" size="400,60" fontSize="30" align="center" vAlign="middle" autoSize="none" bold="true" text="阿巴阿巴"/>
-    <list id="n4_uyzr" name="list_action" xy="0,0" size="400,600" selectionMode="none" margin="60,30,20,20" lineGap="10" defaultItem="ui://rt51n0kjuyzr4v" autoClearItems="true">
+    <list id="n4_uyzr" name="list_action" xy="0,0" size="400,600" margin="60,30,20,20" lineGap="10" defaultItem="ui://rt51n0kjuyzr4v" selectionController="ctrl_select" autoClearItems="true">
       <item/>
       <item/>
       <item/>

@@ -24,7 +24,7 @@ namespace FGUI.Common
 
             var ctrl = m_list_role.m_ctrl_select;
             ctrl.ClearPages();
-            ctrl.onChanged.Set(() => { OnRoleChanged(); });
+            ctrl.onChanged.Set(OnRoleChanged);
 
             m_list_role.m_list.itemRenderer = OnRenderRole;
             m_list_role2.m_list.itemRenderer = OnRenderRole2;

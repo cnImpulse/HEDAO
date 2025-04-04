@@ -11,10 +11,8 @@ public class BattlePlayer : FsmState
     {
         base.OnEnter();
 
-        GameMgr.Event.Subscribe(GameEventType.OnPointerDownMap, OnPointerDownMap);
-
-        GameMgr.Event.Fire(GameEventType.OnSelectBattleUnit);
-        GameMgr.Effect.ShowEffect(10003, GridMapUtl.GridPos2WorldPos(BattleUnit.GridPos));
+        BattleUnit.OnRoundStart();
+        GameMgr.Event.Fire(GameEventType.OnPlayerRoundStart);
     }
 
     public override void OnUpdate()
@@ -25,14 +23,9 @@ public class BattlePlayer : FsmState
 
     public override void OnLeave()
     {
-        GameMgr.Event.Unsubscribe(GameEventType.OnPointerDownMap, OnPointerDownMap);
-
+        BattleUnit.OnRoundEnd();
+        GameMgr.Battle.Data.BattleUnitQueue.Dequeue();
+        
         base.OnLeave();
-    }
-
-    private void OnPointerDownMap(GameEvent e)
-    {
-        var gridPos = (Vector2Int)e.Data;
-        //GameMgr.Effect.ShowEffect(10003, GameMgr.Battle.GridMapView.GridPosToWorldPos(gridPos));
     }
 }

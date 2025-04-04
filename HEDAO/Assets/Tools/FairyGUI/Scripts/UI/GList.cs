@@ -510,7 +510,7 @@ namespace FairyGUI
             set { _selectionController = value; }
         }
 
-        public void RefreshSelectionController()
+        public void RefreshSelectionCtrl(int selectIndex = 0)
         {
             if (selectionController == null) return;
 
@@ -521,7 +521,8 @@ namespace FairyGUI
             {
                 selectionController.AddPage("");
             }
-            selectionController.selectedIndex = 0;
+            
+            selectionController.selectedIndex = selectIndex;
         }
 
         /// <summary>
@@ -1619,7 +1620,7 @@ namespace FairyGUI
 
             data = dataList;
             numItems = dataList.Count;
-            RefreshSelectionController();
+            RefreshSelectionCtrl();
         }
 
         public void RefreshVirtualList()

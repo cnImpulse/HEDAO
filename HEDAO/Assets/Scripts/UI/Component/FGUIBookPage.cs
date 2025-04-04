@@ -40,7 +40,7 @@ namespace FGUI.Common
         {
             m_RoleList = DiscipleDict.Values.Where((role) => { return !role.BookDict.ContainsKey(GetSelectedBookType()); }).ToList();
             m_list_role.m_list.RefreshList(m_RoleList);
-            m_list_role.m_list.RefreshSelectionController();
+            m_list_role.m_list.RefreshSelectionCtrl();
 
             RefreshBookList();
         }
@@ -50,7 +50,7 @@ namespace FGUI.Common
             m_BookList = GameMgr.Cfg.TbGongFaCfg.DataList.Where((cfg) => { return cfg.BookType == GetSelectedBookType(); }).ToList();
             m_list_book.RefreshList(m_BookList);
 
-            m_list_book.RefreshSelectionController();
+            m_list_book.RefreshSelectionCtrl();
         }
 
         private void OnRenderRole(int index, GObject obj, object data)

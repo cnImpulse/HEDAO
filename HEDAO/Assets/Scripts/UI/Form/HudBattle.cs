@@ -12,7 +12,7 @@ public class HudBattle : UIBase
     {
         base.OnInit(userData);
 
-        GameMgr.Event.Subscribe(GameEventType.OnSelectBattleUnit, OnSelectBattleUnit);
+        GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnSelectBattleUnit);
         
         View.m_btn_start.onClick.Set(OnClickStart);
         View.m_list_action.itemRenderer = OnRenderRole;

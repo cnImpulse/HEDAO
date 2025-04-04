@@ -13,6 +13,8 @@ public enum ECampType
 public class GridUnit : Entity
 {
     public Vector2Int GridPos;
+    public GridMap GridMap => GameMgr.Battle.Data.GridMap;
+    public GridData GridData => GridMap.GetGridData(GridPos);
     public ECampType CampType { get; private set; }
     public Role Role { get; private set; }
 
@@ -29,5 +31,26 @@ public class GridUnit : Entity
     public override int GetPrefabId()
     {
         return 10002;
+    }
+    
+    public void Move(GridData end)
+    {
+        GridData.OnGridUnitLeave();
+        GridPos = end.GridPos;
+        end.OnGridUnitEnter(this);
+    }
+
+    public void PlaySkill(int skillId, Vector2Int target)
+    {
+        
+    }
+
+    public void OnRoundStart()
+    {
+    }
+
+    public void OnRoundEnd()
+    {
+
     }
 }

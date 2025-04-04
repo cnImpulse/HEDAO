@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cfg;
 using UnityEngine;
 
 /// <summary>
@@ -96,28 +97,28 @@ public class GridMap : Entity
         return null;
     }
 
-    // public List<GridData> GetRangeGridList(Vector2Int centerPos, Cfg.Battle.GridRange gridRange, Vector2Int direction = default)
-    // {
-    //     if (gridRange.Type == EGridRangeType.Default)
-    //     {
-    //         return GetRangeGridList(centerPos, gridRange.Distance);
-    //     }
-    //     else if (gridRange.Type == EGridRangeType.Cross)
-    //     {
-    //         return GetCrossRangeGridList(centerPos, gridRange.Distance);
-    //     }
-    //     else if (gridRange.Type == EGridRangeType.Square)
-    //     {
-    //         return GetSquareRangeGridList(centerPos, gridRange.Distance);
-    //     }
-    //     else if (gridRange.Type == EGridRangeType.Strip)
-    //     {
-    //         return GetLineRangeGridList(centerPos, gridRange.Distance, direction);
-    //     }
-    //
-    //     return null;
-    // }
-    //     
+    public List<GridData> GetRangeGridList(Vector2Int centerPos, Cfg.Battle.GridRange gridRange, Vector2Int direction = default)
+    {
+        if (gridRange.Type == EGridRangeType.Default)
+        {
+            return GetRangeGridList(centerPos, gridRange.Distance);
+        }
+        else if (gridRange.Type == EGridRangeType.Cross)
+        {
+            return GetCrossRangeGridList(centerPos, gridRange.Distance);
+        }
+        else if (gridRange.Type == EGridRangeType.Square)
+        {
+            return GetSquareRangeGridList(centerPos, gridRange.Distance);
+        }
+        else if (gridRange.Type == EGridRangeType.Strip)
+        {
+            return GetLineRangeGridList(centerPos, gridRange.Distance, direction);
+        }
+    
+        return null;
+    }
+        
     public List<GridData> GetSquareRangeGridList(Vector2Int centerPos, int range)
     {
         List<GridData> gridList = new List<GridData>();

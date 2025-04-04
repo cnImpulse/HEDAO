@@ -35,7 +35,7 @@ public class MenuAction : UIBase
     {
         base.OnShow();
 
-        m_Fsm.Start<ActionSelect>();
+        m_Fsm.Start<ActionMove>();
     }
 
     public override void OnUpdate()

@@ -6,29 +6,51 @@ using UnityEngine;
 
 public class ActionMove : ActionStateBase
 {
-    private int m_CurMoveSkillId = 0;
+    private List<GridData> m_MoveArea;
     public List<int> MoveSkillList => Owner.BattleUnit.Role.MoveSkillSet.ToList();
 
     public override void OnEnter()
     {
         base.OnEnter();
         
-        View.m_btn_check.onClick.Set(OnClickCheck);
-
         View.m_panel_action.m_title.text = "行";
+
+        m_list.selectionController.onChanged.Set(OnSelectMoveSkill);
         m_list.itemRenderer = OnRenderAction;
         m_list.numItems = MoveSkillList.Count;
+        m_list.RefreshSelectionCtrl();
         m_list.ResizeToFit();
+        
+        GameMgr.Event.Subscribe(GameEventType.OnPointerDownMap, OnPointerDownMap);
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
+        
+        if (m_MoveArea != null)
+        {
+            var gridPos = GridMapUtl.GetMouseGridPos();
+            if (m_MoveArea.Contains(GridMap.GetGridData(gridPos)))
+            {
+                var position = GridMapUtl.GridPos2WorldPos(gridPos);
+                GameMgr.Effect.ShowEffect(10003, position, true);
+            }
+            else
+            {
+                GameMgr.Effect.HideEffectByPrefabId(10003);
+            }
+        }
     }
 
     public override void OnLeave()
     {
-
+        m_MoveArea = null;
+        GameMgr.Effect.HideGridEffect();
+        GameMgr.Effect.HideEffectByPrefabId(10003);
+        
+        GameMgr.Event.Unsubscribe(GameEventType.OnPointerDownMap, OnPointerDownMap);
+        
         base.OnLeave();
     }
     
@@ -37,27 +59,27 @@ public class ActionMove : ActionStateBase
         var cfgId = MoveSkillList[index];
         var cfg = GameMgr.Cfg.TbMoveSkill.Get(cfgId);
         item.text = cfg.Name;
-        item.onClick.Set(()=>OnClickMoveSkill(cfgId));
+        item.asButton.mode = ButtonMode.Radio;
+        item.asButton.onClick.Set(()=>{m_list.selectedIndex = index;});
     }
     
-    private void OnClickMoveSkill(int cfgId)
+    private void OnSelectMoveSkill()
     {
-        m_CurMoveSkillId = cfgId;
+        if (m_list.selectedIndex < 0) return;
+        
+        var cfgId = MoveSkillList[m_list.selectedIndex];
         var cfg = GameMgr.Cfg.TbMoveSkill.Get(cfgId);
-        var moveArea = GameMgr.Battle.Data.GridMap.GetCanMoveGrids(Owner.BattleUnit, cfg.MOV);
-        GameMgr.Effect.ShowGridEffect(moveArea.Select((grid)=> { return grid.GridPos; }).ToList(), Color.green);
+        m_MoveArea = GameMgr.Battle.Data.GridMap.GetCanMoveGrids(Owner.BattleUnit, cfg.MOV);
+        GameMgr.Effect.ShowGridEffect(m_MoveArea.Select((grid)=> { return grid.GridPos; }).ToList(), Color.green);
     }
     
-    private void OnClickCheck()
+    private void OnPointerDownMap(GameEvent obj)
     {
-        if (m_CurMoveSkillId > 0)
+        var gridData = obj.Data as GridData;
+        if (m_MoveArea.Contains(gridData))
         {
-            m_CurMoveSkillId = 0;
-            GameMgr.Effect.HideGridEffect();
-        }
-        else
-        {
-            Fsm.ChangeState<ActionSelect>();
+            BattleUnit.Move(gridData);
+            ChangeState<ActionSelect>();
         }
     }
 }
