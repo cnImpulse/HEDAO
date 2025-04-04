@@ -21,6 +21,11 @@ public class ActionMove : ActionStateBase
         m_list.ResizeToFit();
     }
 
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+    }
+
     public override void OnLeave()
     {
 

@@ -237,7 +237,7 @@ public class GridMap : Entity
         List<GridData> canMoveList = new List<GridData>();
         foreach (var grid in close)
         {
-            if (grid == start || grid.CanArrive())
+            if (grid.CanArrive())
             {
                 canMoveList.Add(grid);
             }

@@ -16,7 +16,7 @@ public sealed partial class AttackEffect : EffectCfg
 {
     public AttackEffect(ByteBuf _buf)  : base(_buf) 
     {
-        DamageRatio = _buf.ReadInt();
+        Powner = _buf.ReadInt();
         DamageType = (EDamageType)_buf.ReadInt();
     }
 
@@ -25,7 +25,7 @@ public sealed partial class AttackEffect : EffectCfg
         return new Battle.AttackEffect(_buf);
     }
 
-    public readonly int DamageRatio;
+    public readonly int Powner;
     public readonly EDamageType DamageType;
    
     public const int __ID__ = 867016559;
@@ -42,7 +42,7 @@ public sealed partial class AttackEffect : EffectCfg
     {
         return "{ "
         + "Id:" + Id + ","
-        + "DamageRatio:" + DamageRatio + ","
+        + "Powner:" + Powner + ","
         + "DamageType:" + DamageType + ","
         + "}";
     }

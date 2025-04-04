@@ -38,6 +38,13 @@ public class MenuAction : UIBase
         m_Fsm.Start<ActionSelect>();
     }
 
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        m_Fsm.OnUpdate();
+    }
+
     private void InitFsm()
     {
         m_Fsm = Fsm.CreatFsm(this,  new ActionSelect(), new ActionMove(), new ActionSkill(), new ActionWait());

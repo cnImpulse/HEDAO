@@ -9,6 +9,7 @@ namespace FGUI.Common
     public partial class FGUIQiuDaoPage : GComponent
     {
         private List<PlayerRole> m_RoleList;
+        public int MaxRoleNum = 3;
 
         public void Refresh()
         {
@@ -54,6 +55,11 @@ namespace FGUI.Common
                 return;
             }
 
+            if (GameMgr.Save.Data.RoleDict.Count >= MaxRoleNum)
+            {
+                return;
+            }
+
             var role = m_RoleList[selectIndex];
             GameMgr.Save.Data.RoleDict.Add(role.Id, role);
 
@@ -67,7 +73,7 @@ namespace FGUI.Common
 
             var list = GameMgr.Save.Data.RoleDict.Values.ToList();
             m_list_role2.m_list.RefreshList(list);
-            m_txt_role_num.text = string.Format("{0}/{1}", list.Count, 8);
+            m_txt_role_num.text = string.Format("{0}/{1}", list.Count, MaxRoleNum);
         }
 
         private void OnRoleChanged()

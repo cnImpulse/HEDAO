@@ -6,11 +6,14 @@ using UnityEngine;
 
 public class ActionSkill : ActionStateBase
 {
+    public int CurCfgId = 0;
     public List<int> SkillList => Owner.BattleUnit.Role.SkillSet.ToList();
     
     public override void OnEnter( )
     {
         base.OnEnter();
+
+        View.m_btn_check.onClick.Set(OnClickCheck);
 
         View.m_panel_action.m_title.text = "术";
         m_list.itemRenderer = OnRenderAction;
@@ -34,5 +37,19 @@ public class ActionSkill : ActionStateBase
     
     private void OnClickAction(int cfgId)
     {
+        CurCfgId = cfgId;
+    }
+
+    private void OnClickCheck()
+    {
+        if (CurCfgId > 0)
+        {
+            CurCfgId = 0;
+            GameMgr.Effect.HideGridEffect();
+        }
+        else
+        {
+            Fsm.ChangeState<ActionSelect>();
+        }
     }
 }

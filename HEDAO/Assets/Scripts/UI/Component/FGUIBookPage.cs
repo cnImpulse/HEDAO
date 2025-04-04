@@ -90,8 +90,24 @@ namespace FGUI.Common
             {
                 txt += GetBuffDesc(buffId);
             }
+            foreach (var skillId in cfg.SkillList)
+            {
+                txt += GetSkillDesc(skillId);
+            }
 
             m_txt_book.text = txt;
+        }
+
+        private string GetSkillDesc(int id)
+        {
+            var cfg = GameMgr.Cfg.TbSkill.Get(id);
+            var str = string.Format("{0} 释放距离:{1}\n", cfg.Name, cfg.ReleaseRange.Distance);
+            foreach (var effectId in cfg.EffectList)
+            {
+                str += GetEffectDesc(effectId) + '\n';
+            }
+
+            return str;
         }
 
         private string GetBuffDesc(int id)
@@ -116,6 +132,10 @@ namespace FGUI.Common
                 {
                     str += string.Format("{0}:{1} ", pair.Key.GetName(), pair.Value);
                 }
+            }
+            else if (cfg is AttackEffect atkCfg)
+            {
+                str += string.Format("伤害 {0}:{1} ", atkCfg.DamageType.GetName(), atkCfg.Powner);
             }
 
             return str;

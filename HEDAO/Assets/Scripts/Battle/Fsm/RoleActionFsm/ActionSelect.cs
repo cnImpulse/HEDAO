@@ -12,6 +12,8 @@ public class ActionSelect : ActionStateBase
     {
         base.OnEnter();
 
+        View.m_btn_check.onClick.Clear();
+
         View.m_panel_action.m_title.text = "令";
         m_list.itemRenderer = OnRenderAction;
         m_list.numItems = ActionList.Count;
