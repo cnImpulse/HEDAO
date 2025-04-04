@@ -40,9 +40,9 @@ public class GridUnit : Entity
         end.OnGridUnitEnter(this);
     }
 
-    public void PlaySkill(int skillId, Vector2Int target)
+    public bool PlaySkill(int skillId, GridData target)
     {
-        
+        return GameMgr.Battle.PlaySkill(skillId, this, target);
     }
 
     public void OnRoundStart()

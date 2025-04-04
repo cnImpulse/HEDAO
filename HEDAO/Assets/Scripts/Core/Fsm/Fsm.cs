@@ -31,6 +31,15 @@ public class Fsm
         return fsm;
     }
 
+    public static void DestroyFsm(Fsm fsm)
+    {
+        fsm.CurState.OnLeave();
+        foreach (FsmState state in fsm.m_States.Values)
+        {
+            state.OnDestroy();
+        }
+    }
+
     public void ChangeState<T>()
         where T : FsmState
     {

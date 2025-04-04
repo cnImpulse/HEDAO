@@ -18,6 +18,8 @@ public class Role : Entity, IEffectTarget
     public HashSet<int> TagSet = new HashSet<int>();
     public Dictionary<EBookType, int> BookDict = new Dictionary<EBookType, int>();
 
+    AttrComponent IEffectTarget.Attr => Attr;
+
     public void AddTag(int id)
     {
         TagSet.Add(id);

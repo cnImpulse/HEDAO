@@ -26,7 +26,7 @@ public abstract class FsmState
     {
     }
 
-    public virtual void OnCleanUp()
+    public virtual void OnDestroy()
     {
     }
     

@@ -57,7 +57,7 @@
 	</enum>
 
 	<enum name="ERelationType" comment="关系类型">
-		<var name="Self" alias="己方" />
+		<var name="Self" alias="自己" />
 		<var name="Friend" alias="友方" />
 		<var name="Enemy" alias="敌方" />
 	</enum>

@@ -135,7 +135,7 @@ namespace Cfg
 
 }
 
-public partial class RoleAttrComponent : AttrComponent
+public partial class AttrComponent
 {
     public int None => GetAttrValue(Cfg.EAttrType.None);
     public int Age => GetAttrValue(Cfg.EAttrType.Age);

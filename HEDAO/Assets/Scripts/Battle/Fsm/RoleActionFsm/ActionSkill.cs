@@ -75,7 +75,13 @@ public class ActionSkill : ActionStateBase
         var gridData = obj.Data as GridData;
         if (m_Area.Contains(gridData))
         {
-            GridUnit
+            var cfgId = SkillList[m_list.selectedIndex];
+            var result = BattleUnit.PlaySkill(cfgId, gridData);
+            if (result)
+            {
+                Owner.Close();
+                GameMgr.Battle.Fsm.ChangeState<BattleLoop>();
+            }
         }
         else
         {

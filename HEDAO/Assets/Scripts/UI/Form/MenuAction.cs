@@ -45,6 +45,13 @@ public class MenuAction : UIBase
         m_Fsm.OnUpdate();
     }
 
+    protected override void OnClose()
+    {
+        Fsm.DestroyFsm(m_Fsm);
+
+        base.OnClose();
+    }
+
     private void InitFsm()
     {
         m_Fsm = Fsm.CreatFsm(this,  new ActionSelect(), new ActionMove(), new ActionSkill(), new ActionWait());

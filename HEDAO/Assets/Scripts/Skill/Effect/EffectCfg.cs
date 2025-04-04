@@ -6,14 +6,12 @@ namespace Cfg.Battle
 {
     public interface IEffectTarget
     {
+        AttrComponent Attr { get; }
+
         void AddBuff(int id);
         void RemoveBuff(int id);
         void AddSkill(int id);
         bool CheckCondition(int id);
-        void TakeDamage(int damage)
-        {
-            
-        }
     }
     
     public partial class EffectCfg

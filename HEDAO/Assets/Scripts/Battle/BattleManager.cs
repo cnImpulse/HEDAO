@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cfg.Battle;
 using UnityEngine;
 
 public class BattleManager : BaseManager
@@ -41,5 +42,23 @@ public class BattleManager : BaseManager
         Fsm = Fsm.CreatFsm(this, new BattlePrepare(), new BattleStart(), new BattleLoop(), new BattleEnd(),
             new BattlePlayer(), new BattleAI());
         Fsm.Start(BattleStateDict[state]);
+    }
+
+    public bool PlaySkill(int skillId, GridUnit caster, GridData gridData)
+    {
+        var target = gridData.GridUnit;
+        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+        if (cfg.TargetType != Cfg.ERelationType.Self && target == null)
+        {
+            return false;
+        }
+
+        if (cfg.TargetType != BattleUtil.GetRelationType(caster, target))
+        {
+            return false;
+        }
+
+        EffectCfg.TakeEffectList(cfg.EffectList, caster.Role, target.Role);
+        return true;
     }
 }

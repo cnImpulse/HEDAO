@@ -27,7 +27,7 @@
 {{namespace_with_grace_end __namespace_with_top_module}}
 
 {{~ if __name == 'EAttrType' ~}}
-public partial class RoleAttrComponent : AttrComponent
+public partial class AttrComponent
 {
     {{~ for item in items ~}}
     public int {{item.name}} => GetAttrValue(Cfg.{{__name}}.{{item.name}});
