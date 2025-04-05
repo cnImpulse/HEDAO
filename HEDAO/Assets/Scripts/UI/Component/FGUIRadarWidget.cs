@@ -16,7 +16,7 @@ namespace FGUI.Common
             float[] arr = new float[5];
             foreach (var pair in role.WuXin)
             {
-                var index = (int)pair.Key;
+                var index = (int)pair.Key - 1;
                 var value = pair.Value / 100f;
                 arr[index] = value;
                 var text = GetChildAt(GetChildIndex(m_text_wuxin_0) + index);

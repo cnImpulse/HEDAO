@@ -521,7 +521,7 @@ namespace FairyGUI
             {
                 selectionController.AddPage("");
             }
-            
+
             selectionController.selectedIndex = selectIndex;
         }
 

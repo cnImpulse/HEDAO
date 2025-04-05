@@ -58,7 +58,7 @@ public static class RoleUtil
         {
             if (role.BookDict.TryGetValue(bookType, out var id))
             {
-                var cfg = GameMgr.Cfg.TbGongFaCfg.Get(id);
+                var cfg = GameMgr.Cfg.TbBook.Get(id);
                 info += string.Format("{0}:{1}  ", bookType.GetName(), cfg.Name);
             }
             else

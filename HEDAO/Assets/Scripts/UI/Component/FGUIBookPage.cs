@@ -11,7 +11,7 @@ namespace FGUI.Common
     public partial class FGUIBookPage : GComponent
     {
         private List<PlayerRole> m_RoleList = new List<PlayerRole>();
-        private List<GongFaCfg> m_BookList = new List<GongFaCfg>();
+        private List<BookCfg> m_BookList = new List<BookCfg>();
 
         public Dictionary<long, PlayerRole> DiscipleDict => GameMgr.Save.Data.RoleDict;
         public List<EBookType> BookTypeList => GameMgr.Cfg.TbMisc.BookTypeList;
@@ -47,7 +47,7 @@ namespace FGUI.Common
 
         public void RefreshBookList()
         {
-            m_BookList = GameMgr.Cfg.TbGongFaCfg.DataList.Where((cfg) => { return cfg.BookType == GetSelectedBookType(); }).ToList();
+            m_BookList = GameMgr.Cfg.TbBook.DataList.Where((cfg) => { return cfg.BookType == GetSelectedBookType(); }).ToList();
             m_list_book.RefreshList(m_BookList);
 
             m_list_book.RefreshSelectionCtrl();
@@ -62,7 +62,7 @@ namespace FGUI.Common
 
         private void OnRenderBook(int index, GObject item, object data)
         {
-            var cfg = data as GongFaCfg;
+            var cfg = data as BookCfg;
             item.asButton.title = cfg.Name;
         }
 
@@ -96,6 +96,9 @@ namespace FGUI.Common
             }
 
             m_txt_book.text = txt;
+
+            var canLearn = GetSelectedRole()?.CanLearnBook(cfg.Id) ?? false;
+            m_btn_learn.text = canLearn ? "学习" : "不可学习";
         }
 
         private string GetSkillDesc(int id)
@@ -144,21 +147,21 @@ namespace FGUI.Common
         private void OnClickBtnLearn()
         {
             var role = GetSelectedRole();
-            var bookCfg = m_BookList[m_list_book.selectedIndex] as GongFaCfg;
-            role?.LearnGongFa(bookCfg.Id);
+            var bookCfg = m_BookList[m_list_book.selectedIndex];
+            role?.LearnBook(bookCfg.Id);
 
             RefreshList();
         }
 
-        private GongFaCfg GetSelectedBook()
+        private BookCfg GetSelectedBook()
         {
             var index = m_list_book.selectedIndex;
             if (index < 0) return null;
 
-            return m_BookList[index] as GongFaCfg;
+            return m_BookList[index] as BookCfg;
         }
         
-        private Role GetSelectedRole()
+        private PlayerRole GetSelectedRole()
         {
             var index = m_list_role.m_list.selectedIndex;
             if (index < 0 || m_RoleList.Count < index)
@@ -166,7 +169,7 @@ namespace FGUI.Common
                 return null;
             }
 
-            return m_RoleList[index] as Role;
+            return m_RoleList[index];
         }
 
         public EBookType GetSelectedBookType()

@@ -12,9 +12,9 @@ using Luban;
 
 namespace Cfg
 {
-public sealed partial class GongFaCfg : Luban.BeanBase
+public sealed partial class BookCfg : Luban.BeanBase
 {
-    public GongFaCfg(ByteBuf _buf) 
+    public BookCfg(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
@@ -25,9 +25,9 @@ public sealed partial class GongFaCfg : Luban.BeanBase
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);SkillList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); SkillList.Add(_e0);}}
     }
 
-    public static GongFaCfg DeserializeGongFaCfg(ByteBuf _buf)
+    public static BookCfg DeserializeBookCfg(ByteBuf _buf)
     {
-        return new GongFaCfg(_buf);
+        return new BookCfg(_buf);
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public sealed partial class GongFaCfg : Luban.BeanBase
     public readonly System.Collections.Generic.List<int> BuffList;
     public readonly System.Collections.Generic.List<int> SkillList;
    
-    public const int __ID__ = -1739232920;
+    public const int __ID__ = 1729302683;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)

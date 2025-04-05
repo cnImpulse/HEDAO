@@ -21,7 +21,7 @@ public partial class Tables
     public Battle.TbEffectCfg TbEffectCfg {get; }
     public Battle.TbConditionCfg TbConditionCfg {get; }
     public Building.TbBuildingCfg TbBuildingCfg {get; }
-    public XiuLian.TbGongFaCfg TbGongFaCfg {get; }
+    public XiuLian.TbBook TbBook {get; }
     public XiuLian.TbLevelCfg TbLevelCfg {get; }
     public Common.TbRole TbRole {get; }
     public Common.TbRoleTempCfg TbRoleTempCfg {get; }
@@ -40,7 +40,7 @@ public partial class Tables
         TbEffectCfg = new Battle.TbEffectCfg(loader("battle_tbeffectcfg"));
         TbConditionCfg = new Battle.TbConditionCfg(loader("battle_tbconditioncfg"));
         TbBuildingCfg = new Building.TbBuildingCfg(loader("building_tbbuildingcfg"));
-        TbGongFaCfg = new XiuLian.TbGongFaCfg(loader("xiulian_tbgongfacfg"));
+        TbBook = new XiuLian.TbBook(loader("xiulian_tbbook"));
         TbLevelCfg = new XiuLian.TbLevelCfg(loader("xiulian_tblevelcfg"));
         TbRole = new Common.TbRole(loader("common_tbrole"));
         TbRoleTempCfg = new Common.TbRoleTempCfg(loader("common_tbroletempcfg"));
@@ -61,7 +61,7 @@ public partial class Tables
         TbEffectCfg.ResolveRef(this);
         TbConditionCfg.ResolveRef(this);
         TbBuildingCfg.ResolveRef(this);
-        TbGongFaCfg.ResolveRef(this);
+        TbBook.ResolveRef(this);
         TbLevelCfg.ResolveRef(this);
         TbRole.ResolveRef(this);
         TbRoleTempCfg.ResolveRef(this);
@@ -82,7 +82,7 @@ public partial class CfgManager : BaseManager
     public Battle.TbEffectCfg TbEffectCfg => Tables.TbEffectCfg;
     public Battle.TbConditionCfg TbConditionCfg => Tables.TbConditionCfg;
     public Building.TbBuildingCfg TbBuildingCfg => Tables.TbBuildingCfg;
-    public XiuLian.TbGongFaCfg TbGongFaCfg => Tables.TbGongFaCfg;
+    public XiuLian.TbBook TbBook => Tables.TbBook;
     public XiuLian.TbLevelCfg TbLevelCfg => Tables.TbLevelCfg;
     public Common.TbRole TbRole => Tables.TbRole;
     public Common.TbRoleTempCfg TbRoleTempCfg => Tables.TbRoleTempCfg;

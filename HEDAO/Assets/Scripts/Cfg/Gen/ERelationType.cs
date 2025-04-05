@@ -17,9 +17,9 @@ namespace Cfg
     public enum ERelationType
     {
         /// <summary>
-        /// 己方
+        /// 自己
         /// </summary>
-        [EnumName("己方")]
+        [EnumName("自己")]
         Self = 0,
         /// <summary>
         /// 友方

@@ -63,6 +63,7 @@
 	</enum>
 
 	<enum name="EWuXinType" comment="五行">
+		<var name="None" alias="无" />
 		<var name="Jin" alias="金" />
 		<var name="Mu" alias="木" />
 		<var name="Sui" alias="水" />

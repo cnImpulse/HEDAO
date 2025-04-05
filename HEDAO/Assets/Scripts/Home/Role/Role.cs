@@ -11,6 +11,19 @@ public class Role : Entity, IEffectTarget
 
     public RoleAttrComponent Attr { get; protected set; } = new RoleAttrComponent();
     public Dictionary<EWuXinType, int> WuXin = new Dictionary<EWuXinType, int>();
+    public EWuXinType QiWuXinType
+    {
+        get
+        {
+            if (BookDict.TryGetValue(EBookType.DaoFa, out var id))
+            {
+                var cfg = GameMgr.Cfg.TbBook.Get(id);
+                return cfg.WuXinType;
+            }
+
+            return EWuXinType.None;
+        }
+    }
 
     public HashSet<int> SkillSet = new HashSet<int>();
     public HashSet<int> MoveSkillSet = new HashSet<int>();
@@ -69,40 +82,5 @@ public class Role : Entity, IEffectTarget
     public void RemoveSkill(int id)
     {
         SkillSet.Remove(id);
-    }
-
-    public void LearnGongFa(int cfgId)
-    {
-        var cfg = GameMgr.Cfg.TbGongFaCfg.Get(cfgId);
-        if (BookDict.TryAdd(cfg.BookType, cfgId))
-        {
-            foreach(var buffId in cfg.BuffList)
-            {
-                AddBuff(buffId);
-            }
-
-            foreach (var skillId in cfg.SkillList)
-            {
-                AddSkill(skillId);
-            }
-        }
-    }
-
-    public void ForgetGongFa(int cfgId)
-    {
-        var cfg = GameMgr.Cfg.TbGongFaCfg.Get(cfgId);
-        if (BookDict.ContainsKey(cfg.BookType))
-        {
-            BookDict.Remove(cfg.BookType);
-            foreach(var buffId in cfg.BuffList)
-            {
-                RemoveBuff(buffId);
-            }
-            
-            foreach (var skillId in cfg.SkillList)
-            {
-                RemoveSkill(skillId);
-            }
-        }
     }
 }
