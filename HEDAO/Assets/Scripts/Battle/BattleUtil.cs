@@ -18,4 +18,18 @@ public static class BattleUtil
 
         return ERelationType.Enemy;
     }
+
+    public static ECampType GetHostileCamp(ECampType campType)
+    {
+        if (campType == ECampType.Enemy)
+        {
+            return ECampType.Player;
+        }
+        else if (campType == ECampType.Player)
+        {
+            return ECampType.Enemy;
+        }
+
+        return ECampType.None;
+    }
 }

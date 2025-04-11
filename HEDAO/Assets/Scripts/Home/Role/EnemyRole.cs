@@ -16,6 +16,11 @@ public class EnemyRole : Role
         Level = cfg.Level;
         
         Attr.Init(cfg.BaseAttr);
+
+        foreach(var id in cfg.SkillSet)
+        {
+            SkillSet.Add(id);
+        }
         MoveSkillSet.Add(cfg.MoveSkillId);
     }
 }

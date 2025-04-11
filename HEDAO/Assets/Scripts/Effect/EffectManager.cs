@@ -16,11 +16,11 @@ public class EffectManager : BaseManager
         return data.Id;
     }
 
-    public long ShowGridEffect(List<Vector2Int> gridList, Color color)
+    public long ShowGridEffect(List<Vector2Int> gridList, Color color, float life = -1)
     {
         HideGridEffect();
         
-        GridEffectData data = new GridEffectData(10004, default, -1);
+        GridEffectData data = new GridEffectData(10004, default, life);
         data.GridList = gridList;
         data.Color = color;
         GameMgr.Entity.ShowEntity<GridEffectView>(data);

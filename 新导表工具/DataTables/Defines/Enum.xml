@@ -82,4 +82,19 @@
 		<var name="ShuFa" alias="术法" />
 		<var name="DunFa" alias="遁法" />
 	</enum>
+
+	<enum name="EEquipType" comment="装备类型">
+		<var name="Weapon" alias="武器" />
+		<var name="Armour" alias="披挂" />
+		<var name="Trinket" alias="配饰" />
+	</enum>
+
+	<enum name="EWeaponType" comment="武器类型">
+		<var name="None" alias="无" />
+		<var name="Sword" alias="剑" />
+		<var name="Bow" alias="弓" />
+		<var name="knife" alias="刀" />
+		<var name="Gun" alias="枪" />
+		<var name="Orb" alias="珠" />
+	</enum>
 </module>

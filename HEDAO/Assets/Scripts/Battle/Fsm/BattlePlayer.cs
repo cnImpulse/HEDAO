@@ -24,7 +24,6 @@ public class BattlePlayer : FsmState
     public override void OnLeave()
     {
         BattleUnit.OnRoundEnd();
-        GameMgr.Battle.Data.BattleUnitQueue.Dequeue();
         
         base.OnLeave();
     }

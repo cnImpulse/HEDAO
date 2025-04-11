@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Cfg;
 using UnityEngine;
 
@@ -17,10 +18,19 @@ public class GridUnit : Entity
     public GridData GridData => GridMap.GetGridData(GridPos);
     public ECampType CampType { get; private set; }
     public Role Role { get; private set; }
+    public CommonAI AI { get; private set; }
 
     public int HP => Role.Attr.GetAttrValue(EAttrType.HP);
     public int MaxHP => Role.Attr.GetAttrValue(EAttrType.MaxHP);
     public int SPD => Role.Attr.SPD;
+    public int MOV
+    {
+        get
+        {
+            var id = Role.MoveSkillSet.First();
+            return GameMgr.Cfg.TbMoveSkill.Get(id).MOV;
+        }
+    }
 
     protected override void OnInit(object data)
     {
@@ -40,6 +50,15 @@ public class GridUnit : Entity
         end.OnGridUnitEnter(this);
     }
 
+    public IEnumerator Move(List<GridData> path, GridData end)
+    {
+        foreach(var gridData in path)
+        {
+            Move(gridData);
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+
     public bool PlaySkill(int skillId, GridData target)
     {
         return GameMgr.Battle.PlaySkill(skillId, this, target);
@@ -51,6 +70,13 @@ public class GridUnit : Entity
 
     public void OnRoundEnd()
     {
+        GameMgr.Battle.Data.BattleUnitQueue.Dequeue();
+    }
 
+    public void InitAI()
+    {
+        if (AI != null) return;
+
+        AI = new CommonAI(this);
     }
 }
