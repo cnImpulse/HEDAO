@@ -46,6 +46,7 @@
     <component id="seah64" name="BtnNode.xml" path="/Forms/Menu/MenuExplore/"/>
     <component id="gjxc65" name="CommonTxtCenter.xml" path="/MetaComponent/Text/"/>
     <component id="m3nj66" name="Label_Tips.xml" path="/Forms/Menu/MenuAction/"/>
+    <component id="orvq67" name="FloatBubble.xml" path="/Forms/Float/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

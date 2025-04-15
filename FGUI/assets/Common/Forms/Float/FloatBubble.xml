@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="60,34" extention="Label">
+<component size="100,20" pivot="0.5,0.5" extention="Label">
   <displayList>
-    <text id="n0_m3nj" name="title" xy="0,0" size="60,34" fontSize="24" color="#ff7777" text="1000"/>
+    <text id="n0_m3nj" name="title" xy="50,10" pivot="0.5,0.5" anchor="true" size="46,34" fontSize="24" color="#ff7777" text="100"/>
   </displayList>
-  <relation target="n0_m3nj" sidePair="width-width,height-height"/>
-  <transition name="t0"/>
+  <transition name="fade_close" autoPlay="true">
+    <item time="0" type="Alpha" target="n0_m3nj" tween="true" startValue="0" endValue="1" duration="6" ease="Quint.In"/>
+    <item time="0" type="Scale" target="n0_m3nj" tween="true" startValue="1,1" endValue="2,2" duration="6" ease="Quint.In"/>
+    <item time="0" type="XY" target="n0_m3nj" value="-,0"/>
+    <item time="6" type="Scale" target="n0_m3nj" tween="true" startValue="2,2" endValue="1,1" duration="9" ease="Quint.Out"/>
+    <item time="23" type="Alpha" target="n0_m3nj" tween="true" startValue="1" endValue="0" duration="13"/>
+    <item time="23" type="Scale" target="n0_m3nj" tween="true" startValue="1,1" endValue="0.8,0.8" duration="13"/>
+    <item time="23" type="XY" target="n0_m3nj" tween="true" startValue="-,0" endValue="-,-80" duration="13" ease="Quad.In"/>
+  </transition>
 </component>
