@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cfg;
 using FairyGUI;
 using UnityEngine;
 
@@ -27,7 +28,8 @@ public class ActionSkill : ActionStateBase
     public override void OnUpdate()
     {
         base.OnUpdate();
-        
+
+        RefreshInfo();
         if (m_Area != null)
         {
             var gridPos = GridMapUtl.GetMouseGridPos();
@@ -62,12 +64,13 @@ public class ActionSkill : ActionStateBase
     
     private void OnSelectSkill()
     {
-        if (m_list.selectedIndex < 0) return;
-        
-        var cfgId = SkillList[m_list.selectedIndex];
-        var cfg = GameMgr.Cfg.TbSkill.Get(cfgId);
+        var cfg = GetSelectCfg();
+        if (cfg == null) return;
+
         m_Area = GameMgr.Battle.Data.GridMap.GetRangeGridList(BattleUnit.GridPos, cfg.ReleaseRange);
         GameMgr.Effect.ShowGridEffect(m_Area.Select((grid)=> { return grid.GridPos; }).ToList(), Color.red);
+
+        RefreshInfo();
     }
     
     private void OnPointerDownMap(GameEvent obj)
@@ -87,5 +90,49 @@ public class ActionSkill : ActionStateBase
         {
             Fsm.ChangeState<ActionSelect>();
         }
+    }
+
+    private void RefreshInfo()
+    {
+        var cfg = GetSelectCfg();
+        if (cfg == null) return;
+
+        var gridData = GridMap.GetGridData(GridMapUtl.GetMouseGridPos());
+        if (GameMgr.Battle.IsVaildTarget(cfg.Id, BattleUnit, gridData))
+        {
+            m_txt_info.text = GetSkillInfo(cfg.Id, BattleUnit, gridData);
+        }
+        else
+        {
+            m_txt_info.text = GetSkillInfo(cfg.Id);
+        }
+    }
+
+    private SkillCfg GetSelectCfg()
+    {
+        if (m_list.selectedIndex < 0) return null;
+
+        var cfgId = SkillList[m_list.selectedIndex];
+        var cfg = GameMgr.Cfg.TbSkill.Get(cfgId);
+        return cfg;
+    }
+
+    private string GetSkillInfo(int id, GridUnit caster, GridData gridData)
+    {
+        var cfg = GameMgr.Cfg.TbSkill.Get(id);
+        var hit = GameMgr.Battle.GetHit(id, caster, gridData);
+        var str = string.Format("命中: {0}\n", hit);
+        str += SkillUtil.GetEffectDesc(cfg.EffectList, caster.Role, gridData.GridUnit.Role);
+
+        return str;
+    }
+
+    private string GetSkillInfo(int id)
+    {
+        var cfg = GameMgr.Cfg.TbSkill.Get(id);
+        var hit = cfg.Hit;
+        var str = string.Format("命中: {0}\n", hit);
+        str += SkillUtil.GetEffectDesc(cfg.EffectList);
+        return str;
     }
 }

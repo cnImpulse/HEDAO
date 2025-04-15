@@ -88,60 +88,17 @@ namespace FGUI.Common
             var txt = string.Format("{0}\n简介：{1}\n", cfg.Name, cfg.Desc);
             foreach(var buffId in cfg.BuffList)
             {
-                txt += GetBuffDesc(buffId);
+                txt += SkillUtil.GetBuffDesc(buffId);
             }
             foreach (var skillId in cfg.SkillList)
             {
-                txt += GetSkillDesc(skillId);
+                txt += SkillUtil.GetSkillDesc(skillId);
             }
 
             m_txt_book.text = txt;
 
             var canLearn = GetSelectedRole()?.CanLearnBook(cfg.Id) ?? false;
             m_btn_learn.text = canLearn ? "学习" : "不可学习";
-        }
-
-        private string GetSkillDesc(int id)
-        {
-            var cfg = GameMgr.Cfg.TbSkill.Get(id);
-            var str = string.Format("{0} 释放距离:{1}\n", cfg.Name, cfg.ReleaseRange.Distance);
-            foreach (var effectId in cfg.EffectList)
-            {
-                str += GetEffectDesc(effectId) + '\n';
-            }
-
-            return str;
-        }
-
-        private string GetBuffDesc(int id)
-        {
-            var cfg = GameMgr.Cfg.TbBuffCfg.Get(id);
-            var str = cfg.Desc + ": ";
-            foreach (var effectId in cfg.EffectList)
-            {
-                str += GetEffectDesc(effectId) + '\n';
-            }
-
-            return str;
-        }
-
-        private string GetEffectDesc(int id)
-        {
-            var str = "";
-            var cfg = GameMgr.Cfg.TbEffectCfg.Get(id);
-            if (cfg is AttrModifyEffect)
-            {
-                foreach(var pair in ((AttrModifyEffect)cfg).AttrDict)
-                {
-                    str += string.Format("{0}:{1} ", pair.Key.GetName(), pair.Value);
-                }
-            }
-            else if (cfg is AttackEffect atkCfg)
-            {
-                str += string.Format("伤害 {0}:{1} ", atkCfg.DamageType.GetName(), atkCfg.Powner);
-            }
-
-            return str;
         }
 
         private void OnClickBtnLearn()

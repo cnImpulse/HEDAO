@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cfg;
 using FairyGUI;
 using UnityEngine;
 
@@ -65,12 +66,13 @@ public class ActionMove : ActionStateBase
     
     private void OnSelectMoveSkill()
     {
-        if (m_list.selectedIndex < 0) return;
-        
-        var cfgId = MoveSkillList[m_list.selectedIndex];
-        var cfg = GameMgr.Cfg.TbMoveSkill.Get(cfgId);
+        var cfg = GetSelectMoveCfg();
+        if (cfg == null) return;
+
         m_MoveArea = GameMgr.Battle.Data.GridMap.GetCanMoveGrids(Owner.BattleUnit, cfg.MOV);
         GameMgr.Effect.ShowGridEffect(m_MoveArea.Select((grid)=> { return grid.GridPos; }).ToList(), Color.green);
+
+        RefreshInfo();
     }
     
     private void OnPointerDownMap(GameEvent obj)
@@ -94,5 +96,22 @@ public class ActionMove : ActionStateBase
     private bool IsSelf(GridData gridData)
     {
         return gridData == Owner.BattleUnit.GridData;
+    }
+
+    private void RefreshInfo()
+    {
+        var cfg = GetSelectMoveCfg();
+        if (cfg == null) return;
+
+        m_txt_info.title = string.Format("移动力: {0}", cfg.MOV);
+    }
+
+    private MoveSkillCfg GetSelectMoveCfg()
+    {
+        if (m_list.selectedIndex < 0) return null;
+
+        var cfgId = MoveSkillList[m_list.selectedIndex];
+        var cfg = GameMgr.Cfg.TbMoveSkill.Get(cfgId);
+        return cfg;
     }
 }

@@ -35,6 +35,7 @@ public partial class TbMisc
     /// 属性类型列表
     /// </summary>
      public System.Collections.Generic.List<EAttrType> AttrTypeList => _data.AttrTypeList;
+     public int MinHit => _data.MinHit;
     
     public void ResolveRef(Tables tables)
     {

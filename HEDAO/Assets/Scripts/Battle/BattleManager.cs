@@ -48,6 +48,27 @@ public class BattleManager : BaseManager
     {
         var target = gridData.GridUnit;
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+        if (!IsVaildTarget(skillId, caster, gridData))
+        {
+            return false;
+        }
+
+        var hit = GetHit(skillId, caster, gridData);
+        if (!CheckHit(hit))
+        {
+            return true;
+        }
+
+        EffectCfg.TakeEffectList(cfg.EffectList, caster.Role, target.Role);
+        return true;
+    }
+
+    public bool IsVaildTarget(int skillId, GridUnit caster, GridData gridData)
+    {
+        if (gridData == null) return false;
+
+        var target = gridData.GridUnit;
+        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
         if (cfg.TargetType != Cfg.ERelationType.Self && target == null)
         {
             return false;
@@ -58,23 +79,26 @@ public class BattleManager : BaseManager
             return false;
         }
 
+        return true;
+    }
+
+    public int GetHit(int skillId, GridUnit caster, GridData gridData)
+    {
+        var target = gridData.GridUnit;
+        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+        var hit = cfg.Hit;
         if (cfg.TargetType == Cfg.ERelationType.Enemy)
         {
-            var hit = cfg.Hit - target.Role.Attr.SEF;
-            if (!CheckHit(hit))
-            {
-                return true;
-            }
+            hit -= target.Role.Attr.SEF;
         }
 
-        EffectCfg.TakeEffectList(cfg.EffectList, caster.Role, target.Role);
-        return true;
+        return Mathf.Clamp(hit, GameMgr.Cfg.TbMisc.MinHit, 100);
     }
 
     public bool CheckHit(int hit)
     {
         hit = Mathf.Clamp(hit, 0, 100);
         var random = UnityEngine.Random.Range(0, 100);
-        return hit < random;
+        return random < hit;
     }
 }

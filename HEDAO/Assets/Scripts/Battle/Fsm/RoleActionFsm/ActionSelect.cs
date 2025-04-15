@@ -16,7 +16,7 @@ public class ActionSelect : ActionStateBase
         m_list.itemRenderer = OnRenderAction;
         m_list.numItems = ActionList.Count;
         m_list.ResizeToFit();
-        
+
         GameMgr.Effect.ShowEffect(10003, GridMapUtl.GridPos2WorldPos(BattleUnit.GridPos), true);
     }
 

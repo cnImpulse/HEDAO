@@ -26,6 +26,16 @@ namespace Cfg.Battle
             
         }
 
+        public virtual string GetDesc()
+        {
+            return null;
+        }
+
+        public virtual string GetDesc(IEffectTarget caster, IEffectTarget target)
+        {
+            return null;
+        }
+
         public static void TakeEffectList(List<int> list, IEffectTarget caster, IEffectTarget target)
         {
             foreach(var id in list)

@@ -9,9 +9,11 @@ public abstract class ActionStateBase : FsmState
     public new MenuAction Owner => base.Owner as MenuAction;
     public FGUIMenuAction View => Owner.View as FGUIMenuAction;
     public GridMap GridMap => GameMgr.Battle.Data.GridMap;
+    public GridMapView GridMapView => GameMgr.Battle.GridMapView;
     public GridUnit BattleUnit => Owner.BattleUnit;
     protected GList m_list => View.m_panel_action.m_list_action;
-    
+    protected GLabel m_txt_info => View.m_panel_action.m_txt_info;
+
     public override void OnEnter()
     {
         base.OnEnter();

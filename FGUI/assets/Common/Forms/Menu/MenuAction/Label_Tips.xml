@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="400,150" anchor="true" extention="Label">
+  <displayList>
+    <image id="n8_m3nj" name="n8" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" size="400,150">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n7_m3nj" name="title" xy="35,42" size="330,66" font="ui://rt51n0kjekn09" fontSize="24" autoSize="height" text="伤害：10&#xA;命中：90"/>
+  </displayList>
+  <relation target="n7_m3nj" sidePair="bottomext-bottom"/>
+</component>
