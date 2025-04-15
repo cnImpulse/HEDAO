@@ -22,7 +22,7 @@ public class UIManager : BaseManager
         CloseAllUI();
     }
 
-    public void ShowFloatUI(string uiName, object userData = default)
+    public long ShowFloatUI(string uiName, object userData = default)
     {
         var uiCfg = UICfg.GetCfg(uiName);
         var view = UIPackage.CreateObjectFromURL(uiCfg.UIURL) as GComponent;
@@ -31,6 +31,7 @@ public class UIManager : BaseManager
         var ui = Activator.CreateInstance(uiCfg.UIType) as UIBase;
         ui.Init(uiName, view, userData);
         UIDict.Add(ui.Id, ui);
+        return ui.Id;
     }
     
     public void ShowUI(string uiName, object userData = default)
@@ -58,6 +59,16 @@ public class UIManager : BaseManager
             ui.Dispose();
             UIDict.Remove(ui.Id);
             NameDict.Remove(uiName);
+        }
+    }
+
+    public void CloseUI(long id)
+    {
+        if (UIDict.TryGetValue(id, out var ui))
+        {
+            ui.Dispose();
+            UIDict.Remove(ui.Id);
+            NameDict.Remove(ui.Name);
         }
     }
 

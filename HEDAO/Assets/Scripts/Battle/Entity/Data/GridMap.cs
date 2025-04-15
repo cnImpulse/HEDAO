@@ -61,6 +61,12 @@ public class GridMap : Entity
         gridData.OnGridUnitEnter(gridUnit);
     }
 
+    public void RemoveGridUnit(long entityId)
+    {
+        GridUnitDict[entityId].GridData.OnGridUnitLeave();
+        GridUnitDict.Remove(entityId);
+    }
+
     public override int GetPrefabId()
     {
         return 10001;

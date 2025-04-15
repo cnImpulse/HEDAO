@@ -82,55 +82,60 @@ namespace Cfg
         [EnumName("灵抗")]
         LNK = 12,
         /// <summary>
+        /// 身法
+        /// </summary>
+        [EnumName("身法")]
+        SEF = 13,
+        /// <summary>
         /// 生命
         /// </summary>
         [EnumName("生命")]
-        HP = 13,
+        HP = 14,
         /// <summary>
         /// 灵气
         /// </summary>
         [EnumName("灵气")]
-        QI = 14,
+        QI = 15,
         /// <summary>
         /// 生命成长
         /// </summary>
         [EnumName("生命成长")]
-        MaxHPUp = 15,
+        MaxHPUp = 16,
         /// <summary>
         /// 灵气成长
         /// </summary>
         [EnumName("灵气成长")]
-        MaxQIUp = 16,
+        MaxQIUp = 17,
         /// <summary>
         /// 速度成长
         /// </summary>
         [EnumName("速度成长")]
-        SPDUp = 17,
+        SPDUp = 18,
         /// <summary>
         /// 力量成长
         /// </summary>
         [EnumName("力量成长")]
-        STRUp = 18,
+        STRUp = 19,
         /// <summary>
         /// 体魄成长
         /// </summary>
         [EnumName("体魄成长")]
-        TPOUp = 19,
+        TPOUp = 20,
         /// <summary>
         /// 神识成长
         /// </summary>
         [EnumName("神识成长")]
-        SSIUp = 20,
+        SSIUp = 21,
         /// <summary>
         /// 灵抗成长
         /// </summary>
         [EnumName("灵抗成长")]
-        LNKUp = 21,
+        LNKUp = 22,
         /// <summary>
         /// 护盾
         /// </summary>
         [EnumName("护盾")]
-        Shield = 22,
+        Shield = 23,
     }
 
 }
@@ -150,6 +155,7 @@ public partial class AttrComponent
     public int TPO => GetAttrValue(Cfg.EAttrType.TPO);
     public int SSI => GetAttrValue(Cfg.EAttrType.SSI);
     public int LNK => GetAttrValue(Cfg.EAttrType.LNK);
+    public int SEF => GetAttrValue(Cfg.EAttrType.SEF);
     public int HP => GetAttrValue(Cfg.EAttrType.HP);
     public int QI => GetAttrValue(Cfg.EAttrType.QI);
     public int MaxHPUp => GetAttrValue(Cfg.EAttrType.MaxHPUp);

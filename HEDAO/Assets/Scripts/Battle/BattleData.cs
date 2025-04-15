@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
+using System.Linq;
 
 public enum EBattleState
 {
@@ -33,6 +34,14 @@ public class BattleData
         var cfg = AssetUtl.ReadData<BattleCfg>(AssetUtl.GetBattleCfgPath(CfgId));
         GridMap = new GridMap();
         GridMap.Init(cfg);
+    }
+
+    public void OnRemoveBattleUnit(long id)
+    {
+        GridMap.RemoveGridUnit(id);
+        Log.Info(BattleUnitQueue.Count.ToString());
+        BattleUnitQueue = new Queue<GridUnit>(BattleUnitQueue.Where(battleUnit => battleUnit.Id != id));
+        Log.Info(BattleUnitQueue.Count.ToString());
     }
 }
 

@@ -30,6 +30,7 @@
 		<var name="TPO" alias="体魄" />
 		<var name="SSI" alias="神识" />
 		<var name="LNK" alias="灵抗" />
+		<var name="SEF" alias="身法" />
 
 		<var name="HP" alias="生命" />
 		<var name="QI" alias="灵气" />

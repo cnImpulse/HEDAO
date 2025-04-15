@@ -21,6 +21,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         Desc = _buf.ReadString();
         Icon = _buf.ReadString();
         Cost = _buf.ReadInt();
+        Hit = _buf.ReadInt();
         ReleaseRange = Battle.GridRange.DeserializeGridRange(_buf);
         EffectRange = Battle.GridRange.DeserializeGridRange(_buf);
         TargetType = (ERelationType)_buf.ReadInt();
@@ -37,6 +38,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
     public readonly string Desc;
     public readonly string Icon;
     public readonly int Cost;
+    public readonly int Hit;
     public readonly Battle.GridRange ReleaseRange;
     public readonly Battle.GridRange EffectRange;
     public readonly ERelationType TargetType;
@@ -47,6 +49,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -66,6 +69,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         + "Desc:" + Desc + ","
         + "Icon:" + Icon + ","
         + "Cost:" + Cost + ","
+        + "Hit:" + Hit + ","
         + "ReleaseRange:" + ReleaseRange + ","
         + "EffectRange:" + EffectRange + ","
         + "TargetType:" + TargetType + ","

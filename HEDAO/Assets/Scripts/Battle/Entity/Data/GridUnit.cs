@@ -36,6 +36,15 @@ public class GridUnit : Entity
     {
         Role = data as Role;
         CampType = Role is PlayerRole ? ECampType.Player : ECampType.Enemy;
+        Role.Attr.GetAttr(EAttrType.HP).OnValueChanged += OnHPChanged;
+    }
+
+    protected override void OnDestroy()
+    {
+        Role.Attr.GetAttr(EAttrType.HP).OnValueChanged -= OnHPChanged;
+
+        GameMgr.Battle.Data.OnRemoveBattleUnit(Id);
+        GameMgr.Entity.HideEntity(Id);
     }
 
     public override int GetPrefabId()
@@ -78,5 +87,13 @@ public class GridUnit : Entity
         if (AI != null) return;
 
         AI = new CommonAI(this);
+    }
+
+    private void OnHPChanged(int value)
+    {
+        if (value <= 0)
+        {
+            Destroy();
+        }
     }
 }

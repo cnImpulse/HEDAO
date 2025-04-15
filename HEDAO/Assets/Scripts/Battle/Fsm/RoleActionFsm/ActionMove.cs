@@ -31,7 +31,7 @@ public class ActionMove : ActionStateBase
         if (m_MoveArea != null)
         {
             var gridPos = GridMapUtl.GetMouseGridPos();
-            if (m_MoveArea.Contains(GridMap.GetGridData(gridPos)))
+            if (IsSelf(GridMap.GetGridData(gridPos)) || m_MoveArea.Contains(GridMap.GetGridData(gridPos)))
             {
                 var position = GridMapUtl.GridPos2WorldPos(gridPos);
                 GameMgr.Effect.ShowEffect(10003, position, true);
@@ -76,10 +76,23 @@ public class ActionMove : ActionStateBase
     private void OnPointerDownMap(GameEvent obj)
     {
         var gridData = obj.Data as GridData;
+        // 选中自己进入行动阶段
+        if (IsSelf(gridData))
+        {
+            ChangeState<ActionSelect>();
+            return;
+        }
+
+        // 移动
         if (m_MoveArea.Contains(gridData))
         {
             BattleUnit.Move(gridData);
             ChangeState<ActionSelect>();
         }
+    }
+
+    private bool IsSelf(GridData gridData)
+    {
+        return gridData == Owner.BattleUnit.GridData;
     }
 }

@@ -23,7 +23,17 @@ public class Entity
         OnInit(data);
     }
 
+    public void Destroy()
+    {
+        OnDestroy();
+    }
+
     protected virtual void OnInit(object data)
+    {
+
+    }
+
+    protected virtual void OnDestroy()
     {
 
     }

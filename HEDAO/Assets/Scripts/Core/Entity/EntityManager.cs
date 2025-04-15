@@ -23,6 +23,7 @@ public class EntityManager : BaseManager
     {
         if (EntityViewDict.TryGetValue(id, out EntityView view))
         {
+            view.Destroy();
             GameObject.Destroy(view.gameObject);
             EntityViewDict.Remove(id);
         }

@@ -15,7 +15,17 @@ public abstract class EntityView : MonoBehaviour
         OnInit(data);
     }
 
+    public void Destroy()
+    {
+        OnDestroy();
+    }
+
     protected virtual void OnInit(object data)
+    {
+
+    }
+
+    protected virtual void OnDestroy()
     {
 
     }

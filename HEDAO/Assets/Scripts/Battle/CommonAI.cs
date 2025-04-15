@@ -13,11 +13,10 @@ using UnityEngine;
 
 public class CommonAI
 {
-    private GridUnit m_Owner = null;
-    private int m_MaxATKRange = 0;
+    public GridUnit Owner { get; private set; }
+    public int MaxATKRange { get; private set; }
 
-    private GridMap BattleMap => GameMgr.Battle.Data.GridMap;
-    public int MaxATKRange => m_MaxATKRange;
+    public GridMap BattleMap => GameMgr.Battle.Data.GridMap;
 
     public CommonAI()
     {
@@ -25,12 +24,12 @@ public class CommonAI
 
     public CommonAI(GridUnit battleUnit)
     {
-        m_Owner = battleUnit;
+        Owner = battleUnit;
 
-        foreach (var skillId in m_Owner.Role.SkillSet)
+        foreach (var skillId in Owner.Role.SkillSet)
         {
             var skillCfg = GameMgr.Cfg.TbSkill.GetOrDefault(skillId);
-            m_MaxATKRange = Mathf.Max(m_MaxATKRange, skillCfg.ReleaseRange.Distance);
+            MaxATKRange = Mathf.Max(MaxATKRange, skillCfg.ReleaseRange.Distance);
         }
     }
 
@@ -41,9 +40,9 @@ public class CommonAI
             return;
         }
 
-        foreach(var skillId in m_Owner.Role.SkillSet)
+        foreach(var skillId in Owner.Role.SkillSet)
         {
-            var success = GameMgr.Battle.PlaySkill(skillId, m_Owner, battleUnit.GridData);
+            var success = GameMgr.Battle.PlaySkill(skillId, Owner, battleUnit.GridData);
             if (success)
             {
                 break;
@@ -53,8 +52,8 @@ public class CommonAI
 
     public virtual GridUnit SelectAttackTarget()
     {
-        var canAttackList = GetCanAttackGrids(m_MaxATKRange, m_Owner.MOV);
-        var targetCamp = BattleUtil.GetHostileCamp(m_Owner.CampType);
+        var canAttackList = GetCanAttackGrids(MaxATKRange, Owner.MOV);
+        var targetCamp = BattleUtil.GetHostileCamp(Owner.CampType);
         GridUnit target = null;
         foreach (var gridData in canAttackList)
         {
@@ -80,11 +79,11 @@ public class CommonAI
         }
 
         GridData end = null;
-        var canMoveList = BattleMap.GetCanMoveGrids(m_Owner, m_Owner.MOV);
+        var canMoveList = BattleMap.GetCanMoveGrids(Owner, Owner.MOV);
         foreach (var gridData in canMoveList)
         {
             int distance = GridMapUtl.GetDistance(target.GridData, gridData);
-            if (distance > m_MaxATKRange)
+            if (distance > MaxATKRange)
             {
                 continue;
             }
@@ -102,10 +101,10 @@ public class CommonAI
     {
         if (mov <= 0)
         {
-            return BattleMap.GetRangeGridList(m_Owner.GridPos, atkRange);
+            return BattleMap.GetRangeGridList(Owner.GridPos, atkRange);
         }
 
-        List<GridData> canMoveList = BattleMap.GetCanMoveGrids(m_Owner, m_Owner.MOV);
+        List<GridData> canMoveList = BattleMap.GetCanMoveGrids(Owner, Owner.MOV);
         List<GridData> canAttackList = new List<GridData>();
         foreach (var gridData in canMoveList)
         {

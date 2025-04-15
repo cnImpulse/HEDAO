@@ -58,7 +58,23 @@ public class BattleManager : BaseManager
             return false;
         }
 
+        if (cfg.TargetType == Cfg.ERelationType.Enemy)
+        {
+            var hit = cfg.Hit - target.Role.Attr.SEF;
+            if (!CheckHit(hit))
+            {
+                return true;
+            }
+        }
+
         EffectCfg.TakeEffectList(cfg.EffectList, caster.Role, target.Role);
         return true;
+    }
+
+    public bool CheckHit(int hit)
+    {
+        hit = Mathf.Clamp(hit, 0, 100);
+        var random = UnityEngine.Random.Range(0, 100);
+        return hit < random;
     }
 }

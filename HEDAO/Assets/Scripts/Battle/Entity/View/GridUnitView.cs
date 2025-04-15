@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GridUnitView : EntityView
 {
+    private long m_FloatUId = 0;
+
     public new GridUnit Entity => base.Entity as GridUnit;
     public GridMapView GridMapView = default;
 
@@ -12,8 +14,13 @@ public class GridUnitView : EntityView
         base.OnInit(data);
 
         GridMapView = data as GridMapView;
-        
-        GameMgr.UI.ShowFloatUI(UIName.FloatBattleUnit, this);
+
+        m_FloatUId = GameMgr.UI.ShowFloatUI(UIName.FloatBattleUnit, this);
+    }
+
+    protected override void OnDestroy()
+    {
+        GameMgr.UI.CloseUI(m_FloatUId);
     }
 
     private void Update()

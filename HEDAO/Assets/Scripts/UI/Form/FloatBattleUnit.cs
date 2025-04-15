@@ -31,6 +31,7 @@ public class FloatBattleUnit : UIBase
         View.m_hp_bar.max = attr.MaxHP;
         View.m_qi_bar.value = attr.QI;
         View.m_qi_bar.max = attr.MaxQI;
+        View.m_txt_name.color = Owner.Entity.CampType == ECampType.Player ? Color.white : Color.red;
 
         Vector3 screenPos = Camera.main.WorldToScreenPoint(Owner.transform.position);
         screenPos.y = Screen.height - screenPos.y;
