@@ -88,9 +88,20 @@ public class ActionMove : ActionStateBase
         // 移动
         if (m_MoveArea.Contains(gridData))
         {
-            BattleUnit.Move(gridData);
-            ChangeState<ActionSelect>();
+            GridMapView.StartCoroutine(Move(gridData));
         }
+    }
+
+    public IEnumerator Move(GridData end)
+    {
+        View.m_panel_action.visible = false;
+        GameMgr.Event.Unsubscribe(GameEventType.OnPointerDownMap, OnPointerDownMap);
+
+        Navigator.Navigate(GridMap, BattleUnit, end, out var path);
+        yield return BattleUnit.Move(path, end);
+
+        View.m_panel_action.visible = true;
+        ChangeState<ActionSelect>();
     }
 
     private bool IsSelf(GridData gridData)
