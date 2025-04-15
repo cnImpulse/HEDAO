@@ -39,9 +39,7 @@ public class BattleData
     public void OnRemoveBattleUnit(long id)
     {
         GridMap.RemoveGridUnit(id);
-        Log.Info(BattleUnitQueue.Count.ToString());
         BattleUnitQueue = new Queue<GridUnit>(BattleUnitQueue.Where(battleUnit => battleUnit.Id != id));
-        Log.Info(BattleUnitQueue.Count.ToString());
     }
 }
 
