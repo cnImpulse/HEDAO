@@ -60,6 +60,8 @@ public class BattleManager : BaseManager
         }
 
         EffectCfg.TakeEffectList(cfg.EffectList, caster.Role, target.Role);
+        GameMgr.Entity.GetEntityView<GridUnitView>(caster.Id).PlayAttackAnim(gridData);
+
         return true;
     }
 

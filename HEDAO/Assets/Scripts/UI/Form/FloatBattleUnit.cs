@@ -33,8 +33,7 @@ public class FloatBattleUnit : UIBase
         View.m_qi_bar.max = attr.MaxQI;
         View.m_txt_name.color = Owner.Entity.CampType == ECampType.Player ? Color.white : Color.red;
 
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(Owner.transform.position);
-        screenPos.y = Screen.height - screenPos.y;
+        Vector3 screenPos = UIUtil.World2ScreenPos(Owner.transform.position);
         View.SetXY(screenPos.x, screenPos.y);
     }
 }

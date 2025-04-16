@@ -13,7 +13,8 @@ public class HudBattle : UIBase
         base.OnInit(userData);
 
         GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnSelectBattleUnit);
-        
+        GameMgr.Event.Subscribe(GameEventType.OnTakeBattleEffect, OnTakeBattleEffect);
+
         View.m_btn_start.onClick.Set(OnClickStart);
         View.m_list_action.itemRenderer = OnRenderRole;
     }
@@ -33,6 +34,13 @@ public class HudBattle : UIBase
         View.m_txt_battle_state.text = state.ToString();
 
         RefreshActionList();
+    }
+
+    protected override void OnClose()
+    {
+        //GameMgr.Event.Unsubscribe()
+
+        base.OnClose();
     }
 
     public void RefreshActionList()
@@ -56,5 +64,15 @@ public class HudBattle : UIBase
     private void OnSelectBattleUnit(GameEvent obj)
     {
         GameMgr.UI.ShowUI(UIName.MenuAction);
+    }
+
+    private void OnTakeBattleEffect(GameEvent obj)
+    {
+        var data = obj.Data as OnTakeEffectEvent;
+        var ui = UIPackage.CreateObject("Common", "FloatBubble") as GLabel;
+        ui.text = data.Damage.ToString();
+
+        //var gridUnit = data.Target.r
+        //ui.position = UIUtil.World2ScreenPos(data.Target)
     }
 }

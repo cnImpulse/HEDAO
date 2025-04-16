@@ -1,4 +1,3 @@
-using HEDAO;
 using UnityEngine;
 
 namespace Cfg.Battle
@@ -7,7 +6,16 @@ namespace Cfg.Battle
     {
         public override void OnTakeEffect(IEffectTarget caster, IEffectTarget target)
         {
-            target.Attr.ModifyAttr(EAttrType.HP, -GetDamage(caster, target));
+            var damage = -GetDamage(caster, target);
+            target.Attr.ModifyAttr(EAttrType.HP, damage);
+
+            var e = new OnTakeEffectEvent()
+            {
+                Caser = caster,
+                Target = target,
+                Damage = damage
+            };
+            GameMgr.Event.Fire(GameEventType.OnTakeBattleEffect, e);
         }
         
         public override void OnResetEffect(IEffectTarget caster, IEffectTarget target)
