@@ -5,8 +5,9 @@ using FairyGUI.Utils;
 
 namespace FGUI.Common
 {
-    public partial class FGUIFloatBubble : GLabel
+    public partial class FGUIFloatBubble : GComponent
     {
+        public GTextField m_title;
         public Transition m_fade_close;
         public const string URL = "ui://rt51n0kjm3nj67";
 
@@ -19,6 +20,7 @@ namespace FGUI.Common
         {
             base.ConstructFromXML(xml);
 
+            m_title = (GTextField)GetChild("title");
             m_fade_close = GetTransition("fade_close");
         }
     }

@@ -31,7 +31,7 @@ public abstract class UIBase
     
     public void Close()
     {
-        GameMgr.UI.CloseUI(Name);
+        GameMgr.UI.CloseUI(Id);
     }
 
     protected virtual void OnInit(object userData)

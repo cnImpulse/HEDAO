@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cfg;
+using Cfg.Battle;
 using UnityEngine;
 
 public enum ECampType
@@ -11,7 +12,7 @@ public enum ECampType
     Enemy,
 }
 
-public class GridUnit : Entity
+public class GridUnit : Entity, IEffectTarget
 {
     public Vector2Int GridPos;
     public GridMap GridMap => GameMgr.Battle.Data.GridMap;
@@ -19,6 +20,8 @@ public class GridUnit : Entity
     public ECampType CampType { get; private set; }
     public Role Role { get; private set; }
     public CommonAI AI { get; private set; }
+
+    public AttrComponent Attr => Role.Attr;
 
     public int HP => Role.Attr.GetAttrValue(EAttrType.HP);
     public int MaxHP => Role.Attr.GetAttrValue(EAttrType.MaxHP);
@@ -95,5 +98,25 @@ public class GridUnit : Entity
         {
             Destroy();
         }
+    }
+    
+    public void AddBuff(int id)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void RemoveBuff(int id)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void AddSkill(int id)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public bool CheckCondition(int id)
+    {
+        throw new System.NotImplementedException();
     }
 }

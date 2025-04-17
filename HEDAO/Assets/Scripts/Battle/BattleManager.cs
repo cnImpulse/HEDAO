@@ -56,10 +56,18 @@ public class BattleManager : BaseManager
         var hit = GetHit(skillId, caster, gridData);
         if (!CheckHit(hit))
         {
+            var e = new OnTakeEffectEvent()
+            {
+                Caser = caster,
+                Target = target,
+                IsMiss = true
+            };
+            GameMgr.Event.Fire(GameEventType.OnTakeBattleEffect, e);
+            
             return true;
         }
 
-        EffectCfg.TakeEffectList(cfg.EffectList, caster.Role, target.Role);
+        EffectCfg.TakeEffectList(cfg.EffectList, caster, target);
         GameMgr.Entity.GetEntityView<GridUnitView>(caster.Id).PlayAttackAnim(gridData);
 
         return true;

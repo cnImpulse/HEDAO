@@ -38,7 +38,8 @@ public class HudBattle : UIBase
 
     protected override void OnClose()
     {
-        //GameMgr.Event.Unsubscribe()
+        GameMgr.Event.Unsubscribe(GameEventType.OnPlayerRoundStart, OnSelectBattleUnit);
+        GameMgr.Event.Unsubscribe(GameEventType.OnTakeBattleEffect, OnTakeBattleEffect);
 
         base.OnClose();
     }
@@ -68,11 +69,6 @@ public class HudBattle : UIBase
 
     private void OnTakeBattleEffect(GameEvent obj)
     {
-        var data = obj.Data as OnTakeEffectEvent;
-        var ui = UIPackage.CreateObject("Common", "FloatBubble") as GLabel;
-        ui.text = data.Damage.ToString();
-
-        //var gridUnit = data.Target.r
-        //ui.position = UIUtil.World2ScreenPos(data.Target)
+        GameMgr.UI.ShowFloatUI(UIName.FloatBubble, obj.Data);
     }
 }
