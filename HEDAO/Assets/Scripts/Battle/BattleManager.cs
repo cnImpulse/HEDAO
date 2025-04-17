@@ -44,47 +44,45 @@ public class BattleManager : BaseManager
         Fsm.Start(BattleStateDict[state]);
     }
 
-    public bool PlaySkill(int skillId, GridUnit caster, GridData gridData)
+    public SkillEvent PlaySkill(int skillId, GridUnit caster, GridData gridData)
     {
-        var target = gridData.GridUnit;
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
         if (!IsVaildTarget(skillId, caster, gridData))
         {
-            return false;
+            return null;
         }
 
-        var hit = GetHit(skillId, caster, gridData);
+        var target = gridData.GridUnit;
+        SkillEvent e = new SkillEvent()
+        {
+            Caster = caster,
+            Target = gridData,
+            SkillId = skillId,
+        };
+        
+        var hit = GetHit(skillId, caster, target);
         if (!CheckHit(hit))
         {
-            var e = new OnTakeEffectEvent()
-            {
-                Caser = caster,
-                Target = target,
-                IsMiss = true
-            };
-            GameMgr.Event.Fire(GameEventType.OnTakeBattleEffect, e);
-            
-            return true;
+            e.IsMiss = true;
+            return e;
         }
 
-        EffectCfg.TakeEffectList(cfg.EffectList, caster, target);
-        GameMgr.Entity.GetEntityView<GridUnitView>(caster.Id).PlayAttackAnim(gridData);
+        e.Results = EffectCfg.TakeEffectList(cfg.EffectList, caster, target);
+        // GameMgr.Entity.GetEntityView<GridUnitView>(caster.Id).PlayAttackAnim(target);
 
-        return true;
+        return e;
     }
 
     public bool IsVaildTarget(int skillId, GridUnit caster, GridData gridData)
     {
         if (gridData == null) return false;
-
+        
         var target = gridData.GridUnit;
+        if (target == null) return false;
+        
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
-        if (cfg.TargetType != Cfg.ERelationType.Self && target == null)
-        {
-            return false;
-        }
-
-        if (cfg.TargetType != BattleUtil.GetRelationType(caster, target))
+        if (cfg.TargetType != Cfg.ERelationType.Self && 
+            cfg.TargetType != BattleUtil.GetRelationType(caster, target))
         {
             return false;
         }
@@ -92,9 +90,8 @@ public class BattleManager : BaseManager
         return true;
     }
 
-    public int GetHit(int skillId, GridUnit caster, GridData gridData)
+    public int GetHit(int skillId, GridUnit caster, GridUnit target)
     {
-        var target = gridData.GridUnit;
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
         var hit = cfg.Hit;
         if (cfg.TargetType == Cfg.ERelationType.Enemy)
@@ -110,5 +107,28 @@ public class BattleManager : BaseManager
         hit = Mathf.Clamp(hit, 0, 100);
         var random = UnityEngine.Random.Range(0, 100);
         return random < hit;
+    }
+
+    public void BattleUnitAction(ReqBattleUnitAction req)
+    {
+        RspBattleUnitAction e = new RspBattleUnitAction();
+        e.BattleUnitId = req.Caster.Id;
+        foreach (var reqAction in req.ReqActionList)
+        {
+            if (reqAction is ReqSkill reqSkill)
+            {
+                var result = PlaySkill(reqSkill.SkillId, req.Caster, reqSkill.Target);
+                e.ActionList.Add(result);
+            }
+            else if (reqAction is ReqMove reqMove)
+            {
+                e.ActionList.Add(req.Caster.Move(reqMove.End));
+            }
+            else if (reqAction is ReqWait reqWait)
+            {
+                break;
+            }
+        }
+        e.ActionList.Add(req.Caster.Wait());
     }
 }

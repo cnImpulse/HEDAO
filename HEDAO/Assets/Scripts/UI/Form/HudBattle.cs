@@ -13,7 +13,7 @@ public class HudBattle : UIBase
         base.OnInit(userData);
 
         GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnSelectBattleUnit);
-        GameMgr.Event.Subscribe(GameEventType.OnTakeBattleEffect, OnTakeBattleEffect);
+        GameMgr.Event.Subscribe(GameEventType.OnBattleUnitAction, OnBattleUnitAction);
 
         View.m_btn_start.onClick.Set(OnClickStart);
         View.m_list_action.itemRenderer = OnRenderRole;
@@ -39,7 +39,7 @@ public class HudBattle : UIBase
     protected override void OnClose()
     {
         GameMgr.Event.Unsubscribe(GameEventType.OnPlayerRoundStart, OnSelectBattleUnit);
-        GameMgr.Event.Unsubscribe(GameEventType.OnTakeBattleEffect, OnTakeBattleEffect);
+        GameMgr.Event.Unsubscribe(GameEventType.OnBattleUnitAction, OnBattleUnitAction);
 
         base.OnClose();
     }
@@ -67,8 +67,10 @@ public class HudBattle : UIBase
         GameMgr.UI.ShowUI(UIName.MenuAction);
     }
 
-    private void OnTakeBattleEffect(GameEvent obj)
+    private void OnBattleUnitAction(GameEvent obj)
     {
-        GameMgr.UI.ShowFloatUI(UIName.FloatBubble, obj.Data);
+        var e = obj.Data as RspBattleUnitAction;
+        Log.Info(e.ToString());
+        // GameMgr.UI.ShowFloatUI(UIName.FloatBubble, obj.Data);
     }
 }

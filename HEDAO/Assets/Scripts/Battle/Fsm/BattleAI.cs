@@ -15,42 +15,16 @@ public class BattleAI : BattleStateBase
         BattleUnit.InitAI();
         BattleUnit.OnRoundStart();
 
-        GameMgr.Battle.GridMapView.StartCoroutine(AutoAction(BattleUnit));
+        var req = AI.AutoAction();
+        GameMgr.Battle.BattleUnitAction(req);
     }
 
     public override void OnLeave()
     {
-        GameMgr.Effect.HideGridEffect();
+        // GameMgr.Effect.HideGridEffect();
         BattleUnit.OnRoundEnd();
 
         base.OnLeave();
-    }
-
-    public IEnumerator AutoAction(GridUnit battleUnit)
-    {
-        yield return ShowMoveArea(battleUnit);
-
-        GridUnit attackTarget = AI.SelectAttackTarget();
-        if (attackTarget == null)
-        {
-            ChangeState<BattleLoop>();
-            yield break;
-        }
-
-        GridData end = AI.SelectMoveTarget(attackTarget);
-        bool result = Navigator.Navigate(BattleMap, BattleUnit, end, out var path);
-        if (result)
-        {
-            yield return BattleUnit.Move(path, end);
-
-            var canReleaseList = BattleMap.GetRangeGridList(BattleUnit.GridPos, AI.MaxATKRange);
-            GameMgr.Effect.ShowGridEffect(canReleaseList.Select((grid) => { return grid.GridPos; }).ToList(), Color.red, 0.5f);
-            yield return new WaitForSeconds(0.7f);
-
-            AI.Attack(attackTarget);
-        }
-
-        ChangeState<BattleLoop>();
     }
 
     public IEnumerator ShowMoveArea(GridUnit battleUnit)

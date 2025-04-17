@@ -79,12 +79,9 @@ public class ActionSkill : ActionStateBase
         if (m_Area.Contains(gridData))
         {
             var cfgId = SkillList[m_list.selectedIndex];
-            var result = BattleUnit.PlaySkill(cfgId, gridData);
-            if (result)
-            {
-                Owner.Close();
-                GameMgr.Battle.Fsm.ChangeState<BattleLoop>();
-            }
+            GameMgr.Battle.PlaySkill(cfgId, BattleUnit, gridData);
+            Owner.Close();
+            GameMgr.Battle.Fsm.ChangeState<BattleLoop>();
         }
         else
         {
@@ -120,7 +117,7 @@ public class ActionSkill : ActionStateBase
     private string GetSkillInfo(int id, GridUnit caster, GridData gridData)
     {
         var cfg = GameMgr.Cfg.TbSkill.Get(id);
-        var hit = GameMgr.Battle.GetHit(id, caster, gridData);
+        var hit = GameMgr.Battle.GetHit(id, caster, gridData.GridUnit);
         var str = string.Format("命中: {0}\n", hit);
         str += SkillUtil.GetEffectDesc(cfg.EffectList, caster.Role, gridData.GridUnit.Role);
 

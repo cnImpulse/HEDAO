@@ -54,26 +54,22 @@ public class GridUnit : Entity, IEffectTarget
     {
         return 10002;
     }
-    
-    public void Move(GridData end)
+
+    public MoveEvent Move(GridData end)
     {
+        Navigator.Navigate(GridMap, this, end, out var path);
+        
         GridData.OnGridUnitLeave();
         GridPos = end.GridPos;
         end.OnGridUnitEnter(this);
+
+        return new MoveEvent { Caster = this, MovePath = path };
     }
 
-    public IEnumerator Move(List<GridData> path, GridData end)
+    public WaitEvent Wait()
     {
-        foreach(var gridData in path)
-        {
-            Move(gridData);
-            yield return new WaitForSeconds(0.3f);
-        }
-    }
-
-    public bool PlaySkill(int skillId, GridData target)
-    {
-        return GameMgr.Battle.PlaySkill(skillId, this, target);
+        GameMgr.Battle.Fsm.ChangeState<BattleLoop>();
+        return new WaitEvent();
     }
 
     public void OnRoundStart()

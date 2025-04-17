@@ -13,6 +13,9 @@ public class BattleLoop : FsmState
 
         RefreshQueue();
         var battleUnit = Data.BattleUnitQueue.Peek();
+
+        var view = GameMgr.Entity.GetEntityView<GridUnitView>(battleUnit.Id);
+        GameMgr.Camera.VirtualCamera.Follow = view.transform;
         if (battleUnit.CampType == ECampType.Player)
         {
             GameMgr.Battle.Fsm.ChangeState<BattlePlayer>();

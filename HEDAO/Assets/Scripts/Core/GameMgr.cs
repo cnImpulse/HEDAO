@@ -17,6 +17,7 @@ public static class GameMgr
 
     // 纯表现
     public static EffectManager Effect;
+    public static CameraManager Camera;
 
     private static List<BaseManager> PreManagerList = new List<BaseManager>();
     private static List<BaseManager> ManagerList = new List<BaseManager>();
@@ -65,6 +66,7 @@ public static class GameMgr
         Explore = CreateManager<ExploreManager>();
         Event = CreateManager<EventManager>();
         Effect = CreateManager<EffectManager>();
+        Camera = CreateManager<CameraManager>();
     }
 
     private static T CreateManager<T>()

@@ -34,7 +34,7 @@ public class GridUnitView : EntityView
         transform.position = GridMapUtl.GridPos2WorldPos(Entity.GridPos);
     }
 
-    public void PlayAttackAnim(GridData target)
+    public void PlayAttackAnim(GridUnit target)
     {
         var dir = GridMapUtl.NormalizeDirection(target.GridPos - Entity.GridPos);
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;

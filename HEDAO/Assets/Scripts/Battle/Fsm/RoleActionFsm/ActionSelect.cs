@@ -5,8 +5,8 @@ using FairyGUI;
 
 public class ActionSelect : ActionStateBase
 {
-    public List<RoleActionType> ActionList = new()
-        { RoleActionType.Skill, RoleActionType.Wait };
+    public List<BattleUnitActionType> ActionList = new()
+        { BattleUnitActionType.Skill, BattleUnitActionType.Wait };
     
     public override void OnEnter()
     {
@@ -35,13 +35,13 @@ public class ActionSelect : ActionStateBase
         item.onClick.Set(()=>OnClickAction(type));
     }
     
-    private void OnClickAction(RoleActionType type)
+    private void OnClickAction(BattleUnitActionType type)
     {
-        if (type == RoleActionType.Skill)
+        if (type == BattleUnitActionType.Skill)
         {
             ChangeState<ActionSkill>();
         }
-        else if (type == RoleActionType.Wait)
+        else if (type == BattleUnitActionType.Wait)
         {
             Owner.Close();
             GameMgr.Battle.Fsm.ChangeState<BattleLoop>();

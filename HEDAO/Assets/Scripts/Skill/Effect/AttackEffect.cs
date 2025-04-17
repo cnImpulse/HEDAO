@@ -4,18 +4,12 @@ namespace Cfg.Battle
 {
     public partial class AttackEffect
     {
-        public override void OnTakeEffect(IEffectTarget caster, IEffectTarget target)
+        public override TakeEffectResult OnTakeEffect(IEffectTarget caster, IEffectTarget target)
         {
             var damage = -GetDamage(caster, target);
             target.Attr.ModifyAttr(EAttrType.HP, damage);
 
-            var e = new OnTakeEffectEvent()
-            {
-                Caser = caster,
-                Target = target,
-                Damage = damage
-            };
-            GameMgr.Event.Fire(GameEventType.OnTakeBattleEffect, e);
+            return new TakeEffectResult { Damage = damage };
         }
         
         public override void OnResetEffect(IEffectTarget caster, IEffectTarget target)

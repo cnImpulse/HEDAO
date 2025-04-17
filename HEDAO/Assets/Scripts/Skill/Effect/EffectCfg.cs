@@ -13,12 +13,17 @@ namespace Cfg.Battle
         void AddSkill(int id);
         bool CheckCondition(int id);
     }
+
+    public class TakeEffectResult
+    {
+        public int Damage;
+    }
     
     public partial class EffectCfg
     {
-        public virtual void OnTakeEffect(IEffectTarget caster, IEffectTarget target)
+        public virtual TakeEffectResult OnTakeEffect(IEffectTarget caster, IEffectTarget target)
         {
-            
+            return null;
         }
 
         public virtual void OnResetEffect(IEffectTarget caster, IEffectTarget target)
@@ -36,13 +41,17 @@ namespace Cfg.Battle
             return null;
         }
 
-        public static void TakeEffectList(List<int> list, IEffectTarget caster, IEffectTarget target)
+        public static List<TakeEffectResult> TakeEffectList(List<int> list, IEffectTarget caster, IEffectTarget target)
         {
+            List<TakeEffectResult> results = new List<TakeEffectResult>();
             foreach(var id in list)
             {
                 var cfg = GameMgr.Cfg.TbEffectCfg.Get(id);
-                cfg.OnTakeEffect(caster, target);
+                var result = cfg.OnTakeEffect(caster, target);
+                if (result != null) results.Add(result);
             }
+
+            return results;
         }
 
         public static void ResetEffectList(List<int> list, IEffectTarget caster, IEffectTarget target)

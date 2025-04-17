@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 #region 战斗单位自动行动AI
@@ -33,21 +34,9 @@ public class CommonAI
         }
     }
 
-    public void Attack(GridUnit battleUnit)
+    private int SelectSkillId()
     {
-        if (battleUnit == null)
-        {
-            return;
-        }
-
-        foreach(var skillId in Owner.Role.SkillSet)
-        {
-            var success = GameMgr.Battle.PlaySkill(skillId, Owner, battleUnit.GridData);
-            if (success)
-            {
-                break;
-            }
-        }
+        return Owner.Role.SkillSet.First();
     }
 
     public virtual GridUnit SelectAttackTarget()
@@ -121,5 +110,30 @@ public class CommonAI
         }
 
         return canAttackList;
+    }
+
+    public ReqBattleUnitAction AutoAction()
+    {
+        ReqBattleUnitAction req = new ReqBattleUnitAction() { Caster = Owner };
+
+        var target = SelectAttackTarget();
+        if (target == null)
+        {
+            req.ReqActionList.Add(new ReqWait());
+            return req;
+        }
+
+        var end = SelectMoveTarget(target);
+        bool result = Navigator.Navigate(BattleMap, Owner, end, out var path);
+        if (!result)
+        {
+            req.ReqActionList.Add(new ReqWait());
+            return req;
+        }
+
+        req.ReqActionList.Add(new ReqMove { End = end });
+        req.ReqActionList.Add(new ReqSkill() { Target = target.GridData, SkillId = SelectSkillId()});
+
+        return req;
     }
 }
