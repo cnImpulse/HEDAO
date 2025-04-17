@@ -10,7 +10,6 @@ namespace Cfg
     public partial class CfgManager : BaseManager
     {
         private Tables Tables;
-
         protected override void OnInit()
         {
             Tables = new Tables(LoadByteBuf);
@@ -18,7 +17,9 @@ namespace Cfg
 
         private static ByteBuf LoadByteBuf(string file)
         {
-            return new ByteBuf(File.ReadAllBytes($"{Application.dataPath}/Res/Cfg/Bytes/{file}.bytes"));
+            var path = $"Assets/Res/Cfg/Bytes/{file}.bytes";
+            var asset = GameMgr.Res.LoadAsset<TextAsset>(path);
+            return new ByteBuf(asset.bytes);
         }
     }
 }

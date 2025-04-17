@@ -23,6 +23,31 @@ public class ResManager : BaseManager
         var initOperation = package.InitializeAsync(initParameters);
         yield return initOperation;
 
+        yield return RequestAndUpdate(package);
+    }
+
+    public IEnumerator InitPackageRuntime()
+    {
+        var package = YooAssets.CreatePackage("DefaultPackage");
+        YooAssets.SetDefaultPackage(package);
+        
+        var buildinFileSystemParams = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
+        var initParameters = new OfflinePlayModeParameters();
+        initParameters.BuildinFileSystemParameters = buildinFileSystemParams;
+
+        var initOperation = package.InitializeAsync(initParameters);
+        yield return initOperation;
+        
+        if(initOperation.Status == EOperationStatus.Succeed)
+            Debug.Log("资源包初始化成功！");
+        else 
+            Debug.LogError($"资源包初始化失败：{initOperation.Error}");
+
+        yield return RequestAndUpdate(package);
+    }
+
+    public IEnumerator RequestAndUpdate(ResourcePackage package)
+    {
         var operation2 = package.RequestPackageVersionAsync();
         yield return operation2;
         if (operation2.Status != EOperationStatus.Succeed) yield break;

@@ -1,5 +1,7 @@
 ﻿using System.IO;
 using Newtonsoft.Json;
+using UnityEngine;
+using UnityEngine.UI;
 
 public static class AssetUtl
 {
@@ -41,8 +43,9 @@ public static class AssetUtl
 
     public static T ReadData<T>(string path)
     {
-        StreamReader sr = new StreamReader(path);
-        string json = sr.ReadLine();
+        var txt = GameMgr.Res.LoadAsset<TextAsset>(path);
+        string json = txt.text;
+        Log.Info(json);
 
         return JsonConvert.DeserializeObject<T>(json);
     }

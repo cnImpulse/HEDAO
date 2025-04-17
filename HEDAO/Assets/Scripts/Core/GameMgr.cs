@@ -18,8 +18,19 @@ public static class GameMgr
     // 纯表现
     public static EffectManager Effect;
 
+    private static List<BaseManager> PreManagerList = new List<BaseManager>();
     private static List<BaseManager> ManagerList = new List<BaseManager>();
 
+    public static void InitPre()
+    {
+        CreaPreManagers();
+
+        foreach(var mgr in PreManagerList)
+        {
+            mgr.Init();
+        }
+    }
+    
     public static void Init()
     {
         CreateManagers();
@@ -38,18 +49,21 @@ public static class GameMgr
         }
     }
 
+    public static void CreaPreManagers()
+    {
+        Res = CreatePreManager<ResManager>();
+    }
+    
     public static void CreateManagers()
     {
-        Res = CreateManager<ResManager>();
+        Procedure = CreateManager<ProcedureManager>();
         Cfg = CreateManager<CfgManager>();
         Save = CreateManager<SaveManager>();
         UI = CreateManager<UIManager>();
-        Procedure = CreateManager<ProcedureManager>();
         Entity = CreateManager<EntityManager>();
         Battle = CreateManager<BattleManager>();
         Explore = CreateManager<ExploreManager>();
         Event = CreateManager<EventManager>();
-
         Effect = CreateManager<EffectManager>();
     }
 
@@ -61,6 +75,14 @@ public static class GameMgr
         return manager;
     }
 
+    private static T CreatePreManager<T>()
+        where T : BaseManager, new()
+    {
+        T manager = new();
+        PreManagerList.Add(manager);
+        return manager;
+    }
+    
     public static void Update()
     {
         foreach (var mgr in ManagerList)

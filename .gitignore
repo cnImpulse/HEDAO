@@ -1,3 +1,4 @@
 .DS_Store
 .cache.meta
 *.~*.xlsx
+[Bb]uild/

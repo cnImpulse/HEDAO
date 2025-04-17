@@ -26,11 +26,6 @@ public class UIManager : BaseManager
     
     protected override void OnInit()
     {
-
-    }
-
-    public void InitPackage()
-    {
         UIPackage.AddPackage("Common", LoadFunc);
         // UIPackage.AddPackage("Assets/Res/Fgui/Common");
         CommonBinder.BindAll();
