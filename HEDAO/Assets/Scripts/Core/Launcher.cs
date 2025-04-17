@@ -8,10 +8,16 @@ public class Launcher : MonoBehaviour
     void Awake()
     {
         GameMgr.Init();
-        StartCoroutine(GameMgr.Res.InitPackage());
-        GameMgr.Procedure.Fsm.Start<ProcedureMain>();
+        StartCoroutine(InitPackage());
     }
 
+    public IEnumerator InitPackage()
+    {
+        yield return GameMgr.Res.InitPackage();
+        GameMgr.UI.InitPackage();
+        GameMgr.Procedure.Fsm.Start<ProcedureMain>();
+    }
+    
     private void Update()
     {
         GameMgr.Update();

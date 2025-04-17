@@ -3,20 +3,40 @@ using System.Collections;
 using System.Collections.Generic;
 using FairyGUI;
 using FGUI.Common;
+using YooAsset;
 
 public class UIManager : BaseManager
 {
     private Dictionary<long, UIBase> UIDict = new Dictionary<long, UIBase>();
     private Dictionary<string, UIBase> NameDict = new Dictionary<string, UIBase>();
 
+    // 资源句柄列表
+    private List<AssetHandle> m_Handles = new List<AssetHandle>(100);
+    
+    // 加载方法
+    private object LoadFunc(string name, string extension, System.Type type, out DestroyMethod method)
+    {
+        method = DestroyMethod.None; //注意：这里一定要设置为None
+        string location = $"Assets/Res/Fgui/{name}{extension}";
+        var package = YooAssets.GetPackage("DefaultPackage");
+        var handle = package.LoadAssetSync(location, type);
+        m_Handles.Add(handle);
+        return handle.AssetObject;
+    }
+    
     protected override void OnInit()
     {
-        UIPackage.AddPackage("Assets/Res/Fgui/Common");
-        CommonBinder.BindAll();
 
-        UIObjectFactory.SetPackageItemExtension("ui://rt51n0kjfbqy5v", typeof(FGUIBtnRole));
     }
 
+    public void InitPackage()
+    {
+        UIPackage.AddPackage("Common", LoadFunc);
+        // UIPackage.AddPackage("Assets/Res/Fgui/Common");
+        CommonBinder.BindAll();
+        UIObjectFactory.SetPackageItemExtension("ui://rt51n0kjfbqy5v", typeof(FGUIBtnRole));
+    }
+    
     protected override void OnCleanUp()
     {
         CloseAllUI();
@@ -90,5 +110,14 @@ public class UIManager : BaseManager
         {
             ui.OnUpdate();
         }
+    }
+    
+    private void ReleaseHandles()
+    {
+        foreach(var handle in m_Handles)
+        {
+            handle.Release();
+        }
+        m_Handles.Clear();
     }
 }
