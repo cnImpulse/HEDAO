@@ -17,7 +17,7 @@ public class ActionSelect : ActionStateBase
         m_list.numItems = ActionList.Count;
         m_list.ResizeToFit();
 
-        GameMgr.Effect.ShowEffect(10003, GridMapUtl.GridPos2WorldPos(BattleUnit.GridPos), true);
+        // GameMgr.Effect.ShowEffect(10003, GridMapUtl.GridPos2WorldPos(BattleUnit.GridPos), true);
     }
 
     public override void OnLeave()
@@ -43,8 +43,7 @@ public class ActionSelect : ActionStateBase
         }
         else if (type == BattleUnitActionType.Wait)
         {
-            Owner.Close();
-            GameMgr.Battle.Fsm.ChangeState<BattleLoop>();
+            ChangeState<ActionWait>();
         }
     }
 }

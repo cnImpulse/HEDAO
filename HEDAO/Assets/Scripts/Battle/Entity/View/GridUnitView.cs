@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GridUnitView : EntityView
 {
@@ -8,7 +9,8 @@ public class GridUnitView : EntityView
 
     public new GridUnit Entity => base.Entity as GridUnit;
     public GridMapView GridMapView = default;
-
+    public Vector2Int LocalGridPos;
+    
     private Animation m_Anim;
 
     protected override void OnInit(object data)
@@ -16,9 +18,10 @@ public class GridUnitView : EntityView
         base.OnInit(data);
 
         GridMapView = data as GridMapView;
-
         m_Anim = GetComponentInChildren<Animation>();
 
+        LocalGridPos = Entity.GridPos;
+        
         m_FloatUId = GameMgr.UI.ShowFloatUI(UIName.FloatBattleUnit, this);
     }
 
@@ -29,14 +32,12 @@ public class GridUnitView : EntityView
 
     private void Update()
     {
-        if (GridMapView == null) return;
-
-        transform.position = GridMapUtl.GridPos2WorldPos(Entity.GridPos);
+        transform.position = GridMapUtl.GridPos2WorldPos(LocalGridPos);
     }
 
-    public void PlayAttackAnim(GridUnit target)
+    public void PlayAttackAnim(Vector2Int target)
     {
-        var dir = GridMapUtl.NormalizeDirection(target.GridPos - Entity.GridPos);
+        var dir = GridMapUtl.NormalizeDirection(target - LocalGridPos);
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
         m_Anim.Play();
@@ -45,5 +46,15 @@ public class GridUnitView : EntityView
     public void PlayHurtAnim()
     {
 
+    }
+
+    private void InitPos()
+    {
+        
+    }
+
+    public void LocalMove(Vector2Int gridPos)
+    {
+        LocalGridPos = gridPos;
     }
 }

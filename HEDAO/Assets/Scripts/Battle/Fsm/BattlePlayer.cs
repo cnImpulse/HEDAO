@@ -11,6 +11,8 @@ public class BattlePlayer : FsmState
     {
         base.OnEnter();
 
+        GameMgr.Event.Subscribe(GameEventType.OnBattleUnitActionEnd, OnPlayerRoundEnd);
+        
         BattleUnit.OnRoundStart();
         GameMgr.Event.Fire(GameEventType.OnPlayerRoundStart);
     }
@@ -24,7 +26,13 @@ public class BattlePlayer : FsmState
     public override void OnLeave()
     {
         BattleUnit.OnRoundEnd();
+        GameMgr.Event.Unsubscribe(GameEventType.OnBattleUnitActionEnd, OnPlayerRoundEnd);
         
         base.OnLeave();
+    }
+    
+    private void OnPlayerRoundEnd(GameEvent obj)
+    {
+        ChangeState<BattleLoop>();
     }
 }

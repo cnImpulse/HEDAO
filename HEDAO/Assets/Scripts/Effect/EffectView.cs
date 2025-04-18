@@ -17,7 +17,7 @@ public class EffectView : EntityView
 
     private void Update()
     {
-        transform.position = Data.Position;
+        UpdatePos();
         if (Data.LifeTime <= 0)
         {
             return;
@@ -28,5 +28,18 @@ public class EffectView : EntityView
         {
             Hide();
         }
+    }
+
+    private void UpdatePos()
+    {
+        if (Data.FollowId > 0)
+        {
+            var entity = GameMgr.Entity.GetEntityView<EntityView>(Data.FollowId);
+            if (entity != null)
+            {
+                Data.Position = entity.transform.position;
+            }
+        }
+        transform.position = Data.Position;
     }
 }

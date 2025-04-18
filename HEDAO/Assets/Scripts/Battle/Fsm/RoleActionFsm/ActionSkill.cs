@@ -36,7 +36,7 @@ public class ActionSkill : ActionStateBase
             if (m_Area.Contains(GridMap.GetGridData(gridPos)))
             {
                 var position = GridMapUtl.GridPos2WorldPos(gridPos);
-                GameMgr.Effect.ShowEffect(10003, position, true);
+                GameMgr.Effect.ShowEffect(new EffectData { PrefabId = 10003, Position = position}, true);
             }
             else
             {
@@ -67,7 +67,7 @@ public class ActionSkill : ActionStateBase
         var cfg = GetSelectCfg();
         if (cfg == null) return;
 
-        m_Area = GameMgr.Battle.Data.GridMap.GetRangeGridList(BattleUnit.GridPos, cfg.ReleaseRange);
+        m_Area = GameMgr.Battle.Data.GridMap.GetRangeGridList(BattleUnitView.LocalGridPos, cfg.ReleaseRange);
         GameMgr.Effect.ShowGridEffect(m_Area.Select((grid)=> { return grid.GridPos; }).ToList(), Color.red);
 
         RefreshInfo();
@@ -79,9 +79,8 @@ public class ActionSkill : ActionStateBase
         if (m_Area.Contains(gridData))
         {
             var cfgId = SkillList[m_list.selectedIndex];
-            GameMgr.Battle.PlaySkill(cfgId, BattleUnit, gridData);
-            Owner.Close();
-            GameMgr.Battle.Fsm.ChangeState<BattleLoop>();
+            Owner.Req.ReqActionList.Add(new ReqSkill { SkillId = cfgId, Target = gridData});
+            Fsm.ChangeState<ActionWait>();
         }
         else
         {

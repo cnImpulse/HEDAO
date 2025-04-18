@@ -8,6 +8,7 @@ public enum GameEventType
     None,
     OnPointerDownMap,
     OnPlayerRoundStart,
+    OnBattleUnitActionEnd,
     OnBattleUnitAction,
 }
 

@@ -68,7 +68,6 @@ public class GridUnit : Entity, IEffectTarget
 
     public WaitEvent Wait()
     {
-        GameMgr.Battle.Fsm.ChangeState<BattleLoop>();
         return new WaitEvent();
     }
 

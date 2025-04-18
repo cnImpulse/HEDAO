@@ -11,6 +11,7 @@ public abstract class ActionStateBase : FsmState
     public GridMap GridMap => GameMgr.Battle.Data.GridMap;
     public GridMapView GridMapView => GameMgr.Battle.GridMapView;
     public GridUnit BattleUnit => Owner.BattleUnit;
+    public GridUnitView BattleUnitView => GameMgr.Entity.GetEntityView<GridUnitView>(BattleUnit.Id);
     protected GList m_list => View.m_panel_action.m_list_action;
     protected GLabel m_txt_info => View.m_panel_action.m_txt_info;
 

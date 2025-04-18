@@ -61,7 +61,7 @@ public class MoveEvent : RspActionBase
 
 public class SkillEvent : RspActionBase
 {
-    public GridData Target;
+    public GridUnit Target;
     public int SkillId;
     public bool IsMiss = false;
     public List<TakeEffectResult> Results;

@@ -56,7 +56,7 @@ public class BattleManager : BaseManager
         SkillEvent e = new SkillEvent()
         {
             Caster = caster,
-            Target = gridData,
+            Target = gridData.GridUnit,
             SkillId = skillId,
         };
         
@@ -109,7 +109,7 @@ public class BattleManager : BaseManager
         return random < hit;
     }
 
-    public void BattleUnitAction(ReqBattleUnitAction req)
+    public void ReqBattleUnitAction(ReqBattleUnitAction req)
     {
         RspBattleUnitAction e = new RspBattleUnitAction();
         e.BattleUnitId = req.Caster.Id;
@@ -130,5 +130,6 @@ public class BattleManager : BaseManager
             }
         }
         e.ActionList.Add(req.Caster.Wait());
+        GameMgr.Event.Fire(GameEventType.OnBattleUnitAction, e);
     }
 }

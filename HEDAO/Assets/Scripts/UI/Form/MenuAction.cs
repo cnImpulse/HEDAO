@@ -10,6 +10,7 @@ public class MenuAction : UIBase
 {
     public new FGUIMenuAction View => base.View as FGUIMenuAction;
     public GridUnit BattleUnit => GameMgr.Battle.Data.BattleUnitQueue.Peek();
+    public ReqBattleUnitAction Req;
 
     private Fsm m_Fsm;
 
@@ -43,6 +44,7 @@ public class MenuAction : UIBase
 
     private void InitFsm()
     {
+        Req = new ReqBattleUnitAction { Caster = BattleUnit };
         m_Fsm = Fsm.CreatFsm(this,  new ActionSelect(), new ActionMove(), new ActionSkill(), new ActionWait());
     }
 }

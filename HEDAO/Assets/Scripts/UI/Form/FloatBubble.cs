@@ -13,9 +13,9 @@ public class FloatBubble : UIBase
     {
         base.OnInit(userData);
 
-        var data = userData as OnTakeEffectEvent;
-        var gridUnit = data.Target as GridUnit;
-        TargetPos = GridMapUtl.GridPos2WorldPos(gridUnit.GridPos);
+        var data = userData as BubbleData;
+        var gridUnitView = GameMgr.Entity.GetEntityView<GridUnitView>(data.TargetId);
+        TargetPos = gridUnitView.transform.position;
         View.m_title.text = data.IsMiss ? "miss" : data.Damage.ToString();
 
         DOVirtual.DelayedCall(2f, Close);

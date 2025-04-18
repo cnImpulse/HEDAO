@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using FairyGUI;
 using FGUI.Common;
 using YooAsset;
 
 public class UIManager : BaseManager
 {
-    private Dictionary<long, UIBase> UIDict = new Dictionary<long, UIBase>();
-    private Dictionary<string, UIBase> NameDict = new Dictionary<string, UIBase>();
+    private Dictionary<long, UIBase> m_UIDict = new Dictionary<long, UIBase>();
+    private Dictionary<string, UIBase> m_NameDict = new Dictionary<string, UIBase>();
+    private HashSet<long> m_WaitClose = new HashSet<long>();
 
     // 资源句柄列表
     private List<AssetHandle> m_Handles = new List<AssetHandle>(100);
@@ -45,13 +47,13 @@ public class UIManager : BaseManager
         
         var ui = Activator.CreateInstance(uiCfg.UIType) as UIBase;
         ui.Init(uiName, view, userData);
-        UIDict.Add(ui.Id, ui);
+        m_UIDict.Add(ui.Id, ui);
         return ui.Id;
     }
     
     public void ShowUI(string uiName, object userData = default)
     {
-        if (NameDict.ContainsKey(uiName))
+        if (m_NameDict.ContainsKey(uiName))
         {
             return;
         }
@@ -63,45 +65,57 @@ public class UIManager : BaseManager
         var ui = Activator.CreateInstance(uiCfg.UIType) as UIBase;
         ui.Init(uiName, view, userData);
 
-        UIDict.Add(ui.Id, ui);
-        NameDict.Add(uiName, ui);
+        m_UIDict.Add(ui.Id, ui);
+        m_NameDict.Add(uiName, ui);
     }
 
     public void CloseUI(string uiName)
     {
-        if (NameDict.TryGetValue(uiName, out var ui))
+        if (m_NameDict.TryGetValue(uiName, out var ui))
         {
-            ui.Dispose();
-            UIDict.Remove(ui.Id);
-            NameDict.Remove(uiName);
+            m_WaitClose.Add(ui.Id);
         }
     }
 
     public void CloseUI(long id)
     {
-        if (UIDict.TryGetValue(id, out var ui))
+        if (m_UIDict.TryGetValue(id, out var ui))
+        {
+            m_WaitClose.Add(ui.Id);
+        }
+    }
+
+    public void CloseUImmediately(long id)
+    {
+        if (m_UIDict.TryGetValue(id, out var ui))
         {
             ui.Dispose();
-            UIDict.Remove(ui.Id);
-            NameDict.Remove(ui.Name);
+            m_UIDict.Remove(ui.Id);
+            m_NameDict.Remove(ui.Name);
         }
     }
 
     public void CloseAllUI()
     {
-        foreach (var ui in UIDict.Values)
+        foreach (var ui in m_UIDict.Values)
         {
             ui.Dispose();
         }
-        UIDict.Clear();
-        NameDict.Clear();
+        m_UIDict.Clear();
+        m_NameDict.Clear();
+        m_WaitClose.Clear();
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
         
-        foreach (var ui in UIDict.Values)
+        foreach (var id in m_WaitClose)
+        {
+            CloseUImmediately(id);
+        }
+
+        foreach (var ui in m_UIDict.Values.ToList())
         {
             ui.OnUpdate();
         }

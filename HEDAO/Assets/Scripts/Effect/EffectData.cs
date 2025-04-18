@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class EffectData : Entity
 {
-    public Vector3 Position { get; set; }
+    public int PrefabId;
+    public long FollowId = 0;
+    public float LifeTime = -1;
+    public Vector3 Position;
 
-    public float LifeTime { get; protected set; }
-    public int PrefabId { get; protected set; }
 
-    public EffectData(int prefabId, Vector3 position, float lifetime)
+    public EffectData()
     {
-        PrefabId = prefabId;
-        Position = position;
-        LifeTime = lifetime;
+
     }
 
     public override int GetPrefabId()

@@ -1,10 +1,9 @@
 ﻿using System;
 using Cfg.Battle;
 
-public class OnTakeEffectEvent
+public class BubbleData
 {
-    public IEffectTarget Caser;
-    public IEffectTarget Target;
+    public long TargetId;
     public int Damage;
     public bool IsMiss = false;
 }

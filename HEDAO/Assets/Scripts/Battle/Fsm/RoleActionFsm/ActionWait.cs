@@ -8,6 +8,9 @@ public class ActionWait : ActionStateBase
     {
         base.OnEnter();
 
+        Owner.Req.ReqActionList.Add(new ReqWait());
+        Owner.Close();
+        GameMgr.Battle.ReqBattleUnitAction(Owner.Req);
     }
 
     public override void OnLeave()

@@ -4,12 +4,11 @@ using UnityEngine.Tilemaps;
 
 public class EffectManager : BaseManager
 {
-    public long ShowEffect(int prefabId, Vector3 position = default, bool isSingleton = false, float lifetime = -1)
+    public long ShowEffect(EffectData data, bool isSingleton = false)
     {
-        EffectData data = new EffectData(prefabId, position, lifetime);
         if (isSingleton)
         {
-            HideEffectByPrefabId(prefabId);
+            HideEffectByPrefabId(data.PrefabId);
         }
 
         GameMgr.Entity.ShowEntity<EffectView>(data);
@@ -20,14 +19,16 @@ public class EffectManager : BaseManager
     {
         HideGridEffect();
         
-        GridEffectData data = new GridEffectData(10004, default, life);
+        GridEffectData data = new GridEffectData();
+        data.PrefabId = 10004;
+        data.LifeTime = life;
         data.GridList = gridList;
         data.Color = color;
         GameMgr.Entity.ShowEntity<GridEffectView>(data);
         return data.Id;
     }
 
-    public void HideEffect(int entityId)
+    public void HideEffect(long entityId)
     {
         GameMgr.Entity.HideEntity(entityId);
     }

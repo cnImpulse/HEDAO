@@ -32,10 +32,10 @@ public class ActionMove : ActionStateBase
         if (m_MoveArea != null)
         {
             var gridPos = GridMapUtl.GetMouseGridPos();
-            if (IsSelf(GridMap.GetGridData(gridPos)) || m_MoveArea.Contains(GridMap.GetGridData(gridPos)))
+            if (IsSelfPos(gridPos) || m_MoveArea.Contains(GridMap.GetGridData(gridPos)))
             {
                 var position = GridMapUtl.GridPos2WorldPos(gridPos);
-                GameMgr.Effect.ShowEffect(10003, position, true);
+                GameMgr.Effect.ShowEffect(new EffectData { PrefabId = 10003, Position = position}, true);
             }
             else
             {
@@ -79,7 +79,7 @@ public class ActionMove : ActionStateBase
     {
         var gridData = obj.Data as GridData;
         // 选中自己进入行动阶段
-        if (IsSelf(gridData))
+        if (IsSelfPos(gridData.GridPos))
         {
             ChangeState<ActionSelect>();
             return;
@@ -88,25 +88,30 @@ public class ActionMove : ActionStateBase
         // 移动
         if (m_MoveArea.Contains(gridData))
         {
-            Move(gridData);
+            GridMapView.StartCoroutine(Move(gridData));
         }
     }
 
-    public void Move(GridData end)
+    public IEnumerator Move(GridData end)
     {
         View.m_panel_action.visible = false;
         GameMgr.Event.Unsubscribe(GameEventType.OnPointerDownMap, OnPointerDownMap);
 
         Navigator.Navigate(GridMap, BattleUnit, end, out var path);
-        BattleUnit.Move(end);
+        foreach (var target in path)
+        {
+            BattleUnitView.LocalMove(target.GridPos);
+            yield return new WaitForSeconds(0.3f);
+        }
 
+        Owner.Req.ReqActionList.Add(new ReqMove { End = end });
         View.m_panel_action.visible = true;
         ChangeState<ActionSelect>();
     }
 
-    private bool IsSelf(GridData gridData)
+    private bool IsSelfPos(Vector2Int pos)
     {
-        return gridData == Owner.BattleUnit.GridData;
+        return pos == BattleUnitView.LocalGridPos;
     }
 
     private void RefreshInfo()
