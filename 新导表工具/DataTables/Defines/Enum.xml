@@ -98,4 +98,9 @@
 		<var name="Gun" alias="枪" />
 		<var name="Orb" alias="珠" />
 	</enum>
+
+	<enum name="EExploreType" comment="历练类型">
+		<var name="Battle" alias="战斗" />
+		<var name="Effect" alias="效果" />
+	</enum>
 </module>

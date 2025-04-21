@@ -19,6 +19,7 @@ public sealed partial class ExploreNodeCfg : Luban.BeanBase
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
         Desc = _buf.ReadString();
+        ExploreType = (EExploreType)_buf.ReadInt();
         BattleId = _buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);EffectList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); EffectList.Add(_e0);}}
     }
@@ -40,6 +41,7 @@ public sealed partial class ExploreNodeCfg : Luban.BeanBase
     /// 描述
     /// </summary>
     public readonly string Desc;
+    public readonly EExploreType ExploreType;
     /// <summary>
     /// 战斗
     /// </summary>
@@ -59,6 +61,7 @@ public sealed partial class ExploreNodeCfg : Luban.BeanBase
         
         
         
+        
     }
 
     public override string ToString()
@@ -67,6 +70,7 @@ public sealed partial class ExploreNodeCfg : Luban.BeanBase
         + "Id:" + Id + ","
         + "Name:" + Name + ","
         + "Desc:" + Desc + ","
+        + "ExploreType:" + ExploreType + ","
         + "BattleId:" + BattleId + ","
         + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
         + "}";

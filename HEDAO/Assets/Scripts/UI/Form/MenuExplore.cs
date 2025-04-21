@@ -8,11 +8,8 @@ using Cfg;
 
 public class MenuExplore : UIBase
 {
-    private List<PlayerRole> m_TeamList = new List<PlayerRole>();
-    public List<ExploreNode> m_NodeList = new List<ExploreNode>();
-
-    public Dictionary<long, PlayerRole> RoleTeamSet => GameMgr.Save.Data.TeamDict;
-    public Dictionary<long, PlayerRole> DiscipleDict => GameMgr.Save.Data.RoleDict;
+    public Dictionary<long, PlayerRole> Team => GameMgr.Explore.Data.Team;
+    public ExploreDate Data => GameMgr.Explore.Data;
 
     public new FGUIMenuExplore View => base.View as FGUIMenuExplore;
 
@@ -28,14 +25,15 @@ public class MenuExplore : UIBase
     {
         base.OnShow();
 
-        m_TeamList = RoleTeamSet.Values.ToList();
-        View.m_list_role.RefreshList(m_TeamList);
-
-        foreach(var cfg in GameMgr.Cfg.TbExploreNodeCfg.DataList.GetRandom(3))
+        View.m_list_role.RefreshList(Team.Values.ToList());
+        if (Data.ExploreQueue.Count > 0)
         {
-            m_NodeList.Add(new BattleNode(cfg.Id));
+            View.m_list_node.RefreshList(Data.ExploreQueue.Peek());
         }
-        View.m_list_node.RefreshList(m_NodeList);
+        else
+        {
+            View.m_list_node.numItems = 0;
+        }
     }
 
     private void OnRenderRole(int index, GObject obj, object data)
@@ -56,6 +54,13 @@ public class MenuExplore : UIBase
     {
         var node = data as ExploreNode;
         item.text = string.Format("{0}\n{1}", node.Cfg.Name, node.Cfg.Desc);
-        item.onClick.Set(node.OnSelected);
+        item.onClick.Set(() => OnClickNode(node));
+    }
+
+    public void OnClickNode(ExploreNode node)
+    {
+        node.OnSelected();
+        GameMgr.Explore.Data.ExploreQueue.Dequeue();
+        Refresh();
     }
 }

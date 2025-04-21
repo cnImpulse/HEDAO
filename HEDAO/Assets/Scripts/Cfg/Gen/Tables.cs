@@ -20,6 +20,7 @@ public partial class Tables
     public Battle.TbBuffCfg TbBuffCfg {get; }
     public Battle.TbEffectCfg TbEffectCfg {get; }
     public Battle.TbConditionCfg TbConditionCfg {get; }
+    public Battle.TbTerrain TbTerrain {get; }
     public Building.TbBuildingCfg TbBuildingCfg {get; }
     public XiuLian.TbBook TbBook {get; }
     public XiuLian.TbLevelCfg TbLevelCfg {get; }
@@ -29,6 +30,7 @@ public partial class Tables
     public Common.TbExploreNodeCfg TbExploreNodeCfg {get; }
     public Common.TbRoleTagCfg TbRoleTagCfg {get; }
     public Common.TbMisc TbMisc {get; }
+    public Common.TbTxt TbTxt {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
     {
@@ -39,6 +41,7 @@ public partial class Tables
         TbBuffCfg = new Battle.TbBuffCfg(loader("battle_tbbuffcfg"));
         TbEffectCfg = new Battle.TbEffectCfg(loader("battle_tbeffectcfg"));
         TbConditionCfg = new Battle.TbConditionCfg(loader("battle_tbconditioncfg"));
+        TbTerrain = new Battle.TbTerrain(loader("battle_tbterrain"));
         TbBuildingCfg = new Building.TbBuildingCfg(loader("building_tbbuildingcfg"));
         TbBook = new XiuLian.TbBook(loader("xiulian_tbbook"));
         TbLevelCfg = new XiuLian.TbLevelCfg(loader("xiulian_tblevelcfg"));
@@ -48,6 +51,7 @@ public partial class Tables
         TbExploreNodeCfg = new Common.TbExploreNodeCfg(loader("common_tbexplorenodecfg"));
         TbRoleTagCfg = new Common.TbRoleTagCfg(loader("common_tbroletagcfg"));
         TbMisc = new Common.TbMisc(loader("common_tbmisc"));
+        TbTxt = new Common.TbTxt(loader("common_tbtxt"));
         ResolveRef();
     }
     
@@ -60,6 +64,7 @@ public partial class Tables
         TbBuffCfg.ResolveRef(this);
         TbEffectCfg.ResolveRef(this);
         TbConditionCfg.ResolveRef(this);
+        TbTerrain.ResolveRef(this);
         TbBuildingCfg.ResolveRef(this);
         TbBook.ResolveRef(this);
         TbLevelCfg.ResolveRef(this);
@@ -69,6 +74,7 @@ public partial class Tables
         TbExploreNodeCfg.ResolveRef(this);
         TbRoleTagCfg.ResolveRef(this);
         TbMisc.ResolveRef(this);
+        TbTxt.ResolveRef(this);
     }
 }
 
@@ -81,6 +87,7 @@ public partial class CfgManager : BaseManager
     public Battle.TbBuffCfg TbBuffCfg => Tables.TbBuffCfg;
     public Battle.TbEffectCfg TbEffectCfg => Tables.TbEffectCfg;
     public Battle.TbConditionCfg TbConditionCfg => Tables.TbConditionCfg;
+    public Battle.TbTerrain TbTerrain => Tables.TbTerrain;
     public Building.TbBuildingCfg TbBuildingCfg => Tables.TbBuildingCfg;
     public XiuLian.TbBook TbBook => Tables.TbBook;
     public XiuLian.TbLevelCfg TbLevelCfg => Tables.TbLevelCfg;
@@ -90,6 +97,7 @@ public partial class CfgManager : BaseManager
     public Common.TbExploreNodeCfg TbExploreNodeCfg => Tables.TbExploreNodeCfg;
     public Common.TbRoleTagCfg TbRoleTagCfg => Tables.TbRoleTagCfg;
     public Common.TbMisc TbMisc => Tables.TbMisc;
+    public Common.TbTxt TbTxt => Tables.TbTxt;
 }
 
 }

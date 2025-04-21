@@ -16,8 +16,9 @@ public class ExploreManager : BaseManager
     public void StartExplore()
     {
         GameMgr.Save.Data.ExploreDate = new ExploreDate();
+        Data.Init();
 
-        foreach (var role in GameMgr.Save.Data.TeamDict.Values)
+        foreach (var role in Data.Team.Values)
         {
             role.Attr.OnStartExplore();
         }
@@ -34,6 +35,9 @@ public class ExploreManager : BaseManager
     public EResult GetExploreResult()
     {
         var count = GameMgr.Save.Data.TeamDict.Values.Where(role => role.Attr.HP > 0).Count();
-        return count > 0 ? EResult.None : EResult.Lose;
+        if (count == 0) return EResult.Lose;
+        if (Data.ExploreQueue.Count == 0) return EResult.Win;
+
+        return EResult.None;
     }
 }
