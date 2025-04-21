@@ -6,6 +6,7 @@ public static partial class UICfg
 {
     static UICfg()
     {
+        cfg[UIName.MenuBattleEnd] = new UICfgItem(typeof(MenuBattleEnd), FGUIMenuBattleEnd.URL);
         cfg[UIName.MenuMain] = new UICfgItem(typeof(MenuMain), FGUIMenuMain.URL);
         cfg[UIName.WinLoadGame] = new UICfgItem(typeof(WinLoadGame), FGUIWinLoadGame.URL);
         cfg[UIName.FloatBubble] = new UICfgItem(typeof(FloatBubble), FGUIFloatBubble.URL);

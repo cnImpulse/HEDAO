@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ExploreManager : BaseManager
@@ -22,5 +23,17 @@ public class ExploreManager : BaseManager
         }
 
         GameMgr.Procedure.Fsm.ChangeState<ProcedureExplore>();
+    }
+
+    public void EndExplore()
+    {
+        GameMgr.Procedure.Fsm.ChangeState<ProcedureHome>();
+        GameMgr.Save.Data.ExploreDate = null;
+    }
+
+    public EResult GetExploreResult()
+    {
+        var count = GameMgr.Save.Data.TeamDict.Values.Where(role => role.Attr.HP > 0).Count();
+        return count > 0 ? EResult.None : EResult.Lose;
     }
 }

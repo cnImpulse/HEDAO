@@ -32,6 +32,12 @@ public class BattleManager : BaseManager
         GameMgr.Procedure.Fsm.ChangeState<ProcedureBattle>();
     }
 
+    public void EndBattle()
+    {
+        GameMgr.Procedure.Fsm.ChangeState<ProcedureExplore>();
+        GameMgr.Save.Data.BattleData = null;
+    }
+
     public static Dictionary<EBattleState, Type> BattleStateDict = new Dictionary<EBattleState, Type>()
     {
         [EBattleState.Prepare] = typeof(BattlePrepare), [EBattleState.Start] = typeof(BattleStart), 

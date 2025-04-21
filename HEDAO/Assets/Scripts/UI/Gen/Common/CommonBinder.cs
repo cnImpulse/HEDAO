@@ -8,6 +8,7 @@ namespace FGUI.Common
     {
         public static void BindAll()
         {
+            UIObjectFactory.SetPackageItemExtension(FGUIMenuBattleEnd.URL, typeof(FGUIMenuBattleEnd));
             UIObjectFactory.SetPackageItemExtension(FGUIList.URL, typeof(FGUIList));
             UIObjectFactory.SetPackageItemExtension(FGUIVerticalList.URL, typeof(FGUIVerticalList));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuMain.URL, typeof(FGUIMenuMain));

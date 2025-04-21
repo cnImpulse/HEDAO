@@ -12,6 +12,16 @@ public class ProcedureExplore : FsmState
         GameMgr.UI.ShowUI(UIName.MenuExplore);
     }
 
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (GameMgr.Explore.GetExploreResult() != EResult.None)
+        {
+            ChangeState<ProcedureHome>();
+        }
+    }
+
     public override void OnLeave()
     {
         GameMgr.UI.CloseAllUI();

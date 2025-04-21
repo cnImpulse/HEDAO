@@ -19,6 +19,7 @@ public class ProcedureBattle : FsmState
 
     public override void OnLeave()
     {
+        GameMgr.Entity.HideEntity(Data.GridMap.Id);
         GameMgr.UI.CloseAllUI();
 
         base.OnLeave();

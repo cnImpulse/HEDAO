@@ -68,7 +68,7 @@ public class HudBattle : UIBase
     {
         yield return new WaitForSeconds(0.3f);
 
-
+        GameMgr.UI.ShowUI(UIName.MenuBattleEnd, e);
     }
 
     public IEnumerator PlayBattleUnitAction(BattleUnitActionEvent rsp)

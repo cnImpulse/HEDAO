@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <image id="n0_a4vx" name="n0" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="373,152" pivot="0.5,0.5" size="1174,776"/>
+    <component id="n1_a4vx" name="btn_sure" src="mv3556" fileName="MetaComponent/Button/CommonButton.xml" xy="840,700" size="240,120">
+      <Button title="确定"/>
+    </component>
+    <text id="n2_a4vx" name="txt_result" xy="904,508" pivot="0.5,0.5" size="112,64" font="ui://rt51n0kjekn09" fontSize="48" align="center" vAlign="middle" text="胜利"/>
+  </displayList>
+</component>

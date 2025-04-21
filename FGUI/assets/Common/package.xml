@@ -47,6 +47,7 @@
     <component id="gjxc65" name="CommonTxtCenter.xml" path="/MetaComponent/Text/"/>
     <component id="m3nj66" name="Label_Tips.xml" path="/Forms/Menu/MenuAction/"/>
     <component id="m3nj67" name="FloatBubble.xml" path="/Forms/Float/" exported="true"/>
+    <component id="a4vx68" name="MenuBattleEnd.xml" path="/Forms/Menu/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

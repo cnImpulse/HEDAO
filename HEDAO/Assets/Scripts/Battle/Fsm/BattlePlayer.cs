@@ -33,7 +33,7 @@ public class BattlePlayer : BattleStateBase
     
     private void OnPlayerRoundEnd(GameEvent obj)
     {
-        if (Data.BattleResult == EBattleResult.None)
+        if (Data.BattleResult == EResult.None)
         {
             ChangeState<BattleLoop>();
         }

@@ -20,7 +20,7 @@ public class BattleData
     public EBattleState BattleState { get; private set; }
     public GridMap GridMap { get; private set; }
     public Queue<GridUnit> BattleUnitQueue { get; private set; } = new Queue<GridUnit>();
-    public EBattleResult BattleResult => GetBattleResult();
+    public EResult BattleResult => GetBattleResult();
 
     [JsonConstructor]
     public BattleData()
@@ -43,14 +43,14 @@ public class BattleData
         BattleUnitQueue = new Queue<GridUnit>(BattleUnitQueue.Where(battleUnit => battleUnit.Id != id));
     }
 
-    public EBattleResult GetBattleResult()
+    public EResult GetBattleResult()
     {
         var playerCount = GridMap.GridUnitDict.Values.Where(gridUnit => gridUnit.CampType == ECampType.Player).Count();
         var enemyCount = GridMap.GridUnitDict.Values.Where(gridUnit => gridUnit.CampType == ECampType.Enemy).Count();
-        if (playerCount == 0) return EBattleResult.Lose;
-        if (enemyCount == 0) return EBattleResult.Win;
+        if (playerCount == 0) return EResult.Lose;
+        if (enemyCount == 0) return EResult.Win;
 
-        return EBattleResult.None;
+        return EResult.None;
     }
 }
 

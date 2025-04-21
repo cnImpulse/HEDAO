@@ -14,10 +14,12 @@ public enum BattleUnitActionType
     Wait,
 }
 
-public enum EBattleResult
+public enum EResult
 {
     None,
+    [EnumName("胜利")]
     Win,
+    [EnumName("失败")]
     Lose,
 }
 
@@ -58,7 +60,7 @@ public abstract class BattleEvent
 
 public class BattleEndEvent : BattleEvent
 {
-    public EBattleResult Result;
+    public EResult Result;
 }
 
 public class BattleUnitActionEvent : BattleEvent

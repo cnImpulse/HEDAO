@@ -10,4 +10,11 @@ public class ProcedureManager : BaseManager
     {
         Fsm = Fsm.CreatFsm(this, new ProcedureMain(), new ProcedureHome(), new ProcedureExplore(), new ProcedureBattle());
     }
+
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        Fsm.OnUpdate();
+    }
 }

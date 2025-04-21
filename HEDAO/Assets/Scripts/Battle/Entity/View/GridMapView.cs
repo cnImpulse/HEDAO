@@ -21,6 +21,16 @@ public class GridMapView : EntityView, IPointerDownHandler
         ShowAllGridUnit();
     }
 
+    protected override void OnDestroy()
+    {
+        foreach (var gridUnit in Entity.GridUnitDict.Values)
+        {
+            GameMgr.Entity.HideEntity(gridUnit.Id);
+        }
+
+        base.OnDestroy();
+    }
+
     private void ShowAllGridUnit()
     {
         foreach(var gridUnit in Entity.GridUnitDict.Values)
