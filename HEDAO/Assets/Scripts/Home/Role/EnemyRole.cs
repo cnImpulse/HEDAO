@@ -10,17 +10,5 @@ public class EnemyRole : Role
     {
         base.OnInit(data);
 
-        var cfgId = (int)data;
-        var cfg = GameMgr.Cfg.TbRole.Get(cfgId);
-        Name = cfg.Name;
-        Level = cfg.Level;
-        
-        Attr.Init(cfg.BaseAttr);
-
-        foreach(var id in cfg.SkillSet)
-        {
-            SkillSet.Add(id);
-        }
-        MoveSkillSet.Add(cfg.MoveSkillId);
     }
 }

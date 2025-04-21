@@ -10,19 +10,27 @@ public class PlayerRole : Role
     {
         base.OnInit(data);
 
-        var cfg = GameMgr.Cfg.TbRoleTempCfg.Get(1);
-        Name = data as string;
-        Level = 1;
-        Attr.Init(cfg.InitAttr);
-        for (int i = 1; i < 6; i++)
+        var cfgId = (int)data;
+        var cfg = GameMgr.Cfg.TbRole.Get(cfgId);
+        foreach (var bookId in cfg.BookList)
         {
-            WuXin.Add((EWuXinType)i, Random.Range(cfg.WuXinRange.Min, cfg.WuXinRange.Max));
+            LearnBook(bookId);
         }
 
-        MoveSkillSet.Add(1001);
-        
-        var tagList = GameMgr.Cfg.TbRoleTagCfg.DataList;
-        AddTag(tagList[Random.Range(0, tagList.Count)].Id);
+
+        //var cfg = GameMgr.Cfg.TbRoleTempCfg.Get(1);
+        //Name = data as string;
+        //Level = 1;
+        //Attr.Init(cfg.InitAttr);
+        //for (int i = 1; i < 6; i++)
+        //{
+        //    WuXin.Add((EWuXinType)i, Random.Range(cfg.WuXinRange.Min, cfg.WuXinRange.Max));
+        //}
+
+        //MoveSkillSet.Add(1001);
+
+        //var tagList = GameMgr.Cfg.TbRoleTagCfg.DataList;
+        //AddTag(tagList[Random.Range(0, tagList.Count)].Id);
     }
 
     public bool CanLearnBook(int cfgId)

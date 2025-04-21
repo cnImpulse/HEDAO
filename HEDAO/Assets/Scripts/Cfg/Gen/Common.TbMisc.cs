@@ -36,6 +36,7 @@ public partial class TbMisc
     /// </summary>
      public System.Collections.Generic.List<EAttrType> AttrTypeList => _data.AttrTypeList;
      public int MinHit => _data.MinHit;
+     public System.Collections.Generic.List<int> InitRoleList => _data.InitRoleList;
     
     public void ResolveRef(Tables tables)
     {

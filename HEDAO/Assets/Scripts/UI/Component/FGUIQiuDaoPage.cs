@@ -15,7 +15,7 @@ namespace FGUI.Common
         {
             m_btn_get.asButton.onClick.Set(() => { OnClickBtnGet(); });
 
-            m_RoleList = GameMgr.Save.Data.RandomRoleList;
+            m_RoleList = GameMgr.Save.Data.RecruitList;
             visible = m_RoleList.Count != 0;
             if (m_RoleList.Count == 0)
             {
@@ -85,7 +85,7 @@ namespace FGUI.Common
             }
 
             var role = m_RoleList[selectIndex];
-            m_text_role.text = RoleUtil.GetRoleInfo(role);
+            m_text_role.text = RoleUtil.GetRoleInfo(role, false);
             m_rader.Refresh(role);
         }
     }

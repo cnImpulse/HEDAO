@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SaveData
 {
-    public List<PlayerRole> RandomRoleList = null;
+    public List<PlayerRole> RecruitList = null;
     public Dictionary<long, PlayerRole> RoleDict = new Dictionary<long, PlayerRole>();
     public Dictionary<long, PlayerRole> TeamDict = new Dictionary<long, PlayerRole>();
 

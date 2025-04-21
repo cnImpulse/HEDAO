@@ -33,6 +33,24 @@ public class Role : Entity, IEffectTarget
 
     AttrComponent IEffectTarget.Attr => Attr;
 
+    protected override void OnInit(object data)
+    {
+        base.OnInit(data);
+
+        var cfgId = (int)data;
+        var cfg = GameMgr.Cfg.TbRole.Get(cfgId);
+        Name = cfg.Name;
+        Level = cfg.Level;
+
+        Attr.Init(cfg.InitAttr);
+        AddTag(cfg.RoleTag);
+        foreach (var id in cfg.SkillSet)
+        {
+            SkillSet.Add(id);
+        }
+        MoveSkillSet.Add(cfg.MoveSkillId);
+    }
+
     public void AddTag(int id)
     {
         TagSet.Add(id);

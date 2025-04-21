@@ -6,9 +6,9 @@ using Cfg.Battle;
 
 public static class RoleUtil
 {
-    public static string GetRoleInfo(Role role)
+    public static string GetRoleInfo(Role role, bool hasAttr = true)
     {
-        var attrInfo = GetRoleAttrInfo(role);
+        var attrInfo = hasAttr ? GetRoleAttrInfo(role) : "";
         var bookInfo = GetRoleBookInfo(role);
         var skillInfo = GetRoleSkillInfo(role);
         return attrInfo + '\n' + bookInfo + '\n' + skillInfo;

@@ -17,6 +17,7 @@ public sealed partial class RoleTempCfg : Luban.BeanBase
     public RoleTempCfg(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
+        Desc = _buf.ReadString();
         WuXinRange = Range.DeserializeRange(_buf);
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);InitAttr = new System.Collections.Generic.Dictionary<EAttrType, int>(n0 * 3 / 2);for(var i0 = 0 ; i0 < n0 ; i0++) { EAttrType _k0;  _k0 = (EAttrType)_buf.ReadInt(); int _v0;  _v0 = _buf.ReadInt();     InitAttr.Add(_k0, _v0);}}
     }
@@ -31,6 +32,10 @@ public sealed partial class RoleTempCfg : Luban.BeanBase
     /// </summary>
     public readonly int Id;
     /// <summary>
+    /// 描述
+    /// </summary>
+    public readonly string Desc;
+    /// <summary>
     /// 五行天赋区间
     /// </summary>
     public readonly Range WuXinRange;
@@ -42,6 +47,7 @@ public sealed partial class RoleTempCfg : Luban.BeanBase
     public  void ResolveRef(Tables tables)
     {
         
+        
         WuXinRange?.ResolveRef(tables);
         
     }
@@ -50,6 +56,7 @@ public sealed partial class RoleTempCfg : Luban.BeanBase
     {
         return "{ "
         + "Id:" + Id + ","
+        + "Desc:" + Desc + ","
         + "WuXinRange:" + WuXinRange + ","
         + "InitAttr:" + Luban.StringUtil.CollectionToString(InitAttr) + ","
         + "}";

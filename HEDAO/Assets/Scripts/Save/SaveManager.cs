@@ -60,7 +60,8 @@ public class SaveManager : BaseManager
         else
         {
             Data = new SaveData();
-            Data.RandomRoleList = RandomGenRole(NameList.Count);
+            //Data.RecruitList = RandomGenRole(NameList.Count);
+            Data.RecruitList = GetInitPlayRole();
             Data.Init();
             
             SaveGame();
@@ -109,5 +110,17 @@ public class SaveManager : BaseManager
         }
 
         return ret;
+    }
+
+    public List<PlayerRole> GetInitPlayRole()
+    {
+        var list = new List<PlayerRole>();
+        foreach(var id in GameMgr.Cfg.TbMisc.InitRoleList)
+        {
+            var role = new PlayerRole();
+            role.Init(id);
+            list.Add(role);
+        }
+        return list;
     }
 }
