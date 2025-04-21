@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Cfg.Battle;
 using UnityEngine;
 
@@ -111,7 +112,7 @@ public class BattleManager : BaseManager
 
     public void ReqBattleUnitAction(ReqBattleUnitAction req)
     {
-        RspBattleUnitAction e = new RspBattleUnitAction();
+        BattleUnitActionEvent e = new BattleUnitActionEvent();
         e.BattleUnitId = req.Caster.Id;
         foreach (var reqAction in req.ReqActionList)
         {
@@ -130,6 +131,17 @@ public class BattleManager : BaseManager
             }
         }
         e.ActionList.Add(req.Caster.Wait());
-        GameMgr.Event.Fire(GameEventType.OnBattleUnitAction, e);
+
+        var list = Data.GridMap.GridUnitDict.Values.ToList();
+        foreach(var gridUnit in list)
+        {
+            if (gridUnit.IsDead)
+            {
+                gridUnit.Destroy();
+                e.DeadList.Add(gridUnit.Id);
+            }
+        }
+
+        GameMgr.Event.Fire(GameEventType.BattleEvent, e);
     }
 }

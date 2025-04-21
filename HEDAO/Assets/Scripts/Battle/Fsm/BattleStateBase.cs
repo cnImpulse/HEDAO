@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BattleStateBase : FsmState
 {
-    public GridMap BattleMap => GameMgr.Battle.Data.GridMap;
+    public BattleData Data => GameMgr.Battle.Data;
+    public GridMap BattleMap => Data.GridMap;
 
     public override void OnEnter()
     {

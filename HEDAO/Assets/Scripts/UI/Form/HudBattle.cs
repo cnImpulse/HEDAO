@@ -9,7 +9,7 @@ using System.Linq;
 public class HudBattle : UIBase
 {
     public new FGUIHudBattle View => base.View as FGUIHudBattle;
-    private Queue<RspBattleUnitAction> RspQueue = new Queue<RspBattleUnitAction>();
+    private Queue<BattleEvent> BattleEventQueue = new Queue<BattleEvent>();
     private bool m_IsPlaying = false;
 
     protected override void OnInit(object userData)
@@ -17,7 +17,7 @@ public class HudBattle : UIBase
         base.OnInit(userData);
 
         GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnSelectBattleUnit);
-        GameMgr.Event.Subscribe(GameEventType.OnBattleUnitAction, OnBattleUnitAction);
+        GameMgr.Event.Subscribe(GameEventType.BattleEvent, OnBattleUnitAction);
 
         View.m_btn_start.onClick.Set(OnClickStart);
         View.m_list_action.itemRenderer = OnRenderRole;
@@ -43,15 +43,37 @@ public class HudBattle : UIBase
 
     public void UpdateBattleUnitAction()
     {
-        if (RspQueue.Count == 0 || m_IsPlaying) return;
+        if (BattleEventQueue.Count == 0 || m_IsPlaying) return;
 
-        GameMgr.Battle.GridMapView.StartCoroutine(PlayBattleUnitAction(RspQueue.Dequeue()));
+        GameMgr.Battle.GridMapView.StartCoroutine(PlayBattleEvent(BattleEventQueue.Dequeue()));
     }
 
-    public IEnumerator PlayBattleUnitAction(RspBattleUnitAction rsp)
+    public IEnumerator PlayBattleEvent(BattleEvent e)
     {
         m_IsPlaying = true;
-        var effectId = GameMgr.Effect.ShowEffect(new EffectData { PrefabId = 10003, FollowId = rsp.BattleUnitId}, true);
+
+        if (e is BattleUnitActionEvent actionEvent)
+        {
+            yield return PlayBattleUnitAction(actionEvent);
+        }
+        else if (e is BattleEndEvent endEvent)
+        {
+            yield return PlayBattleEnd(endEvent);
+        }
+
+        m_IsPlaying = false;
+    }
+
+    public IEnumerator PlayBattleEnd(BattleEndEvent e)
+    {
+        yield return new WaitForSeconds(0.3f);
+
+
+    }
+
+    public IEnumerator PlayBattleUnitAction(BattleUnitActionEvent rsp)
+    {
+        var effectId = GameMgr.Effect.ShowEffect(new EffectData { PrefabId = 10003, FollowId = rsp.BattleUnitId }, true);
 
         var view = GameMgr.Entity.GetEntityView<GridUnitView>(rsp.BattleUnitId);
         foreach (var rspAction in rsp.ActionList)
@@ -70,10 +92,23 @@ public class HudBattle : UIBase
             }
         }
 
+        yield return PlayBattleUnitDeadEvent(rsp);
+
         GameMgr.Effect.HideEffect(effectId);
-        m_IsPlaying = false;
     }
-    
+
+    public IEnumerator PlayBattleUnitDeadEvent(BattleUnitActionEvent rsp)
+    {
+        if (rsp.DeadList.Count == 0) yield break;
+
+        yield return new WaitForSeconds(0.1f);
+        foreach(var id in rsp.DeadList)
+        {
+            var view = GameMgr.Entity.GetEntityView<GridUnitView>(id);
+            view.PlayDeadAnim();
+        }
+    }
+
     public IEnumerator PlayActionMove(GridUnitView caster, MoveEvent e)
     {
         if (caster.Entity.CampType == ECampType.Player) yield break;
@@ -101,7 +136,7 @@ public class HudBattle : UIBase
         }
         yield return new WaitForSeconds(0.3f);
     }
-    
+
     public IEnumerator PlayActionWait(GridUnitView caster)
     {
         yield return new WaitForSeconds(0.5f);
@@ -111,7 +146,7 @@ public class HudBattle : UIBase
     protected override void OnClose()
     {
         GameMgr.Event.Unsubscribe(GameEventType.OnPlayerRoundStart, OnSelectBattleUnit);
-        GameMgr.Event.Unsubscribe(GameEventType.OnBattleUnitAction, OnBattleUnitAction);
+        GameMgr.Event.Unsubscribe(GameEventType.BattleEvent, OnBattleUnitAction);
 
         base.OnClose();
     }
@@ -141,7 +176,7 @@ public class HudBattle : UIBase
 
     private void OnBattleUnitAction(GameEvent obj)
     {
-        var e = obj.Data as RspBattleUnitAction;
-        RspQueue.Enqueue(e);
+        var e = obj.Data as BattleEvent;
+        BattleEventQueue.Enqueue(e);
     }
 }

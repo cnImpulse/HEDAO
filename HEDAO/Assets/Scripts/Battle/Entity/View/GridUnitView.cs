@@ -48,6 +48,11 @@ public class GridUnitView : EntityView
 
     }
 
+    public void PlayDeadAnim()
+    {
+        Hide();
+    }
+
     private void InitPos()
     {
         

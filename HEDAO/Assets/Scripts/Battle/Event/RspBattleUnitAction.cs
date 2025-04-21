@@ -14,6 +14,13 @@ public enum BattleUnitActionType
     Wait,
 }
 
+public enum EBattleResult
+{
+    None,
+    Win,
+    Lose,
+}
+
 public class ReqBattleUnitAction
 {
     public GridUnit Caster;
@@ -37,17 +44,28 @@ public class ReqSkill : ReqActionBase
 {
     public int SkillId;
     public GridData Target;
-}
-
-public class RspBattleUnitAction
-{
-    public long BattleUnitId;
-    public List<RspActionBase> ActionList = new List<RspActionBase>();
-}
+}     
 
 public abstract class RspActionBase
 {
     public GridUnit Caster;
+}
+
+public abstract class BattleEvent
+{
+
+}
+
+public class BattleEndEvent : BattleEvent
+{
+    public EBattleResult Result;
+}
+
+public class BattleUnitActionEvent : BattleEvent
+{
+    public long BattleUnitId;
+    public List<RspActionBase> ActionList = new List<RspActionBase>();
+    public List<long> DeadList = new List<long>();
 }
 
 public class WaitEvent : RspActionBase

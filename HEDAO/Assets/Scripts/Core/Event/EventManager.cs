@@ -9,7 +9,7 @@ public enum GameEventType
     OnPointerDownMap,
     OnPlayerRoundStart,
     OnBattleUnitActionEnd,
-    OnBattleUnitAction,
+    BattleEvent,
 }
 
 public class GameEvent

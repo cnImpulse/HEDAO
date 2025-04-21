@@ -8,6 +8,7 @@ public class BattleEnd : FsmState
     {
         base.OnEnter();
 
+        GameMgr.Event.Fire(GameEventType.BattleEvent, new BattleEndEvent { Result = GameMgr.Battle.Data.BattleResult });
     }
 
     public override void OnLeave()

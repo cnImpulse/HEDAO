@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattlePlayer : FsmState
+public class BattlePlayer : BattleStateBase
 {
     public GridUnit BattleUnit => GameMgr.Battle.Data.BattleUnitQueue.Peek();
 
@@ -33,6 +33,13 @@ public class BattlePlayer : FsmState
     
     private void OnPlayerRoundEnd(GameEvent obj)
     {
-        ChangeState<BattleLoop>();
+        if (Data.BattleResult == EBattleResult.None)
+        {
+            ChangeState<BattleLoop>();
+        }
+        else
+        {
+            ChangeState<BattleEnd>();
+        }
     }
 }

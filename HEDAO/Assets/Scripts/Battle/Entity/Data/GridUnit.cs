@@ -20,6 +20,7 @@ public class GridUnit : Entity, IEffectTarget
     public ECampType CampType { get; private set; }
     public Role Role { get; private set; }
     public CommonAI AI { get; private set; }
+    public bool IsDead { get; private set; } = false;
 
     public AttrComponent Attr => Role.Attr;
 
@@ -45,9 +46,7 @@ public class GridUnit : Entity, IEffectTarget
     protected override void OnDestroy()
     {
         Role.Attr.GetAttr(EAttrType.HP).OnValueChanged -= OnHPChanged;
-
         GameMgr.Battle.Data.OnRemoveBattleUnit(Id);
-        GameMgr.Entity.HideEntity(Id);
     }
 
     public override int GetPrefabId()
@@ -91,7 +90,7 @@ public class GridUnit : Entity, IEffectTarget
     {
         if (value <= 0)
         {
-            Destroy();
+            IsDead = true;
         }
     }
     

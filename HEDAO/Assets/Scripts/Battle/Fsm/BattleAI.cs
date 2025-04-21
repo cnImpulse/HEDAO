@@ -41,6 +41,13 @@ public class BattleAI : BattleStateBase
     
     private void OnPlayerRoundEnd(GameEvent obj)
     {
-        ChangeState<BattleLoop>();
+        if (Data.BattleResult == EBattleResult.None)
+        {
+            ChangeState<BattleLoop>();
+        }
+        else
+        {
+            ChangeState<BattleEnd>();
+        }
     }
 }

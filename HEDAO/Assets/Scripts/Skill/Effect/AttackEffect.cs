@@ -9,7 +9,9 @@ namespace Cfg.Battle
             var damage = -GetDamage(caster, target);
             target.Attr.ModifyAttr(EAttrType.HP, damage);
 
-            return new TakeEffectResult { Damage = damage };
+            var result = new TakeEffectResult();
+            result.Damage = damage;
+            return result;
         }
         
         public override void OnResetEffect(IEffectTarget caster, IEffectTarget target)
