@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="640,1080">
+  <controller name="ctrl_select" pages="0,,1," selected="0"/>
+  <displayList>
+    <image id="n0_a4vx" name="n0" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" pivot="0.5,0.5" size="640,1080">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <list id="n1_a4vx" name="list_type" xy="0,0" pivot="0.5,0.5" size="640,120" layout="row" margin="40,0,30,30" colGap="-3" defaultItem="ui://rt51n0kjrg1l6i" selectionController="ctrl_select" autoClearItems="true">
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <list id="n4_a4vx" name="list_item" xy="0,120" pivot="0.5,0.5" size="640,960" layout="flow_hz" overflow="scroll" margin="30,30,0,0" lineGap="-3" colGap="-3" defaultItem="ui://rt51n0kja4vx6d" align="center" autoClearItems="true">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+</component>

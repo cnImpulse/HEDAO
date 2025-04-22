@@ -49,6 +49,12 @@
     <component id="m3nj67" name="FloatBubble.xml" path="/Forms/Float/" exported="true"/>
     <component id="a4vx68" name="MenuBattleEnd.xml" path="/Forms/Menu/" exported="true"/>
     <component id="a4vx69" name="CommonLabel.xml" path="/MetaComponent/Text/"/>
+    <component id="a4vx6a" name="CompStore.xml" path="/Forms/Menu/MenuStore/" exported="true"/>
+    <component id="a4vx6d" name="BtnItem.xml" path="/Forms/Menu/MenuStore/"/>
+    <component id="a4vx6e" name="CompRole.xml" path="/Forms/Menu/MenuRole/" exported="true"/>
+    <component id="a4vx6g" name="BtnSlot.xml" path="/Forms/Menu/MenuRole/"/>
+    <component id="a4vx6h" name="CompSlot.xml" path="/Forms/Menu/MenuRole/" exported="true"/>
+    <component id="rg1l6i" name="BtnType.xml" path="/MetaComponent/Button/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

@@ -2,14 +2,17 @@
 <component size="1920,1080">
   <displayList>
     <image id="n3_rnio" name="n3" src="ntsy4" fileName="Resources/Images/SiGuax4.png" xy="0,0" pivot="0.5,0.5" size="1920,1080"/>
-    <component id="n8_rnio" name="rader" src="soef5a" fileName="Forms/Menu/MenuHome/RadarWidget.xml" xy="1439,119" pivot="0.5,0.5"/>
-    <component id="n5_rnio" name="btn_close" src="ja3th" fileName="Components/Button/CloseButton.xml" xy="31,28" pivot="0.5,0.5"/>
-    <component id="n6_rnio" name="txt_role" src="8r1d5y" fileName="Components/Button/CommonTxt.xml" xy="112,98" pivot="0.5,0.5" size="868,876">
+    <component id="n11_rg1l" name="comp_role" src="a4vx6e" fileName="Forms/Menu/MenuRole/CompRole.xml" xy="0,0" pivot="0.5,0.5" group="n15_rg1l"/>
+    <component id="n13_rg1l" name="txt_attr" src="8r1d5y" fileName="MetaComponent/Text/CommonTxt.xml" xy="636,0" pivot="0.5,0.5" size="648,568" group="n14_rg1l">
       <Label title="1. 角色属性&#xA;2. 角色功法&#xA;3. 角色技能"/>
     </component>
-    <component id="n9_gjxc" name="btn_remove" src="mv3556" fileName="Components/Button/CommonButton.xml" xy="860,98">
-      <relation target="n6_rnio" sidePair="right-right,top-top"/>
-      <Button title="逐出师门"/>
+    <component id="n12_rg1l" name="txt_skill" src="8r1d5y" fileName="MetaComponent/Text/CommonTxt.xml" xy="636,564" pivot="0.5,0.5" size="648,516" group="n14_rg1l">
+      <Label title="1. 角色属性&#xA;2. 角色功法&#xA;3. 角色技能"/>
     </component>
+    <group id="n14_rg1l" name="info" xy="636,0" size="648,1080" group="n15_rg1l" advanced="true" layout="vt" lineGap="-4" excludeInvisibles="true"/>
+    <component id="n16_rg1l" name="n16" src="a4vx6a" fileName="Forms/Menu/MenuStore/CompStore.xml" xy="1280,0" pivot="0.5,0.5" group="n15_rg1l"/>
+    <group id="n15_rg1l" name="n15" xy="0,0" size="1920,1080" advanced="true" layout="hz" colGap="-4" excludeInvisibles="true"/>
+    <component id="n8_rnio" name="rader" src="soef5a" fileName="Forms/Menu/MenuHome/RadarWidget.xml" xy="1032,66" pivot="0.5,0.5"/>
+    <component id="n5_rnio" name="btn_close" src="ja3th" fileName="MetaComponent/Button/CloseButton.xml" xy="34,30" pivot="0.5,0.5" size="50,54"/>
   </displayList>
 </component>

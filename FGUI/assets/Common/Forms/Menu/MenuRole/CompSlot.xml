@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="160,200">
+  <displayList>
+    <component id="n2_a4vx" name="btn_slot" src="a4vx6g" fileName="Forms/Menu/MenuRole/BtnSlot.xml" xy="0,0"/>
+    <text id="n3_a4vx" name="txt_type" xy="52,166" pivot="0.5,0.5" size="56,34" font="ui://rt51n0kjekn09" fontSize="24" align="center" text="武器"/>
+  </displayList>
+</component>
