@@ -88,17 +88,6 @@ namespace FGUI.Common
             var role = m_RoleList[selectIndex];
             m_text_role.text = RoleUtil.GetSimpleRoleInfo(role);
             m_rader.Refresh(role);
-            RefreshTextRole();
-        }
-
-        private void RefreshTextRole()
-        {
-            m_text_role.richTextField.onClickLink.Set(OnClickLink);
-        }
-
-        private void OnClickLink(EventContext context)
-        {
-            GameMgr.UI.ShowFloatUI(UIName.FloatTips, context);
         }
     }
 }

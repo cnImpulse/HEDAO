@@ -8,8 +8,12 @@ public class Role : Entity, IEffectTarget
 {
     public string Name;
     public int Level { get; protected set; }
+    public int InitCfgId { get; protected set; }
+    public RoleCfg InitCfg => GameMgr.Cfg.TbRole.Get(InitCfgId);
 
     public RoleAttrComponent Attr { get; protected set; } = new RoleAttrComponent();
+    public EquipComponent Equip { get; protected set; } = new EquipComponent();
+
     public Dictionary<EWuXinType, int> WuXin = new Dictionary<EWuXinType, int>();
     public EWuXinType QiWuXinType
     {
@@ -39,10 +43,13 @@ public class Role : Entity, IEffectTarget
 
         var cfgId = (int)data;
         var cfg = GameMgr.Cfg.TbRole.Get(cfgId);
+        InitCfgId = cfgId;
         Name = cfg.Name;
         Level = cfg.Level;
 
         Attr.Init(cfg.InitAttr);
+        Equip.Init(this);
+
         AddTag(cfg.RoleTag);
         foreach (var id in cfg.SkillSet)
         {

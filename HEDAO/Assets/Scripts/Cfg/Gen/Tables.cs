@@ -31,6 +31,7 @@ public partial class Tables
     public Common.TbRoleTagCfg TbRoleTagCfg {get; }
     public Common.TbMisc TbMisc {get; }
     public Common.TbTxt TbTxt {get; }
+    public Common.TbItem TbItem {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
     {
@@ -52,6 +53,7 @@ public partial class Tables
         TbRoleTagCfg = new Common.TbRoleTagCfg(loader("common_tbroletagcfg"));
         TbMisc = new Common.TbMisc(loader("common_tbmisc"));
         TbTxt = new Common.TbTxt(loader("common_tbtxt"));
+        TbItem = new Common.TbItem(loader("common_tbitem"));
         ResolveRef();
     }
     
@@ -75,6 +77,7 @@ public partial class Tables
         TbRoleTagCfg.ResolveRef(this);
         TbMisc.ResolveRef(this);
         TbTxt.ResolveRef(this);
+        TbItem.ResolveRef(this);
     }
 }
 
@@ -98,6 +101,7 @@ public partial class CfgManager : BaseManager
     public Common.TbRoleTagCfg TbRoleTagCfg => Tables.TbRoleTagCfg;
     public Common.TbMisc TbMisc => Tables.TbMisc;
     public Common.TbTxt TbTxt => Tables.TbTxt;
+    public Common.TbItem TbItem => Tables.TbItem;
 }
 
 }

@@ -14,14 +14,6 @@ public static class RoleUtil
         return info + '\n' + bookInfo + '\n' + skillInfo;
     }
 
-    public static string GetRoleInfo(Role role)
-    {
-        var attrInfo = GetRoleAttrInfo(role);
-        var bookInfo = GetRoleBookInfo(role);
-        var skillInfo = GetRoleSkillInfo(role);
-        return attrInfo + '\n' + bookInfo + '\n' + skillInfo;
-    }
-
     public static string GetRoleAttrInfo(Role role)
     {
         var attr = role.Attr;

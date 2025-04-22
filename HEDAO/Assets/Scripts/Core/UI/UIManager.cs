@@ -32,6 +32,8 @@ public class UIManager : BaseManager
         // UIPackage.AddPackage("Assets/Res/Fgui/Common");
         CommonBinder.BindAll();
         UIObjectFactory.SetPackageItemExtension("ui://rt51n0kjfbqy5v", typeof(FGUIBtnRole));
+
+        UIConfig.showTips = OnClickLink;
     }
     
     protected override void OnCleanUp()
@@ -128,5 +130,10 @@ public class UIManager : BaseManager
             handle.Release();
         }
         m_Handles.Clear();
+    }
+
+    public void OnClickLink(EventContext context)
+    {
+        GameMgr.UI.ShowFloatUI(UIName.FloatTips, context);
     }
 }

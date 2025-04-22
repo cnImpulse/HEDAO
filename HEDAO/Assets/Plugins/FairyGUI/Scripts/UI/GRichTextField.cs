@@ -26,6 +26,7 @@ namespace FairyGUI
             displayObject = richTextField;
 
             _textField = richTextField.textField;
+            richTextField.onClickLink.Add(UIConfig.showTips);
         }
 
         override protected void SetTextFieldText()

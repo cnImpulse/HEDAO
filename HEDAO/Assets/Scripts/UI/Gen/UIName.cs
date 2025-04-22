@@ -1,7 +1,6 @@
 public static partial class UIName
 {
         public const string MenuBattleEnd = "MenuBattleEnd";
-        public const string MenuStore = "MenuStore";
         public const string MenuMain = "MenuMain";
         public const string WinLoadGame = "WinLoadGame";
         public const string FloatBubble = "FloatBubble";

@@ -458,5 +458,7 @@ namespace FairyGUI
         /// 
         /// </summary>
         public static SoundLoader soundLoader = null;
+
+        public static EventCallback1 showTips;
     }
 }

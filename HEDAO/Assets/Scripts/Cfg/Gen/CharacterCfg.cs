@@ -24,6 +24,7 @@ public sealed partial class CharacterCfg : Luban.BeanBase
         MoveSkillId = _buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);SkillSet = new System.Collections.Generic.HashSet<int>(/*n0 * 3 / 2*/);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); SkillSet.Add(_e0);}}
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);InitAttr = new System.Collections.Generic.Dictionary<EAttrType, int>(n0 * 3 / 2);for(var i0 = 0 ; i0 < n0 ; i0++) { EAttrType _k0;  _k0 = (EAttrType)_buf.ReadInt(); int _v0;  _v0 = _buf.ReadInt();     InitAttr.Add(_k0, _v0);}}
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);InitEquip = new System.Collections.Generic.Dictionary<EEquipType, int>(n0 * 3 / 2);for(var i0 = 0 ; i0 < n0 ; i0++) { EEquipType _k0;  _k0 = (EEquipType)_buf.ReadInt(); int _v0;  _v0 = _buf.ReadInt();     InitEquip.Add(_k0, _v0);}}
     }
 
     public static CharacterCfg DeserializeCharacterCfg(ByteBuf _buf)
@@ -60,12 +61,14 @@ public sealed partial class CharacterCfg : Luban.BeanBase
     /// </summary>
     public readonly System.Collections.Generic.HashSet<int> SkillSet;
     public readonly System.Collections.Generic.Dictionary<EAttrType, int> InitAttr;
+    public readonly System.Collections.Generic.Dictionary<EEquipType, int> InitEquip;
    
     public const int __ID__ = -1278909285;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -87,6 +90,7 @@ public sealed partial class CharacterCfg : Luban.BeanBase
         + "MoveSkillId:" + MoveSkillId + ","
         + "SkillSet:" + Luban.StringUtil.CollectionToString(SkillSet) + ","
         + "InitAttr:" + Luban.StringUtil.CollectionToString(InitAttr) + ","
+        + "InitEquip:" + Luban.StringUtil.CollectionToString(InitEquip) + ","
         + "}";
     }
 }

@@ -7,14 +7,10 @@
     <bean name="ItemCfg">
         <var name="Id" type="int"/>
         <var name="Name" type="string"/>
-        <var name="BuffList" type="list,int"/>
+        <var name="EffectList" type="list,int"/>
     </bean>
 
-    <bean name="EquipCfg" parent="ItemCfg">
+    <bean name="EquipCfg" parent="ItemCfg" alias="装备">
         <var name="EquipType" type="EEquipType"/>
-    </bean>
-
-    <bean name="WeaponCfg" parent="EquipCfg">
-        <var name="WeaponType" type="EWeaponType"/>
     </bean>
 </module>
