@@ -18,7 +18,7 @@
     <component id="uyzr4t" name="ActionPanel.xml" path="/Forms/Menu/MenuAction/" exported="true"/>
     <component id="uyzr4v" name="BtnAction.xml" path="/Forms/Menu/MenuAction/" exported="true"/>
     <component id="dl574x" name="HPBar.xml" path="/MetaComponent/Progress/"/>
-    <component id="rzkn50" name="CommonTips.xml" path="/Forms/Float/" exported="true"/>
+    <component id="rzkn50" name="FloatTips.xml" path="/Forms/Float/" exported="true"/>
     <component id="qwwl51" name="FloatBattleUnit.xml" path="/Forms/Float/" exported="true"/>
     <component id="ty0953" name="QIBar.xml" path="/MetaComponent/Progress/"/>
     <component id="vg3s54" name="BattleStateEffect.xml" path="/Forms/Float/" exported="true"/>
@@ -48,6 +48,7 @@
     <component id="m3nj66" name="Label_Tips.xml" path="/Forms/Menu/MenuAction/"/>
     <component id="m3nj67" name="FloatBubble.xml" path="/Forms/Float/" exported="true"/>
     <component id="a4vx68" name="MenuBattleEnd.xml" path="/Forms/Menu/" exported="true"/>
+    <component id="a4vx69" name="CommonLabel.xml" path="/MetaComponent/Text/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

@@ -25,7 +25,7 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIDangMoPage.URL, typeof(FGUIDangMoPage));
             UIObjectFactory.SetPackageItemExtension(FGUIFloatBattleUnit.URL, typeof(FGUIFloatBattleUnit));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuRole.URL, typeof(FGUIMenuRole));
-            UIObjectFactory.SetPackageItemExtension(FGUICommonTips.URL, typeof(FGUICommonTips));
+            UIObjectFactory.SetPackageItemExtension(FGUIFloatTips.URL, typeof(FGUIFloatTips));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuExplore.URL, typeof(FGUIMenuExplore));
             UIObjectFactory.SetPackageItemExtension(FGUIRoleItem.URL, typeof(FGUIRoleItem));
             UIObjectFactory.SetPackageItemExtension(FGUIRadarWidget.URL, typeof(FGUIRadarWidget));

@@ -6,9 +6,17 @@ using Cfg.Battle;
 
 public static class RoleUtil
 {
-    public static string GetRoleInfo(Role role, bool hasAttr = true)
+    public static string GetSimpleRoleInfo(Role role)
     {
-        var attrInfo = hasAttr ? GetRoleAttrInfo(role) : "";
+        var info = $"姓名：{role.Name} {GetRoleTagInfo(role)}\n";
+        var bookInfo = GetRoleBookInfo(role);
+        var skillInfo = GetRoleSkillInfo(role);
+        return info + '\n' + bookInfo + '\n' + skillInfo;
+    }
+
+    public static string GetRoleInfo(Role role)
+    {
+        var attrInfo = GetRoleAttrInfo(role);
         var bookInfo = GetRoleBookInfo(role);
         var skillInfo = GetRoleSkillInfo(role);
         return attrInfo + '\n' + bookInfo + '\n' + skillInfo;
@@ -45,7 +53,7 @@ public static class RoleUtil
         foreach (var id in role.TagSet)
         {
             var cfg = GameMgr.Cfg.TbRoleTagCfg.Get(id);
-            info += string.Format("{0} ", cfg.Name);
+            info += string.Format("<a href='{0}'>{1}</a>", SkillUtil.GetEffectDesc(cfg.EffectList), cfg.Name);
         }
 
         return info;
@@ -75,7 +83,7 @@ public static class RoleUtil
         foreach (var id in role.SkillSet)
         {
             var cfg = GameMgr.Cfg.TbSkill.Get(id);
-            info += cfg.Name;
+            info += string.Format("<a href='{0}'>{1}</a>", SkillUtil.GetSkillDesc(id), cfg.Name);
         }
 
         return info;

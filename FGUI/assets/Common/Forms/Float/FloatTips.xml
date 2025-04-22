@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" opaque="false">
+  <displayList>
+    <component id="n3_a4vx" name="label" src="a4vx69" fileName="MetaComponent/Text/CommonLabel.xml" xy="0,0" size="206,118">
+      <Label title="提示：XXXX"/>
+    </component>
+    <component id="n4_a4vx" name="btn_close" src="105c4o" fileName="MetaComponent/Button/Check.xml" xy="0,0" pivot="0.5,0.5" size="1920,1080"/>
+  </displayList>
+  <transition name="fade_close" autoPlay="true"/>
+</component>

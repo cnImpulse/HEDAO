@@ -86,10 +86,8 @@ namespace FGUI.Common
             }
             
             var txt = string.Format("{0}\n简介：{1}\n", cfg.Name, cfg.Desc);
-            foreach(var buffId in cfg.BuffList)
-            {
-                txt += SkillUtil.GetBuffDesc(buffId);
-            }
+            txt += SkillUtil.GetBuffListDesc(cfg.BuffList);
+
             foreach (var skillId in cfg.SkillList)
             {
                 txt += SkillUtil.GetSkillDesc(skillId);
