@@ -10,6 +10,7 @@ namespace FGUI.Common
         public Controller m_ctrl_select;
         public GList m_list_book;
         public GList m_list_equip;
+        public GLabel m_txt_name;
         public GList m_list_role;
         public const string URL = "ui://rt51n0kja4vx6e";
 
@@ -25,6 +26,7 @@ namespace FGUI.Common
             m_ctrl_select = GetController("ctrl_select");
             m_list_book = (GList)GetChild("list_book");
             m_list_equip = (GList)GetChild("list_equip");
+            m_txt_name = (GLabel)GetChild("txt_name");
             m_list_role = (GList)GetChild("list_role");
         }
     }

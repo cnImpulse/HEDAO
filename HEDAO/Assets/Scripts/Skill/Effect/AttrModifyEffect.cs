@@ -17,7 +17,7 @@ namespace Cfg.Battle
         public override void OnResetEffect(IEffectTarget caster, IEffectTarget target)
         {
             var targetUnit = target as Role;
-            var battleAttr = targetUnit.Attr;
+            targetUnit.Attr.ModifyAttrDict(AttrDict, true);
         }
 
         public override string GetDesc()

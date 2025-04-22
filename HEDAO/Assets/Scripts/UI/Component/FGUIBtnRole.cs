@@ -32,7 +32,8 @@ namespace FGUI.Common
 
         private void OnRightClickRole(Role role)
         {
-            GameMgr.UI.ShowUI(UIName.MenuRole, role);
+            List<Role> roles = GameMgr.Save.Data.RoleDict.Values.AsEnumerable<Role>().ToList();
+            GameMgr.UI.ShowUI(UIName.MenuRole, roles);
         }
     }
 }

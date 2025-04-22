@@ -79,11 +79,11 @@ public abstract partial class AttrComponent
         AttrDict[type].Value += value;
     }
 
-    public void ModifyAttrDict(Dictionary<EAttrType, int> attrDict)
+    public void ModifyAttrDict(Dictionary<EAttrType, int> attrDict, bool isReset = false)
     {
         foreach(var pair in attrDict)
         {
-            ModifyAttr(pair.Key, pair.Value);
+            ModifyAttr(pair.Key, isReset ? -pair.Value : pair.Value);
         }
     }
 

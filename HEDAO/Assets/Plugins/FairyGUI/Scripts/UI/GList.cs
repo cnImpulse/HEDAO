@@ -510,6 +510,8 @@ namespace FairyGUI
             set { _selectionController = value; }
         }
 
+        public object selectedData => GetItemData(selectedIndex);
+
         public void RefreshSelectionCtrl(int selectIndex = 0)
         {
             if (selectionController == null) return;
@@ -1596,7 +1598,7 @@ namespace FairyGUI
         public object GetItemData(int index)
         {
             var list = data as IList;
-            if (list != null && list.Count > index)
+            if (list != null && list.Count > index && index >= 0)
             {
                 return list[index];
             }

@@ -7,8 +7,10 @@ using FGUI.Common;
 
 public class MenuRole : UIBase
 {
-    public Role Role;
     public new FGUIMenuRole View => base.View as FGUIMenuRole;
+
+    public List<Role> RoleList;
+    public Role Role => View.m_comp_role.m_list_role.selectedData as Role;
 
     private static List<EEquipType> m_EquipTypeList = new List<EEquipType> { EEquipType.Weapon, EEquipType.Armour, EEquipType.Trinket };
 
@@ -16,26 +18,39 @@ public class MenuRole : UIBase
     {
         base.OnInit(userData);
 
-        Role = userData as Role;
+        RoleList = userData as List<Role>;
         //View.m_list_role.m_list.itemRenderer = OnRenderRole;
         //View.m_list_role.m_list.RefreshList();
 
+        View.m_comp_role.m_list_role.itemRenderer = OnRenderRole;
         View.m_comp_role.m_list_equip.itemRenderer = OnRenderEquipSlot;
+
+        View.m_comp_role.m_list_role.selectionController.onChanged.Set(RefreshRole);
+        View.m_comp_role.m_list_role.RefreshList(RoleList);
     }
 
     protected override void OnShow()
     {
         base.OnShow();
 
-        View.m_comp_role.m_list_equip.RefreshList(m_EquipTypeList);
-        RefreshRole();
     }
-    
+
     private void RefreshRole()
     {
+        if (Role == null) return;
+
+        View.m_rader.Refresh(Role);
         View.m_txt_attr.text = RoleUtil.GetRoleAttrInfo(Role);
         View.m_txt_skill.text = RoleUtil.GetRoleSkillInfo(Role);
-        View.m_rader.Refresh(Role);
+        View.m_comp_role.m_txt_name.text = Role.Name;
+        View.m_comp_role.m_list_equip.RefreshList(m_EquipTypeList);
+    }
+
+    private void OnRenderRole(int index, GObject obj, object data)
+    {
+        var role = data as Role;
+        var item = obj.asButton;
+        item.text = role.Name;
     }
 
     private void OnRenderEquipSlot(int index, GObject obj, object data)
