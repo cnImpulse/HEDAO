@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System;
 using Newtonsoft.Json;
 
-public class Entity
+public class Entity : ObjectBase
 {
     public long Id { get; private set; }
+    public Dictionary<int, Component> Components = new Dictionary<int, Component>();
 
     public Entity()
     {
@@ -18,24 +19,23 @@ public class Entity
         Id = id;
     }
 
-    public void Init(object data = default)
+    public void AddComponent<T>()
+        where T : Component, new()
     {
-        OnInit(data);
+        var component = new T();
+        Components.TryAdd(typeof(T).GetHashCode(), component);
+        component.Init(this);
     }
 
-    public void Destroy()
+    public T GetComponent<T>()
+        where T : Component
     {
-        OnDestroy();
-    }
+        if (Components.TryGetValue(typeof(T).GetHashCode(), out var component))
+        {
+            return component as T;
+        }
 
-    protected virtual void OnInit(object data)
-    {
-
-    }
-
-    protected virtual void OnDestroy()
-    {
-
+        return default;
     }
 
     public virtual int GetPrefabId()

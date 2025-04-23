@@ -42,7 +42,7 @@ public static class RoleUtil
     public static string GetRoleTagInfo(Role role)
     {
         string info = "天赋: ";
-        foreach (var id in role.TagSet)
+        foreach (var id in role.Skill.TagSet)
         {
             var cfg = GameMgr.Cfg.TbRoleTagCfg.Get(id);
             info += string.Format("<a href='{0}'>{1}</a>", SkillUtil.GetEffectDesc(cfg.EffectList), cfg.Name);
@@ -56,7 +56,7 @@ public static class RoleUtil
         string info = string.Empty;
         foreach (var bookType in GameMgr.Cfg.TbMisc.BookTypeList)
         {
-            if (role.BookDict.TryGetValue(bookType, out var id))
+            if (role.Book.BookDict.TryGetValue(bookType, out var id))
             {
                 var cfg = GameMgr.Cfg.TbBook.Get(id);
                 info += string.Format("{0}:{1}  ", bookType.GetName(), cfg.Name);
@@ -72,7 +72,7 @@ public static class RoleUtil
     public static string GetRoleSkillInfo(Role role)
     {
         string info = "技能: ";
-        foreach (var id in role.SkillSet)
+        foreach (var id in role.Skill.SkillSet)
         {
             var cfg = GameMgr.Cfg.TbSkill.Get(id);
             info += string.Format("<a href='{0}'>{1}</a>", SkillUtil.GetSkillDesc(id), cfg.Name);

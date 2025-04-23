@@ -4,15 +4,16 @@ using UnityEngine;
 using Cfg;
 using Cfg.Battle;
 
-public class EquipComponent
+public class EquipComponent : Component
 {
-    public Role Owner;
+    public new Role Owner => base.Owner as Role;
     public Dictionary<EEquipType, ItemData> EquipDict = new Dictionary<EEquipType, ItemData>();
 
-    public void Init(Role role)
+    protected override void OnInit(object data)
     {
-        Owner = role;
-        foreach(var pair in role.InitCfg.InitEquip)
+        base.OnInit(data);
+
+        foreach (var pair in Owner.InitCfg.InitEquip)
         {
             AddEquip(new ItemData(pair.Value));
         }

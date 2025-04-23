@@ -38,7 +38,7 @@ namespace FGUI.Common
 
         public void RefreshList()
         {
-            m_RoleList = DiscipleDict.Values.Where((role) => { return !role.BookDict.ContainsKey(GetSelectedBookType()); }).ToList();
+            m_RoleList = DiscipleDict.Values.Where((role) => { return !role.Book.BookDict.ContainsKey(GetSelectedBookType()); }).ToList();
             m_list_role.m_list.RefreshList(m_RoleList);
             m_list_role.m_list.RefreshSelectionCtrl();
 
@@ -95,7 +95,7 @@ namespace FGUI.Common
 
             m_txt_book.text = txt;
 
-            var canLearn = GetSelectedRole()?.CanLearnBook(cfg.Id) ?? false;
+            var canLearn = GetSelectedRole()?.Book.CanLearnBook(cfg.Id) ?? false;
             m_btn_learn.text = canLearn ? "学习" : "不可学习";
         }
 
@@ -103,7 +103,7 @@ namespace FGUI.Common
         {
             var role = GetSelectedRole();
             var bookCfg = m_BookList[m_list_book.selectedIndex];
-            role?.LearnBook(bookCfg.Id);
+            role?.Book.LearnBook(bookCfg.Id);
 
             RefreshList();
         }

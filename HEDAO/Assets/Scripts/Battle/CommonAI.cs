@@ -27,7 +27,7 @@ public class CommonAI
     {
         Owner = battleUnit;
 
-        foreach (var skillId in Owner.Role.SkillSet)
+        foreach (var skillId in Owner.Role.Skill.SkillSet)
         {
             var skillCfg = GameMgr.Cfg.TbSkill.GetOrDefault(skillId);
             MaxATKRange = Mathf.Max(MaxATKRange, skillCfg.ReleaseRange.Distance);
@@ -36,7 +36,7 @@ public class CommonAI
 
     private int SelectSkillId()
     {
-        return Owner.Role.SkillSet.First();
+        return Owner.Role.Skill.SkillSet.First();
     }
 
     public virtual GridUnit SelectAttackTarget()

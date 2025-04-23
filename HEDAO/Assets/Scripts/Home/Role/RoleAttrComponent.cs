@@ -7,10 +7,13 @@ using System.Runtime.Serialization;
 
 public partial class RoleAttrComponent : AttrComponent
 {
-    public void Init(Dictionary<EAttrType, int> initAttr)
-    {
-        ModifyAttrDict(initAttr);
+    public new Role Owner => base.Owner as Role;
 
+    protected override void OnInit(object data)
+    {
+        base.OnInit(data);
+
+        ModifyAttrDict(Owner.InitCfg.InitAttr);
         SetAttr(EAttrType.HP, GetAttrValue(EAttrType.MaxHP));
         SetAttr(EAttrType.QI, GetAttrValue(EAttrType.MaxQI));
         SetOnValueChanged(default);

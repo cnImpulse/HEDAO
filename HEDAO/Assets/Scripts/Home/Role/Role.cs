@@ -11,29 +11,13 @@ public class Role : Entity, IEffectTarget
     public int InitCfgId { get; protected set; }
     public RoleCfg InitCfg => GameMgr.Cfg.TbRole.Get(InitCfgId);
 
-    public RoleAttrComponent Attr { get; protected set; } = new RoleAttrComponent();
-    public EquipComponent Equip { get; protected set; } = new EquipComponent();
+    public RoleAttrComponent Attr => GetComponent<RoleAttrComponent>();
+    public SkillComponent Skill => GetComponent<SkillComponent>();
+    public BookComponent Book => GetComponent<BookComponent>();
+    public EquipComponent Equip => GetComponent<EquipComponent>();
 
     public Dictionary<EWuXinType, int> WuXin = new Dictionary<EWuXinType, int>();
-    public EWuXinType QiWuXinType
-    {
-        get
-        {
-            if (BookDict.TryGetValue(EBookType.DaoFa, out var id))
-            {
-                var cfg = GameMgr.Cfg.TbBook.Get(id);
-                return cfg.WuXinType;
-            }
-
-            return EWuXinType.None;
-        }
-    }
-
-    public HashSet<int> SkillSet = new HashSet<int>();
-    public HashSet<int> MoveSkillSet = new HashSet<int>();
     public Dictionary<int, Buff> BuffDict = new Dictionary<int, Buff>();
-    public HashSet<int> TagSet = new HashSet<int>();
-    public Dictionary<EBookType, int> BookDict = new Dictionary<EBookType, int>();
 
     AttrComponent IEffectTarget.Attr => Attr;
 
@@ -41,28 +25,14 @@ public class Role : Entity, IEffectTarget
     {
         base.OnInit(data);
 
-        var cfgId = (int)data;
-        var cfg = GameMgr.Cfg.TbRole.Get(cfgId);
-        InitCfgId = cfgId;
-        Name = cfg.Name;
-        Level = cfg.Level;
+        InitCfgId = (int)data;
+        Name = InitCfg.Name;
+        Level = InitCfg.Level;
 
-        Attr.Init(cfg.InitAttr);
-        Equip.Init(this);
-
-        AddTag(cfg.RoleTag);
-        foreach (var id in cfg.SkillSet)
-        {
-            SkillSet.Add(id);
-        }
-        MoveSkillSet.Add(cfg.MoveSkillId);
-    }
-
-    public void AddTag(int id)
-    {
-        TagSet.Add(id);
-        var cfg = GameMgr.Cfg.TbRoleTagCfg.Get(id);
-        EffectCfg.TakeEffectList(cfg.EffectList, null, this);
+        AddComponent<RoleAttrComponent>();
+        AddComponent<SkillComponent>();
+        AddComponent<BookComponent>();
+        AddComponent<EquipComponent>();
     }
 
     public void LevelUp(int level)
@@ -88,11 +58,6 @@ public class Role : Entity, IEffectTarget
         }
     }
 
-    public void AddSkill(int id)
-    {
-        SkillSet.Add(id);
-    }
-
     public bool CheckCondition(int id)
     {
         if (!GameMgr.Cfg.TbConditionCfg.DataMap.ContainsKey(id))
@@ -104,8 +69,13 @@ public class Role : Entity, IEffectTarget
         return Level >= cfg.Level;
     }
 
+    public void AddSkill(int id)
+    {
+        Skill.AddSkill(id);
+    }
+
     public void RemoveSkill(int id)
     {
-        SkillSet.Remove(id);
+        Skill.RemoveSkill(id);
     }
 }

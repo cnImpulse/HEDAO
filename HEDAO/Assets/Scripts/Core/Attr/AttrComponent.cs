@@ -48,7 +48,7 @@ public class AttributeField
     }
 }
 
-public abstract partial class AttrComponent
+public abstract partial class AttrComponent : Component
 {
     public Dictionary<EAttrType, AttributeField> AttrDict = new Dictionary<EAttrType, AttributeField>();
 

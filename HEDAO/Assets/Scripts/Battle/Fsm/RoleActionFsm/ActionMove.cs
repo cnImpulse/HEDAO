@@ -8,7 +8,7 @@ using UnityEngine;
 public class ActionMove : ActionStateBase
 {
     private List<GridData> m_MoveArea;
-    public List<int> MoveSkillList => Owner.BattleUnit.Role.MoveSkillSet.ToList();
+    public List<int> MoveSkillList => Owner.BattleUnit.Role.Skill.MoveSkillSet.ToList();
 
     public override void OnEnter()
     {

@@ -31,7 +31,7 @@ public class GridUnit : Entity, IEffectTarget
     {
         get
         {
-            var id = Role.MoveSkillSet.First();
+            var id = Role.Skill.MoveSkillSet.First();
             return GameMgr.Cfg.TbMoveSkill.Get(id).MOV;
         }
     }
