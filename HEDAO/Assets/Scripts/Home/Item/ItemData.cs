@@ -4,7 +4,7 @@ using UnityEngine;
 using Cfg;
 using Newtonsoft.Json;
 
-public abstract class ItemData
+public class ItemData
 {
     public int CfgId { get; private set; }
     public Container Owner { get; private set; }
@@ -24,7 +24,7 @@ public abstract class ItemData
             return new Equip(cfgId);
         }
 
-        return default;
+        return new ItemData(cfgId);
     }
 
     public string GetDesc()

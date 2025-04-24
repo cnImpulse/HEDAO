@@ -17,6 +17,8 @@ public class MenuExplore : UIBase
     {
         base.OnInit(userData);
 
+        View.m_btn_prepare.onClick.Set(OnClickParepare);
+
         View.m_list_role.itemRenderer = OnRenderRole;
         View.m_list_node.itemRenderer = OnRenderNode;
     }
@@ -62,5 +64,13 @@ public class MenuExplore : UIBase
         node.OnSelected();
         GameMgr.Explore.Data.ExploreQueue.Dequeue();
         Refresh();
+    }
+
+    private void OnClickParepare()
+    {
+        if (Team.Count > 0)
+        {
+            GameMgr.UI.ShowUI(UIName.MenuRole, Team.Values.AsEnumerable<Role>().ToList());
+        }
     }
 }

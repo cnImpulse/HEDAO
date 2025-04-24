@@ -9,6 +9,7 @@ namespace FGUI.Common
     {
         public GButton m_btn_sure;
         public GTextField m_txt_result;
+        public GList m_list_item;
         public const string URL = "ui://rt51n0kja4vx68";
 
         public static FGUIMenuBattleEnd CreateInstance()
@@ -22,6 +23,7 @@ namespace FGUI.Common
 
             m_btn_sure = (GButton)GetChild("btn_sure");
             m_txt_result = (GTextField)GetChild("txt_result");
+            m_list_item = (GList)GetChild("list_item");
         }
     }
 }

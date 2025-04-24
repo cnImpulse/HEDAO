@@ -27,8 +27,10 @@ public class SkillComponent : Component
 
     public void AddTag(int id)
     {
+        var cfg = GameMgr.Cfg.TbRoleTagCfg.GetOrDefault(id);
+        if (cfg == null) return;
+
         TagSet.Add(id);
-        var cfg = GameMgr.Cfg.TbRoleTagCfg.Get(id);
         EffectCfg.TakeEffectList(cfg.EffectList, null, Owner);
     }
 

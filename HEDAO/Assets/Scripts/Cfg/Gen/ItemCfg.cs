@@ -25,6 +25,7 @@ public abstract partial class ItemCfg : Luban.BeanBase
     {
         switch (_buf.ReadInt())
         {
+            case MaterialCfg.__ID__: return new MaterialCfg(_buf);
             case EquipCfg.__ID__: return new EquipCfg(_buf);
             default: throw new SerializationException();
         }

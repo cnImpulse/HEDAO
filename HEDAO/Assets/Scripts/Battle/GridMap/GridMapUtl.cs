@@ -56,10 +56,10 @@ public static class GridMapUtl
         Vector2Int.up, // (0, 1)
         Vector2Int.left, // (-1, 0)
         Vector2Int.right, // (1, 0)
-        Vector2Int.one, // (1, 1)
-        new (1, -1), // (1, -1)
-        new (-1, -1), // (-1, -1)
-        new (-1, 1) // (-1, 1)
+        //Vector2Int.one, // (1, 1)
+        //new (1, -1), // (1, -1)
+        //new (-1, -1), // (-1, -1)
+        //new (-1, 1) // (-1, 1)
     };
     
     public static Vector2Int NormalizeDirection(Vector2Int dir)

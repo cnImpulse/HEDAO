@@ -61,6 +61,7 @@ public abstract class BattleEvent
 public class BattleEndEvent : BattleEvent
 {
     public EResult Result;
+    public List<ItemData> ItemList;
 }
 
 public class BattleUnitActionEvent : BattleEvent

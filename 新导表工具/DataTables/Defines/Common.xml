@@ -10,6 +10,10 @@
         <var name="EffectList" type="list,int"/>
     </bean>
 
+    <bean name="MaterialCfg" parent="ItemCfg"  alias="材料">
+
+    </bean>
+
     <bean name="EquipCfg" parent="ItemCfg" alias="装备">
         <var name="EquipType" type="EEquipType"/>
     </bean>

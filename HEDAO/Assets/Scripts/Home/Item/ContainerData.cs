@@ -31,6 +31,14 @@ public class Container
         
     }
 
+    public virtual void AddItems(List<ItemData> itemList)
+    {
+        foreach (var item in itemList)
+        {
+            AddItem(item);
+        }
+    }
+
     public List<ItemData> GetDataList()
     {
         var dataList = new List<ItemData>(new ItemData[Size]);

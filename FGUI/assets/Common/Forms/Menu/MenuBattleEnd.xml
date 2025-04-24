@@ -5,6 +5,11 @@
     <component id="n1_a4vx" name="btn_sure" src="mv3556" fileName="MetaComponent/Button/CommonButton.xml" xy="840,700" size="240,120">
       <Button title="确定"/>
     </component>
-    <text id="n2_a4vx" name="txt_result" xy="904,508" pivot="0.5,0.5" size="112,64" font="ui://rt51n0kjekn09" fontSize="48" align="center" vAlign="middle" text="胜利"/>
+    <text id="n2_a4vx" name="txt_result" xy="904,225" pivot="0.5,0.5" size="112,64" font="ui://rt51n0kjekn09" fontSize="48" align="center" vAlign="middle" text="胜利"/>
+    <list id="n3_hsmm" name="list_item" xy="554,427" pivot="0.5,0.5" size="812,120" layout="row" overflow="scroll" colGap="-4" defaultItem="ui://rt51n0kja4vx6d" align="center" autoClearItems="true">
+      <item/>
+      <item/>
+      <item/>
+    </list>
   </displayList>
 </component>
