@@ -11,6 +11,7 @@ public class SaveData
 
     public int Year = 1;
     public SceneType SceneType = SceneType.Home;
+    public HomeData HomeData;
     public ExploreDate ExploreDate;
     public BattleData BattleData;
 
@@ -21,6 +22,7 @@ public class SaveData
 
     public void Init()
     {
+        HomeData = HomeData.Create();
     }
 }
 

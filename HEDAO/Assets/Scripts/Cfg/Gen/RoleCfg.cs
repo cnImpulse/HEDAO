@@ -19,12 +19,12 @@ public sealed partial class RoleCfg : Luban.BeanBase
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
         Level = _buf.ReadInt();
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);BookList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); BookList.Add(_e0);}}
         RoleTag = _buf.ReadInt();
         MoveSkillId = _buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);SkillSet = new System.Collections.Generic.HashSet<int>(/*n0 * 3 / 2*/);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); SkillSet.Add(_e0);}}
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);InitAttr = new System.Collections.Generic.Dictionary<EAttrType, int>(n0 * 3 / 2);for(var i0 = 0 ; i0 < n0 ; i0++) { EAttrType _k0;  _k0 = (EAttrType)_buf.ReadInt(); int _v0;  _v0 = _buf.ReadInt();     InitAttr.Add(_k0, _v0);}}
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);InitEquip = new System.Collections.Generic.Dictionary<EEquipType, int>(n0 * 3 / 2);for(var i0 = 0 ; i0 < n0 ; i0++) { EEquipType _k0;  _k0 = (EEquipType)_buf.ReadInt(); int _v0;  _v0 = _buf.ReadInt();     InitEquip.Add(_k0, _v0);}}
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);BookList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); BookList.Add(_e0);}}
     }
 
     public static RoleCfg DeserializeRoleCfg(ByteBuf _buf)
@@ -45,10 +45,6 @@ public sealed partial class RoleCfg : Luban.BeanBase
     /// </summary>
     public readonly int Level;
     /// <summary>
-    /// 功法
-    /// </summary>
-    public readonly System.Collections.Generic.List<int> BookList;
-    /// <summary>
     /// 特质
     /// </summary>
     public readonly int RoleTag;
@@ -62,6 +58,10 @@ public sealed partial class RoleCfg : Luban.BeanBase
     public readonly System.Collections.Generic.HashSet<int> SkillSet;
     public readonly System.Collections.Generic.Dictionary<EAttrType, int> InitAttr;
     public readonly System.Collections.Generic.Dictionary<EEquipType, int> InitEquip;
+    /// <summary>
+    /// 功法
+    /// </summary>
+    public readonly System.Collections.Generic.List<int> BookList;
    
     public const int __ID__ = -1253456914;
     public override int GetTypeId() => __ID__;
@@ -85,12 +85,12 @@ public sealed partial class RoleCfg : Luban.BeanBase
         + "Id:" + Id + ","
         + "Name:" + Name + ","
         + "Level:" + Level + ","
-        + "BookList:" + Luban.StringUtil.CollectionToString(BookList) + ","
         + "RoleTag:" + RoleTag + ","
         + "MoveSkillId:" + MoveSkillId + ","
         + "SkillSet:" + Luban.StringUtil.CollectionToString(SkillSet) + ","
         + "InitAttr:" + Luban.StringUtil.CollectionToString(InitAttr) + ","
         + "InitEquip:" + Luban.StringUtil.CollectionToString(InitEquip) + ","
+        + "BookList:" + Luban.StringUtil.CollectionToString(BookList) + ","
         + "}";
     }
 }

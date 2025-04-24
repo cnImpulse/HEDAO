@@ -3,6 +3,12 @@ using UnityEngine;
 using FairyGUI;
 using FGUI.Common;
 
+public class FloatTipsParams
+{
+    public string Text;
+    public Vector2 Position;
+}
+
 public class FloatTips : UIBase
 {
     public new FGUIFloatTips View => base.View as FGUIFloatTips;
@@ -11,9 +17,9 @@ public class FloatTips : UIBase
     {
         base.OnInit(userData);
 
-        var e = userData as EventContext;
-        View.m_label.text = e.data.ToString();
-        View.m_label.position = e.inputEvent.position;
+        var data = userData as FloatTipsParams;
+        View.m_label.text = data.Text;
+        View.m_label.position = data.Position;
     }
 
     protected override void OnShow()

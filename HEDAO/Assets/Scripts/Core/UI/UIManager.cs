@@ -5,6 +5,7 @@ using System.Linq;
 using FairyGUI;
 using FGUI.Common;
 using YooAsset;
+using UnityEngine;
 
 public class UIManager : BaseManager
 {
@@ -134,6 +135,11 @@ public class UIManager : BaseManager
 
     public void OnClickLink(EventContext context)
     {
-        GameMgr.UI.ShowFloatUI(UIName.FloatTips, context);
+        ShowTips(context.data.ToString(), context.inputEvent.position);
+    }
+
+    public void ShowTips(string text, Vector2 pos)
+    {
+        GameMgr.UI.ShowUI(UIName.FloatTips, new FloatTipsParams { Text = text, Position = pos });
     }
 }

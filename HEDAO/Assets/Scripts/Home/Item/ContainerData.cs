@@ -2,49 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ContainerData
+public class Container
 {
-    public int Size = 40;
-    public List<ItemData> ItemList;
+    public int Size = 1;
+    public Dictionary<int, ItemData> ItemDict = new Dictionary<int, ItemData>();
 
-    public ContainerData()
+    public Container(int size)
     {
-        ItemList = new List<ItemData>(new ItemData[Size]);
+        Size = size;
     }
 
-    public void AddItem(ItemData item)
+    public virtual void AddItem(ItemData item)
     {
-        for (int i = 0; i < ItemList.Count; ++i)
+    }
+
+    public virtual void RemoveItem(ItemData item)
+    {
+        
+    }
+
+    public List<ItemData> GetDataList()
+    {
+        var dataList = new List<ItemData>(new ItemData[Size]);
+        foreach(var pair in ItemDict)
         {
-            if (ItemList[i] == null)
-            {
-                ItemList[i] = item;
-                break;
-            }
+            dataList[pair.Key] = pair.Value;
         }
-    }
 
-    public void AddItem(int index, ItemData item)
-    {
-        ItemList[index] = item;
-    }
-
-    public void RemoveItem(int index)
-    {
-        ItemList[index] = null;
-    }
-
-    public void RemoveItem(ItemData data)
-    {
-        if (data == null) return;
-
-        for (int i = 0; i < ItemList.Count; ++i)
-        {
-            if (ItemList[i] == data)
-            {
-                ItemList[i] = null;
-                break;
-            }
-        }
+        return dataList;
     }
 }

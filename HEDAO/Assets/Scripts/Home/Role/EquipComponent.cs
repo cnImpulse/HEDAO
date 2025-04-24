@@ -7,7 +7,7 @@ using Cfg.Battle;
 public class EquipComponent : Component
 {
     public new Role Owner => base.Owner as Role;
-    public Dictionary<EEquipType, ItemData> EquipDict = new Dictionary<EEquipType, ItemData>();
+    public Dictionary<EEquipType, Equip> EquipDict = new Dictionary<EEquipType, Equip>();
 
     protected override void OnInit(object data)
     {
@@ -15,7 +15,7 @@ public class EquipComponent : Component
 
         foreach (var pair in Owner.InitCfg.InitEquip)
         {
-            AddEquip(new ItemData(pair.Value));
+            AddEquip(new Equip(pair.Value));
         }
     }
 
@@ -29,9 +29,9 @@ public class EquipComponent : Component
         return null;
     }
 
-    public void AddEquip(ItemData data)
+    public void AddEquip(Equip data)
     {
-        EquipCfg cfg = data.Cfg as EquipCfg;
+        EquipCfg cfg = data.Cfg;
         if (EquipDict.ContainsKey(cfg.EquipType))
         {
             var result = RemoveEquip(cfg.EquipType);
@@ -39,7 +39,7 @@ public class EquipComponent : Component
         }
 
         EquipDict.Add(cfg.EquipType, data);
-        EffectCfg.TakeEffectList(data.Cfg.EffectList, null, Owner);
+        data.OnWear(Owner);
     }
 
     public bool RemoveEquip(EEquipType type)
@@ -49,7 +49,7 @@ public class EquipComponent : Component
             return false;
         }
 
-        EffectCfg.ResetEffectList(EquipDict[type].Cfg.EffectList, null, Owner);
+        EquipDict[type].OnUnWear(Owner);
         EquipDict.Remove(type);
 
         return true;

@@ -19,6 +19,7 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIWinLoadGame.URL, typeof(FGUIWinLoadGame));
             UIObjectFactory.SetPackageItemExtension(FGUISaveItem.URL, typeof(FGUISaveItem));
             UIObjectFactory.SetPackageItemExtension(FGUIBookPage.URL, typeof(FGUIBookPage));
+            UIObjectFactory.SetPackageItemExtension(FGUIFloatItemTips.URL, typeof(FGUIFloatItemTips));
             UIObjectFactory.SetPackageItemExtension(FGUIFloatBubble.URL, typeof(FGUIFloatBubble));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuHome.URL, typeof(FGUIMenuHome));
             UIObjectFactory.SetPackageItemExtension(FGUIQiuDaoPage.URL, typeof(FGUIQiuDaoPage));

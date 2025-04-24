@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 public class Entity : ObjectBase
 {
     public long Id { get; private set; }
-    public Dictionary<int, Component> Components = new Dictionary<int, Component>();
+    public Dictionary<string, Component> Components = new Dictionary<string, Component>();
 
     public Entity()
     {
@@ -23,14 +23,14 @@ public class Entity : ObjectBase
         where T : Component, new()
     {
         var component = new T();
-        Components.TryAdd(typeof(T).GetHashCode(), component);
+        Components.TryAdd(typeof(T).ToString(), component);
         component.Init(this);
     }
 
     public T GetComponent<T>()
         where T : Component
     {
-        if (Components.TryGetValue(typeof(T).GetHashCode(), out var component))
+        if (Components.TryGetValue(typeof(T).ToString(), out var component))
         {
             return component as T;
         }

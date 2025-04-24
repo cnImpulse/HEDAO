@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="425,232" anchor="true" opaque="false">
+  <displayList>
+    <image id="n6_lu5o" name="n6" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" size="425,232">
+      <relation target="n9_lu5o" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n12_lu5o" name="title" xy="35,35" size="256,66" group="n9_lu5o" font="ui://rt51n0kjekn09" fontSize="24" text="AAAAAAAAAAAAAAAAAA&#xA;AAA"/>
+    <list id="n8_lu5o" name="list_select" xy="35,101" size="353,96" group="n9_lu5o" layout="row" colGap="-4" defaultItem="ui://rt51n0kjmv3556" autoClearItems="true">
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <group id="n9_lu5o" name="n9" xy="35,35" size="353,162" advanced="true" layout="vt" excludeInvisibles="true"/>
+  </displayList>
+</component>

@@ -19,6 +19,7 @@ namespace FGUI.Common
             m_list_role.m_list.itemRenderer = OnRenderRole;
             m_list_team.m_list.itemRenderer = OnRenderRole;
             m_panel_task.m_btn_go.onClick.Set(OnClickGo);
+            m_btn_prepare.onClick.Set(OnClickParepare);
 
             if (TeamDict.Count == 0)
             {
@@ -26,6 +27,14 @@ namespace FGUI.Common
                 {
                     TeamDict.Add(role.Id, role);
                 }
+            }
+        }
+
+        private void OnClickParepare()
+        {
+            if (m_TeamList.Count > 0)
+            {
+                GameMgr.UI.ShowUI(UIName.MenuRole, m_TeamList.AsEnumerable<Role>().ToList());
             }
         }
 

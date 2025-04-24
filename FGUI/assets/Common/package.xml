@@ -55,6 +55,7 @@
     <component id="a4vx6g" name="BtnSlot.xml" path="/Forms/Menu/MenuRole/"/>
     <component id="a4vx6h" name="CompSlot.xml" path="/Forms/Menu/MenuRole/" exported="true"/>
     <component id="rg1l6i" name="BtnType.xml" path="/MetaComponent/Button/"/>
+    <component id="lu5o6j" name="FloatItemTips.xml" path="/Forms/Float/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>
