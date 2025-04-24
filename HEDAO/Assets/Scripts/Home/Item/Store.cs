@@ -16,6 +16,7 @@ public class Store : Container
         {
             if (ItemDict.TryAdd(i, item))
             {
+                item.Throw();
                 item.OnAdd(this);
                 break;
             }
@@ -30,6 +31,7 @@ public class Store : Container
         {
             if (ItemDict.ContainsKey(i) && ItemDict[i] == item)
             {
+                item.OnRemove();
                 ItemDict.Remove(i);
                 break;
             }

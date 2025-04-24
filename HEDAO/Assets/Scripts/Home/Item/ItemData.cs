@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cfg;
-using Cfg.Battle;
+using Newtonsoft.Json;
 
-public class ItemData
+public abstract class ItemData
 {
     public int CfgId { get; private set; }
     public Container Owner { get; private set; }
@@ -16,15 +16,20 @@ public class ItemData
         CfgId = cfgId;
     }
 
+    public static ItemData CreateItem(int cfgId)
+    {
+        var cfg = GameMgr.Cfg.TbItem.Get(cfgId);
+        if (cfg is EquipCfg)
+        {
+            return new Equip(cfgId);
+        }
+
+        return default;
+    }
+
     public string GetDesc()
     {
         return string.Format("{0}\n---\n{1}", Cfg.Name, SkillUtil.GetEffectDesc(Cfg.EffectList));
-    }
-
-    private static List<EItemOptionType> s_OptionList = new List<EItemOptionType> { EItemOptionType.Equip, EItemOptionType.Throw };
-    public List<EItemOptionType> GetOptionList()
-    {
-        return s_OptionList;
     }
 
     public void OnAdd(Container owner)
@@ -32,8 +37,24 @@ public class ItemData
         Owner = owner;
     }
 
-    public void OnRemove(Container owner)
+    public void OnRemove()
     {
-        Owner = owner;
+        Owner = null;
+    }
+
+    public virtual List<EItemOptionType> GetOptionList()
+    {
+        var list = new List<EItemOptionType>();
+        if (Owner != null)
+        {
+            list.Add(EItemOptionType.Throw);
+        }
+
+        return list;
+    }
+
+    public void Throw()
+    {
+        Owner?.RemoveItem(this);
     }
 }

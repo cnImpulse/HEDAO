@@ -7,6 +7,7 @@ namespace FGUI.Common
 {
     public partial class FGUIFloatItemTips : GComponent
     {
+        public GButton m_btn_close;
         public GTextField m_title;
         public GList m_list_select;
         public const string URL = "ui://rt51n0kjlu5o6j";
@@ -20,6 +21,7 @@ namespace FGUI.Common
         {
             base.ConstructFromXML(xml);
 
+            m_btn_close = (GButton)GetChild("btn_close");
             m_title = (GTextField)GetChild("title");
             m_list_select = (GList)GetChild("list_select");
         }

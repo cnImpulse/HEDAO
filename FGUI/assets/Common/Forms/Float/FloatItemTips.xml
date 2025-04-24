@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="425,232" anchor="true" opaque="false">
+<component size="425,232" opaque="false">
   <displayList>
+    <component id="n13_sqr9" name="btn_close" src="105c4o" fileName="MetaComponent/Button/Check.xml" xy="-1287,-1384" pivot="0.5,0.5" size="3000,3000"/>
     <image id="n6_lu5o" name="n6" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" size="425,232">
       <relation target="n9_lu5o" sidePair="width-width,height-height"/>
     </image>

@@ -65,9 +65,10 @@ public class MenuRole : UIBase
         var type = (EEquipType)data;
         var ctrl = obj as FGUICompSlot;
 
-        var item = Role.Equip.GetEquip(type);
+        var item = Role.Equip.Slot.GetItem(type);
         ctrl.m_btn_slot.title = item != null ? item.Cfg.Name : "";
         ctrl.m_txt_type.text = type.GetName();
+        ctrl.onClick.Set((e) => OnClickItem(e, item));
     }
 
     private void OnRenderBookSlot(int index, GObject obj, object data)
@@ -93,11 +94,11 @@ public class MenuRole : UIBase
     {
         if (item == null) return;
 
-        //GameMgr.UI.ShowTips(item.GetDesc(), e.inputEvent.position);
         var param = new FloatItemTipsParams();
         param.Item = item;
         param.Target = Role;
         param.Postion = e.inputEvent.position;
+        param.CallBack = RefreshRole;
 
         GameMgr.UI.ShowUI(UIName.FloatItemTips, param);
     }

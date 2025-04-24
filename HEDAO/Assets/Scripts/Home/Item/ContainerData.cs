@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
 
 public class Container
@@ -10,6 +11,15 @@ public class Container
     public Container(int size)
     {
         Size = size;
+    }
+
+    [OnDeserialized]
+    public void SetOnValueChanged(StreamingContext context)
+    {
+        foreach(var item in ItemDict.Values)
+        {
+            item.OnAdd(this);
+        }
     }
 
     public virtual void AddItem(ItemData item)

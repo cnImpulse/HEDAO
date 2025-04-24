@@ -21,4 +21,23 @@ public class Equip : ItemData
     {
         EffectCfg.ResetEffectList(Cfg.EffectList, null, owner);
     }
+
+    public override List<EItemOptionType> GetOptionList()
+    {
+        var list = base.GetOptionList();
+        if (Owner is Store)
+        {
+            list.Add(EItemOptionType.Wear);
+        }
+        else
+        {
+            list.Clear();
+            if (Owner is EquipSlot)
+            {
+                list.Add(EItemOptionType.UnWear);
+            }
+        }
+
+        return list;
+    }
 }
