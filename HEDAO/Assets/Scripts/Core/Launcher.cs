@@ -15,6 +15,7 @@ public class Launcher : MonoBehaviour
     
     void Awake()
     {
+        Application.targetFrameRate = 60;
         StartCoroutine(InitPackage());
     }
 
