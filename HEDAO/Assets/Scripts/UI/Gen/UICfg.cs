@@ -18,6 +18,5 @@ public static partial class UICfg
         cfg[UIName.FloatTips] = new UICfgItem(typeof(FloatTips), FGUIFloatTips.URL);
         cfg[UIName.MenuExplore] = new UICfgItem(typeof(MenuExplore), FGUIMenuExplore.URL);
         cfg[UIName.HudBattle] = new UICfgItem(typeof(HudBattle), FGUIHudBattle.URL);
-        cfg[UIName.MenuAction] = new UICfgItem(typeof(MenuAction), FGUIMenuAction.URL);
     }
 }

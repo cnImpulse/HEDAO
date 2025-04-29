@@ -35,8 +35,6 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIRadarWidget.URL, typeof(FGUIRadarWidget));
             UIObjectFactory.SetPackageItemExtension(FGUITeamList.URL, typeof(FGUITeamList));
             UIObjectFactory.SetPackageItemExtension(FGUIHudBattle.URL, typeof(FGUIHudBattle));
-            UIObjectFactory.SetPackageItemExtension(FGUIMenuAction.URL, typeof(FGUIMenuAction));
-            UIObjectFactory.SetPackageItemExtension(FGUIActionPanel.URL, typeof(FGUIActionPanel));
             UIObjectFactory.SetPackageItemExtension(FGUIBattleStateEffect.URL, typeof(FGUIBattleStateEffect));
         }
     }

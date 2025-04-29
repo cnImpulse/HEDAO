@@ -12,5 +12,4 @@ public static partial class UIName
         public const string FloatTips = "FloatTips";
         public const string MenuExplore = "MenuExplore";
         public const string HudBattle = "HudBattle";
-        public const string MenuAction = "MenuAction";
 }

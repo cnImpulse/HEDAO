@@ -5,15 +5,15 @@ using FGUI.Common;
 
 public class FloatBattleUnit : UIBase
 {
-    public GridUnitView Owner;
+    //public GridUnitView Owner;
     public new FGUIFloatBattleUnit View => base.View as FGUIFloatBattleUnit;
 
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
 
-        Owner = userData as GridUnitView;
-        View.m_txt_name.text = Owner.Entity.Role.Name;
+        //Owner = userData as GridUnitView;
+        //View.m_txt_name.text = Owner.Entity.Role.Name;
     }
 
     protected override void OnShow()
@@ -26,14 +26,14 @@ public class FloatBattleUnit : UIBase
     {
         base.OnUpdate();
 
-        var attr = Owner.Entity.Role.Attr;
-        View.m_hp_bar.value = attr.HP;
-        View.m_hp_bar.max = attr.MaxHP;
-        View.m_qi_bar.value = attr.QI;
-        View.m_qi_bar.max = attr.MaxQI;
-        View.m_txt_name.color = Owner.Entity.CampType == ECampType.Player ? Color.white : Color.red;
+        //var attr = Owner.Entity.Role.Attr;
+        //View.m_hp_bar.value = attr.HP;
+        //View.m_hp_bar.max = attr.MaxHP;
+        //View.m_qi_bar.value = attr.QI;
+        //View.m_qi_bar.max = attr.MaxQI;
+        //View.m_txt_name.color = Owner.Entity.CampType == ECampType.Player ? Color.white : Color.red;
 
-        Vector3 screenPos = UIUtil.World2ScreenPos(Owner.transform.position);
-        View.SetXY(screenPos.x, screenPos.y);
+        //Vector3 screenPos = UIUtil.World2ScreenPos(Owner.transform.position);
+        //View.SetXY(screenPos.x, screenPos.y);
     }
 }

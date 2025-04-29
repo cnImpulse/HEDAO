@@ -5,16 +5,11 @@ using UnityEngine;
 
 public class BattlePlayer : BattleStateBase
 {
-    public GridUnit BattleUnit => GameMgr.Battle.Data.BattleUnitQueue.Peek();
-
     public override void OnEnter()
     {
         base.OnEnter();
 
         GameMgr.Event.Subscribe(GameEventType.OnBattleUnitActionEnd, OnPlayerRoundEnd);
-        
-        BattleUnit.OnRoundStart();
-        GameMgr.Event.Fire(GameEventType.OnPlayerRoundStart);
     }
 
     public override void OnUpdate()
@@ -25,7 +20,6 @@ public class BattlePlayer : BattleStateBase
 
     public override void OnLeave()
     {
-        BattleUnit.OnRoundEnd();
         GameMgr.Event.Unsubscribe(GameEventType.OnBattleUnitActionEnd, OnPlayerRoundEnd);
         
         base.OnLeave();

@@ -5,12 +5,10 @@ using UnityEngine;
 public class BattleStateBase : FsmState
 {
     public BattleData Data => GameMgr.Battle.Data;
-    public GridMap BattleMap => Data.GridMap;
 
     public override void OnEnter()
     {
         base.OnEnter();
-
 
     }
 

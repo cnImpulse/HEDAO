@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class BattleEndEvent
+{
+    public EResult Result;
+    public List<ItemData> ItemList;
+}
+
 public class BattleEnd : FsmState
 {
     public override void OnEnter()
