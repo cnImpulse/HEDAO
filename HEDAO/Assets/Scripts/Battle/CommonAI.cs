@@ -41,12 +41,10 @@ public class CommonAI
 
     public virtual GridUnit SelectAttackTarget()
     {
-        var canAttackList = GetCanAttackGrids(MaxATKRange, Owner.MOV);
         var targetCamp = BattleUtil.GetHostileCamp(Owner.CampType);
         GridUnit target = null;
-        foreach (var gridData in canAttackList)
+        foreach (var gridUnit in BattleMap.GridUnitDict.Values)
         {
-            GridUnit gridUnit = gridData.GridUnit;
             if (gridUnit != null && gridUnit is GridUnit && gridUnit.CampType == targetCamp)
             {
                 var battleUnit = gridUnit as GridUnit;
@@ -72,12 +70,12 @@ public class CommonAI
         foreach (var gridData in canMoveList)
         {
             int distance = GridMapUtl.GetDistance(target.GridData, gridData);
-            if (distance > MaxATKRange)
-            {
-                continue;
-            }
+            //if (distance > MaxATKRange)
+            //{
+            //    continue;
+            //}
 
-            if (end == null || GridMapUtl.GetDistance(target.GridData, end) < distance)
+            if (end == null || GridMapUtl.GetDistance(target.GridData, end) > distance)
             {
                 end = gridData;
             }

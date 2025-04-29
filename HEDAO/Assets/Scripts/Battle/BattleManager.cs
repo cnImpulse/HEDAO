@@ -94,6 +94,9 @@ public class BattleManager : BaseManager
             return false;
         }
 
+        var area = Data.GridMap.GetRangeGridList(caster.GridPos, cfg.ReleaseRange.Distance);
+        if (!area.Contains(gridData)) return false;
+
         return true;
     }
 
