@@ -8,14 +8,16 @@ public class BattlePrepare : BattleStateBase
     {
         base.OnEnter();
 
-        foreach(var role in GameMgr.Explore.Data.Team.Values)
-        {
-            Data.PlayerTeam.Add(role);
-        }
-
         for (int i = 0; i < Data.PlayerTeam.Count; ++i)
         {
             var role = Data.PlayerTeam[i];
+            var view = GameMgr.Entity.ShowEntity<BattleUnitView>(role);
+            GameMgr.Battle.BattleMapView.AddBattleUnitView(view, i);
+        }
+
+        for (int i = 0; i < Data.EnemyTeam.Count; ++i)
+        {
+            var role = Data.EnemyTeam[i];
             var view = GameMgr.Entity.ShowEntity<BattleUnitView>(role);
             GameMgr.Battle.BattleMapView.AddBattleUnitView(view, i);
         }

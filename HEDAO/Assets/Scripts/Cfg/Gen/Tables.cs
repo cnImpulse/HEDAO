@@ -33,6 +33,7 @@ public partial class Tables
     public Common.TbTxt TbTxt {get; }
     public Common.TbItem TbItem {get; }
     public Common.TbReward TbReward {get; }
+    public Common.TbBattle TbBattle {get; }
 
     public Tables(System.Func<string, ByteBuf> loader)
     {
@@ -56,6 +57,7 @@ public partial class Tables
         TbTxt = new Common.TbTxt(loader("common_tbtxt"));
         TbItem = new Common.TbItem(loader("common_tbitem"));
         TbReward = new Common.TbReward(loader("common_tbreward"));
+        TbBattle = new Common.TbBattle(loader("common_tbbattle"));
         ResolveRef();
     }
     
@@ -81,6 +83,7 @@ public partial class Tables
         TbTxt.ResolveRef(this);
         TbItem.ResolveRef(this);
         TbReward.ResolveRef(this);
+        TbBattle.ResolveRef(this);
     }
 }
 
@@ -106,6 +109,7 @@ public partial class CfgManager : BaseManager
     public Common.TbTxt TbTxt => Tables.TbTxt;
     public Common.TbItem TbItem => Tables.TbItem;
     public Common.TbReward TbReward => Tables.TbReward;
+    public Common.TbBattle TbBattle => Tables.TbBattle;
 }
 
 }
