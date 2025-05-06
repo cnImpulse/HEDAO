@@ -13,7 +13,7 @@
     <image id="ja3tf" name="Close.png" path="/Resources/Images/" smoothing="false"/>
     <component id="ja3th" name="CloseButton.xml" path="/MetaComponent/Button/"/>
     <component id="105c4o" name="Check.xml" path="/MetaComponent/Button/"/>
-    <component id="ut3j4p" name="HudBattle.xml" path="/Forms/Menu/" exported="true"/>
+    <component id="ut3j4p" name="HudBattle.xml" path="/Forms/Menu/HudBattle/" exported="true"/>
     <component id="dl574x" name="HPBar.xml" path="/MetaComponent/Progress/"/>
     <component id="rzkn50" name="FloatTips.xml" path="/Forms/Float/" exported="true"/>
     <component id="qwwl51" name="FloatBattleUnit.xml" path="/Forms/Float/" exported="true"/>
@@ -53,6 +53,7 @@
     <component id="a4vx6h" name="CompSlot.xml" path="/Forms/Menu/MenuRole/" exported="true"/>
     <component id="rg1l6i" name="BtnType.xml" path="/MetaComponent/Button/"/>
     <component id="lu5o6j" name="FloatItemTips.xml" path="/Forms/Float/" exported="true"/>
+    <component id="d2a66k" name="BtnSkill.xml" path="/Forms/Menu/HudBattle/"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

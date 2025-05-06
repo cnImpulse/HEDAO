@@ -59,7 +59,7 @@ public class HudBattle : UIBase
 
     private void OnClickStart()
     {
-        //GameMgr.Battle.Fsm.ChangeState<BattleStart>();
+        GameMgr.Battle.Fsm.ChangeState<BattleStart>();
     }
     
     private void OnSelectBattleUnit(GameEvent obj)
