@@ -78,4 +78,9 @@ public class Role : Entity, IEffectTarget
     {
         Skill.RemoveSkill(id);
     }
+
+    public override int GetPrefabId()
+    {
+        return 10002;
+    }
 }

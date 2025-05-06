@@ -28,7 +28,10 @@ public class BattleData
 {
     public int CfgId { get; private set; }
     public EBattleState BattleState { get; private set; }
+    public List<Role> PlayerTeam = new List<Role>();
+    public List<Role> EnemyTeam = new List<Role>();
     //public Queue<GridUnit> BattleUnitQueue { get; private set; } = new Queue<GridUnit>();
+    
     public EResult BattleResult => GetBattleResult();
 
     [JsonConstructor]
@@ -40,8 +43,6 @@ public class BattleData
     {
         CfgId = cfgId;
         BattleState = EBattleState.Prepare;
-
-
     }
 
     public void OnRemoveBattleUnit(long id)

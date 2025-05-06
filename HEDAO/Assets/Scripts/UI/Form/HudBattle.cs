@@ -9,7 +9,6 @@ using System.Linq;
 public class HudBattle : UIBase
 {
     public new FGUIHudBattle View => base.View as FGUIHudBattle;
-    private bool m_IsPlaying = false;
 
     protected override void OnInit(object userData)
     {

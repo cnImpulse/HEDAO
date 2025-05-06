@@ -1,0 +1,2019 @@
+fileFormatVersion: 2
+guid: fce538982af9642dca0eb6311cee516a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2345
+        width: 204
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5059e1657e0164d6b84199827c9d1b24
+      internalID: 1969554278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1289
+        width: 806
+        height: 1087
+      alignment: 9
+      pivot: {x: 0.45368817, y: 0.6745604}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ad94d3104d74f41a87a7e4ffc3cb03
+      internalID: -1047902501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_2
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 2349
+        width: 61
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1260e34ce587c4d8b989c970da57642a
+      internalID: -1060451599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_3
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 2367
+        width: 49
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d5c966b88e4041a7863e17a347a5a0e
+      internalID: 1465214832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_4
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 2360
+        width: 36
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 195181687ee3b465f922cedd8626a7b9
+      internalID: -284627615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_5
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 2238
+        width: 285
+        height: 248
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62837f54557fa443d82c30eab9614e49
+      internalID: 17704529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_6
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 2236
+        width: 287
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60bd09b3c61ee4be3a0e8f15f3c36f38
+      internalID: 1578674170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_7
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 2207
+        width: 160
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea313dd91303e40a697982cf03042b7d
+      internalID: 263406969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_8
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 1806
+        width: 568
+        height: 568
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69b3bb80a78fc43ad8ea014daa4685c8
+      internalID: -1848779665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_9
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 1275
+        width: 590
+        height: 961
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c25ad4870bed4e9dac84b13b1f3149d
+      internalID: 1799384229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_10
+      rect:
+        serializedVersion: 2
+        x: 1252
+        y: 1260
+        width: 430
+        height: 794
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3b1aaa8a834142848d0f0f44a8dfd0d
+      internalID: 678538598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_11
+      rect:
+        serializedVersion: 2
+        x: 1697
+        y: 1763
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270c58777143f470391d2c28c24328ad
+      internalID: -2022435826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_12
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 1544
+        width: 320
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 208ab43cc75e6492cacfe9acd1c6feac
+      internalID: 1050647943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_13
+      rect:
+        serializedVersion: 2
+        x: 1676
+        y: 1481
+        width: 239
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228d5a05fb0d940d3bf288c19840b546
+      internalID: 2014672963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_14
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 1748
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8a69fd9986184419acc8bc6f8479940
+      internalID: -1889766732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_15
+      rect:
+        serializedVersion: 2
+        x: 2231
+        y: 1575
+        width: 239
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d93b39deec3074ffa93dc3cc97cc9ec7
+      internalID: -1988187932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_16
+      rect:
+        serializedVersion: 2
+        x: 2411
+        y: 1741
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcce3079f5c1542ed9d913e2296384bf
+      internalID: -2024595589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_17
+      rect:
+        serializedVersion: 2
+        x: 2469
+        y: 1704
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51d17c86859a44d8faaf7f1b8fb1bc95
+      internalID: 1712388778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_18
+      rect:
+        serializedVersion: 2
+        x: 2470
+        y: 1690
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc7d1d05917a44c55bffb2be437c7143
+      internalID: 353874293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_19
+      rect:
+        serializedVersion: 2
+        x: 2192
+        y: 1544
+        width: 66
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bc332aa2ee41448cb217b4cc30a3a35
+      internalID: 1173944024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_20
+      rect:
+        serializedVersion: 2
+        x: 2265
+        y: 1573
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b309243397b324613894d16a9b012a24
+      internalID: 987962704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_21
+      rect:
+        serializedVersion: 2
+        x: 2298
+        y: 1573
+        width: 33
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abaf32225822d4e78a2c791ffa416f9e
+      internalID: 60297576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_22
+      rect:
+        serializedVersion: 2
+        x: 2258
+        y: 1551
+        width: 36
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24983c1d7549e488a82787df91cb6ce8
+      internalID: -1482841634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_23
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 1187
+        width: 175
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4be500b753bd4a3ea1ab35a4852ad21
+      internalID: -1636808986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_24
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 1267
+        width: 58
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a196c35c902452da7823ccbb03fe78
+      internalID: -1018351367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_25
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 1143
+        width: 182
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a38c8597ae9f44b71bea1399780dac2f
+      internalID: 484908018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_26
+      rect:
+        serializedVersion: 2
+        x: 1645
+        y: 1282
+        width: 336
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa159572a4dbb42d29457e5e006a03fb
+      internalID: 800392594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_27
+      rect:
+        serializedVersion: 2
+        x: 1974
+        y: 1289
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d91cb4092504113b13996836b39a0f
+      internalID: -920939076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 908
+        height: 1289
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e7808515a26348dabe6b13b8713687f
+      internalID: -2050243718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_29
+      rect:
+        serializedVersion: 2
+        x: 1784
+        y: 1260
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28abfc26b6c5544eb98723ffb25166e1
+      internalID: 320731077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_30
+      rect:
+        serializedVersion: 2
+        x: 1843
+        y: 1275
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d516d04466574ff0879c433aa72275e
+      internalID: 1905345494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_31
+      rect:
+        serializedVersion: 2
+        x: 1959
+        y: 1275
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb7b675b601d342f08cd25eec425d3dd
+      internalID: -1523171732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_32
+      rect:
+        serializedVersion: 2
+        x: 1953
+        y: 1267
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 498d4184e946b41049e7309372eca6ee
+      internalID: 312296489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_33
+      rect:
+        serializedVersion: 2
+        x: 1945
+        y: 1260
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8980e790c74324ea88f22a3923fe1b6f
+      internalID: 1901375102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_34
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 1021
+        width: 233
+        height: 239
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38f0d9309c69a438a88748e57513fc8c
+      internalID: -282476613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_35
+      rect:
+        serializedVersion: 2
+        x: 1814
+        y: 1253
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9623e83c763804a578f16902653d3a66
+      internalID: -1481641473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_36
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 1107
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0fcbe18f3f2047df98632444ced9101
+      internalID: 1006405820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_37
+      rect:
+        serializedVersion: 2
+        x: 1106
+        y: 685
+        width: 336
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30d59aed675bb4e8b91fe1298dbae250
+      internalID: 93659926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_38
+      rect:
+        serializedVersion: 2
+        x: 1974
+        y: 736
+        width: 364
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 068df1b0484f7419d835ce5ba8e9d2ab
+      internalID: 1078645711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_39
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 998
+        width: 87
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 983e016a03a014cb8bc03847f40cf414
+      internalID: -492301654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_40
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 874
+        width: 157
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1936eabfd950f424e9f8dab665670550
+      internalID: -559582192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_41
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 903
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b0b52c17acb049be9d67f3b28af95a7
+      internalID: -1617696245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_42
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 759
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d4ec42f43cd8458a84d67ebbb7212e2
+      internalID: 2001692617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_43
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 732
+        width: 44
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b84d6c10a6e4de18928a3216ddc6cc
+      internalID: -606303471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_44
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 641
+        width: 131
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 196c16bdeb36941c88d86ae3b13c9b97
+      internalID: 1097259352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_45
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 721
+        width: 197
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffa28c028e3d24040986cc30cc801fbe
+      internalID: 948989903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_46
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 728
+        width: 36
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0af89f855fd53408089f0823ad778a7d
+      internalID: 1103865543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_47
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 718
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc339de9864442f28feb65c3535ad6a
+      internalID: 19914592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_48
+      rect:
+        serializedVersion: 2
+        x: 1508
+        y: 663
+        width: 72
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bedbc122f2204cc8bbf50221ebbab1a
+      internalID: 195615963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_49
+      rect:
+        serializedVersion: 2
+        x: 2164
+        y: 728
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05cd20c6516d84353b4d915d1e68c48a
+      internalID: 1121325867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_50
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 685
+        width: 82
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dde090d7f05ca460cb24e172b838c618
+      internalID: -1447038703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_51
+      rect:
+        serializedVersion: 2
+        x: 2149
+        y: 721
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54d8dd365a89842d3812f1cf234e5e34
+      internalID: -1631311783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_52
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 685
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a299a05fb700847f6ab4bc233b80f653
+      internalID: 250706804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_53
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 675
+        width: 43
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc2f18b664354571aa0da9fdea2a098
+      internalID: -918641799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_54
+      rect:
+        serializedVersion: 2
+        x: 1981
+        y: 676
+        width: 51
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c8243a04ff8946fb81f13d73450dba0
+      internalID: -2009658421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_55
+      rect:
+        serializedVersion: 2
+        x: 2034
+        y: 656
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da35e23dba6a49f9be92660945f9d61
+      internalID: 44583929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_56
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 0
+        width: 625
+        height: 681
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06bc2db0ed3f440baa10cb4ee3139226
+      internalID: -592812254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_57
+      rect:
+        serializedVersion: 2
+        x: 1873
+        y: 675
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8191503b12fc042ce9650040a433bb70
+      internalID: -2024564395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_58
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 654
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 488bceedd0b6d478cae71342286da2b2
+      internalID: -1838181705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_59
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 568
+        width: 24
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93917f01c102e496f9fcdfc15c83a372
+      internalID: -1217101769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_60
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 569
+        width: 25
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cb56e96fd83c4fc2aa9416bd21d9985
+      internalID: -1565334242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_61
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 0
+        width: 642
+        height: 670
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4f1b228fc26240f6b3b2b307d69c96e
+      internalID: 1973640160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_62
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 561
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6873c80093f84eea9452f986a7a0568
+      internalID: 461709199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_63
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 499
+        width: 18
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977038fa071534fbbad2d64284d96478
+      internalID: -1056164102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_64
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 453
+        width: 17
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d3ae840ecc4a453585b6858055e3dd4
+      internalID: -1009676220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_65
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 407
+        width: 13
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ba9dac7a2841427fa77ddc28754e9ea
+      internalID: 323668038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_66
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 387
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c5e5261dc211461396c4163fede7241
+      internalID: 995889053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_67
+      rect:
+        serializedVersion: 2
+        x: 1611
+        y: 283
+        width: 122
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57d83597b7c5e438b94cfe8ba7288e7c
+      internalID: -1496896065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_68
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 373
+        width: 5
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72ac48fd13ab14866b6c47fd1cd707ba
+      internalID: 1136700965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_69
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 351
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 114c8bc6d6d0c4c768374da1238e6ca2
+      internalID: -893255860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_70
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 345
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8ceeb96f33e54ea68939536745a4e1b
+      internalID: 1135653130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_71
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 328
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37076f562e9ed46079a81b7affb0ab77
+      internalID: -837810159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_72
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 329
+        width: 5
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e1af6983420c43e2892f809489dc3c5
+      internalID: -2095387288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_73
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 299
+        width: 12
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad27dbc3f5914454bbaf98f724743b1e
+      internalID: -331654936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_74
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 306
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa077d7305583415a942400c8fc1326a
+      internalID: 424044369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_75
+      rect:
+        serializedVersion: 2
+        x: 2203
+        y: 221
+        width: 113
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c9fa5c40aba441c29c2a4a73c62f522
+      internalID: 1253947319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_76
+      rect:
+        serializedVersion: 2
+        x: 2302
+        y: 248
+        width: 58
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7ace3074712a4680bfd90f4b20240ce
+      internalID: 688380771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_77
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 299
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5567eece81f144a7d8104b94b1aa0578
+      internalID: -2006923069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_78
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 211
+        width: 124
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4d4cbc204f8c4259a184c4f90a1f838
+      internalID: -1402342273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_79
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 270
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8168f1d6b3784254b9437407c4fc775
+      internalID: 1866472518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_80
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 272
+        width: 29
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9f19f33b0f4c4dc29126174de3d71e5
+      internalID: -1533628523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_81
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 95
+        width: 114
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce63784bc515646af8c4e0222f7522b2
+      internalID: -771003759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_82
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 197
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57783243ebcf84ccb85fafd1e6913d5e
+      internalID: 745005958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_83
+      rect:
+        serializedVersion: 2
+        x: 2303
+        y: 189
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ac6b0b39913045a0975968dc22f6ed2
+      internalID: 1150586994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_84
+      rect:
+        serializedVersion: 2
+        x: 2296
+        y: 182
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca4cca203f6684ffd814808fcada49b5
+      internalID: -1630617318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shu.sprite.SK6_85
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 0
+        width: 36
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 407d9d242e7744cec997c5f2469f3bfe
+      internalID: 1477197630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Shu.sprite.SK6_0: 1969554278
+      Shu.sprite.SK6_1: -1047902501
+      Shu.sprite.SK6_10: 678538598
+      Shu.sprite.SK6_11: -2022435826
+      Shu.sprite.SK6_12: 1050647943
+      Shu.sprite.SK6_13: 2014672963
+      Shu.sprite.SK6_14: -1889766732
+      Shu.sprite.SK6_15: -1988187932
+      Shu.sprite.SK6_16: -2024595589
+      Shu.sprite.SK6_17: 1712388778
+      Shu.sprite.SK6_18: 353874293
+      Shu.sprite.SK6_19: 1173944024
+      Shu.sprite.SK6_2: -1060451599
+      Shu.sprite.SK6_20: 987962704
+      Shu.sprite.SK6_21: 60297576
+      Shu.sprite.SK6_22: -1482841634
+      Shu.sprite.SK6_23: -1636808986
+      Shu.sprite.SK6_24: -1018351367
+      Shu.sprite.SK6_25: 484908018
+      Shu.sprite.SK6_26: 800392594
+      Shu.sprite.SK6_27: -920939076
+      Shu.sprite.SK6_28: -2050243718
+      Shu.sprite.SK6_29: 320731077
+      Shu.sprite.SK6_3: 1465214832
+      Shu.sprite.SK6_30: 1905345494
+      Shu.sprite.SK6_31: -1523171732
+      Shu.sprite.SK6_32: 312296489
+      Shu.sprite.SK6_33: 1901375102
+      Shu.sprite.SK6_34: -282476613
+      Shu.sprite.SK6_35: -1481641473
+      Shu.sprite.SK6_36: 1006405820
+      Shu.sprite.SK6_37: 93659926
+      Shu.sprite.SK6_38: 1078645711
+      Shu.sprite.SK6_39: -492301654
+      Shu.sprite.SK6_4: -284627615
+      Shu.sprite.SK6_40: -559582192
+      Shu.sprite.SK6_41: -1617696245
+      Shu.sprite.SK6_42: 2001692617
+      Shu.sprite.SK6_43: -606303471
+      Shu.sprite.SK6_44: 1097259352
+      Shu.sprite.SK6_45: 948989903
+      Shu.sprite.SK6_46: 1103865543
+      Shu.sprite.SK6_47: 19914592
+      Shu.sprite.SK6_48: 195615963
+      Shu.sprite.SK6_49: 1121325867
+      Shu.sprite.SK6_5: 17704529
+      Shu.sprite.SK6_50: -1447038703
+      Shu.sprite.SK6_51: -1631311783
+      Shu.sprite.SK6_52: 250706804
+      Shu.sprite.SK6_53: -918641799
+      Shu.sprite.SK6_54: -2009658421
+      Shu.sprite.SK6_55: 44583929
+      Shu.sprite.SK6_56: -592812254
+      Shu.sprite.SK6_57: -2024564395
+      Shu.sprite.SK6_58: -1838181705
+      Shu.sprite.SK6_59: -1217101769
+      Shu.sprite.SK6_6: 1578674170
+      Shu.sprite.SK6_60: -1565334242
+      Shu.sprite.SK6_61: 1973640160
+      Shu.sprite.SK6_62: 461709199
+      Shu.sprite.SK6_63: -1056164102
+      Shu.sprite.SK6_64: -1009676220
+      Shu.sprite.SK6_65: 323668038
+      Shu.sprite.SK6_66: 995889053
+      Shu.sprite.SK6_67: -1496896065
+      Shu.sprite.SK6_68: 1136700965
+      Shu.sprite.SK6_69: -893255860
+      Shu.sprite.SK6_7: 263406969
+      Shu.sprite.SK6_70: 1135653130
+      Shu.sprite.SK6_71: -837810159
+      Shu.sprite.SK6_72: -2095387288
+      Shu.sprite.SK6_73: -331654936
+      Shu.sprite.SK6_74: 424044369
+      Shu.sprite.SK6_75: 1253947319
+      Shu.sprite.SK6_76: 688380771
+      Shu.sprite.SK6_77: -2006923069
+      Shu.sprite.SK6_78: -1402342273
+      Shu.sprite.SK6_79: 1866472518
+      Shu.sprite.SK6_8: -1848779665
+      Shu.sprite.SK6_80: -1533628523
+      Shu.sprite.SK6_81: -771003759
+      Shu.sprite.SK6_82: 745005958
+      Shu.sprite.SK6_83: 1150586994
+      Shu.sprite.SK6_84: -1630617318
+      Shu.sprite.SK6_85: 1477197630
+      Shu.sprite.SK6_9: 1799384229
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

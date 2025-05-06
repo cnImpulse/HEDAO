@@ -9,6 +9,7 @@ public class BattleManager : BaseManager
 {
     public Fsm Fsm { get; private set; }
     public BattleData Data => GameMgr.Save.Data.BattleData;
+    public BattleMapView BattleMapView;
 
     protected override void OnInit()
     {
@@ -35,22 +36,30 @@ public class BattleManager : BaseManager
         GameMgr.Save.Data.BattleData = null;
     }
 
-    //public static Dictionary<EBattleState, Type> BattleStateDict = new Dictionary<EBattleState, Type>()
-    //{
-    //    [EBattleState.Prepare] = typeof(BattlePrepare), [EBattleState.Start] = typeof(BattleStart), 
-    //    [EBattleState.Loop] = typeof(BattleLoop), [EBattleState.Player] = typeof(BattlePlayer), 
-    //    [EBattleState.AI] = typeof(BattleAI), [EBattleState.End] = typeof(BattleEnd), 
-    //};
-    //public void InitFsm(EBattleState state)
-    //{
-    //    Fsm = Fsm.CreatFsm(this, new BattlePrepare(), new BattleStart(), new BattleLoop(), new BattleEnd(),
-    //        new BattlePlayer(), new BattleAI());
-    //    Fsm.Start(BattleStateDict[state]);
-    //}
+    public void LoadBattleMap()
+    {
+        BattleMapView = GameMgr.Res.LoadAsset<GameObject>(10001).GetComponent<BattleMapView>();
+    }
+
+    public static Dictionary<EBattleState, Type> BattleStateDict = new Dictionary<EBattleState, Type>()
+    {
+        [EBattleState.Prepare] = typeof(BattlePrepare),
+        [EBattleState.Start] = typeof(BattleStart),
+        [EBattleState.Loop] = typeof(BattleLoop),
+        [EBattleState.Player] = typeof(BattlePlayer),
+        [EBattleState.AI] = typeof(BattleAI),
+        [EBattleState.End] = typeof(BattleEnd),
+    };
+    public void InitFsm(EBattleState state)
+    {
+        Fsm = Fsm.CreatFsm(this, new BattlePrepare(), new BattleStart(), new BattleLoop(), new BattleEnd(),
+            new BattlePlayer(), new BattleAI());
+        Fsm.Start(BattleStateDict[state]);
+    }
 
     //public void PlaySkill(int skillId, GridUnit caster, GridUnit target)
     //{
-        
+
     //}
 
     //public int GetHit(int skillId, GridUnit caster, GridUnit target)
