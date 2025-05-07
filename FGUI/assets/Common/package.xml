@@ -54,6 +54,7 @@
     <component id="rg1l6i" name="BtnType.xml" path="/MetaComponent/Button/"/>
     <component id="lu5o6j" name="FloatItemTips.xml" path="/Forms/Float/" exported="true"/>
     <component id="d2a66k" name="BtnSkill.xml" path="/Forms/Menu/HudBattle/"/>
+    <component id="76wd6l" name="CompSkill.xml" path="/Forms/Menu/HudBattle/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

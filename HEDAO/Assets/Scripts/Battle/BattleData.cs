@@ -28,9 +28,9 @@ public class BattleData
 {
     public int CfgId { get; private set; }
     public EBattleState BattleState { get; private set; }
-    public List<Role> PlayerTeam = new List<Role>();
-    public List<Role> EnemyTeam = new List<Role>();
-    //public Queue<GridUnit> BattleUnitQueue { get; private set; } = new Queue<GridUnit>();
+
+    public Dictionary<long, Role> BattleUnitDict = new Dictionary<long, Role>();
+    public Queue<Role> BattleUnitQueue { get; private set; } = new Queue<Role>();
 
     public BattleCfg Cfg => GameMgr.Cfg.TbBattle.Get(CfgId);
     public EResult BattleResult => GetBattleResult();
@@ -51,16 +51,20 @@ public class BattleData
 
     private void InitBattleUnit()
     {
-        foreach (var role in GameMgr.Explore.Data.Team.Values)
+        var list = GameMgr.Explore.Data.Team.Values.ToList();
+        for (int i = 0; i < list.Count; ++i)
         {
-            PlayerTeam.Add(role);
+            var role = list[i];
+            role.Battle.PosIndex = i + 1;
+            BattleUnitDict.Add(role.Id, role);
         }
 
-        foreach(var id in Cfg.EnemyList)
+        for (int i = 0; i < Cfg.EnemyList.Count; ++i)
         {
             var role = new EnemyRole();
-            role.Init(id);
-            EnemyTeam.Add(role);
+            role.Init(Cfg.EnemyList[i]);
+            role.Battle.PosIndex = -i - 1;
+            BattleUnitDict.Add(role.Id, role);
         }
     }
 

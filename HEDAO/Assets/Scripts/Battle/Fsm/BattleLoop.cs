@@ -11,6 +11,16 @@ public class BattleLoop : FsmState
     {
         base.OnEnter();
 
+        RefreshQueue();
+        var battleUnit = Data.BattleUnitQueue.Peek();
+        if (battleUnit is PlayerRole)
+        {
+            GameMgr.Battle.Fsm.ChangeState<BattlePlayer>();
+        }
+        else
+        {
+            GameMgr.Battle.Fsm.ChangeState<BattleAI>();
+        }
     }
 
     public override void OnLeave()
@@ -21,6 +31,14 @@ public class BattleLoop : FsmState
 
     public void RefreshQueue()
     {
-
+        if (Data.BattleUnitQueue.Count == 0)
+        {
+            var list = Data.BattleUnitDict.Values.ToList();
+            list.Sort((a, b) => b.Attr.SPD.CompareTo(a.Attr.SPD));
+            foreach (var gridUnit in list)
+            {
+                Data.BattleUnitQueue.Enqueue(gridUnit);
+            }
+        }
     }
 }

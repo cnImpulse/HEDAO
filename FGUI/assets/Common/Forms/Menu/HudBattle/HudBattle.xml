@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1920,1080" opaque="false">
   <displayList>
-    <component id="n2_q92f" name="btn_start" src="mv3556" fileName="MetaComponent/Button/CommonButton.xml" xy="1605,429" size="240,120">
-      <Button title="开始"/>
-    </component>
     <text id="n3_q92f" name="txt_battle_state" xy="0,0" pivot="0.5,0.5" size="308,74" fontSize="32" align="center" vAlign="middle" autoSize="none" text="准备阶段"/>
     <list id="n4_ozmb" name="list_action" xy="372,11" pivot="0.5,0.5" size="1176,120" layout="row" overflow="scroll" colGap="-3" defaultItem="ui://rt51n0kjfbqy5v" align="center" autoClearItems="true">
       <item/>
@@ -11,12 +8,6 @@
       <item/>
       <item/>
     </list>
-    <component id="n5_d2a6" name="btn_role" src="fbqy5v" fileName="Forms/Menu/MenuHome/BtnRole.xml" xy="155,795"/>
-    <list id="n6_d2a6" name="list_skill" xy="307,795" pivot="0.5,0.5" size="586,120" layout="row" overflow="hidden" colGap="-3" defaultItem="ui://rt51n0kjd2a66k" autoClearItems="true">
-      <item/>
-      <item/>
-      <item/>
-      <item/>
-    </list>
+    <component id="n9_76wd" name="comp_skill" src="76wd6l" fileName="Forms/Menu/HudBattle/CompRole.xml" xy="105,766" pivot="0.5,0.5"/>
   </displayList>
 </component>

@@ -9,15 +9,14 @@ using System.Linq;
 public class HudBattle : UIBase
 {
     public new FGUIHudBattle View => base.View as FGUIHudBattle;
+    public BattleUnitView CurBattleUnit;
 
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
 
         GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnSelectBattleUnit);
-        GameMgr.Event.Subscribe(GameEventType.BattleEvent, OnBattleUnitAction);
 
-        View.m_btn_start.onClick.Set(OnClickStart);
         View.m_list_action.itemRenderer = OnRenderRole;
     }
 
@@ -25,6 +24,7 @@ public class HudBattle : UIBase
     {
         base.OnShow();
 
+        RefreshRolePanel();
     }
 
     public override void OnUpdate()
@@ -39,7 +39,6 @@ public class HudBattle : UIBase
     protected override void OnClose()
     {
         GameMgr.Event.Unsubscribe(GameEventType.OnPlayerRoundStart, OnSelectBattleUnit);
-        GameMgr.Event.Unsubscribe(GameEventType.BattleEvent, OnBattleUnitAction);
 
         base.OnClose();
     }
@@ -56,20 +55,15 @@ public class HudBattle : UIBase
         //btn.mode = ButtonMode.Common;
         //btn.Refresh(role);
     }
-
-    private void OnClickStart()
-    {
-        GameMgr.Battle.Fsm.ChangeState<BattleStart>();
-    }
     
     private void OnSelectBattleUnit(GameEvent obj)
     {
         //GameMgr.UI.ShowUI(UIName.MenuAction);
     }
 
-    private void OnBattleUnitAction(GameEvent obj)
+    private void RefreshRolePanel()
     {
-        //var e = obj.Data as BattleEvent;
-        //BattleEventQueue.Enqueue(e);
+        var btn = View.m_comp_skill.m_btn_role as FGUIBtnRole;
+        //btn.Refresh(CurBattleUnit.Entity);
     }
 }

@@ -7,11 +7,9 @@ namespace FGUI.Common
 {
     public partial class FGUIHudBattle : GComponent
     {
-        public GButton m_btn_start;
         public GTextField m_txt_battle_state;
         public GList m_list_action;
-        public GButton m_btn_role;
-        public GList m_list_skill;
+        public FGUICompSkill m_comp_skill;
         public const string URL = "ui://rt51n0kjut3j4p";
 
         public static FGUIHudBattle CreateInstance()
@@ -23,11 +21,9 @@ namespace FGUI.Common
         {
             base.ConstructFromXML(xml);
 
-            m_btn_start = (GButton)GetChild("btn_start");
             m_txt_battle_state = (GTextField)GetChild("txt_battle_state");
             m_list_action = (GList)GetChild("list_action");
-            m_btn_role = (GButton)GetChild("btn_role");
-            m_list_skill = (GList)GetChild("list_skill");
+            m_comp_skill = (FGUICompSkill)GetChild("comp_skill");
         }
     }
 }

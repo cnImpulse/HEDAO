@@ -15,6 +15,7 @@ public class Role : Entity, IEffectTarget
     public SkillComponent Skill => GetComponent<SkillComponent>();
     public BookComponent Book => GetComponent<BookComponent>();
     public EquipComponent Equip => GetComponent<EquipComponent>();
+    public BattleComponent Battle => GetComponent<BattleComponent>();
 
     public Dictionary<EWuXinType, int> WuXin = new Dictionary<EWuXinType, int>();
     public Dictionary<int, Buff> BuffDict = new Dictionary<int, Buff>();
@@ -33,6 +34,7 @@ public class Role : Entity, IEffectTarget
         AddComponent<SkillComponent>();
         AddComponent<BookComponent>();
         AddComponent<EquipComponent>();
+        AddComponent<BattleComponent>();
     }
 
     public void LevelUp(int level)
