@@ -9,7 +9,6 @@ public class SkillComponent : Component
     public new Role Owner => base.Owner as Role;
 
     public HashSet<int> SkillSet = new HashSet<int>();
-    public HashSet<int> MoveSkillSet = new HashSet<int>();
     public HashSet<int> TagSet = new HashSet<int>();
 
     protected override void OnInit(object data)
@@ -22,7 +21,6 @@ public class SkillComponent : Component
         {
             SkillSet.Add(id);
         }
-        MoveSkillSet.Add(cfg.MoveSkillId);
     }
 
     public void AddTag(int id)

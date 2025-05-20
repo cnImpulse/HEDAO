@@ -10,7 +10,7 @@ public static class SkillUtil
     public static string GetSkillDesc(int id)
     {
         var cfg = GameMgr.Cfg.TbSkill.Get(id);
-        var str = string.Format("释放距离:{0} 命中:{1}\n", cfg.ReleaseRange.Distance, cfg.Hit);
+        var str = string.Format("命中:{0}\n", cfg.Hit);
         str += GetEffectDesc(cfg.EffectList);
         return str;
     }

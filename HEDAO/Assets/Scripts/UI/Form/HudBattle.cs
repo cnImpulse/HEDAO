@@ -9,7 +9,7 @@ using System.Linq;
 public class HudBattle : UIBase
 {
     public new FGUIHudBattle View => base.View as FGUIHudBattle;
-    public BattleUnitView CurBattleUnit;
+    public Role CurBattleUnit => GameMgr.Battle.Data.BattleUnitQueue.Peek();
 
     protected override void OnInit(object userData)
     {
@@ -18,6 +18,9 @@ public class HudBattle : UIBase
         GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnSelectBattleUnit);
 
         View.m_list_action.itemRenderer = OnRenderRole;
+        View.m_comp_skill.m_list_skill.itemRenderer = OnRenderSkill;
+        View.m_comp_skill.m_list_skill.RefreshSelectionCtrl();
+        View.m_comp_skill.m_list_skill.selectionController.onChanged.Set(OnSelectSkill);
     }
 
     protected override void OnShow()
@@ -48,6 +51,14 @@ public class HudBattle : UIBase
         //View.m_list_action.RefreshList(GameMgr.Battle.Data.BattleUnitQueue.ToList());
     }
 
+    private void OnRenderSkill(int index, GObject item, object data)
+    {
+        var skillId = (int)data;
+        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+        item.asButton.title = cfg.Name;
+        item.enabled = cfg.LaunchPos.Contains(CurBattleUnit.Battle.PosIndex);
+    }
+
     private void OnRenderRole(int index, GObject item, object data)
     {
         //var role = (data as GridUnit).Role;
@@ -64,6 +75,24 @@ public class HudBattle : UIBase
     private void RefreshRolePanel()
     {
         var btn = View.m_comp_skill.m_btn_role as FGUIBtnRole;
-        //btn.Refresh(CurBattleUnit.Entity);
+        btn.mode = ButtonMode.Common;
+        btn.Refresh(CurBattleUnit);
+
+        View.m_comp_skill.m_list_skill.RefreshList(CurBattleUnit.Skill.SkillSet.ToList());
+    }
+
+    private void OnSelectSkill(EventContext context)
+    {
+        var data = View.m_comp_skill.m_list_skill.selectedData;
+        if (data == null)
+        {
+            View.m_comp_skill.m_txt_skill.text = "";
+            return;
+        }
+
+        var skillId = (int)data;
+        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+
+        View.m_comp_skill.m_txt_skill.text = SkillUtil.GetSkillDesc(skillId);
     }
 }

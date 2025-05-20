@@ -512,7 +512,7 @@ namespace FairyGUI
 
         public object selectedData => GetItemData(selectedIndex);
 
-        public void RefreshSelectionCtrl(int selectIndex = 0)
+        public void RefreshSelectionCtrl(int selectIndex = -1)
         {
             if (selectionController == null) return;
 

@@ -22,9 +22,8 @@ public sealed partial class SkillCfg : Luban.BeanBase
         Icon = _buf.ReadString();
         Cost = _buf.ReadInt();
         Hit = _buf.ReadInt();
-        ReleaseRange = Battle.GridRange.DeserializeGridRange(_buf);
-        EffectRange = Battle.GridRange.DeserializeGridRange(_buf);
-        TargetType = (ERelationType)_buf.ReadInt();
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);LaunchPos = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); LaunchPos.Add(_e0);}}
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);TargetPos = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); TargetPos.Add(_e0);}}
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);EffectList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); EffectList.Add(_e0);}}
     }
 
@@ -39,9 +38,8 @@ public sealed partial class SkillCfg : Luban.BeanBase
     public readonly string Icon;
     public readonly int Cost;
     public readonly int Hit;
-    public readonly Battle.GridRange ReleaseRange;
-    public readonly Battle.GridRange EffectRange;
-    public readonly ERelationType TargetType;
+    public readonly System.Collections.Generic.List<int> LaunchPos;
+    public readonly System.Collections.Generic.List<int> TargetPos;
     public readonly System.Collections.Generic.List<int> EffectList;
    
     public const int __ID__ = -2087897997;
@@ -55,8 +53,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         
         
         
-        ReleaseRange?.ResolveRef(tables);
-        EffectRange?.ResolveRef(tables);
+        
         
         
     }
@@ -70,9 +67,8 @@ public sealed partial class SkillCfg : Luban.BeanBase
         + "Icon:" + Icon + ","
         + "Cost:" + Cost + ","
         + "Hit:" + Hit + ","
-        + "ReleaseRange:" + ReleaseRange + ","
-        + "EffectRange:" + EffectRange + ","
-        + "TargetType:" + TargetType + ","
+        + "LaunchPos:" + Luban.StringUtil.CollectionToString(LaunchPos) + ","
+        + "TargetPos:" + Luban.StringUtil.CollectionToString(TargetPos) + ","
         + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
         + "}";
     }

@@ -7,8 +7,10 @@ namespace FGUI.Common
 {
     public partial class FGUICompSkill : GComponent
     {
+        public Controller m_select_ctrl;
         public GButton m_btn_role;
         public GList m_list_skill;
+        public GTextField m_txt_skill;
         public const string URL = "ui://rt51n0kj76wd6l";
 
         public static FGUICompSkill CreateInstance()
@@ -20,8 +22,10 @@ namespace FGUI.Common
         {
             base.ConstructFromXML(xml);
 
+            m_select_ctrl = GetController("select_ctrl");
             m_btn_role = (GButton)GetChild("btn_role");
             m_list_skill = (GList)GetChild("list_skill");
+            m_txt_skill = (GTextField)GetChild("txt_skill");
         }
     }
 }
