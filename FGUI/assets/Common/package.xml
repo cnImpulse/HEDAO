@@ -55,6 +55,10 @@
     <component id="lu5o6j" name="FloatItemTips.xml" path="/Forms/Float/" exported="true"/>
     <component id="d2a66k" name="BtnSkill.xml" path="/Forms/Menu/HudBattle/"/>
     <component id="76wd6l" name="CompSkill.xml" path="/Forms/Menu/HudBattle/" exported="true"/>
+    <image id="pftu6m" name="circle1.jpg" path="/Resources/Images/" exported="true"/>
+    <image id="pftu6n" name="circle2.jpg" path="/Resources/Images/" exported="true"/>
+    <component id="pftu6o" name="CompSkillPos.xml" path="/Forms/Menu/HudBattle/" exported="true"/>
+    <component id="pftu6p" name="ImgSkillPos.xml" path="/Forms/Menu/HudBattle/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

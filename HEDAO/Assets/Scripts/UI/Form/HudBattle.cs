@@ -20,7 +20,7 @@ public class HudBattle : UIBase
         View.m_list_action.itemRenderer = OnRenderRole;
         View.m_comp_skill.m_list_skill.itemRenderer = OnRenderSkill;
         View.m_comp_skill.m_list_skill.RefreshSelectionCtrl();
-        View.m_comp_skill.m_list_skill.selectionController.onChanged.Set(OnSelectSkill);
+        View.m_comp_skill.m_list_skill.selectionController.onChanged.Set(RefreshSkill);
     }
 
     protected override void OnShow()
@@ -28,6 +28,7 @@ public class HudBattle : UIBase
         base.OnShow();
 
         RefreshRolePanel();
+        RefreshSkill();
     }
 
     public override void OnUpdate()
@@ -56,7 +57,7 @@ public class HudBattle : UIBase
         var skillId = (int)data;
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
         item.asButton.title = cfg.Name;
-        item.enabled = cfg.LaunchPos.Contains(CurBattleUnit.Battle.PosIndex);
+        //item.enabled = cfg.LaunchPos.Contains(CurBattleUnit.Battle.PosIndex);
     }
 
     private void OnRenderRole(int index, GObject item, object data)
@@ -81,18 +82,20 @@ public class HudBattle : UIBase
         View.m_comp_skill.m_list_skill.RefreshList(CurBattleUnit.Skill.SkillSet.ToList());
     }
 
-    private void OnSelectSkill(EventContext context)
+    private void RefreshSkill()
     {
         var data = View.m_comp_skill.m_list_skill.selectedData;
-        if (data == null)
+        var hasSkill = data != null;
+        View.m_comp_skill.m_txt_skill.visible = hasSkill;
+        View.m_comp_skill.m_comp_skill_pos.visible = hasSkill;
+        if (!hasSkill)
         {
-            View.m_comp_skill.m_txt_skill.text = "";
             return;
         }
 
         var skillId = (int)data;
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
-
         View.m_comp_skill.m_txt_skill.text = SkillUtil.GetSkillDesc(skillId);
+        View.m_comp_skill.m_comp_skill_pos.Refresh(skillId);
     }
 }

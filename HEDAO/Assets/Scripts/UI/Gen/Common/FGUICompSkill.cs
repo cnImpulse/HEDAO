@@ -11,6 +11,7 @@ namespace FGUI.Common
         public GButton m_btn_role;
         public GList m_list_skill;
         public GTextField m_txt_skill;
+        public FGUICompSkillPos m_comp_skill_pos;
         public const string URL = "ui://rt51n0kj76wd6l";
 
         public static FGUICompSkill CreateInstance()
@@ -26,6 +27,7 @@ namespace FGUI.Common
             m_btn_role = (GButton)GetChild("btn_role");
             m_list_skill = (GList)GetChild("list_skill");
             m_txt_skill = (GTextField)GetChild("txt_skill");
+            m_comp_skill_pos = (FGUICompSkillPos)GetChild("comp_skill_pos");
         }
     }
 }

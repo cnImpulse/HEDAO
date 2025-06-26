@@ -9,6 +9,7 @@
       <item/>
       <item/>
     </list>
-    <text id="n9_jyiz" name="txt_skill" xy="32,170" size="635,150" font="ui://rt51n0kjekn09" fontSize="24" autoSize="none" text="技能"/>
+    <text id="n9_jyiz" name="txt_skill" xy="32,170" size="635,150" font="ui://rt51n0kjekn09" fontSize="24" autoSize="none" text=""/>
+    <component id="n10_pftu" name="comp_skill_pos" src="pftu6o" fileName="Forms/Menu/HudBattle/CompSkillPos.xml" xy="397,170" pivot="0.5,0.5" size="270,32"/>
   </displayList>
 </component>

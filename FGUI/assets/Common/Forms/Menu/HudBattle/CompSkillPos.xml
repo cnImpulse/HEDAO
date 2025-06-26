@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="270,32">
+  <displayList>
+    <list id="n2_pftu" name="list_self" xy="0,0" pivot="0.5,0.5" size="128,32" layout="row" overflow="scroll" defaultItem="ui://rt51n0kjpftu6p" align="right" vAlign="middle">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <list id="n3_pftu" name="list_target" xy="142,0" pivot="0.5,0.5" size="128,32" layout="row" overflow="scroll" defaultItem="ui://rt51n0kjpftu6p" vAlign="middle">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+</component>

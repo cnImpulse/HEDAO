@@ -28,6 +28,8 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIBtnAction.URL, typeof(FGUIBtnAction));
             UIObjectFactory.SetPackageItemExtension(FGUIWuDaoPage.URL, typeof(FGUIWuDaoPage));
             UIObjectFactory.SetPackageItemExtension(FGUIDangMoPage.URL, typeof(FGUIDangMoPage));
+            UIObjectFactory.SetPackageItemExtension(FGUICompSkillPos.URL, typeof(FGUICompSkillPos));
+            UIObjectFactory.SetPackageItemExtension(FGUIImgSkillPos.URL, typeof(FGUIImgSkillPos));
             UIObjectFactory.SetPackageItemExtension(FGUIFloatBattleUnit.URL, typeof(FGUIFloatBattleUnit));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuRole.URL, typeof(FGUIMenuRole));
             UIObjectFactory.SetPackageItemExtension(FGUIFloatTips.URL, typeof(FGUIFloatTips));
