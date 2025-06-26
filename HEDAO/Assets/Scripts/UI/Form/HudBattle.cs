@@ -15,7 +15,7 @@ public class HudBattle : UIBase
     {
         base.OnInit(userData);
 
-        GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnSelectBattleUnit);
+        GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnPlayerRoundStart);
 
         View.m_list_action.itemRenderer = OnRenderRole;
         View.m_comp_skill.m_list_skill.itemRenderer = OnRenderSkill;
@@ -29,6 +29,8 @@ public class HudBattle : UIBase
 
         RefreshRolePanel();
         RefreshSkill();
+
+        GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10006, FollowId = CurBattleUnit.Id });
     }
 
     public override void OnUpdate()
@@ -42,7 +44,7 @@ public class HudBattle : UIBase
 
     protected override void OnClose()
     {
-        GameMgr.Event.Unsubscribe(GameEventType.OnPlayerRoundStart, OnSelectBattleUnit);
+        GameMgr.Event.Unsubscribe(GameEventType.OnPlayerRoundStart, OnPlayerRoundStart);
 
         base.OnClose();
     }
@@ -68,9 +70,8 @@ public class HudBattle : UIBase
         //btn.Refresh(role);
     }
     
-    private void OnSelectBattleUnit(GameEvent obj)
+    private void OnPlayerRoundStart(GameEvent obj)
     {
-        //GameMgr.UI.ShowUI(UIName.MenuAction);
     }
 
     private void RefreshRolePanel()
