@@ -15,6 +15,14 @@ public static class SkillUtil
         return str;
     }
 
+    public static string GetSkillDesc(int id, IEffectTarget caster, IEffectTarget target)
+    {
+        var cfg = GameMgr.Cfg.TbSkill.Get(id);
+        var str = string.Format("命中:{0}\n", cfg.Hit - target.Attr.SEF);
+        str += GetEffectDesc(cfg.EffectList, caster, target);
+        return str;
+    }
+
     public static string GetBuffListDesc(List<int> list)
     {
         return string.Join("\n", list.Select(id => GameMgr.Cfg.TbBuffCfg.Get(id)).Select(cfg => GetBuffDesc(cfg.Id)));

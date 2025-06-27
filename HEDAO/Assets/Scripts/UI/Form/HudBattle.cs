@@ -15,7 +15,9 @@ public class HudBattle : UIBase
     {
         base.OnInit(userData);
 
-        GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnPlayerRoundStart);
+        GameMgr.Event.Subscribe(GameEventType.OnClickBattleUnit, OnClickBattleUnit);
+
+        View.m_comp_skill_result.m_btn_sure.onClick.Set(OnClickReleaseSkill);
 
         View.m_list_action.itemRenderer = OnRenderRole;
         View.m_comp_skill.m_list_skill.itemRenderer = OnRenderSkill;
@@ -29,8 +31,6 @@ public class HudBattle : UIBase
 
         RefreshRolePanel();
         RefreshSkill();
-
-        GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10006, FollowId = CurBattleUnit.Id });
     }
 
     public override void OnUpdate()
@@ -44,7 +44,7 @@ public class HudBattle : UIBase
 
     protected override void OnClose()
     {
-        GameMgr.Event.Unsubscribe(GameEventType.OnPlayerRoundStart, OnPlayerRoundStart);
+        GameMgr.Event.Unsubscribe(GameEventType.OnClickBattleUnit, OnClickBattleUnit);
 
         base.OnClose();
     }
@@ -69,9 +69,23 @@ public class HudBattle : UIBase
         //btn.mode = ButtonMode.Common;
         //btn.Refresh(role);
     }
-    
-    private void OnPlayerRoundStart(GameEvent obj)
+
+    private long m_SelectEffectId = 0;
+    private void OnClickBattleUnit(GameEvent e)
     {
+        m_SelectedTarget = null;
+        var data = View.m_comp_skill.m_list_skill.selectedData;
+        if (data == null) return;
+
+        var target = e.Data as BattleUnitView;
+        if (!(target.Entity is EnemyRole)) return;
+
+        var skillId = (int)data;
+        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+        if (cfg.TargetPos.Contains(-target.Entity.Battle.PosIndex))
+        {
+            SelectedTarget = target;
+        }
     }
 
     private void RefreshRolePanel()
@@ -83,20 +97,75 @@ public class HudBattle : UIBase
         View.m_comp_skill.m_list_skill.RefreshList(CurBattleUnit.Skill.SkillSet.ToList());
     }
 
+    private bool HasSelectedSkill => View.m_comp_skill.m_list_skill.selectedData != null;
+    private int SelectedSkillId => (int)View.m_comp_skill.m_list_skill.selectedData;
+
     private void RefreshSkill()
     {
-        var data = View.m_comp_skill.m_list_skill.selectedData;
-        var hasSkill = data != null;
+        SelectedTarget = null;
+
+        var hasSkill = HasSelectedSkill;
         View.m_comp_skill.m_txt_skill.visible = hasSkill;
         View.m_comp_skill.m_comp_skill_pos.visible = hasSkill;
         if (!hasSkill)
         {
+            GameMgr.Effect.HideEffectByPrefabId(10007);
             return;
         }
 
-        var skillId = (int)data;
+        var skillId = SelectedSkillId;
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
         View.m_comp_skill.m_txt_skill.text = SkillUtil.GetSkillDesc(skillId);
         View.m_comp_skill.m_comp_skill_pos.Refresh(skillId);
+
+        ShowSkillTarget(skillId);
+        RefreshSkillResult();
+    }
+
+    private BattleUnitView m_SelectedTarget;
+    private BattleUnitView SelectedTarget
+    {
+        get => m_SelectedTarget;
+        set
+        {
+            m_SelectedTarget = value;
+            RefreshSkillResult();
+        }
+    }
+
+    private void RefreshSkillResult()
+    {
+        GameMgr.Effect.HideEffect(m_SelectEffectId);
+
+        var visible = HasSelectedSkill && SelectedTarget != null;
+        View.m_comp_skill_result.visible = visible;
+        if (!visible)
+        {
+            return;
+        }
+
+        m_SelectEffectId = GameMgr.Effect.ShowEffect(10006, SelectedTarget.Id);
+        View.m_comp_skill_result.m_txt_result.text = SkillUtil.GetSkillDesc(SelectedSkillId, CurBattleUnit, SelectedTarget.Entity);
+    }
+
+    //private List<long> TargetEffectList = new List<long>();
+    private void ShowSkillTarget(int skillId)
+    {
+        GameMgr.Effect.HideEffectByPrefabId(10007);
+
+        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+        foreach(var pos in cfg.TargetPos)
+        {
+            var enemy = GameMgr.Battle.Data.GetRole(-pos);
+            if (enemy != null)
+            {
+                var effectId = GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10007, FollowId = enemy.Id });
+                //TargetEffectList.Add(effectId);
+            }
+        }
+    }
+
+    private void OnClickReleaseSkill()
+    {
     }
 }

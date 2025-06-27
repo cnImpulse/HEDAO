@@ -78,5 +78,18 @@ public class BattleData
 
         return EResult.None;
     }
+
+    public Role GetRole(int pos)
+    {
+        foreach(var role in BattleUnitDict.Values)
+        {
+            if (role.Battle.PosIndex == pos)
+            {
+                return role;
+            }
+        }
+
+        return null;
+    }
 }
 

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class BattleUnitView : EntityView
+public class BattleUnitView : EntityView, IPointerClickHandler
 {
     public new Role Entity => base.Entity as Role;
 
@@ -18,5 +19,15 @@ public class BattleUnitView : EntityView
     protected override void OnDestroy()
     {
         GameMgr.UI.CloseUI(m_FloatUId);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (FairyGUI.Stage.isTouchOnUI)
+        {
+            return;
+        }
+
+        GameMgr.Event.Fire(GameEventType.OnClickBattleUnit, this);
     }
 }

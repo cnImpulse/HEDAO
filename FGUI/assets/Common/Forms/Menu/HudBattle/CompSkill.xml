@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="700,360">
+<component size="700,300">
   <controller name="select_ctrl" pages="0,,1," selected="0"/>
   <displayList>
-    <image id="n8_76wd" name="n8" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" pivot="0.5,0.5" size="700,360"/>
+    <image id="n8_76wd" name="n8" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" pivot="0.5,0.5" size="700,300"/>
     <component id="n5_d2a6" name="btn_role" src="fbqy5v" fileName="Forms/Menu/MenuHome/BtnRole.xml" xy="30,30"/>
     <list id="n6_d2a6" name="list_skill" xy="195,30" pivot="0.5,0.5" size="472,120" layout="row" colGap="-3" defaultItem="ui://rt51n0kjd2a66k" selectionController="select_ctrl" autoClearItems="true">
       <item/>
       <item/>
       <item/>
     </list>
-    <text id="n9_jyiz" name="txt_skill" xy="32,170" size="635,150" font="ui://rt51n0kjekn09" fontSize="24" autoSize="none" text=""/>
+    <text id="n9_jyiz" name="txt_skill" xy="32,170" size="635,95" font="ui://rt51n0kjekn09" fontSize="24" autoSize="none" text=""/>
     <component id="n10_pftu" name="comp_skill_pos" src="pftu6o" fileName="Forms/Menu/HudBattle/CompSkillPos.xml" xy="397,170" pivot="0.5,0.5" size="270,32"/>
   </displayList>
 </component>

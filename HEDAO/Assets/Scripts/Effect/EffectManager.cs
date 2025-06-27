@@ -15,21 +15,31 @@ public class EffectManager : BaseManager
         return data.Id;
     }
 
-    public void HideEffect(long entityId)
+    public long ShowEffect(int prefabId, long followId)
     {
-        GameMgr.Entity.HideEntity(entityId);
+        return ShowEffect(new EffectData() { PrefabId = prefabId, FollowId = followId });
+    }
+
+    public void HideEffect(long effectId)
+    {
+        GameMgr.Entity.HideEntity(effectId);
     }
     
     public void HideEffectByPrefabId(int prefabId)
     {
+        List<long> list = new List<long>();
         foreach(var view in GameMgr.Entity.EntityViewDict.Values)
         {
             var effect = view as EffectView;
             if (effect != null && effect.Data.PrefabId == prefabId)
             {
-                view.Hide();
-                break;
+                list.Add(effect.Id);
             }
+        }
+
+        foreach(var id in list)
+        {
+            HideEffect(id);
         }
     }
 }

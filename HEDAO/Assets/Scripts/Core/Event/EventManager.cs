@@ -6,7 +6,7 @@ using UnityEngine;
 public enum GameEventType
 {
     None,
-    OnPointerDownMap,
+    OnClickBattleUnit,
     OnPlayerRoundStart,
     OnBattleUnitActionEnd,
     BattleEvent,

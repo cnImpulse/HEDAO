@@ -13,6 +13,8 @@ public class EffectView : EntityView
 
         m_RealLifeTime = 0;
         transform.position = Data.Position;
+
+        UpdatePos();
     }
 
     private void Update()

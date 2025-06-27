@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cfg;
 using Cfg.Battle;
+using UnityEngine.EventSystems;
 
 public class Role : Entity, IEffectTarget
 {

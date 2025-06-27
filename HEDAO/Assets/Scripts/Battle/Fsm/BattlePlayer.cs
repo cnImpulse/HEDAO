@@ -10,6 +10,8 @@ public class BattlePlayer : BattleStateBase
         base.OnEnter();
 
         GameMgr.Event.Subscribe(GameEventType.OnBattleUnitActionEnd, OnPlayerRoundEnd);
+
+        GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10006, FollowId = CurBattleUnit.Id });
     }
 
     public override void OnUpdate()
@@ -20,6 +22,8 @@ public class BattlePlayer : BattleStateBase
 
     public override void OnLeave()
     {
+        GameMgr.Effect.HideEffectByPrefabId(10006);
+
         GameMgr.Event.Unsubscribe(GameEventType.OnBattleUnitActionEnd, OnPlayerRoundEnd);
         
         base.OnLeave();

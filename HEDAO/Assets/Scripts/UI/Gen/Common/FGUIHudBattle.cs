@@ -10,6 +10,7 @@ namespace FGUI.Common
         public GTextField m_txt_battle_state;
         public GList m_list_action;
         public FGUICompSkill m_comp_skill;
+        public FGUICompSkillResult m_comp_skill_result;
         public const string URL = "ui://rt51n0kjut3j4p";
 
         public static FGUIHudBattle CreateInstance()
@@ -24,6 +25,7 @@ namespace FGUI.Common
             m_txt_battle_state = (GTextField)GetChild("txt_battle_state");
             m_list_action = (GList)GetChild("list_action");
             m_comp_skill = (FGUICompSkill)GetChild("comp_skill");
+            m_comp_skill_result = (FGUICompSkillResult)GetChild("comp_skill_result");
         }
     }
 }
