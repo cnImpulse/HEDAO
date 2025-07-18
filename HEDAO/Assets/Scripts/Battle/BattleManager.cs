@@ -57,22 +57,23 @@ public class BattleManager : BaseManager
         Fsm.Start(BattleStateDict[state]);
     }
 
-    //public void PlaySkill(int skillId, GridUnit caster, GridUnit target)
-    //{
+    public bool PlaySkill(int skillId, Role caster, Role target)
+    {
+        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+        var hit = SkillUtil.GetHit(skillId, caster, target);
+        if (!CheckHit(hit))
+        {
+            return false;
+        }
 
-    //}
+        foreach(var effectId in cfg.EffectList)
+        {
+            var effectCfg = GameMgr.Cfg.TbEffectCfg.Get(effectId);
+            effectCfg.OnTakeEffect(caster, target);
+        }
 
-    //public int GetHit(int skillId, GridUnit caster, GridUnit target)
-    //{
-    //    var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
-    //    var hit = cfg.Hit;
-    //    if (cfg.TargetType == Cfg.ERelationType.Enemy)
-    //    {
-    //        hit -= target.Role.Attr.SEF;
-    //    }
-
-    //    return Mathf.Clamp(hit, GameMgr.Cfg.TbMisc.MinHit, 100);
-    //}
+        return true;
+    }
 
     public bool CheckHit(int hit)
     {

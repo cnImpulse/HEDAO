@@ -16,6 +16,7 @@ public class HudBattle : UIBase
         base.OnInit(userData);
 
         GameMgr.Event.Subscribe(GameEventType.OnClickBattleUnit, OnClickBattleUnit);
+        //GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnPlayerRoundStart);
 
         View.m_comp_skill_result.m_btn_sure.onClick.Set(OnClickReleaseSkill);
 
@@ -33,6 +34,7 @@ public class HudBattle : UIBase
         RefreshSkill();
     }
 
+    private FsmState lastState;
     public override void OnUpdate()
     {
         base.OnUpdate();
@@ -40,13 +42,25 @@ public class HudBattle : UIBase
         var state = GameMgr.Battle.Fsm.CurState;
         View.m_txt_battle_state.text = state.ToString();
         RefreshActionList();
+
+        if (lastState != state)
+        {
+            RefreshRolePanel();
+        }
+        lastState = state;
     }
 
     protected override void OnClose()
     {
+        //GameMgr.Event.Unsubscribe(GameEventType.OnPlayerRoundStart, OnPlayerRoundStart);
         GameMgr.Event.Unsubscribe(GameEventType.OnClickBattleUnit, OnClickBattleUnit);
 
         base.OnClose();
+    }
+
+    private void OnPlayerRoundStart(GameEvent obj)
+    {
+        //RefreshRolePanel();
     }
 
     public void RefreshActionList()
@@ -73,7 +87,7 @@ public class HudBattle : UIBase
     private long m_SelectEffectId = 0;
     private void OnClickBattleUnit(GameEvent e)
     {
-        m_SelectedTarget = null;
+        SelectedTarget = null;
         var data = View.m_comp_skill.m_list_skill.selectedData;
         if (data == null) return;
 
@@ -90,6 +104,14 @@ public class HudBattle : UIBase
 
     private void RefreshRolePanel()
     {
+        var visible = GameMgr.Battle.Fsm.CurState is BattlePlayer;
+        View.m_comp_skill.visible = visible;
+        if (!visible)
+        {
+            ExitPlaySkill();
+            return;
+        }
+
         var btn = View.m_comp_skill.m_btn_role as FGUIBtnRole;
         btn.mode = ButtonMode.Common;
         btn.Refresh(CurBattleUnit);
@@ -167,5 +189,15 @@ public class HudBattle : UIBase
 
     private void OnClickReleaseSkill()
     {
+        GameMgr.Battle.PlaySkill(SelectedSkillId, CurBattleUnit, SelectedTarget.Entity);
+        ExitPlaySkill();
+
+        GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
+    }
+
+    private void ExitPlaySkill()
+    {
+        SelectedTarget = null;
+        GameMgr.Effect.HideEffectByPrefabId(10007);
     }
 }
