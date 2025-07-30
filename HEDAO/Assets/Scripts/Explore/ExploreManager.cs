@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Map;
 using UnityEngine;
 
 public class ExploreManager : BaseManager
 {
+    public MapView MapView { get; set; }
     public ExploreDate Data => GameMgr.Save.Data.ExploreDate;
 
     protected override void OnInit()
@@ -34,7 +36,7 @@ public class ExploreManager : BaseManager
 
     public EResult GetExploreResult()
     {
-        var count = GameMgr.Save.Data.TeamDict.Values.Where(role => role.Attr.HP > 0).Count();
+        var count = GameMgr.Save.Data.TeamDict.Values.Count(role => role.Attr.HP > 0);
         if (count == 0) return EResult.Lose;
         if (Data.ExploreQueue.Count == 0) return EResult.Win;
 
@@ -43,6 +45,6 @@ public class ExploreManager : BaseManager
 
     public void CreateMap()
     {
-        GameMgr.Res.LoadAsset<GameObject>(10008);
+        MapView = GameMgr.Res.LoadAsset<GameObject>(10008).GetComponent<MapView>();
     }
 }

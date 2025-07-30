@@ -15,6 +15,7 @@ namespace Map
         public readonly NodeType nodeType;
         public readonly string blueprintName;
         public Vector2 position;
+        public int BattleId = 10001;
 
         public Node(NodeType nodeType, string blueprintName, Vector2Int point)
         {

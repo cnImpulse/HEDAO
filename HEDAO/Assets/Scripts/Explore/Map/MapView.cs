@@ -66,11 +66,11 @@ namespace Map
             Instance = this;
             cam = Camera.main;
 
-            Map map = MapGenerator.GetMap(Config);
-            ShowMap(map);
+            Map = MapGenerator.GetMap(Config);
+            ShowMap();
         }
 
-        protected virtual void ClearMap()
+        public virtual void ClearMap()
         {
             if (firstParent != null)
                 Destroy(firstParent);
@@ -79,21 +79,19 @@ namespace Map
             lineConnections.Clear();
         }
 
-        public virtual void ShowMap(Map m)
+        public virtual void ShowMap()
         {
-            if (m == null)
+            if (Map == null)
             {
                 Debug.LogWarning("Map was null in MapView.ShowMap()");
                 return;
             }
 
-            Map = m;
-
             ClearMap();
 
             CreateMapParent();
 
-            CreateNodes(m.nodes);
+            CreateNodes(Map.nodes);
 
             DrawLines();
 
@@ -105,7 +103,7 @@ namespace Map
 
             SetLineColors();
 
-            CreateMapBackground(m);
+            CreateMapBackground(Map);
         }
 
         protected virtual void CreateMapBackground(Map m)
@@ -390,16 +388,14 @@ namespace Map
 
         private static void EnterNode(MapNode mapNode)
         {
-            // we have access to blueprint name here as well
             Debug.Log("Entering node: " + mapNode.Node.blueprintName + " of type: " + mapNode.Node.nodeType);
-            // load appropriate scene with context based on nodeType:
-            // or show appropriate GUI over the map: 
-            // if you choose to show GUI in some of these cases, do not forget to set "Locked" in MapPlayerTracker back to false
             switch (mapNode.Node.nodeType)
             {
                 case NodeType.MinorEnemy:
+                    GameMgr.Battle.StartBattle(mapNode.Node.BattleId);
                     break;
                 case NodeType.EliteEnemy:
+                    GameMgr.Battle.StartBattle(mapNode.Node.BattleId);
                     break;
                 case NodeType.RestSite:
                     break;
