@@ -9,7 +9,9 @@ public class ProcedureExplore : FsmState
         base.OnEnter();
 
         GameMgr.Save.Data.SceneType = SceneType.Explore;
-        GameMgr.UI.ShowUI(UIName.MenuExplore);
+        
+        GameMgr.Explore.CreateMap();
+        // GameMgr.UI.ShowUI(UIName.MenuExplore);
     }
 
     public override void OnUpdate()

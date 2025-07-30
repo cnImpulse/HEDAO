@@ -40,4 +40,9 @@ public class ExploreManager : BaseManager
 
         return EResult.None;
     }
+
+    public void CreateMap()
+    {
+        GameMgr.Res.LoadAsset<GameObject>(10008);
+    }
 }
