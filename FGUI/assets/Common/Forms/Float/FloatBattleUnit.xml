@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="100,100" pivot="0.5,0.5" anchor="true" opaque="false">
   <displayList>
-    <component id="n0_qwwl" name="hp_bar" src="dl574x" fileName="MetaComponent/Progress/HPBar.xml" xy="50,160" size="100,20" group="n7_vl2o" touchable="false">
+    <component id="n0_qwwl" name="hp_bar" src="dl574x" fileName="MetaComponent/Progress/HPBar.xml" xy="50,38" size="100,20" group="n7_vl2o" touchable="false">
       <relation target="" sidePair="width-width,height-height"/>
       <ProgressBar value="50" max="100"/>
     </component>
-    <component id="n2_ty09" name="qi_bar" src="ty0953" fileName="MetaComponent/Progress/QIBar.xml" xy="50,177" size="100,20" group="n7_vl2o" touchable="false">
+    <component id="n2_ty09" name="qi_bar" src="ty0953" fileName="MetaComponent/Progress/QIBar.xml" xy="50,55" size="100,20" group="n7_vl2o" touchable="false">
       <relation target="" sidePair="width-width,height-height"/>
       <ProgressBar value="50" max="100"/>
     </component>
-    <group id="n7_vl2o" name="n7" xy="0,150" size="100,37"/>
-    <text id="n3_z0fc" name="txt_name" xy="0,190" pivot="0.5,0.5" size="100,60" font="ui://rt51n0kjekn09" fontSize="24" color="#cccccc" align="center" vAlign="middle" autoSize="none" text="妖"/>
+    <group id="n7_vl2o" name="n7" xy="0,28" size="100,37"/>
+    <text id="n3_z0fc" name="txt_name" xy="0,66" pivot="0.5,0.5" size="100,34" font="ui://rt51n0kjekn09" fontSize="24" color="#cccccc" align="center" vAlign="middle" autoSize="none" text="妖"/>
   </displayList>
 </component>

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6404926347415082359}
   - component: {fileID: 8804780193918882935}
   m_Layer: 0
-  m_Name: twilight_knight
+  m_Name: modle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
