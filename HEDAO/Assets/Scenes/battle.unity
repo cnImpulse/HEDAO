@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: battle_unit
       objectReference: {fileID: 0}
+    - target: {fileID: 4344403618582873562, guid: 8df2a75963f7c4685aa4fc386f403c2d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7533377357045793423, guid: 8df2a75963f7c4685aa4fc386f403c2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -245,10 +249,6 @@ PrefabInstance:
     - target: {fileID: 7533377357045793423, guid: 8df2a75963f7c4685aa4fc386f403c2d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8896844548195951277, guid: 8df2a75963f7c4685aa4fc386f403c2d, type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

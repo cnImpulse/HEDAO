@@ -1,0 +1,335 @@
+
+twilight_knight.sprite.combat.png
+size: 1003,1003
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Cloak1
+  rotate: false
+  xy: 579, 182
+  size: 85, 222
+  orig: 85, 222
+  offset: 0, 0
+  index: -1
+Cloak2
+  rotate: false
+  xy: 2, 454
+  size: 400, 547
+  orig: 400, 547
+  offset: 0, 0
+  index: -1
+Larm
+  rotate: true
+  xy: 230, 34
+  size: 119, 157
+  orig: 119, 157
+  offset: 0, 0
+  index: -1
+Leather2
+  rotate: true
+  xy: 856, 20
+  size: 31, 34
+  orig: 31, 34
+  offset: 0, 0
+  index: -1
+Leyelash1
+  rotate: false
+  xy: 946, 586
+  size: 40, 16
+  orig: 40, 16
+  offset: 0, 0
+  index: -1
+Leyelash2
+  rotate: true
+  xy: 988, 586
+  size: 16, 13
+  orig: 16, 13
+  offset: 0, 0
+  index: -1
+Lfoot
+  rotate: true
+  xy: 579, 11
+  size: 99, 63
+  orig: 99, 63
+  offset: 0, 0
+  index: -1
+Lhair
+  rotate: true
+  xy: 644, 4
+  size: 56, 101
+  orig: 56, 101
+  offset: 0, 0
+  index: -1
+Lhand
+  rotate: true
+  xy: 747, 4
+  size: 56, 59
+  orig: 56, 59
+  offset: 0, 0
+  index: -1
+Lleather1
+  rotate: false
+  xy: 574, 112
+  size: 75, 68
+  orig: 75, 68
+  offset: 0, 0
+  index: -1
+Lleg
+  rotate: true
+  xy: 651, 62
+  size: 102, 166
+  orig: 102, 166
+  offset: 0, 0
+  index: -1
+Lpupil1
+  rotate: false
+  xy: 949, 561
+  size: 22, 23
+  orig: 22, 23
+  offset: 0, 0
+  index: -1
+Lpupil2
+  rotate: true
+  xy: 651, 171
+  size: 9, 13
+  orig: 9, 13
+  offset: 0, 0
+  index: -1
+Lshank
+  rotate: false
+  xy: 858, 345
+  size: 89, 235
+  orig: 89, 235
+  offset: 0, 0
+  index: -1
+Lwhites
+  rotate: true
+  xy: 957, 96
+  size: 40, 24
+  orig: 40, 24
+  offset: 0, 0
+  index: -1
+RWhites
+  rotate: false
+  xy: 808, 24
+  size: 46, 27
+  orig: 46, 27
+  offset: 0, 0
+  index: -1
+Rarm
+  rotate: true
+  xy: 397, 92
+  size: 110, 175
+  orig: 110, 175
+  offset: 0, 0
+  index: -1
+Reyelash1
+  rotate: true
+  xy: 980, 806
+  size: 51, 19
+  orig: 51, 19
+  offset: 0, 0
+  index: -1
+Reyelash2
+  rotate: true
+  xy: 980, 781
+  size: 23, 12
+  orig: 23, 12
+  offset: 0, 0
+  index: -1
+Rfoot
+  rotate: false
+  xy: 524, 2
+  size: 53, 88
+  orig: 53, 88
+  offset: 0, 0
+  index: -1
+Rhair
+  rotate: false
+  xy: 946, 604
+  size: 44, 165
+  orig: 44, 165
+  offset: 0, 0
+  index: -1
+Rleather1
+  rotate: false
+  xy: 913, 93
+  size: 42, 43
+  orig: 42, 43
+  offset: 0, 0
+  index: -1
+Rleather2
+  rotate: true
+  xy: 913, 52
+  size: 39, 43
+  orig: 39, 43
+  offset: 0, 0
+  index: -1
+Rleg
+  rotate: true
+  xy: 666, 239
+  size: 111, 182
+  orig: 111, 182
+  offset: 0, 0
+  index: -1
+Rpupil1
+  rotate: false
+  xy: 958, 69
+  size: 23, 25
+  orig: 23, 25
+  offset: 0, 0
+  index: -1
+Rpupil2
+  rotate: false
+  xy: 212, 15
+  size: 11, 15
+  orig: 11, 15
+  offset: 0, 0
+  index: -1
+Rshank
+  rotate: true
+  xy: 404, 406
+  size: 108, 260
+  orig: 108, 260
+  offset: 0, 0
+  index: -1
+belt
+  rotate: false
+  xy: 666, 166
+  size: 202, 71
+  orig: 202, 71
+  offset: 0, 0
+  index: -1
+bhair
+  rotate: false
+  xy: 237, 155
+  size: 158, 297
+  orig: 158, 297
+  offset: 0, 0
+  index: -1
+chest
+  rotate: true
+  xy: 666, 352
+  size: 162, 190
+  orig: 162, 190
+  offset: 0, 0
+  index: -1
+cloth
+  rotate: true
+  xy: 2, 32
+  size: 126, 226
+  orig: 126, 226
+  offset: 0, 0
+  index: -1
+eyebow
+  rotate: false
+  xy: 2, 11
+  size: 84, 19
+  orig: 84, 19
+  offset: 0, 0
+  index: -1
+face
+  rotate: true
+  xy: 870, 138
+  size: 105, 111
+  orig: 105, 111
+  offset: 0, 0
+  index: -1
+fhair
+  rotate: false
+  xy: 389, 2
+  size: 133, 88
+  orig: 133, 88
+  offset: 0, 0
+  index: -1
+hood
+  rotate: false
+  xy: 2, 160
+  size: 233, 292
+  orig: 233, 292
+  offset: 0, 0
+  index: -1
+lamp
+  rotate: false
+  xy: 946, 771
+  size: 32, 230
+  orig: 32, 230
+  offset: 0, 0
+  index: -1
+light1
+  rotate: false
+  xy: 397, 204
+  size: 180, 200
+  orig: 180, 200
+  offset: 0, 0
+  index: -1
+light2
+  rotate: true
+  xy: 819, 53
+  size: 83, 92
+  orig: 83, 92
+  offset: 0, 0
+  index: -1
+light3
+  rotate: false
+  xy: 980, 859
+  size: 16, 75
+  orig: 16, 75
+  offset: 0, 0
+  index: -1
+ring1
+  rotate: true
+  xy: 88, 10
+  size: 20, 59
+  orig: 20, 59
+  offset: 0, 0
+  index: -1
+ring2
+  rotate: false
+  xy: 980, 936
+  size: 21, 65
+  orig: 21, 65
+  offset: 0, 0
+  index: -1
+ring3
+  rotate: true
+  xy: 149, 13
+  size: 17, 61
+  orig: 17, 61
+  offset: 0, 0
+  index: -1
+ring4
+  rotate: true
+  xy: 819, 150
+  size: 14, 49
+  orig: 14, 49
+  offset: 0, 0
+  index: -1
+ring5
+  rotate: true
+  xy: 808, 10
+  size: 12, 39
+  orig: 12, 39
+  offset: 0, 0
+  index: -1
+rope
+  rotate: true
+  xy: 850, 245
+  size: 98, 128
+  orig: 98, 128
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: true
+  xy: 858, 582
+  size: 419, 86
+  orig: 419, 86
+  offset: 0, 0
+  index: -1
+weapon
+  rotate: false
+  xy: 404, 516
+  size: 452, 485
+  orig: 452, 485
+  offset: 0, 0
+  index: -1
