@@ -18,6 +18,7 @@ public sealed partial class CharacterCfg : Luban.BeanBase
     {
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
+        Modle = _buf.ReadString();
         Level = _buf.ReadInt();
         RoleTag = _buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);SkillSet = new System.Collections.Generic.HashSet<int>(/*n0 * 3 / 2*/);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); SkillSet.Add(_e0);}}
@@ -39,6 +40,7 @@ public sealed partial class CharacterCfg : Luban.BeanBase
     /// 名字
     /// </summary>
     public readonly string Name;
+    public readonly string Modle;
     /// <summary>
     /// 境界
     /// </summary>
@@ -71,6 +73,7 @@ public sealed partial class CharacterCfg : Luban.BeanBase
         
         
         
+        
     }
 
     public override string ToString()
@@ -78,6 +81,7 @@ public sealed partial class CharacterCfg : Luban.BeanBase
         return "{ "
         + "Id:" + Id + ","
         + "Name:" + Name + ","
+        + "Modle:" + Modle + ","
         + "Level:" + Level + ","
         + "RoleTag:" + RoleTag + ","
         + "SkillSet:" + Luban.StringUtil.CollectionToString(SkillSet) + ","

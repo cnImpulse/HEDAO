@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Spine.Unity;
 using UnityEngine;
 using YooAsset;
 
@@ -79,5 +80,13 @@ public class ResManager : BaseManager
     {
         var path = GameMgr.Cfg.TbRes.Get(prefabId).Path;
         return LoadAsset<T>(path);
+    }
+
+    
+    public SkeletonDataAsset LoadSkeletonDataAsset(string model)
+    {
+        string path = string.Format("Assets/Res/battle_unit/{0}/spine_asset/{0}.sprite.combat_SkeletonData.asset",
+            model);
+        return LoadAsset<SkeletonDataAsset>(path);
     }
 }
