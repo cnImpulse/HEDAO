@@ -69,7 +69,11 @@ public class BattleManager : BaseManager
         foreach(var effectId in cfg.EffectList)
         {
             var effectCfg = GameMgr.Cfg.TbEffectCfg.Get(effectId);
-            effectCfg.OnTakeEffect(caster, target);
+            var result = effectCfg.OnTakeEffect(caster, target);
+            if (result != null)
+            {
+                GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Damage = result.Damage, TargetId = target.Id});
+            }
         }
 
         return true;

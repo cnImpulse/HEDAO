@@ -1,4 +1,5 @@
 using System;
+using Cfg.Battle;
 using DG.Tweening;
 using UnityEngine;
 using FairyGUI;
@@ -14,9 +15,9 @@ public class FloatBubble : UIBase
         base.OnInit(userData);
 
         var data = userData as BubbleData;
-        //var gridUnitView = GameMgr.Entity.GetEntityView<GridUnitView>(data.TargetId);
-        //TargetPos = gridUnitView.transform.position;
-        //View.m_title.text = data.IsMiss ? "miss" : data.Damage.ToString();
+        var view = GameMgr.Entity.GetEntityView<BattleUnitView>(data.TargetId);
+        TargetPos = view.transform.position + new Vector3(0, 2f, 0);
+        View.m_title.text = data.Damage.ToString();
 
         DOVirtual.DelayedCall(2f, Close);
     }
