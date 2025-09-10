@@ -1,0 +1,10 @@
+rabid_dog.sprite.attack_melee.png
+size:352,500
+filter:Linear,Linear
+pma:true
+attack_melee
+bounds:2,2,496,283
+rotate:90
+shadow
+bounds:287,141,357,63
+rotate:90

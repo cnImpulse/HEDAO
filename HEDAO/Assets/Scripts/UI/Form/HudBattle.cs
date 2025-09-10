@@ -168,6 +168,9 @@ public class HudBattle : UIBase
 
         m_SelectEffectId = GameMgr.Effect.ShowEffect(10006, SelectedTarget.Id);
         View.m_comp_skill_result.m_txt_result.text = SkillUtil.GetSkillDesc(SelectedSkillId, CurBattleUnit, SelectedTarget.Entity);
+
+        var view = GameMgr.Entity.GetEntityView<BattleUnitView>(SelectedTarget.Id);
+        view.PlayAnim("selected");
     }
 
     //private List<long> TargetEffectList = new List<long>();
@@ -189,6 +192,8 @@ public class HudBattle : UIBase
 
     private void OnClickReleaseSkill()
     {
+
+        
         GameMgr.Battle.PlaySkill(SelectedSkillId, CurBattleUnit, SelectedTarget.Entity);
         ExitPlaySkill();
 

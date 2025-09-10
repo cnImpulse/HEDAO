@@ -1,0 +1,11 @@
+twilight_knight.sprite.defend.png
+size:728,596
+filter:Linear,Linear
+pma:true
+shadow
+bounds:663,237,357,63
+rotate:90
+twilight knight defend
+bounds:2,2,592,659
+offsets:7,4,603,686
+rotate:90

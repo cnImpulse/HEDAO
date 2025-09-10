@@ -1,0 +1,10 @@
+twilight_knight.sprite.attack_chop.png
+size:705,542
+filter:Linear,Linear
+pma:true
+attack_chop
+bounds:2,2,636,538
+offsets:0,3,638,541
+shadow
+bounds:640,183,357,63
+rotate:90

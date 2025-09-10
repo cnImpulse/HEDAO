@@ -61,6 +61,12 @@ public class BattleManager : BaseManager
     {
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
         var hit = SkillUtil.GetHit(skillId, caster, target);
+        
+        var casterView = GameMgr.Entity.GetEntityView<BattleUnitView>(caster.Id);
+        var targetView = GameMgr.Entity.GetEntityView<BattleUnitView>(target.Id);
+        casterView.PlaySpineAnim("attack_chop");
+        targetView.PlaySpineAnim("defend");
+        
         if (!CheckHit(hit))
         {
             return false;

@@ -83,10 +83,10 @@ public class ResManager : BaseManager
     }
 
     
-    public SkeletonDataAsset LoadSkeletonDataAsset(string model)
+    public SkeletonDataAsset LoadSkeletonDataAsset(string model, string animName)
     {
-        string path = string.Format("Assets/Res/battle_unit/{0}/spine_asset/{0}.sprite.combat_SkeletonData.asset",
-            model);
+        string path = string.Format("Assets/Res/battle_unit/{0}/spine_asset/{0}.sprite.{1}_SkeletonData.asset",
+            model, animName);
         return LoadAsset<SkeletonDataAsset>(path);
     }
 }

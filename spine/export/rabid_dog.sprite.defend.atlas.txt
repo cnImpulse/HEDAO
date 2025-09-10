@@ -1,0 +1,10 @@
+rabid_dog.sprite.defend.png
+size:328,401
+filter:Linear,Linear
+pma:true
+defend
+bounds:2,2,397,259
+rotate:90
+shadow
+bounds:263,42,357,63
+rotate:90
