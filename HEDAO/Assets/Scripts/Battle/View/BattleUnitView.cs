@@ -55,15 +55,29 @@ public class BattleUnitView : EntityView, IPointerClickHandler
     {
         var targetPosition = GameMgr.Battle.BattleMapView.GetFxWorldPosition(this);
         var targetScale = 1.5f;
-
+        float preTime = 0.3f, stayTime = 0.8f, endTime = 0.5f;
+        
         var sequence = DOTween.Sequence();
-        sequence.Append(transform.DOMove(targetPosition, 0.3f));
-        sequence.Join(transform.DOScale(targetScale, 0.3f)); 
+        sequence.Append(transform.DOMove(targetPosition, preTime));
+        sequence.Insert(0, DOTween.To(
+            () => GameMgr.Camera.VirtualCamera.m_Lens.OrthographicSize, 
+            x => GameMgr.Camera.VirtualCamera.m_Lens.OrthographicSize = x, 
+            4.8f, 
+            preTime
+        ));
+        
+        sequence.Join(transform.DOScale(targetScale, preTime));
+        sequence.AppendInterval(stayTime);
 
-        sequence.AppendInterval(0.8f);
-
-        sequence.Append(transform.DOLocalMove(Vector3.zero, 0.5f));
-        sequence.Join(transform.DOScale(Vector3.one, 0.5f));
+        sequence.Append(transform.DOLocalMove(Vector3.zero, endTime));
+        sequence.Join(transform.DOScale(Vector3.one, endTime));
+        sequence.Insert(preTime + stayTime, DOTween.To(
+            () => GameMgr.Camera.VirtualCamera.m_Lens.OrthographicSize, 
+            x => GameMgr.Camera.VirtualCamera.m_Lens.OrthographicSize = x, 
+            5.2f, 
+            endTime
+        ));
+        
         sequence.SetAutoKill(true);
 
         sequence.OnStart(() => { SetSpineData(animName); });
