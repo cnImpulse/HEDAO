@@ -12,7 +12,7 @@
     </bean>
 
     <bean name="AttackEffect" parent="EffectCfg" alias="攻击">
-        <var name="Powner" type="int"/>
+        <var name="DamageRate" type="float"/>
         <var name="DamageType" type="EDamageType"/>
     </bean>
 

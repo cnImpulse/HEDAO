@@ -21,7 +21,7 @@ namespace Cfg.Battle
 
         public override string GetDesc()
         {
-            var str = string.Format("威力: {0}({1})", Powner, DamageType.GetName());
+            var str = string.Format("伤害比例: {0:P0}({1})", DamageRate, DamageType.GetName());
             return str;
         }
 
@@ -33,7 +33,7 @@ namespace Cfg.Battle
 
         private int GetDamage(IEffectTarget caster, IEffectTarget target)
         {
-            var damage = caster.Attr.STR + Powner - target.Attr.TPO;
+            var damage = Mathf.CeilToInt((caster.Attr.STR - target.Attr.TPO) * DamageRate); 
             damage = Mathf.Clamp(damage, 0, damage);
             return damage;
         }

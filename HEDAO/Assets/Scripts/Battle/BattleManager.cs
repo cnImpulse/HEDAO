@@ -26,7 +26,13 @@ public class BattleManager : BaseManager
 
     public void StartBattle(int id)
     {
-        GameMgr.Save.Data.BattleData = new BattleData(id);
+        GameMgr.Save.Data.BattleData = new BattleData(id, GameMgr.Explore.Data.Team);
+        GameMgr.Procedure.Fsm.ChangeState<ProcedureBattle>();
+    }
+    
+    public void StartBattle(int id, Dictionary<long, PlayerRole> team)
+    {
+        GameMgr.Save.Data.BattleData = new BattleData(id, team);
         GameMgr.Procedure.Fsm.ChangeState<ProcedureBattle>();
     }
 

@@ -17,10 +17,11 @@ public class MenuMain : UIBase
         });
         //View.m_btn_exit.onClick.Add(() => { Log.Info("退出游戏。"); });
 
-        // View.m_btn_battle.onClick.Add(() =>
-        // {
-        //     
-        // });
+        View.m_btn_battle.onClick.Add(() =>
+        {
+            GameMgr.Save.LoadTestBattleData();
+            GameMgr.Procedure.Fsm.ChangeState<ProcedureBattle>();
+        });
     }
 
     protected override void OnShow()

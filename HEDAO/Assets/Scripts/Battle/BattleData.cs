@@ -41,17 +41,17 @@ public class BattleData
     {
     }
     
-    public BattleData(int cfgId)
+    public BattleData(int cfgId, Dictionary<long, PlayerRole> team)
     {
         CfgId = cfgId;
         BattleState = EBattleState.Prepare;
 
-        InitBattleUnit();
+        InitBattleUnit(team);
     }
-
-    private void InitBattleUnit()
+    
+    private void InitBattleUnit(Dictionary<long, PlayerRole> team)
     {
-        var list = GameMgr.Explore.Data.Team.Values.ToList();
+        var list = team.Values.ToList();
         for (int i = 0; i < list.Count; ++i)
         {
             var role = list[i];

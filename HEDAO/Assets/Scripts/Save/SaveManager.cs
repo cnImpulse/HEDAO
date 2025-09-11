@@ -75,6 +75,20 @@ public class SaveManager : BaseManager
         }
     }
 
+    public void LoadTestBattleData()
+    {
+        Data = new SaveData();
+        Data.RecruitList = GetInitPlayRole();
+        Data.Init();
+
+        foreach (var role in Data.RecruitList)
+        {
+            Data.TeamDict.Add(role.Id, role);
+        }
+        
+        GameMgr.Battle.StartBattle(10001, Data.TeamDict);
+    }
+
     public void SaveGame()
     {
         if (Data == null) return;
