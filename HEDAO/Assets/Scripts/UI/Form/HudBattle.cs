@@ -96,7 +96,7 @@ public class HudBattle : UIBase
 
         var skillId = (int)data;
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
-        if (cfg.TargetPos.Contains(-target.Entity.Battle.PosIndex))
+        if (cfg.TargetPos.Contains(target.Entity.Battle.PosIndex))
         {
             SelectedTarget = target;
         }
@@ -173,31 +173,25 @@ public class HudBattle : UIBase
         view.PlayAnim("selected");
     }
 
-    //private List<long> TargetEffectList = new List<long>();
     private void ShowSkillTarget(int skillId)
     {
         GameMgr.Effect.HideEffectByPrefabId(10007);
 
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
-        foreach(var pos in cfg.TargetPos)
+        var enemyList = GameMgr.Battle.Data.GetRoleList(cfg.TargetPos, false);
+        foreach(var enemy in enemyList)
         {
-            var enemy = GameMgr.Battle.Data.GetRole(-pos);
-            if (enemy != null)
-            {
-                var effectId = GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10007, FollowId = enemy.Id });
-                //TargetEffectList.Add(effectId);
-            }
+            var effectId = GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10007, FollowId = enemy.Id });
         }
     }
 
     private void OnClickReleaseSkill()
     {
-
-        
         GameMgr.Battle.PlaySkill(SelectedSkillId, CurBattleUnit, SelectedTarget.Entity);
-        ExitPlaySkill();
 
-        GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
+        GameMgr.Effect.HideEffectByPrefabId(10006);
+        
+        ExitPlaySkill();
     }
 
     private void ExitPlaySkill()

@@ -42,4 +42,11 @@ public class EffectManager : BaseManager
             HideEffect(id);
         }
     }
+
+    public void ShowFxSelect(long entityId)
+    {
+        GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10006, FollowId = entityId });
+        var view = GameMgr.Entity.GetEntityView<BattleUnitView>(entityId);
+        view.PlayAnim("selected");
+    }
 }

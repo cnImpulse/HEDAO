@@ -51,7 +51,7 @@ public class BattleUnitView : EntityView, IPointerClickHandler
         SkeletonAnimation.Initialize(true);
     }
 
-    public void PlaySpineAnim(string animName)
+    public void PlaySpineAnim(string animName, TweenCallback onComplete = null)
     {
         var targetPosition = GameMgr.Battle.BattleMapView.GetFxWorldPosition(this);
         var targetScale = 1.5f;
@@ -81,6 +81,9 @@ public class BattleUnitView : EntityView, IPointerClickHandler
         sequence.SetAutoKill(true);
 
         sequence.OnStart(() => { SetSpineData(animName); });
-        sequence.OnComplete(() => { SetSpineData(); });
+        sequence.OnComplete(() => { 
+            SetSpineData();
+            onComplete?.Invoke();
+        });
     }
 }

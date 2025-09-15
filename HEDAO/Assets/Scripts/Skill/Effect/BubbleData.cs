@@ -5,5 +5,6 @@ public class BubbleData
 {
     public long TargetId;
     public int Damage;
+    public string Text;
 }
 

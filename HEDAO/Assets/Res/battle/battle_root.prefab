@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede3fd64564764b88b217d4d138f637d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FxLeftRoot: {fileID: 1497588995127281868}
   FxRightRoot: {fileID: 6983355735297363153}
-  LeftRightRoot: {fileID: 1497588995127281868}
   LeftPos:
   - {fileID: 4961848192340633936}
   - {fileID: 3527196488114259085}

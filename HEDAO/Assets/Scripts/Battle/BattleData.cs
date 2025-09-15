@@ -56,6 +56,7 @@ public class BattleData
         {
             var role = list[i];
             role.Battle.PosIndex = i + 1;
+            role.Battle.IsLeft = true;
             BattleUnitDict.Add(role.Id, role);
         }
 
@@ -63,7 +64,8 @@ public class BattleData
         {
             var role = new EnemyRole();
             role.Init(Cfg.EnemyList[i]);
-            role.Battle.PosIndex = -i - 1;
+            role.Battle.PosIndex = i + 1;
+            role.Battle.IsLeft = false;
             BattleUnitDict.Add(role.Id, role);
         }
     }
@@ -79,7 +81,7 @@ public class BattleData
         return EResult.None;
     }
 
-    public Role GetRole(int pos)
+    public Role GetRole(int pos, bool isLeft)
     {
         foreach(var role in BattleUnitDict.Values)
         {
@@ -90,6 +92,26 @@ public class BattleData
         }
 
         return null;
+    }
+    
+    public List<Role> GetRoleList(bool isLeft)
+    {
+        var list = new List<Role>();
+        foreach(var role in BattleUnitDict.Values)
+        {
+            if (role.Battle.IsLeft == isLeft)
+            {
+                list.Add(role);
+            }
+        }
+
+        return list;
+    }
+
+    public List<Role> GetRoleList(List<int> targetPos, bool isLeft)
+    {
+        var list = BattleUnitDict.Values.Where(role => role.Battle.IsLeft == isLeft && targetPos.Contains(role.Battle.PosIndex)).ToList();
+        return list;
     }
 }
 

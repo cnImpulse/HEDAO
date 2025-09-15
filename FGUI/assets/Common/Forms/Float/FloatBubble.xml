@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="100,20" pivot="0.5,0.5" anchor="true" bgColor="#ff0000">
   <displayList>
-    <text id="n0_m3nj" name="title" xy="50,10" pivot="0.5,0.5" anchor="true" size="60,44" fontSize="32" color="#ff7777" text="100"/>
+    <text id="n0_m3nj" name="title" xy="50,10" pivot="0.5,0.5" anchor="true" size="160,64" fontSize="48" color="#ff7777" align="center" vAlign="middle" autoSize="none" text="100"/>
   </displayList>
   <transition name="fade_close" autoPlay="true">
     <item time="0" type="Alpha" target="n0_m3nj" tween="true" startValue="0" endValue="1" duration="6" ease="Quint.In"/>

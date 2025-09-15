@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Cfg;
 using Cfg.Battle;
@@ -40,5 +41,33 @@ public class SkillComponent : Component
     public void RemoveSkill(int id)
     {
         SkillSet.Remove(id);
+    }
+
+    public List<int> GetValidSkillList(BattleData data)
+    {
+        var list = new List<int>();
+        foreach (var skillId in SkillSet)
+        {
+            var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+            if (Owner.Attr.QI <= cfg.Cost)
+            {
+                continue;
+            }
+
+            if (!cfg.LaunchPos.Contains(Owner.Battle.PosIndex))
+            {
+                continue;
+            }
+
+            var targetList = GameMgr.Battle.Data.GetRoleList(cfg.TargetPos, !Owner.Battle.IsLeft);
+            if (targetList.Count == 0)
+            {
+                continue;
+            }
+            
+            list.Add(skillId);
+        }
+        
+        return list;
     }
 }

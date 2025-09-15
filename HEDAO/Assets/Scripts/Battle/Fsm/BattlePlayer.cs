@@ -10,10 +10,9 @@ public class BattlePlayer : BattleStateBase
         base.OnEnter();
 
         GameMgr.Event.Subscribe(GameEventType.OnBattleUnitActionEnd, OnPlayerRoundEnd);
-
-        GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10006, FollowId = CurBattleUnit.Id });
         GameMgr.Event.Fire(GameEventType.OnPlayerRoundStart);
         
+        GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10006, FollowId = CurBattleUnit.Id });
         var view = GameMgr.Entity.GetEntityView<BattleUnitView>(CurBattleUnit.Id);
         view.PlayAnim("selected");
     }
@@ -27,7 +26,6 @@ public class BattlePlayer : BattleStateBase
     public override void OnLeave()
     {
         GameMgr.Effect.HideEffectByPrefabId(10006);
-
         Data.BattleUnitQueue.Dequeue();
 
         GameMgr.Event.Unsubscribe(GameEventType.OnBattleUnitActionEnd, OnPlayerRoundEnd);

@@ -35,9 +35,9 @@ public class BattleLoop : FsmState
         {
             var list = Data.BattleUnitDict.Values.ToList();
             list.Sort((a, b) => b.Attr.SPD.CompareTo(a.Attr.SPD));
-            foreach (var gridUnit in list)
+            foreach (var battleUnit in list)
             {
-                Data.BattleUnitQueue.Enqueue(gridUnit);
+                Data.BattleUnitQueue.Enqueue(battleUnit);
             }
         }
     }

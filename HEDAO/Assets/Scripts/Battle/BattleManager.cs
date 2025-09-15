@@ -70,11 +70,15 @@ public class BattleManager : BaseManager
         
         var casterView = GameMgr.Entity.GetEntityView<BattleUnitView>(caster.Id);
         var targetView = GameMgr.Entity.GetEntityView<BattleUnitView>(target.Id);
-        casterView.PlaySpineAnim("attack_chop");
         targetView.PlaySpineAnim("defend");
+        casterView.PlaySpineAnim("attack", () =>
+        {
+            GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
+        });
         
         if (!CheckHit(hit))
         {
+            GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Text = "未命中", TargetId = target.Id});
             return false;
         }
 
