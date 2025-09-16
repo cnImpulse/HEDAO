@@ -11,7 +11,6 @@ public class ProcedureBattle : FsmState
         base.OnEnter();
 
         GameMgr.Save.Data.SceneType = SceneType.Battle;
-
         GameMgr.Battle.LoadBattleMap();
         GameMgr.Battle.InitFsm(Data.BattleState);
         GameMgr.UI.ShowUI(UIName.HudBattle);

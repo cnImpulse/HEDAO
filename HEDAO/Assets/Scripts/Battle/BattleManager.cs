@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cfg.Battle;
+using DG.Tweening;
 using UnityEngine;
 
 public class BattleManager : BaseManager
@@ -73,25 +74,42 @@ public class BattleManager : BaseManager
         targetView.PlaySpineAnim("defend");
         casterView.PlaySpineAnim("attack", () =>
         {
-            GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
+            if (!CheckHit(hit))
+            {
+                GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Text = "未命中", TargetId = target.Id});
+                GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
+                return;
+            }
+
+            foreach(var effectId in cfg.EffectList)
+            {
+                var effectCfg = GameMgr.Cfg.TbEffectCfg.Get(effectId);
+                var result = effectCfg.OnTakeEffect(caster, target);
+                if (result != null)
+                {
+                    GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Damage = result.Damage, TargetId = target.Id});
+                }
+            }
+            
+            if (target.Battle.IsDead)
+            {
+                targetView.PlayDeadAnim(() =>
+                {
+                    Data.RemoveBattleUnit(target.Id);
+                    GameMgr.Entity.HideEntity(target.Id);
+                    
+                    DOVirtual.DelayedCall(0.5f, () =>
+                    {
+                        GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
+                    });
+                });
+            }
+            else
+            {
+                GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
+            }
         });
         
-        if (!CheckHit(hit))
-        {
-            GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Text = "未命中", TargetId = target.Id});
-            return false;
-        }
-
-        foreach(var effectId in cfg.EffectList)
-        {
-            var effectCfg = GameMgr.Cfg.TbEffectCfg.Get(effectId);
-            var result = effectCfg.OnTakeEffect(caster, target);
-            if (result != null)
-            {
-                GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Damage = result.Damage, TargetId = target.Id});
-            }
-        }
-
         return true;
     }
 

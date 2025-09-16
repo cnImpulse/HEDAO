@@ -23,10 +23,19 @@ public class BattleUnitView : EntityView, IPointerClickHandler
         SetSpineData("combat");
         
         m_FloatUId = GameMgr.UI.ShowFloatUI(UIName.FloatBattleUnit, this);
+
+        Entity.Battle.OnPosChanged += OnPosChanged;
+    }
+
+    private void OnPosChanged()
+    {
+        GameMgr.Battle.BattleMapView.SetParent(this);
+        transform.DOLocalMove(Vector3.zero, 0.5f);
     }
 
     protected override void OnDestroy()
     {
+        Entity.Battle.OnPosChanged -= OnPosChanged;
         GameMgr.UI.CloseUI(m_FloatUId);
     }
 
@@ -57,7 +66,7 @@ public class BattleUnitView : EntityView, IPointerClickHandler
         var targetScale = 1.5f;
         float preTime = 0.3f, stayTime = 0.8f, endTime = 0.5f;
         
-        var sequence = DOTween.Sequence();
+        Sequence sequence = DOTween.Sequence();
         sequence.Append(transform.DOMove(targetPosition, preTime));
         sequence.Insert(0, DOTween.To(
             () => GameMgr.Camera.VirtualCamera.m_Lens.OrthographicSize, 
@@ -85,5 +94,12 @@ public class BattleUnitView : EntityView, IPointerClickHandler
             SetSpineData();
             onComplete?.Invoke();
         });
+    }
+
+    public void PlayDeadAnim(TweenCallback onComplete = null)
+    {
+        var anim = DOTween.ToAlpha(() => SkeletonAnimation.Skeleton.GetColor(),
+            x => SkeletonAnimation.Skeleton.SetColor(x), 0, 0.8f);
+        anim.OnComplete(onComplete);
     }
 }

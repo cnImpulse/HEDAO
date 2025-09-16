@@ -55,29 +55,43 @@ public class BattleData
         for (int i = 0; i < list.Count; ++i)
         {
             var role = list[i];
-            role.Battle.PosIndex = i + 1;
-            role.Battle.IsLeft = true;
-            BattleUnitDict.Add(role.Id, role);
+            AddBattleUnit(role, i+1, true);
         }
 
         for (int i = 0; i < Cfg.EnemyList.Count; ++i)
         {
             var role = new EnemyRole();
             role.Init(Cfg.EnemyList[i]);
-            role.Battle.PosIndex = i + 1;
-            role.Battle.IsLeft = false;
-            BattleUnitDict.Add(role.Id, role);
+            AddBattleUnit(role, i + 1, false);
         }
     }
 
-    public void OnRemoveBattleUnit(long id)
+    public void AddBattleUnit(Role role, int posIndex, bool isLeft)
     {
-        //BattleUnitQueue = new Queue<GridUnit>(BattleUnitQueue.Where(battleUnit => battleUnit.Id != id));
+        role.Battle.PosIndex = posIndex;
+        role.Battle.IsLeft = isLeft;
+        BattleUnitDict.Add(role.Id, role);
+    }
+
+    public void RemoveBattleUnit(long id)
+    {
+        if (BattleUnitDict.TryGetValue(id, out Role role))
+        {
+            BattleUnitQueue = new Queue<Role>(BattleUnitQueue.Where(e => e.Id != id));
+            BattleUnitDict.Remove(id);
+            foreach (var friend in GetRoleList(role.Battle.IsLeft))
+            {
+                if (friend.Battle.PosIndex > role.Battle.PosIndex)
+                {
+                    friend.Battle.PosIndex--;
+                    friend.Battle.OnPosChanged?.Invoke();
+                }
+            }
+        }
     }
 
     public EResult GetBattleResult()
     {
-
         return EResult.None;
     }
 

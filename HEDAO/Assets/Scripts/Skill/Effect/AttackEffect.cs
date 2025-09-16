@@ -6,7 +6,10 @@ namespace Cfg.Battle
     {
         public override TakeEffectResult OnTakeEffect(IEffectTarget caster, IEffectTarget target)
         {
-            var damage = -GetDamage(caster, target);
+            var range = caster.Attr.GetAtkRange();
+            var atk = Random.Range(range.Min, range.Max + 1);
+            
+            var damage = -GetDamage(caster, target, atk);
             target.Attr.ModifyAttr(EAttrType.HP, damage);
 
             var result = new TakeEffectResult();
@@ -27,13 +30,15 @@ namespace Cfg.Battle
 
         public override string GetDesc(IEffectTarget caster, IEffectTarget target)
         {
-            var str = string.Format("伤害: {0}({1})", GetDamage(caster, target), DamageType.GetName()); ;
+            var range = caster.Attr.GetAtkRange();
+            var str = string.Format("伤害: {0}-{1}({2})", GetDamage(caster, target, range.Min), 
+                GetDamage(caster, target, range.Max), DamageType.GetName()); ;
             return str;
         }
 
-        private int GetDamage(IEffectTarget caster, IEffectTarget target)
+        private int GetDamage(IEffectTarget caster, IEffectTarget target, int atk = 0)
         {
-            var damage = Mathf.CeilToInt((caster.Attr.STR - target.Attr.TPO) * DamageRate); 
+            var damage = Mathf.CeilToInt((atk + caster.Attr.STR - target.Attr.TPO) * DamageRate); 
             damage = Mathf.Clamp(damage, 0, damage);
             return damage;
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,14 @@ public class BattleComponent : Component
 
     public int PosIndex = 0;
     public bool IsLeft = true;
-
+    public bool IsDead => Owner.Attr.HP <= 0;
+    
     protected override void OnInit(object data)
     {
         base.OnInit(data);
 
 
     }
+
+    public Action OnPosChanged;
 }

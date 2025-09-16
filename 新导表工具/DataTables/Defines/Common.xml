@@ -2,6 +2,11 @@
 	<bean name="Range" sep=",">
         <var name="Min" type="int"/>
         <var name="Max" type="int"/>
+
+        <mapper target="client" codeTarget="cs-bin">
+            <option name="type" value="HEDAO.Range"/>
+            <option name="constructor" value="ExternalTypeUtil.NewRange"/>
+        </mapper>
     </bean>
 
     <bean name="ItemCfg">
@@ -16,5 +21,6 @@
 
     <bean name="EquipCfg" parent="ItemCfg" alias="装备">
         <var name="EquipType" type="EEquipType"/>
+        <var name="AtkRange" type="Range"/>
     </bean>
 </module>

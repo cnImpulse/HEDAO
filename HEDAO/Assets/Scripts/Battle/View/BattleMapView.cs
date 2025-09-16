@@ -23,4 +23,10 @@ public class BattleMapView : MonoBehaviour
         var trans = view.Entity.Battle.IsLeft ? FxLeftRoot : FxRightRoot;
         return trans.position;
     }
+
+    public void SetParent(BattleUnitView view)
+    {
+        var trans = view.Entity.Battle.IsLeft ? LeftPos : RightPos;
+        view.transform.SetParent(trans[view.Entity.Battle.PosIndex - 1]);
+    }
 }

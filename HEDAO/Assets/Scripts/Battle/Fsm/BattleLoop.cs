@@ -34,7 +34,13 @@ public class BattleLoop : FsmState
         if (Data.BattleUnitQueue.Count == 0)
         {
             var list = Data.BattleUnitDict.Values.ToList();
-            list.Sort((a, b) => b.Attr.SPD.CompareTo(a.Attr.SPD));
+            var speedDict = new Dictionary<Role, int>();
+            foreach (var unit in list)
+            {
+                speedDict[unit] = unit.Attr.SPD + Random.Range(1, 4);
+            }
+            
+            list.Sort((a, b) => speedDict[b].CompareTo(speedDict[a]));
             foreach (var battleUnit in list)
             {
                 Data.BattleUnitQueue.Enqueue(battleUnit);

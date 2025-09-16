@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class BattleAI : BattleStateBase
@@ -12,7 +13,7 @@ public class BattleAI : BattleStateBase
         GameMgr.Event.Subscribe(GameEventType.OnBattleUnitActionEnd, OnPlayerRoundEnd);
         
         GameMgr.Effect.ShowFxSelect(CurBattleUnit.Id);
-        AutoAction();
+        DOVirtual.DelayedCall(0.5f, AutoAction);
     }
 
     public override void OnLeave()

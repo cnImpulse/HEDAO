@@ -16,6 +16,7 @@ public class HudBattle : UIBase
         base.OnInit(userData);
 
         GameMgr.Event.Subscribe(GameEventType.OnClickBattleUnit, OnClickBattleUnit);
+        GameMgr.Event.Subscribe(GameEventType.OnBattleUnitDead, OnBattleUnitDead);
         //GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnPlayerRoundStart);
 
         View.m_comp_skill_result.m_btn_sure.onClick.Set(OnClickReleaseSkill);
@@ -24,6 +25,11 @@ public class HudBattle : UIBase
         View.m_comp_skill.m_list_skill.itemRenderer = OnRenderSkill;
         View.m_comp_skill.m_list_skill.RefreshSelectionCtrl();
         View.m_comp_skill.m_list_skill.selectionController.onChanged.Set(RefreshSkill);
+    }
+
+    private void OnBattleUnitDead(GameEvent obj)
+    {
+        Refresh();
     }
 
     protected override void OnShow()

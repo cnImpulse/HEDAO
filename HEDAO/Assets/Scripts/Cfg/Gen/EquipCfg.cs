@@ -17,6 +17,7 @@ public sealed partial class EquipCfg : ItemCfg
     public EquipCfg(ByteBuf _buf)  : base(_buf) 
     {
         EquipType = (EEquipType)_buf.ReadInt();
+        AtkRange = ExternalTypeUtil.NewRange(Range.DeserializeRange(_buf));
     }
 
     public static EquipCfg DeserializeEquipCfg(ByteBuf _buf)
@@ -25,6 +26,7 @@ public sealed partial class EquipCfg : ItemCfg
     }
 
     public readonly EEquipType EquipType;
+    public readonly HEDAO.Range AtkRange;
    
     public const int __ID__ = 653514292;
     public override int GetTypeId() => __ID__;
@@ -32,6 +34,7 @@ public sealed partial class EquipCfg : ItemCfg
     public override void ResolveRef(Tables tables)
     {
         base.ResolveRef(tables);
+        
         
     }
 
@@ -42,6 +45,7 @@ public sealed partial class EquipCfg : ItemCfg
         + "Name:" + Name + ","
         + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
         + "EquipType:" + EquipType + ","
+        + "AtkRange:" + AtkRange + ","
         + "}";
     }
 }

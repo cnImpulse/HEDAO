@@ -10,6 +10,7 @@ public enum GameEventType
     OnPlayerRoundStart,
     OnBattleUnitActionEnd,
     BattleEvent,
+    OnBattleUnitDead,
 }
 
 public class GameEvent

@@ -34,7 +34,12 @@ public class EntityManager : BaseManager
     public T GetEntityView<T>(long id)
         where T : EntityView
     {
-        return EntityViewDict[id] as T;
+        if (EntityViewDict.TryGetValue(id, out EntityView view))
+        {
+            return view as T;
+        }
+
+        return default;
     }
 
     public long GetNextId()

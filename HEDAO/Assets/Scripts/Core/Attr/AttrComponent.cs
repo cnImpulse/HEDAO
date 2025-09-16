@@ -121,4 +121,9 @@ public abstract partial class AttrComponent : Component
         attr.Max = maxAttr.Value;
         maxAttr.OnValueChanged += (value => attr.Max = value);
     }
+
+    public virtual HEDAO.Range GetAtkRange()
+    {
+        return default;
+    }
 }

@@ -16,6 +16,12 @@ public class FloatBubble : UIBase
 
         var data = userData as BubbleData;
         var view = GameMgr.Entity.GetEntityView<BattleUnitView>(data.TargetId);
+        if (view == null)
+        {
+            Close();
+            return;
+        }
+        
         TargetPos = view.transform.position + new Vector3(0, 2f, 0);
 
         if (data.Text != null)
