@@ -19,6 +19,16 @@ namespace FGUI.Common
             Cfg = GameMgr.Cfg.TbSkill.Get(skillId);
             m_list_self.numItems = 4;
             m_list_target.numItems = 4;
+            m_group_line.visible = Cfg.IsMulti;
+            if (Cfg.IsMulti)
+            {
+                var max = Cfg.TargetPos.Max();
+                for (int i = 1; i <= 3; i++)
+                {
+                    var line = GetChild("img_line_" + i);
+                    line.visible = Cfg.TargetPos.Contains(i) && i != max;
+                }
+            }
         }
 
         private void OnRenderSelfPos(int index, GObject obj, object data)

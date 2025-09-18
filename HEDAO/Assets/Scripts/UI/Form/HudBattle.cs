@@ -17,7 +17,6 @@ public class HudBattle : UIBase
 
         GameMgr.Event.Subscribe(GameEventType.OnClickBattleUnit, OnClickBattleUnit);
         GameMgr.Event.Subscribe(GameEventType.OnBattleUnitDead, OnBattleUnitDead);
-        //GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnPlayerRoundStart);
 
         View.m_comp_skill_result.m_btn_sure.onClick.Set(OnClickReleaseSkill);
 
@@ -36,6 +35,7 @@ public class HudBattle : UIBase
     {
         base.OnShow();
 
+        RefreshActionList();
         RefreshRolePanel();
         RefreshSkill();
     }
@@ -47,8 +47,8 @@ public class HudBattle : UIBase
 
         var state = GameMgr.Battle.Fsm.CurState;
         View.m_txt_battle_state.text = state.ToString();
-        RefreshActionList();
 
+        RefreshActionList();
         if (lastState != state)
         {
             RefreshRolePanel();
@@ -58,20 +58,14 @@ public class HudBattle : UIBase
 
     protected override void OnClose()
     {
-        //GameMgr.Event.Unsubscribe(GameEventType.OnPlayerRoundStart, OnPlayerRoundStart);
         GameMgr.Event.Unsubscribe(GameEventType.OnClickBattleUnit, OnClickBattleUnit);
 
         base.OnClose();
     }
 
-    private void OnPlayerRoundStart(GameEvent obj)
-    {
-        //RefreshRolePanel();
-    }
-
     public void RefreshActionList()
     {
-        //View.m_list_action.RefreshList(GameMgr.Battle.Data.BattleUnitQueue.ToList());
+        View.m_list_action.RefreshList(GameMgr.Battle.Data.BattleUnitQueue.ToList());
     }
 
     private void OnRenderSkill(int index, GObject item, object data)
@@ -84,10 +78,10 @@ public class HudBattle : UIBase
 
     private void OnRenderRole(int index, GObject item, object data)
     {
-        //var role = (data as GridUnit).Role;
-        //var btn = item as FGUIBtnRole;
-        //btn.mode = ButtonMode.Common;
-        //btn.Refresh(role);
+        var role = data as Role;
+        var btn = item as FGUIBtnRole;
+        btn.enabled = false;
+        btn.Refresh(role, false);
     }
 
     private long m_SelectEffectId = 0;

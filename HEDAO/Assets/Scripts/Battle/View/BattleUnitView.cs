@@ -60,9 +60,9 @@ public class BattleUnitView : EntityView, IPointerClickHandler
         SkeletonAnimation.Initialize(true);
     }
 
-    public void PlaySpineAnim(string animName, TweenCallback onComplete = null)
+    public void PlaySpineAnim(string animName, TweenCallback onComplete = null, Vector3 offset = default)
     {
-        var targetPosition = GameMgr.Battle.BattleMapView.GetFxWorldPosition(this);
+        var targetPosition = GameMgr.Battle.BattleMapView.GetFxWorldPosition(this) + offset;
         var targetScale = 1.5f;
         float preTime = 0.3f, stayTime = 0.8f, endTime = 0.5f;
         

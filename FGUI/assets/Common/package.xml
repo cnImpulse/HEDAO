@@ -60,6 +60,7 @@
     <component id="pftu6o" name="CompSkillPos.xml" path="/Forms/Menu/HudBattle/" exported="true"/>
     <component id="pftu6p" name="ImgSkillPos.xml" path="/Forms/Menu/HudBattle/" exported="true"/>
     <component id="pftu6q" name="CompSkillResult.xml" path="/Forms/Menu/HudBattle/" exported="true"/>
+    <image id="i79a6r" name="line.png" path="/Resources/Images/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

@@ -13,5 +13,9 @@
       <item/>
       <item/>
     </list>
+    <image id="n5_i79a" name="img_line_1" src="i79a6r" fileName="Resources/Images/line.png" xy="166,10" pivot="0.5,0.5" size="15,6" group="n8_i79a"/>
+    <image id="n6_i79a" name="img_line_2" src="i79a6r" fileName="Resources/Images/line.png" xy="198,10" pivot="0.5,0.5" size="15,6" group="n8_i79a"/>
+    <image id="n7_i79a" name="img_line_3" src="i79a6r" fileName="Resources/Images/line.png" xy="231,10" pivot="0.5,0.5" size="15,6" group="n8_i79a"/>
+    <group id="n8_i79a" name="group_line" xy="166,10" size="79,6" advanced="true"/>
   </displayList>
 </component>

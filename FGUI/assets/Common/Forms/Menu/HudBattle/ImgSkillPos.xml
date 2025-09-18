@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="32,32">
   <displayList>
-    <loader id="n1_pftu" name="img_pos" xy="0,0" pivot="0.5,0.5" size="32,32" url="ui://rt51n0kjpftu6m" fill="scale" useResize="true"/>
+    <loader id="n1_pftu" name="img_pos" xy="0,0" pivot="0.5,0.5" size="32,32" url="ui://rt51n0kjpftu6n" fill="scale" useResize="true"/>
   </displayList>
 </component>

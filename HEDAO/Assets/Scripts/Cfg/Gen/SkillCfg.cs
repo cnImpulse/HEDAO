@@ -24,6 +24,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         Hit = _buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);LaunchPos = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); LaunchPos.Add(_e0);}}
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);TargetPos = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); TargetPos.Add(_e0);}}
+        IsMulti = _buf.ReadBool();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);EffectList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); EffectList.Add(_e0);}}
     }
 
@@ -40,6 +41,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
     public readonly int Hit;
     public readonly System.Collections.Generic.List<int> LaunchPos;
     public readonly System.Collections.Generic.List<int> TargetPos;
+    public readonly bool IsMulti;
     public readonly System.Collections.Generic.List<int> EffectList;
    
     public const int __ID__ = -2087897997;
@@ -47,6 +49,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -69,6 +72,7 @@ public sealed partial class SkillCfg : Luban.BeanBase
         + "Hit:" + Hit + ","
         + "LaunchPos:" + Luban.StringUtil.CollectionToString(LaunchPos) + ","
         + "TargetPos:" + Luban.StringUtil.CollectionToString(TargetPos) + ","
+        + "IsMulti:" + IsMulti + ","
         + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
         + "}";
     }
