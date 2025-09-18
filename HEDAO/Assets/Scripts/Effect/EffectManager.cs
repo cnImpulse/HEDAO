@@ -43,14 +43,11 @@ public class EffectManager : BaseManager
         }
     }
 
-    public void ShowFxSelect(long entityId)
+    public long ShowFxSelect(long entityId)
     {
-        GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10006, FollowId = entityId });
+        var effectId = GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10006, FollowId = entityId });
         var view = GameMgr.Entity.GetEntityView<BattleUnitView>(entityId);
-        if (view == null)
-        {
-            return;
-        }
-        view.PlayAnim("selected");
+        view?.PlayAnim("selected");
+        return effectId;
     }
 }

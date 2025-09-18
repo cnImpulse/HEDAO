@@ -23,15 +23,8 @@ public class FloatBubble : UIBase
         }
         
         TargetPos = view.transform.position + new Vector3(0, 2f, 0);
-
-        if (data.Text != null)
-        {
-            View.m_title.text = data.Text;
-        }
-        else
-        {
-            View.m_title.text = data.Damage.ToString();
-        }
+        View.m_title.text = data.Text;
+        View.m_title.color = data.Color;
         
         DOVirtual.DelayedCall(2f, Close);
     }

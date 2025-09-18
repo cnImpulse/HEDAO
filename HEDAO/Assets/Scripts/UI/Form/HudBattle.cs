@@ -101,15 +101,12 @@ public class HudBattle : UIBase
         var data = View.m_comp_skill.m_list_skill.selectedData;
         if (data == null) return;
 
-        var target = e.Data as BattleUnitView;
-        if (!(target.Entity is EnemyRole)) return;
-
         var skillId = (int)data;
-        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
-        if (cfg.TargetPos.Contains(target.Entity.Battle.PosIndex))
-        {
-            SelectedTarget = target;
-        }
+        var target = e.Data as BattleUnitView;
+        var targetList = GameMgr.Battle.GetSkillVaildTargetList(skillId, CurBattleUnit);
+        if (!targetList.Contains(target.Entity)) return;
+        
+        SelectedTarget = target;
     }
 
     private void RefreshRolePanel()
@@ -175,11 +172,11 @@ public class HudBattle : UIBase
             return;
         }
 
-        m_SelectEffectId = GameMgr.Effect.ShowEffect(10006, SelectedTarget.Id);
         View.m_comp_skill_result.m_txt_result.text = SkillUtil.GetSkillDesc(SelectedSkillId, CurBattleUnit, SelectedTarget.Entity);
-
-        var view = GameMgr.Entity.GetEntityView<BattleUnitView>(SelectedTarget.Id);
-        view.PlayAnim("selected");
+        if (SelectedTarget.Entity != CurBattleUnit)
+        {
+            m_SelectEffectId = GameMgr.Effect.ShowFxSelect(SelectedTarget.Id);
+        }
     }
 
     private void ShowSkillTarget(int skillId)
@@ -190,11 +187,10 @@ public class HudBattle : UIBase
             return;
         }
         
-        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
-        var enemyList = GameMgr.Battle.Data.GetRoleList(cfg.TargetPos, false);
-        foreach(var enemy in enemyList)
+        var targetList = GameMgr.Battle.GetSkillVaildTargetList(skillId, CurBattleUnit);
+        foreach(var target in targetList)
         {
-            var effectId = GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10007, FollowId = enemy.Id });
+            GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10007, FollowId = target.Id });
         }
     }
 

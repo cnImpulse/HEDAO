@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cfg;
 using Cfg.Battle;
 using DG.Tweening;
 using UnityEngine;
@@ -118,7 +119,19 @@ public class BattleManager : BaseManager
                 var enemy = pair.Key;
                 foreach (var effectResult in pair.Value)
                 {
-                    GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Damage = effectResult.Damage, TargetId = enemy.Id});
+                    if (effectResult is CureEffectResult)
+                    {
+                        var cureResult = effectResult as CureEffectResult;
+                        GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData
+                        {
+                            Text = cureResult.Cure.ToString(), TargetId = enemy.Id,
+                            Color = Color.green
+                        });
+                    }
+                    else
+                    {
+                        GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Text = effectResult.Damage.ToString(), TargetId = enemy.Id});
+                    }
                 }
             }
         }));
@@ -166,8 +179,10 @@ public class BattleManager : BaseManager
         casterView.PlaySpineAnim("attack");
         for (int i = 0; i < targetList.Count; i++)
         {
-            var enemy = targetList[i];
-            var targetView = GameMgr.Entity.GetEntityView<BattleUnitView>(enemy.Id);
+            var target = targetList[i];
+            if (target == caster) continue;
+            
+            var targetView = GameMgr.Entity.GetEntityView<BattleUnitView>(target.Id);
             var offset = Vector3.right * (-(targetList.Count - 1) / 2f + i) * 2f;
             targetView.PlaySpineAnim("defend", null, offset);
         }
@@ -176,15 +191,38 @@ public class BattleManager : BaseManager
     public List<Role> GetSkillTargetList(int skillId, Role caster, Role target)
     {
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
-        if (cfg.IsMulti)
+        if (cfg.TargetType == ERelationType.Enemy && cfg.IsMulti)
         {
             return Data.GetRoleList(cfg.TargetPos, !caster.Battle.IsLeft);
         }
-
+        
         var targetList = new List<Role>();
         targetList.Add(target);
 
         return targetList;
+    }
+    
+    public List<Role> GetSkillVaildTargetList(int skillId, Role caster)
+    {
+        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+        if (cfg.TargetType == ERelationType.Enemy)
+        {
+            return Data.GetRoleList(cfg.TargetPos, !caster.Battle.IsLeft);
+        }
+        
+        var list = new List<Role>();
+        if (cfg.TargetType == ERelationType.Self)
+        {
+            list.Add(caster);
+            return list;
+        }
+
+        if (cfg.TargetType == ERelationType.Friend)
+        {
+            return Data.GetRoleList(cfg.TargetPos, caster.Battle.IsLeft);
+        }
+
+        return list;
     }
 
     public bool CheckHit(int hit)

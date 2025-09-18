@@ -70,12 +70,14 @@ public class SkillComponent : Component
             return false;
         }
 
-        var targetList = GameMgr.Battle.Data.GetRoleList(cfg.TargetPos, !Owner.Battle.IsLeft);
-        if (targetList.Count == 0)
+        if (cfg.TargetType == ERelationType.Enemy)
         {
-            return false;
+            var targetList = GameMgr.Battle.Data.GetRoleList(cfg.TargetPos, !Owner.Battle.IsLeft);
+            if (targetList.Count == 0)
+            {
+                return false;
+            }
         }
-
         return true;
     }
 }

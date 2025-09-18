@@ -16,6 +16,10 @@
         <var name="DamageType" type="EDamageType"/>
     </bean>
 
+    <bean name="CureEffect" parent="EffectCfg" alias="治疗">
+        <var name="CureRate" type="float"/>
+    </bean>
+
     <bean name="AttrModifyEffect" parent="EffectCfg" alias="修改属性">
         <var name="AttrDict" type="(map#sep=:|),EAttrType,int"/>
     </bean>

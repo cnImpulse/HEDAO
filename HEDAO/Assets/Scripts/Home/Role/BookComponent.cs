@@ -31,18 +31,18 @@ public class BookComponent : Component
 
     public bool CanLearnBook(int cfgId)
     {
-        var cfg = GameMgr.Cfg.TbBook.Get(cfgId);
-        if (cfg.BookType == EBookType.ShuFa || cfg.BookType == EBookType.DunFa)
-        {
-            // 先学道法
-            if (!BookDict.ContainsKey(EBookType.DaoFa)) return false;
-
-            // 五行契合
-            //if (cfg.WuXinType != EWuXinType.None && cfg.WuXinType != QiWuXinType)
-            //{
-            //    return false;
-            //}
-        }
+        // var cfg = GameMgr.Cfg.TbBook.Get(cfgId);
+        // if (cfg.BookType == EBookType.ShuFa || cfg.BookType == EBookType.DunFa)
+        // {
+        //     // 先学道法
+        //     if (!BookDict.ContainsKey(EBookType.DaoFa)) return false;
+        //
+        //     // 五行契合
+        //     //if (cfg.WuXinType != EWuXinType.None && cfg.WuXinType != QiWuXinType)
+        //     //{
+        //     //    return false;
+        //     //}
+        // }
 
         return true;
     }
