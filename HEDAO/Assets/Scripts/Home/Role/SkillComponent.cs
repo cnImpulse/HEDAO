@@ -48,26 +48,34 @@ public class SkillComponent : Component
         var list = new List<int>();
         foreach (var skillId in SkillSet)
         {
-            var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
-            if (Owner.Attr.QI <= cfg.Cost)
+            if (IsValidSkill(skillId))
             {
-                continue;
+                list.Add(skillId);
             }
-
-            if (!cfg.LaunchPos.Contains(Owner.Battle.PosIndex))
-            {
-                continue;
-            }
-
-            var targetList = GameMgr.Battle.Data.GetRoleList(cfg.TargetPos, !Owner.Battle.IsLeft);
-            if (targetList.Count == 0)
-            {
-                continue;
-            }
-            
-            list.Add(skillId);
         }
         
         return list;
+    }
+
+    public bool IsValidSkill(int skillId)
+    {
+        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+        if (Owner.Attr.QI <= cfg.Cost)
+        {
+            return false;
+        }
+
+        if (!cfg.LaunchPos.Contains(Owner.Battle.PosIndex))
+        {
+            return false;
+        }
+
+        var targetList = GameMgr.Battle.Data.GetRoleList(cfg.TargetPos, !Owner.Battle.IsLeft);
+        if (targetList.Count == 0)
+        {
+            return false;
+        }
+
+        return true;
     }
 }

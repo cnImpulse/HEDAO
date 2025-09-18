@@ -17,13 +17,20 @@ public class HudBattle : UIBase
 
         GameMgr.Event.Subscribe(GameEventType.OnClickBattleUnit, OnClickBattleUnit);
         GameMgr.Event.Subscribe(GameEventType.OnBattleUnitDead, OnBattleUnitDead);
+        GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnPlayerRoundStart);
 
         View.m_comp_skill_result.m_btn_sure.onClick.Set(OnClickReleaseSkill);
-
+        View.m_comp_skill.m_btn_jump.onClick.Set(OnClickJump);
+        
         View.m_list_action.itemRenderer = OnRenderRole;
         View.m_comp_skill.m_list_skill.itemRenderer = OnRenderSkill;
         View.m_comp_skill.m_list_skill.RefreshSelectionCtrl();
         View.m_comp_skill.m_list_skill.selectionController.onChanged.Set(RefreshSkill);
+    }
+
+    private void OnPlayerRoundStart(GameEvent obj)
+    {
+        RefreshRolePanel();
     }
 
     private void OnBattleUnitDead(GameEvent obj)
@@ -73,7 +80,10 @@ public class HudBattle : UIBase
         var skillId = (int)data;
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
         item.asButton.title = cfg.Name;
-        //item.enabled = cfg.LaunchPos.Contains(CurBattleUnit.Battle.PosIndex);
+        if (!CurBattleUnit.Skill.IsValidSkill(skillId))
+        {
+            item.asButton.title += "\n(不可用)";
+        }
     }
 
     private void OnRenderRole(int index, GObject item, object data)
@@ -136,7 +146,6 @@ public class HudBattle : UIBase
         }
 
         var skillId = SelectedSkillId;
-        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
         View.m_comp_skill.m_txt_skill.text = SkillUtil.GetSkillDesc(skillId);
         View.m_comp_skill.m_comp_skill_pos.Refresh(skillId);
 
@@ -158,8 +167,8 @@ public class HudBattle : UIBase
     private void RefreshSkillResult()
     {
         GameMgr.Effect.HideEffect(m_SelectEffectId);
-
-        var visible = HasSelectedSkill && SelectedTarget != null;
+        
+        var visible = HasSelectedSkill && SelectedTarget != null && CurBattleUnit.Skill.IsValidSkill(SelectedSkillId);
         View.m_comp_skill_result.visible = visible;
         if (!visible)
         {
@@ -176,7 +185,11 @@ public class HudBattle : UIBase
     private void ShowSkillTarget(int skillId)
     {
         GameMgr.Effect.HideEffectByPrefabId(10007);
-
+        if (!CurBattleUnit.Skill.IsValidSkill(skillId))
+        {
+            return;
+        }
+        
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
         var enemyList = GameMgr.Battle.Data.GetRoleList(cfg.TargetPos, false);
         foreach(var enemy in enemyList)
@@ -187,11 +200,21 @@ public class HudBattle : UIBase
 
     private void OnClickReleaseSkill()
     {
+        if (!CurBattleUnit.Skill.IsValidSkill(SelectedSkillId))
+        {
+            return;
+        }
+        
         GameMgr.Battle.PlaySkill(SelectedSkillId, CurBattleUnit, SelectedTarget.Entity);
 
         GameMgr.Effect.HideEffectByPrefabId(10006);
         
         ExitPlaySkill();
+    }
+    
+    private void OnClickJump()
+    {
+        GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
     }
 
     private void ExitPlaySkill()

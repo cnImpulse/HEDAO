@@ -64,76 +64,127 @@ public class BattleManager : BaseManager
         Fsm.Start(BattleStateDict[state]);
     }
 
-    public bool PlaySkill(int skillId, Role caster, Role target)
+    public class SkillResult
+    {
+        public Role Caster;
+        public List<Role> TargetList;
+        public List<Role> MissList = new List<Role>();
+        public Dictionary<Role, List<TakeEffectResult>> EffectResult = new Dictionary<Role, List<TakeEffectResult>>();
+    }
+    
+    public void PlaySkill(int skillId, Role caster, Role target)
     {
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
         var hit = SkillUtil.GetHit(skillId, caster, target);
 
-        List<Role> targetList;
-        if (cfg.IsMulti)
-        {
-            targetList = Data.GetRoleList(cfg.TargetPos, !caster.Battle.IsLeft);
-        }
-        else
-        {
-            targetList = new List<Role>();
-            targetList.Add(target);
-        }
+        SkillResult skillResult = new SkillResult();
+        List<Role> targetList = GetSkillTargetList(skillId, caster, target);
         
-        var casterView = GameMgr.Entity.GetEntityView<BattleUnitView>(caster.Id);
-
-        casterView.PlaySpineAnim("attack", () =>
+        skillResult.Caster = caster;
+        skillResult.TargetList = targetList;
+        foreach (var enemy in targetList)
         {
-            foreach (var enemy in targetList)
+            if (!CheckHit(hit))
             {
-                if (!CheckHit(hit))
+                skillResult.MissList.Add(enemy);
+                continue;
+            }
+
+            var effectResult = new List<TakeEffectResult>();
+            skillResult.EffectResult.Add(enemy, effectResult);
+            foreach(var effectId in cfg.EffectList)
+            {
+                var effectCfg = GameMgr.Cfg.TbEffectCfg.Get(effectId);
+                var result = effectCfg.OnTakeEffect(caster, enemy);
+                if (result != null)
                 {
-                    GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Text = "未命中", TargetId = target.Id});
-                    GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
-                    continue;
+                    effectResult.Add(result);
                 }
-                
-                foreach(var effectId in cfg.EffectList)
+            }
+        }
+
+        PlaySkillSpineAnim(skillResult);
+
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(DOVirtual.DelayedCall(1.2f, () =>
+        {
+            foreach (var enemy in skillResult.MissList)
+            {
+                GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Text = "未命中", TargetId = enemy.Id});
+            }
+
+            foreach (var pair in skillResult.EffectResult)
+            {
+                var enemy = pair.Key;
+                foreach (var effectResult in pair.Value)
                 {
-                    var effectCfg = GameMgr.Cfg.TbEffectCfg.Get(effectId);
-                    var result = effectCfg.OnTakeEffect(caster, enemy);
-                    if (result != null)
-                    {
-                        GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Damage = result.Damage, TargetId = target.Id});
-                    }
+                    GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Damage = effectResult.Damage, TargetId = enemy.Id});
                 }
-            
-                if (enemy.Battle.IsDead)
+            }
+        }));
+
+        bool isAppend = true;
+        foreach (var pair in skillResult.EffectResult)
+        {
+            var enemy = pair.Key;
+            if (enemy.Battle.IsDead)
+            {
+                var targetView = GameMgr.Entity.GetEntityView<BattleUnitView>(enemy.Id);
+                if (isAppend)
                 {
-                    var targetView = GameMgr.Entity.GetEntityView<BattleUnitView>(enemy.Id);
-                    targetView.PlayDeadAnim(() =>
+                    isAppend = false;
+                    sequence.Append(targetView.PlayDeadAnim(() =>
                     {
                         Data.RemoveBattleUnit(enemy.Id);
                         GameMgr.Entity.HideEntity(enemy.Id);
-                    
-                        DOVirtual.DelayedCall(0.5f, () =>
-                        {
-                            GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
-                        });
-                    });
+                    }));   
                 }
                 else
                 {
-                    GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
+                    sequence.Join(targetView.PlayDeadAnim(() =>
+                    {
+                        Data.RemoveBattleUnit(enemy.Id);
+                        GameMgr.Entity.HideEntity(enemy.Id);
+                    }));   
                 }
             }
-        });
+        }
 
+        sequence.Append(DOVirtual.DelayedCall(0.3f, () =>
+        {
+            GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
+        }));
+        sequence.SetAutoKill(true);
+    }
+
+    private void PlaySkillSpineAnim(SkillResult result)
+    {
+        var caster = result.Caster;
+        var targetList = result.TargetList;
+        
+        var casterView = GameMgr.Entity.GetEntityView<BattleUnitView>(caster.Id);
+        casterView.PlaySpineAnim("attack");
         for (int i = 0; i < targetList.Count; i++)
         {
             var enemy = targetList[i];
             var targetView = GameMgr.Entity.GetEntityView<BattleUnitView>(enemy.Id);
             var offset = Vector3.right * (-(targetList.Count - 1) / 2f + i) * 2f;
-            
             targetView.PlaySpineAnim("defend", null, offset);
         }
-        
-        return true;
+    }
+
+    public List<Role> GetSkillTargetList(int skillId, Role caster, Role target)
+    {
+        var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+        if (cfg.IsMulti)
+        {
+            return Data.GetRoleList(cfg.TargetPos, !caster.Battle.IsLeft);
+        }
+
+        var targetList = new List<Role>();
+        targetList.Add(target);
+
+        return targetList;
     }
 
     public bool CheckHit(int hit)

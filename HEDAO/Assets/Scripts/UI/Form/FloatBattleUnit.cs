@@ -27,9 +27,9 @@ public class FloatBattleUnit : UIBase
         base.OnUpdate();
 
         var attr = Owner.Entity.Attr;
-        View.m_hp_bar.value = attr.HP;
+        View.m_hp_bar.value = Mathf.Max(0, attr.HP);
         View.m_hp_bar.max = attr.MaxHP;
-        View.m_qi_bar.value = attr.QI;
+        View.m_qi_bar.value = Mathf.Max(0, attr.QI);
         View.m_qi_bar.max = attr.MaxQI;
         View.m_txt_name.color = Owner.Entity is PlayerRole? Color.white : Color.red;
 

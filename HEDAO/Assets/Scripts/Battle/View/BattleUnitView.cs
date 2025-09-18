@@ -96,10 +96,11 @@ public class BattleUnitView : EntityView, IPointerClickHandler
         });
     }
 
-    public void PlayDeadAnim(TweenCallback onComplete = null)
+    public Tween PlayDeadAnim(TweenCallback onComplete = null)
     {
         var anim = DOTween.ToAlpha(() => SkeletonAnimation.Skeleton.GetColor(),
             x => SkeletonAnimation.Skeleton.SetColor(x), 0, 0.8f);
         anim.OnComplete(onComplete);
+        return anim;
     }
 }
