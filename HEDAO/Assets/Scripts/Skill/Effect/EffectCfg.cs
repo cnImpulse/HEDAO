@@ -7,6 +7,7 @@ namespace Cfg.Battle
     public interface IEffectTarget
     {
         AttrComponent Attr { get; }
+        BattleComponent Battle { get; }
 
         void AddBuff(int id);
         void RemoveBuff(int id);

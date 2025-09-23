@@ -9,14 +9,15 @@ public class BattleComponent : Component
 {
     public new Role Owner => base.Owner as Role;
 
-    public int PosIndex = 0;
     public bool IsLeft = true;
+    public List<Role> TeamList;
+    public int PosIndex => TeamList.IndexOf(Owner) + 1;
+
     public bool IsDead => Owner.Attr.HP <= 0;
     
     protected override void OnInit(object data)
     {
         base.OnInit(data);
-
 
     }
 

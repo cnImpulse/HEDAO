@@ -39,6 +39,7 @@ public sealed partial class AttrModifyEffect : EffectCfg
     {
         return "{ "
         + "Id:" + Id + ","
+        + "TargetType:" + TargetType + ","
         + "AttrDict:" + Luban.StringUtil.CollectionToString(AttrDict) + ","
         + "}";
     }

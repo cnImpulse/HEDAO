@@ -1,6 +1,7 @@
 <module name="Battle">
 	<bean name="EffectCfg">
         <var name="Id" type="int"/>
+        <var name="TargetType" type="EEffectTargetType"/>
     </bean>
 
     <bean name="AddBuffEffect" parent="EffectCfg" alias="AddBuff">
@@ -24,9 +25,8 @@
         <var name="AttrDict" type="(map#sep=:|),EAttrType,int"/>
     </bean>
 
-    <bean name="MoveEffect" parent="EffectCfg" alias="Move">
+    <bean name="MoveEffect" parent="EffectCfg" alias="位移">
         <var name="Distance" type="int"/>
-        <var name="IsTarget" type="bool"/>
     </bean>
 
     <bean name="GridRange">

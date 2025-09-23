@@ -39,6 +39,7 @@ public sealed partial class AddBuffEffect : EffectCfg
     {
         return "{ "
         + "Id:" + Id + ","
+        + "TargetType:" + TargetType + ","
         + "BuffList:" + Luban.StringUtil.CollectionToString(BuffList) + ","
         + "}";
     }

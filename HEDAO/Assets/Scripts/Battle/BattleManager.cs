@@ -109,31 +109,7 @@ public class BattleManager : BaseManager
         Sequence sequence = DOTween.Sequence();
         sequence.Append(DOVirtual.DelayedCall(1.2f, () =>
         {
-            foreach (var enemy in skillResult.MissList)
-            {
-                GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Text = "未命中", TargetId = enemy.Id});
-            }
-
-            foreach (var pair in skillResult.EffectResult)
-            {
-                var enemy = pair.Key;
-                foreach (var effectResult in pair.Value)
-                {
-                    if (effectResult is CureEffectResult)
-                    {
-                        var cureResult = effectResult as CureEffectResult;
-                        GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData
-                        {
-                            Text = cureResult.Cure.ToString(), TargetId = enemy.Id,
-                            Color = Color.green
-                        });
-                    }
-                    else
-                    {
-                        GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Text = effectResult.Damage.ToString(), TargetId = enemy.Id});
-                    }
-                }
-            }
+            PlayFxBubble(skillResult);
         }));
 
         bool isAppend = true;
@@ -170,6 +146,44 @@ public class BattleManager : BaseManager
         sequence.SetAutoKill(true);
     }
 
+    // private void PlayFxSkill(SkillResult result)
+    // {
+    //     var caster = result.Caster;
+    //     var targetList = result.TargetList;
+    //     
+    //     var casterView = GameMgr.Entity.GetEntityView<BattleUnitView>(caster.Id);
+    //     
+    // }
+    
+    private void PlayFxBubble(SkillResult skillResult)
+    {
+        foreach (var enemy in skillResult.MissList)
+        {
+            GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Text = "未命中", TargetId = enemy.Id});
+        }
+
+        foreach (var pair in skillResult.EffectResult)
+        {
+            var enemy = pair.Key;
+            foreach (var effectResult in pair.Value)
+            {
+                if (effectResult is CureEffectResult)
+                {
+                    var cureResult = effectResult as CureEffectResult;
+                    GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData
+                    {
+                        Text = cureResult.Cure.ToString(), TargetId = enemy.Id,
+                        Color = Color.green
+                    });
+                }
+                else
+                {
+                    GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Text = effectResult.Damage.ToString(), TargetId = enemy.Id});
+                }
+            }
+        }
+    }
+
     private void PlaySkillSpineAnim(SkillResult result)
     {
         var caster = result.Caster;
@@ -185,6 +199,14 @@ public class BattleManager : BaseManager
             var targetView = GameMgr.Entity.GetEntityView<BattleUnitView>(target.Id);
             var offset = Vector3.right * (-(targetList.Count - 1) / 2f + i) * 2f;
             targetView.PlaySpineAnim("defend", null, offset);
+        }
+
+        foreach (var role in Data.BattleUnitDict.Values)
+        {
+            if (role != caster && !targetList.Contains(role))
+            {
+                role.Battle.OnPosChanged.Invoke();
+            }
         }
     }
 

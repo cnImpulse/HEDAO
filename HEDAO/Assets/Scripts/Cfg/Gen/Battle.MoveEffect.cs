@@ -17,7 +17,6 @@ public sealed partial class MoveEffect : EffectCfg
     public MoveEffect(ByteBuf _buf)  : base(_buf) 
     {
         Distance = _buf.ReadInt();
-        IsTarget = _buf.ReadBool();
     }
 
     public static MoveEffect DeserializeMoveEffect(ByteBuf _buf)
@@ -26,7 +25,6 @@ public sealed partial class MoveEffect : EffectCfg
     }
 
     public readonly int Distance;
-    public readonly bool IsTarget;
    
     public const int __ID__ = -1117796424;
     public override int GetTypeId() => __ID__;
@@ -35,15 +33,14 @@ public sealed partial class MoveEffect : EffectCfg
     {
         base.ResolveRef(tables);
         
-        
     }
 
     public override string ToString()
     {
         return "{ "
         + "Id:" + Id + ","
+        + "TargetType:" + TargetType + ","
         + "Distance:" + Distance + ","
-        + "IsTarget:" + IsTarget + ","
         + "}";
     }
 }

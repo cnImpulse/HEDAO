@@ -22,6 +22,7 @@ public class Role : Entity, IEffectTarget
     public Dictionary<int, Buff> BuffDict = new Dictionary<int, Buff>();
 
     AttrComponent IEffectTarget.Attr => Attr;
+    BattleComponent IEffectTarget.Battle => Battle;
 
     protected override void OnInit(object data)
     {

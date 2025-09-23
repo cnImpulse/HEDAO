@@ -78,7 +78,10 @@ public class BattleUnitView : EntityView, IPointerClickHandler
         sequence.Join(transform.DOScale(targetScale, preTime));
         sequence.AppendInterval(stayTime);
 
-        sequence.Append(transform.DOLocalMove(Vector3.zero, endTime));
+        sequence.Append(DOVirtual.DelayedCall(0, () =>
+        {
+            OnPosChanged();
+        }));
         sequence.Join(transform.DOScale(Vector3.one, endTime));
         sequence.Insert(preTime + stayTime, DOTween.To(
             () => GameMgr.Camera.VirtualCamera.m_Lens.OrthographicSize, 

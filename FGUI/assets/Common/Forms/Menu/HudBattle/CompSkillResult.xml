@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="700,300">
+<component size="700,330">
   <displayList>
-    <image id="n0_pftu" name="n0" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" pivot="0.5,0.5" size="700,300"/>
-    <text id="n1_pftu" name="txt_result" xy="31,43" size="635,120" font="ui://rt51n0kjekn09" fontSize="24" autoSize="none" text="命中:&#xA;伤害: "/>
-    <component id="n2_pftu" name="btn_sure" src="mv3556" fileName="MetaComponent/Button/CommonButton.xml" xy="270,191" size="160,90">
+    <image id="n0_pftu" name="n0" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="0,0" pivot="0.5,0.5" size="700,330"/>
+    <text id="n1_pftu" name="txt_result" xy="31,23" size="635,195" font="ui://rt51n0kjekn09" fontSize="24" autoSize="none" text="命中:&#xA;伤害: "/>
+    <component id="n2_pftu" name="btn_sure" src="mv3556" fileName="MetaComponent/Button/CommonButton.xml" xy="270,226" size="160,90">
       <Button title="释放"/>
     </component>
   </displayList>

@@ -42,6 +42,7 @@ public sealed partial class AttackEffect : EffectCfg
     {
         return "{ "
         + "Id:" + Id + ","
+        + "TargetType:" + TargetType + ","
         + "DamageRate:" + DamageRate + ","
         + "DamageType:" + DamageType + ","
         + "}";

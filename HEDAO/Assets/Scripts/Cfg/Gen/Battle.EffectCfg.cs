@@ -17,6 +17,7 @@ public abstract partial class EffectCfg : Luban.BeanBase
     public EffectCfg(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
+        TargetType = (EEffectTargetType)_buf.ReadInt();
     }
 
     public static EffectCfg DeserializeEffectCfg(ByteBuf _buf)
@@ -34,10 +35,12 @@ public abstract partial class EffectCfg : Luban.BeanBase
     }
 
     public readonly int Id;
+    public readonly EEffectTargetType TargetType;
    
 
     public virtual void ResolveRef(Tables tables)
     {
+        
         
     }
 
@@ -45,6 +48,7 @@ public abstract partial class EffectCfg : Luban.BeanBase
     {
         return "{ "
         + "Id:" + Id + ","
+        + "TargetType:" + TargetType + ","
         + "}";
     }
 }

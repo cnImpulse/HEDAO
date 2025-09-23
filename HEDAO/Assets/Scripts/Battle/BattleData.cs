@@ -29,12 +29,13 @@ public class BattleData
     public int CfgId { get; private set; }
     public EBattleState BattleState { get; private set; }
 
-    public Dictionary<long, Role> BattleUnitDict = new Dictionary<long, Role>();
-    public Queue<Role> BattleUnitQueue { get; private set; } = new Queue<Role>();
-
     public BattleCfg Cfg => GameMgr.Cfg.TbBattle.Get(CfgId);
     public EResult BattleResult => GetBattleResult();
 
+    private readonly List<Role> LeftUnitList = new List<Role>();
+    private readonly List<Role> RightUnitList = new List<Role>();
+    public readonly Dictionary<long, Role> BattleUnitDict = new Dictionary<long, Role>();
+    public Queue<Role> BattleUnitQueue { get; private set; } = new Queue<Role>();
 
     [JsonConstructor]
     public BattleData()
@@ -51,25 +52,28 @@ public class BattleData
     
     private void InitBattleUnit(Dictionary<long, PlayerRole> team)
     {
+        LeftUnitList.Clear();
+        RightUnitList.Clear();
         var list = team.Values.ToList();
         for (int i = 0; i < list.Count; ++i)
         {
             var role = list[i];
-            AddBattleUnit(role, i+1, true);
+            AddBattleUnit(role, true);
         }
 
         for (int i = 0; i < Cfg.EnemyList.Count; ++i)
         {
             var role = new EnemyRole();
             role.Init(Cfg.EnemyList[i]);
-            AddBattleUnit(role, i + 1, false);
+            AddBattleUnit(role, false);
         }
     }
 
-    public void AddBattleUnit(Role role, int posIndex, bool isLeft)
+    public void AddBattleUnit(Role role, bool isLeft)
     {
-        role.Battle.PosIndex = posIndex;
         role.Battle.IsLeft = isLeft;
+        role.Battle.TeamList = isLeft ? LeftUnitList : RightUnitList;
+        role.Battle.TeamList.Add(role);
         BattleUnitDict.Add(role.Id, role);
     }
 
@@ -79,15 +83,18 @@ public class BattleData
         {
             BattleUnitQueue = new Queue<Role>(BattleUnitQueue.Where(e => e.Id != id));
             BattleUnitDict.Remove(id);
-            foreach (var friend in GetRoleList(role.Battle.IsLeft))
-            {
-                if (friend.Battle.PosIndex > role.Battle.PosIndex)
-                {
-                    friend.Battle.PosIndex--;
-                    friend.Battle.OnPosChanged?.Invoke();
-                }
-            }
+            role.Battle.TeamList.Remove(role);
         }
+    }
+
+    public void MoveBattleUnit(Role role, int distance)
+    {
+        var teamList = role.Battle.TeamList;
+        var pos = role.Battle.PosIndex - 1;
+        var newIndex = Mathf.Clamp(pos + distance, 0, teamList.Count - 1);
+    
+        teamList.RemoveAt(pos);
+        teamList.Insert(newIndex, role);
     }
 
     public EResult GetBattleResult()

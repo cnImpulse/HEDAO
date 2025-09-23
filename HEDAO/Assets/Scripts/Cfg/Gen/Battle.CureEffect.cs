@@ -39,6 +39,7 @@ public sealed partial class CureEffect : EffectCfg
     {
         return "{ "
         + "Id:" + Id + ","
+        + "TargetType:" + TargetType + ","
         + "CureRate:" + CureRate + ","
         + "}";
     }

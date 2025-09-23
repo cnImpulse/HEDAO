@@ -39,6 +39,7 @@ public sealed partial class AddSkillEffect : EffectCfg
     {
         return "{ "
         + "Id:" + Id + ","
+        + "TargetType:" + TargetType + ","
         + "SkillList:" + Luban.StringUtil.CollectionToString(SkillList) + ","
         + "}";
     }
