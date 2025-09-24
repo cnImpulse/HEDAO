@@ -75,7 +75,7 @@ public static class RoleUtil
         foreach (var id in role.Skill.SkillSet)
         {
             var cfg = GameMgr.Cfg.TbSkill.Get(id);
-            info += string.Format("<a href='{0}'>{1}</a>", SkillUtil.GetSkillDesc(id), cfg.Name);
+            info += string.Format("<a href='{0}'>{1}</a> ", SkillUtil.GetSkillDesc(id), cfg.Name);
         }
 
         return info;

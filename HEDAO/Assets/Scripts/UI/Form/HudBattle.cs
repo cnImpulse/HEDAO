@@ -23,8 +23,6 @@ public class HudBattle : UIBase
         View.m_comp_skill.m_btn_jump.onClick.Set(OnClickJump);
         
         View.m_list_action.itemRenderer = OnRenderActionRole;
-        // View.m_list_action.RefreshSelectionCtrl();
-        // View.m_list_action.selectionController.onChanged.Set(RefreshActionRole);
 
         View.m_comp_skill.m_list_skill.itemRenderer = OnRenderSkill;
         View.m_comp_skill.m_list_skill.RefreshSelectionCtrl();

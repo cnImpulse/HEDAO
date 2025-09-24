@@ -19,9 +19,16 @@ public class EquipSlot : Container
         if (equip == null) return;
 
         var index = (int)equip.Cfg.EquipType;
-        RemoveItem(index);
 
+        var from = item.Owner;
         item.Throw();
+
+        var replace = GetItem<Equip>(index);
+        if (replace != null && from != null)
+        {
+            from.AddItem(replace);
+        }
+        RemoveItem(index);
 
         ItemDict.Add(index, item);
         equip.OnAdd(this);

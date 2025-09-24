@@ -18,8 +18,7 @@ namespace FGUI.Common
                 LongPress.trigger = 1f;
             }
 
-            var cfg = GameMgr.Cfg.TbLevelCfg.Get(role.Level);
-            text = string.Format("{0}\n{1}", role.Name, cfg.Name);
+            text = string.Format("{0}", role.Name);
             if (enableRight)
             {
                 LongPress.onAction.Set(() => OnRightClickRole(role));
@@ -32,8 +31,10 @@ namespace FGUI.Common
 
         private void OnRightClickRole(Role role)
         {
-            List<Role> roles = GameMgr.Save.Data.RoleDict.Values.AsEnumerable<Role>().ToList();
-            GameMgr.UI.ShowUI(UIName.MenuRole, roles);
+            if (role is PlayerRole)
+            {
+                GameMgr.UI.ShowUI(UIName.MenuRole, role);
+            }
         }
     }
 }

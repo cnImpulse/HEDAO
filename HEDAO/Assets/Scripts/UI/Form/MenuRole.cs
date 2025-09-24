@@ -19,9 +19,8 @@ public class MenuRole : UIBase
     {
         base.OnInit(userData);
 
-        RoleList = userData as List<Role>;
-        //View.m_list_role.m_list.itemRenderer = OnRenderRole;
-        //View.m_list_role.m_list.RefreshList();
+        var role = userData as Role;
+        RoleList = role.Battle.TeamList;
 
         View.m_comp_role.m_list_role.itemRenderer = OnRenderRole;
         View.m_comp_role.m_list_equip.itemRenderer = OnRenderEquipSlot;
@@ -29,7 +28,7 @@ public class MenuRole : UIBase
         View.m_comp_store.m_list_item.itemRenderer = OnRenderItem;
 
         View.m_comp_role.m_list_role.selectionController.onChanged.Set(RefreshRole);
-        View.m_comp_role.m_list_role.RefreshList(RoleList);
+        View.m_comp_role.m_list_role.RefreshList(RoleList, RoleList.IndexOf(role));
     }
 
     protected override void OnShow()

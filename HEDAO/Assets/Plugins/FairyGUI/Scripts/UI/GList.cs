@@ -1616,13 +1616,13 @@ namespace FairyGUI
             }
         }
 
-        public void RefreshList<T>(List<T> dataList)
+        public void RefreshList<T>(List<T> dataList, int selectIndex = -1)
         {
             if (itemRenderer == null) return;
 
             data = dataList;
             numItems = dataList.Count;
-            RefreshSelectionCtrl();
+            RefreshSelectionCtrl(selectIndex);
         }
 
         public void RefreshVirtualList()
