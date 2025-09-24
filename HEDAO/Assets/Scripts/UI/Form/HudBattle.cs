@@ -22,12 +22,15 @@ public class HudBattle : UIBase
         View.m_comp_skill_result.m_btn_sure.onClick.Set(OnClickReleaseSkill);
         View.m_comp_skill.m_btn_jump.onClick.Set(OnClickJump);
         
-        View.m_list_action.itemRenderer = OnRenderRole;
+        View.m_list_action.itemRenderer = OnRenderActionRole;
+        // View.m_list_action.RefreshSelectionCtrl();
+        // View.m_list_action.selectionController.onChanged.Set(RefreshActionRole);
+
         View.m_comp_skill.m_list_skill.itemRenderer = OnRenderSkill;
         View.m_comp_skill.m_list_skill.RefreshSelectionCtrl();
         View.m_comp_skill.m_list_skill.selectionController.onChanged.Set(RefreshSkill);
     }
-
+    
     private void OnPlayerRoundStart(GameEvent obj)
     {
         RefreshRolePanel();
@@ -86,12 +89,19 @@ public class HudBattle : UIBase
         }
     }
 
-    private void OnRenderRole(int index, GObject item, object data)
+    private void OnRenderActionRole(int index, GObject item, object data)
     {
         var role = data as Role;
         var btn = item as FGUIBtnRole;
-        btn.enabled = false;
         btn.Refresh(role, false);
+        btn.onRollOver.Set(() =>
+        {
+            m_SelectEffectId =  GameMgr.Effect.ShowFxSelect(role.Id);
+        });
+        btn.onRollOut.Set(() =>
+        {
+            GameMgr.Effect.HideEffect(m_SelectEffectId);
+        });
     }
 
     private long m_SelectEffectId = 0;
