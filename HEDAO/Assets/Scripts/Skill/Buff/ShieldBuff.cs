@@ -2,7 +2,7 @@ using Cfg;
 using Cfg.Battle;
 using UnityEngine;
 
-public class ShieldBuff : Buff
+public class ShieldBuff : BattleBuff
 {
     public int MaxDurability = 0;
     public int Durability = 0;
@@ -15,13 +15,15 @@ public class ShieldBuff : Buff
 
     public override void OnAdd()
     {
+        base.OnAdd();
+        
         MaxDurability = Caster.Attr.SSI;
         Durability = MaxDurability;
     }
 
     public override void OnRemove()
     {
-        
+        base.OnRemove();
     }
 
     public int DecDurability(int damage)

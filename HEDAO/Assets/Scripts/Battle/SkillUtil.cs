@@ -47,7 +47,7 @@ public static class SkillUtil
         var cfg = GameMgr.Cfg.TbSkill.Get(id);
         if (NeedCheckHit(cfg))
         {
-            str = string.Format("命中:{0}\n", cfg.Hit);
+            str = string.Format("命中:{0}\n", GetHit(id, caster, target));
         }
         else
         {

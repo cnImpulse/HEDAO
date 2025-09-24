@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using FairyGUI;
 using FGUI.Common;
@@ -14,6 +15,8 @@ public class FloatBattleUnit : UIBase
 
         Owner = userData as BattleUnitView;
         View.m_txt_name.text = Owner.Entity.Name;
+
+        View.m_list_buff.itemRenderer = OnRenderBuffIcon;
     }
 
     protected override void OnShow()
@@ -52,6 +55,13 @@ public class FloatBattleUnit : UIBase
 
     private void RefreshBuffList()
     {
-        View.m_list_buff.visible = false;
+        var buffList = Owner.Entity.Buff.BuffDict.Values.ToList();
+        View.m_list_buff.visible = buffList.Count > 0;
+        View.m_list_buff.RefreshList(buffList);
+    }
+    
+    private void OnRenderBuffIcon(int index, GObject item, object data)
+    {
+        
     }
 }

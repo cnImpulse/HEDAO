@@ -40,6 +40,10 @@ public class BuffComponent : Component
         {
             buff = new ShieldBuff(id, caster, Owner);
         }
+        else if (cfg is BattleCommonBuffCfg)
+        {
+            buff = new BattleCommonBuff(id, caster, Owner);
+        }
         else
         {
             buff = new CommonBuff(id, caster, Owner);

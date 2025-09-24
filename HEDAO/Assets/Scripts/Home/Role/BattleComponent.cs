@@ -24,4 +24,12 @@ public class BattleComponent : Component
     }
 
     public Action OnPosChanged;
+    public Action OnRoundStart;
+
+    public bool RoundStart()
+    {
+        bool action = Owner.Attr.Dizziness == 0;
+        OnRoundStart?.Invoke();
+        return action;
+    }
 }

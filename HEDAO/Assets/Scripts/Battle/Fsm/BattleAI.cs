@@ -28,6 +28,13 @@ public class BattleAI : BattleStateBase
 
     private void AutoAction()
     {
+        bool action = CurBattleUnit.Battle.RoundStart();
+        if (!action)
+        {
+            GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
+            return;
+        }
+        
         var skillList = CurBattleUnit.Skill.GetValidSkillList(Data);
         if (skillList.Count == 0)
         {

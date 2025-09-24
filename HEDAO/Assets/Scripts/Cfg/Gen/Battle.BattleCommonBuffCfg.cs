@@ -12,30 +12,24 @@ using Luban;
 
 namespace Cfg.Battle
 {
-public abstract partial class BattleBuffCfg : BuffCfg
+public sealed partial class BattleCommonBuffCfg : BattleBuffCfg
 {
-    public BattleBuffCfg(ByteBuf _buf)  : base(_buf) 
+    public BattleCommonBuffCfg(ByteBuf _buf)  : base(_buf) 
     {
-        Round = _buf.ReadInt();
     }
 
-    public static BattleBuffCfg DeserializeBattleBuffCfg(ByteBuf _buf)
+    public static BattleCommonBuffCfg DeserializeBattleCommonBuffCfg(ByteBuf _buf)
     {
-        switch (_buf.ReadInt())
-        {
-            case Battle.BattleCommonBuffCfg.__ID__: return new Battle.BattleCommonBuffCfg(_buf);
-            case Battle.ShieldBuffCfg.__ID__: return new Battle.ShieldBuffCfg(_buf);
-            default: throw new SerializationException();
-        }
+        return new Battle.BattleCommonBuffCfg(_buf);
     }
 
-    public readonly int Round;
    
+    public const int __ID__ = -1998296424;
+    public override int GetTypeId() => __ID__;
 
     public override void ResolveRef(Tables tables)
     {
         base.ResolveRef(tables);
-        
     }
 
     public override string ToString()

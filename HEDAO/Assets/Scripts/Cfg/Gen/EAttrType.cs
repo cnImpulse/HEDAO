@@ -136,6 +136,11 @@ namespace Cfg
         /// </summary>
         [EnumName("护盾")]
         Shield = 23,
+        /// <summary>
+        /// 眩晕
+        /// </summary>
+        [EnumName("眩晕")]
+        Dizziness = 24,
     }
 
 }
@@ -166,5 +171,6 @@ public partial class AttrComponent
     public int SSIUp => GetAttrValue(Cfg.EAttrType.SSIUp);
     public int LNKUp => GetAttrValue(Cfg.EAttrType.LNKUp);
     public int Shield => GetAttrValue(Cfg.EAttrType.Shield);
+    public int Dizziness => GetAttrValue(Cfg.EAttrType.Dizziness);
 }
 

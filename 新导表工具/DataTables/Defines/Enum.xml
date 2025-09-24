@@ -45,6 +45,8 @@
 		<var name="LNKUp" alias="灵抗成长" />
 
 		<var name="Shield" alias="护盾" />
+
+		<var name="Dizziness" alias="眩晕" />
 	</enum>
 
 	<enum name="EBuffCondType" comment="触发条件">

@@ -14,7 +14,7 @@
     </component>
     <group id="n7_vl2o" name="n7" xy="0,11" size="100,54"/>
     <text id="n3_z0fc" name="txt_name" xy="0,66" pivot="0.5,0.5" size="100,34" font="ui://rt51n0kjekn09" fontSize="24" color="#cccccc" align="center" vAlign="middle" autoSize="none" text="妖"/>
-    <list id="n8_i79a" name="list_buff" xy="100,37" size="94,28" layout="row" scroll="horizontal" defaultItem="ui://rt51n0kji79a6s">
+    <list id="n8_i79a" name="list_buff" xy="100,37" size="94,28" layout="row" scroll="horizontal" defaultItem="ui://rt51n0kji79a6s" autoClearItems="true">
       <item/>
       <item/>
       <item/>

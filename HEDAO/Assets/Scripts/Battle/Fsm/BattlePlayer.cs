@@ -15,6 +15,12 @@ public class BattlePlayer : BattleStateBase
         GameMgr.Effect.ShowEffect(new EffectData() { PrefabId = 10006, FollowId = CurBattleUnit.Id });
         var view = GameMgr.Entity.GetEntityView<BattleUnitView>(CurBattleUnit.Id);
         view.PlayAnim("selected");
+
+        bool action = CurBattleUnit.Battle.RoundStart();
+        if (!action)
+        {
+            GameMgr.Event.Fire(GameEventType.OnBattleUnitActionEnd);
+        }
     }
 
     public override void OnUpdate()

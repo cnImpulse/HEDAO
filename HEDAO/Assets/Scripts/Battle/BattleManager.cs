@@ -76,6 +76,12 @@ public class BattleManager : BaseManager
     public void PlaySkill(int skillId, Role caster, Role target)
     {
         var cfg = GameMgr.Cfg.TbSkill.Get(skillId);
+        if (caster.Attr.QI < cfg.Cost)
+        {
+            return;
+        }
+        caster.Attr.ModifyAttr(EAttrType.QI, -cfg.Cost);
+        
         var hit = SkillUtil.GetHit(skillId, caster, target);
 
         SkillResult skillResult = new SkillResult();
@@ -151,7 +157,7 @@ public class BattleManager : BaseManager
     {
         foreach (var enemy in skillResult.MissList)
         {
-            GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Text = "未命中", TargetId = enemy.Id});
+            GameMgr.UI.ShowFloatUI(UIName.FloatBubble, new BubbleData {Text = "miss", TargetId = enemy.Id});
         }
 
         foreach (var pair in skillResult.EffectResult)
