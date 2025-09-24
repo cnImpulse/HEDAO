@@ -4,23 +4,21 @@ namespace Cfg.Battle
 {
     public partial class MoveEffect
     {
-        public override TakeEffectResult OnTakeEffect(IEffectTarget caster, IEffectTarget target)
+        public override TakeEffectResult OnTakeEffect(Role caster, Role target)
         {
             if (TargetType == EEffectTargetType.Caster)
             {
                 target = caster;
             }
-
-            GameMgr.Battle.Data.MoveBattleUnit(target.Battle.Owner, Distance);
+            else if(GameMgr.Battle.CheckHit(GetRatio(caster, target)))
+            {
+                return default;
+            }
             
+            GameMgr.Battle.Data.MoveBattleUnit(target.Battle.Owner, Distance);
             return default;
         }
         
-        public override void OnResetEffect(IEffectTarget caster, IEffectTarget target)
-        {
-            
-        }
-
         public override string GetDesc()
         {
             var str = string.Format("{0}{1}{2}", TargetType == EEffectTargetType.Caster ? "" : "目标",
@@ -28,10 +26,20 @@ namespace Cfg.Battle
             return str;
         }
 
-        public override string GetDesc(IEffectTarget caster, IEffectTarget target)
+        public override string GetDesc(Role caster, Role target)
         {
             var str = GetDesc();
+            if (TargetType != EEffectTargetType.Caster)
+            {
+                str += string.Format("(概率{0}%)", GetRatio(caster, target));
+            }
+            
             return str;
+        }
+
+        public int GetRatio(Role caster, Role target)
+        {
+            return 50 + 10 * (caster.Attr.TPO - target.Attr.TPO);
         }
     }
 }

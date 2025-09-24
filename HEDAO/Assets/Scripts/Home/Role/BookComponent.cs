@@ -56,7 +56,7 @@ public class BookComponent : Component
         {
             foreach (var buffId in cfg.BuffList)
             {
-                Owner.AddBuff(buffId);
+                Owner.Buff.AddBuff(buffId, default);
             }
 
             foreach (var skillId in cfg.SkillList)
@@ -74,7 +74,7 @@ public class BookComponent : Component
             BookDict.Remove(cfg.BookType);
             foreach (var buffId in cfg.BuffList)
             {
-                Owner.RemoveBuff(buffId);
+                Owner.Buff.RemoveBuff(buffId);
             }
 
             foreach (var skillId in cfg.SkillList)

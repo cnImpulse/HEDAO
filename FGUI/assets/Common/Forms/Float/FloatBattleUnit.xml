@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="100,100" pivot="0.5,0.5" anchor="true" opaque="false">
   <displayList>
+    <component id="n10_ejfa" name="shield_bar" src="ejfa6u" fileName="MetaComponent/Progress/ShieldBar.xml" xy="50,21" group="n7_vl2o">
+      <ProgressBar value="50" max="100"/>
+    </component>
     <component id="n0_qwwl" name="hp_bar" src="dl574x" fileName="MetaComponent/Progress/HPBar.xml" xy="50,38" size="100,20" group="n7_vl2o" touchable="false">
       <relation target="" sidePair="width-width,height-height"/>
       <ProgressBar value="50" max="100"/>
@@ -9,7 +12,12 @@
       <relation target="" sidePair="width-width,height-height"/>
       <ProgressBar value="50" max="100"/>
     </component>
-    <group id="n7_vl2o" name="n7" xy="0,28" size="100,37"/>
+    <group id="n7_vl2o" name="n7" xy="0,11" size="100,54"/>
     <text id="n3_z0fc" name="txt_name" xy="0,66" pivot="0.5,0.5" size="100,34" font="ui://rt51n0kjekn09" fontSize="24" color="#cccccc" align="center" vAlign="middle" autoSize="none" text="妖"/>
+    <list id="n8_i79a" name="list_buff" xy="100,37" size="94,28" layout="row" scroll="horizontal" defaultItem="ui://rt51n0kji79a6s">
+      <item/>
+      <item/>
+      <item/>
+    </list>
   </displayList>
 </component>

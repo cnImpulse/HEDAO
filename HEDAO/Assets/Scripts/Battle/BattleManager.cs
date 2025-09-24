@@ -107,10 +107,11 @@ public class BattleManager : BaseManager
         PlaySkillSpineAnim(skillResult);
 
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(DOVirtual.DelayedCall(1.2f, () =>
+        sequence.Append(DOVirtual.DelayedCall(0.5f, () =>
         {
             PlayFxBubble(skillResult);
         }));
+        sequence.AppendInterval(0.7f);
 
         bool isAppend = true;
         foreach (var pair in skillResult.EffectResult)
@@ -145,15 +146,6 @@ public class BattleManager : BaseManager
         }));
         sequence.SetAutoKill(true);
     }
-
-    // private void PlayFxSkill(SkillResult result)
-    // {
-    //     var caster = result.Caster;
-    //     var targetList = result.TargetList;
-    //     
-    //     var casterView = GameMgr.Entity.GetEntityView<BattleUnitView>(caster.Id);
-    //     
-    // }
     
     private void PlayFxBubble(SkillResult skillResult)
     {
@@ -189,20 +181,37 @@ public class BattleManager : BaseManager
         var caster = result.Caster;
         var targetList = result.TargetList;
         
-        var casterView = GameMgr.Entity.GetEntityView<BattleUnitView>(caster.Id);
-        casterView.PlaySpineAnim("attack");
-        for (int i = 0; i < targetList.Count; i++)
+        var leftList = targetList.Where(role => role.Battle.IsLeft).ToList();
+        var rightList = targetList.Where(role => !role.Battle.IsLeft).ToList();
+        if (!targetList.Contains(caster))
         {
-            var target = targetList[i];
-            if (target == caster) continue;
-            
-            var targetView = GameMgr.Entity.GetEntityView<BattleUnitView>(target.Id);
+            if (caster.Battle.IsLeft)
+            {
+                leftList.Add(caster);
+            }
+            else
+            {
+                rightList.Add(caster);
+            }
+        }
+        
+        for (int i = 0; i < leftList.Count; i++)
+        {
+            var role = leftList[i];
+            var view = GameMgr.Entity.GetEntityView<BattleUnitView>(role.Id);
+            var offset = Vector3.left * (-(targetList.Count - 1) / 2f + i) * 2f;
+            view.PlaySpineAnim(caster == role ? "attack" : "defend", null, offset);
+        }
+        for (int i = 0; i < rightList.Count; i++)
+        {
+            var role = rightList[i];
+            var view = GameMgr.Entity.GetEntityView<BattleUnitView>(role.Id);
             var offset = Vector3.right * (-(targetList.Count - 1) / 2f + i) * 2f;
-            targetView.PlaySpineAnim("defend", null, offset);
+            view.PlaySpineAnim(caster == role ? "attack" : "defend", null, offset);
         }
 
         foreach (var role in Data.BattleUnitDict.Values)
-        {
+        { 
             if (role != caster && !targetList.Contains(role))
             {
                 role.Battle.OnPosChanged.Invoke();
@@ -241,7 +250,7 @@ public class BattleManager : BaseManager
 
         if (cfg.TargetType == ERelationType.Friend)
         {
-            return Data.GetRoleList(cfg.TargetPos, caster.Battle.IsLeft);
+            return caster.Battle.TeamList;
         }
 
         return list;

@@ -4,17 +4,6 @@ using UnityEngine;
 
 namespace Cfg.Battle
 {
-    public interface IEffectTarget
-    {
-        AttrComponent Attr { get; }
-        BattleComponent Battle { get; }
-
-        void AddBuff(int id);
-        void RemoveBuff(int id);
-        void AddSkill(int id);
-        bool CheckCondition(int id);
-    }
-
     public class TakeEffectResult
     {
         public int Damage;
@@ -22,12 +11,12 @@ namespace Cfg.Battle
     
     public partial class EffectCfg
     {
-        public virtual TakeEffectResult OnTakeEffect(IEffectTarget caster, IEffectTarget target)
+        public virtual TakeEffectResult OnTakeEffect(Role caster, Role target)
         {
             return null;
         }
 
-        public virtual void OnResetEffect(IEffectTarget caster, IEffectTarget target)
+        public virtual void OnResetEffect(Role caster, Role target)
         {
             
         }
@@ -37,12 +26,12 @@ namespace Cfg.Battle
             return null;
         }
 
-        public virtual string GetDesc(IEffectTarget caster, IEffectTarget target)
+        public virtual string GetDesc(Role caster, Role target)
         {
             return null;
         }
 
-        public static List<TakeEffectResult> TakeEffectList(List<int> list, IEffectTarget caster, IEffectTarget target)
+        public static List<TakeEffectResult> TakeEffectList(List<int> list, Role caster, Role target)
         {
             List<TakeEffectResult> results = new List<TakeEffectResult>();
             foreach(var id in list)
@@ -55,7 +44,7 @@ namespace Cfg.Battle
             return results;
         }
 
-        public static void ResetEffectList(List<int> list, IEffectTarget caster, IEffectTarget target)
+        public static void ResetEffectList(List<int> list, Role caster, Role target)
         {
             foreach (var id in list)
             {

@@ -15,6 +15,8 @@ public class BattleComponent : Component
 
     public bool IsDead => Owner.Attr.HP <= 0;
     
+    public Dictionary<int, Buff> BuffDict = new Dictionary<int, Buff>();
+    
     protected override void OnInit(object data)
     {
         base.OnInit(data);

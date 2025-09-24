@@ -5,14 +5,16 @@ using Newtonsoft.Json;
 public abstract class Buff
 {
     public int Id { get; private set; }
-    public IEffectTarget Target { get; private set; }
+    public Role Caster { get; private set; }
+    public Role Target { get; private set; }
     public bool IsEffectActive { get; private set; } = false;
     
     public BuffCfg Cfg => GameMgr.Cfg.TbBuffCfg.Get(Id);
     
-    public Buff(int id, IEffectTarget target)
+    public Buff(int id, Role caster, Role target)
     {
         Id = id;
+        Caster = caster;
         Target = target;
     }
 
@@ -43,5 +45,10 @@ public abstract class Buff
                 effectCfg.OnResetEffect(null, Target);
             }
         }
+    }
+
+    public void Remove()
+    {
+        Target.Buff.RemoveBuff(Id);
     }
 }

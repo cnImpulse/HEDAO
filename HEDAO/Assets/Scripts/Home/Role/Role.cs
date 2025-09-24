@@ -5,7 +5,7 @@ using Cfg;
 using Cfg.Battle;
 using UnityEngine.EventSystems;
 
-public class Role : Entity, IEffectTarget
+public class Role : Entity
 {
     public string Name;
     public int Level { get; protected set; }
@@ -14,15 +14,12 @@ public class Role : Entity, IEffectTarget
 
     public RoleAttrComponent Attr => GetComponent<RoleAttrComponent>();
     public SkillComponent Skill => GetComponent<SkillComponent>();
+    public BuffComponent Buff => GetComponent<BuffComponent>();
     public BookComponent Book => GetComponent<BookComponent>();
     public EquipComponent Equip => GetComponent<EquipComponent>();
     public BattleComponent Battle => GetComponent<BattleComponent>();
 
     public Dictionary<EWuXinType, int> WuXin = new Dictionary<EWuXinType, int>();
-    public Dictionary<int, Buff> BuffDict = new Dictionary<int, Buff>();
-
-    AttrComponent IEffectTarget.Attr => Attr;
-    BattleComponent IEffectTarget.Battle => Battle;
 
     protected override void OnInit(object data)
     {
@@ -37,29 +34,12 @@ public class Role : Entity, IEffectTarget
         AddComponent<BookComponent>();
         AddComponent<EquipComponent>();
         AddComponent<BattleComponent>();
+        AddComponent<BuffComponent>();
     }
 
     public void LevelUp(int level)
     {
 
-    }
-    
-    public void AddBuff(int id)
-    {
-        RemoveBuff(id);
-
-        var buff = new CommonBuff(id, this);
-        BuffDict.Add(id, buff);
-        buff.OnAdd();
-    }
-
-    public void RemoveBuff(int id)
-    {
-        if (BuffDict.TryGetValue(id, out var buff))
-        {
-            buff.OnRemove();
-            BuffDict.Remove(id);
-        }
     }
 
     public bool CheckCondition(int id)

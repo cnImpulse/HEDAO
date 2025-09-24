@@ -5,7 +5,7 @@ public class CommonBuff : Buff
 {
     public new CommonBuffCfg Cfg => base.Cfg as CommonBuffCfg;
         
-    public CommonBuff(int id, IEffectTarget target) : base(id, target)
+    public CommonBuff(int id, Role caster, Role target) : base(id, caster, target)
     {
 
     }

@@ -84,6 +84,13 @@ public class BattleData
             BattleUnitQueue = new Queue<Role>(BattleUnitQueue.Where(e => e.Id != id));
             BattleUnitDict.Remove(id);
             role.Battle.TeamList.Remove(role);
+            foreach (var friend in GetRoleList(role.Battle.IsLeft))
+            {
+                if (friend.Battle.PosIndex > role.Battle.PosIndex)
+                {
+                    friend.Battle.OnPosChanged?.Invoke();
+                }
+            }
         }
     }
 
@@ -102,19 +109,6 @@ public class BattleData
         return EResult.None;
     }
 
-    public Role GetRole(int pos, bool isLeft)
-    {
-        foreach(var role in BattleUnitDict.Values)
-        {
-            if (role.Battle.PosIndex == pos)
-            {
-                return role;
-            }
-        }
-
-        return null;
-    }
-    
     public List<Role> GetRoleList(bool isLeft)
     {
         var list = new List<Role>();

@@ -47,4 +47,7 @@
 	<bean name="BattleBuffCfg" parent="BuffCfg" alias="战斗">
 		<var name="Round" type="int"/>
 	</bean>
+
+    <bean name="ShieldBuffCfg" parent="BattleBuffCfg" alias="护盾">
+	</bean>
 </module>

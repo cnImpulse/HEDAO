@@ -6,7 +6,7 @@ namespace Cfg.Battle
 {
     public partial class AttrModifyEffect
     {
-        public override TakeEffectResult OnTakeEffect(IEffectTarget caster, IEffectTarget target)
+        public override TakeEffectResult OnTakeEffect(Role caster, Role target)
         {
             var targetUnit = target as Role;
             targetUnit.Attr.ModifyAttrDict(AttrDict);
@@ -14,7 +14,7 @@ namespace Cfg.Battle
             return default;
         }
         
-        public override void OnResetEffect(IEffectTarget caster, IEffectTarget target)
+        public override void OnResetEffect(Role caster, Role target)
         {
             var targetUnit = target as Role;
             targetUnit.Attr.ModifyAttrDict(AttrDict, true);
@@ -25,7 +25,7 @@ namespace Cfg.Battle
             return string.Join(" ", AttrDict.Select(pair => string.Format("{0}:{1}", pair.Key.GetName(), pair.Value)));
         }
 
-        public override string GetDesc(IEffectTarget caster, IEffectTarget target)
+        public override string GetDesc(Role caster, Role target)
         {
             return GetDesc();
         }

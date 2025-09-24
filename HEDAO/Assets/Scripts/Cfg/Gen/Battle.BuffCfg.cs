@@ -27,7 +27,7 @@ public abstract partial class BuffCfg : Luban.BeanBase
         switch (_buf.ReadInt())
         {
             case Battle.CommonBuffCfg.__ID__: return new Battle.CommonBuffCfg(_buf);
-            case Battle.BattleBuffCfg.__ID__: return new Battle.BattleBuffCfg(_buf);
+            case Battle.ShieldBuffCfg.__ID__: return new Battle.ShieldBuffCfg(_buf);
             default: throw new SerializationException();
         }
     }
