@@ -19,6 +19,8 @@ public class ProcedureBattle : FsmState
     public override void OnLeave()
     {
         GameMgr.UI.CloseAllUI();
+        GameMgr.Battle.Fsm.Destroy();
+        GameObject.Destroy(GameMgr.Battle.BattleMapView.gameObject);
 
         base.OnLeave();
     }

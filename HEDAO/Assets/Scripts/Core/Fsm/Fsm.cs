@@ -31,10 +31,10 @@ public class Fsm
         return fsm;
     }
 
-    public static void DestroyFsm(Fsm fsm)
+    public void Destroy()
     {
-        fsm.CurState.OnLeave();
-        foreach (FsmState state in fsm.m_States.Values)
+        CurState.OnLeave();
+        foreach (FsmState state in m_States.Values)
         {
             state.OnDestroy();
         }

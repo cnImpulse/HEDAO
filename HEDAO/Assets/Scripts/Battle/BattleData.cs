@@ -106,6 +106,16 @@ public class BattleData
 
     public EResult GetBattleResult()
     {
+        if (LeftUnitList.Count == 0)
+        {
+            return EResult.Win;
+        }
+        
+        if (RightUnitList.Count == 0)
+        {
+            return EResult.Lose;
+        }
+        
         return EResult.None;
     }
 

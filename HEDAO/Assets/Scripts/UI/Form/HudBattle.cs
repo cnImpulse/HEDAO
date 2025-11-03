@@ -18,6 +18,7 @@ public class HudBattle : UIBase
         GameMgr.Event.Subscribe(GameEventType.OnClickBattleUnit, OnClickBattleUnit);
         GameMgr.Event.Subscribe(GameEventType.OnBattleUnitDead, OnBattleUnitDead);
         GameMgr.Event.Subscribe(GameEventType.OnPlayerRoundStart, OnPlayerRoundStart);
+        GameMgr.Event.Subscribe(GameEventType.OnBattleEnd, OnBattleEnd);
 
         View.m_comp_skill_result.m_btn_sure.onClick.Set(OnClickReleaseSkill);
         View.m_comp_skill.m_btn_jump.onClick.Set(OnClickJump);
@@ -29,6 +30,11 @@ public class HudBattle : UIBase
         View.m_comp_skill.m_list_skill.selectionController.onChanged.Set(RefreshSkill);
     }
     
+    private void OnBattleEnd(GameEvent obj)
+    {
+        GameMgr.UI.ShowUI(UIName.MenuBattleEnd, obj.Data);
+    }
+
     private void OnPlayerRoundStart(GameEvent obj)
     {
         RefreshRolePanel();
@@ -67,6 +73,9 @@ public class HudBattle : UIBase
     protected override void OnClose()
     {
         GameMgr.Event.Unsubscribe(GameEventType.OnClickBattleUnit, OnClickBattleUnit);
+        GameMgr.Event.Unsubscribe(GameEventType.OnBattleUnitDead, OnBattleUnitDead);
+        GameMgr.Event.Unsubscribe(GameEventType.OnPlayerRoundStart, OnPlayerRoundStart);
+        GameMgr.Event.Unsubscribe(GameEventType.OnBattleEnd, OnBattleEnd);
 
         base.OnClose();
     }

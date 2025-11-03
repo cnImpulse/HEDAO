@@ -9,7 +9,7 @@ public enum GameEventType
     OnClickBattleUnit,
     OnPlayerRoundStart,
     OnBattleUnitActionEnd,
-    BattleEvent,
+    OnBattleEnd,
     OnBattleUnitDead,
 }
 

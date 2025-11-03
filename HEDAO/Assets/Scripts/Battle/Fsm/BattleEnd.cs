@@ -8,7 +8,7 @@ public class BattleEndEvent
     public List<ItemData> ItemList;
 }
 
-public class BattleEnd : FsmState
+public class BattleEnd : BattleStateBase
 {
     public override void OnEnter()
     {
@@ -18,12 +18,12 @@ public class BattleEnd : FsmState
         e.Result = GameMgr.Battle.Data.BattleResult;
         e.ItemList = Reward.GenReward(10001);
 
-        GameMgr.Event.Fire(GameEventType.BattleEvent, e);
+        GameMgr.Event.Fire(GameEventType.OnBattleEnd, e);
     }
 
     public override void OnLeave()
     {
-
+        GameMgr.Entity.HideAllEntity();
 
         base.OnLeave();
     }

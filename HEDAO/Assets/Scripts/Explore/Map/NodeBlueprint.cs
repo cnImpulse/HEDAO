@@ -21,5 +21,6 @@ namespace Map
     {
         public Sprite sprite;
         public NodeType nodeType;
+        public int battleId = 20001;
     }
 }

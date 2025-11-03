@@ -46,5 +46,6 @@ public class ExploreManager : BaseManager
     public void CreateMap()
     {
         MapView = GameMgr.Res.LoadAsset<GameObject>(10008).GetComponent<MapView>();
+        MapView.ShowMap(Data.Map);
     }
 }

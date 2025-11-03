@@ -65,9 +65,6 @@ namespace Map
         {
             Instance = this;
             cam = Camera.main;
-
-            Map = MapGenerator.GetMap(Config);
-            ShowMap();
         }
 
         public virtual void ClearMap()
@@ -79,8 +76,9 @@ namespace Map
             lineConnections.Clear();
         }
 
-        public virtual void ShowMap()
+        public virtual void ShowMap(Map map)
         {
+            Map = map;
             if (Map == null)
             {
                 Debug.LogWarning("Map was null in MapView.ShowMap()");
@@ -392,10 +390,10 @@ namespace Map
             switch (mapNode.Node.nodeType)
             {
                 case NodeType.MinorEnemy:
-                    GameMgr.Battle.StartBattle(mapNode.Node.BattleId);
+                    GameMgr.Battle.StartBattle(mapNode.Blueprint.battleId);
                     break;
                 case NodeType.EliteEnemy:
-                    GameMgr.Battle.StartBattle(mapNode.Node.BattleId);
+                    GameMgr.Battle.StartBattle(mapNode.Blueprint.battleId);
                     break;
                 case NodeType.RestSite:
                     break;

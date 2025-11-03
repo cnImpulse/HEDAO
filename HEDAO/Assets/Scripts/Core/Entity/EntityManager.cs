@@ -30,6 +30,16 @@ public class EntityManager : BaseManager
             EntityViewDict.Remove(id);
         }
     }
+    
+    public void HideAllEntity()
+    {
+        foreach (var view in EntityViewDict.Values)
+        {
+            view.Destroy();
+            GameObject.Destroy(view.gameObject);
+        }
+        EntityViewDict.Clear();
+    }
 
     public T GetEntityView<T>(long id)
         where T : EntityView
