@@ -11,9 +11,9 @@ public class EffectNode : ExploreNode
 
     public override void OnEnter()
     {
-        foreach(var role in Team.Values)
-        {
-            EffectCfg.TakeEffectList(Cfg.EffectList, null, role);
-        }
+        // foreach(var role in Team.Values)
+        // {
+        //     EffectCfg.TakeEffectList(Cfg.EffectList, null, role);
+        // }
     }
 }

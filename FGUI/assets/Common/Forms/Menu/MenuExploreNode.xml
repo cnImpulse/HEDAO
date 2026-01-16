@@ -2,10 +2,14 @@
 <component size="1920,1080">
   <displayList>
     <image id="n0_a4vx" name="n0" src="aoboa" fileName="Resources/Images/TianDix4.png" xy="373,152" pivot="0.5,0.5" size="1174,776"/>
-    <component id="n1_a4vx" name="btn_sure" src="mv3556" fileName="MetaComponent/Button/CommonButton.xml" xy="840,700" size="240,120">
-      <Button title="确认"/>
-    </component>
     <text id="n2_a4vx" name="title" xy="906,225" pivot="0.5,0.5" size="108,64" font="ui://rt51n0kjekn09" fontSize="48" align="center" vAlign="middle" text="篝火"/>
     <text id="n4_ip03" name="txt_desc" xy="649,311" pivot="0.5,0.5" size="622,358" font="ui://rt51n0kjekn09" fontSize="24" autoSize="none" text="温暖的篝火"/>
+    <list id="n5_g08e" name="list_option" xy="1,758" pivot="0.5,0.5" size="1920,116" layout="row" colGap="10" defaultItem="ui://rt51n0kjmv3556" align="center" vAlign="middle" autoClearItems="true">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
   </displayList>
 </component>

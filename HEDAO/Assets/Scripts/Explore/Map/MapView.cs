@@ -387,15 +387,7 @@ namespace Map
         private static void EnterNode(MapNode mapNode)
         {
             var exploreId = mapNode.Blueprint.exploreId;
-            var cfg = GameMgr.Cfg.TbExploreNodeCfg.Get(exploreId);
-            if (cfg.ExploreType == EExploreType.Battle)
-            {
-                GameMgr.Battle.StartBattle(cfg.BattleId);
-            }
-            else
-            {
-                GameMgr.UI.ShowUI(UIName.MenuDialog, exploreId);
-            }
+            GameMgr.UI.ShowUI(UIName.MenuExploreNode, exploreId);
         }
         
         private void PlayWarningThatNodeCannotBeAccessed()

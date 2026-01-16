@@ -19,10 +19,7 @@ public sealed partial class ExploreNodeCfg : Luban.BeanBase
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
         Desc = _buf.ReadString();
-        ExploreType = (EExploreType)_buf.ReadInt();
-        BattleId = _buf.ReadInt();
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);EffectList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); EffectList.Add(_e0);}}
-        RewardId = _buf.ReadInt();
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);ItemList = new System.Collections.Generic.List<ExploreItemCfg>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { ExploreItemCfg _e0;  _e0 = ExploreItemCfg.DeserializeExploreItemCfg(_buf); ItemList.Add(_e0);}}
     }
 
     public static ExploreNodeCfg DeserializeExploreNodeCfg(ByteBuf _buf)
@@ -30,31 +27,10 @@ public sealed partial class ExploreNodeCfg : Luban.BeanBase
         return new ExploreNodeCfg(_buf);
     }
 
-    /// <summary>
-    /// 编号
-    /// </summary>
     public readonly int Id;
-    /// <summary>
-    /// 名字
-    /// </summary>
     public readonly string Name;
-    /// <summary>
-    /// 描述
-    /// </summary>
     public readonly string Desc;
-    public readonly EExploreType ExploreType;
-    /// <summary>
-    /// 战斗
-    /// </summary>
-    public readonly int BattleId;
-    /// <summary>
-    ///  效果
-    /// </summary>
-    public readonly System.Collections.Generic.List<int> EffectList;
-    /// <summary>
-    /// 奖励
-    /// </summary>
-    public readonly int RewardId;
+    public readonly System.Collections.Generic.List<ExploreItemCfg> ItemList;
    
     public const int __ID__ = -1412534001;
     public override int GetTypeId() => __ID__;
@@ -64,10 +40,7 @@ public sealed partial class ExploreNodeCfg : Luban.BeanBase
         
         
         
-        
-        
-        
-        
+        foreach (var _e in ItemList) { _e?.ResolveRef(tables); }
     }
 
     public override string ToString()
@@ -76,10 +49,7 @@ public sealed partial class ExploreNodeCfg : Luban.BeanBase
         + "Id:" + Id + ","
         + "Name:" + Name + ","
         + "Desc:" + Desc + ","
-        + "ExploreType:" + ExploreType + ","
-        + "BattleId:" + BattleId + ","
-        + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
-        + "RewardId:" + RewardId + ","
+        + "ItemList:" + Luban.StringUtil.CollectionToString(ItemList) + ","
         + "}";
     }
 }

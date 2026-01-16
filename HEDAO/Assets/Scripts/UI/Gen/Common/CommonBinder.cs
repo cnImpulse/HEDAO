@@ -17,7 +17,7 @@ namespace FGUI.Common
             UIObjectFactory.SetPackageItemExtension(FGUIVerticalList.URL, typeof(FGUIVerticalList));
             UIObjectFactory.SetPackageItemExtension(FGUIMenuMain.URL, typeof(FGUIMenuMain));
             UIObjectFactory.SetPackageItemExtension(FGUITaskWidget.URL, typeof(FGUITaskWidget));
-            UIObjectFactory.SetPackageItemExtension(FGUIMenuDialog.URL, typeof(FGUIMenuDialog));
+            UIObjectFactory.SetPackageItemExtension(FGUIMenuExploreNode.URL, typeof(FGUIMenuExploreNode));
             UIObjectFactory.SetPackageItemExtension(FGUIWinLoadGame.URL, typeof(FGUIWinLoadGame));
             UIObjectFactory.SetPackageItemExtension(FGUISaveItem.URL, typeof(FGUISaveItem));
             UIObjectFactory.SetPackageItemExtension(FGUIBookPage.URL, typeof(FGUIBookPage));

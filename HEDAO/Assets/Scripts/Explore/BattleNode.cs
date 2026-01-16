@@ -10,6 +10,6 @@ public class BattleNode : ExploreNode
 
     public override void OnEnter()
     {
-        GameMgr.Battle.StartBattle(Cfg.BattleId);
+        // GameMgr.Battle.StartBattle(Cfg.BattleId);
     }
 }

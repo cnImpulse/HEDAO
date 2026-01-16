@@ -1,0 +1,16 @@
+<module name="">
+	<bean name="ExploreNodeCfg">
+        <var name="Id" type="int"/>
+        <var name="Name" type="string"/>
+        <var name="Desc" type="string"/>
+        <var name="ItemList" type="list,ExploreItemCfg"/>
+    </bean>
+
+    <bean name="ExploreItemCfg">
+        <var name="Name" type="string"/>
+        <var name="ExploreType" type="EExploreType"/>
+        <var name="BattleId" type="int"/>
+        <var name="RewardId" type="int"/>
+        <var name="EffectList" type="(list#sep=,),int"/>
+    </bean>
+</module>

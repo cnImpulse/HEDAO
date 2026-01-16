@@ -5,25 +5,25 @@ using FairyGUI.Utils;
 
 namespace FGUI.Common
 {
-    public partial class FGUIMenuDialog : GComponent
+    public partial class FGUIMenuExploreNode : GComponent
     {
-        public GButton m_btn_sure;
         public GTextField m_title;
         public GTextField m_txt_desc;
+        public GList m_list_option;
         public const string URL = "ui://rt51n0kjip036v";
 
-        public static FGUIMenuDialog CreateInstance()
+        public static FGUIMenuExploreNode CreateInstance()
         {
-            return (FGUIMenuDialog)UIPackage.CreateObject("Common", "MenuDialog");
+            return (FGUIMenuExploreNode)UIPackage.CreateObject("Common", "MenuExploreNode");
         }
 
         public override void ConstructFromXML(XML xml)
         {
             base.ConstructFromXML(xml);
 
-            m_btn_sure = (GButton)GetChild("btn_sure");
             m_title = (GTextField)GetChild("title");
             m_txt_desc = (GTextField)GetChild("txt_desc");
+            m_list_option = (GList)GetChild("list_option");
         }
     }
 }
