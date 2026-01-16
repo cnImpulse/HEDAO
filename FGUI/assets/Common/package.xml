@@ -63,6 +63,7 @@
     <image id="i79a6r" name="line.png" path="/Resources/Images/" exported="true"/>
     <component id="i79a6s" name="BuffIcon.xml" path="/Forms/Float/"/>
     <component id="ejfa6u" name="ShieldBar.xml" path="/MetaComponent/Progress/"/>
+    <component id="ip036v" name="MenuDialog.xml" path="/Forms/Menu/" exported="true"/>
   </resources>
   <publish name="" genCode="true"/>
 </packageDescription>

@@ -7,11 +7,6 @@
       <item/>
       <item/>
     </list>
-    <list id="n4_seah" name="list_node" xy="297,151" pivot="0.5,0.5" size="1326,600" layout="row" colGap="40" defaultItem="ui://rt51n0kjseah64" align="center" vAlign="middle">
-      <item/>
-      <item/>
-      <item/>
-    </list>
     <component id="n5_9itq" name="btn_return" src="mv3556" fileName="MetaComponent/Button/CommonButton.xml" xy="0,0" size="218,120">
       <Button title="放弃"/>
     </component>

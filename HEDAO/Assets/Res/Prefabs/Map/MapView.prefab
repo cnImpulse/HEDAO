@@ -77,8 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Config: {fileID: 11400000, guid: 19bf411c79e522b4b8e54f82b0140314, type: 2}
-  orientation: 3
-  MapRoot: {fileID: 436495011654877595}
+  orientation: 0
   allMapConfigs:
   - {fileID: 11400000, guid: 19bf411c79e522b4b8e54f82b0140314, type: 2}
   nodePrefab: {fileID: 6746199761131337685, guid: 621ccae6afb8e8949ba963674577578a, type: 3}
@@ -104,5 +103,6 @@ MonoBehaviour:
   lineLockedColor:
     serializedVersion: 2
     rgba: 4281216558
+  firstParent: {fileID: 1088472653881999615}
   lockAfterSelecting: 0
   enterNodeDelay: 1

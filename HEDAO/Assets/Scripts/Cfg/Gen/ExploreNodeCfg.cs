@@ -22,6 +22,7 @@ public sealed partial class ExploreNodeCfg : Luban.BeanBase
         ExploreType = (EExploreType)_buf.ReadInt();
         BattleId = _buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);EffectList = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); EffectList.Add(_e0);}}
+        RewardId = _buf.ReadInt();
     }
 
     public static ExploreNodeCfg DeserializeExploreNodeCfg(ByteBuf _buf)
@@ -47,15 +48,20 @@ public sealed partial class ExploreNodeCfg : Luban.BeanBase
     /// </summary>
     public readonly int BattleId;
     /// <summary>
-    ///  效果列表
+    ///  效果
     /// </summary>
     public readonly System.Collections.Generic.List<int> EffectList;
+    /// <summary>
+    /// 奖励
+    /// </summary>
+    public readonly int RewardId;
    
     public const int __ID__ = -1412534001;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -73,6 +79,7 @@ public sealed partial class ExploreNodeCfg : Luban.BeanBase
         + "ExploreType:" + ExploreType + ","
         + "BattleId:" + BattleId + ","
         + "EffectList:" + Luban.StringUtil.CollectionToString(EffectList) + ","
+        + "RewardId:" + RewardId + ","
         + "}";
     }
 }

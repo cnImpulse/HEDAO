@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cfg;
 using UnityEngine;
 using DG.Tweening;
 
@@ -48,8 +49,8 @@ namespace Map
         public Color32 lineVisitedColor = Color.white;
         [Tooltip("Unavailable path color")]
         public Color32 lineLockedColor = Color.gray;
-
-        protected GameObject firstParent;
+        public GameObject firstParent;
+        
         protected GameObject mapParent;
         private List<List<Vector2Int>> paths;
         private Camera cam;
@@ -85,7 +86,7 @@ namespace Map
                 return;
             }
 
-            ClearMap();
+            // ClearMap();
 
             CreateMapParent();
 
@@ -123,7 +124,6 @@ namespace Map
 
         protected virtual void CreateMapParent()
         {
-            firstParent = new GameObject("OuterMapParent");
             mapParent = new GameObject("MapParentWithAScroll");
             mapParent.transform.SetParent(firstParent.transform);
             ScrollNonUI scrollNonUi = mapParent.AddComponent<ScrollNonUI>();
@@ -229,15 +229,15 @@ namespace Map
             Debug.Log("Map span in set orientation: " + span + " camera aspect: " + cam.aspect);
 
             // setting first parent to be right in front of the camera first:
-            firstParent.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, 0f);
+            firstParent.transform.localPosition = new Vector3(cam.transform.position.x + 1, cam.transform.position.y, 0f);
             float offset = orientationOffset;
             switch (orientation)
             {
                 case MapOrientation.BottomToTop:
                     if (scrollNonUi != null)
                     {
-                        scrollNonUi.yConstraints.max = 0;
-                        scrollNonUi.yConstraints.min = -(span + 2f * offset);
+                        scrollNonUi.yConstraints.max = 2;
+                        scrollNonUi.yConstraints.min = -(span + 2f * offset) - 2;
                     }
                     firstParent.transform.localPosition += new Vector3(0, offset, 0);
                     break;
@@ -386,27 +386,15 @@ namespace Map
 
         private static void EnterNode(MapNode mapNode)
         {
-            Debug.Log("Entering node: " + mapNode.Node.blueprintName + " of type: " + mapNode.Node.nodeType);
-            switch (mapNode.Node.nodeType)
+            var exploreId = mapNode.Blueprint.exploreId;
+            var cfg = GameMgr.Cfg.TbExploreNodeCfg.Get(exploreId);
+            if (cfg.ExploreType == EExploreType.Battle)
             {
-                case NodeType.MinorEnemy:
-                    GameMgr.Battle.StartBattle(mapNode.Blueprint.battleId);
-                    break;
-                case NodeType.EliteEnemy:
-                    GameMgr.Battle.StartBattle(mapNode.Blueprint.battleId);
-                    break;
-                case NodeType.RestSite:
-                    break;
-                case NodeType.Treasure:
-                    break;
-                case NodeType.Store:
-                    break;
-                case NodeType.Boss:
-                    break;
-                case NodeType.Mystery:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                GameMgr.Battle.StartBattle(cfg.BattleId);
+            }
+            else
+            {
+                GameMgr.UI.ShowUI(UIName.MenuDialog, exploreId);
             }
         }
         

@@ -220,7 +220,7 @@ public class BattleManager : BaseManager
         { 
             if (role != caster && !targetList.Contains(role))
             {
-                role.Battle.OnPosChanged.Invoke();
+                role.Battle.OnPosChanged?.Invoke();
             }
         }
     }

@@ -20,7 +20,6 @@ public class MenuExplore : UIBase
         View.m_btn_prepare.onClick.Set(OnClickParepare);
 
         View.m_list_role.itemRenderer = OnRenderRole;
-        View.m_list_node.itemRenderer = OnRenderNode;
     }
 
     protected override void OnShow()
@@ -28,14 +27,6 @@ public class MenuExplore : UIBase
         base.OnShow();
 
         View.m_list_role.RefreshList(Team.Values.ToList());
-        if (Data.ExploreQueue.Count > 0)
-        {
-            View.m_list_node.RefreshList(Data.ExploreQueue.Peek());
-        }
-        else
-        {
-            View.m_list_node.numItems = 0;
-        }
     }
 
     private void OnRenderRole(int index, GObject obj, object data)
@@ -52,25 +43,11 @@ public class MenuExplore : UIBase
         btn.Refresh(role);
     }
 
-    private void OnRenderNode(int index, GObject item, object data)
-    {
-        var node = data as ExploreNode;
-        item.text = string.Format("{0}\n{1}", node.Cfg.Name, node.Cfg.Desc);
-        item.onClick.Set(() => OnClickNode(node));
-    }
-
-    public void OnClickNode(ExploreNode node)
-    {
-        node.OnSelected();
-        GameMgr.Explore.Data.ExploreQueue.Dequeue();
-        Refresh();
-    }
-
     private void OnClickParepare()
     {
         if (Team.Count > 0)
         {
-            GameMgr.UI.ShowUI(UIName.MenuRole, Team.Values.AsEnumerable<Role>().ToList());
+            GameMgr.UI.ShowUI(UIName.MenuRole, new OpenMenuRoleData{RoleList = Team.Values.Cast<Role>().ToList()});
         }
     }
 }

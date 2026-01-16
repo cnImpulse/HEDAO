@@ -8,7 +8,7 @@ public class RestNode : ExploreNode
     {
     }
 
-    public override void OnSelected()
+    public override void OnEnter()
     {
 
     }

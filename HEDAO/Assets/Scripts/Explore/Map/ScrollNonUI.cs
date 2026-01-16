@@ -22,6 +22,7 @@ namespace Map
         {
             mainCamera = Camera.main;
             zDisplacement = -mainCamera.transform.position.z + transform.position.z;
+            transform.position = new Vector3(0, 2, 0);
         }
 
         public void OnMouseDown()

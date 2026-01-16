@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Map
 {
@@ -21,6 +22,6 @@ namespace Map
     {
         public Sprite sprite;
         public NodeType nodeType;
-        public int battleId = 20001;
+        [FormerlySerializedAs("exporeId")] public int exploreId = 10001;
     }
 }

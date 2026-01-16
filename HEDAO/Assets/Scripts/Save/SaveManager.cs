@@ -88,6 +88,20 @@ public class SaveManager : BaseManager
         
         GameMgr.Battle.StartBattle(10001, Data.TeamDict);
     }
+    
+    public void LoadTestExporeData()
+    {
+        Data = new SaveData();
+        Data.RecruitList = GetInitPlayRole();
+        Data.Init();
+
+        foreach (var role in Data.RecruitList)
+        {
+            Data.TeamDict.Add(role.Id, role);
+        }
+        
+        GameMgr.Explore.StartExplore();
+    }
 
     public void SaveGame()
     {

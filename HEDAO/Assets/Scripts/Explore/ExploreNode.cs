@@ -13,7 +13,7 @@ public abstract class ExploreNode
         CfgId = id;
     }
 
-    public virtual void OnSelected()
+    public virtual void OnEnter()
     {
 
     }

@@ -5,6 +5,12 @@ using UnityEngine;
 using FairyGUI;
 using FGUI.Common;
 
+public class OpenMenuRoleData
+{
+    public List<Role> RoleList;
+    public int index = 0;
+}
+
 public class MenuRole : UIBase
 {
     public new FGUIMenuRole View => base.View as FGUIMenuRole;
@@ -19,8 +25,8 @@ public class MenuRole : UIBase
     {
         base.OnInit(userData);
 
-        var role = userData as Role;
-        RoleList = role.Battle.TeamList;
+        var data = userData as OpenMenuRoleData;
+        RoleList = data.RoleList;
 
         View.m_comp_role.m_list_role.itemRenderer = OnRenderRole;
         View.m_comp_role.m_list_equip.itemRenderer = OnRenderEquipSlot;
@@ -28,7 +34,7 @@ public class MenuRole : UIBase
         View.m_comp_store.m_list_item.itemRenderer = OnRenderItem;
 
         View.m_comp_role.m_list_role.selectionController.onChanged.Set(RefreshRole);
-        View.m_comp_role.m_list_role.RefreshList(RoleList, RoleList.IndexOf(role));
+        View.m_comp_role.m_list_role.RefreshList(RoleList, data.index);
     }
 
     protected override void OnShow()

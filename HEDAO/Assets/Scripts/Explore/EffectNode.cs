@@ -9,7 +9,7 @@ public class EffectNode : ExploreNode
     {
     }
 
-    public override void OnSelected()
+    public override void OnEnter()
     {
         foreach(var role in Team.Values)
         {

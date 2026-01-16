@@ -8,7 +8,7 @@ public class BattleNode : ExploreNode
     {
     }
 
-    public override void OnSelected()
+    public override void OnEnter()
     {
         GameMgr.Battle.StartBattle(Cfg.BattleId);
     }

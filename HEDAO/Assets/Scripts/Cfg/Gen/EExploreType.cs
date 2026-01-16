@@ -26,6 +26,11 @@ namespace Cfg
         /// </summary>
         [EnumName("效果")]
         Effect = 1,
+        /// <summary>
+        /// 奖励
+        /// </summary>
+        [EnumName("奖励")]
+        Reward = 2,
     }
 
 }

@@ -104,5 +104,6 @@
 	<enum name="EExploreType" comment="历练类型">
 		<var name="Battle" alias="战斗" />
 		<var name="Effect" alias="效果" />
+		<var name="Reward" alias="奖励" />
 	</enum>
 </module>

@@ -8,7 +8,6 @@ namespace FGUI.Common
     public partial class FGUIMenuExplore : GComponent
     {
         public GList m_list_role;
-        public GList m_list_node;
         public GButton m_btn_return;
         public GTextField m_txt_time;
         public GButton m_btn_prepare;
@@ -24,7 +23,6 @@ namespace FGUI.Common
             base.ConstructFromXML(xml);
 
             m_list_role = (GList)GetChild("list_role");
-            m_list_node = (GList)GetChild("list_node");
             m_btn_return = (GButton)GetChild("btn_return");
             m_txt_time = (GTextField)GetChild("txt_time");
             m_btn_prepare = (GButton)GetChild("btn_prepare");

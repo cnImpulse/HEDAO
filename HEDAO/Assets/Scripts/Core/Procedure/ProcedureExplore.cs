@@ -11,6 +11,8 @@ public class ProcedureExplore : FsmState
         GameMgr.Save.Data.SceneType = SceneType.Explore;
         GameMgr.Explore.CreateMap();
         GameMgr.Explore.MapView.enabled = true;
+        
+        GameMgr.UI.ShowUI(UIName.MenuExplore);
     }
 
     public override void OnUpdate()
@@ -25,6 +27,8 @@ public class ProcedureExplore : FsmState
 
     public override void OnLeave()
     {
+        GameMgr.UI.CloseUI(UIName.MenuExplore);
+        
         GameMgr.Explore.MapView.ClearMap();
         GameMgr.UI.CloseAllUI();
 
